@@ -52,16 +52,15 @@ def parse(file):
 def classTemplate():
     return """
 #include <qtjs_bindings/shared.h>
-#include <qtjs_bindings/$module/shared.h>
+#include <$header>
 
 namespace qtjs_binder {
 
-static inline void bind_${module}_$class(vu8::Module &module)
+static inline void bind_${module}_$safeClassName(vu8::Module &module)
 {
-    vu8::Class<$class, vu8::Factory<$constructorArgs> > classBinder;
-    classBinder${methodBinders}
-        ;
-    module("$class", classBinder);
+    vu8::Class<$className, vu8::Factory<$constructorArgs> > classBinder;
+    ${methodBinders}
+    module("$safeClassName", classBinder);
 }
 
 } // namespace
@@ -69,26 +68,33 @@ static inline void bind_${module}_$class(vu8::Module &module)
 
 def methodTemplate():
     return """
-        .Set<$methodType, &$class::$method>("$method")"""
+        classBinder.Set<$methodType, &$className::$method>("$method");"""
 
 def methodParams(cppMethod):
     return ", ".join([a['type'] for a in cppMethod['parameters']])
 
 def methodType(cppMethod):
-    return cppMethod['rtnType'].replace("inline", "")+'('+methodParams(cppMethod)+')'
+    return cppMethod['rtnType'].replace("inline", "").replace("static", "")+'('+methodParams(cppMethod)+')'
 
 def renderMethod(classname, cppMethod):
     return Template(methodTemplate()) \
-        .substitute({'methodType':methodType(cppMethod),'class':classname, 'method': cppMethod['name']})
+        .substitute({'methodType':methodType(cppMethod),'className':classname, 'method': cppMethod['name']})
 
-def generateBindings(module, cppinfo):
+def sanitizeName(name):
+    return name.replace('::', '_').replace(' ', '')
+
+def fileNameFromClass(classname):
+    return sanitizeName(classname)+".cpp"
+
+def generateCppBindings(module, cppinfo, header):
     targetDir = os.path.join(MYDIR, '..', 'generated_cpp', module)
+    addedClasses = []
     if not os.path.isdir(targetDir):
         os.makedirs(targetDir)
-    for classname [a for a in cppinfo.classes if not '<' in a]:
+    for classname in [a for a in cppinfo.classes if not '<' in a]:
         classInfo = cppinfo.classes[classname]
         constructors = [a for a in classInfo['methods']['public'] if a['constructor']]
-        templateArgs = {'module':module, 'class':classname}
+        templateArgs = {'module':module, 'className':classname, 'safeClassName':sanitizeName(classname), 'header':header}
         if len(constructors) == 0:
             templateArgs['constructorArgs'] = ''
         else:
@@ -96,12 +102,26 @@ def generateBindings(module, cppinfo):
             if len(constructors) > 1:
                 print "WARNING: more than one constructor: ", classname
         templateArgs['methodBinders'] = ''
-        for method in [a for a in classInfo['methods']['public'] if not a['constructor']]:
+        for method in [a for a in classInfo['methods']['public'] if ((not a['constructor']) and a['name'] != classname)]:
              templateArgs['methodBinders'] += renderMethod(classname, method)
         fileContent = Template(classTemplate()).substitute(templateArgs); 
-        f = open(os.path.join(targetDir, classname+'.cpp'), 'w')
+        f = open(os.path.join(targetDir, fileNameFromClass(classname)), 'w')
         f.write(fileContent)
         f.close()
+        addedClasses.append(classname)
+    return addedClasses
+
+
+def generateModuleFiles(module, classList):
+    targetDir = os.path.join(MYDIR, '..', 'generated_cpp')
+    f = open(os.path.join(targetDir, module+'.pri'), 'w')
+    f.write("HEADERS += $$PWD/"+module+".h\n\nSOURCES += "+" ".join(map(lambda c: "$$PWD/"+module+"/"+fileNameFromClass(c), classList))+"\n")
+    f.close()
+
+    f = open(os.path.join(targetDir, module+'.h'), 'w')
+    f.write("\n".join(map(lambda c: "static inline void bind_"+module+"_"+sanitizeName(c)+"(vu8::Module &module);", classList)))
+    f.close()
+    print "asddsa"
 
 
 for (module, dir) in [ \
@@ -110,14 +130,18 @@ for (module, dir) in [ \
         ] if not module in [".",".."] and os.path.isdir(dir) \
     ]:
     print "top level dir: ", module,  dir
-    for file in [file for file in [os.path.join(dir, file) for file in os.listdir(dir)] if os.path.isfile(file)]:
-        try:
-            print "processing ", file
-            cppinfo = parse(file)
-            generateBindings(module, cppinfo)
-            print_class(cppinfo)
-        except (CppHeaderParser.CppParseError, AssertionError, RuntimeError) as  e:
-            print "ERROR WHILE PARSING", file
-            print e
-
+    classList = []
+    for file in os.listdir(dir):
+        path = os.path.join(dir, file)
+        if os.path.isfile(path):
+            try:
+                print "processing ", module, file
+                cppinfo = parse(path)
+                classList.extend(generateCppBindings(module, cppinfo, file))
+                #print_class(cppinfo)
+            except (CppHeaderParser.CppParseError, AssertionError, RuntimeError) as  e:
+                print "ERROR WHILE PARSING", file
+                print e
+        classList = list(set(classList))
+        generateModuleFiles(module, classList)
 

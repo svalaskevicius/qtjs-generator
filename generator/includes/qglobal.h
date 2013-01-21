@@ -1032,4 +1032,8 @@ QT_END_HEADER
 
 #define Q_STATIC_ASSERT_X(a, b)
 #define Q_PROPERTY(a)
+#define Q_DECLARE_FLAGS(a, b)
+#define Q_FLAGS
+#define Q_OBJECT
+
 #endif /* QGLOBAL_H */
