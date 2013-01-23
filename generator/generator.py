@@ -2,10 +2,13 @@
 
 import sys, os, subprocess, re
 from string import Template
+from clang.cindex import Index
+from clang.cindex import CursorKind
+from pprint import pprint
+
+
 #sys.path = ["../"] + sys.path
 MYDIR = os.path.dirname(os.path.realpath(__file__))
-
-import CppHeaderParser
 
 if len(sys.argv) < 2:
     sys.exit('Usage: %s <Qt include directory>' % sys.argv[0])
@@ -16,38 +19,6 @@ if not os.path.exists(sys.argv[1]):
 rootdir = sys.argv[1]
 
 
-def print_class(cppHeader):
-    print "CppHeaderParser info:"
-
-    for classname in cppHeader.classes:
-        print "class definition:"
-        print classname
-        classDefinition = cppHeader.classes[classname]
-        # print [prop for prop in classDefinition.properties]
-        print [method for method in classDefinition.get_method_names()]
-        #print [enum for enum in classDefinition.enums]
-        #print [struct for struct in classDefinition.structs]
-
-    #print "\nFree functions are:"
-    #for func in cppHeader.functions:
-    #    print " %s"%func["name"]
-
-
-def parse(file):
-    fd = open(file)
-    content = "".join(fd.readlines())
-    fd.close()
-    content = '#include "qglobal.h"\n' + content.replace('#include', '@include')
-    p = subprocess.Popen(\
-        'cpp -pipe', shell=True, stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.STDOUT, \
-        cwd=os.path.join(MYDIR, 'includes') \
-    )
-    (out, err) = p.communicate(content)
-    out = re.sub(r'\n{3,}', '\n', out.replace('\r','').replace('@include', '#include'));
-    #print re.findall('^(.*)___EXPORTED_API___[\s\n]+(.*)$', out, re.MULTILINE);
-    #out = re.sub(r'[\s\n]*___EXPORTED_API___[\s\n]*', ' ', out);
-    #print out
-    return CppHeaderParser.CppHeader(out, 'string')
 
 def classTemplate():
     return """
@@ -102,7 +73,7 @@ def generateCppBindings(module, cppinfo, header):
             if len(constructors) > 1:
                 print "WARNING: more than one constructor: ", classname
         templateArgs['methodBinders'] = ''
-        for method in [a for a in classInfo['methods']['public'] if ((not a['constructor']) and a['name'] != classname)]:
+        for method in [a for a in classInfo['methods']['public'] if ((not a['constructor']) and a['name'] != classname and not "static" in a['rtnType'])]:
              templateArgs['methodBinders'] += renderMethod(classname, method)
         fileContent = Template(classTemplate()).substitute(templateArgs); 
         f = open(os.path.join(targetDir, fileNameFromClass(classname)), 'w')
@@ -123,6 +94,77 @@ def generateModuleFiles(module, classList):
     f.close()
     print "asddsa"
 
+def get_info(node, depth=0):
+    children = [get_info(c, depth+1) for c in node.get_children()]
+    return { 
+             'kind' : node.kind,
+             'usr' : node.get_usr(),
+             'spelling' : node.spelling,
+             'location' : node.location,
+             'extent.start' : node.extent.start,
+             'extent.end' : node.extent.end,
+             'is_definition' : node.is_definition(),
+             'children' : children }
+
+def get_diag_info(diag):
+    return { 'severity' : diag.severity,
+             'location' : diag.location,
+             'spelling' : diag.spelling,
+             'ranges' : diag.ranges,
+             'fixits' : diag.fixits }
+
+def recursive_iterator(node):
+    yield node
+    for c in node.get_children():
+        for c1 in recursive_iterator(c):
+            yield c1
+
+def retrieve_classes(node):
+    for n in recursive_iterator(node):
+        if n.kind == CursorKind.CLASS_DECL and n.is_definition():
+            yield n
+
+def retrieve_class_parents(node):
+    for n in node.get_children():
+        if n.kind == CursorKind.CXX_BASE_SPECIFIER:
+            for br in n.get_children():
+                if br.kind == CursorKind.TYPE_REF:
+                    yield br.referenced
+
+def retrieve_class_constructors(node):
+    for n in node.get_children():
+        if n.kind == CursorKind.CONSTRUCTOR:
+            yield n
+
+def retrieve_class_destructors(node):
+    for n in node.get_children():
+        if n.kind == CursorKind.DESTRUCTOR:
+            yield n
+
+def retrieve_class_methods(node):
+    for n in node.get_children():
+        if n.kind == CursorKind.CXX_METHOD:
+            yield n
+
+index = Index.create()
+parsed_classes = {}
+def parseFile(path):
+    tu = index.parse(None, ['-x', 'c++', path, '-I', rootdir])
+
+    if not tu:
+        raise "unable to load input"
+
+    if len(tu.diagnostics):
+        pprint(('diags', map(get_diag_info, tu.diagnostics)))
+    #pprint(('nodes', get_info(tu.cursor)))
+    for c in retrieve_classes(tu.cursor):
+        if c.displayname not in parsed_classes:
+            parsed_classes[c.displayname] = True
+            print "class:\n\n", c.displayname, ' '.join([p.displayname for p in retrieve_class_parents(c)]), ' ', c.location
+            print 'constructors:\n',  ' '.join([p.displayname for p in retrieve_class_constructors(c)])
+            print 'destructors:\n',  ' '.join([p.displayname for p in retrieve_class_destructors(c)])
+            print 'methods:\n',  ' '.join([p.displayname for p in retrieve_class_methods(c)])
+            #pprint(get_info(c))
 
 for (module, dir) in [ \
         (module, dir) for (module, dir) in [ \
@@ -132,16 +174,18 @@ for (module, dir) in [ \
     print "top level dir: ", module,  dir
     classList = []
     for file in os.listdir(dir):
+        pass
+    if True:
+        file = 'qabstractanimation.h'
         path = os.path.join(dir, file)
         if os.path.isfile(path):
-            try:
-                print "processing ", module, file
-                cppinfo = parse(path)
-                classList.extend(generateCppBindings(module, cppinfo, file))
-                #print_class(cppinfo)
-            except (CppHeaderParser.CppParseError, AssertionError, RuntimeError) as  e:
-                print "ERROR WHILE PARSING", file
-                print e
-        classList = list(set(classList))
-        generateModuleFiles(module, classList)
+            print "processing ", module, file
+            #cppinfo = parse(path)
+            #classList.extend(generateCppBindings(module, cppinfo, file))
+            #print_class(cppinfo)
+                
+            parseFile(path)
+            sys.stdout.flush()
+        #classList = list(set(classList))
+        #generateModuleFiles(module, classList)
 
