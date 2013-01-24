@@ -4,7 +4,6 @@ import sys, os, subprocess, re
 from clang.cindex import Index
 import ast_info, class_gen
 
-#sys.path = ["../"] + sys.path
 MYDIR = os.path.dirname(os.path.realpath(__file__))
 
 if len(sys.argv) < 2:
@@ -24,7 +23,7 @@ def generateModuleFiles(module, classList):
     f.close()
 
     f = open(os.path.join(targetDir, module+'.h'), 'w')
-    f.write("\n".join(map(lambda c: "static inline void bind_"+module+"_"+class_gen.sanitizeName(c)+"(vu8::Module &module);", classList)))
+    f.write("\n".join(map(lambda c: "static inline void bind_"+module+"_"+class_gen.sanitizeName(c)+"(vu8::Module &module);", classList))+"\n")
     f.close()
 
 
@@ -40,7 +39,7 @@ def process_file(path, module):
     classes = []
     for c in ast_info.retrieve_classes(tu.cursor):
         if c.location.file.name == path:
-            class_gen.generate_class(c)
+            class_gen.generate_class(c, module, path)
             classes.append(c.displayname)
 
     return classes
@@ -62,5 +61,6 @@ for (module, dir) in [ \
             print "processing ", module, file
             classList.extend(process_file(path, module))
             sys.stdout.flush()
-        generateModuleFiles(module, classList)
+        if len(classList):
+            generateModuleFiles(module, classList)
 

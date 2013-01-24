@@ -1,17 +1,65 @@
 
 from clang.cindex import Index
 from clang.cindex import CursorKind
+from clang.cindex import TypeKind
+from pprint import pprint
 
-def get_info(node, depth=0):
-    children = [get_info(c, depth+1) for c in node.get_children()]
+def retrieve_semantic_parents_chain(node):
+    ret = []
+    node = node.semantic_parent
+    while node and node.kind not in [CursorKind.TRANSLATION_UNIT]:
+        ret.append(node)
+        node = node.semantic_parent
+    ret.reverse()
+    return ret
+
+def type_to_string(type):
+    ret = ""
+    if type.is_const_qualified():
+        ret += 'const '
+    if type.kind == TypeKind.POINTER:
+        ret += type_to_string(type.get_pointee()) + ' *'
+    elif type.kind == TypeKind.LVALUEREFERENCE:
+        ret += type_to_string(type.get_pointee()) + ' &'
+    elif type.kind == TypeKind.VOID:
+        ret += 'void'
+    elif type.kind == TypeKind.RECORD:
+        ret += type.get_declaration().displayname 
+    elif type.kind == TypeKind.CHAR_S:
+        ret += 'char'
+    elif type.kind == TypeKind.INT:
+        ret += 'int'
+    elif type.kind == TypeKind.BOOL:
+        ret += 'bool'
+    elif type.kind == TypeKind.ENUM:
+        decl = type.get_declaration()
+        ret += '::'.join([p.displayname for p in retrieve_semantic_parents_chain(decl)]) + '::' + decl.displayname
+    else:
+        ret += "UNKNOWN: "+type.kind.spelling
+        pprint(type.kind)
+    #print ret
+    return ret
+
+def get_info(node, recursive=True, print_type=True):
+    if recursive:
+        children = [get_info(c, recursive) for c in node.get_children()]
+    else:
+        children = None
+    if print_type:
+        type = type_to_string(node.type.get_canonical())
+    else:
+        type = None
     return { 
              'kind' : node.kind,
+             'displayname' : node.displayname,
+             'type' : type,
              'usr' : node.get_usr(),
              'spelling' : node.spelling,
              'location' : node.location,
              'extent.start' : node.extent.start,
              'extent.end' : node.extent.end,
              'is_definition' : node.is_definition(),
+             'resultType' : node.result_type,
              'children' : children }
 
 def get_diag_info(diag):
@@ -52,5 +100,10 @@ def retrieve_class_destructors(node):
 def retrieve_class_methods(node):
     for n in node.get_children():
         if n.kind == CursorKind.CXX_METHOD:
+            yield n
+
+def retrieve_method_params(node):
+    for n in node.get_children():
+        if n.kind == CursorKind.PARM_DECL:
             yield n
 
