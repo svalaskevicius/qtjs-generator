@@ -3,6 +3,7 @@
 import sys, os, subprocess, re
 from clang.cindex import Index
 import ast_info, class_gen, config
+from pprint import pprint
 
 MYDIR = os.path.dirname(os.path.realpath(__file__))
 
@@ -32,7 +33,7 @@ def generateModuleFiles(module, classList):
     f.close()
 
 
-def process_file(path, module):
+def process_file(path, module, skipClasses):
     tu = clangIdx.parse(None, ['-x', 'c++', path, '-I', rootdir])
 
     if not tu:
@@ -43,9 +44,10 @@ def process_file(path, module):
 
     classes = []
     for c in ast_info.retrieve_classes(tu.cursor):
-        if c.location.file.name == path and not config.should_skip_class(c.displayname):
-            class_gen.generate_class(c, module, path)
-            classes.append(c.displayname)
+        classname = ast_info.semantic_name(c)
+        if c.location.file.name.startswith(os.path.join(rootdir, module)) and not config.should_skip_class(classname) and classname not in skipClasses:
+            class_gen.generate_class(c, module)
+            classes.append(classname)
 
     return classes
 
@@ -58,13 +60,10 @@ for (module, dir) in [ \
     print "top level dir: ", module,  dir
     classList = []
     for file in os.listdir(dir):
-        pass
-    if True:
-        file = 'qabstractanimation.h'
         path = os.path.join(dir, file)
-        if os.path.isfile(path):
+        if os.path.isfile(path) and not re.match(r'.*\..*', file) and file not in classList:
             print "processing ", module, file
-            classList.extend(process_file(path, module))
+            classList.extend(process_file(path, module, classList))
             sys.stdout.flush()
         if len(classList):
             generateModuleFiles(module, classList)

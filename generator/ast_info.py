@@ -25,27 +25,41 @@ def type_to_string(type):
     elif type.kind == TypeKind.VOID:
         ret += 'void'
     elif type.kind == TypeKind.RECORD:
-        decl = type.get_declaration()
-        ret += '::'.join([p.displayname for p in retrieve_semantic_parents_chain(decl)]) + '::' + decl.displayname
+        ret += semantic_name(type.get_declaration())
     elif type.kind == TypeKind.CHAR_S:
         ret += 'char'
+    elif type.kind == TypeKind.SCHAR:
+        ret += 'signed char'
+    elif type.kind == TypeKind.UCHAR:
+        ret += 'unsigned char'
+    elif type.kind == TypeKind.WCHAR:
+        ret += 'wchar_t'
+    elif type.kind == TypeKind.SHORT:
+        ret += 'short'
+    elif type.kind == TypeKind.USHORT:
+        ret += 'unsigned short'
     elif type.kind == TypeKind.INT:
         ret += 'int'
     elif type.kind == TypeKind.UINT:
         ret += 'unsigned int'
     elif type.kind == TypeKind.BOOL:
         ret += 'bool'
+    elif type.kind == TypeKind.LONG:
+        ret += 'long'
+    elif type.kind == TypeKind.ULONG:
+        ret += 'unsigned long'
     elif type.kind == TypeKind.LONGLONG:
         ret += 'long long'
     elif type.kind == TypeKind.ULONGLONG:
         ret += 'unsigned long long'
+    elif type.kind == TypeKind.FLOAT:
+        ret += 'float'
+    elif type.kind == TypeKind.DOUBLE:
+        ret += 'double'
     elif type.kind == TypeKind.ENUM:
-        decl = type.get_declaration()
-        ret += '::'.join([p.displayname for p in retrieve_semantic_parents_chain(decl)]) + '::' + decl.displayname
+        ret += semantic_name(type.get_declaration())
     else:
         ret += "UNKNOWN: "+type.kind.spelling
-        pprint(type.kind)
-    #print ret
     return ret
 
 def get_info(node, recursive=True, print_type=True):
@@ -92,9 +106,9 @@ def retrieve_classes(node):
 def retrieve_class_parents(node):
     for n in node.get_children():
         if n.kind == CursorKind.CXX_BASE_SPECIFIER and n.access == 'public':
-            for br in n.get_children():
-                if br.kind == CursorKind.TYPE_REF:
-                    yield br.referenced
+            td = n.type.get_declaration()
+            if td:
+                yield td
 
 def retrieve_class_constructors(node):
     for n in node.get_children():
@@ -111,8 +125,8 @@ def retrieve_class_methods(node):
     for n in node.get_children():
         if n.access != None:
             access = n.access
-        if n.kind == CursorKind.CXX_METHOD and not n.is_static_method() and access == 'public':
-            yield n
+        if n.kind == CursorKind.CXX_METHOD and not n.is_static_method():
+            yield (access, n)
 
 def retrieve_method_params(node):
     for n in node.get_children():
@@ -125,4 +139,22 @@ def parse_method_usr(usrString):
         i = int(m.group(1))
         return {'const':i&1 != 0, 'volatile': i&4 != 0, 'restrict': i&2 != 0}
     return {'const': False, 'volatile': False, 'restrict': False}
+
+
+def semantic_name(node):
+    name = node.displayname
+    if name.startswith("::"):
+        return name
+    parents = '::'.join([p.displayname for p in retrieve_semantic_parents_chain(node)])
+    if parents and not parents.startswith('::'):
+        parents = '::' + parents
+    return parents + '::' + name
+
+def retrieve_base_type_declaration(type):
+    type = type.get_canonical()
+    if type.kind == TypeKind.LVALUEREFERENCE:
+        type = type.get_pointee()
+    if type.kind == TypeKind.POINTER:
+        type = type.get_pointee()
+    return type.get_declaration()
 

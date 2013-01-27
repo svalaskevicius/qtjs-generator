@@ -29,14 +29,25 @@ static inline void bind_${module}_$safeClassName(vu8::Module &module)
 
 def methodTemplate():
     return """
-        classBinder.Set<$methodType, &$className::$method>("$method");"""
+        classBinder.Set<$methodType, &$className::$method >("$method");"""
 
 def baseMethodTemplate():
     return """
-        classBinder.Set<$base, $methodType, &$className::$method>("$method");"""
+        classBinder.Set<$base, $methodType, &$className::$method >("$method");"""
 
 def methodParams(cppMethod):
     return ', '.join([ast_info.type_to_string(p.type.get_canonical()) for p in ast_info.retrieve_method_params(cppMethod)])
+
+def isTypeBlackListed(type):
+    return config.should_skip_class(ast_info.semantic_name(ast_info.retrieve_base_type_declaration(type)))
+
+def methodParamsTypeBlackListed(cppMethod):
+    if isTypeBlackListed(cppMethod.result_type):
+        return True
+    for p in ast_info.retrieve_method_params(cppMethod):
+        if isTypeBlackListed(p.type):
+            return True
+    return False
 
 def methodType(cppMethod):
     constness = ' const' if ast_info.parse_method_usr(cppMethod.get_usr())['const'] else ''
@@ -56,32 +67,21 @@ def renderMethod(classname, cppMethod, parent = None):
             .substitute({'methodType':methodType(cppMethod), 'className':classname, 'method':cppMethod.spelling, 'base':parent})
 
 def sanitizeName(name):
-    return name.replace('::', '_').replace(' ', '').replace('<', '_').replace('>', '_')
+    return name.replace('::', '_').replace(' ', '').replace('<', '_').replace('>', '_').replace(',', '_')
 
 def fileNameFromClass(classname):
     return sanitizeName(classname)+".h"
 
 
 
-def generate_class(c, module, header):
+def generate_class(c, module):
     targetDir = os.path.join(MYDIR, '..', 'generated_cpp', module)
     if not os.path.isdir(targetDir):
         os.makedirs(targetDir)
 
-    pprint(ast_info.get_info(c))
-    #print targetDir
-    #print "class:\n", c.displayname, ' '.join([p.displayname for p in ast_info.retrieve_class_parents(c)]), ' ', c.location
-    #print 'constructors:\n',  ' '.join([p.displayname for p in ast_info.retrieve_class_constructors(c)]), "\n"
-    #print 'constructors:'
-    #for c in ast_info.retrieve_class_constructors(c):
-    #    print '<', ', '.join([ast_info.type_to_string(p.type.get_canonical()) for p in ast_info.retrieve_method_params(c)]), '>'
-    ##pprint([ast_info.get_info(p, False) for x in ast_info.retrieve_class_constructors(c) for p in ast_info.retrieve_method_params(x)] )
-    #print 'destructors:\n',  ' '.join([p.displayname for p in ast_info.retrieve_class_destructors(c)])
-    #print 'methods:\n',  ' '.join([p.displayname for p in ast_info.retrieve_class_methods(c)])
+    templateArgs = {'module':module, 'header':c.location.file.name}
 
-    templateArgs = {'module':module, 'header':header}
-
-    classname = c.displayname
+    classname = ast_info.semantic_name(c)
     templateArgs['className'] = classname
     templateArgs['safeClassName'] = sanitizeName(classname)
 
@@ -97,16 +97,18 @@ def generate_class(c, module, header):
 
     addedMethods = {}
 
-    for method in ast_info.retrieve_class_methods(c):
-        if not config.should_skip_class_method(classname, method.spelling):
+    for (access, method) in ast_info.retrieve_class_methods(c):
+        if not config.should_skip_class_method(classname, method.spelling) and not methodParamsTypeBlackListed(method) and access == 'public':
             templateArgs['methodBinders'] += renderMethod(classname, method)
-            addedMethods[methodDefinition(method)] = True
+        addedMethods[methodDefinition(method)] = True
 
     for base in ast_info.retrieve_class_parents(c):
-        for method in ast_info.retrieve_class_methods(base):
+        for (access, method) in ast_info.retrieve_class_methods(base):
             mdef = methodDefinition(method)
-            if mdef not in addedMethods and not config.should_skip_class_method(base.displayname, method.spelling):
-                templateArgs['methodBinders'] += renderMethod(classname, method, base.displayname)
+            rel_basename = classname+"::"+base.displayname
+            abs_basename = ast_info.semantic_name(base)
+            if access == 'public' and mdef not in addedMethods and not config.should_skip_class_method(abs_basename, method.spelling) and not methodParamsTypeBlackListed(method):
+                templateArgs['methodBinders'] += renderMethod(rel_basename, method, rel_basename)
                 addedMethods[mdef] = True
 
     fileContent = Template(classTemplate()).substitute(templateArgs); 
