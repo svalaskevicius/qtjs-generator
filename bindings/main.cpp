@@ -19,15 +19,9 @@ extern Q_QML_EXPORT v8::Local<v8::Context> qt_QJSEngineV8Context(QJSEngine *);
 extern Q_QML_EXPORT v8::Local<v8::Value> qt_QJSValueV8Value(const QJSValue &);
 QT_END_NAMESPACE
 
-
-class MainWindow : public QMainWindow {
-public:
-    MainWindow(QWidget *p = 0) : QMainWindow() {}
-    void show() {
-        QMainWindow::show();
-    }
-};
-
+namespace qtjs_binder {
+void bind_QtCore(vu8::Module &module);
+}
 
 static inline void bindApi(QJSEngine &engine)
 {
@@ -46,19 +40,21 @@ static inline void bindApi(QJSEngine &engine)
 
 
     v8::HandleScope scope;
-    vu8::Class<MainWindow, vu8::Factory<QWidget *> > _class_QMainWindow;
+    vu8::Class<QMainWindow, vu8::Factory<QWidget *> > _class_QMainWindow;
     _class_QMainWindow
-            .Set<void (), &MainWindow::show>("show")
+            .Set<QWidget, void (), &QMainWindow::show>("show")
             ;
 
     // Create a module to add classes and functions to and return a
     // new instance of the module to be embedded into the v8 context
     vu8::Module mod;
      
+    qtjs_binder::bind_QtCore(mod);
+
     globalV8->Set(
         v8::String::New("api"),
         mod
-            ("QMainWindow", _class_QMainWindow)
+            ("_QMainWindow", _class_QMainWindow)
         .NewInstance()
     );
 }
