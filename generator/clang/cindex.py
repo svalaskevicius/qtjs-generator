@@ -1282,6 +1282,16 @@ class Cursor(Structure):
 
         return self._referenced
 
+    @property
+    def access(self):
+        """
+        Return access specified
+        """
+        if not hasattr(self, '_access_spec'):
+            self._access_spec = ([None, 'public', 'protected', 'private'])[conf.lib.clang_getCXXAccessSpecifier(self)]
+
+        return self._access_spec
+
     def get_arguments(self):
         """Return an iterator for accessing the arguments of this cursor."""
         num_args = conf.lib.clang_Cursor_getNumArguments(self)

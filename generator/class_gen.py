@@ -2,7 +2,7 @@
 import os, sys
 from string import Template
 from clang.cindex import Index
-import ast_info
+import ast_info, config
 from pprint import pprint
 
 
@@ -20,6 +20,7 @@ static inline void bind_${module}_$safeClassName(vu8::Module &module)
 {
     vu8::Class<$className, vu8::Factory<$constructorArgs> > classBinder;
     ${methodBinders}
+
     module("$safeClassName", classBinder);
 }
 
@@ -30,22 +31,35 @@ def methodTemplate():
     return """
         classBinder.Set<$methodType, &$className::$method>("$method");"""
 
+def baseMethodTemplate():
+    return """
+        classBinder.Set<$base, $methodType, &$className::$method>("$method");"""
+
 def methodParams(cppMethod):
     return ', '.join([ast_info.type_to_string(p.type.get_canonical()) for p in ast_info.retrieve_method_params(cppMethod)])
 
 def methodType(cppMethod):
-    return ast_info.type_to_string(cppMethod.result_type.get_canonical())+'('+methodParams(cppMethod)+')'
+    constness = ' const' if ast_info.parse_method_usr(cppMethod.get_usr())['const'] else ''
+    return ast_info.type_to_string(cppMethod.result_type.get_canonical())+'('+methodParams(cppMethod)+')' + constness
 
-def renderMethod(classname, cppMethod):
+def methodDefinition(cppMethod):
+    constness = ' const' if ast_info.parse_method_usr(cppMethod.get_usr())['const'] else ''
+    return ast_info.type_to_string(cppMethod.result_type.get_canonical())+' '+cppMethod.spelling+'('+methodParams(cppMethod)+')' + constness
+
+def renderMethod(classname, cppMethod, parent = None):
     #pprint(ast_info.get_info(cppMethod))
-    return Template(methodTemplate()) \
-        .substitute({'methodType':methodType(cppMethod), 'className':classname, 'method':cppMethod.spelling})
+    if not parent:
+        return Template(methodTemplate()) \
+            .substitute({'methodType':methodType(cppMethod), 'className':classname, 'method':cppMethod.spelling})
+    else:
+        return Template(baseMethodTemplate()) \
+            .substitute({'methodType':methodType(cppMethod), 'className':classname, 'method':cppMethod.spelling, 'base':parent})
 
 def sanitizeName(name):
     return name.replace('::', '_').replace(' ', '').replace('<', '_').replace('>', '_')
 
 def fileNameFromClass(classname):
-    return sanitizeName(classname)+".cpp"
+    return sanitizeName(classname)+".h"
 
 
 
@@ -80,8 +94,20 @@ def generate_class(c, module, header):
             print "WARNING: more than one constructor: ", classname
 
     templateArgs['methodBinders'] = ''
+
+    addedMethods = {}
+
     for method in ast_info.retrieve_class_methods(c):
-        templateArgs['methodBinders'] += renderMethod(classname, method)
+        if not config.should_skip_class_method(classname, method.spelling):
+            templateArgs['methodBinders'] += renderMethod(classname, method)
+            addedMethods[methodDefinition(method)] = True
+
+    for base in ast_info.retrieve_class_parents(c):
+        for method in ast_info.retrieve_class_methods(base):
+            mdef = methodDefinition(method)
+            if mdef not in addedMethods and not config.should_skip_class_method(base.displayname, method.spelling):
+                templateArgs['methodBinders'] += renderMethod(classname, method, base.displayname)
+                addedMethods[mdef] = True
 
     fileContent = Template(classTemplate()).substitute(templateArgs); 
 

@@ -1,4 +1,5 @@
 
+import re
 from clang.cindex import Index
 from clang.cindex import CursorKind
 from clang.cindex import TypeKind
@@ -24,13 +25,20 @@ def type_to_string(type):
     elif type.kind == TypeKind.VOID:
         ret += 'void'
     elif type.kind == TypeKind.RECORD:
-        ret += type.get_declaration().displayname 
+        decl = type.get_declaration()
+        ret += '::'.join([p.displayname for p in retrieve_semantic_parents_chain(decl)]) + '::' + decl.displayname
     elif type.kind == TypeKind.CHAR_S:
         ret += 'char'
     elif type.kind == TypeKind.INT:
         ret += 'int'
+    elif type.kind == TypeKind.UINT:
+        ret += 'unsigned int'
     elif type.kind == TypeKind.BOOL:
         ret += 'bool'
+    elif type.kind == TypeKind.LONGLONG:
+        ret += 'long long'
+    elif type.kind == TypeKind.ULONGLONG:
+        ret += 'unsigned long long'
     elif type.kind == TypeKind.ENUM:
         decl = type.get_declaration()
         ret += '::'.join([p.displayname for p in retrieve_semantic_parents_chain(decl)]) + '::' + decl.displayname
@@ -60,6 +68,7 @@ def get_info(node, recursive=True, print_type=True):
              'extent.end' : node.extent.end,
              'is_definition' : node.is_definition(),
              'resultType' : node.result_type,
+             'access' : node.access,
              'children' : children }
 
 def get_diag_info(diag):
@@ -82,7 +91,7 @@ def retrieve_classes(node):
 
 def retrieve_class_parents(node):
     for n in node.get_children():
-        if n.kind == CursorKind.CXX_BASE_SPECIFIER:
+        if n.kind == CursorKind.CXX_BASE_SPECIFIER and n.access == 'public':
             for br in n.get_children():
                 if br.kind == CursorKind.TYPE_REF:
                     yield br.referenced
@@ -98,12 +107,22 @@ def retrieve_class_destructors(node):
             yield n
 
 def retrieve_class_methods(node):
+    access = 'private'
     for n in node.get_children():
-        if n.kind == CursorKind.CXX_METHOD:
+        if n.access != None:
+            access = n.access
+        if n.kind == CursorKind.CXX_METHOD and not n.is_static_method() and access == 'public':
             yield n
 
 def retrieve_method_params(node):
     for n in node.get_children():
         if n.kind == CursorKind.PARM_DECL:
             yield n
+
+def parse_method_usr(usrString): 
+    m = re.search(r'#([0-9]+)$', usrString)
+    if (m):
+        i = int(m.group(1))
+        return {'const':i&1 != 0, 'volatile': i&4 != 0, 'restrict': i&2 != 0}
+    return {'const': False, 'volatile': False, 'restrict': False}
 

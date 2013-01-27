@@ -2,7 +2,7 @@
 
 import sys, os, subprocess, re
 from clang.cindex import Index
-import ast_info, class_gen
+import ast_info, class_gen, config
 
 MYDIR = os.path.dirname(os.path.realpath(__file__))
 
@@ -19,11 +19,16 @@ clangIdx = Index.create()
 def generateModuleFiles(module, classList):
     targetDir = os.path.join(MYDIR, '..', 'generated_cpp')
     f = open(os.path.join(targetDir, module+'.pri'), 'w')
-    f.write("HEADERS += $$PWD/"+module+".h\n\nSOURCES += "+" ".join(map(lambda c: "$$PWD/"+module+"/"+class_gen.fileNameFromClass(c), classList))+"\n")
+    f.write("SOURCES += $$PWD/"+ module+'.cpp' +"\n")
     f.close()
 
-    f = open(os.path.join(targetDir, module+'.h'), 'w')
-    f.write("\n".join(map(lambda c: "static inline void bind_"+module+"_"+class_gen.sanitizeName(c)+"(vu8::Module &module);", classList))+"\n")
+    f = open(os.path.join(targetDir, module+'.cpp'), 'w')
+    f.write("\n".join(map(lambda c: "#include \""+module+"/"+class_gen.fileNameFromClass(c)+"\"", classList))+"\n")
+    f.write("namespace qtjs_binder {\n\n")
+    f.write("void bind_"+module+"(vu8::Module &module) {\n")
+    f.write("\n".join(map(lambda c: "    bind_"+module+"_"+class_gen.sanitizeName(c)+"(module);", classList))+"\n")
+    f.write("}\n\n")
+    f.write("}\n")
     f.close()
 
 
@@ -38,7 +43,7 @@ def process_file(path, module):
 
     classes = []
     for c in ast_info.retrieve_classes(tu.cursor):
-        if c.location.file.name == path:
+        if c.location.file.name == path and not config.should_skip_class(c.displayname):
             class_gen.generate_class(c, module, path)
             classes.append(c.displayname)
 
