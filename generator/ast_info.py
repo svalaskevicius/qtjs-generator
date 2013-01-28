@@ -111,8 +111,11 @@ def retrieve_class_parents(node):
                 yield td
 
 def retrieve_class_constructors(node):
+    access = 'private'
     for n in node.get_children():
-        if n.kind == CursorKind.CONSTRUCTOR:
+        if n.access != None:
+            access = n.access
+        if n.kind == CursorKind.CONSTRUCTOR and access == 'public':
             yield n
 
 def retrieve_class_destructors(node):

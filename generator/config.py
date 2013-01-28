@@ -1,14 +1,14 @@
 
 def should_skip_class(classname):
     return classname in [
-        '::QAbstractAnimation', 
-        '::QAbstractItemModel', 
-        '::QAbstractListModel', 
+        '::QAbstractAnimation',
+        '::QAbstractItemModel',
+        '::QAbstractListModel',
         '::QAbstractProxyModel',
-        '::QAbstractTableModel', 
+        '::QAbstractTableModel',
         '::QAbstractState',
         '::QAbstractTransition',
-        '::QObjectData', 
+        '::QObjectData',
         '::QStaticAssertFailure<true>',
         '::QList<T>::iterator',
         '::QList<T>::const_iterator',
@@ -72,6 +72,43 @@ def should_skip_class(classname):
         "::QSettings",
         "::QSocketNotifier",
         "::QFutureInterface<void>",
+        "::QItemSelectionModel",
+
+
+        # widgets
+        # abstract classes
+        "::QStylePrivate",
+        "::QAbstractButton",
+        "::QGraphicsItem",
+        "::QGraphicsObject",
+        "::QAbstractGraphicsShapeItem",
+        "::QAbstractItemDelegate",
+        "::QAbstractItemView",
+        "::QLayoutItem",
+        "::QLayout",
+        "::QGestureRecognizer",
+        "::QGraphicsLayoutItem",
+        "::QGraphicsLayout",
+        "::QGraphicsEffect",
+        "::QGraphicsTransform",
+        "::QItemEditorCreatorBase",
+        "::QStylePlugin",
+        "::QStyle",
+        #deleted constructor
+        "::QWidgetItem",
+        "::QGraphicsSceneResizeEvent",
+        "::QGraphicsSceneMoveEvent",
+        "::QToolTip",
+        "::QWhatsThis",
+        # no matching constructor for initialization
+        "::QTreeWidgetItemIterator",
+        # privates
+        "::QAbstractItemModel::QPrivateSignal",
+        # private constr/destructor
+        "::QAccessibleWidget",
+        "::QColormap",
+        "::QGraphicsAnchor",
+        "::QScroller",
     ]
 
 def should_skip_class_method(classname, method):
@@ -127,4 +164,43 @@ def should_skip_class_method(classname, method):
         "::QBasicMutex::tryLock",
         "::QObject::event",
     ]
+
+def get_class_includes(classname):
+    cfg = {
+        '::QVariant' : '''
+#include<QByteArray>
+#include<QBitArray>
+#include<QString>
+#include<QStringList>
+#include<QChar>
+#include<QDate>
+#include<QTime>
+#include<QDateTime>
+#include<QList<QVariant>>
+#include<QMap<QString, QVariant>>
+#include<QHash<QString, QVariant>>
+#include<QPoint>
+#include<QPointF>
+#include<QRect>
+#include<QSize>
+#include<QSizeF>
+#include<QLine>
+#include<QLineF>
+#include<QRectF>
+#include<QLocale>
+#include<QRegExp>
+#include<QRegularExpression>
+#include<QUrl>
+#include<QEasingCurve>
+#include<QUuid>
+#include<QModelIndex>
+#include<QJsonValue>
+#include<QJsonObject>
+#include<QJsonArray>
+#include<QJsonDocument>
+'''
+    }
+    if classname in cfg:
+        return cfg[classname]
+    return ''
 

@@ -4,6 +4,7 @@ from string import Template
 from clang.cindex import Index
 import ast_info, config
 from pprint import pprint
+import itertools
 
 
 MYDIR = os.path.dirname(os.path.realpath(__file__))
@@ -14,9 +15,11 @@ def classTemplate():
 #include <qtjs_bindings/shared.h>
 #include <$header>
 
+$includes
+
 namespace qtjs_binder {
 
-static inline void bind_${module}_$safeClassName(vu8::Module &module)
+void bind_${module}_$safeClassName(vu8::Module &module)
 {
     vu8::Class<$className, vu8::Factory<$constructorArgs> > classBinder;
     ${methodBinders}
@@ -70,7 +73,7 @@ def sanitizeName(name):
     return name.replace('::', '_').replace(' ', '').replace('<', '_').replace('>', '_').replace(',', '_')
 
 def fileNameFromClass(classname):
-    return sanitizeName(classname)+".h"
+    return sanitizeName(classname)+".cpp"
 
 
 
@@ -83,9 +86,10 @@ def generate_class(c, module):
 
     classname = ast_info.semantic_name(c)
     templateArgs['className'] = classname
+    templateArgs['includes'] = config.get_class_includes(classname)
     templateArgs['safeClassName'] = sanitizeName(classname)
 
-    constructors = list(ast_info.retrieve_class_constructors(c))
+    constructors = list(itertools.ifilterfalse(methodParamsTypeBlackListed, ast_info.retrieve_class_constructors(c)))
     if len(constructors) == 0:
         templateArgs['constructorArgs'] = ''
     else:

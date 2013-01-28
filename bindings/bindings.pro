@@ -20,4 +20,5 @@ SOURCES += main.cpp
 
 GENERATEDCPP = $$PWD/../generated_cpp
 include($$GENERATEDCPP/QtCore.pri)
+include($$GENERATEDCPP/QtWidgets.pri)
 

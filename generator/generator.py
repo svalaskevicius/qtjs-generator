@@ -20,11 +20,12 @@ clangIdx = Index.create()
 def generateModuleFiles(module, classList):
     targetDir = os.path.join(MYDIR, '..', 'generated_cpp')
     f = open(os.path.join(targetDir, module+'.pri'), 'w')
-    f.write("SOURCES += $$PWD/"+ module+'.cpp' +"\n")
+    f.write("SOURCES += $$PWD/"+ module+'.cpp ' + " ".join(map(lambda c: "$$PWD/"+module+"/"+class_gen.fileNameFromClass(c), classList)) + "\n")
     f.close()
 
     f = open(os.path.join(targetDir, module+'.cpp'), 'w')
-    f.write("\n".join(map(lambda c: "#include \""+module+"/"+class_gen.fileNameFromClass(c)+"\"", classList))+"\n")
+    f.write("#include <qtjs_bindings/shared.h>\n\n")
+    f.write("\n".join(map(lambda c: "void bind_"+module+"_"+class_gen.sanitizeName(c)+"(vu8::Module &module);", classList))+"\n")
     f.write("namespace qtjs_binder {\n\n")
     f.write("void bind_"+module+"(vu8::Module &module) {\n")
     f.write("\n".join(map(lambda c: "    bind_"+module+"_"+class_gen.sanitizeName(c)+"(module);", classList))+"\n")
@@ -57,14 +58,27 @@ for (module, dir) in [ \
             (module, os.path.join(rootdir, module)) for module in os.listdir(rootdir) \
         ] if not module in [".",".."] and os.path.isdir(dir) \
     ]:
+    if not module in ["QtCore", "QtWidgets"]:
+        continue
+
     print "top level dir: ", module,  dir
     classList = []
+    incl_contents = ''
     for file in os.listdir(dir):
         path = os.path.join(dir, file)
         if os.path.isfile(path) and not re.match(r'.*\..*', file) and file not in classList:
-            print "processing ", module, file
-            classList.extend(process_file(path, module, classList))
-            sys.stdout.flush()
-        if len(classList):
-            generateModuleFiles(module, classList)
+            print "adding ", module, file
+            incl_contents += "#include <"+module+"/"+file+">\n";
+    targetDir = os.path.join(MYDIR, '..', 'generated_cpp')
+    if not os.path.isdir(targetDir):
+        os.makedirs(targetDir)
+    findex_fn = os.path.join(targetDir, '__tmp_'+module+'.h')
+    findex = open(findex_fn, "w");
+    findex.write(incl_contents);
+    findex.close()
+    classList.extend(process_file(findex_fn, module, classList))
+    sys.stdout.flush()
+    if len(classList):
+        generateModuleFiles(module, classList)
+    sys.stdout.flush()
 

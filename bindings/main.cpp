@@ -21,6 +21,7 @@ QT_END_NAMESPACE
 
 namespace qtjs_binder {
 void bind_QtCore(vu8::Module &module);
+void bind_QtWidgets(vu8::Module &module);
 }
 
 static inline void bindApi(QJSEngine &engine)
@@ -42,7 +43,7 @@ static inline void bindApi(QJSEngine &engine)
     v8::HandleScope scope;
     vu8::Class<QMainWindow, vu8::Factory<QWidget *> > _class_QMainWindow;
     _class_QMainWindow
-            .Set<QWidget, void (), &QMainWindow::show>("show")
+            .Set<QMainWindow::QWidget, void (), &QMainWindow::QWidget::show>("show")
             ;
 
     // Create a module to add classes and functions to and return a
@@ -50,6 +51,7 @@ static inline void bindApi(QJSEngine &engine)
     vu8::Module mod;
      
     qtjs_binder::bind_QtCore(mod);
+    qtjs_binder::bind_QtWidgets(mod);
 
     globalV8->Set(
         v8::String::New("api"),
@@ -63,8 +65,8 @@ static inline void bindApi(QJSEngine &engine)
 static inline void run(QJSEngine &engine)
 {
 
-    std::cout << typeid(typename vu8::detail::MemFunProto<MainWindow, void()>::method_type).name() << std::endl;
-    std::cout << typeid(&MainWindow::show).name() << std::endl;
+    //std::cout << typeid(typename vu8::detail::MemFunProto<MainWindow, void()>::method_type).name() << std::endl;
+    //std::cout << typeid(&MainWindow::show).name() << std::endl;
 
     v8::HandleScope handleScope;
     v8::Local<v8::Context> context = qt_QJSEngineV8Context(&engine);
@@ -76,11 +78,13 @@ static inline void run(QJSEngine &engine)
 
     v8::Local<v8::Script> script = v8::Script::Compile(
                 v8::String::New(
-                    "MyWindow = function(parent) {this.prototype = this.__proto__ = new api.QMainWindow(parent);} //.prototype.constructor.call(this, parent);};\n"
-//                    "MyWindow.prototype = new api.QMainWindow(null);\n"
+                    "var time = new api._QTime();\n"
+                    "time.start();\n"
+                    "MyWindow = function(parent) {this.prototype = this.__proto__ = new api._QMainWindow(parent);}\n"
                     "var w = new MyWindow(null);\n"
-//                    "var w = new api.QMainWindow(null);\n"
-                    "w.show();"
+                    "w.show();\n"
+                    "for (var i=1;i<10000000;i++) {j=i*i*i;} \n"
+                    "time.elapsed();\n"
                 ),
 	            &origin
     );
@@ -93,8 +97,10 @@ static inline void run(QJSEngine &engine)
         v8::Local<v8::Message> message = tc.Message();
     
         std::cout << *v8::String::AsciiValue(message->Get()) << std::endl;
-        std::cout <<*v8::String::AsciiValue(message->GetScriptResourceName()) << std::endl;
-        std::cout << message->GetLineNumber() << std::endl;
+        std::cout <<*v8::String::AsciiValue(message->GetScriptResourceName()) << ":" << message->GetLineNumber() << std::endl;
+    } else {
+        std::cout << "success!"<<std::endl;
+        std::cout << vu8::FromV8<int>(result) << std::endl;
     }
 }
 
