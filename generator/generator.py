@@ -25,8 +25,8 @@ def generateModuleFiles(module, classList):
 
     f = open(os.path.join(targetDir, module+'.cpp'), 'w')
     f.write("#include <qtjs_bindings/shared.h>\n\n")
-    f.write("\n".join(map(lambda c: "void bind_"+module+"_"+class_gen.sanitizeName(c)+"(vu8::Module &module);", classList))+"\n")
     f.write("namespace qtjs_binder {\n\n")
+    f.write("\n".join(map(lambda c: "void bind_"+module+"_"+class_gen.sanitizeName(c)+"(vu8::Module &module);", classList))+"\n\n")
     f.write("void bind_"+module+"(vu8::Module &module) {\n")
     f.write("\n".join(map(lambda c: "    bind_"+module+"_"+class_gen.sanitizeName(c)+"(module);", classList))+"\n")
     f.write("}\n\n")
@@ -47,7 +47,7 @@ def process_file(path, module, skipClasses):
     for c in ast_info.retrieve_classes(tu.cursor):
         classname = ast_info.semantic_name(c)
         if c.location.file.name.startswith(os.path.join(rootdir, module)) and not config.should_skip_class(classname) and classname not in skipClasses:
-            class_gen.generate_class(c, module)
+            class_gen.generate_class(c, module, rootdir)
             classes.append(classname)
 
     return classes

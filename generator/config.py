@@ -165,42 +165,10 @@ def should_skip_class_method(classname, method):
         "::QObject::event",
     ]
 
-def get_class_includes(classname):
-    cfg = {
-        '::QVariant' : '''
-#include<QByteArray>
-#include<QBitArray>
-#include<QString>
-#include<QStringList>
-#include<QChar>
-#include<QDate>
-#include<QTime>
-#include<QDateTime>
-#include<QList<QVariant>>
-#include<QMap<QString, QVariant>>
-#include<QHash<QString, QVariant>>
-#include<QPoint>
-#include<QPointF>
-#include<QRect>
-#include<QSize>
-#include<QSizeF>
-#include<QLine>
-#include<QLineF>
-#include<QRectF>
-#include<QLocale>
-#include<QRegExp>
-#include<QRegularExpression>
-#include<QUrl>
-#include<QEasingCurve>
-#include<QUuid>
-#include<QModelIndex>
-#include<QJsonValue>
-#include<QJsonObject>
-#include<QJsonArray>
-#include<QJsonDocument>
-'''
-    }
-    if classname in cfg:
-        return cfg[classname]
-    return ''
+def is_include_blacklisted(filename):
+    if filename.endswith("_impl.h"):
+        return True
+    if filename.endswith("qobjectdefs.h"):
+        return True
+    return False
 

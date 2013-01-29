@@ -103,6 +103,17 @@ def retrieve_classes(node):
         if n.kind == CursorKind.CLASS_DECL and n.is_definition():
             yield n
 
+def retrieve_used_types(node):
+    for n in recursive_iterator(node):
+        if n.type:
+            td = n.type.get_canonical().get_declaration()
+            if td and td.location.file:
+                yield td
+        if n.result_type:
+            td = n.result_type.get_canonical().get_declaration()
+            if td and td.location.file:
+                yield td
+
 def retrieve_class_parents(node):
     for n in node.get_children():
         if n.kind == CursorKind.CXX_BASE_SPECIFIER and n.access == 'public':

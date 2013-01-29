@@ -1,5 +1,5 @@
 
-import os, sys
+import os, sys, re
 from string import Template
 from clang.cindex import Index
 import ast_info, config
@@ -13,7 +13,6 @@ MYDIR = os.path.dirname(os.path.realpath(__file__))
 def classTemplate():
     return """
 #include <qtjs_bindings/shared.h>
-#include <$header>
 
 $includes
 
@@ -70,23 +69,26 @@ def renderMethod(classname, cppMethod, parent = None):
             .substitute({'methodType':methodType(cppMethod), 'className':classname, 'method':cppMethod.spelling, 'base':parent})
 
 def sanitizeName(name):
-    return name.replace('::', '_').replace(' ', '').replace('<', '_').replace('>', '_').replace(',', '_')
+    return re.sub(r'^::', '', name).replace('::', '_').replace(' ', '').replace('<', '_').replace('>', '_').replace(',', '_')
 
 def fileNameFromClass(classname):
     return sanitizeName(classname)+".cpp"
 
 
 
-def generate_class(c, module):
+def generate_class(c, module, rootdir):
     targetDir = os.path.join(MYDIR, '..', 'generated_cpp', module)
     if not os.path.isdir(targetDir):
         os.makedirs(targetDir)
 
-    templateArgs = {'module':module, 'header':c.location.file.name}
+    templateArgs = {'module':module}
 
     classname = ast_info.semantic_name(c)
     templateArgs['className'] = classname
-    templateArgs['includes'] = config.get_class_includes(classname)
+    # move
+    usedTypePaths = set([t.location.file.name for t in ast_info.retrieve_used_types(c)])
+    usedTypePaths |= set([t.location.file.name for p in ast_info.retrieve_class_parents(c) for t in ast_info.retrieve_used_types(p)])
+    templateArgs['includes'] = "\n".join(set(["#include <"+path+">" for path in usedTypePaths if path.startswith(rootdir) and not config.is_include_blacklisted(path)]))
     templateArgs['safeClassName'] = sanitizeName(classname)
 
     constructors = list(itertools.ifilterfalse(methodParamsTypeBlackListed, ast_info.retrieve_class_constructors(c)))
@@ -116,8 +118,19 @@ def generate_class(c, module):
                 addedMethods[mdef] = True
 
     fileContent = Template(classTemplate()).substitute(templateArgs); 
+    origContent = ''
 
-    f = open(os.path.join(targetDir, fileNameFromClass(classname)), 'w')
-    f.write(fileContent)
-    f.close()
+    filename = os.path.join(targetDir, fileNameFromClass(classname))
+    # move to is same and write contents
+    try:
+        f = open(filename, "r")
+        origContent = f.read()
+        f.close()
+    except IOError:
+        pass
+
+    if fileContent != origContent:
+        f = open(os.path.join(targetDir, fileNameFromClass(classname)), 'w')
+        f.write(fileContent)
+        f.close()
 
