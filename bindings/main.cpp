@@ -26,10 +26,6 @@ void bind_QtWidgets(vu8::Module &module);
 
 static inline void bindApi(QJSEngine &engine)
 {
-
-    std::cout << typeid(typename vu8::detail::MemFunProto<MainWindow, void()>::method_type).name() << std::endl;
-    std::cout << typeid(&QWidget::show).name() << std::endl;
-
     v8::HandleScope handleScope;
     v8::Local<v8::Context> context = qt_QJSEngineV8Context(&engine);
     v8::Context::Scope contextScope(context);
@@ -41,10 +37,6 @@ static inline void bindApi(QJSEngine &engine)
 
 
     v8::HandleScope scope;
-    //vu8::Class<QMainWindow, vu8::Factory<QWidget *> > _class_QMainWindow;
-   // _class_QMainWindow
-    //        .Set<QMainWindow::QWidget, void (), &QMainWindow::QWidget::show>("show")
-    //        ;
 
     // Create a module to add classes and functions to and return a
     // new instance of the module to be embedded into the v8 context
@@ -56,7 +48,6 @@ static inline void bindApi(QJSEngine &engine)
     globalV8->Set(
         v8::String::New("api"),
         mod
-      //      ("_QMainWindow", _class_QMainWindow)
         .NewInstance()
     );
 }
@@ -64,10 +55,6 @@ static inline void bindApi(QJSEngine &engine)
 
 static inline void run(QJSEngine &engine)
 {
-
-    //std::cout << typeid(typename vu8::detail::MemFunProto<MainWindow, void()>::method_type).name() << std::endl;
-    //std::cout << typeid(&MainWindow::show).name() << std::endl;
-
     v8::HandleScope handleScope;
     v8::Local<v8::Context> context = qt_QJSEngineV8Context(&engine);
     v8::Context::Scope contextScope(context);
@@ -110,7 +97,7 @@ int main(int argc, char *argv[])
     QJSEngine jsEngine;
     jsEngine.globalObject().setProperty("myNumber", 123);
     QJSValue myNumberPlusOne = jsEngine.evaluate("myNumber + 1");
-    std::cout <<  myNumberPlusOne.toString().toStdString();
+    std::cout <<  myNumberPlusOne.toString().toStdString() << std::endl;
 
     bindApi(jsEngine);
 
