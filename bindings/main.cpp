@@ -41,10 +41,10 @@ static inline void bindApi(QJSEngine &engine)
 
 
     v8::HandleScope scope;
-    vu8::Class<QMainWindow, vu8::Factory<QWidget *> > _class_QMainWindow;
-    _class_QMainWindow
-            .Set<QMainWindow::QWidget, void (), &QMainWindow::QWidget::show>("show")
-            ;
+    //vu8::Class<QMainWindow, vu8::Factory<QWidget *> > _class_QMainWindow;
+   // _class_QMainWindow
+    //        .Set<QMainWindow::QWidget, void (), &QMainWindow::QWidget::show>("show")
+    //        ;
 
     // Create a module to add classes and functions to and return a
     // new instance of the module to be embedded into the v8 context
@@ -56,7 +56,7 @@ static inline void bindApi(QJSEngine &engine)
     globalV8->Set(
         v8::String::New("api"),
         mod
-            ("_QMainWindow", _class_QMainWindow)
+      //      ("_QMainWindow", _class_QMainWindow)
         .NewInstance()
     );
 }
@@ -78,9 +78,9 @@ static inline void run(QJSEngine &engine)
 
     v8::Local<v8::Script> script = v8::Script::Compile(
                 v8::String::New(
-                    "var time = new api._QTime();\n"
+                    "var time = new api.QTime();\n"
                     "time.start();\n"
-                    "MyWindow = function(parent) {this.prototype = this.__proto__ = new api._QMainWindow(parent);}\n"
+                    "MyWindow = function(parent) {this.prototype = this.__proto__ = new api.QMainWindow(parent, new api.QFlag(0));}\n"
                     "var w = new MyWindow(null);\n"
                     "w.show();\n"
                     "for (var i=1;i<10000000;i++) {j=i*i*i;} \n"

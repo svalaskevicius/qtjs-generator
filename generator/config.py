@@ -76,6 +76,8 @@ def should_skip_class(classname):
 
 
         # widgets
+        "::QMacNativeWidget",
+        "::QMacCocoaViewContainer",
         # abstract classes
         "::QStylePrivate",
         "::QAbstractButton",
