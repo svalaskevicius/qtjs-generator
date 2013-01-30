@@ -8,13 +8,15 @@ As the generator is a python script using libclang for parsing Qt headers, the l
   * python
   * libclang (same or newer than rev. bce9205)
   * Qt 5.x
-
+  
+```
     cd <generator>
     export LD_LIBRARY_PATH=<path to libclang, if not on $PATH>
     ./generator.py <path to Qt include/>
     cd ../ && mkdir build && cd build
     <qt bin>/qmake -recursive ../bindings
     make -j5
+```
 
 License
 -------
