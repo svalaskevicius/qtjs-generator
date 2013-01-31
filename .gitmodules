@@ -1,0 +1,3 @@
+[submodule "bindings/lib/vu8"]
+	path = bindings/lib/vu8
+	url = git@github.com:svalaskevicius/vu8.git
