@@ -117,20 +117,25 @@ def generate_class(c, module, rootdir):
                 templateArgs['methodBinders'] += renderMethod(rel_basename, method, rel_basename)
                 addedMethods[mdef] = True
 
-    fileContent = Template(classTemplate()).substitute(templateArgs); 
-    origContent = ''
+    update_file(
+        os.path.join(targetDir, fileNameFromClass(classname)),
+        Template(classTemplate()).substitute(templateArgs)
+    );
 
-    filename = os.path.join(targetDir, fileNameFromClass(classname))
-    # move to is same and write contents
+def update_file(filename, fileContent):
+    if not is_file_content_same(filename, fileContent):
+        f = open(filename, 'w')
+        f.write(fileContent)
+        f.close()
+
+def is_file_content_same(filename, fileContent):
+    origContent = ''
     try:
         f = open(filename, "r")
         origContent = f.read()
         f.close()
     except IOError:
-        pass
+        return False
 
-    if fileContent != origContent:
-        f = open(os.path.join(targetDir, fileNameFromClass(classname)), 'w')
-        f.write(fileContent)
-        f.close()
+    return (fileContent == origContent)
 
