@@ -3,6 +3,7 @@ import re
 from clang.cindex import Index
 from clang.cindex import CursorKind
 from clang.cindex import TypeKind
+from clang.cindex import TokenKind
 from pprint import pprint
 
 def retrieve_semantic_parents_chain(node):
@@ -171,4 +172,22 @@ def retrieve_base_type_declaration(type):
     if type.kind == TypeKind.POINTER:
         type = type.get_pointee()
     return type.get_declaration()
+
+
+def param_has_default_option(param):
+    for x in param.get_tokens():
+        if TokenKind.PUNCTUATION == x.kind and '=' == x.spelling:
+            return True
+    return False
+
+def method_first_optional_param(cppMethod):
+    i = 0
+    for p in retrieve_method_params(cppMethod):
+        if param_has_default_option(p):
+            return i
+        i+=1
+    return None
+
+def method_has_optional_params(m):
+    return None != method_first_optional_param(m)
 

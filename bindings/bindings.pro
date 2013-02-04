@@ -1,7 +1,7 @@
 QT += core gui widgets qml core-private v8-private qml-private
 TEMPLATE = app
 
-INCLUDEPATH += . /Users/Shared/dev/vu8/src/ /Users/Shared/dev/vu8/build/include/
+INCLUDEPATH += ./include ./lib/vu8/src/
 
 
 CONFIG += c++11 exceptions
