@@ -206,7 +206,7 @@ def get_class_methods(c, classname, shellname):
     for base in ast_info.retrieve_class_parents(c):
         for (access, method) in ast_info.retrieve_class_methods(base):
             mdef = methodDefinition(method)
-            rel_basename = shellname+classname+"::"+base.displayname
+            rel_basename = shellname+classname[classname.rindex('::'):]+"::"+base.displayname
             abs_basename = ast_info.semantic_name(base)
             if access == 'public' and mdef not in addedMethods and not config.should_skip_class_method(abs_basename, method.spelling) and not methodParamsTypeBlackListed(method):
                 if method.spelling not in methodsByName:
