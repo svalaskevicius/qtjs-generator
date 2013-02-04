@@ -1,18 +1,15 @@
 
 import os
-import sys
 import re
 from string import Template
-from clang.cindex import Index
 import ast_info
 import config
-from pprint import pprint
 import itertools
 
 MYDIR = os.path.dirname(os.path.realpath(__file__))
 
 
-def classTemplate():
+def class_template():
     return """
 #include <qtjs_bindings/shared.h>
 
@@ -37,18 +34,18 @@ void bind_${module}_$safeClassName(vu8::Module &module)
     """
 
 
-def methodTemplate():
+def method_template():
     return """
         classBinder.Set<$methodType, &$className::$method >("$method");"""
 
 
-def baseMethodTemplate():
+def method_template_base():
     return """
         classBinder.Set<$base, $methodType, &$className::$method >("$method");"""
 
 
-def methodParams(cppMethod, n=None):
-    params = ast_info.retrieve_method_params(cppMethod)
+def method_params(cpp_method, n=None):
+    params = ast_info.retrieve_method_params(cpp_method)
     if None != n:
         params = list(params)[:n]
     return ', '.join([ast_info.type_to_string(p.type.get_canonical())
@@ -59,27 +56,27 @@ def isTypeBlackListed(type):
     return config.should_skip_class(ast_info.semantic_name(ast_info.retrieve_base_type_declaration(type)))
 
 
-def methodParamsTypeBlackListed(cppMethod):
-    if isTypeBlackListed(cppMethod.result_type):
+def is_method_params_type_blacklisted(cpp_method):
+    if isTypeBlackListed(cpp_method.result_type):
         return True
-    for p in ast_info.retrieve_method_params(cppMethod):
+    for p in ast_info.retrieve_method_params(cpp_method):
         if isTypeBlackListed(p.type):
             return True
     return False
 
-def methodType(cppMethod, n = None):
-    constness = ' const' if ast_info.parse_method_usr(cppMethod.get_usr())['const'] else ''
-    return ast_info.type_to_string(cppMethod.result_type.get_canonical())+'('+methodParams(cppMethod, n)+')' + constness
+def methodType(cpp_method, n = None):
+    constness = ' const' if ast_info.parse_method_usr(cpp_method.get_usr())['const'] else ''
+    return ast_info.type_to_string(cpp_method.result_type.get_canonical())+'('+method_params(cpp_method, n)+')' + constness
 
-def methodDefinition(cppMethod, n = None):
-    constness = ' const' if ast_info.parse_method_usr(cppMethod.get_usr())['const'] else ''
-    return ast_info.type_to_string(cppMethod.result_type.get_canonical())+' '+cppMethod.spelling+'('+methodParams(cppMethod, n)+')' + constness
+def methodDefinition(cpp_method, n = None):
+    constness = ' const' if ast_info.parse_method_usr(cpp_method.get_usr())['const'] else ''
+    return ast_info.type_to_string(cpp_method.result_type.get_canonical())+' '+cpp_method.spelling+'('+method_params(cpp_method, n)+')' + constness
 
-def renderConstructors(constructors):
+def render_constructors(constructors):
     if len(constructors) == 0:
         return 'vu8::Factory<>'
     elif len(constructors) == 1 and not ast_info.method_has_optional_params(constructors[0]):
-        return 'vu8::Factory< '+methodParams(constructors[0])+' > '
+        return 'vu8::Factory< '+method_params(constructors[0])+' > '
     else:
         factories = []
         for c in constructors:
@@ -88,23 +85,23 @@ def renderConstructors(constructors):
             if first_opt == None:
                 first_opt = param_count
             for i in range(first_opt, param_count+1):
-                factories.append('vu8::Factory< '+methodParams(c, i)+' > ')
+                factories.append('vu8::Factory< '+method_params(c, i)+' > ')
         return 'vu8::FactorySelector< ' + ', '.join(factories) + ' > '
 
-def renderMethod(classname, cppMethod, parent = None):
+def render_method(classname, cpp_method, parent = None):
     if not parent:
-        return Template(methodTemplate()) \
-            .substitute({'methodType':methodType(cppMethod), 'className':classname, 'method':cppMethod.spelling})
+        return Template(method_template()) \
+            .substitute({'methodType':methodType(cpp_method), 'className':classname, 'method':cpp_method.spelling})
     else:
-        return Template(baseMethodTemplate()) \
-            .substitute({'methodType':methodType(cppMethod), 'className':classname, 'method':cppMethod.spelling, 'base':parent})
+        return Template(method_template_base()) \
+            .substitute({'methodType':methodType(cpp_method), 'className':classname, 'method':cpp_method.spelling, 'base':parent})
 
-def renderMethods(classname, methods, methodName):
+def render_methods(classname, methods, method_name):
     if len(methods) == 0:
         return ''
     elif len(methods) == 1 and not ast_info.method_has_optional_params(methods[0][1]):
-        (parentname, cppMethod) = methods[0]
-        return renderMethod(parentname if parentname else classname, cppMethod, parentname)
+        (parentname, cpp_method) = methods[0]
+        return render_method(parentname if parentname else classname, cpp_method, parentname)
     else:
         method_binders = []
         for (pname, cppm) in methods:
@@ -115,15 +112,15 @@ def renderMethods(classname, methods, methodName):
                 first_opt = param_count
             for i in range(first_opt, param_count+1):
                 method_binders.append('vu8::Method<' + binding_class +', '+ methodType(cppm, i) +', &' + binding_class + '::' + cppm.spelling +' > ')
-        return "\n        classBinder.Set<vu8::Selector< " + ', '.join(method_binders) + " > > (\""+methodName+"\");"
+        return "\n        classBinder.Set<vu8::Selector< " + ', '.join(method_binders) + " > > (\""+method_name+"\");"
 
-def sanitizeName(name):
+def sanitize_name(name):
     return re.sub(r'^::', '', name).replace('::', '_').replace(' ', '').replace('<', '_').replace('>', '_').replace(',', '_')
 
-def fileNameFromClass(classname):
-    return sanitizeName(classname)+".cpp"
+def file_name_from_class(classname):
+    return sanitize_name(classname)+".cpp"
 
-def renderShellConstructors(constructors, classname, shellname):
+def render_shell_constructors(constructors, classname, shellname):
     if len(constructors) == 0:
         return ''
     else:
@@ -143,10 +140,10 @@ def renderShellConstructors(constructors, classname, shellname):
         return '\n'.join(constructor_overrides)+'\n'
 
 
-def renderShellMethods(methodsByName, classname, shellname):
+def render_shell_methods(methods_by_name, classname, shellname):
     method_overrides = []
-    for (name, methodsForName) in methodsByName.items():
-        for (cl, method) in methodsForName:
+    for (name, methods_for_name) in methods_by_name.items():
+        for (cl, method) in methods_for_name:
             first_opt = ast_info.method_first_optional_param(method)
             if None != first_opt:
                 param_count = len(list(ast_info.retrieve_method_params(method)))
@@ -165,9 +162,9 @@ def renderShellMethods(methodsByName, classname, shellname):
 
 def generate_shell(c, module, classname, shellname, methods):
     return 'class '+shellname+' : public '+classname+' {\npublic:\n'+\
-        renderShellConstructors(get_class_constructors(c), classname, shellname)+\
+        render_shell_constructors(get_class_constructors(c), classname, shellname)+\
         '\n'+\
-        renderShellMethods(methods, classname, shellname)+\
+        render_shell_methods(methods, classname, shellname)+\
         '};';
 
 
@@ -176,26 +173,26 @@ def generate_class(c, module, rootdir):
     if not os.path.isdir(targetDir):
         os.makedirs(targetDir)
 
-    templateArgs = {'module':module}
+    template_args = {'module':module}
 
     classname = ast_info.semantic_name(c)
-    shellname = '_Shell_'+sanitizeName(classname)
-    methodsByName = get_class_methods(c, classname, shellname)
+    shellname = '_Shell_'+sanitize_name(classname)
+    methods_by_name = get_class_methods(c, classname, shellname)
 
-    templateArgs['className'] = shellname
-    templateArgs['includes'] = "\n".join(["#include <"+path+">" for path in get_includes(c, rootdir)])
-    templateArgs['safeClassName'] = sanitizeName(classname)
-    templateArgs['constructors'] = renderConstructors(get_class_constructors(c))
-    templateArgs['methodBinders'] = ''
-    templateArgs['shell_class_code'] = generate_shell(c, module, classname, shellname, methodsByName)
+    template_args['className'] = shellname
+    template_args['includes'] = "\n".join(["#include <"+path+">" for path in get_includes(c, rootdir)])
+    template_args['safeClassName'] = sanitize_name(classname)
+    template_args['constructors'] = render_constructors(get_class_constructors(c))
+    template_args['methodBinders'] = ''
+    template_args['shell_class_code'] = generate_shell(c, module, classname, shellname, methods_by_name)
 
-    for (name, methods) in methodsByName.items():
+    for (name, methods) in methods_by_name.items():
         methods = [(shellname if ast_info.method_has_optional_params(mt) else cl, mt) for (cl, mt) in methods]
-        templateArgs['methodBinders'] += renderMethods(classname, methods, name)
+        template_args['methodBinders'] += render_methods(classname, methods, name)
 
     update_file(
-        os.path.join(targetDir, fileNameFromClass(classname)),
-        Template(classTemplate()).substitute(templateArgs)
+        os.path.join(targetDir, file_name_from_class(classname)),
+        Template(class_template()).substitute(template_args)
     );
 
 
@@ -206,52 +203,52 @@ def get_includes(classnode, rootdir):
 
 
 def get_class_constructors(classnode):
-    return list(itertools.ifilterfalse(methodParamsTypeBlackListed, ast_info.retrieve_class_constructors(classnode)))
+    return list(itertools.ifilterfalse(is_method_params_type_blacklisted, ast_info.retrieve_class_constructors(classnode)))
 
 def get_class_methods(c, classname, shellname):
-    methodsByName = {}
-    addedMethods = {}
+    methods_by_name = {}
+    added_methods = {}
     for (access, method) in ast_info.retrieve_class_methods(c):
         if should_include_method(classname, method, access):
-            if method.spelling not in methodsByName:
-                methodsByName[method.spelling] = []
-            methodsByName[method.spelling].append( (classname, method) );
-        addedMethods[methodDefinition(method)] = True
+            if method.spelling not in methods_by_name:
+                methods_by_name[method.spelling] = []
+            methods_by_name[method.spelling].append( (classname, method) );
+        added_methods[methodDefinition(method)] = True
 
     for base in ast_info.retrieve_class_parents(c):
         for (access, method) in ast_info.retrieve_class_methods(base):
             mdef = methodDefinition(method)
             rel_basename = shellname+classname[classname.rindex('::'):]+"::"+base.displayname
             abs_basename = ast_info.semantic_name(base)
-            if mdef not in addedMethods and should_include_method(abs_basename, method, access):
-                if method.spelling not in methodsByName:
-                    methodsByName[method.spelling] = []
-                methodsByName[method.spelling].append( (rel_basename, method) );
-                addedMethods[mdef] = True
+            if mdef not in added_methods and should_include_method(abs_basename, method, access):
+                if method.spelling not in methods_by_name:
+                    methods_by_name[method.spelling] = []
+                methods_by_name[method.spelling].append( (rel_basename, method) );
+                added_methods[mdef] = True
     
-    return methodsByName
+    return methods_by_name
 
 
 def should_include_method(classname, method, access):
-    return not config.should_skip_class_method(classname, method.spelling) and not methodParamsTypeBlackListed(method) and access == 'public'
+    return not config.should_skip_class_method(classname, method.spelling) and not is_method_params_type_blacklisted(method) and access == 'public'
 
 
-def update_file(filename, fileContent):
-    if not is_file_content_same(filename, fileContent):
+def update_file(filename, file_content):
+    if not is_file_content_same(filename, file_content):
         f = open(filename, 'w')
-        f.write(fileContent)
+        f.write(file_content)
         f.close()
 
 
-def is_file_content_same(filename, fileContent):
-    origContent = ''
+def is_file_content_same(filename, file_content):
+    orig_content = ''
     try:
         f = open(filename, 'r')
-        origContent = f.read()
+        orig_content = f.read()
         f.close()
     except IOError:
         return False
 
-    return fileContent == origContent
+    return file_content == orig_content
 
 

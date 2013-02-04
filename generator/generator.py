@@ -23,18 +23,18 @@ rootdir = sys.argv[1]
 clangIdx = Index.create()
 
 
-def generateModuleFiles(module, classList):
+def generate_module_files(module, classList):
     targetDir = os.path.join(MYDIR, '..', 'generated_cpp')
     f = open(os.path.join(targetDir, module+'.pri'), 'w')
-    f.write("SOURCES += $$PWD/"+ module+'.cpp ' + " ".join(map(lambda c: "$$PWD/"+module+"/"+class_gen.fileNameFromClass(c), classList)) + "\n")
+    f.write("SOURCES += $$PWD/"+ module+'.cpp ' + " ".join(map(lambda c: "$$PWD/"+module+"/"+class_gen.file_name_from_class(c), classList)) + "\n")
     f.close()
 
     f = open(os.path.join(targetDir, module+'.cpp'), 'w')
     f.write("#include <qtjs_bindings/shared.h>\n\n")
     f.write("namespace qtjs_binder {\n\n")
-    f.write("\n".join(map(lambda c: "void bind_"+module+"_"+class_gen.sanitizeName(c)+"(vu8::Module &module);", classList))+"\n\n")
+    f.write("\n".join(map(lambda c: "void bind_"+module+"_"+class_gen.sanitize_name(c)+"(vu8::Module &module);", classList))+"\n\n")
     f.write("void bind_"+module+"(vu8::Module &module) {\n")
-    f.write("\n".join(map(lambda c: "    bind_"+module+"_"+class_gen.sanitizeName(c)+"(module);", classList))+"\n")
+    f.write("\n".join(map(lambda c: "    bind_"+module+"_"+class_gen.sanitize_name(c)+"(module);", classList))+"\n")
     f.write("}\n\n")
     f.write("}\n")
     f.close()
@@ -85,6 +85,6 @@ for (module, dir) in [ \
     classList.extend(process_file(findex_fn, module, classList))
     sys.stdout.flush()
     if len(classList):
-        generateModuleFiles(module, classList)
+        generate_module_files(module, classList)
     sys.stdout.flush()
 
