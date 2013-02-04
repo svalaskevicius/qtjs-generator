@@ -6,6 +6,7 @@ from clang.cindex import TypeKind
 from clang.cindex import TokenKind
 from pprint import pprint
 
+
 def retrieve_semantic_parents_chain(node):
     ret = []
     node = node.semantic_parent
@@ -15,8 +16,9 @@ def retrieve_semantic_parents_chain(node):
     ret.reverse()
     return ret
 
+
 def type_to_string(type):
-    ret = ""
+    ret = ''
     if type.is_const_qualified():
         ret += 'const '
     if type.kind == TypeKind.POINTER:
@@ -60,8 +62,9 @@ def type_to_string(type):
     elif type.kind == TypeKind.ENUM:
         ret += semantic_name(type.get_declaration())
     else:
-        ret += "UNKNOWN: "+type.kind.spelling
+        ret += 'UNKNOWN: ' + type.kind.spelling
     return ret
+
 
 def get_info(node, recursive=True, print_type=True):
     if recursive:
@@ -72,26 +75,31 @@ def get_info(node, recursive=True, print_type=True):
         type = type_to_string(node.type.get_canonical())
     else:
         type = None
-    return { 
-             'kind' : node.kind,
-             'displayname' : node.displayname,
-             'type' : type,
-             'usr' : node.get_usr(),
-             'spelling' : node.spelling,
-             'location' : node.location,
-             'extent.start' : node.extent.start,
-             'extent.end' : node.extent.end,
-             'is_definition' : node.is_definition(),
-             'resultType' : node.result_type,
-             'access' : node.access,
-             'children' : children }
+    return {
+        'kind': node.kind,
+        'displayname': node.displayname,
+        'type': type,
+        'usr': node.get_usr(),
+        'spelling': node.spelling,
+        'location': node.location,
+        'extent.start': node.extent.start,
+        'extent.end': node.extent.end,
+        'is_definition': node.is_definition(),
+        'resultType': node.result_type,
+        'access': node.access,
+        'children': children,
+        }
+
 
 def get_diag_info(diag):
-    return { 'severity' : diag.severity,
-             'location' : diag.location,
-             'spelling' : diag.spelling,
-             'ranges' : diag.ranges,
-             'fixits' : diag.fixits }
+    return {
+        'severity': diag.severity,
+        'location': diag.location,
+        'spelling': diag.spelling,
+        'ranges': diag.ranges,
+        'fixits': diag.fixits,
+        }
+
 
 def recursive_iterator(node):
     yield node
@@ -99,10 +107,12 @@ def recursive_iterator(node):
         for c1 in recursive_iterator(c):
             yield c1
 
+
 def retrieve_classes(node):
     for n in recursive_iterator(node):
         if n.kind == CursorKind.CLASS_DECL and n.is_definition():
             yield n
+
 
 def retrieve_used_types(node):
     for n in recursive_iterator(node):
@@ -115,12 +125,14 @@ def retrieve_used_types(node):
             if td and td.location.file:
                 yield td
 
+
 def retrieve_class_parents(node):
     for n in node.get_children():
         if n.kind == CursorKind.CXX_BASE_SPECIFIER and n.access == 'public':
             td = n.type.get_declaration()
             if td:
                 yield td
+
 
 def retrieve_class_constructors(node):
     access = 'private'
@@ -130,10 +142,12 @@ def retrieve_class_constructors(node):
         if n.kind == CursorKind.CONSTRUCTOR and access == 'public':
             yield n
 
+
 def retrieve_class_destructors(node):
     for n in node.get_children():
         if n.kind == CursorKind.DESTRUCTOR:
             yield n
+
 
 def retrieve_class_methods(node):
     access = 'private'
@@ -143,27 +157,32 @@ def retrieve_class_methods(node):
         if n.kind == CursorKind.CXX_METHOD and not n.is_static_method():
             yield (access, n)
 
+
 def retrieve_method_params(node):
     for n in node.get_children():
         if n.kind == CursorKind.PARM_DECL:
             yield n
 
-def parse_method_usr(usrString): 
+
+def parse_method_usr(usrString):
     m = re.search(r'#([0-9]+)$', usrString)
-    if (m):
+    if m:
         i = int(m.group(1))
-        return {'const':i&1 != 0, 'volatile': i&4 != 0, 'restrict': i&2 != 0}
+        return {'const': i & 1 != 0, 'volatile': i & 4 != 0,
+                'restrict': i & 2 != 0}
     return {'const': False, 'volatile': False, 'restrict': False}
 
 
 def semantic_name(node):
     name = node.displayname
-    if name.startswith("::"):
+    if name.startswith('::'):
         return name
-    parents = '::'.join([p.displayname for p in retrieve_semantic_parents_chain(node)])
+    parents = '::'.join([p.displayname for p in
+                        retrieve_semantic_parents_chain(node)])
     if parents and not parents.startswith('::'):
         parents = '::' + parents
     return parents + '::' + name
+
 
 def retrieve_base_type_declaration(type):
     type = type.get_canonical()
@@ -180,14 +199,17 @@ def param_has_default_option(param):
             return True
     return False
 
+
 def method_first_optional_param(cppMethod):
     i = 0
     for p in retrieve_method_params(cppMethod):
         if param_has_default_option(p):
             return i
-        i+=1
+        i += 1
     return None
+
 
 def method_has_optional_params(m):
     return None != method_first_optional_param(m)
+
 

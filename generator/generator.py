@@ -1,8 +1,14 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 
-import sys, os, subprocess, re
+import sys
+import os
+import subprocess
+import re
 from clang.cindex import Index
-import ast_info, class_gen, config
+import ast_info
+import class_gen
+import config
 from pprint import pprint
 
 MYDIR = os.path.dirname(os.path.realpath(__file__))
@@ -38,7 +44,7 @@ def process_file(path, module, skipClasses):
     tu = clangIdx.parse(None, ['-x', 'c++', path, '-I', rootdir])
 
     if not tu:
-        raise "unable to load input"
+        raise 'unable to load input'
 
     if len(tu.diagnostics):
         pprint(('diags', map(ast_info.get_diag_info, tu.diagnostics)))

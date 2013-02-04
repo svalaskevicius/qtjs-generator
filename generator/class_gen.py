@@ -1,11 +1,13 @@
 
-import os, sys, re
+import os
+import sys
+import re
 from string import Template
 from clang.cindex import Index
-import ast_info, config
+import ast_info
+import config
 from pprint import pprint
 import itertools
-
 
 MYDIR = os.path.dirname(os.path.realpath(__file__))
 
@@ -34,22 +36,28 @@ void bind_${module}_$safeClassName(vu8::Module &module)
 } // namespace
     """
 
+
 def methodTemplate():
     return """
         classBinder.Set<$methodType, &$className::$method >("$method");"""
+
 
 def baseMethodTemplate():
     return """
         classBinder.Set<$base, $methodType, &$className::$method >("$method");"""
 
-def methodParams(cppMethod, n = None):
-    params =  ast_info.retrieve_method_params(cppMethod)
+
+def methodParams(cppMethod, n=None):
+    params = ast_info.retrieve_method_params(cppMethod)
     if None != n:
         params = list(params)[:n]
-    return ', '.join([ast_info.type_to_string(p.type.get_canonical()) for p in params])
+    return ', '.join([ast_info.type_to_string(p.type.get_canonical())
+                     for p in params])
+
 
 def isTypeBlackListed(type):
     return config.should_skip_class(ast_info.semantic_name(ast_info.retrieve_base_type_declaration(type)))
+
 
 def methodParamsTypeBlackListed(cppMethod):
     if isTypeBlackListed(cppMethod.result_type):
@@ -223,14 +231,16 @@ def update_file(filename, fileContent):
         f.write(fileContent)
         f.close()
 
+
 def is_file_content_same(filename, fileContent):
     origContent = ''
     try:
-        f = open(filename, "r")
+        f = open(filename, 'r')
         origContent = f.read()
         f.close()
     except IOError:
         return False
 
-    return (fileContent == origContent)
+    return fileContent == origContent
+
 
