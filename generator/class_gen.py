@@ -142,6 +142,7 @@ def renderShellConstructors(constructors, classname, shellname):
                     ') {}')
         return '\n'.join(constructor_overrides)+'\n'
 
+
 def renderShellMethods(methodsByName, classname, shellname):
     method_overrides = []
     for (name, methodsForName) in methodsByName.items():
@@ -161,9 +162,11 @@ def renderShellMethods(methodsByName, classname, shellname):
                         ');\n}\n');
     return '\n'.join(method_overrides)+'\n'
 
+
 def generate_shell(c, module, classname, shellname, methods):
     return 'class '+shellname+' : public '+classname+' {\npublic:\n'+\
-        renderShellConstructors(list(itertools.ifilterfalse(methodParamsTypeBlackListed, ast_info.retrieve_class_constructors(c))), classname, shellname)+\
+        renderShellConstructors(get_class_constructors(c), classname, shellname)+\
+        '\n'+\
         renderShellMethods(methods, classname, shellname)+\
         '};';
 
@@ -177,19 +180,13 @@ def generate_class(c, module, rootdir):
 
     classname = ast_info.semantic_name(c)
     shellname = '_Shell_'+sanitizeName(classname)
-    templateArgs['className'] = shellname
-    # move
-    usedTypePaths = set([t.location.file.name for t in ast_info.retrieve_used_types(c)])
-    usedTypePaths |= set([t.location.file.name for p in ast_info.retrieve_class_parents(c) for t in ast_info.retrieve_used_types(p)])
-    templateArgs['includes'] = "\n".join(set(["#include <"+path+">" for path in usedTypePaths if path.startswith(rootdir) and not config.is_include_blacklisted(path)]))
-    templateArgs['safeClassName'] = sanitizeName(classname)
-
-    templateArgs['constructors'] = renderConstructors(list(itertools.ifilterfalse(methodParamsTypeBlackListed, ast_info.retrieve_class_constructors(c))))
-
-    templateArgs['methodBinders'] = ''
-
     methodsByName = get_class_methods(c, classname, shellname)
 
+    templateArgs['className'] = shellname
+    templateArgs['includes'] = "\n".join(["#include <"+path+">" for path in get_includes(c, rootdir)])
+    templateArgs['safeClassName'] = sanitizeName(classname)
+    templateArgs['constructors'] = renderConstructors(get_class_constructors(c))
+    templateArgs['methodBinders'] = ''
     templateArgs['shell_class_code'] = generate_shell(c, module, classname, shellname, methodsByName)
 
     for (name, methods) in methodsByName.items():
@@ -201,11 +198,21 @@ def generate_class(c, module, rootdir):
         Template(classTemplate()).substitute(templateArgs)
     );
 
+
+def get_includes(classnode, rootdir):
+    usedTypePaths = set([t.location.file.name for t in ast_info.retrieve_used_types(classnode)]) | \
+                    set([t.location.file.name for p in ast_info.retrieve_class_parents(classnode) for t in ast_info.retrieve_used_types(p)])
+    return sorted(set([path for path in usedTypePaths if path.startswith(rootdir) and not config.is_include_blacklisted(path)]))
+
+
+def get_class_constructors(classnode):
+    return list(itertools.ifilterfalse(methodParamsTypeBlackListed, ast_info.retrieve_class_constructors(classnode)))
+
 def get_class_methods(c, classname, shellname):
     methodsByName = {}
     addedMethods = {}
     for (access, method) in ast_info.retrieve_class_methods(c):
-        if not config.should_skip_class_method(classname, method.spelling) and not methodParamsTypeBlackListed(method) and access == 'public':
+        if should_include_method(classname, method, access):
             if method.spelling not in methodsByName:
                 methodsByName[method.spelling] = []
             methodsByName[method.spelling].append( (classname, method) );
@@ -216,13 +223,17 @@ def get_class_methods(c, classname, shellname):
             mdef = methodDefinition(method)
             rel_basename = shellname+classname[classname.rindex('::'):]+"::"+base.displayname
             abs_basename = ast_info.semantic_name(base)
-            if access == 'public' and mdef not in addedMethods and not config.should_skip_class_method(abs_basename, method.spelling) and not methodParamsTypeBlackListed(method):
+            if mdef not in addedMethods and should_include_method(abs_basename, method, access):
                 if method.spelling not in methodsByName:
                     methodsByName[method.spelling] = []
                 methodsByName[method.spelling].append( (rel_basename, method) );
                 addedMethods[mdef] = True
     
     return methodsByName
+
+
+def should_include_method(classname, method, access):
+    return not config.should_skip_class_method(classname, method.spelling) and not methodParamsTypeBlackListed(method) and access == 'public'
 
 
 def update_file(filename, fileContent):
