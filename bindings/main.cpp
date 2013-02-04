@@ -6,6 +6,7 @@
 #include <QApplication>
 #include <QMainWindow>
 #include <QJSEngine>
+#include <QFile>
 
 
 #include <typeinfo> 
@@ -53,7 +54,7 @@ static inline void bindApi(QJSEngine &engine)
 }
 
 
-static inline void run(QJSEngine &engine)
+static inline void run(QJSEngine &engine, const char * code)
 {
     v8::HandleScope handleScope;
     v8::Local<v8::Context> context = qt_QJSEngineV8Context(&engine);
@@ -64,15 +65,7 @@ static inline void run(QJSEngine &engine)
     v8::ScriptOrigin origin(v8::String::New("test.js"), v8::Integer::New(startLineNumber));
 
     v8::Local<v8::Script> script = v8::Script::Compile(
-                v8::String::New(
-                    "var time = new api.QTime();\n"
-                    "time.start();\n"
-                    "MyWindow = function(parent) {this.prototype = this.__proto__ = new api.QMainWindow(parent, new api.QFlag(0));}\n"
-                    "var w = new MyWindow(null);\n"
-                    "w.show();\n"
-                    "for (var i=1;i<10000000;i++) {j=i*i*i;} \n"
-                    "time.elapsed();\n"
-                ),
+                v8::String::New(code),
 	            &origin
     );
 
@@ -94,15 +87,24 @@ static inline void run(QJSEngine &engine)
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+
+    if (argc != 2) {
+        std::cerr << "usage: program <js file>" << std::endl;
+        return 1;
+    }
+
+    QFile file(argv[1]);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        std::cerr << "failed to open the given js file" << std::endl;
+        return 1;
+    }
+
     QJSEngine jsEngine;
-    jsEngine.globalObject().setProperty("myNumber", 123);
-    QJSValue myNumberPlusOne = jsEngine.evaluate("myNumber + 1");
-    std::cout <<  myNumberPlusOne.toString().toStdString() << std::endl;
 
     bindApi(jsEngine);
 
     try {
-        run(jsEngine);
+        run(jsEngine, file.readAll());
     } catch (std::runtime_error const& e) {
         std::cout << e.what() << std::endl;
     } catch (...) {
