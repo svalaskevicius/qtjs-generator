@@ -114,6 +114,15 @@ def render_method(classname, cpp_method, parent=None):
             })
 
 
+def enumerate_optional_params(cpp_method):
+    param_count = len(list(ast_info.retrieve_method_params(cpp_method)))
+    first_opt = ast_info.method_first_optional_param(cpp_method)
+    if first_opt == None:
+        first_opt = param_count
+    for i in range(first_opt, param_count+1):
+        yield (i, list(ast_info.retrieve_method_params(cpp_method))[:i])
+
+
 def render_methods(classname, methods, method_name):
     if len(methods) == 0:
         return ''
@@ -123,12 +132,8 @@ def render_methods(classname, methods, method_name):
     else:
         method_binders = []
         for (pname, cppm) in methods:
-            param_count = len(list(ast_info.retrieve_method_params(cppm)))
-            first_opt = ast_info.method_first_optional_param(cppm)
             binding_class = (pname if pname else classname)
-            if first_opt == None:
-                first_opt = param_count
-            for i in range(first_opt, param_count+1):
+            for (i, _) in enumerate_optional_params(cppm):
                 method_binders.append(
                     'vu8::Method<' + \
                         binding_class +', '+ method_type(cppm, i) +', &' + binding_class + '::' + cppm.spelling + \
@@ -150,62 +155,69 @@ def file_name_from_class(classname):
     return sanitize_name(classname) + '.cpp'
 
 
+def render_arg(param, number):
+    return (param.spelling if param.spelling else 'arg_'+str(number))
+
+
+def render_shell_constructor(shellname, params, classname):
+    return shellname+'(' + \
+           ', '.join([
+               ast_info.type_to_string(p.type.get_canonical())+' '+ \
+               render_arg(p, p_i) for (p_i, p) in enumerate(params)
+           ]) + \
+           ') : ' + classname + '(' + \
+           ', '.join([
+               render_arg(p, p_i) for (p_i, p) in enumerate(params)
+           ]) + \
+           ') {}'
+
+
 def render_shell_constructors(constructors, classname, shellname):
     if len(constructors) == 0:
         return ''
     else:
         constructor_overrides = []
         for constructor in constructors:
-            param_count = len(list(ast_info.retrieve_method_params(constructor)))
-            first_opt = ast_info.method_first_optional_param(constructor)
-            if first_opt == None:
-                first_opt = param_count
-            for i in range(first_opt, param_count+1):
-                params = list(ast_info.retrieve_method_params(constructor))[:i]
-                constructor_overrides.append(shellname+'('+\
-                    ', '.join([
-                        ast_info.type_to_string(p.type.get_canonical())+' '+ \
-                        (p.spelling if p.spelling else 'arg_'+str(p_i)) \
-                        for (p_i, p) in enumerate(params)
-                    ]) + \
-                    ') : '+classname+'(' + \
-                    ', '.join([
-                        (p.spelling if p.spelling else 'arg_'+str(p_i)) \
-                        for (p_i, p) in enumerate(params)
-                    ])+\
-                    ') {}')
+            for (i, params) in enumerate_optional_params(constructor):
+                constructor_overrides.append(
+                    render_shell_constructor(shellname, params, classname)
+                )
         return '\n'.join(constructor_overrides) + '\n'
+
+
+def render_shell_method(method, params, method_class):
+    constness = (' const' if ast_info.parse_method_usr(method.get_usr())['const'] else '')
+    return  ast_info.type_to_string(method.result_type.get_canonical()) + ' ' + \
+            method.spelling + '(' + \
+            ', '.join([
+                ast_info.type_to_string(p.type.get_canonical())+' '+ \
+                render_arg(p, p_i) for (p_i, p) in enumerate(params)
+            ]) + \
+            ')' + constness + '\n{\n' + \
+            '  return '+method_class+'::'+method.spelling+'(' + \
+            ', '.join([
+                render_arg(p, p_i) for (p_i, p) in enumerate(params)
+            ]) + \
+            ');\n}\n'
 
 
 def render_shell_methods(methods_by_name, classname, shellname):
     method_overrides = []
     for (_, methods_for_name) in methods_by_name.items():
         for (method_class, method) in methods_for_name:
-            first_opt = ast_info.method_first_optional_param(method)
-            if None != first_opt:
-                param_count = len(list(ast_info.retrieve_method_params(method)))
-                constness = ' const' if ast_info.parse_method_usr(method.get_usr())['const'] else ''
-                for i in range(first_opt, param_count+1):
-                    params = list(ast_info.retrieve_method_params(method))[:i]
+            if ast_info.method_has_optional_params(method):
+                for (i, params) in enumerate_optional_params(method):
                     method_overrides.append(
-                        ast_info.type_to_string(method.result_type.get_canonical())+' '+method.spelling+'(' + \
-                        ', '.join([
-                            ast_info.type_to_string(p.type.get_canonical())+' '+ \
-                            (p.spelling if p.spelling else 'arg_'+str(p_i)) \
-                            for (p_i, p) in enumerate(params)
-                        ]) + \
-                        ')' + constness + '\n{\n' +\
-                        '  return '+method_class+'::'+method.spelling+'('+\
-                        ', '.join([(p.spelling if p.spelling else 'arg_'+str(p_i)) for (p_i, p) in enumerate(params)])+\
-                        ');\n}\n')
+                       render_shell_method(method, params, method_class)
+                    )
     return '\n'.join(method_overrides)+'\n'
 
 
 def generate_shell(cpp_class, module, classname, shellname, methods):
-    return 'class '+shellname+' : public '+classname+' {\npublic:\n'+\
-        render_shell_constructors(get_class_constructors(cpp_class), classname, shellname)+\
-        '\n'+\
-        render_shell_methods(methods, classname, shellname)+\
+    return 'class '+shellname+' : public '+classname+' {\npublic:\n' + \
+        render_shell_constructors(get_class_constructors(cpp_class), classname, shellname) + \
+        '\n' + \
+        render_shell_methods(methods, classname, shellname) + \
         '};'
 
 
