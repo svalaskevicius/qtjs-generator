@@ -159,11 +159,9 @@ def should_skip_class_method(classname, method):
         "::QEasingCurve::setCustomType",
         "::QEasingCurve::customType",
         # misc
+        "::QString::vsprintf",
         "::QString::sprintf",
         "::QEvent::operator=",
-        "::QDebug::operator<<",
-        "::QNoDebug::operator<<",
-        "::QBasicMutex::tryLock",
         "::QObject::event",
     ]
 

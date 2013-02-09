@@ -277,7 +277,8 @@ def get_class_methods(cpp_class, classname, shellname):
             if method.spelling not in methods_by_name:
                 methods_by_name[method.spelling] = []
             methods_by_name[method.spelling].append( (classname, method) )
-        added_methods[method_definition(method)] = True
+        for (i, _) in enumerate_optional_params(method):
+            added_methods[method_definition(method, i)] = True
 
     for base in ast_info.retrieve_class_parents(cpp_class):
         for (access, method) in ast_info.retrieve_class_methods(base):
@@ -288,7 +289,8 @@ def get_class_methods(cpp_class, classname, shellname):
                 if method.spelling not in methods_by_name:
                     methods_by_name[method.spelling] = []
                 methods_by_name[method.spelling].append( (rel_basename, method) )
-                added_methods[mdef] = True
+                for (i, _) in enumerate_optional_params(method):
+                    added_methods[method_definition(method, i)] = True
     
     return methods_by_name
 
