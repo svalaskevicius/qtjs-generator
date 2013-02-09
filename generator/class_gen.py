@@ -52,7 +52,10 @@ def method_params(cpp_method, param_limit=None):
 
 
 def is_type_blacklisted(cpp_type):
-    return config.should_skip_class(ast_info.semantic_name(ast_info.retrieve_base_type_declaration(cpp_type)))
+    return  config.should_skip_class(
+                ast_info.semantic_name(ast_info.retrieve_base_type_declaration(cpp_type))
+            ) \
+            or ('UNKNOWN:' in ast_info.type_to_string(cpp_type.get_canonical()))
 
 
 def are_method_params_blacklisted(cpp_method):
