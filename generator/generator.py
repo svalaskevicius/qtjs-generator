@@ -49,16 +49,17 @@ def process_file(path, module, skipClasses):
     if len(tu.diagnostics):
         pprint(('diags', map(ast_info.get_diag_info, tu.diagnostics)))
 
-    classes = []
-    for c in ast_info.retrieve_classes(tu.cursor):
-        classname = ast_info.semantic_name(c)
-        if c.location.file.name.startswith(os.path.join(rootdir, module)) and not config.should_skip_class(classname) and classname not in skipClasses:
-            class_gen.generate_class(c, module, rootdir)
-            classes.append(classname)
+    added_classes = []
+    for (classname, c, classfile) in ast_info.retrieve_classes(tu.cursor):
+        if classfile.startswith(os.path.join(rootdir, module)) and not config.should_skip_class(classname) and classname not in skipClasses:
+            class_gen.generate_class(classname, c, classfile, module, rootdir)
+            skipClasses.append(classname)
+            added_classes.append(classname)
+            print "generated ", classname
 
-    return classes
+    return added_classes
 
-
+class_list = []
 for (module, dir) in [ \
         (module, dir) for (module, dir) in [ \
             (module, os.path.join(rootdir, module)) for module in os.listdir(rootdir) \
@@ -68,11 +69,10 @@ for (module, dir) in [ \
         continue
 
     print "top level dir: ", module,  dir
-    classList = []
     incl_contents = ''
     for file in os.listdir(dir):
         path = os.path.join(dir, file)
-        if os.path.isfile(path) and not re.match(r'.*\..*', file) and file not in classList:
+        if os.path.isfile(path) and not re.match(r'.*\..*', file):
             print "adding ", module, file
             incl_contents += "#include <"+module+"/"+file+">\n";
     targetDir = os.path.join(MYDIR, '..', 'generated_cpp')
@@ -82,9 +82,10 @@ for (module, dir) in [ \
     findex = open(findex_fn, "w");
     findex.write(incl_contents);
     findex.close()
-    classList.extend(process_file(findex_fn, module, classList))
+    added_classes = process_file(findex_fn, module, class_list)
+    class_list.extend(added_classes)
     sys.stdout.flush()
-    if len(classList):
-        generate_module_files(module, classList)
+    if len(added_classes):
+        generate_module_files(module, added_classes)
     sys.stdout.flush()
 

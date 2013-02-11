@@ -7,4 +7,7 @@
 
 #include <QVector>
 #include <QStringList>
+#include <QSize>
+#include <QIcon>
+#include <QLocale>
 

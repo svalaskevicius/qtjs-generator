@@ -25,6 +25,7 @@ void bind_${module}_$safeClassName(vu8::Module &module)
 
     classBinder.Constructor< $constructors >();
 
+$conversions
     ${methodBinders}
 
     module("$safeClassName", classBinder);
@@ -151,7 +152,9 @@ def sanitize_name(name):
             .replace(' ', '') \
             .replace('<', '_') \
             .replace('>', '_') \
-            .replace(',', '_')
+            .replace(',', '_c_') \
+            .replace('&', '_R') \
+            .replace('*', '_P')
 
 
 def file_name_from_class(classname):
@@ -206,13 +209,17 @@ def render_shell_method(method, params, method_class):
 
 def render_shell_methods(methods_by_name, classname, shellname):
     method_overrides = []
+    addedMethods = []
     for (_, methods_for_name) in methods_by_name.items():
         for (method_class, method) in methods_for_name:
             if ast_info.method_has_optional_params(method):
                 for (i, params) in enumerate_optional_params(method):
-                    method_overrides.append(
-                       render_shell_method(method, params, method_class)
-                    )
+                    mdef = method_definition(method, i)
+                    if mdef not in addedMethods:
+                        addedMethods.append(mdef)
+                        method_overrides.append(
+                           render_shell_method(method, params, method_class)
+                        )
     return '\n'.join(method_overrides)+'\n'
 
 
@@ -224,23 +231,27 @@ def generate_shell(cpp_class, module, classname, shellname, methods):
         '};'
 
 
-def generate_class(cpp_class, module, rootdir):
+def generate_class(classname, cpp_class, classfile, module, rootdir):
     target_dir = os.path.join(MYDIR, '..', 'generated_cpp', module)
     if not os.path.isdir(target_dir):
         os.makedirs(target_dir)
 
     template_args = {'module':module}
 
-    classname = ast_info.semantic_name(cpp_class)
     shellname = '_Shell_'+sanitize_name(classname)
     methods_by_name = get_class_methods(cpp_class, classname, shellname)
 
     template_args['className'] = shellname
-    template_args['includes'] = "\n".join(["#include <"+path+">" for path in get_includes(cpp_class, rootdir)])
+    template_args['includes'] = "\n".join(["#include <"+path+">" for path in get_includes(cpp_class, rootdir) + [classfile]])
     template_args['safeClassName'] = sanitize_name(classname)
     template_args['constructors'] = render_constructors(get_class_constructors(cpp_class))
     template_args['methodBinders'] = ''
     template_args['shell_class_code'] = generate_shell(cpp_class, module, classname, shellname, methods_by_name)
+    if '<' in classname:
+        # TODO: only partial support for class templates
+        template_args['conversions'] = "    classBinder.ConvertibleTo<"+classname+" >();"
+    else:
+        template_args['conversions'] = "\n".join(["    classBinder.ConvertibleTo<"+ast_info.semantic_name(base)+" >();" for base in [cpp_class]+list(ast_info.retrieve_class_parents_recursive(cpp_class))])
 
     for (name, methods) in methods_by_name.items():
         methods = [(shellname if ast_info.method_has_optional_params(mt) else cl, mt) for (cl, mt) in methods]
@@ -280,7 +291,7 @@ def get_class_methods(cpp_class, classname, shellname):
         for (i, _) in enumerate_optional_params(method):
             added_methods[method_definition(method, i)] = True
 
-    for base in ast_info.retrieve_class_parents(cpp_class):
+    for base in ast_info.retrieve_class_parents_recursive(cpp_class):
         for (access, method) in ast_info.retrieve_class_methods(base):
             mdef = method_definition(method)
             rel_basename = shellname+classname[classname.rindex('::'):]+"::"+base.displayname

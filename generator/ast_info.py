@@ -66,15 +66,17 @@ def type_to_string(type):
     return ret
 
 
-def get_info(node, recursive=True, print_type=True):
-    if recursive:
-        children = [get_info(c, recursive) for c in node.get_children()]
+def get_info(node, levels=100, print_type=True):
+    if levels > 0:
+        children = [get_info(c, levels - 1) for c in node.get_children()]
     else:
         children = None
     if print_type:
         type = type_to_string(node.type.get_canonical())
+        resultType = type_to_string(node.result_type.get_canonical())
     else:
         type = None
+        resultType = None
     return {
         'kind': node.kind,
         'displayname': node.displayname,
@@ -85,7 +87,7 @@ def get_info(node, recursive=True, print_type=True):
         'extent.start': node.extent.start,
         'extent.end': node.extent.end,
         'is_definition': node.is_definition(),
-        'resultType': node.result_type,
+        'resultType': resultType,
         'access': node.access,
         'children': children,
         }
@@ -108,10 +110,27 @@ def recursive_iterator(node):
             yield c1
 
 
+"""
+    return (classname, classnode, classfile)
+"""
 def retrieve_classes(node):
+    classTemplates = {}
+    for n in recursive_iterator(node):
+        if n.kind == CursorKind.CLASS_TEMPLATE and n.is_definition():
+            name = semantic_name(n)
+            template = name[:(name.index('<'))]
+            classTemplates[template] = n
+
     for n in recursive_iterator(node):
         if n.kind == CursorKind.CLASS_DECL and n.is_definition():
-            yield n
+            yield (semantic_name(n), n, n.location.file.name)
+        if n.kind == CursorKind.PARM_DECL:
+            for x in retrieve_used_types(n):
+                if x.kind == CursorKind.CLASS_DECL and x.displayname.endswith(">"):
+                    name = semantic_name(x)
+                    template = name[:(name.index('<'))]
+                    if template in classTemplates:
+                        yield (name, classTemplates[template], n.location.file.name)
 
 
 def retrieve_used_types(node):
@@ -132,6 +151,13 @@ def retrieve_class_parents(node):
             td = n.type.get_declaration()
             if td:
                 yield td
+
+
+def retrieve_class_parents_recursive(node):
+    for n in retrieve_class_parents(node):
+        yield n
+        for n1 in retrieve_class_parents_recursive(n):
+            yield n1
 
 
 def retrieve_class_constructors(node):

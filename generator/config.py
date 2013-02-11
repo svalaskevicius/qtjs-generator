@@ -1,6 +1,7 @@
 
 def should_skip_class(classname):
-    return classname in [
+    return classname.endswith("Private") \
+        or classname in [
         '::QAbstractAnimation',
         '::QAbstractItemModel',
         '::QAbstractListModel',
@@ -48,8 +49,7 @@ def should_skip_class(classname):
         "::QRunnable",
         "::QFutureWatcherBase",
         #privates
-        "::QUrlPrivate",
-        "::QUrlQueryPrivate",
+        "::QMap<int, QtPrivate>::ResultItem::const_iterator",
         "::QSharedDataPointer<QUrlQueryPrivate>",
         #misc
         "::QTextDecoder",
@@ -79,7 +79,6 @@ def should_skip_class(classname):
         "::QMacNativeWidget",
         "::QMacCocoaViewContainer",
         # abstract classes
-        "::QStylePrivate",
         "::QAbstractButton",
         "::QGraphicsItem",
         "::QGraphicsObject",
