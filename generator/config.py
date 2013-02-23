@@ -1,6 +1,13 @@
 
-def should_skip_class(classname):
+def is_class_private(classname):
     return classname.endswith("Private") \
+            or classname.endswith("QPrivateSignal") \
+            or "Private," in classname \
+            or "Private>" in classname
+
+
+def should_skip_class(classname):
+    return is_class_private(classname) \
         or classname in [
         '::QAbstractAnimation',
         '::QAbstractItemModel',
@@ -73,6 +80,8 @@ def should_skip_class(classname):
         "::QSocketNotifier",
         "::QFutureInterface<void>",
         "::QItemSelectionModel",
+        "::std::basic_string<char>",
+        "::std::basic_string<wchar_t>",
 
 
         # widgets
@@ -162,6 +171,7 @@ def should_skip_class_method(classname, method):
         "::QString::sprintf",
         "::QEvent::operator=",
         "::QObject::event",
+        "::QAbstractItemModel::columnCount",
     ]
 
 def is_include_blacklisted(filename):

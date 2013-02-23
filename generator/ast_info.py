@@ -4,7 +4,7 @@ from clang.cindex import Index
 from clang.cindex import CursorKind
 from clang.cindex import TypeKind
 from clang.cindex import TokenKind
-from pprint import pprint
+from ctypes import ArgumentError
 
 
 def retrieve_semantic_parents_chain(node):
@@ -17,18 +17,21 @@ def retrieve_semantic_parents_chain(node):
     return ret
 
 
-def type_to_string(type):
+def type_to_string(type, template_params):
     ret = ''
     if type.is_const_qualified():
         ret += 'const '
     if type.kind == TypeKind.POINTER:
-        ret += type_to_string(type.get_pointee()) + ' *'
+        ret += type_to_string(type.get_pointee(), template_params) + ' *'
     elif type.kind == TypeKind.LVALUEREFERENCE:
-        ret += type_to_string(type.get_pointee()) + ' &'
+        ret += type_to_string(type.get_pointee(), template_params) + ' &'
     elif type.kind == TypeKind.VOID:
         ret += 'void'
     elif type.kind == TypeKind.RECORD:
-        ret += semantic_name(type.get_declaration())
+        try:
+            ret += semantic_name(type.get_declaration(), template_params)
+        except ArgumentError:
+            ret += "ERROR"
     elif type.kind == TypeKind.CHAR_S:
         ret += 'char'
     elif type.kind == TypeKind.SCHAR:
@@ -60,7 +63,7 @@ def type_to_string(type):
     elif type.kind == TypeKind.DOUBLE:
         ret += 'double'
     elif type.kind == TypeKind.ENUM:
-        ret += semantic_name(type.get_declaration())
+        ret += semantic_name(type.get_declaration(), template_params)
     else:
         ret += 'UNKNOWN: ' + type.kind.spelling
     return ret
@@ -72,8 +75,8 @@ def get_info(node, levels=100, print_type=True):
     else:
         children = None
     if print_type:
-        type = type_to_string(node.type.get_canonical())
-        resultType = type_to_string(node.result_type.get_canonical())
+        type = type_to_string(node.type.get_canonical(), {})
+        resultType = type_to_string(node.result_type.get_canonical(), {})
     else:
         type = None
         resultType = None
@@ -132,6 +135,18 @@ def retrieve_classes(node):
                     if template in classTemplates:
                         yield (name, classTemplates[template], n.location.file.name)
 
+
+def retrieve_template_params(node):
+    for c in node.get_children():
+        if c.kind == CursorKind.TEMPLATE_TYPE_PARAMETER:
+            yield c
+
+
+def is_class_template(node):
+    return node.kind == CursorKind.CLASS_TEMPLATE
+
+def is_node_existing(node):
+    return CursorKind.NO_DECL_FOUND != node.type
 
 def retrieve_used_types(node):
     for n in recursive_iterator(node):
@@ -199,11 +214,22 @@ def parse_method_usr(usrString):
     return {'const': False, 'volatile': False, 'restrict': False}
 
 
-def semantic_name(node):
-    name = node.displayname
+def node_name(node, template_params):
+    if is_class_template(node):
+        try:
+            return node.spelling+'<'+\
+                ','.join([template_params[p.displayname] for p in retrieve_template_params(node)])+\
+                ' >'
+        except KeyError as e:
+            print "WARNING: no template key found for ",node.displayname,": ",e
+    return node.displayname
+
+
+def semantic_name(node, template_params = {}):
+    name = node_name(node, template_params)
     if name.startswith('::'):
         return name
-    parents = '::'.join([p.displayname for p in
+    parents = '::'.join([node_name(p, template_params) for p in
                         retrieve_semantic_parents_chain(node)])
     if parents and not parents.startswith('::'):
         parents = '::' + parents
@@ -237,5 +263,4 @@ def method_first_optional_param(cppMethod):
 
 def method_has_optional_params(m):
     return None != method_first_optional_param(m)
-
 
