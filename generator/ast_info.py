@@ -178,7 +178,7 @@ def retrieve_class_destructors(node):
 def retrieve_class_methods(node):
     access = 'private'
     for n in node.get_children():
-        if n.access != None:
+        if CursorKind.CXX_ACCESS_SPEC_DECL == n.kind:
             access = n.access
         if n.kind == CursorKind.CXX_METHOD and not n.is_static_method():
             yield (access, n)
