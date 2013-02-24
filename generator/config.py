@@ -174,10 +174,40 @@ def should_skip_class_method(classname, method):
         "::QAbstractItemModel::columnCount",
     ]
 
+
 def is_include_blacklisted(filename):
     if filename.endswith("_impl.h"):
         return True
     if filename.endswith("qobjectdefs.h"):
         return True
     return False
+
+
+def can_copy_object(classname):
+    return classname not in [
+            '::QEventLoop',
+            '::QAnimationDriver',
+            '::QFileSystemWatcher',
+            '::QFutureWatcher<void>',
+            '::QObjectCleanupHandler',
+            '::QResource',
+            '::QThreadPool',
+            '::QThread',
+            '::QRubberBand',
+            '::QTimeEdit',
+            '::QDateEdit',
+            '::QGesture',
+            '::QPanGesture',
+            '::QFormLayout',
+            '::QSwipeGesture',
+            '::QTapGesture',
+            '::QPinchGesture',
+            '::QGesture',
+            '::QTapAndHoldGesture',
+            '::QGraphicsScale',
+            '::QGraphicsRotation',
+            '::QPlainTextDocumentLayout',
+            '::QShortcut',
+        ]
+
 

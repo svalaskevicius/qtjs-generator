@@ -178,10 +178,10 @@ def retrieve_class_parents_recursive(node):
 def retrieve_class_constructors(node):
     access = 'private'
     for n in node.get_children():
-        if n.access != None:
+        if CursorKind.CXX_ACCESS_SPEC_DECL == n.kind:
             access = n.access
-        if n.kind == CursorKind.CONSTRUCTOR and access == 'public':
-            yield n
+        if n.kind == CursorKind.CONSTRUCTOR:
+            yield (access, n)
 
 
 def retrieve_class_destructors(node):

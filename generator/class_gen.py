@@ -19,16 +19,30 @@ namespace qtjs_binder {
 
 $shell_class_code
 
-void bind_${module}_$safeClassName(vu8::Module &module)
+}
+
+namespace vu8 {
+
+template <>
+struct ClassInfo<$class_name > {
+    typedef qtjs_binder::$shell_class_name Impl;
+};
+
+
+}
+
+namespace qtjs_binder {
+
+void bind_${module}_$safe_class_name(vu8::Module &module)
 {
-    vu8::Class<$className> classBinder;
+    vu8::Class<$shell_class_name> classBinder;
 
     classBinder.Constructor< $constructors >();
 
 $conversions
-    ${methodBinders}
+    ${method_binders}
 
-    module("$safeClassName", classBinder);
+    module("$safe_class_name", classBinder);
 }
 
 } // namespace
@@ -37,12 +51,12 @@ $conversions
 
 def method_template():
     return """
-        classBinder.Set<$method_type, &$className::$method >("$method");"""
+        classBinder.Set<$method_type, &$class_name::$method >("$method");"""
 
 
 def method_template_base():
     return """
-        classBinder.Set<$base, $method_type, &$className::$method >("$method");"""
+        classBinder.Set<$base, $method_type, &$class_name::$method >("$method");"""
 
 
 def method_params(cpp_method, template_params, param_limit=None):
@@ -54,11 +68,8 @@ def method_params(cpp_method, template_params, param_limit=None):
 
 def is_type_blacklisted(cpp_type, template_params):
     typename = ast_info.type_to_string(cpp_type.get_canonical(), template_params)
-    ret = config.is_class_private(typename) \
+    return config.is_class_private(typename) \
            or 'UNKNOWN:' in typename
-    if ret:
-        print "dbg: skipping ", typename
-    return ret
 
 
 def are_method_params_blacklisted(cpp_method, template_params):
@@ -88,8 +99,6 @@ def method_definition(cpp_method, template_params, param_limit = None):
 def render_constructors(constructors, template_params):
     if len(constructors) == 0:
         return 'vu8::Factory<>'
-    elif len(constructors) == 1 and not ast_info.method_has_optional_params(constructors[0]):
-        return 'vu8::Factory< ' + method_params(constructors[0], template_params) + ' > '
     else:
         factories = []
         for constructor in constructors:
@@ -102,19 +111,25 @@ def render_constructors(constructors, template_params):
         return 'vu8::FactorySelector< ' + ', '.join(factories) + ' > '
 
 
+def filter_methods_by_access(methods, access = 'public'):
+    for method_access, method in methods:
+        if method_access == access:
+            yield method
+
+
 def render_method(classname, cpp_method, template_params, parent=None):
     if not parent:
         return Template(method_template()) \
             .substitute({
                 'method_type':method_type(cpp_method, template_params),
-                'className':classname,
+                'class_name':classname,
                 'method':cpp_method.spelling
             })
     else:
         return Template(method_template_base()) \
             .substitute({
                 'method_type':method_type(cpp_method, template_params),
-                'className':classname,
+                'class_name':classname,
                 'method':cpp_method.spelling,
                 'base':parent
             })
@@ -181,16 +196,26 @@ def render_shell_constructor(shellname, params, classname, template_params):
 
 
 def render_shell_constructors(constructors, classname, shellname, template_params):
-    if len(constructors) == 0:
-        return ''
-    else:
-        constructor_overrides = []
-        for constructor in constructors:
-            for (i, params) in enumerate_optional_params(constructor):
-                constructor_overrides.append(
-                    render_shell_constructor(shellname, params, classname, template_params)
-                )
-        return '\n'.join(constructor_overrides) + '\n'
+    constructor_overrides = []
+    for constructor in filter_methods_by_access(constructors):
+        for (i, params) in enumerate_optional_params(constructor):
+            constructor_overrides.append(
+                render_shell_constructor(shellname, params, classname, template_params)
+            )
+    if 0 == len(constructor_overrides):
+        constructor_overrides.append(shellname+'() : '+classname+'() {}')
+    if config.can_copy_object(classname) and not has_copy_constructor(constructors, classname, template_params):
+        constructor_overrides.append(shellname+'(const '+classname+ ' &arg1) : '+classname+'(arg1) {}')
+    return '\n'.join(constructor_overrides) + '\n'
+
+
+def has_copy_constructor(constructors, classname, template_params):
+    for access, constructor in constructors:
+        params = list(ast_info.retrieve_method_params(constructor))
+        if 1 == len(params) \
+            and ('const '+classname+' &' == ast_info.type_to_string(params[0].type.get_canonical(), template_params)):
+            return True
+    return False
 
 
 def render_shell_method(method, params, method_class, template_params):
@@ -245,11 +270,12 @@ def generate_class(classname, cpp_class, classfile, module, rootdir):
     shellname = '_Shell_'+sanitize_name(classname)
     methods_by_name = get_class_methods(cpp_class, classname, shellname, template_params)
 
-    template_args['className'] = shellname
+    template_args['class_name'] = classname
+    template_args['shell_class_name'] = shellname
     template_args['includes'] = "\n".join(["#include <"+path+">" for path in get_includes(cpp_class, rootdir) + [classfile]])
-    template_args['safeClassName'] = sanitize_name(classname)
-    template_args['constructors'] = render_constructors(get_class_constructors(cpp_class, template_params), template_params)
-    template_args['methodBinders'] = ''
+    template_args['safe_class_name'] = sanitize_name(classname)
+    template_args['constructors'] = render_constructors(list(filter_methods_by_access(get_class_constructors(cpp_class, template_params))), template_params)
+    template_args['method_binders'] = ''
     template_args['shell_class_code'] = generate_shell(cpp_class, module, classname, shellname, methods_by_name, template_params)
     if '<' in classname:
         # TODO: only partial support for class templates
@@ -259,7 +285,7 @@ def generate_class(classname, cpp_class, classfile, module, rootdir):
 
     for (name, methods) in methods_by_name.items():
         methods = [(shellname if ast_info.method_has_optional_params(mt) else cl, mt) for (cl, mt) in methods]
-        template_args['methodBinders'] += render_methods(classname, methods, name, template_params)
+        template_args['method_binders'] += render_methods(classname, methods, name, template_params)
 
     update_file(
         os.path.join(target_dir, file_name_from_class(classname)),
@@ -288,9 +314,9 @@ def get_includes(classnode, rootdir):
 
 
 def retrieve_class_constructors(classnode, template_params):
-    for c in ast_info.retrieve_class_constructors(classnode):
-        if not are_method_params_blacklisted(c, template_params):
-            yield c
+    for access, constructor in ast_info.retrieve_class_constructors(classnode):
+        if not are_method_params_blacklisted(constructor, template_params):
+            yield access, constructor
 
 
 def get_class_constructors(classnode, template_params):
