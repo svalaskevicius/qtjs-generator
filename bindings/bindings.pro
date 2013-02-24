@@ -15,8 +15,9 @@ QMAKE_CXXFLAGS += -fexceptions -ftemplate-backtrace-limit=0   -g -O0
 
 
 TARGET=test
-SOURCES += main.cpp
 
+HEADERS += QtSignalConnector.h
+SOURCES += main.cpp QtSignalConnector.cpp
 
 GENERATEDCPP = $$PWD/../generated_cpp
 include($$GENERATEDCPP/QtCore.pri)

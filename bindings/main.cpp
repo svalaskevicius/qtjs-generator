@@ -15,6 +15,8 @@
 
 #include <private/v8.h>
 
+#include "QtSignalConnector.h"
+
 QT_BEGIN_NAMESPACE
 extern Q_QML_EXPORT v8::Local<v8::Context> qt_QJSEngineV8Context(QJSEngine *);
 extern Q_QML_EXPORT v8::Local<v8::Value> qt_QJSValueV8Value(const QJSValue &);
@@ -23,7 +25,34 @@ QT_END_NAMESPACE
 namespace qtjs_binder {
 void bind_QtCore(vu8::Module &module);
 void bind_QtWidgets(vu8::Module &module);
+
+// object, signal, callback
+v8::Handle<v8::Value> V8ConnectToSignal(const v8::Arguments& args) {
+    if (args.Length() != 3) {
+        return v8::ThrowException(v8::String::New("connect() expected 3 arguments")); 
+    }
+    try {
+        QObject *obj = vu8::FromV8<QObject *>(args[0]);
+        std::cout << "obj found" << std::endl;
+        char signal[256];
+        const char *src_signal = vu8::FromV8<const char *>(args[1]);
+        if (strlen(src_signal) > 255) {
+            throw std::runtime_error("signal name is too long");
+        }
+        strcpy(signal, src_signal);
+        std::cout << "signal found " << signal << std::endl;
+        v8::Handle<v8::Value> callback = args[2];
+        QtSignalConnector::Instance()->ConnectToSignal(obj, signal, callback);
+    } catch (std::runtime_error &e) {
+        return v8::ThrowException(v8::String::New(e.what())); 
+    }
+    return v8::Null();
 }
+
+}
+
+
+
 
 static inline void bindApi(QJSEngine &engine)
 {
@@ -46,11 +75,9 @@ static inline void bindApi(QJSEngine &engine)
     qtjs_binder::bind_QtCore(mod);
     qtjs_binder::bind_QtWidgets(mod);
 
-    globalV8->Set(
-        v8::String::New("api"),
-        mod
-        .NewInstance()
-    );
+    mod.Set("connect", qtjs_binder::V8ConnectToSignal);
+
+    globalV8->Set(v8::String::New("qt"), mod.NewInstance());
 }
 
 
