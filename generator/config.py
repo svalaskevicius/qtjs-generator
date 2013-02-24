@@ -16,7 +16,6 @@ def should_skip_class(classname):
         '::QAbstractTableModel',
         '::QAbstractState',
         '::QAbstractTransition',
-        '::QObjectData',
         '::QStaticAssertFailure<true>',
         '::QList<T>::iterator',
         '::QList<T>::const_iterator',
@@ -47,7 +46,6 @@ def should_skip_class(classname):
         "::QTextStream",
         "::QTextStreamManipulator",
         "::QMessageLogContext",
-        "::QAnimationGroup",
         #pure virtuals
         "::QIODevice",
         "::QAbstractEventDispatcher",
@@ -74,7 +72,6 @@ def should_skip_class(classname):
         "::QBitRef",
         "::QCharRef",
         "::QByteRef",
-        "::QMetaObject::Connection",
         "::QTemporaryFile",
         "::QSettings",
         "::QSocketNotifier",
