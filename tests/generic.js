@@ -12,9 +12,9 @@ MyWindow = function() {
     this.prototype = this.__proto__ = new qt.QMainWindow();
 
     qt.connect(this, 'customContextMenuRequested(QPoint)', function(point) {
-        stdout.write("received signal\n");
+        stdout.write("received signal\n"+point.x());
     });
-    qt.connect(this, 'destroyed(QObject *)', function(point) {
+    qt.connect(this, 'destroyed(QObject *)', function(object) {
         stdout.write("received destroy signal\n");
     });
     this.customContextMenuRequested(new qt.QPoint(1, 1));

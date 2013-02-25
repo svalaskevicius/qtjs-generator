@@ -26,6 +26,11 @@ namespace qtjs_binder {
 void bind_QtCore(vu8::Module &module);
 void bind_QtWidgets(vu8::Module &module);
 
+static QSharedPointer<QtSignalConnector> &QtSignalConnectorInstance() {
+    static QSharedPointer<QtSignalConnector> _inst;
+    return _inst;
+}
+
 // object, signal, callback
 v8::Handle<v8::Value> V8ConnectToSignal(const v8::Arguments& args) {
     if (args.Length() != 3) {
@@ -41,8 +46,11 @@ v8::Handle<v8::Value> V8ConnectToSignal(const v8::Arguments& args) {
         }
         strcpy(signal, src_signal);
         std::cout << "signal found " << signal << std::endl;
-        v8::Handle<v8::Value> callback = args[2];
-        QtSignalConnector::Instance()->ConnectToSignal(obj, signal, callback);
+        v8::Handle<v8::Function> callback = v8::Handle<v8::Function>::Cast(args[2]);
+        
+        Q_ASSERT(QtSignalConnectorInstance().data());
+
+        QtSignalConnectorInstance()->connectToSignal(obj, signal, callback);
     } catch (std::runtime_error &e) {
         return v8::ThrowException(v8::String::New(e.what())); 
     }
@@ -56,6 +64,8 @@ v8::Handle<v8::Value> V8ConnectToSignal(const v8::Arguments& args) {
 
 static inline void bindApi(QJSEngine &engine)
 {
+    qtjs_binder::QtSignalConnectorInstance().reset(new qtjs_binder::QtSignalConnector(&engine));
+
     v8::HandleScope handleScope;
     v8::Local<v8::Context> context = qt_QJSEngineV8Context(&engine);
     v8::Context::Scope contextScope(context);
