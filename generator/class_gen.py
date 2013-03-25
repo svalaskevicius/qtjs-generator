@@ -24,7 +24,7 @@ $shell_class_code
 namespace vu8 {
 
 template <>
-struct ClassInfo<$class_name > {
+struct ClassInfo< $class_name > {
     typedef qtjs_binder::$shell_class_name Impl;
 };
 
@@ -35,7 +35,7 @@ namespace qtjs_binder {
 
 void bind_${module}_$safe_class_name(vu8::Module &module)
 {
-    vu8::Class<$shell_class_name> classBinder;
+    vu8::Class< $shell_class_name > classBinder;
 
     classBinder.Constructor< $constructors >();
 
@@ -51,12 +51,12 @@ $conversions
 
 def method_template():
     return """
-        classBinder.Set<$method_type, &$class_name::$method >("$method");"""
+        classBinder.Set< $method_type, &$class_name::$method >("$method");"""
 
 
 def method_template_base():
     return """
-        classBinder.Set<$base, $method_type, &$class_name::$method >("$method");"""
+        classBinder.Set< $base, $method_type, &$class_name::$method >("$method");"""
 
 
 def method_params(cpp_method, template_params, param_limit=None):
@@ -156,11 +156,11 @@ def render_methods(classname, methods, method_name, template_params):
             binding_class = (pname if pname else classname)
             for (i, _) in enumerate_optional_params(cppm):
                 method_binders.append(
-                    'vu8::Method<' + \
+                    'vu8::Method< ' + \
                         binding_class +', '+ method_type(cppm, template_params, i) +', &' + binding_class + '::' + cppm.spelling + \
                     ' > '
                 )
-        return "\n        classBinder.Set<vu8::Selector< " + ', '.join(method_binders) + " > > (\""+method_name+"\");"
+        return "\n        classBinder.Set< vu8::Selector< " + ', '.join(method_binders) + " > > (\""+method_name+"\");"
 
 
 def sanitize_name(name):
@@ -279,9 +279,9 @@ def generate_class(classname, cpp_class, classfile, module, rootdir):
     template_args['shell_class_code'] = generate_shell(cpp_class, module, classname, shellname, methods_by_name, template_params)
     if '<' in classname:
         # TODO: only partial support for class templates
-        template_args['conversions'] = "    classBinder.ConvertibleTo<"+classname+" >();"
+        template_args['conversions'] = "    classBinder.ConvertibleTo< "+classname+" >();"
     else:
-        template_args['conversions'] = "\n".join(["    classBinder.ConvertibleTo<"+ast_info.semantic_name(base)+" >();" for base in [cpp_class]+list(ast_info.retrieve_class_parents_recursive(cpp_class))])
+        template_args['conversions'] = "\n".join(["    classBinder.ConvertibleTo< "+ast_info.semantic_name(base)+" >();" for base in [cpp_class]+list(ast_info.retrieve_class_parents_recursive(cpp_class))])
 
     for (name, methods) in methods_by_name.items():
         methods = [(shellname if ast_info.method_has_optional_params(mt) else cl, mt) for (cl, mt) in methods]
