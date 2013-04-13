@@ -59,6 +59,17 @@ def process_file(path, module, skipClasses):
 
     return added_classes
 
+def generate_index_file(dir, findex_fn):
+    incl_contents = ''
+    for file in os.listdir(dir):
+        path = os.path.join(dir, file)
+        if os.path.isfile(path) and not re.match(r'.*\..*', file):
+            print "adding ", module, file
+            incl_contents += "#include <"+module+"/"+file+">\n";
+    findex = open(findex_fn, "w");
+    findex.write(incl_contents);
+    findex.close()
+
 class_list = []
 for (module, dir) in [ \
         (module, dir) for (module, dir) in [ \
@@ -69,19 +80,13 @@ for (module, dir) in [ \
         continue
 
     print "top level dir: ", module,  dir
-    incl_contents = ''
-    for file in os.listdir(dir):
-        path = os.path.join(dir, file)
-        if os.path.isfile(path) and not re.match(r'.*\..*', file):
-            print "adding ", module, file
-            incl_contents += "#include <"+module+"/"+file+">\n";
     targetDir = os.path.join(MYDIR, '..', 'generated_cpp')
     if not os.path.isdir(targetDir):
         os.makedirs(targetDir)
     findex_fn = os.path.join(targetDir, '__tmp_'+module+'.h')
-    findex = open(findex_fn, "w");
-    findex.write(incl_contents);
-    findex.close()
+    if not os.path.exists(findex_fn):
+        generate_index_file(dir, findex_fn)
+
     added_classes = process_file(findex_fn, module, class_list)
     class_list.extend(added_classes)
     sys.stdout.flush()
