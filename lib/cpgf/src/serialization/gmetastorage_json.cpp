@@ -24,9 +24,7 @@
 #include "cpgf/gerrorcode.h"
 #include "../pinclude/gmetaarchivecommonimpl.h"
 
-#include "cpgf/thirdparty/jsoncpp/value.h"
-#include "cpgf/thirdparty/jsoncpp/reader.h"
-#include "cpgf/thirdparty/jsoncpp/writer.h"
+#include "../thirdparty/jsoncpp/json/json.h"
 
 #include <stack>
 #include <sstream>
