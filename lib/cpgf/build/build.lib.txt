@@ -108,7 +108,7 @@ endif(${HAS_PYTHON})
 
 set(LIB_COMPILE_FLAGS " ")
 if(CMAKE_COMPILER_IS_GNUCC)
-	set(LIB_COMPILE_FLAGS "-Wall -Wextra -Wundef -O3")
+	set(LIB_COMPILE_FLAGS "-Wall -Wextra -Wundef -O0 -g")
 
 	if(SUPPORT_GCC_0X)
 		if(MINGW)

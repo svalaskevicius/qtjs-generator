@@ -24,6 +24,7 @@
 
 #include <iostream>
 #include <string.h>
+#include "v8.h"
 
 #include "register_meta_qtcore.h"
 
@@ -33,10 +34,9 @@ using namespace std;
 
 int main(int argc, char * argv[])
 {
-	GDefineMetaNamespace define = GDefineMetaNamespace::declare("gl");
-
+	GDefineMetaNamespace define = GDefineMetaNamespace::declare("qt");
     meta_qtcore::registerMain_QtCore(define);
-	
+
 	const char * fileName = "main.js";
 	
 	if(argc > 1) {
@@ -44,26 +44,28 @@ int main(int argc, char * argv[])
 	}
 
 	cout << "Running.." << endl;
-	
-	GScopedPointer<GScriptRunner> runner;
-	GScopedInterface<IMetaService> service(createDefaultMetaService());
-	
-	runner.reset(createV8ScriptRunner(service.get()));
+    {	
+        GScopedPointer<GScriptRunner> runner;
+        GScopedInterface<IMetaService> service(createDefaultMetaService());
 
-	GScopedInterface<IScriptObject> scriptObject(runner->getScripeObject());
+        runner.reset(createV8ScriptRunner(service.get()));
 
-	scriptObject->bindCoreService("cpgf", NULL);
+        GScopedInterface<IScriptObject> scriptObject(runner->getScripeObject());
+
+        scriptObject->bindCoreService("cpgf", NULL);
 	
-	GScopedInterface<IMetaClass> metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())));
-	scriptObject->bindClass("qt", metaClass.get());
-	
-	if(runner->executeFile(fileName)) {
-		invokeScriptFunction(scriptObject.get(), "start");
-	}
-	else {
-		cout << "Failed to execute " << fileName << ", maybe it doesn't exist?" << endl;
-	}
-	
+
+        GScopedInterface<IMetaClass> metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())));
+        scriptObject->bindClass("qt", metaClass.get());
+
+        if(runner->executeFile(fileName)) {
+            invokeScriptFunction(scriptObject.get(), "start");
+        }
+        else {
+            cout << "Failed to execute " << fileName << ", maybe it doesn't exist?" << endl;
+        }
+    }
+    while (!v8::V8::IdleNotification()); // run GC
 	return 0;
 }
 

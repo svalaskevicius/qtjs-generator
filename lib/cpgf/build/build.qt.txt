@@ -8,7 +8,7 @@ set(SAMPLE_BIND_PATH ${SAMPLE_ROOT}/scriptbind)
 
 set(SAMPLE_COMPILE_FLAGS " ")
 if(CMAKE_COMPILER_IS_GNUCC)
-	set(SAMPLE_COMPILE_FLAGS "-Wall -Wextra -Wundef -O3 -fPIC")
+	set(SAMPLE_COMPILE_FLAGS "-Wall -Wextra -Wundef -O0 -g -DQDEBUG -fPIC")
 
 	if(SUPPORT_GCC_0X)
 		if(MINGW)
