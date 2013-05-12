@@ -29,6 +29,7 @@ struct IVariantShadowObject : public IObject
 {
 public:
 	virtual void * G_API_CC getObject() = 0;
+	virtual ~IVariantShadowObject() {};
 };
 
 template <typename T>
