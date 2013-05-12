@@ -280,7 +280,7 @@ public class WriterUtil {
 			className = className.toLowerCase();
 		}
 		else {
-			className = cppClassName;
+			className = Util.normalizeSymbol(cppClassName);
 		}
 		className = Util.upcaseFirst(className);
 			
