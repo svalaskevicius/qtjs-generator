@@ -234,6 +234,7 @@ public class Util {
 
 	public static String normalizeSymbol(String s) {
 		s = s.replaceAll("::", "_");
+		s = s.replaceAll("-", "_");
 		s = s.replaceAll("\\.", "_");
 		return s;
 	}
