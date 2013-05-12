@@ -20,8 +20,7 @@
 #include "cpgf/gmetadefine.h"
 #include "cpgf/scriptbind/gscriptbindutil.h"
 #include "cpgf/gscopedinterface.h"
-
-#include "../samplescriptbindutil.h"
+#include "cpgf/scriptbind/gv8runner.h"
 
 #include <iostream>
 #include <string.h>
@@ -31,8 +30,6 @@
 
 using namespace cpgf;
 using namespace std;
-
-ScriptLanguage lang = slJavascript;
 
 int main(int argc, char * argv[])
 {
@@ -46,14 +43,12 @@ int main(int argc, char * argv[])
 		fileName = argv[1];
 	}
 
-	cout << "Running " << getLanguageText(lang) << " script." << endl;
-	
-	intializeScriptEngine(lang);
+	cout << "Running.." << endl;
 	
 	GScopedPointer<GScriptRunner> runner;
 	GScopedInterface<IMetaService> service(createDefaultMetaService());
 	
-	runner.reset(createScriptRunnerFromScriptLanguage(lang, service.get()));
+	runner.reset(createV8ScriptRunner(service.get()));
 
 	GScopedInterface<IScriptObject> scriptObject(runner->getScripeObject());
 
@@ -69,8 +64,6 @@ int main(int argc, char * argv[])
 		cout << "Failed to execute " << fileName << ", maybe it doesn't exist?" << endl;
 	}
 	
-	finalizeScriptEngine(lang);
-
 	return 0;
 }
 
