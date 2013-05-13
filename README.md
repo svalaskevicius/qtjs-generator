@@ -1,6 +1,17 @@
 Qt API bindings generator for V8 JS engine
 ==========================================
 
+WARNING
+-------
+
+The project is yet in a pre-alpha state and is not yet (fully) functional.
+It is only recommended to use it, if you are prepared to debug and implement the missing features ;)
+
+There are currently two implementations being worked on:
+  * generate the reflection code using python and clang, bind it to v8 using vu8 library.
+  * use the cpgf library for C++ reflection (generates code using doxygen), and use the built-in
+    bindings API (which also supports more target languages OOTB).
+
 How to generate
 ---------------
 
