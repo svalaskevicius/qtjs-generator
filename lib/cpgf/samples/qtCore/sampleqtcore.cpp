@@ -21,6 +21,7 @@
 #include "cpgf/scriptbind/gscriptbindutil.h"
 #include "cpgf/gscopedinterface.h"
 #include "cpgf/scriptbind/gv8runner.h"
+#include "cpgf/scriptbind/gv8bind.h"
 
 #include <iostream>
 #include <string.h>
@@ -66,6 +67,7 @@ int main(int argc, char * argv[])
         }
     }
     while (!v8::V8::IdleNotification()); // run GC
+    clearV8DataPool();
 	return 0;
 }
 
