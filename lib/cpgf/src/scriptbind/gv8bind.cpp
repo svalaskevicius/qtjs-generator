@@ -1288,6 +1288,10 @@ IScriptObject * createV8ScriptInterface(IMetaService * service, Local<Object> ob
 	return new ImplScriptObject(new GV8ScriptObject(service, object, config), true);
 }
 
+void clearV8DataPool()
+{
+    getV8DataWrapperPool()->clear();
+}
 
 G_GUARD_LIBRARY_LIFE
 
