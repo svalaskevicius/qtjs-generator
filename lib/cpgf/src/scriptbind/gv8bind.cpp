@@ -307,11 +307,19 @@ GScriptDataType getV8Type(Local<Value> value, IMetaTypedItem ** typeItem)
 	}
 
 	if(value->IsBoolean()) {
-		return sdtFundamental;
+		return sdtBoolean;
 	}
 
-	if(value->IsInt32() || value->IsNumber()) {
-		return sdtFundamental;
+	if(value->IsUint32()) {
+		return sdtUnsignedInteger;
+	}
+
+	if(value->IsInt32()) {
+		return sdtSignedInteger;
+	}
+
+	if(value->IsNumber()) {
+		return sdtReal;
 	}
 
 	if(value->IsString()) {

@@ -46,6 +46,9 @@ enum GScriptDataType {
 	sdtRaw = 9,
 
 	sdtScriptObject = 10, sdtScriptMethod = 11,
+
+	sdtSignedInteger = 12, sdtUnsignedInteger = 13,
+	sdtBoolean = 14, sdtReal = 15
 };
 
 
