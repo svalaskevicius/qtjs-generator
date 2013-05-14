@@ -131,6 +131,31 @@ bool GMetaType::isFundamental() const
 	return vtIsFundamental(this->getVariantType());
 }
 
+bool GMetaType::isBoolean() const
+{
+	return vtIsBoolean(this->getVariantType());
+}
+
+bool GMetaType::isInteger() const
+{
+	return vtIsInteger(this->getVariantType());
+}
+
+bool GMetaType::isSignedInteger() const
+{
+	return vtIsSignedInteger(this->getVariantType());
+}
+
+bool GMetaType::isUnsignedInteger() const
+{
+	return vtIsUnsignedInteger(this->getVariantType());
+}
+
+bool GMetaType::isReal() const
+{
+	return vtIsReal(this->getVariantType());
+}
+
 bool GMetaType::baseIsArray() const
 {
 	return this->hasFlag(meta_internal::mtFlagBaseIsArray);

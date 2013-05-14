@@ -992,8 +992,28 @@ void rankCallableParam(ConvertRank * outputRank, IMetaService * service, IMetaCa
 		return;
 	}
 	
-	if(proto.isFundamental() && sdt == sdtFundamental) {
+	if(proto.isSignedInteger() && sdt == sdtSignedInteger) {
 		outputRank->weight = ValueMatchRank_Equal;
+		return;
+	}
+
+	if(proto.isUnsignedInteger() && sdt == sdtUnsignedInteger) {
+		outputRank->weight = ValueMatchRank_Equal;
+		return;
+	}
+
+	if(proto.isBoolean() && sdt == sdtBoolean) {
+		outputRank->weight = ValueMatchRank_Equal;
+		return;
+	}
+
+	if(proto.isReal() && sdt == sdtReal) {
+		outputRank->weight = ValueMatchRank_Equal;
+		return;
+	}
+
+	if(proto.isFundamental() && sdt == sdtFundamental) {
+		outputRank->weight = ValueMatchRank_Implicit_CastToDerived;
 		return;
 	}
 

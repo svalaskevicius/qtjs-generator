@@ -128,6 +128,11 @@ public:
 	bool baseIsArray() const;
 	
 	bool isFundamental() const;
+	bool isBoolean() const;
+	bool isInteger() const;
+	bool isSignedInteger() const;
+	bool isUnsignedInteger() const;
+	bool isReal() const;
 	
 	bool isFunction() const;
 	bool isConstFunction() const;
