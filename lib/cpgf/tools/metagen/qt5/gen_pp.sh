@@ -1,12 +1,21 @@
-#!/bin/sh
+#!/bin/bash
 
 # find qtheaders -type f -exec perl -p -i -e 's/Q_DISABLE_COPY\((.*)\)/~\1(){ }/g' '{}' \;
+
+function prepare_file() {
+    perl -p -i -e 's/Q_DISABLE_COPY\((.*)\)/\1(const \1 &){ } \1 &operator=(const \1 &){ }/g' "$1"
+    perl -p -i -e 's/Q_STATIC_ASSERT(_X)?(\((?:[^()]+|(?2))*\));//mg' "$1"
+    perl -p -i -e 's/QT_ASCII_CAST_WARN//g' "$1"
+}
 
 rm -Rf qtheaders xml build
 
 cp -R ~/bin/Qt5.0.1/5.0.1/gcc_64/include qtheaders
-find qtheaders -type f -exec perl -p -i -e 's/Q_DISABLE_COPY\((.*)\)/\1(const \1 &){ } \1 &operator=(const \1 &){ }/g' '{}' \;
-
+for f in $(find qtheaders -type f) ; do
+    prepare_file "$f"
+    echo -n .
+done
+echo ""
 
 doxygen
 
