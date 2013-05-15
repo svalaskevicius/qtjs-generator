@@ -3,9 +3,21 @@
 # find qtheaders -type f -exec perl -p -i -e 's/Q_DISABLE_COPY\((.*)\)/~\1(){ }/g' '{}' \;
 
 function prepare_file() {
-    perl -p -i -e 's/Q_DISABLE_COPY\((.*)\)/\1(const \1 &){ } \1 &operator=(const \1 &){ }/g' "$1"
-    perl -p -i -e 's/Q_STATIC_ASSERT(_X)?(\((?:[^()]+|(?2))*\));//mg' "$1"
-    perl -p -i -e 's/QT_ASCII_CAST_WARN//g' "$1"
+    perl -e '
+    open FH, @ARGV[0] ;
+    my $s="";
+    while (<FH>) {
+        $s .= $_;
+    }
+    close FH;
+
+    $s =~ s/Q_DISABLE_COPY\s*\((.*?)\)/\1(const \1 &){} \1 &operator=(const \1 &){}/g;
+    $s =~ s/Q_STATIC_ASSERT(?:_X)?(\((?:[^()]+|(?1))*\))//g;
+    $s =~ s/QT_ASCII_CAST_WARN//g;
+
+    open FH, ">".@ARGV[0];
+    print FH $s;
+    close FH;' "$1"
 }
 
 rm -Rf qtheaders xml build
