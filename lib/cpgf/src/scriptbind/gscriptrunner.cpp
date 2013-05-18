@@ -40,6 +40,7 @@ GScriptRunnerImplement::GScriptRunnerImplement(IMetaService * service)
 
 GScriptRunnerImplement::~GScriptRunnerImplement()
 {
+    this->service->releaseReference();
 }
 
 GScriptRunner * GScriptRunnerImplement::createScriptRunner(GScriptRunnerImplement * implement)
