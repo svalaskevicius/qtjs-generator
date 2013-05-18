@@ -161,6 +161,66 @@ struct IsConvertible < const ::QByteArray &, To, typename GEnableIfResult<
     G_STATIC_CONSTANT(bool, Result = false);
 };
 
+template <typename From>
+struct IsConvertible <From, ::QJsonValue, typename GEnableIfResult<
+    GOrResult<
+        IsSameType<From, unsigned int>,
+        IsSameType<From, long signed int>,
+        IsSameType<From, long unsigned int>,
+        IsSameType<From, long long signed int>,
+        IsSameType<From, long long unsigned int>,
+        IsSameType<From, long double>,
+        IsPointer<From>
+    >
+    >::Result
+> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+
+
+template <typename From>
+struct IsConvertible <From, const ::QJsonValue &, typename GEnableIfResult<
+    GOrResult<
+        IsSameType<From, unsigned int>,
+        IsSameType<From, long signed int>,
+        IsSameType<From, long unsigned int>,
+        IsSameType<From, long long signed int>,
+        IsSameType<From, long long unsigned int>,
+        IsSameType<From, long double>,
+        IsPointer<From>
+    >
+    >::Result
+> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+
+template <typename From>
+struct IsConvertible <From, ::QVariant, typename GEnableIfResult<
+    GOrResult<
+        IsSameType<From, long signed int>,
+        IsSameType<From, long unsigned int>,
+        IsSameType<From, long double>,
+        IsPointer<From>
+    >
+    >::Result
+> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+
+template <typename From>
+struct IsConvertible <From, const ::QVariant &, typename GEnableIfResult<
+    GOrResult<
+        IsSameType<From, long signed int>,
+        IsSameType<From, long unsigned int>,
+        IsSameType<From, long double>,
+        IsPointer<From>
+    >
+    >::Result
+> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+
+
 
 }
 
