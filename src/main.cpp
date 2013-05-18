@@ -29,14 +29,33 @@
 
 #include "register_meta_qtcore.h"
 
+#include <QtCore/QObject>
+
 
 using namespace cpgf;
 using namespace std;
 
+void connectToSignal(QObject *obj, QString signal, IScriptFunction * callback ) {
+    cout << "connect! " << endl;
+                                                                                                       
+    cpgf::GVariantData params[REF_MAX_ARITY];
+    params[0] = GVariant("testparam").takeData();
+    GVariant result;
+
+    callback->invoke(&result.refData(), params, 1);
+    //callback->invokeIndirectly(&result.refData(), params, 1);
+
+//    delete params[0];
+}
+
+// object, signal, callback
+// v8::Handle<v8::Value> V8ConnectToSignal()
 int main(int argc, char * argv[])
 {
 	GDefineMetaNamespace define = GDefineMetaNamespace::declare("qt");
     meta_qtcore::registerMain_QtCore(define);
+
+    define._method("connect", &connectToSignal);
 
 	const char * fileName = "main.js";
 	
@@ -59,10 +78,7 @@ int main(int argc, char * argv[])
         GScopedInterface<IMetaClass> metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())));
         scriptObject->bindClass("qt", metaClass.get());
 
-        if(runner->executeFile(fileName)) {
-            invokeScriptFunction(scriptObject.get(), "start");
-        }
-        else {
+        if(!runner->executeFile(fileName)) {
             cout << "Failed to execute " << fileName << ", maybe it doesn't exist?" << endl;
         }
     }
