@@ -19,7 +19,7 @@ var config = {
   wrapBitField : true, // default is true
   wrapOperator : true, // default is true
 
-  autoRegisterToGlobal : true,
+  autoRegisterToGlobal : false,
 
   metaNamespace : "qtcore",
   headerHeaderCode : "#include \"../../../qtcompat.h\"\n",
