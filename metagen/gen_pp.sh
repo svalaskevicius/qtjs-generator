@@ -34,5 +34,5 @@ echo ""
 doxygen
 
 
-find xml -type f -name '*.xml' -exec perl -p -i -e 's#/home/sarunas/priv/dev/qtjs-generator/lib/cpgf/tools/metagen/qt5/qtheaders#/home/sarunas/bin/Qt5.0.1/5.0.1/gcc_64/include#g' '{}' \;
+find xml -type f -name '*.xml' -exec perl -p -i -e 's#/home/sarunas/priv/dev/qtjs-generator/metagen/qtheaders#/home/sarunas/bin/Qt5.0.1/5.0.1/gcc_64/include#g' '{}' \;
 
