@@ -220,6 +220,10 @@ struct IsConvertible <From, const ::QVariant &, typename GEnableIfResult<
     G_STATIC_CONSTANT(bool, Result = false);
 };
 
+template <>
+struct IsConvertible <const QDynamicMetaObjectData &, const cpgf::IObject &> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
 
 
 }

@@ -57,6 +57,7 @@ var config = {
   +"#include <QtCore/QMutex>\n"
   +"#include <QtCore/QReadWriteLock>\n"
   +"#include <QtCore/QPauseAnimation>\n"
+  +"#include <QtCore/qmetaobject.h>\n"
   +"#include <QtCore/QState>\n",
   //	sourceHeaderReplacer : [ "!.*Box2D[^/]*/Box2D!i", "Box2D" ],
 //	metaHeaderPath : "cpgf/metadata/box2d/",
@@ -84,7 +85,6 @@ function processCallback(item, data)
   if(item.getLocation().indexOf('qglobal') >= 0) {		data.skipBind = true;	}
   if(item.getLocation().indexOf('qobjectdefs') >= 0) {		data.skipBind = true;	}
   if(item.getLocation().indexOf('qcompilerdetection') >= 0) {		data.skipBind = true;	}
-  if(item.getLocation().indexOf('qmetatype') >= 0) {		data.skipBind = true;	}
   if(item.getLocation().indexOf('qexception') >= 0) {		data.skipBind = true;	}
 
   if(item.getLocation().indexOf('qfuture') >= 0) {		data.skipBind = true;	}
@@ -113,9 +113,6 @@ function processCallback(item, data)
   if(name.indexOf('QUrl') >= 0) { data.skipBind = true; }
   if(name.indexOf('QAnimationGroup') >= 0) { data.skipBind = true; }
   if(name.indexOf('QAbstractState') >= 0) { data.skipBind = true; }
-  if(name.indexOf('QObject') >= 0) { // fails
-    data.skipBind = true;
-  }
   if(name.indexOf('QDynamicMetaObjectData') >= 0) { // fails
     data.skipBind = true;
   }
@@ -129,12 +126,6 @@ function processCallback(item, data)
     data.skipBind = true;
   }
   if(name.indexOf('QNoImplicitBoolCast') >= 0) { // fails
-    data.skipBind = true;
-  }
-  if(name.indexOf('QMeta') >= 0) { // fails
-    data.skipBind = true;
-  }
-  if(name.indexOf('qmeta') >= 0) { // fails
     data.skipBind = true;
   }
   if(name.indexOf('QResource') >= 0) { // fails
@@ -200,6 +191,15 @@ function processCallback(item, data)
       case "QStringMatcher::q_data":
       case "QStringMatcher::p":
       case "QProcess::error":
+      case "QObjectData::dynamicMetaObject":
+      case "QObjectData::metaObject":
+      case "TreatAsQObjectBeforeMetaType":
+      case "QMetaType":
+      case "QMetaTypeIdQObject":
+      case "QMetaTypeIdQObject< T *, true >":
+      case "QObjectCleanupHandler":
+      case "MetaObjectForType":
+      case "qt_metatype_id":
         data.skipBind = true;
         break;
       case "QArrayData":
