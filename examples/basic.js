@@ -23,8 +23,14 @@ pt = new qt.QPoint(1, 2);
   qt.connect(s1, 'objectNameChanged(const QString &)', function(name){
     log.debug()
       ._opLeftShift(new qt.QString("NAME CHANGED! "+name))
+      ._opLeftShift(name)
     ;
   });
+    log.debug()
+      ._opLeftShift(new qt.QString("connected"))
+    ;
+  s1.setObjectName(new qt.QString("asd"));
+
 })();
 
 /*

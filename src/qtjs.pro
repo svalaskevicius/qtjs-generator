@@ -17,8 +17,8 @@ CONFIG += c++11 exceptions debug
 
 TARGET=test
 
-# HEADERS += QtSignalConnector.h
-SOURCES += main.cpp # QtSignalConnector.cpp
+HEADERS += QtSignalConnector.h
+SOURCES += main.cpp QtSignalConnector.cpp
 
 SOURCES += $$files(../metagen/build/QtCore/src/*.cpp) 
 

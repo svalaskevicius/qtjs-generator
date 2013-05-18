@@ -30,22 +30,21 @@
 #include "register_meta_qtcore.h"
 
 #include <QtCore/QObject>
+#include <QtCore/QSharedPointer>
 
+#include "QtSignalConnector.h"
 
 using namespace cpgf;
 using namespace std;
 
-void connectToSignal(QObject *obj, QString signal, IScriptFunction * callback ) {
-    cout << "connect! " << endl;
-                                                                                                       
-    cpgf::GVariantData params[REF_MAX_ARITY];
-    params[0] = GVariant("testparam").takeData();
-    GVariant result;
+namespace qtjs_binder {
 
-    callback->invoke(&result.refData(), params, 1);
-    //callback->invokeIndirectly(&result.refData(), params, 1);
 
-//    delete params[0];
+void connectToSignal(QObject *obj, const char * signal, IScriptFunction *callback ) {
+    static QtSignalConnector _inst;
+    _inst.connectToSignal(obj, signal, callback);
+}
+
 }
 
 // object, signal, callback
@@ -55,7 +54,7 @@ int main(int argc, char * argv[])
 	GDefineMetaNamespace define = GDefineMetaNamespace::declare("qt");
     meta_qtcore::registerMain_QtCore(define);
 
-    define._method("connect", &connectToSignal);
+    define._method("connect", &qtjs_binder::connectToSignal, MakePolicy<GMetaRuleTransferOwnership<2> >());
 
 	const char * fileName = "main.js";
 	
