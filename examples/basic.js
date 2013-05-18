@@ -15,6 +15,16 @@ pt = new qt.QPoint(1, 2);
     ._opLeftShift(pt.y())
     ._opLeftShift(qt.qHash("test"))
   ;
+
+  var machine = new qt.QStateMachine();
+  var s1 = new qt.QState();
+  var s2 = new qt.QState();
+
+  qt.connect(s1, 'objectNameChanged(const QString &)', function(name){
+    log.debug()
+      ._opLeftShift(new qt.QString("NAME CHANGED! "+name))
+    ;
+  });
 })();
 
 /*
