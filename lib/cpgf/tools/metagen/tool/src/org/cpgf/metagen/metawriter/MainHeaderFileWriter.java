@@ -36,7 +36,7 @@ public class MainHeaderFileWriter extends CodeFileWriter {
 
 	@Override
 	public boolean shouldSkip() {
-		return ! this.getConfig().autoRegisterToGlobal;
+		return ! this.getConfig().generateRegisterHeader;
 	}
 	
 	@Override
