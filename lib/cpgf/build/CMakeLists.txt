@@ -9,6 +9,5 @@ include(build.global.txt)
 include(build.lib.txt)
 
 include(build.samples.txt)
-include(build.qt.txt)
 include(build.unittest.txt)
 
