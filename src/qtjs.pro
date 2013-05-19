@@ -5,7 +5,12 @@ TEMPLATE = app
 INCLUDEPATH += ../lib/cpgf/include/ ../metagen/build/QtCore/include ../include
 
 
-CONFIG += c++11 exceptions debug
+CONFIG += c++11 exceptions release # debug
+
+QMAKE_CXXFLAGS_RELEASE -= -O2
+QMAKE_CXXFLAGS_RELEASE += -Os
+QMAKE_LFLAGS_RELEASE -= -Wl,-O1
+QMAKE_LFLAGS_RELEASE += -Wl,-Os -Os
 
 # mac + clang
 # QMAKE_CFLAGS += -mmacosx-version-min=10.7 -stdlib=libc++
