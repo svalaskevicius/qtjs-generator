@@ -47,14 +47,12 @@ void connectToSignal(QObject *obj, const char * signal, IScriptFunction *callbac
 
 }
 
-// object, signal, callback
-// v8::Handle<v8::Value> V8ConnectToSignal()
 int main(int argc, char * argv[])
 {
 	GDefineMetaNamespace define = GDefineMetaNamespace::declare("qt");
     meta_qtcore::registerMain_QtCore(define);
 
-    define._method("connect", &qtjs_binder::connectToSignal, MakePolicy<GMetaRuleTransferOwnership<2> >());
+    define._method("connect", &qtjs_binder::connectToSignal);
 
 	const char * fileName = "main.js";
 	
