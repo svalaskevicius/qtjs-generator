@@ -1,6 +1,13 @@
 #!/bin/bash
 
-# find qtheaders -type f -exec perl -p -i -e 's/Q_DISABLE_COPY\((.*)\)/~\1(){ }/g' '{}' \;
+MYDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+QTINC="$( readlink -f "$1" )"
+
+if ! test -d "$QTINC" ; then
+    echo "qt dir not specified." >&2
+    exit 1
+fi
+
 
 function prepare_file() {
     perl -e '
@@ -24,7 +31,7 @@ function prepare_file() {
 
 rm -Rf qtheaders xml build
 
-cp -R ~/bin/Qt5.0.1/5.0.1/gcc_64/include qtheaders
+cp -R "$QTINC" qtheaders
 for f in $(find qtheaders -type f) ; do
     prepare_file "$f"
     echo -n .
@@ -33,6 +40,5 @@ echo ""
 
 doxygen
 
-
-find xml -type f -name '*.xml' -exec perl -p -i -e 's#/home/sarunas/priv/dev/qtjs-generator/metagen/qtheaders#/home/sarunas/bin/Qt5.0.1/5.0.1/gcc_64/include#g' '{}' \;
+find xml -type f -name '*.xml' -exec perl -p -i -e "s#$MYDIR/qtheaders#$QTINC#g" '{}' \;
 
