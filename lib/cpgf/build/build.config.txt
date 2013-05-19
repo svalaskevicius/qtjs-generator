@@ -15,7 +15,7 @@ set(SUPPORT_GCC_0X 1)
 
 # set 1 to enable unit tests.
 # it requires UnitTest++ installed.
-set(HAS_UNITTEST 1)
+set(HAS_UNITTEST 0)
 
 # set 1 to enable Boost library, 0 to disable. This is only used in unit test.
 set(HAS_BOOST 1)
