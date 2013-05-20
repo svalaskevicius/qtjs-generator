@@ -22,7 +22,7 @@ var config = {
   autoRegisterToGlobal : false,
 
   metaNamespace : "qtcore",
-  headerHeaderCode : "#include \"../../../qtcompat.h\"\n",
+  headerHeaderCode : "#include <qtCore_cpgf_compat.h>\n",
   sourceHeaderCode :
      "#include <QtCore/qglobal.h>\n#include <QtCore/QString>\n#include <QtCore/QDataStream>\n"
     +"#include <QtCore/QDateTime>\n"
