@@ -41,6 +41,7 @@ var config = {
     +"#include <QtWidgets/QCompleter>\n"
     +"#include <QtWidgets/QCalendarWidget>\n"
     +"#include <QtWidgets/QApplication>\n"
+    +"#include <QtWidgets/QPushButton>\n"
   ,
   //	sourceHeaderReplacer : [ "!.*Box2D[^/]*/Box2D!i", "Box2D" ],
 //	metaHeaderPath : "cpgf/metadata/box2d/",
@@ -67,6 +68,7 @@ function processCallback(item, data)
   var skipByNamePart = [
     'Private',
     'QColorDialog',
+    'QDirModel',
   ];
 
   for (var i in skipByLocationPart) {
