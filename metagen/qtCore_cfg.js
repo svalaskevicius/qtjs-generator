@@ -24,7 +24,9 @@ var config = {
   metaNamespace : "qtcore",
   headerHeaderCode : "#include <qtCore_cpgf_compat.h>\n",
   sourceHeaderCode :
-     "#include <QtCore/qglobal.h>\n#include <QtCore/QString>\n#include <QtCore/QDataStream>\n"
+     "#include <QtCore/qglobal.h>\n"
+    +"#include <QtCore/QString>\n"
+    +"#include <QtCore/QDataStream>\n"
     +"#include <QtCore/QDateTime>\n"
     +"#include <QtCore/QTranslator>\n"
     +"#include <QtCore/QAbstractEventDispatcher>\n"
@@ -71,6 +73,11 @@ var config = {
 
 function processCallback(item, data)
 {
+  if(item.getLocation().indexOf('/QtCore/') == -1) {
+    data.skipBind = true;
+    return;
+  }
+  print (item.getLocation()+" OOOO !!!\n");
   var skipByLocationPart = [
     '/private/',
     'qobject_impl',

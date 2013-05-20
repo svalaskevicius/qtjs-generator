@@ -32,15 +32,22 @@ function prepare_file() {
 rm -Rf qtheaders xml build
 
 cp -R "$QTINC" qtheaders
+
+pushd qtheaders
+rm -R QtCLucene QtConcurrent QtDBus QtDeclarative QtDesigner QtDesignerComponents \
+      QtHelp QtMultimedia QtMultimediaQuick_p QtMultimediaWidgets QtNetwork QtOpenGL \
+      QtPlatformSupport QtPrintSupport QtQml QtQmlDevTools QtQuick QtQuickParticles \
+      QtQuickTest QtScript QtScriptTools QtSql QtSvg QtTest QtUiTools QtV8 QtWebKit \
+      QtWebKitWidgets QtXml QtXmlPatterns QtZlib
+popd
+
 for f in $(find qtheaders -type f) ; do
     prepare_file "$f"
     echo -n .
 done
 echo ""
 
-mkdir xml
-doxygen qtCore.doxyfile
-doxygen qtWidgets.doxyfile
+doxygen qt.doxyfile
 
 find xml -type f -name '*.xml' -exec perl -p -i -e "s#$MYDIR/qtheaders#$QTINC#g" '{}' \;
 
