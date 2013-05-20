@@ -25,7 +25,22 @@ var config = {
   headerHeaderCode : "#include <qtWidgets_cpgf_compat.h>\n",
   sourceHeaderCode :
      "#include <QtCore/qglobal.h>\n"
+    +"#include <QtCore/QEvent>\n"
+    +"#include <QtGui/QHelpEvent>\n"
+    +"#include <QtGui/QPainter>\n"
+    +"#include <QtGui/QWindow>\n"
+    +"#include <QtGui/QTextCharFormat>\n"
+    +"#include <QtWidgets/QMenu>\n"
     +"#include <QtWidgets/QButtonGroup>\n"
+    +"#include <QtWidgets/QAbstractItemView>\n"
+    +"#include <QtWidgets/QScrollBar>\n"
+    +"#include <QtWidgets/QAbstractItemView>\n"
+    +"#include <QtWidgets/QDesktopWidget>\n"
+    +"#include <QtWidgets/QAbstractButton>\n"
+    +"#include <QtWidgets/QLineEdit>\n"
+    +"#include <QtWidgets/QCompleter>\n"
+    +"#include <QtWidgets/QCalendarWidget>\n"
+    +"#include <QtWidgets/QApplication>\n"
   ,
   //	sourceHeaderReplacer : [ "!.*Box2D[^/]*/Box2D!i", "Box2D" ],
 //	metaHeaderPath : "cpgf/metadata/box2d/",
@@ -38,6 +53,12 @@ var config = {
 
 function processCallback(item, data)
 {
+  if(item.getLocation().indexOf('/QtWidgets/') == -1) {
+    data.skipBind = true;
+    return;
+  }
+
+  print (item.getLocation()+" OOOOW !!!\n");
   var skipByLocationPart = [
     '/private/',
     '_impl.h',
@@ -45,6 +66,7 @@ function processCallback(item, data)
 
   var skipByNamePart = [
     'Private',
+    'QColorDialog',
   ];
 
   for (var i in skipByLocationPart) {
@@ -61,6 +83,26 @@ function processCallback(item, data)
   }
 
   switch (""+item.getQualifiedName()) {
+  }
+  if (item.isMethod() || item.isConstructor()) {
+    var params = item.getParameterList();
+    for(var i = 0; i < params.size(); i++) {
+      switch (""+params.get(i).getType().getLiteralType()) {
+        case '...':
+          data.skipBind = true;
+        break;
+      }
+
+      switch (""+params.get(i).getDefaultValue()) {
+        case "EnsureVisible":
+          params.get(i).setDefaultValue("QAbstractItemView::EnsureVisible");
+          break;
+        case "ApplicationFlags":
+          params.get(i).setDefaultValue("QCoreApplication::ApplicationFlags");
+          break;
+      }
+
+    }
   }
 }
 
