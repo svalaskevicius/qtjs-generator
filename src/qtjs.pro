@@ -2,10 +2,14 @@
 QT += core gui widgets qml core-private v8-private qml-private
 TEMPLATE = app
 
-INCLUDEPATH += ../lib/cpgf/include/ ../metagen/build/QtCore/include ../include
+INCLUDEPATH += \
+    ../lib/cpgf/include/ \
+    ../metagen/build/QtCore/include \
+    ../metagen/build/QtWidgets/include \
+    ../include
 
 
-CONFIG += c++11 exceptions release # debug
+CONFIG += c++11 exceptions debug # release
 
 QMAKE_CXXFLAGS_RELEASE -= -O2
 QMAKE_CXXFLAGS_RELEASE += -Os
@@ -20,12 +24,14 @@ QMAKE_LFLAGS_RELEASE += -Wl,-Os -Os
 # QMAKE_CXXFLAGS += -fexceptions -ftemplate-backtrace-limit=0 -g -O0
 
 
-TARGET=test
+TARGET=qtjs
 
 HEADERS += QtSignalConnector.h
 SOURCES += main.cpp QtSignalConnector.cpp
 
 SOURCES += $$files(../metagen/build/QtCore/src/*.cpp) 
+SOURCES += $$files(../metagen/build/QtWidgets/src/*.cpp) 
 
 LIBPATH += ../lib/cpgf/lib/
 LIBS += -lcpgf
+

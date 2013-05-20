@@ -22,9 +22,10 @@ var config = {
   autoRegisterToGlobal : false,
 
   metaNamespace : "qtwidgets",
-  headerHeaderCode : "#include \"../../../qtcompat.h\"\n",
+  headerHeaderCode : "#include <qtWidgets_cpgf_compat.h>\n",
   sourceHeaderCode :
      "#include <QtCore/qglobal.h>\n"
+    +"#include <QtWidgets/QButtonGroup>\n"
   ,
   //	sourceHeaderReplacer : [ "!.*Box2D[^/]*/Box2D!i", "Box2D" ],
 //	metaHeaderPath : "cpgf/metadata/box2d/",
