@@ -38,7 +38,8 @@ for f in $(find qtheaders -type f) ; do
 done
 echo ""
 
-doxygen
+mkdir xml
+doxygen qtCore.doxyfile
 
 find xml -type f -name '*.xml' -exec perl -p -i -e "s#$MYDIR/qtheaders#$QTINC#g" '{}' \;
 
