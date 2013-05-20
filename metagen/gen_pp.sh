@@ -40,6 +40,7 @@ echo ""
 
 mkdir xml
 doxygen qtCore.doxyfile
+doxygen qtWidgets.doxyfile
 
 find xml -type f -name '*.xml' -exec perl -p -i -e "s#$MYDIR/qtheaders#$QTINC#g" '{}' \;
 
