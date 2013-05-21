@@ -17,6 +17,9 @@
 */
 
 
+#include <QApplication>
+#include <QMainWindow>
+
 #include "cpgf/gmetadefine.h"
 #include "cpgf/scriptbind/gscriptbindutil.h"
 #include "cpgf/gscopedinterface.h"
@@ -28,6 +31,7 @@
 #include "v8.h"
 
 #include "register_meta_qtcore.h"
+#include "register_meta_qtwidgets.h"
 
 #include <QtCore/QObject>
 #include <QtCore/QSharedPointer>
@@ -49,8 +53,11 @@ void connectToSignal(QObject *obj, const char * signal, IScriptFunction *callbac
 
 int main(int argc, char * argv[])
 {
+    QApplication app(argc, argv);
+
 	GDefineMetaNamespace define = GDefineMetaNamespace::declare("qt");
     meta_qtcore::registerMain_QtCore(define);
+    meta_qtwidgets::registerMain_QtWidgets(define);
 
     define._method("connect", &qtjs_binder::connectToSignal);
 
@@ -61,23 +68,22 @@ int main(int argc, char * argv[])
 	}
 
 	cout << "Running.." << endl;
-    {	
-        GScopedInterface<IMetaService> service(createDefaultMetaService());
-        GScopedPointer<GScriptRunner> runner(createV8ScriptRunner(service.get()));
-        GScopedInterface<IScriptObject> scriptObject(runner->getScripeObject());
+    GScopedInterface<IMetaService> service(createDefaultMetaService());
+    GScopedPointer<GScriptRunner> runner(createV8ScriptRunner(service.get()));
+    GScopedInterface<IScriptObject> scriptObject(runner->getScripeObject());
 
-        scriptObject->bindCoreService("cpgf", NULL);
-	
+    scriptObject->bindCoreService("cpgf", NULL);
 
-        GScopedInterface<IMetaClass> metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())));
-        scriptObject->bindClass("qt", metaClass.get());
 
-        if(!runner->executeFile(fileName)) {
-            cout << "Failed to execute " << fileName << ", maybe it doesn't exist?" << endl;
-        }
+    GScopedInterface<IMetaClass> metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())));
+    scriptObject->bindClass("qt", metaClass.get());
+
+    if(!runner->executeFile(fileName)) {
+        cout << "Failed to execute " << fileName << ", maybe it doesn't exist?" << endl;
     }
-    while (!v8::V8::IdleNotification()); // run GC
-    clearV8DataPool();
-	return 0;
+//    while (!v8::V8::IdleNotification()); // run GC
+//    clearV8DataPool();
+
+	return app.exec();
 }
 
