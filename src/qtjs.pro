@@ -29,7 +29,7 @@ TARGET=qtjs
 HEADERS += QtSignalConnector.h
 SOURCES += main.cpp QtSignalConnector.cpp
 
-# SOURCES += $$files(../metagen/build/QtCore/src/*.cpp) 
+SOURCES += $$files(../metagen/build/QtCore/src/*.cpp) 
 SOURCES += $$files(../metagen/build/QtWidgets/src/*.cpp) 
 
 LIBPATH += ../lib/cpgf/lib/

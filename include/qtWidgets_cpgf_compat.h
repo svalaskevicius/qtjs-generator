@@ -187,6 +187,185 @@ struct IsConvertible <From, const ::QVariant &, typename GEnableIfResult<
     G_STATIC_CONSTANT(bool, Result = false);
 };
 
+template <typename From>
+struct IsConvertible <From, ::QMatrix, typename GEnableIfResult<
+    GOrResult<
+      GOrResult<
+        IsSameType<From, bool>,
+        IsSameType<From, char>,
+        IsSameType<From, signed char>,
+        IsSameType<From, unsigned char>,
+        IsSameType<From, wchar_t>,
+        IsSameType<From, int>,
+        IsSameType<From, short int>,
+        IsSameType<From, short unsigned int>,
+        IsSameType<From, unsigned int>
+      >,
+      GOrResult<
+        IsSameType<From, long int>,
+        IsSameType<From, long unsigned int>,
+        IsSameType<From, long long int>,
+        IsSameType<From, long long unsigned int>,
+        IsSameType<From, float>,
+        IsSameType<From, double>,
+        IsSameType<From, long double>,
+        IsPointer<From>
+      >
+    >
+    >::Result
+> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+
+template <typename From>
+struct IsConvertible <From, const ::QMatrix &, typename GEnableIfResult<
+    GOrResult<
+      GOrResult<
+        IsSameType<From, bool>,
+        IsSameType<From, char>,
+        IsSameType<From, signed char>,
+        IsSameType<From, unsigned char>,
+        IsSameType<From, wchar_t>,
+        IsSameType<From, int>,
+        IsSameType<From, short int>,
+        IsSameType<From, short unsigned int>,
+        IsSameType<From, unsigned int>
+      >,
+      GOrResult<
+        IsSameType<From, long int>,
+        IsSameType<From, long unsigned int>,
+        IsSameType<From, long long int>,
+        IsSameType<From, long long unsigned int>,
+        IsSameType<From, float>,
+        IsSameType<From, double>,
+        IsSameType<From, long double>,
+        IsPointer<From>
+      >
+    >
+    >::Result
+> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+
+template <typename From>
+struct IsConvertible <From, ::QTransform, typename GEnableIfResult<
+    GOrResult<
+      GOrResult<
+        IsSameType<From, bool>,
+        IsSameType<From, char>,
+        IsSameType<From, signed char>,
+        IsSameType<From, unsigned char>,
+        IsSameType<From, wchar_t>,
+        IsSameType<From, int>,
+        IsSameType<From, short int>,
+        IsSameType<From, short unsigned int>,
+        IsSameType<From, unsigned int>
+      >,
+      GOrResult<
+        IsSameType<From, long int>,
+        IsSameType<From, long unsigned int>,
+        IsSameType<From, long long int>,
+        IsSameType<From, long long unsigned int>,
+        IsSameType<From, float>,
+        IsSameType<From, double>,
+        IsSameType<From, long double>,
+        IsPointer<From>
+      >
+    >
+    >::Result
+> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+
+template <typename From>
+struct IsConvertible <From, const ::QTransform &, typename GEnableIfResult<
+    GOrResult<
+      GOrResult<
+        IsSameType<From, bool>,
+        IsSameType<From, char>,
+        IsSameType<From, signed char>,
+        IsSameType<From, unsigned char>,
+        IsSameType<From, wchar_t>,
+        IsSameType<From, int>,
+        IsSameType<From, short int>,
+        IsSameType<From, short unsigned int>,
+        IsSameType<From, unsigned int>
+      >,
+      GOrResult<
+        IsSameType<From, long int>,
+        IsSameType<From, long unsigned int>,
+        IsSameType<From, long long int>,
+        IsSameType<From, long long unsigned int>,
+        IsSameType<From, float>,
+        IsSameType<From, double>,
+        IsSameType<From, long double>,
+        IsPointer<From>
+      >
+    >
+    >::Result
+> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+
+template <typename From>
+struct IsConvertible <From, ::QSizePolicy, typename GEnableIfResult<
+    GOrResult<
+      GOrResult<
+        IsSameType<From, bool>,
+        IsSameType<From, char>,
+        IsSameType<From, signed char>,
+        IsSameType<From, unsigned char>,
+        IsSameType<From, wchar_t>,
+        IsSameType<From, int>,
+        IsSameType<From, short int>,
+        IsSameType<From, short unsigned int>,
+        IsSameType<From, unsigned int>
+      >,
+      GOrResult<
+        IsSameType<From, long int>,
+        IsSameType<From, long unsigned int>,
+        IsSameType<From, long long int>,
+        IsSameType<From, long long unsigned int>,
+        IsSameType<From, float>,
+        IsSameType<From, double>,
+        IsSameType<From, long double>,
+        IsPointer<From>
+      >
+    >
+    >::Result
+> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+
+template <typename From>
+struct IsConvertible <From, const ::QSizePolicy &, typename GEnableIfResult<
+    GOrResult<
+      GOrResult<
+        IsSameType<From, bool>,
+        IsSameType<From, char>,
+        IsSameType<From, signed char>,
+        IsSameType<From, unsigned char>,
+        IsSameType<From, wchar_t>,
+        IsSameType<From, int>,
+        IsSameType<From, short int>,
+        IsSameType<From, short unsigned int>,
+        IsSameType<From, unsigned int>
+      >,
+      GOrResult<
+        IsSameType<From, long int>,
+        IsSameType<From, long unsigned int>,
+        IsSameType<From, long long int>,
+        IsSameType<From, long long unsigned int>,
+        IsSameType<From, float>,
+        IsSameType<From, double>,
+        IsSameType<From, long double>,
+        IsPointer<From>
+      >
+    >
+    >::Result
+> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
 
 }
 
