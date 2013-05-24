@@ -144,6 +144,7 @@ function processCallback(item, data)
     case "QGraphicsScene::invalidate":
     case "QMacNativeWidget":
     case "QMacCocoaViewContainer":
+    case "QAbstractItemView::update":
       data.skipBind = true;
       return;
   }
