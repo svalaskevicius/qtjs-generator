@@ -367,6 +367,14 @@ struct IsConvertible <From, const ::QSizePolicy &, typename GEnableIfResult<
     G_STATIC_CONSTANT(bool, Result = false);
 };
 
+template <typename From>
+struct IsConvertible <From, Qt::WindowFlags, typename GEnableIfResult<
+      IsConvertible<From, int>
+    >::Result
+> {
+    G_STATIC_CONSTANT(bool, Result = true);
+};
+
 }
 
 
