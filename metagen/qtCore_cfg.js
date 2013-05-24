@@ -95,7 +95,6 @@ function processCallback(item, data)
 
     'qfuture',
     'cache',
-    'qflags',
     'qsignalmapper',
     'qstringbuilder',
 
@@ -118,6 +117,7 @@ function processCallback(item, data)
     'QT_EDITION',
     'Q_EXTERN_C',
     'QTypeInfo',
+    'typedef',
 
     'QUrl',
     'QAnimationGroup',
@@ -192,6 +192,7 @@ function processCallback(item, data)
     case "QObjectCleanupHandler":
     case "MetaObjectForType":
     case "qt_metatype_id":
+    case "QFlags::Int":
       data.skipBind = true;
       break;
 
@@ -236,7 +237,17 @@ function processCallback(item, data)
       break;
   }
 
-  if (item.isMethod() || item.isConstructor()) {
+  if (typeof item.getResultType !== 'undefined' && item.getResultType()) {
+    switch (""+item.getResultType().getLiteralType()) {
+      case 'QFlags':
+        item.getResultType().setLiteralType("QFlags<Enum >");
+        break;
+      case 'QFlags &':
+        item.getResultType().setLiteralType("QFlags<Enum > &");
+        break;
+    }
+  }
+  if (item.isMethod() || item.isConstructor() || item.isOperator()) {
     var params = item.getParameterList();
     for(var i = 0; i < params.size(); i++) {
       switch (""+params.get(i).getType().getLiteralType()) {
@@ -259,6 +270,12 @@ function processCallback(item, data)
           break;
         case 'State':
           params.get(i).getType().setLiteralType('QFutureInterfaceBase::State');
+          break;
+        case 'QFlags':
+          params.get(i).getType().setLiteralType('QFlags<Enum >');
+          break;
+        case 'QFlags &':
+          params.get(i).getType().setLiteralType('QFlags<Enum > &');
           break;
         default:
           print("TYPE: "+params.get(i).getType().getLiteralType()+"\n");
