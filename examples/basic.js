@@ -1,6 +1,4 @@
 
-//a = 23;
-
 pt = new qt.QPoint(1, 2);
 
 (function(){
@@ -33,4 +31,21 @@ pt = new qt.QPoint(1, 2);
   obj.setObjectName(new qt.QString("asd"));
 
 })();
+
+MyWindow = function() {
+    this.prototype = this.__proto__ = new qt.QMainWindow();
+
+    var log = new qt.QMessageLogger();
+    qt.connect(this, 'customContextMenuRequested(const QPoint &)', function(point) {
+        log.debug()._opLeftShift("received signal\n"+point.x());
+    });
+    qt.connect(this, 'destroyed(QObject *)', function(object) {
+        log.debug()._opLeftShift("received destroy signal\n");
+    });
+    this.customContextMenuRequested(new qt.QPoint(1, 1));
+}
+
+
+var w = new MyWindow();
+w.show();
 
