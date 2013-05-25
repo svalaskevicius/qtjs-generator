@@ -47,6 +47,28 @@ public:
 	CLASS(const string &) {}
 
 	CLASS(int) {}
+
+	string real_name() {
+        return "Class";
+	}
+	virtual string name() {
+        return "Class";
+	}
+};
+
+class AnotherCLASS {
+	virtual void empty() {
+	}
+};
+
+class SUBCLASS : public CLASS, public AnotherCLASS {
+public:
+	string real_name() {
+        return "SubClass";
+	}
+	virtual string name() {
+        return "SubClass";
+	}
 };
 
 GTEST(TestVariant_Cast)
@@ -147,6 +169,19 @@ GTEST(TestVariant_CastFromFloat)
 	CAN_FROM(const void * const, value);
 }
 
+GTEST(TestVariant_CastSubClassPtr)
+{
+    SUBCLASS obj;
+    GVariant value = createTypedVariant(&obj);
 
+    AnotherCLASS *asAnotherParent = fromVariant<AnotherCLASS*>(value);
+    CLASS *asParent = fromVariant<CLASS*>(value);
 
-} }
+    GCHECK((void*)asParent == (void*)(CLASS *)&obj);
+    GCHECK((void*)asAnotherParent == (void*)(AnotherCLASS *)&obj);
+}
+
+}
+
+}
+
