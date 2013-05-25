@@ -81,9 +81,12 @@ int main(int argc, char * argv[])
     if(!runner->executeFile(fileName)) {
         cout << "Failed to execute " << fileName << ", maybe it doesn't exist?" << endl;
     }
-//    while (!v8::V8::IdleNotification()); // run GC
-//    clearV8DataPool();
 
-	return app.exec();
+    int ret = app.exec();
+
+    while (!v8::V8::IdleNotification()); // run GC
+    clearV8DataPool();
+
+	return ret;
 }
 
