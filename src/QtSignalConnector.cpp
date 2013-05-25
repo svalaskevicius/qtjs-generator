@@ -139,6 +139,7 @@ bool QtSignalConnector::connectToSignal(QObject *obj, const char *signal, IScrip
     QByteArray normalised_signal = QMetaObject::normalizedSignature(signal);
     int signal_idx = obj->metaObject()->indexOfSignal(normalised_signal);
     if (signal_idx < 0) {
+        qDebug() << "no signal found: "<<normalised_signal;
         return false;
     }
     QMetaObject::connect(
