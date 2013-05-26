@@ -39,12 +39,10 @@ function createWindow() {
     var log = new qt.QMessageLogger();
 
     var asQO = cpgf.cast(self, qt.QObject);
-
     log.debug()._opLeftShift(qt.QString.fromLatin1(self.toString()));
     log.debug()._opLeftShift(qt.QString.fromLatin1(asQO.toString()));
 
     qt.connect(self, 'customContextMenuRequested(const QPoint &)', function(point) {
-      var log = new qt.QMessageLogger();
       log.debug()._opLeftShift(qt.QString.fromLatin1("received signal: "+point.x()));
     });
     self.customContextMenuRequested(new qt.QPoint(12, 10));
