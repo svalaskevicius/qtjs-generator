@@ -1,4 +1,6 @@
 
+cpgf.import("cpgf", "builtin.core");
+
 pt = new qt.QPoint(1, 2);
 
 (function(){
@@ -14,38 +16,44 @@ pt = new qt.QPoint(1, 2);
   ._opLeftShift(qt.qHash("test"))
   ;
 
-  //  var machine = new qt.QStateMachine();
-  //  var s1 = new qt.QState();
-  //  var s2 = new qt.QState();
+  //var machine = new qt.QStateMachine();
+  //var s1 = new qt.QState();
+  //var s2 = new qt.QState();
 
   var obj = new qt.QObject();
   qt.connect(obj, 'objectNameChanged(const QString &)', function(name){
     log.debug()
     ._opLeftShift(new qt.QString("NAME CHANGED! "+name))
-    ._opLeftShift(name)
     ;
   });
-  log.debug()
-  ._opLeftShift(new qt.QString("connected"))
-  ;
+
   obj.setObjectName(new qt.QString("asd"));
 
 })();
 
-MyWindow = function() {
-    this.prototype = this.__proto__ = new qt.QMainWindow();
+function createWindow() {
+    var MyWindow = cpgf.cloneClass(qt.QMainWindow);
+
+    var self = new MyWindow();
 
     var log = new qt.QMessageLogger();
-    qt.connect(this, 'customContextMenuRequested(const QPoint &)', function(point) {
-        log.debug()._opLeftShift("received signal\n"+point.x());
+
+    var asQO = cpgf.cast(self, qt.QObject);
+
+    log.debug()._opLeftShift(qt.QString.fromLatin1(self.toString()));
+    log.debug()._opLeftShift(qt.QString.fromLatin1(asQO.toString()));
+
+    qt.connect(self, 'customContextMenuRequested(const QPoint &)', function(point) {
+      var log = new qt.QMessageLogger();
+      log.debug()._opLeftShift(qt.QString.fromLatin1("received signal: "+point.x()));
     });
-    qt.connect(this, 'destroyed(QObject *)', function(object) {
-        log.debug()._opLeftShift("received destroy signal\n");
-    });
-    this.customContextMenuRequested(new qt.QPoint(1, 1));
+    self.customContextMenuRequested(new qt.QPoint(12, 10));
+    self.setContextMenuPolicy(qt.CustomContextMenu);
+
+    return self;
 }
 
 
-var w = new MyWindow();
+var w = createWindow();
 w.show();
 
