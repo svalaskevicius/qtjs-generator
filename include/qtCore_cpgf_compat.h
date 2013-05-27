@@ -1,10 +1,24 @@
 #pragma once
 
-#include "cpgf/gmetadefine.h"
-#include "cpgf/metadata/gmetadataconfig.h"
-#include "cpgf/metadata/private/gmetadata_header.h"
-#include "cpgf/gmetapolicy.h"
+#include "./qt_cpgf_compat.h"
 
+
+#include <QString>
+#include <QEventLoop>
+#include <QTextStream>
+#include <QArrayData>
+#include <QIODevice>
+#include <QTextCodec>
+#include <QDir>
+#include <QTextBoundaryFinder>
+#include <QFile>
+#include <QFileDevice>
+#include <QItemSelectionModel>
+#include <QLibrary>
+#include <QRegularExpression>
+#include <QLocale>
+#include <QUrl>
+#include <QStandardPaths>
 
 namespace cpgf {
 
@@ -226,6 +240,47 @@ struct IsConvertible <const QDynamicMetaObjectData &, const cpgf::IObject &> {
 };
 
 
+ENABLE_INT_TYPE_CONVERSION(QString::SectionFlags)
+ENABLE_INT_TYPE_CONVERSION(QEventLoop::ProcessEventsFlags)
+ENABLE_INT_TYPE_CONVERSION(QTextStream::NumberFlags)
+ENABLE_INT_TYPE_CONVERSION(QArrayData::AllocationOptions)
+ENABLE_INT_TYPE_CONVERSION(QIODevice::OpenMode)
+ENABLE_INT_TYPE_CONVERSION(QTextCodec::ConversionFlags)
+ENABLE_INT_TYPE_CONVERSION(QDir::Filters)
+ENABLE_INT_TYPE_CONVERSION(QDir::SortFlags)
+ENABLE_INT_TYPE_CONVERSION(QTextBoundaryFinder::BoundaryReasons)
+ENABLE_INT_TYPE_CONVERSION(QFile::Permissions)
+ENABLE_INT_TYPE_CONVERSION(QFileDevice::FileHandleFlags)
+ENABLE_INT_TYPE_CONVERSION(QItemSelectionModel::SelectionFlags)
+#ifndef QT_NO_LIBRARY
+ENABLE_INT_TYPE_CONVERSION(QLibrary::LoadHints)
+#endif
+ENABLE_INT_TYPE_CONVERSION(Qt::KeyboardModifiers)
+ENABLE_INT_TYPE_CONVERSION(Qt::MouseButtons)
+ENABLE_INT_TYPE_CONVERSION(Qt::Orientations)
+ENABLE_INT_TYPE_CONVERSION(Qt::Alignment)
+ENABLE_INT_TYPE_CONVERSION(Qt::WindowFlags)
+ENABLE_INT_TYPE_CONVERSION(Qt::WindowStates)
+ENABLE_INT_TYPE_CONVERSION(Qt::ScreenOrientations)
+ENABLE_INT_TYPE_CONVERSION(Qt::ImageConversionFlags)
+ENABLE_INT_TYPE_CONVERSION(Qt::DockWidgetAreas)
+ENABLE_INT_TYPE_CONVERSION(Qt::ToolBarAreas)
+ENABLE_INT_TYPE_CONVERSION(Qt::InputMethodQueries)
+ENABLE_INT_TYPE_CONVERSION(Qt::InputMethodHints)
+ENABLE_INT_TYPE_CONVERSION(Qt::FindChildOptions)
+ENABLE_INT_TYPE_CONVERSION(Qt::DropActions)
+ENABLE_INT_TYPE_CONVERSION(Qt::ItemFlags)
+ENABLE_INT_TYPE_CONVERSION(Qt::MatchFlags)
+ENABLE_INT_TYPE_CONVERSION(Qt::TextInteractionFlags)
+ENABLE_INT_TYPE_CONVERSION(Qt::TouchPointStates)
+ENABLE_INT_TYPE_CONVERSION(Qt::GestureFlags)
+ENABLE_INT_TYPE_CONVERSION(QRegularExpression::PatternOptions)
+ENABLE_INT_TYPE_CONVERSION(QLocale::NumberOptions)
+ENABLE_INT_TYPE_CONVERSION(QUrl::ComponentFormattingOptions)
+ENABLE_INT_TYPE_CONVERSION(QUrl::FormattingOptions)
+ENABLE_INT_TYPE_CONVERSION(QStandardPaths::LocateOptions)
+
 }
+
 
 
