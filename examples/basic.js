@@ -1,57 +1,31 @@
 
 cpgf.import("cpgf", "builtin.core");
 
-pt = new qt.QPoint(1, 2);
+function createMainWindow() {
+    var self = new qt.QMainWindow();
 
-(function(){
-  var pt = new qt.QPoint(1, 2);
-  var log = new qt.QMessageLogger();
+    var centralView = new qt.QWidget();
+    var layout = new qt.QVBoxLayout();
 
-  //  log.debug()._opLeftShift(pt.toString())._opLeftShift("asd")._opLeftShift(123);
-  log.debug()
-  ._opLeftShift(qt.QString.fromLatin1(pt.toString()))
-  ._opLeftShift("asd")
-  ._opLeftShift(123)
-  ._opLeftShift(pt.y())
-  ._opLeftShift(qt.qHash("test"))
-  ;
+    var label = new qt.QLabel(new qt.QString("Label"));
+    layout.addWidget(label);
 
-  //var machine = new qt.QStateMachine();
-  //var s1 = new qt.QState();
-  //var s2 = new qt.QState();
+    var tabbed = new qt.QTabWidget();
+    layout.addWidget(tabbed);
 
-  var obj = new qt.QObject();
-  qt.connect(obj, 'objectNameChanged(const QString &)', function(name){
-    log.debug()
-    ._opLeftShift(new qt.QString("NAME CHANGED! "+name))
-    ;
-  });
+    var label1 = new qt.QLabel(new qt.QString("Label 1"));
+    var label2 = new qt.QLabel(new qt.QString("Label 2"));
+    tabbed.addTab(label1, new qt.QString("Page 1"));
+    tabbed.addTab(label2, new qt.QString("Page 2"));
 
-  obj.setObjectName(new qt.QString("asd"));
-
-})();
-
-function createWindow() {
-    var MyWindow = cpgf.cloneClass(qt.QMainWindow);
-
-    var self = new MyWindow();
-
-    var log = new qt.QMessageLogger();
-
-    var asQO = cpgf.cast(self, qt.QObject);
-    log.debug()._opLeftShift(qt.QString.fromLatin1(self.toString()));
-    log.debug()._opLeftShift(qt.QString.fromLatin1(asQO.toString()));
-
-    qt.connect(self, 'customContextMenuRequested(const QPoint &)', function(point) {
-      log.debug()._opLeftShift(qt.QString.fromLatin1("received signal: "+point.x()));
-    });
-    self.customContextMenuRequested(new qt.QPoint(12, 10));
-    self.setContextMenuPolicy(qt.CustomContextMenu);
+    centralView.setLayout(layout);
+    self.setCentralWidget(centralView);
 
     return self;
 }
 
-
-var w = createWindow();
-w.show();
+(function(){
+  var w = createMainWindow();
+  w.show();
+})();
 
