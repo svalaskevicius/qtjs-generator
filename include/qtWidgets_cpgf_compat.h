@@ -254,5 +254,110 @@ ENABLE_INT_TYPE_CONVERSION(QStyleOptionToolBar::ToolBarFeatures)
 ENABLE_INT_TYPE_CONVERSION(QStyleOptionViewItem::ViewItemFeatures)
 ENABLE_INT_TYPE_CONVERSION(QStyleOptionToolButton::ToolButtonFeatures)
 
+
+
+
+struct IMetaObjectLifeManager;
+struct GMetaTraitsParam;
+
+namespace qtjs {
+
+namespace MetaObjectLifeManager {
+
+template <>
+struct AutoTreeHelper<QGraphicsObject> {
+    static bool hasParent(QGraphicsObject* object) {
+        return object->parentItem() || object->parent();
+    }
+
+    template <typename T>
+    static void traverseChildren(QGraphicsObject *object, T callback);
+};
+
+template <>
+struct AutoTreeHelper<QGraphicsItem> {
+    static bool hasParent(QGraphicsItem* object) {
+        return object->parentItem();
+    }
+
+    template <typename T>
+    static void traverseChildren(QGraphicsItem *object, T callback) {
+        QGraphicsObject *asGrObject = dynamic_cast<QGraphicsObject *>(object);
+        if (asGrObject) {
+            AutoTreeHelper<QGraphicsObject>::traverseChildren(asGrObject, callback);
+        } else {
+            callback(object);
+            for (QGraphicsItem *c : object->childItems()) {
+                traverseChildren(c, callback);
+            }
+        }
+    }
+};
+
+template <typename T>
+void AutoTreeHelper<QGraphicsObject>::traverseChildren(QGraphicsObject *object, T callback) {
+    callback(object);
+    for (QObject *c : object->children()) {
+        AutoTreeHelper<QObject>::traverseChildren(c, callback);
+    }
+    for (QGraphicsItem *c : object->childItems()) {
+        AutoTreeHelper<QGraphicsItem>::traverseChildren(c, callback);
+    }
 }
+
+template <>
+struct AutoTreeHelper<QGraphicsScene> {
+    static bool hasParent(QGraphicsScene* object) {
+        return AutoTreeHelper<QObject>::hasParent(object);
+    }
+
+    template <typename T>
+    static void traverseChildren(QGraphicsScene *object, T callback) {
+        for (QGraphicsItem *c : object->items()) {
+            AutoTreeHelper<QGraphicsItem>::traverseChildren(c, callback);
+        }
+        AutoTreeHelper<QObject>::traverseChildren(object, callback);
+    }
+};
+
+}
+
+}
+
+
+template <typename T>
+struct GMetaTraitsCreateObjectLifeManager <T, typename GEnableIfResult<
+    GAndResult<
+        IsConvertible<T *, QGraphicsItem *>,
+        GNotResult< IsConvertible<T *, QGraphicsObject *> >
+    >
+    >::Result
+> {
+    static IMetaObjectLifeManager * createObjectLifeManager(const GMetaTraitsParam &) {
+        return new qtjs::MetaObjectLifeManager::AutoTree<QGraphicsItem>(GTypeConverter<T *, QGraphicsItem *>());
+    }
+};
+
+template <typename T>
+struct GMetaTraitsCreateObjectLifeManager <T, typename GEnableIfResult<
+        IsConvertible<T *, QGraphicsObject *>
+    >::Result
+> {
+    static IMetaObjectLifeManager * createObjectLifeManager(const GMetaTraitsParam &) {
+        return new qtjs::MetaObjectLifeManager::AutoTree<QGraphicsObject>(GTypeConverter<T *, QGraphicsObject *>());
+    }
+};
+
+template <typename T>
+struct GMetaTraitsCreateObjectLifeManager <T, typename GEnableIfResult<
+        IsConvertible<T *, QGraphicsScene *>
+    >::Result
+> {
+    static IMetaObjectLifeManager * createObjectLifeManager(const GMetaTraitsParam &) {
+        return new qtjs::MetaObjectLifeManager::AutoTree<QGraphicsScene>(GTypeConverter<T *, QGraphicsScene *>());
+    }
+};
+
+} // namespace cpgf
+
 

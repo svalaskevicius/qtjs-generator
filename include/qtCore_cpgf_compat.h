@@ -20,6 +20,9 @@
 #include <QUrl>
 #include <QStandardPaths>
 
+class QGraphicsObject;
+class QGraphicsScene;
+
 namespace cpgf {
 
 template <typename From>
@@ -280,7 +283,50 @@ ENABLE_INT_TYPE_CONVERSION(QUrl::ComponentFormattingOptions)
 ENABLE_INT_TYPE_CONVERSION(QUrl::FormattingOptions)
 ENABLE_INT_TYPE_CONVERSION(QStandardPaths::LocateOptions)
 
+
+
+
+struct IMetaObjectLifeManager;
+struct GMetaTraitsParam;
+
+
+namespace qtjs {
+
+namespace MetaObjectLifeManager {
+
+template <>
+struct AutoTreeHelper<QObject> {
+    static bool hasParent(QObject* object) {
+        return object->parent();
+    }
+
+    template <typename T>
+    static void traverseChildren(QObject *object, T callback) {
+        callback(object);
+        for (QObject *c : object->children()) {
+            traverseChildren(c, callback);
+        }
+    }
+};
+
 }
 
+}
+
+template <typename T>
+struct GMetaTraitsCreateObjectLifeManager <T, typename GEnableIfResult<
+    GAndResult<
+        IsConvertible<T *, QObject *>,
+        GNotResult< IsConvertible<T *, QGraphicsObject *> >,
+        GNotResult< IsConvertible<T *, QGraphicsScene *> >
+    >
+    >::Result
+> {
+    static IMetaObjectLifeManager * createObjectLifeManager(const GMetaTraitsParam &) {
+        return new qtjs::MetaObjectLifeManager::AutoTree<QObject>(GTypeConverter<T *, QObject *>());
+    }
+};
+
+} // namespace cpgf
 
 
