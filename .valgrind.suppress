@@ -1,0 +1,479 @@
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   ...
+   fun:FcFontMatch
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:gtk_init_check
+   fun:gtk_init
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/*/libgtk-x11-2.0.so*
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/*/libpango-1.0.so*
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:g_main_context_*
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/*/libgconf-2.so*
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/*/libgdk-x11-2.0.so*
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/*/libatk-1.0.so*
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/*/libgobject-2.0.so*
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/*/gtk-2.0/2.*/engines/*
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/*/libpangocairo-1.0.so*
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/*/libfreetype.so*
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:_ZN7QThread13currentThreadEv
+   fun:_ZN23QCoreApplicationPrivateC1ERiPPcj
+   fun:_ZN22QGuiApplicationPrivateC1ERiPPci
+   fun:_ZN19QApplicationPrivateC1ERiPPci
+   fun:_ZN12QApplicationC1ERiPPci
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   fun:_dl_new_object
+   fun:_dl_map_object_from_fd
+   fun:_dl_map_object
+   fun:openaux
+   fun:_dl_catch_error
+   fun:_dl_map_object_deps
+   fun:dl_open_worker
+   fun:_dl_catch_error
+   fun:_dl_open
+   fun:dlopen_doit
+   fun:_dl_catch_error
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:FcInit
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:FcInitLoadConfig
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/*/libfontconfig.so*
+   ...
+   fun:XML_ParseBuffer
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:dbus_bus_register
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:XIQueryVersion
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:dbus_threads_init
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so*
+   ...
+   fun:_ZN28QPlatformInputContextFactory6createEv
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:glXGetFBConfigs
+   fun:glXChooseFBConfig
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:FcConfigParseAndLoad
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:realloc
+   obj:/lib/x86_64-linux-gnu/libdbus-1.so*
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   fun:_dlerror_run
+   fun:dlopen@@GLIBC_2.2.5
+   ...
+   fun:_ZNK14QFactoryLoader8instanceEi
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:_Znwm
+   obj:*/gcc_64/lib/libQt5Core.so.*
+   fun:_ZN16QCoreApplication4initEv
+   fun:_ZN16QCoreApplicationC1ER23QCoreApplicationPrivate
+   fun:_ZN15QGuiApplicationC1ER22QGuiApplicationPrivate
+   fun:_ZN12QApplicationC1ERiPPci
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_ZN10QArrayData8allocateEmmm6QFlagsINS_16AllocationOptionEE
+   fun:_ZN7QStringC1EPK5QChari
+   ...
+   fun:_ZN8QLibrary21setFileNameAndVersionERK7QStringi
+   fun:_ZN8QLibraryC1ERK7QStringiP7QObject
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_dl_map_object
+   fun:dl_open_worker
+   fun:_dl_catch_error
+   fun:_dl_open
+   fun:dlopen_doit
+   fun:_dl_catch_error
+   fun:_dlerror_run
+   fun:dlopen@@GLIBC_2.2.5
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:XInitThreads
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   ...
+   fun:dbus_parse_address
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:_Znwm
+   ...
+   fun:start_thread
+   fun:clone
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:pango_ot_info_get
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_ZN10QArrayData8allocateEmmm6QFlagsINS_16AllocationOptionEE
+   fun:_ZN7QString17fromLatin1_helperEPKci
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:_ZN22QGuiApplicationPrivate25createPlatformIntegrationEv
+   fun:_ZN22QGuiApplicationPrivate21createEventDispatcherEv
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_ZN10QArrayData8allocateEmmm6QFlagsINS_16AllocationOptionEE
+   fun:_ZN7QString17fromLatin1_helperEPKci
+   ...
+   fun:_ZN13QStyleFactory6createERK7QString
+   fun:_ZN12QApplication5styleEv
+   fun:_ZN19QApplicationPrivate10initializeEv
+   fun:_ZN19QApplicationPrivate9constructEv
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:expand_dynamic_string_token
+   fun:_dl_map_object
+   fun:dl_open_worker
+   fun:_dl_catch_error
+   fun:_dl_open
+   fun:dlopen_doit
+   fun:_dl_catch_error
+   fun:_dlerror_run
+   fun:dlopen@@GLIBC_2.2.5
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_dl_new_object
+   fun:_dl_map_object_from_fd
+   fun:_dl_map_object
+   fun:dl_open_worker
+   fun:_dl_catch_error
+   fun:_dl_open
+   fun:dlopen_doit
+   fun:_dl_catch_error
+   fun:_dlerror_run
+   fun:dlopen@@GLIBC_2.2.5
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_ZN10QArrayData8allocateEmmm6QFlagsINS_16AllocationOptionEE
+   fun:_ZN7QString17fromLatin1_helperEPKci
+   ...
+   fun:_ZN13QStyleFactory6createERK7QString
+   fun:_ZN12QApplication5styleEv
+   fun:_ZN19QApplicationPrivate10initializeEv
+   fun:_ZN19QApplicationPrivate9constructEv
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:UDataMemory_createNewInstance_49
+   fun:_ZL16setCommonICUDataP11UDataMemoryaP10UErrorCode.constprop.8
+   fun:_ZL14openCommonDataPKciP10UErrorCode
+   fun:_ZL20doLoadFromCommonDataaPKcS0_S0_S0_S0_S0_S0_PFaPvS0_S0_PK9UDataInfoES1_P10UErrorCodeS8_.isra.6
+   fun:_ZL12doOpenChoicePKcS0_S0_PFaPvS0_S0_PK9UDataInfoES1_P10UErrorCode
+   fun:_ZL13haveAliasDataP10UErrorCode.part.0
+   fun:ucnv_getStandardName_49
+   ...
+   fun:_ZN10QTextCodec14codecForLocaleEv
+   fun:_ZNK7QString11toLocal8BitEv
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:UDataMemory_createNewInstance_49
+   fun:_ZL20doLoadFromCommonDataaPKcS0_S0_S0_S0_S0_S0_PFaPvS0_S0_PK9UDataInfoES1_P10UErrorCodeS8_.isra.6
+   fun:_ZL12doOpenChoicePKcS0_S0_PFaPvS0_S0_PK9UDataInfoES1_P10UErrorCode
+   fun:_ZL13haveAliasDataP10UErrorCode.part.0
+   fun:ucnv_getStandardName_49
+   ...
+   fun:_ZN10QTextCodec14codecForLocaleEv
+   fun:_ZNK7QString11toLocal8BitEv
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_ZN10QArrayData8allocateEmmm6QFlagsINS_16AllocationOptionEE
+   fun:_ZN7QStringC1EiN2Qt14InitializationE
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:_ZN12QApplication5styleEv
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:_ZN19QApplicationPrivate10initializeEv
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:XSupportsLocale
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:_ZN12QApplication5styleEv
+   fun:_ZN19QApplicationPrivate10initializeEv
+   fun:_ZN19QApplicationPrivate9constructEv
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libcairo.so*
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   obj:/usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so*
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:umtx_init_49
+   fun:umtx_lock_49
+   fun:_ZL15internalSetNamePKcP10UErrorCode
+   fun:ucnv_getDefaultName_49
+   ...
+   fun:_ZN10QTextCodec14codecForLocaleEv
+   fun:_ZNK7QString11toLocal8BitEv
+   ...
+   fun:_ZNK9QFileInfo6existsEv
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:dbus_connection_send_with_reply_and_block
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_dl_map_object
+   fun:dl_open_worker
+   fun:_dl_catch_error
+   fun:_dl_open
+   fun:dlopen_doit
+   fun:_dl_catch_error
+   fun:_dlerror_run
+   fun:dlopen@@GLIBC_2.2.5
+   ...
+   fun:_ZN8QLibrary7resolveEPKc
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:_Znwm
+   fun:_ZN14QWaitConditionC1Ev
+   ...
+   fun:_ZN16QCoreApplication4initEv
+   fun:_ZN16QCoreApplicationC1ER23QCoreApplicationPrivate
+   fun:_ZN15QGuiApplicationC1ER22QGuiApplicationPrivate
+   fun:_ZN12QApplicationC1ERiPPci
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_ZN10QArrayData8allocateEmmm6QFlagsINS_16AllocationOptionEE
+   fun:_ZN7QString11reallocDataEjb
+   fun:_ZN7QString6resizeEi
+   fun:_ZN7QString6expandEi
+   fun:_ZN7QString6insertEi5QChar
+   fun:_ZN14QLocalePrivate16longLongToStringE5QCharS0_S0_S0_xiiij
+   fun:_ZNK14QLocalePrivate16longLongToStringExiiij
+   fun:_ZN7QString6setNumExi
+   fun:_ZN7QString6numberEii
+   fun:_ZN8QLibrary21setFileNameAndVersionERK7QStringi
+   fun:_ZN8QLibraryC1ERK7QStringiP7QObject
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:_Znwm
+   ...
+   fun:_ZN16QCoreApplication4initEv
+   fun:_ZN16QCoreApplicationC1ER23QCoreApplicationPrivate
+   fun:_ZN15QGuiApplicationC1ER22QGuiApplicationPrivate
+   fun:_ZN12QApplicationC1ERiPPci
+   fun:main
+}
