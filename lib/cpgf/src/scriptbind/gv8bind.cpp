@@ -1434,7 +1434,7 @@ GVariant GV8ScriptObject::getFundamental(const char * name)
 	Local<Object> localObject(Local<Object>::New(this->object));
 
 	Local<Value> value = localObject->Get(String::New(name));
-	if(getV8Type(value, NULL) == sdtFundamental) {
+	if(sdtIsFundamental(getV8Type(value, NULL))) {
 		return v8ToVariant(this->getContext(), this->object->CreationContext(), value, NULL);
 	}
 	else {

@@ -52,6 +52,19 @@ enum GScriptDataType {
 };
 
 
+inline bool sdtIsFundamental(uint32_t type) {
+	switch (type) {
+        case sdtFundamental:
+        case sdtSignedInteger:
+        case sdtUnsignedInteger:
+        case sdtBoolean:
+        case sdtReal:
+            return true;
+        default:
+            return false;
+	}
+};
+
 GMAKE_FINAL(GScriptConfig)
 
 class GScriptConfig : GFINAL_BASE(GScriptConfig)
