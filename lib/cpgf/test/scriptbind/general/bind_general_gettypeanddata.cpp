@@ -74,12 +74,12 @@ void doTestGetType(T * binding, TestScriptContext * context)
 	GCHECK(! item);
 
 	RITEM;
-	GCHECK(binding->getType("i", &tempItem) == sdtFundamental);
+	GCHECK(sdtIsFundamental(binding->getType("i", &tempItem)));
 	CHKITEM;
 	GCHECK(! item);
 
 	RITEM;
-	GCHECK(binding->getType("f", &tempItem) == sdtFundamental);
+	GCHECK(sdtIsFundamental(binding->getType("f", &tempItem)));
 	CHKITEM;
 	GCHECK(! item);
 
