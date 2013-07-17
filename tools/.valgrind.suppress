@@ -582,3 +582,127 @@
    fun:_ZN22QGuiApplicationPrivate25createPlatformIntegrationEv
 }
 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/*/libpixman-1.so.*
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_dl_close_worker
+   fun:_dl_close
+   fun:_dl_catch_error
+   fun:_dlerror_run
+   fun:dlclose
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_dl_new_object
+   fun:_dl_map_object_from_fd
+   fun:_dl_map_object
+   fun:openaux
+   fun:_dl_catch_error
+   fun:_dl_map_object_deps
+   fun:dl_open_worker
+   fun:_dl_catch_error
+   fun:_dl_open
+   fun:dlopen_doit
+   fun:_dl_catch_error
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   ...
+   obj:/usr/lib/*/libfontconfig.so.*
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:_Znam
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   obj:*
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/*/libX11.so.*
+   fun:_XrmInternalStringToQuark
+   fun:_XlcGetCharSet
+   fun:_XlcAddCT
+   fun:_XlcInitCTInfo
+   obj:/usr/lib/*/libX11.so.*
+   obj:/usr/lib/*/libX11.so.*
+   fun:_XlcCreateLC
+   fun:_XlcUtf8Loader
+   fun:_XOpenLC
+   fun:_XlcCurrentLC
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/*/libxcb.so.*
+   obj:/usr/lib/*/libxcb.so.*
+   fun:xcb_wait_for_event
+   obj:*
+   obj:*/gcc_64/lib/libQt5Core.so.*
+   fun:start_thread
+   fun:clone
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/*/libfontconfig.so.*
+   ...
+   fun:FcConfigSubstituteWithPat
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/lib/*/libdbus-1.so.*
+   fun:dbus_message_new_signal
+   obj:/lib/*/libdbus-1.so.*
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:_ZN10QArrayData8allocateEmmm6QFlagsINS_16AllocationOptionEE
+   obj:*/gcc_64/lib/libQt5Core.so.*
+   obj:*/gcc_64/lib/libQt5Core.so.*
+   fun:_ZN16QCoreApplication9postEventEP7QObjectP6QEventi
+   fun:_ZN11QMetaObject8activateEP7QObjectiiPPv
+   obj:*/gcc_64/lib/libQt5Core.so.*
+   obj:*/gcc_64/lib/libQt5Core.so.*
+   fun:start_thread
+   fun:clone
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   fun:_ZN2v87Context5EnterEv
+   ...
+}
