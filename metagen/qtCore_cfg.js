@@ -51,6 +51,7 @@ var config = {
     +"#include <QtCore/QUuid>\n"
     +"#include <QtCore/QEasingCurve>\n"
     +"#include <QtCore/QRectF>\n"
+    +"#include <QtCore/QMargins>\n"
     +"#include <QtCore/QLineF>\n"
     +"#include <QtCore/QSizeF>\n"
     +"#include <QtCore/QRect>\n"
@@ -77,7 +78,6 @@ function processCallback(item, data)
     data.skipBind = true;
     return;
   }
-  print (item.getLocation()+" OOOO !!!\n");
   var skipByLocationPart = [
     '/private/',
     'qobject_impl',
@@ -89,6 +89,7 @@ function processCallback(item, data)
     '/qoldbasicatomic',
     'windows.h',
     'qglobal',
+    'blackberry',
     'qobjectdefs',
     'qcompilerdetection',
     'qexception',
@@ -187,6 +188,8 @@ function processCallback(item, data)
     case "QObjectData::metaObject":
     case "TreatAsQObjectBeforeMetaType":
     case "QMetaType":
+    case "QMetaTypeId2":
+    case "QMetaTypeId2< const T & >":
     case "QMetaTypeIdQObject":
     case "QMetaTypeIdQObject< T *, true >":
     case "QObjectCleanupHandler":
@@ -234,6 +237,14 @@ function processCallback(item, data)
 
     case "QFile::permissions":
       item.getResultType().setLiteralType("QFileDevice::Permissions");
+      break;
+
+    case "QMargins::+=":
+    case "QMargins::-=":
+      var params = item.getParameterList();
+      if (params.size() == 1 && params.get(0).getType().getLiteralType() == 'int') {
+        data.skipBind = true;
+      }
       break;
   }
 
