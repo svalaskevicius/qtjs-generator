@@ -29,7 +29,9 @@ make linux TARGET=lib # or an alternative for your platform, see cpgf documentat
 popd
 
 # build metagen tool 
-pushd lib/cpgf/tools/metagen/tool
+pushd lib/cpgf/tools/metagen
+# **download rhino from https://developer.mozilla.org/en-US/docs/Rhino/Download_Rhino and put js.jar here**
+cd tool
 bash compile.sh
 popd
 
