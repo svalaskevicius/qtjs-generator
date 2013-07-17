@@ -1,6 +1,6 @@
 
 
-#include "QtSignalConnector.h"
+#include <QtSignalConnector.h>
 #include <QDebug>
 
 #include <QStringList>
