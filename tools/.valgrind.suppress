@@ -477,3 +477,108 @@
    fun:_ZN12QApplicationC1ERiPPci
    fun:main
 }
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   ...
+   obj:/usr/lib/*/libgobject-2.0.so*
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   ...
+   obj:/lib/*/libglib-2.0.so*
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   obj:*/Qt5.*/5.*/*/lib/libQt5V8.so.5.*
+   fun:_ZN2v87Context3NewEPNS_22ExtensionConfigurationENS_6HandleINS_14ObjectTemplateEEENS3_INS_5ValueEEE
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   obj:/lib/*/libglib-2.0.so*
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   obj:*/lib/libQt5V8.so.5.*
+   fun:call_init.part.0
+   fun:_dl_init
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:g_main_loop_new
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:_ZN27QPlatformIntegrationFactory6createERK7QStringRK11QStringListS2_
+   fun:_ZN22QGuiApplicationPrivate25createPlatformIntegrationEv
+   fun:_ZN22QGuiApplicationPrivate21createEventDispatcherEv
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/*/libgio-2.0.so*
+}
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   ...
+   fun:dbus_message_new_signal
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:_ZN10QTextCodec14codecForLocaleEv
+   fun:_ZNK7QString11toLocal8BitEv
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   obj:*/gcc_64/lib/libQt5V8.so.*
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:dlopen@@GLIBC_2.2.5
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/lib/*/libdbus-1.so*
+   ...
+   fun:_ZN27QPlatformIntegrationFactory6createERK7QStringRK11QStringListS2_
+   fun:_ZN22QGuiApplicationPrivate25createPlatformIntegrationEv
+}
+
