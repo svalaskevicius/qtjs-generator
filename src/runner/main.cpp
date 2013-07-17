@@ -41,25 +41,18 @@
 using namespace cpgf;
 using namespace std;
 
-namespace qtjs_binder {
-
-
-void connectToSignal(QObject *obj, const char * signal, IScriptFunction *callback ) {
-    static QtSignalConnector _inst;
-    _inst.connectToSignal(obj, signal, callback);
-}
-
-}
-
 int main(int argc, char * argv[])
 {
     QApplication app(argc, argv);
+int ret;
+    {
 
 	GDefineMetaNamespace define = GDefineMetaNamespace::declare("qt");
     meta_qtcore::registerMain_QtCore(define);
     meta_qtwidgets::registerMain_QtWidgets(define);
 
-    define._method("connect", &qtjs_binder::connectToSignal);
+    qtjs_binder::QtSignalConnectorBinder::reset(new qtjs_binder::QtSignalConnector());
+    define._method("connect", &qtjs_binder::QtSignalConnectorBinder::connect);
 
 	const char * fileName = "main.js";
 	
@@ -83,10 +76,15 @@ int main(int argc, char * argv[])
         cout << "Failed to execute " << fileName << ", maybe it doesn't exist?" << endl;
     }
 
-    int ret = app.exec();
+    ret = app.exec();
 
     while (!v8::V8::IdleNotification()); // run GC
     clearV8DataPool();
+    qtjs_binder::QtSignalConnectorBinder::reset();
+    
+    }
+
+    v8::V8::Dispose();
 
 	return ret;
 }

@@ -29,5 +29,22 @@ public:
     virtual int qt_metacall(QMetaObject::Call, int, void **);
 };
 
+struct QtSignalConnectorBinder {
+    static void connect(QObject *obj, const char * signal, cpgf::IScriptFunction *callback ) {
+        Q_ASSERT(connector);
+        connector->connectToSignal(obj, signal, callback);
+    }
+    static void reset(QtSignalConnector *newConnector = nullptr) {
+        if (connector) { 
+            delete connector;
+        }
+        connector = newConnector;
+    }
+private:
+    static QtSignalConnector *connector;
+};
+
+QtSignalConnector* QtSignalConnectorBinder::connector = nullptr;
+
 }
 
