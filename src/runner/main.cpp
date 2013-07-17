@@ -68,8 +68,9 @@ int main(int argc, char * argv[])
 	}
 
 	cout << "Running.." << endl;
+    GScopedPointer<GScriptRunner> runner;
     GScopedInterface<IMetaService> service(createDefaultMetaService());
-    GScopedPointer<GScriptRunner> runner(createV8ScriptRunner(service.get()));
+    runner.reset(createV8ScriptRunner(service.get()));
     GScopedInterface<IScriptObject> scriptObject(runner->getScripeObject());
 
     scriptObject->bindCoreService("cpgf", NULL);
