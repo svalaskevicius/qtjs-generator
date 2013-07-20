@@ -124,7 +124,6 @@ function processCallback(item, data)
     return;
   }
 
-  print (item.getLocation()+" OOOOW !!!\n");
   var skipByLocationPart = [
     '/private/',
     '_impl.h',
