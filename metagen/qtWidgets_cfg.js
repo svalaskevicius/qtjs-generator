@@ -63,6 +63,11 @@ var config = {
     +"#include <QtWidgets/QGraphicsScene>\n"
     +"#include <QtWidgets/QGraphicsWidget>\n"
     +"#include <QtWidgets/QGraphicsEffect>\n"
+    +"#include <QtWidgets/QGraphicsSceneContextMenuEvent>\n"
+    +"#include <QtWidgets/QGraphicsSceneDragDropEvent>\n"
+    +"#include <QtWidgets/QGraphicsSceneHoverEvent>\n"
+    +"#include <QtWidgets/QGraphicsSceneMouseEvent>\n"
+    +"#include <QtWidgets/QGraphicsSceneWheelEvent>\n"
     +"#include <QtWidgets/QMdiArea>\n"
     +"#include <QtWidgets/QMdiSubWindow>\n"
     +"#include <QtWidgets/QMenuBar>\n"
@@ -85,6 +90,32 @@ var config = {
   ]
 };
 
+
+function shouldAllowClassWrapper(item) {
+  if (!item.isClass() || ((""+item.getLiteralName()).length == 0)) {
+    return false;
+  }
+  if (item.isTemplate()) {
+    return false;
+  }
+
+  switch(""+item.getLiteralName()) {
+    case 'QApplication':
+    case 'QScroller':
+    case 'QGraphicsLayout': // inherited pure virtual still fails
+    case 'QGraphicsLayoutItem': // private constructor fails
+    case 'QGraphicsScene': // invalid method header generated: Type *[] param instead of Type * param[]
+    case 'QGraphicsView': // invalid method header generated: Type *[] param instead of Type * param[]
+    case 'QLayout': // inherited pure virtual still fails
+    case 'QListWidgetItem': // private constructor fails in read method for QDataStream
+    case 'QTableWidgetItem': // private constructor fails in read method for QDataStream
+    case 'QTreeWidgetItem': // private constructor fails in read method for QDataStream
+      return false;
+    default:
+      ;
+  }
+  return true;
+}
 
 function processCallback(item, data)
 {
@@ -148,7 +179,17 @@ function processCallback(item, data)
       data.skipBind = true;
       return;
   }
-  if (item.isMethod() || item.isConstructor()) {
+  if (typeof item.getResultType !== 'undefined' && item.getResultType()) {
+    switch (""+item.getResultType().getLiteralType()) {
+      case 'StepEnabled':
+        item.getResultType().setLiteralType("QDateTimeEdit::StepEnabled");
+        break;
+      case 'SubControl':
+        item.getResultType().setLiteralType('QStyle::SubControl');
+        break;
+    }
+  }
+  if (item.isMethod() || item.isConstructor() || item.isOperator()) {
     var params = item.getParameterList();
     for(var i = 0; i < params.size(); i++) {
       switch (""+params.get(i).getType().getLiteralType()) {
@@ -158,6 +199,57 @@ function processCallback(item, data)
 
         case 'Type':
           params.get(i).getType().setLiteralType('QEvent::Type');
+          break;
+        case 'ScrollHint':
+          params.get(i).getType().setLiteralType('QAbstractItemView::ScrollHint');
+          break;
+        case 'CursorAction':
+          params.get(i).getType().setLiteralType('QAbstractItemView::CursorAction');
+          break;
+        case 'SliderChange':
+          params.get(i).getType().setLiteralType('QAbstractSlider::SliderChange');
+          break;
+        case 'StepEnabled':
+          params.get(i).getType().setLiteralType('QDateTimeEdit::StepEnabled');
+          break;
+        case 'PrimitiveElement':
+          params.get(i).getType().setLiteralType('QStyle::PrimitiveElement');
+          break;
+        case 'ControlElement':
+          params.get(i).getType().setLiteralType('QStyle::ControlElement');
+          break;
+        case 'SubElement':
+          params.get(i).getType().setLiteralType('QStyle::SubElement');
+          break;
+        case 'ComplexControl':
+          params.get(i).getType().setLiteralType('QStyle::ComplexControl');
+          break;
+        case 'SubControl':
+          params.get(i).getType().setLiteralType('QStyle::SubControl');
+          break;
+        case 'ContentsType':
+          params.get(i).getType().setLiteralType('QStyle::ContentsType');
+          break;
+        case 'PixelMetric':
+          params.get(i).getType().setLiteralType('QStyle::PixelMetric');
+          break;
+        case 'StyleHint':
+          params.get(i).getType().setLiteralType('QStyle::StyleHint');
+          break;
+        case 'StandardPixmap':
+          params.get(i).getType().setLiteralType('QStyle::StandardPixmap');
+          break;
+        case 'Extension':
+          params.get(i).getType().setLiteralType('QGraphicsItem::Extension');
+          break;
+        case 'GraphicsItemChange':
+          params.get(i).getType().setLiteralType('QGraphicsItem::GraphicsItemChange');
+          break;
+        case 'const PaintContext &':
+          params.get(i).getType().setLiteralType('const QAbstractTextDocumentLayout::PaintContext &');
+          break;
+        case 'PaintDeviceMetric':
+          params.get(i).getType().setLiteralType('QPaintDevice::PaintDeviceMetric');
           break;
       }
       switch (""+params.get(i).getDefaultValue()) {
@@ -182,6 +274,11 @@ function processCallback(item, data)
       }
 
     }
+  }
+
+  if (shouldAllowClassWrapper(item)) {
+    data.getWrapperConfig().setWrapClass(true);
+    print("setting wrapper: "+item.getLiteralName()+"\n");
   }
 }
 
