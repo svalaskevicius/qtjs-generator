@@ -82,6 +82,7 @@ int ret;
     clearV8DataPool();
     qtjs_binder::QtSignalConnectorBinder::reset();
     
+    service->releaseReference();
     }
 
     v8::V8::Dispose();
