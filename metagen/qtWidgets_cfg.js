@@ -181,7 +181,7 @@ function processCallback(item, data)
   if (typeof item.getResultType !== 'undefined' && item.getResultType()) {
     switch (""+item.getResultType().getLiteralType()) {
       case 'StepEnabled':
-        item.getResultType().setLiteralType("QDateTimeEdit::StepEnabled");
+        item.getResultType().setLiteralType("QAbstractSpinBox::StepEnabled");
         break;
       case 'SubControl':
         item.getResultType().setLiteralType('QStyle::SubControl');
@@ -209,7 +209,7 @@ function processCallback(item, data)
           params.get(i).getType().setLiteralType('QAbstractSlider::SliderChange');
           break;
         case 'StepEnabled':
-          params.get(i).getType().setLiteralType('QDateTimeEdit::StepEnabled');
+          params.get(i).getType().setLiteralType('QAbstractSpinBox::StepEnabled');
           break;
         case 'PrimitiveElement':
           params.get(i).getType().setLiteralType('QStyle::PrimitiveElement');
