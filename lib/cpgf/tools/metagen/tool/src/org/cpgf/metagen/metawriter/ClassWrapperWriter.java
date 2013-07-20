@@ -19,8 +19,10 @@
 
 package org.cpgf.metagen.metawriter;
 
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.List;
+import java.util.ArrayList;
 
 import org.cpgf.metagen.Config;
 import org.cpgf.metagen.Util;
@@ -29,6 +31,7 @@ import org.cpgf.metagen.metadata.ClassTraits;
 import org.cpgf.metagen.metadata.ClassWrapperConfig;
 import org.cpgf.metagen.metadata.Constructor;
 import org.cpgf.metagen.metadata.CppClass;
+import org.cpgf.metagen.metadata.DeferClass;
 import org.cpgf.metagen.metadata.CppMethod;
 
 
@@ -36,27 +39,55 @@ public class ClassWrapperWriter {
 	private Config config;
 	private ClassWrapperConfig wrapperConfig;
 	private CppClass cppClass;
-	private List<CppMethod> overrideMethodList;
+	private Map<String, CppMethod> overrideMethods;
 
 	public ClassWrapperWriter(Config config, ClassWrapperConfig wrapperConfig, CppClass cppClass) {
 		this.config = config;
 		this.cppClass = cppClass;
 		this.wrapperConfig = wrapperConfig;
-		
+
 		this.buidOverrideMethodList();
 	}
 
 	public String getWrapperName() {
 		return this.wrapperConfig.makeWrapName(this.config, this.cppClass);
 	}
-	
+
 	private void buidOverrideMethodList() {
-		this.overrideMethodList = new ArrayList<CppMethod>();
-		for(CppMethod cppMethod : this.cppClass.getMethodList()) {
-			if(cppMethod.isVirtual()) {
-				this.overrideMethodList.add(cppMethod);
+		this.overrideMethods = new HashMap<String, CppMethod>();
+		addOverrideMethodsToListRecursively(this.cppClass, this.overrideMethods);
+	}
+
+	private void addOverrideMethodsToListRecursively(CppClass item, Map<String, CppMethod> result) {
+		for(DeferClass deferClass : item.getBaseClassList()) {
+			if(deferClass.getCppClass() != null) {
+				addOverrideMethodsToListRecursively(deferClass.getCppClass(), result);
 			}
 		}
+		for(CppMethod cppMethod : item.getMethodList()) {
+			String prototype = getMethodPrototypeKey(cppMethod);
+			if(cppMethod.isVirtual() || (result.containsKey(prototype) && !cppMethod.isStatic())) {
+				result.put(prototype, cppMethod);
+			}
+		}
+	}
+
+	private String getMethodPrototypeKey(CppMethod cppMethod) {
+		String result = "";
+
+		if(cppMethod.getResultType() != null) {
+			result = cppMethod.getResultType().getLiteralType();
+		} else {
+			result = "void";
+		}
+
+		result = result + " " +  cppMethod.getLiteralName() + "(" + Util.getParameterText(cppMethod.getParameterList(), true, false, false) + ")";
+
+		if(cppMethod.isConst()) {
+			result += " const";
+		}
+
+		return result.replace(" ", "");
 	}
 
 	private void doWriteConstructor(CppWriter codeWriter, Constructor ctor) {
@@ -65,8 +96,8 @@ public class ClassWrapperWriter {
 		codeWriter.writeLine(": " + this.cppClass.getLiteralName() + "(" + Util.getParameterText(ctor.getParameterList(), false, true) + ") {}");
 		codeWriter.decIndent();
 	}
-	
-	private void doWriteOverrideMethod(CppWriter codeWriter, CppMethod cppMethod, int order) {
+
+	private void doWriteOverrideMethod(CppWriter codeWriter, CppMethod cppMethod) {
 		String prototype = Util.getInvokablePrototype(cppMethod, cppMethod.getLiteralName());
 		if(cppMethod.isConst()) {
 			prototype = prototype + " const";
@@ -125,15 +156,16 @@ public class ClassWrapperWriter {
 			}
 		codeWriter.endBlock("");
 	}
-	
+
 	public void writeSuperMethodBind(CppWriter codeWriter) {
-		for(int i = 0; i < this.overrideMethodList.size(); ++i) {
-			CppMethod cppMethod = this.overrideMethodList.get(i);
-			String name = WriterUtil.getMethodSuperName(cppMethod);
-			WriterUtil.reflectMethod(codeWriter, "_d", "D::ClassType::", cppMethod, name, name, true);
+		for(CppMethod cppMethod : this.overrideMethods.values()) {
+			if (!cppMethod.isPrivate()) {
+				String name = WriterUtil.getMethodSuperName(cppMethod);
+				WriterUtil.reflectMethod(codeWriter, "_d", "D::ClassType::", cppMethod, name, name, true);
+			}
 		}
 	}
-	
+
 	public void writeClassWrapper(CppWriter codeWriter) {
 		codeWriter.write("class " + this.getWrapperName() + " : public " + this.cppClass.getLiteralName() + ", public cpgf::GScriptWrapper ");
 		codeWriter.writeLine("{");
@@ -141,17 +173,16 @@ public class ClassWrapperWriter {
 		codeWriter.incIndent();
 
 		for(Constructor ctor : this.cppClass.getConstructorList()) {
-		    if (ctor.isPublic()) {
-			    codeWriter.writeLine("");
-			    this.doWriteConstructor(codeWriter, ctor);
-            }
+			if (ctor.isPublic()) {
+				codeWriter.writeLine("");
+				this.doWriteConstructor(codeWriter, ctor);
+			}
 		}
 
-		for(int i = 0; i < this.overrideMethodList.size(); ++i) {
-			CppMethod cppMethod = this.overrideMethodList.get(i);
+		for(CppMethod cppMethod : this.overrideMethods.values()) {
 			if (!cppMethod.isPrivate()) {
-			    codeWriter.writeLine("");
-			    this.doWriteOverrideMethod(codeWriter, cppMethod, i);
+				codeWriter.writeLine("");
+				this.doWriteOverrideMethod(codeWriter, cppMethod);
 			}
 		}
 
@@ -170,11 +201,11 @@ public class ClassWrapperWriter {
 		if(rules != null && rules.size() > 0) {
 			policy = "::Policy<MakePolicy<" + Util.joinStringList(", ", rules) + "> >";
 		}
-		
+
 		String typeName = "GDefineMetaClass<" + this.getWrapperName() + ", " + this.cppClass.getLiteralName() + ">";
 
 		codeWriter.writeLine(typeName +  " _nd = " + typeName + policy + "::declare(\"" + this.getWrapperName() + "\");");
-		
+
 		codeWriter.writeLine(callFunc + "(0, _nd);");
 		codeWriter.writeLine("_d._class(_nd);");
 	}
