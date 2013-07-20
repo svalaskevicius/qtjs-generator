@@ -22,6 +22,7 @@
 
 class QGraphicsObject;
 class QGraphicsScene;
+class QPostEventList;
 
 namespace cpgf {
 
@@ -239,6 +240,11 @@ struct IsConvertible <From, const ::QVariant &, typename GEnableIfResult<
 
 template <>
 struct IsConvertible <const QDynamicMetaObjectData &, const cpgf::IObject &> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+
+template <>
+struct IsConvertible <const QPostEventList &, const cpgf::IObject &> {
     G_STATIC_CONSTANT(bool, Result = false);
 };
 

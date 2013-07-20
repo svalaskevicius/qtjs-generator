@@ -71,6 +71,35 @@ var config = {
   ]
 };
 
+function shouldAllowClassWrapper(item) {
+  if (!item.isClass() || ((""+item.getLiteralName()).length == 0)) {
+    return false;
+  }
+  if (item.isTemplate()) {
+    return false;
+  }
+
+  switch(""+item.getLiteralName()) {
+    case 'qLess':
+    case 'qGreater':
+    case 'QBitRef':
+    case 'QByteRef':
+    case 'QCoreApplication':
+    case 'QPostEventList':
+    case 'QJsonValueRef':
+    case 'QStandardPaths':
+    case 'QString':
+    case 'QCharRef':
+    case 'QThreadStorageData':
+    case 'QVariant':
+      return false;
+    default:
+      if (item.getQualifiedName().indexOf(/QPrivate/) >=0 ) {
+        return false;
+      }
+  }
+  return true;
+}
 
 function processCallback(item, data)
 {
@@ -308,5 +337,10 @@ function processCallback(item, data)
 
     }
   }
+  if (shouldAllowClassWrapper(item)) {
+    data.getWrapperConfig().setWrapClass(true);
+    print("setting wrapper: "+item.getLiteralName()+"\n");
+  }
+
 }
 
