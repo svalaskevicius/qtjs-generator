@@ -85,6 +85,7 @@ function shouldAllowClassWrapper(item) {
     case 'QBitRef':
     case 'QByteRef':
     case 'QCoreApplication':
+    case 'QFile': // TODO: need to fix binding generator for static methods
     case 'QPostEventList':
     case 'QJsonValueRef':
     case 'QStandardPaths':

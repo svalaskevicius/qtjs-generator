@@ -24,6 +24,7 @@ function prepare_file() {
     $s =~ s/QT_ASCII_CAST_WARN//g;
     $s =~ s/Q_WIDGETS_EXPORT//g;
     $s =~ s/Q_SLOTS//g;
+    $s =~ s/Q_INVOKABLE//g;
     $s =~ s/Q_SIGNALS://g;
     $s =~ s/Q_DECLARE_FLAGS\s*\(([^,()]+),\s*([^,()]+)\)/typedef QFlags<\2> \1;/g;
 
