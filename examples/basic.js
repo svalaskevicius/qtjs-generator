@@ -7,17 +7,18 @@ function createGraphicsView() {
     //view.setViewport(new qt.QGLWidget(new qt.QGLFormat(qt.QGL.SampleBuffers)));
 
     //scene.addRect(new qt.QRectF(10, 20, 30, 40), new qt.QPen(new qt.QColor(70, 130, 50)), new qt.QBrush(new qt.QColor(100, 240, 90)));
-    var myQGraphicsRectItem = cpgf.cloneClass(qt.QGraphicsRectItem);
-    /*
+    var myQGraphicsRectItem = cpgf.cloneClass(qt.QGraphicsRectItemWrapper);
     myQGraphicsRectItem.mouseMoveEvent = function($this, event) {
-      // not tested yet
-      scene.rotate(10);
+      // not working yet as the base class needs to be generated as well
+      $this.setRotation(10);
     };
     myQGraphicsRectItem.paint = function($this, painter, option, widget) {
-      // not tested yet
-      scene.rotate(10);
+      //$this.setRotation(10);
+      var r = $this.rect();
+      r.setRight(r.right()+1);
+      $this.setRect(r);
+      $this.super_paint(painter, option, widget);
     };
-    */
     var myItem = new myQGraphicsRectItem(new qt.QRectF(20, 30, 40, 50));
     scene.addItem(myItem);
     scene.addRect(new qt.QRectF(10, 20, 30, 40));
