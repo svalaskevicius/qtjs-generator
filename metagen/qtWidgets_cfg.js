@@ -104,8 +104,6 @@ function shouldAllowClassWrapper(item) {
     case 'QScroller':
     case 'QGraphicsLayout': // inherited pure virtual still fails
     case 'QGraphicsLayoutItem': // private constructor fails
-    case 'QGraphicsScene': // invalid method header generated: Type *[] param instead of Type * param[]
-    case 'QGraphicsView': // invalid method header generated: Type *[] param instead of Type * param[]
     case 'QLayout': // inherited pure virtual still fails
     case 'QListWidgetItem': // private constructor fails in read method for QDataStream
     case 'QTableWidgetItem': // private constructor fails in read method for QDataStream
@@ -201,6 +199,11 @@ function processCallback(item, data)
   if (item.isMethod() || item.isConstructor() || item.isOperator()) {
     var params = item.getParameterList();
     for(var i = 0; i < params.size(); i++) {
+      if (params.get(i).getType().getLiteralType().indexOf('[]') > -1) {
+        params.get(i).getType().setLiteralType(
+          params.get(i).getType().getLiteralType().replace('[]', '*')
+        );
+      }
       switch (""+params.get(i).getType().getLiteralType()) {
         case '...':
           data.skipBind = true;
