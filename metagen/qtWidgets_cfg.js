@@ -148,11 +148,8 @@ function processCallback(item, data)
       return;
     }
   }
-
   switch (""+item.getQualifiedName()) {
     case "QGraphicsEffect::source":
-    case "QAbstractGraphicsShapeItem":
-    case "QGraphicsObject":
     case "QMenu::platformMenu":
     case "QMenuBar::platformMenuBar":
     case "QMessageBox::open":
@@ -175,6 +172,19 @@ function processCallback(item, data)
     case "QMacNativeWidget":
     case "QMacCocoaViewContainer":
     case "QAbstractItemView::update":
+      data.skipBind = true;
+      return;
+    case "QAbstractGraphicsShapeItem":
+    case "QGraphicsObject":
+      item.getTraits().setDefaultConstructorHidden(true);
+      item.getTraits().setCopyConstructorHidden(true);
+      break;
+  }
+  if (item.isConstructor() && (item.getQualifiedName().indexOf('QGraphicsObject::') > -1)) {
+      data.skipBind = true;
+      return;
+  }
+  if (item.isConstructor() && (item.getQualifiedName().indexOf('QAbstractGraphicsShapeItem::') > -1)) {
       data.skipBind = true;
       return;
   }
