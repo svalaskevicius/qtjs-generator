@@ -1,4 +1,5 @@
 
+#include "_base.h"
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/scriptbind/gscriptbindutil.h"
@@ -12,7 +13,7 @@
 
 namespace qtjs_binder {
 
-class QtSignalConnector : public QObject {
+class DLL_PUBLIC QtSignalConnector : public QObject {
 public:
     ~QtSignalConnector();
     bool connectToSignal(QObject *obj, const char *signal, cpgf::IScriptFunction * callback);
@@ -29,7 +30,7 @@ public:
     virtual int qt_metacall(QMetaObject::Call, int, void **);
 };
 
-struct QtSignalConnectorBinder {
+struct DLL_PUBLIC QtSignalConnectorBinder {
     static void connect(QObject *obj, const char * signal, cpgf::IScriptFunction *callback ) {
         Q_ASSERT(connector);
         connector->connectToSignal(obj, signal, callback);

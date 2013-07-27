@@ -1,5 +1,7 @@
 #pragma once
 
+#include "_base.h"
+
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
 #include "cpgf/metadata/private/gmetadata_header.h"
