@@ -8,13 +8,15 @@ INCLUDEPATH += \
     ../../include
 
 
-CONFIG += c++11 exceptions release # debug # release
+CONFIG += c++11 exceptions release
 
-QMAKE_CXXFLAGS += -fvisibility=hidden -fvisibility-inlines-hidden -s -shared-libgcc
-QMAKE_LFLAGS += -fvisibility=hidden -fvisibility-inlines-hidden -s -shared-libgcc
+QMAKE_CXXFLAGS += -shared-libgcc
+QMAKE_LFLAGS += -shared-libgcc
 
 QMAKE_CXXFLAGS_RELEASE -= -O2
 QMAKE_CXXFLAGS_RELEASE += -Os
+QMAKE_CXXFLAGS_RELEASE += -fvisibility=hidden -fvisibility-inlines-hidden -s
+QMAKE_LFLAGS_RELEASE += -fvisibility=hidden -fvisibility-inlines-hidden -s
 
 # mac + clang
 # QMAKE_CFLAGS += -mmacosx-version-min=10.7 -stdlib=libc++
