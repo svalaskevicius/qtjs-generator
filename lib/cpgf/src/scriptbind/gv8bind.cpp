@@ -28,6 +28,7 @@
 #include "../pinclude/gstaticuninitializerorders.h"
 
 #include <stdexcept>
+#include <unordered_map>
 
 
 using namespace std;
@@ -58,6 +59,7 @@ namespace cpgf {
 
 namespace {
 
+std::unordered_map<void *, Persistent<Object> > allocatedObjects;
 
 GGlueDataWrapperPool * getV8DataWrapperPool()
 {
@@ -229,6 +231,7 @@ private:
 };
 
 
+void * v8ToObject(Handle<Value> value, GMetaType * outType);
 Handle<Value> variantToV8(const GContextPointer & context, const GVariant & data, const GBindValueFlags & flags, GGlueDataPointer * outputGlueData);
 Handle<FunctionTemplate> createClassTemplate(const GContextPointer & context, const GClassGlueDataPointer & classData);
 Persistent<Object> doBindEnum(const GContextPointer & context, Handle<ObjectTemplate> objectTemplate, IMetaEnum * metaEnum);
@@ -251,8 +254,12 @@ void error(const char * message)
 
 void weakHandleCallback(Persistent<Value> object, void * parameter)
 {
-	GGlueDataWrapper * dataWrapper = static_cast<GGlueDataWrapper *>(parameter);
+    void *address = v8ToObject(object, NULL);
+    if (address) {
+        allocatedObjects.erase(address);
+    }
 
+	GGlueDataWrapper * dataWrapper = static_cast<GGlueDataWrapper *>(parameter);
 	freeGlueDataWrapper(dataWrapper, getV8DataWrapperPool());
 
 	object.Dispose();
@@ -495,6 +502,10 @@ Handle<Value> objectToV8(const GContextPointer & context, const GClassGlueDataPo
 	if(objectAddressFromVariant(instance) == NULL) {
 		return Handle<Value>();
 	}
+    auto foundObjectIt = allocatedObjects.find(objectAddressFromVariant(instance));
+    if (foundObjectIt != allocatedObjects.end()) {
+        return foundObjectIt->second;
+    }
 
 	Handle<FunctionTemplate> functionTemplate = createClassTemplate(context, classData);
 	Handle<Value> external = External::New(&signatureKey);
@@ -867,6 +878,8 @@ Handle<Value> objectConstructor(const Arguments & args)
 
 			self->SetPointerInInternalField(0, objectWrapper);
 			setObjectSignature(&self);
+
+			allocatedObjects[instance] = self;
 		}
 		else {
 			raiseCoreException(Error_ScriptBinding_FailConstructObject);
