@@ -30,18 +30,19 @@ template <typename T>
 void doTestOverrideCppFunctionFromScriptClass(T * binding, TestScriptContext * context)
 {
 	if(context->isLua()) {
-		QDO(function funcOverride(me) return me.n + 15 end)
+		QDO(function funcOverride(me) return me.n + me.m end)
 	}
 	if(context->isV8()) {
-		QDO(function funcOverride(me) { return me.n + 15; })
+		QDO(function funcOverride(me) { return me.n + me.m; })
 	}
 	if(context->isPython()) {
-		QDO(def funcOverride(me): return me.n + 15)
+		QDO(def funcOverride(me): return me.n + me.m)
 	}
 
 	QNEWOBJ(a, ScriptOverride(3))
 	QASSERT(a.getValue() == 3);
 	QDO(ScriptOverride.getValue = funcOverride)
+	QDO(a.m = 15)
 	QASSERT(a.getValue() == 18);
 
 	ScriptOverride * objA = static_cast<ScriptOverride *>(binding->getObject("a"));
