@@ -6,19 +6,24 @@ function createGraphicsView() {
     myQGraphicsRectItem.mouseMoveEvent = function($this, event) {
       $this.setRotation(1+$this.rotation());
     };
+    myQGraphicsRectItem.prototype.getDirection = function() {
+      var r = this.rect();
+      if (r.right() > (r.left() + 100)) {
+        this.direction = -1;
+      } else if (r.right() <= r.left()) {
+        this.direction = 1;
+      } else if (typeof this.direction === 'undefined') {
+        this.direction = 1;
+      }
+      return this.direction;
+    };
     myQGraphicsRectItem.paint = function($this, painter, option, widget) {
       var r = $this.rect();
-      if (r.right() > (r.left() + 100)) {
-        $this.direction = -1;
-      } else if (r.right() <= r.left()) {
-        $this.direction = 1;
-      }
-      r.setRight(r.right()+$this.direction);
+      r.setRight(r.right() + $this.getDirection());
       $this.setRect(r);
       $this.super_paint(painter, option, widget);
     };
     myItem = new myQGraphicsRectItem(new qt.QRectF(20, 30, 40, 50));
-    myItem.direction = 1;
 
     myQGraphicsScene = cpgf.cloneClass(qt.QGraphicsSceneWrapper);
     myQGraphicsView = cpgf.cloneClass(qt.QGraphicsViewWrapper);
