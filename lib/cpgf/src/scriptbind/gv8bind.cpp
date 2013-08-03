@@ -518,10 +518,12 @@ Handle<Value> objectToV8(const GContextPointer & context, const GClassGlueDataPo
 	if(objectAddressFromVariant(instance) == NULL) {
 		return Handle<Value>();
 	}
-    auto foundObjectIt = allocatedObjects.find(objectAddressFromVariant(instance));
 
-    if (( opcvNone == cv) && (foundObjectIt != allocatedObjects.end())) {
-        return foundObjectIt->second;
+    if (opcvNone == cv) {
+        auto foundObjectIt = allocatedObjects.find(objectAddressFromVariant(instance));
+        if (foundObjectIt != allocatedObjects.end()) {
+            return foundObjectIt->second;
+        }
     }
 
 	Handle<FunctionTemplate> functionTemplate = createClassTemplate(context, classData);
