@@ -23,7 +23,12 @@ function createGraphicsView() {
       $this.setRect(r);
       $this.super_paint(painter, option, widget);
     };
-    myItem = new myQGraphicsRectItem(new qt.QRectF(20, 30, 40, 50));
+
+    childGraphicsRectItem = function(rect) {
+      this.prototype = this.__proto__ = new myQGraphicsRectItem(rect);
+    };
+
+    myItem = new childGraphicsRectItem(new qt.QRectF(20, 30, 40, 50));
 
     myQGraphicsScene = cpgf.cloneClass(qt.QGraphicsSceneWrapper);
     myQGraphicsView = cpgf.cloneClass(qt.QGraphicsViewWrapper);
