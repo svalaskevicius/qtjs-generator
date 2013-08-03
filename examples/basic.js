@@ -1,31 +1,42 @@
-
 cpgf.import("cpgf", "builtin.core");
 
 function createGraphicsView() {
-    var scene = new qt.QGraphicsScene();
-    var view = new qt.QGraphicsView(scene);
-    //view.setViewport(new qt.QGLWidget(new qt.QGLFormat(qt.QGL.SampleBuffers)));
 
-    //scene.addRect(new qt.QRectF(10, 20, 30, 40), new qt.QPen(new qt.QColor(70, 130, 50)), new qt.QBrush(new qt.QColor(100, 240, 90)));
-    var myQGraphicsRectItem = cpgf.cloneClass(qt.QGraphicsRectItemWrapper);
+    myQGraphicsRectItem = cpgf.cloneClass(qt.QGraphicsRectItemWrapper);
     myQGraphicsRectItem.mouseMoveEvent = function($this, event) {
-      // not working yet as the base class needs to be generated as well
-      $this.setRotation(10);
+      $this.setRotation(1+$this.rotation());
+    };
+    myQGraphicsRectItem.prototype.getDirection = function() {
+      var r = this.rect();
+      if (r.right() > (r.left() + 100)) {
+        this.direction = -1;
+      } else if (r.right() <= r.left()) {
+        this.direction = 1;
+      } else if (typeof this.direction === 'undefined') {
+        this.direction = 1;
+      }
+      return this.direction;
     };
     myQGraphicsRectItem.paint = function($this, painter, option, widget) {
-      //$this.setRotation(10);
       var r = $this.rect();
-      r.setRight(r.right()+1);
+      r.setRight(r.right() + $this.getDirection());
       $this.setRect(r);
       $this.super_paint(painter, option, widget);
     };
-    var myItem = new myQGraphicsRectItem(new qt.QRectF(20, 30, 40, 50));
+    myItem = new myQGraphicsRectItem(new qt.QRectF(20, 30, 40, 50));
+
+    myQGraphicsScene = cpgf.cloneClass(qt.QGraphicsSceneWrapper);
+    myQGraphicsView = cpgf.cloneClass(qt.QGraphicsViewWrapper);
+    // view.setViewport(new qt.QGLWidget(new qt.QGLFormat(qt.QGL.SampleBuffers)));
+
+    scene = new myQGraphicsScene();
+    var view = new myQGraphicsView(scene);
     scene.addItem(myItem);
     scene.addRect(new qt.QRectF(10, 20, 30, 40));
 
-    // myItem.grabMouse(); <- still needs more classes enabled
-    //myItem.paint(1, 2, 3);
+    myItem.grabMouse();
 
+    view.setMouseTracking(true);
     return view;
 }
 
@@ -78,8 +89,9 @@ function createMainWindow() {
 
 })();
 
+var w = null;
 (function(){
-  var w = createMainWindow();
+  w = createMainWindow();
   w.show();
 })();
 
