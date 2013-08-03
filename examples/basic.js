@@ -100,3 +100,7 @@ var w = null;
   w.show();
 })();
 
+qt.setExitCode(
+  qt.QCoreApplication.instance().exec()
+);
+

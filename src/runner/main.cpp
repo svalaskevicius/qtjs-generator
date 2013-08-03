@@ -41,10 +41,14 @@
 using namespace cpgf;
 using namespace std;
 
+int __exitCode = 1;
+void setExitCode(int code) {
+    __exitCode = code;
+}
+
 int main(int argc, char * argv[])
 {
     QApplication app(argc, argv);
-int ret;
     {
 
 	GDefineMetaNamespace define = GDefineMetaNamespace::declare("qt");
@@ -53,6 +57,7 @@ int ret;
 
     qtjs_binder::QtSignalConnectorBinder::reset(new qtjs_binder::QtSignalConnector());
     define._method("connect", &qtjs_binder::QtSignalConnectorBinder::connect);
+    define._method("setExitCode", &setExitCode );
 
 	const char * fileName = "main.js";
 	
@@ -76,7 +81,6 @@ int ret;
         cout << "Failed to execute " << fileName << ", maybe it doesn't exist?" << endl;
     }
 
-    ret = app.exec();
 
     while (!v8::V8::IdleNotification()); // run GC
     clearV8DataPool();
@@ -87,6 +91,6 @@ int ret;
 
     v8::V8::Dispose();
 
-	return ret;
+	return __exitCode;
 }
 
