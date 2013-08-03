@@ -503,7 +503,8 @@ Handle<Value> objectToV8(const GContextPointer & context, const GClassGlueDataPo
 		return Handle<Value>();
 	}
     auto foundObjectIt = allocatedObjects.find(objectAddressFromVariant(instance));
-    if (foundObjectIt != allocatedObjects.end()) {
+
+    if (( opcvNone == cv) && (foundObjectIt != allocatedObjects.end())) {
         return foundObjectIt->second;
     }
 
