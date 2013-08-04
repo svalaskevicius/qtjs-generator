@@ -376,7 +376,7 @@ GScriptDataType getV8Type(Local<Value> value, IMetaTypedItem ** typeItem)
 
 			}
 			else {
-				GGlueDataWrapper * dataWrapper = static_cast<GGlueDataWrapper *>(obj->GetPointerFromInternalField(0));
+				GGlueDataWrapper * dataWrapper = retrieveNativeObjectPtr(obj);
 				if(dataWrapper != NULL) {
 					switch(dataWrapper->getData()->getType()) {
 						case gdtObject: {
