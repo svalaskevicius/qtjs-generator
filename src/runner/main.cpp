@@ -25,46 +25,46 @@ using namespace std;
 
 namespace {
 
-    int __exitCode = 1;
-    void setExitCode(int code)
-    {
-        __exitCode = code;
-    }
+int __exitCode = 1;
+void setExitCode(int code)
+{
+    __exitCode = code;
+}
 
-    void registerQt(GDefineMetaNamespace &define)
-    {
-        meta_qtcore::registerMain_QtCore(define);
-        meta_qtwidgets::registerMain_QtWidgets(define);
+void registerQt(GDefineMetaNamespace &define)
+{
+    meta_qtcore::registerMain_QtCore(define);
+    meta_qtwidgets::registerMain_QtWidgets(define);
 
-        qtjs_binder::QtSignalConnectorBinder::reset(new qtjs_binder::QtSignalConnector());
-        define._method("connect", &qtjs_binder::QtSignalConnectorBinder::connect);
-        define._method("setExitCode", &setExitCode);
-    }
+    qtjs_binder::QtSignalConnectorBinder::reset(new qtjs_binder::QtSignalConnector());
+    define._method("connect", &qtjs_binder::QtSignalConnectorBinder::connect);
+    define._method("setExitCode", &setExitCode);
+}
 
-    bool executeJs(const char *fileName)
-    {
-        GDefineMetaNamespace define = GDefineMetaNamespace::declare("qt");
-        registerQt(define);
+bool executeJs(const char *fileName)
+{
+    GDefineMetaNamespace define = GDefineMetaNamespace::declare("qt");
+    registerQt(define);
 
-        GScopedPointer<GScriptRunner> runner;
-        GScopedInterface<IMetaService> service(createDefaultMetaService());
-        runner.reset(createV8ScriptRunner(service.get()));
-        GScopedInterface<IScriptObject> scriptObject(runner->getScripeObject());
+    GScopedPointer<GScriptRunner> runner;
+    GScopedInterface<IMetaService> service(createDefaultMetaService());
+    runner.reset(createV8ScriptRunner(service.get()));
+    GScopedInterface<IScriptObject> scriptObject(runner->getScripeObject());
 
-        scriptObject->bindCoreService("cpgf", NULL);
-        GScopedInterface<IMetaClass> metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())));
-        scriptObject->bindClass("qt", metaClass.get());
+    scriptObject->bindCoreService("cpgf", NULL);
+    GScopedInterface<IMetaClass> metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())));
+    scriptObject->bindClass("qt", metaClass.get());
 
-        bool ret = runner->executeFile(fileName);
+    bool ret = runner->executeFile(fileName);
 
-        while (!v8::V8::IdleNotification()); // run GC
-        clearV8DataPool();
-        qtjs_binder::QtSignalConnectorBinder::reset();
+    while (!v8::V8::IdleNotification()); // run GC
+    clearV8DataPool();
+    qtjs_binder::QtSignalConnectorBinder::reset();
 
-        service->releaseReference();
+    service->releaseReference();
 
-        return ret;
-    }
+    return ret;
+}
 
 } // namespace
 

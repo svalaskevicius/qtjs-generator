@@ -13,39 +13,39 @@
 
 namespace qtjs_binder {
 
-    class DLL_PUBLIC QtSignalConnector : public QObject {
-    public:
-        ~QtSignalConnector();
-        bool connectToSignal(QObject *obj, const char *signal, cpgf::IScriptFunction * callback);
+class DLL_PUBLIC QtSignalConnector : public QObject {
+public:
+    ~QtSignalConnector();
+    bool connectToSignal(QObject *obj, const char *signal, cpgf::IScriptFunction * callback);
 
-    protected:
-        struct CallInfo {
-            QMetaMethod metaMethod;
-            cpgf::IScriptFunction * callback;
-            void invoke(void **);
-            ~CallInfo();
-        };
-        QVector<CallInfo *> callbacks;
-    public:
-        virtual int qt_metacall(QMetaObject::Call, int, void **);
+protected:
+    struct CallInfo {
+        QMetaMethod metaMethod;
+        cpgf::IScriptFunction * callback;
+        void invoke(void **);
+        ~CallInfo();
     };
+    QVector<CallInfo *> callbacks;
+public:
+    virtual int qt_metacall(QMetaObject::Call, int, void **);
+};
 
-    struct DLL_PUBLIC QtSignalConnectorBinder {
-        static void connect(QObject *obj, const char * signal, cpgf::IScriptFunction *callback) {
-            Q_ASSERT(connector);
-            connector->connectToSignal(obj, signal, callback);
+struct DLL_PUBLIC QtSignalConnectorBinder {
+    static void connect(QObject *obj, const char * signal, cpgf::IScriptFunction *callback) {
+        Q_ASSERT(connector);
+        connector->connectToSignal(obj, signal, callback);
+    }
+    static void reset(QtSignalConnector *newConnector = nullptr) {
+        if (connector) {
+            delete connector;
         }
-        static void reset(QtSignalConnector *newConnector = nullptr) {
-            if (connector) {
-                delete connector;
-            }
-            connector = newConnector;
-        }
-    private:
-        static QtSignalConnector *connector;
-    };
+        connector = newConnector;
+    }
+private:
+    static QtSignalConnector *connector;
+};
 
-    QtSignalConnector* QtSignalConnectorBinder::connector = nullptr;
+QtSignalConnector* QtSignalConnectorBinder::connector = nullptr;
 
 }
 
