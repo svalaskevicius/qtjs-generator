@@ -14,9 +14,9 @@
 
 
 #define ENABLE_INT_TYPE_CONVERSION(TYPE) \
-template <typename From> \
-struct IsConvertible <From, TYPE, typename GEnableIfResult<IsConvertible<From, int> >::Result> { \
-    G_STATIC_CONSTANT(bool, Result = true); \
-};
+    template <typename From> \
+    struct IsConvertible <From, TYPE, typename GEnableIfResult<IsConvertible<From, int> >::Result> { \
+        G_STATIC_CONSTANT(bool, Result = true); \
+    };
 
 
