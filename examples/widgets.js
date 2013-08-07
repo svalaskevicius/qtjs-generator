@@ -1,86 +1,93 @@
 cpgf.import("cpgf", "builtin.core");
 
-    setSelf = function(self) {
-      obj = self;
-      while (typeof obj === 'object') {
+function setSelf(self) {
+    obj = self;
+    while (typeof obj === 'object') {
         if (typeof obj.self !== 'undefined') {
-          throw "setSelf trying to override this!";
+            throw "setSelf trying to override this!";
         }
         obj.self = self;
         obj = obj.prototype;
-      }
     }
-    getSelf = function(self) {
-      if (typeof self.self === 'undefined') {
+}
+
+function getSelf(self) {
+    if (typeof self.self === 'undefined') {
         throw "getSelf does not have 'this' assigned, use setSelf first";
-      }
-      return self.self;
     }
+    return self.self;
+}
+
+var App = (function(App) {
+    App.MovingRectItem = cpgf.cloneClass(qt.QGraphicsRectItemWrapper);
+    App.MovingRectItem.mouseMoveEvent = function($this /*, event */ ) {
+        $this.setRotation(1 + $this.rotation());
+    };
+    App.MovingRectItem.prototype.getDirection = function() {
+        var r = this.rect();
+        if (r.right() > (r.left() + 100)) {
+            this.direction = -this.speed;
+        } else if (r.right() <= r.left()) {
+            this.direction = this.speed;
+        } else if (typeof this.direction === 'undefined') {
+            this.direction = this.speed;
+        }
+        return this.direction;
+    };
+    App.MovingRectItem.paint = function($this, painter, option, widget) {
+        var r = $this.rect();
+        r.setRight(r.right() + getSelf($this).getDirection());
+        $this.setRect(r);
+        $this.super_paint(painter, option, widget);
+    };
+
+    App.MovingRectItemChild = function(rect) {
+        this.prototype = this.__proto__ = new App.MovingRectItem(rect);
+        setSelf(this);
+        this.speed = 2;
+    };
+
+    return App;
+
+})(App || {});
+
 function createGraphicsView() {
 
-    myQGraphicsRectItem = cpgf.cloneClass(qt.QGraphicsRectItemWrapper);
-    myQGraphicsRectItem.mouseMoveEvent = function($this, event) {
-      $this.setRotation(1+$this.rotation());
-    };
-    myQGraphicsRectItem.prototype.getDirection = function() {
-      var r = this.rect();
-      if (r.right() > (r.left() + 100)) {
-        this.direction = -this.speed;
-      } else if (r.right() <= r.left()) {
-        this.direction = this.speed;
-      } else if (typeof this.direction === 'undefined') {
-        this.direction = this.speed;
-      }
-      return this.direction;
-    };
-    myQGraphicsRectItem.paint = function($this, painter, option, widget) {
-      var r = $this.rect();
-      r.setRight(r.right() + getSelf($this).getDirection());
-      $this.setRect(r);
-      $this.super_paint(painter, option, widget);
-    };
+    var myItem = new App.MovingRectItemChild(new qt.QRectF(20, 30, 40, 50));
 
-    childGraphicsRectItem = function(rect) {
-      this.prototype = this.__proto__ = new myQGraphicsRectItem(rect);
-      setSelf(this);
-      this.speed = 2;
-    };
-
-    myItem = new childGraphicsRectItem(new qt.QRectF(20, 30, 40, 50));
-
-    myQGraphicsScene = cpgf.cloneClass(qt.QGraphicsSceneWrapper);
-    myQGraphicsView = cpgf.cloneClass(qt.QGraphicsViewWrapper);
+    var scene = new qt.QGraphicsScene();
+    var view = new qt.QGraphicsView(scene);
     // view.setViewport(new qt.QGLWidget(new qt.QGLFormat(qt.QGL.SampleBuffers)));
 
-    scene = new myQGraphicsScene();
-    var view = new myQGraphicsView(scene);
     scene.addItem(myItem);
     scene.addRect(new qt.QRectF(10, 20, 30, 40));
 
     myItem.grabMouse();
 
     view.setMouseTracking(true);
+
+    // needed for GC not to free the variables while they're still required
+    scene.deps = [myItem];
+    view.deps = [scene];
+
     return view;
 }
 
 function createMainWindow() {
     var self = new qt.QMainWindow();
-
     var centralView = new qt.QWidget();
     var layout = new qt.QVBoxLayout();
 
-    var label = new qt.QLabel(new qt.QString("Label"));
-    layout.addWidget(label);
+    layout.addWidget(new qt.QLabel(new qt.QString("Label")));
+    layout.addWidget((function() {
+        var tabbed = new qt.QTabWidget();
 
-    var tabbed = new qt.QTabWidget();
-    layout.addWidget(tabbed);
+        tabbed.addTab(new qt.QLabel(new qt.QString("Label 1")), new qt.QString("Page 1"));
+        tabbed.addTab(new qt.QLabel(new qt.QString("Label 2")), new qt.QString("Page 2"));
+        tabbed.addTab(createGraphicsView(), "GraphicsView");
 
-    var label1 = new qt.QLabel(new qt.QString("Label 1"));
-    var label2 = new qt.QLabel(new qt.QString("Label 2"));
-    tabbed.addTab(label1, new qt.QString("Page 1"));
-    tabbed.addTab(label2, new qt.QString("Page 2"));
-
-    tabbed.addTab(createGraphicsView(), "GraphicsView");
+        return tabbed;
+    })());
 
     centralView.setLayout(layout);
     self.setCentralWidget(centralView);
@@ -88,14 +95,10 @@ function createMainWindow() {
     return self;
 }
 
-
-var w = null;
-(function(){
-  w = createMainWindow();
-  w.show();
+(function() {
+    var window = createMainWindow();
+    window.show();
+    qt.setExitCode(
+        qt.QCoreApplication.instance().exec()
+    );
 })();
-
-qt.setExitCode(
-  qt.QCoreApplication.instance().exec()
-);
-
