@@ -155,8 +155,6 @@ bool QtSignalConnector::connectToSignal(QObject *obj, const char *signal, IScrip
 }
 
 int QtSignalConnector::qt_metacall(QMetaObject::Call call, int id, void **data) {
-    qDebug() << "qt_metacall: " << id;
-
     id = QObject::qt_metacall(call, id, data);
     if (id == -1 || call != QMetaObject::InvokeMetaMethod) {
         return id;
