@@ -1,5 +1,21 @@
 cpgf.import("cpgf", "builtin.core");
 
+    setSelf = function(self) {
+      obj = self;
+      while (typeof obj === 'object') {
+        if (typeof obj.self !== 'undefined') {
+          throw "setSelf trying to override this!";
+        }
+        obj.self = self;
+        obj = obj.prototype;
+      }
+    }
+    getSelf = function(self) {
+      if (typeof self.self === 'undefined') {
+        throw "getSelf does not have 'this' assigned, use setSelf first";
+      }
+      return self.self;
+    }
 function createGraphicsView() {
 
     myQGraphicsRectItem = cpgf.cloneClass(qt.QGraphicsRectItemWrapper);
@@ -9,23 +25,25 @@ function createGraphicsView() {
     myQGraphicsRectItem.prototype.getDirection = function() {
       var r = this.rect();
       if (r.right() > (r.left() + 100)) {
-        this.direction = -1;
+        this.direction = -this.speed;
       } else if (r.right() <= r.left()) {
-        this.direction = 1;
+        this.direction = this.speed;
       } else if (typeof this.direction === 'undefined') {
-        this.direction = 1;
+        this.direction = this.speed;
       }
       return this.direction;
     };
     myQGraphicsRectItem.paint = function($this, painter, option, widget) {
       var r = $this.rect();
-      r.setRight(r.right() + $this.getDirection());
+      r.setRight(r.right() + getSelf($this).getDirection());
       $this.setRect(r);
       $this.super_paint(painter, option, widget);
     };
 
     childGraphicsRectItem = function(rect) {
       this.prototype = this.__proto__ = new myQGraphicsRectItem(rect);
+      setSelf(this);
+      this.speed = 2;
     };
 
     myItem = new childGraphicsRectItem(new qt.QRectF(20, 30, 40, 50));
