@@ -1,7 +1,7 @@
 
 TEMPLATE = subdirs
 
-SUBDIRS = core widgets
+SUBDIRS = core widgets qml
 
 CONFIG += ordered
 SUBDIRS += runner

@@ -34,6 +34,7 @@ var config = {
   parameterTypeReplacer : [
     "Q_DECL_CONSTEXPR", "",
     "Q_CORE_EXPORT", "",
+    "Q_QML_EXPORT", "",
   ]
 };
 
@@ -47,7 +48,7 @@ function shouldAllowClassWrapper(item) {
   }
 
   switch(""+item.getLiteralName()) {
-    case '':
+    case 'QJSValueIterator':
       return false;
     default:
       ;
@@ -64,6 +65,7 @@ function processCallback(item, data)
 
   var skipByLocationPart = [
     '/private/',
+    'private.h',
     '_impl.h',
   ];
 
@@ -84,7 +86,13 @@ function processCallback(item, data)
     }
   }
   switch (""+item.getQualifiedName()) {
-    case "xx":
+    case "QJSEngine::handle":
+    case "QML_GETTYPENAMES":
+    case "Q_DECLARE_TYPEINFO":
+    case "QQmlComponent::qmlAttachedProperties":
+    case "QQmlEngine::urlInterceptor":
+    case "QQmlEngine::setUrlInterceptor":
+    case "QQmlListProperty::==":
       data.skipBind = true;
       return;
     case "xx":
