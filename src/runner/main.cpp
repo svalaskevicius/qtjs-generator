@@ -26,7 +26,14 @@ using namespace std;
 
 namespace {
 
+QStringList __programArguments;
 int __exitCode = 1;
+
+QStringList programArguments() 
+{
+    return __programArguments;
+}
+
 void setExitCode(int code)
 {
     __exitCode = code;
@@ -40,6 +47,7 @@ void registerQt(GDefineMetaNamespace &define)
 
     qtjs_binder::QtSignalConnectorBinder::reset(new qtjs_binder::QtSignalConnector());
     define._method("connect", &qtjs_binder::QtSignalConnectorBinder::connect);
+    define._method("programArguments", &programArguments);
     define._method("setExitCode", &setExitCode);
 }
 
@@ -77,6 +85,9 @@ int main(int argc, char * argv[])
     const char * fileName = "main.js";
     if (argc > 1) {
         fileName = argv[1];
+    }
+    for (int i = 2; i < argc; i++) {
+        __programArguments.append(argv[i]);
     }
 
     if (!executeJs(fileName)) {

@@ -5,6 +5,7 @@
     var log = new qt.QMessageLogger();
 
     log.debug()
+        ._opLeftShift(qt.programArguments().size())
         ._opLeftShift(qt.QString.fromLatin1(pt.toString()))
         ._opLeftShift(new qt.QString("a string"))
         ._opLeftShift(123)
