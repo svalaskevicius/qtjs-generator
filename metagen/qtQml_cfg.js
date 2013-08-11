@@ -101,6 +101,8 @@ function processCallback(item, data)
     case "QQuickItem::mapFromItem":
     case "QQuickItem::mapToItem":
     case "QQuickWindow::closing":
+    case "quick_test_main":
+    case "QQuickTransform": // fails to link
       data.skipBind = true;
       return;
     case "QSGMaterialShader":
