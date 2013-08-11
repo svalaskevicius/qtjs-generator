@@ -14,6 +14,7 @@
 
 #include "register_meta_qtcore.h"
 #include "register_meta_qtwidgets.h"
+#include "register_meta_qtqml.h"
 
 #include <QtCore/QObject>
 #include <QtCore/QSharedPointer>
@@ -35,6 +36,7 @@ void registerQt(GDefineMetaNamespace &define)
 {
     meta_qtcore::registerMain_QtCore(define);
     meta_qtwidgets::registerMain_QtWidgets(define);
+    meta_qtqml::registerMain_QtQml(define);
 
     qtjs_binder::QtSignalConnectorBinder::reset(new qtjs_binder::QtSignalConnector());
     define._method("connect", &qtjs_binder::QtSignalConnectorBinder::connect);
