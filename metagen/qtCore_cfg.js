@@ -157,7 +157,6 @@ function processCallback(item, data)
     'QTypeInfo',
     'typedef',
 
-    'QUrl',
     'QAnimationGroup',
     'QAbstractState',
     'QDynamicMetaObjectData',
@@ -235,6 +234,9 @@ function processCallback(item, data)
     case "QFlags::Int":
     case "QList::p":
     case "QList::d":
+    case "QUrlTwoFlags":
+    case "QUrl::data_ptr":
+    case "QUrlQuery::data_ptr":
       data.skipBind = true;
       break;
 
@@ -328,6 +330,12 @@ function processCallback(item, data)
         case 'QFlags &':
           params.get(i).getType().setLiteralType('QFlags<Enum > &');
           break;
+        case 'FormattingOptions':
+          params.get(i).getType().setLiteralType('QUrl::FormattingOptions');
+          break;
+        case 'ComponentFormattingOptions':
+          params.get(i).getType().setLiteralType('QUrl::ComponentFormattingOptions');
+          break;
         default:
           print("TYPE: "+params.get(i).getType().getLiteralType()+"\n");
       }
@@ -343,6 +351,9 @@ function processCallback(item, data)
           break;
         case "NoState":
           params.get(i).setDefaultValue("QFutureInterfaceBase::NoState");
+          break;
+        case "FormattingOptions(PrettyDecoded)":
+          params.get(i).setDefaultValue("QUrl::FormattingOptions(QUrl::PrettyDecoded)");
           break;
       }
 

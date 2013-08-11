@@ -17,6 +17,7 @@
 #include <QLibrary>
 #include <QRegularExpression>
 #include <QLocale>
+#include <QUrlQuery>
 #include <QUrl>
 #include <QStandardPaths>
 
