@@ -1,5 +1,12 @@
 cpgf.import("cpgf", "builtin.core");
 
+
+function error(text)
+{
+    var log = new qt.QMessageLogger();
+    log.critical()._opLeftShift(new qt.QString(text));
+}
+
 function setSelf(self) {
     obj = self;
     while (typeof obj === 'object') {
@@ -84,7 +91,7 @@ function createMainWindow() {
 
         tabbed.addTab(new qt.QLabel(new qt.QString("Label 1")), new qt.QString("Page 1"));
         tabbed.addTab(new qt.QLabel(new qt.QString("Label 2")), new qt.QString("Page 2"));
-        tabbed.addTab(createGraphicsView(), "GraphicsView");
+        tabbed.addTab(createGraphicsView(), new qt.QString("GraphicsView"));
 
         return tabbed;
     })());
@@ -96,9 +103,14 @@ function createMainWindow() {
 }
 
 (function() {
-    var window = createMainWindow();
-    window.show();
-    qt.setExitCode(
-        qt.QCoreApplication.instance().exec()
-    );
+    try {
+        var window = createMainWindow();
+        window.show();
+        qt.setExitCode(
+           qt.QCoreApplication.instance().exec()
+        );
+    } catch (e) {
+        error(e);
+        qt.setExitCode(1);
+    }
 })();
