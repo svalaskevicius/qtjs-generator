@@ -49,6 +49,8 @@ function shouldAllowClassWrapper(item) {
 
   switch(""+item.getLiteralName()) {
     case 'QJSValueIterator':
+    case "QQuickWindow":
+    case "QQuickView":
       return false;
     default:
       ;
@@ -89,16 +91,69 @@ function processCallback(item, data)
     case "QJSEngine::handle":
     case "QML_GETTYPENAMES":
     case "Q_DECLARE_TYPEINFO":
+    case "Q_QML_EXPORT":
+    case "Q_QUICK_EXPORT":
+    case "Q_QUICK_TEST_EXPORT":
     case "QQmlComponent::qmlAttachedProperties":
     case "QQmlEngine::urlInterceptor":
     case "QQmlEngine::setUrlInterceptor":
     case "QQmlListProperty::==":
+    case "QQuickItem::mapFromItem":
+    case "QQuickItem::mapToItem":
+    case "QQuickWindow::closing":
       data.skipBind = true;
       return;
-    case "xx":
+    case "QSGMaterialShader":
+    case "QSGSimpleRectNode":
+    case "QSGFlatColorMaterial":
+    case "QSGSimpleTextureNode":
+    case "QSGOpaqueTextureMaterial":
       item.getTraits().setDefaultConstructorHidden(true);
       item.getTraits().setCopyConstructorHidden(true);
       break;
+  }
+  if (item.isMethod() || item.isConstructor() || item.isOperator()) {
+    if (typeof item.getResultType !== 'undefined' && item.getResultType()) {
+      switch (""+item.getResultType().getLiteralType()) {
+        case 'Flags':
+          item.getResultType().setLiteralType('QQmlImageProviderBase::Flags');
+          break;
+        case 'ImageType':
+          item.getResultType().setLiteralType('QQmlImageProviderBase::ImageType');
+          break;
+        case 'UpdatePaintNodeData *':
+          item.getResultType().setLiteralType('QQuickItem::UpdatePaintNodeData *');
+          break;
+        case 'SurfaceType':
+          item.getResultType().setLiteralType('QSurface::SurfaceType');
+          break;
+      }
+    }
+    var params = item.getParameterList();
+    for(var i = 0; i < params.size(); i++) {
+      switch (""+params.get(i).getType().getLiteralType()) {
+        case '...':
+          data.skipBind = true;
+          return;
+        case 'Flags':
+          params.get(i).getType().setLiteralType('QQmlImageProviderBase::Flags');
+          break;
+        case 'ImageType':
+          params.get(i).getType().setLiteralType('QQmlImageProviderBase::ImageType');
+          break;
+        case 'UpdatePaintNodeData *':
+          params.get(i).getType().setLiteralType('QQuickItem::UpdatePaintNodeData *');
+          break;
+        case 'CreateTextureOption':
+          params.get(i).getType().setLiteralType('QQuickWindow::CreateTextureOption');
+          break;
+      }
+      switch (""+params.get(i).getDefaultValue()) {
+        case "CreateTextureOption(0)":
+          params.get(i).setDefaultValue('QQuickWindow::CreateTextureOption(0)');
+          break;
+      }
+    }
   }
 
   if (shouldAllowClassWrapper(item)) {
