@@ -68,6 +68,10 @@ var config = {
   parameterTypeReplacer : [
     "Q_DECL_CONSTEXPR", "",
     "Q_CORE_EXPORT", "",
+  ],
+
+  predefinedTemplateInstances: [
+    'QList<QString>', '',
   ]
 };
 
@@ -107,6 +111,9 @@ function processCallback(item, data)
   if(item.getLocation().indexOf('/QtCore/') == -1) {
     data.skipBind = true;
     return;
+  }
+  switch (""+item.getQualifiedName()) {
+    case 'QList': return;
   }
   var skipByLocationPart = [
     '/private/',
@@ -226,6 +233,8 @@ function processCallback(item, data)
     case "MetaObjectForType":
     case "qt_metatype_id":
     case "QFlags::Int":
+    case "QList::p":
+    case "QList::d":
       data.skipBind = true;
       break;
 
@@ -295,6 +304,7 @@ function processCallback(item, data)
         case '...':
         case 'const QMimeTypePrivate &':
         case 'QFileInfoPrivate *':
+        case 'typename QList<T >::Node*':
         data.skipBind = true;
         break;
         case 'Type':
@@ -342,6 +352,5 @@ function processCallback(item, data)
     data.getWrapperConfig().setWrapClass(true);
     print("setting wrapper: "+item.getLiteralName()+"\n");
   }
-
 }
 
