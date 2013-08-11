@@ -26,6 +26,7 @@ function prepare_file() {
     $s =~ s/Q_SLOTS//g;
     $s =~ s/Q_INVOKABLE//g;
     $s =~ s/Q_SIGNALS://g;
+    $s =~ s/Q_REVISION\s*\(\s*[0-9]+\s*\)//g;
     $s =~ s/Q_DECLARE_FLAGS\s*\(([^,()]+),\s*([^,()]+)\)/typedef QFlags<\2> \1;/g;
 
     open FH, ">".@ARGV[0];
