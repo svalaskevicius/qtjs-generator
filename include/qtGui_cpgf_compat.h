@@ -17,28 +17,20 @@
 #include <QSessionManager>
 #include <QClipboard>
 #include <QStyleHints>
+#include <QIconEngine>
+#include <QOpenGLContext>
 
 
 namespace cpgf {
-/*
-template <typename From>
-struct IsConvertible < From, ::QJSValue, typename GEnableIfResult <
-        GOrResult <
-        IsSameType<From, long int>,
-        IsSameType<From, long unsigned int>,
-        IsSameType<From, long long int>,
-        IsSameType<From, long long unsigned int>,
-        IsSameType<From, long double>,
-        IsPointer<From>
-        >
-        >::Result
-        > {
+
+NOT_CONVERTIBLE(::QTransform)
+NOT_CONVERTIBLE(::QMatrix)
+NOT_CONVERTIBLE(::QMatrix4x4)
+
+template <>
+struct IsConvertible <const QOpenGLContext &, const cpgf::IObject &> {
     G_STATIC_CONSTANT(bool, Result = false);
 };
-
-template <typename From>
-struct IsConvertible < From, const ::QJSValue &> : public IsConvertible < From, ::QJSValue> {};
-*/
 
 
 }

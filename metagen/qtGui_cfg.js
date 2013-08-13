@@ -35,6 +35,7 @@ var config = {
     "Q_DECL_CONSTEXPR", "",
     "Q_CORE_EXPORT", "",
     "Q_GUI_EXPORT", "",
+    "Q_DECLARE_TYPEINFO", "",
   ]
 };
 
@@ -54,6 +55,12 @@ function shouldAllowClassWrapper(item) {
     case 'QGradient':
     case 'QClipboard':
     case 'QBackingStore':
+    case 'QIconEngine':
+    case 'QImage':
+    case 'QInputMethod':
+    case 'QOffscreenSurface':
+    case 'QMatrix4x4':
+    case 'QOpenGLShaderProgram':
       return false;
     default:
       ;
@@ -72,6 +79,9 @@ function processCallback(item, data)
     '/private/',
     'private.h',
     '_impl.h',
+    'qopengles2ext.h',
+    'qopenglext.h',
+    'qopenglfunctions_',
   ];
 
   var skipByNamePart = [
@@ -91,9 +101,16 @@ function processCallback(item, data)
     }
   }
   switch (""+item.getQualifiedName()) {
+    case "Q_DECLARE_TYPEINFO":
+    case "void":
+    case "APIENTRYP":
+    case "GLAPI":
+    case "QOPENGLF_APIENTRY":
+    case "QOPENGLF_APIENTRYP":
     case "QBackingStore::handle":
     case "QAccessibleInterface":
     case "QAccessibleBridge":
+    case "QAccessibleObject":
     case "QColor::pad":
     case "QColor::argb":
     case "QColor::ahsv":
@@ -112,9 +129,35 @@ function processCallback(item, data)
     case "QGradient::radial":
     case "QGradient::angle":
     case "QGradient::conical":
+    case "QGradient::linear":
+    case "QIcon::data_ptr":
+    case "QImage::data_ptr":
+    case "QKeySequence::data_ptr":
+    case "QGuiApplication::platformNativeInterface":
+    case "QOffscreenSurface::handle":
+    case "QOpenGLContext::functions":
+    case "QOpenGLContext::handle":
+    case "QOpenGLContext::shareHandle":
+    case "QOpenGLShaderProgram::setUniformValue":
       data.skipBind = true;
       return;
-    case "xxxx":
+    case "QColor::alpha":
+    case "QColor::red":
+    case "QColor::green":
+    case "QColor::blue":
+    case "QColor::hue":
+    case "QColor::saturation":
+    case "QColor::value":
+    case "QColor::cyan":
+    case "QColor::magenta":
+    case "QColor::yellow":
+    case "QColor::black":
+    case "QColor::lightness":
+      if (item.isField()) {
+        data.skipBind = true;
+      }
+      break;
+    case "QBackingStore":
       item.getTraits().setDefaultConstructorHidden(true);
       item.getTraits().setCopyConstructorHidden(true);
       break;
@@ -129,14 +172,28 @@ function processCallback(item, data)
     }
     var params = item.getParameterList();
     for(var i = 0; i < params.size(); i++) {
+      if (params.get(i).getType().getLiteralType().indexOf('[]') > -1) {
+        params.get(i).getType().setLiteralType(
+          params.get(i).getType().getLiteralType().replace('[]', '*')
+        );
+      }
       switch (""+params.get(i).getType().getLiteralType()) {
         case '...':
           data.skipBind = true;
           return;
+        case 'Type':
+          params.get(i).getType().setLiteralType('QEvent::Type');
+          break;
       }
       switch (""+params.get(i).getDefaultValue()) {
-        case "xxxxx":
-          params.get(i).setDefaultValue('xxx');
+        case "DragMove":
+          params.get(i).setDefaultValue('QEvent::DragMove');
+          break;
+        case "Drop":
+          params.get(i).setDefaultValue('QEvent::Drop');
+          break;
+        case 'ApplicationFlags':
+          params.get(i).setDefaultValue('QCoreApplication::ApplicationFlags');
           break;
       }
     }
