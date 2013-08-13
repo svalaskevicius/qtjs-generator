@@ -19,6 +19,20 @@
 #include <QStyleHints>
 #include <QIconEngine>
 #include <QOpenGLContext>
+#include <QStaticText>
+#include <QPicture>
+#include <QPicture>
+#include <QImageReader>
+#include <QTextDocument>
+#include <QTextDocumentFragment>
+#include <QTextTable>
+#include <QTextList>
+#include <QAbstractTextDocumentLayout>
+#include <QVector2D>
+#include <QVector3D>
+#include <QVector4D>
+#include <QAccessibleInterface>
+#include <QtGui/5.1.0/QtGui/qpa/qplatformpixmap.h>
 
 
 namespace cpgf {

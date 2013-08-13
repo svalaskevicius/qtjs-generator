@@ -61,6 +61,17 @@ function shouldAllowClassWrapper(item) {
     case 'QOffscreenSurface':
     case 'QMatrix4x4':
     case 'QOpenGLShaderProgram':
+    case 'QPdfWriter':
+    case 'QPicture':
+    case 'QPixmap':
+    case 'QSessionManager':
+    case 'QStandardItem':
+    case 'QSurface':
+    case 'QTransform':
+    case 'QVector2D':
+    case 'QVector3D':
+    case 'QVector4D':
+    case 'QWindow':
       return false;
     default:
       ;
@@ -82,10 +93,13 @@ function processCallback(item, data)
     'qopengles2ext.h',
     'qopenglext.h',
     'qopenglfunctions_',
+    'qopenglversionfunctions.h',
+    'qplatform',
   ];
 
   var skipByNamePart = [
     'Private',
+    'data_ptr',
   ];
 
   for (var i in skipByLocationPart) {
@@ -139,6 +153,20 @@ function processCallback(item, data)
     case "QOpenGLContext::handle":
     case "QOpenGLContext::shareHandle":
     case "QOpenGLShaderProgram::setUniformValue":
+    case "QPalette::data":
+    case "QPalette::resolve_mask":
+    case "QPalette::current_group":
+    case "QPalette::for_faster_swapping_dont_use":
+    case "QRgb":
+    case "QStandardItemModel::parent":
+    case "QScreen::handle":
+    case "QSurface::surfaceHandle":
+    case "QTextDocument::docHandle":
+    case "QTextLayout::engine":
+    case "QTextObject::docHandle":
+    case "QTextBlock::docHandle":
+    case "QTextBlock::iterator::p":
+    case "QWindow::handle":
       data.skipBind = true;
       return;
     case "QColor::alpha":
@@ -179,6 +207,11 @@ function processCallback(item, data)
       }
       switch (""+params.get(i).getType().getLiteralType()) {
         case '...':
+        case 'QTextDocumentPrivate *':
+        case 'const QTextDocumentPrivate *':
+        case 'QTextCursorPrivate *':
+        case 'QPagedPaintDevice *':
+        case 'QTextEngine *':
           data.skipBind = true;
           return;
         case 'Type':
@@ -194,6 +227,9 @@ function processCallback(item, data)
           break;
         case 'ApplicationFlags':
           params.get(i).setDefaultValue('QCoreApplication::ApplicationFlags');
+          break;
+        case 'QVector< FormatRange >()':
+          params.get(i).setDefaultValue('QVector<QTextLayout::FormatRange>()');
           break;
       }
     }
