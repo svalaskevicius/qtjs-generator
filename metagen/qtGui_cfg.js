@@ -95,6 +95,8 @@ function processCallback(item, data)
     'qopenglfunctions_',
     'qopenglversionfunctions.h',
     'qplatform',
+    'qwindowdefs_',
+    'qwindowsysteminterface',
   ];
 
   var skipByNamePart = [
@@ -121,6 +123,7 @@ function processCallback(item, data)
     case "GLAPI":
     case "QOPENGLF_APIENTRY":
     case "QOPENGLF_APIENTRYP":
+    case "QT_PREPEND_NAMESPACE":
     case "QBackingStore::handle":
     case "QAccessibleInterface":
     case "QAccessibleBridge":
@@ -167,6 +170,7 @@ function processCallback(item, data)
     case "QTextBlock::docHandle":
     case "QTextBlock::iterator::p":
     case "QWindow::handle":
+    case "QOpenGLContext::versionFunctions": //does not link due to AbstractOpenGlFunctions symbol not found
       data.skipBind = true;
       return;
     case "QColor::alpha":
