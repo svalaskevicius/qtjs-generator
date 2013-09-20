@@ -128,7 +128,7 @@ endif(${HAS_SPIDERMONKEY})
 
 set(LIB_COMPILE_FLAGS " ")
 if(CMAKE_COMPILER_IS_GNUCC)
-	set(LIB_COMPILE_FLAGS "-Wall -Wextra -Wundef -O3")
+	set(LIB_COMPILE_FLAGS "-Wall -Wextra -Wundef -O0 -g")
 
 	if(SUPPORT_GCC_0X)
 		if(MINGW)
@@ -148,8 +148,8 @@ endif(MSVC)
 
 add_library(
 	${TARGET_LIB}
-		STATIC
-		${SRC_LIB}
+	SHARED
+	${SRC_LIB}
 )
 
 add_definitions(${SPIDERMONKEY_DEFINE})
@@ -159,5 +159,6 @@ set_target_properties(
 	PROPERTIES
 	OUTPUT_NAME ${OUTNAME_LIB}
 	ARCHIVE_OUTPUT_DIRECTORY ${LIB_PATH}
+	LIBRARY_OUTPUT_DIRECTORY ${LIB_PATH}
 	COMPILE_FLAGS ${LIB_COMPILE_FLAGS}
 )
