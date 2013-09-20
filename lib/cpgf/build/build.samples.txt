@@ -101,7 +101,8 @@ target_link_libraries(${TARGET_SAMPLESERIALIZATION} ${TARGET_LIB})
 		COMPILE_FLAGS ${SAMPLE_COMPILE_FLAGS}
 	)
 
-	target_link_libraries(${TARGET_SAMPLETUTORIALS} ${TARGET_LIB} ${LUA_LIB})
+	target_link_libraries(${TARGET_SAMPLETUTORIALS} ${TARGET_LIB})
+	# target_link_libraries(${TARGET_SAMPLETUTORIALS} ${TARGET_LIB} ${LUA_LIB})
 
 
 # sample Lua
