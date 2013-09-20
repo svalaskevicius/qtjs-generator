@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -202,7 +202,7 @@ public class DoxygenXmlParser {
 		}
 		else if(kind.equals("union")) {
 			// we can't handle union for now because union will cause compile error in type traits
-			this.doParseClass(node, location);
+///			this.doParseClass(node, location);
 		}
 		else if(kind.equals("struct")) {
 			this.doParseClass(node, location);
@@ -424,7 +424,7 @@ public class DoxygenXmlParser {
 		
 		Node bitFieldNode = Util.getNode(node, "bitfield");
 		if(bitFieldNode != null) {
-			field.setBitField(Integer.parseInt(Util.getNodeText(bitFieldNode).trim()));
+			field.setBitField(Integer.parseInt(Util.getNodeText(bitFieldNode)));
 		}
 
 		this.getCurrentClass().getFieldList().add(field);

@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ void doTestGlobal(T * binding, TestScriptContext * context)
 	dataApi->x = 10;
 	dataApi->name = "abc";
 
-	binding->bindObject("data", dataLib.get(), metaClass.get(), false);
+	scriptSetValue(binding, "data", GScriptValue::fromObject(dataLib.get(), metaClass.get(), false));
 	
 	QASSERT(data.x == 10)
 	QASSERT(data.name == "abc")
@@ -44,12 +44,12 @@ void doTestGlobal(T * binding, TestScriptContext * context)
 	
 	GEQUAL(dataLib->x, 11);
 	
-	binding->nullifyValue("data");
+	scriptSetValue(binding, "data", GScriptValue::fromNull());
 	
 	if(context->isLua()) {
 		QASSERT(data == nil)
 	}
-	if(context->isV8()) {
+	if(context->isV8() || context->isSpiderMonkey()) {
 		QASSERT(data == null)
 	}
 	if(context->isPython()) {

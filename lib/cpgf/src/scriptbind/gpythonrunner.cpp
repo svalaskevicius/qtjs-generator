@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,9 +25,12 @@
 
 #include <stdexcept>
 
-
 #include <iostream>
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable:4127) // warning C4127: conditional expression is constant
+#endif
 
 namespace cpgf {
 
@@ -55,7 +58,8 @@ GPythonScriptRunnerImplement::GPythonScriptRunnerImplement(IMetaService * servic
 {
 	this->object = PyImport_ImportModule("__main__");
 	
-	GScopedInterface<IScriptObject> scriptObject(createPythonScriptInterface(this->getService(), this->object, GScriptConfig()));
+	GScopedInterface<IMetaService> metaService(this->getService());
+	GScopedInterface<IScriptObject> scriptObject(createPythonScriptInterface(metaService.get(), this->object, GScriptConfig()));
 	this->setScripeObject(scriptObject.get());
 }
 

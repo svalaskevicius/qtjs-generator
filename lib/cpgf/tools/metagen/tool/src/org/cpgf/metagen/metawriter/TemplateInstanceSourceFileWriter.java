@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -51,7 +51,7 @@ public class TemplateInstanceSourceFileWriter extends CodeFileWriter {
 
 	@Override
 	public boolean shouldSkip() {
-		return ! this.getConfig().generateRegisterHeader;
+		return ! this.getConfig().autoRegisterToGlobal;
 	}
 	
 	@Override
@@ -91,7 +91,6 @@ public class TemplateInstanceSourceFileWriter extends CodeFileWriter {
 		
 		String funcName = this.createFunctionName();
 
-   		codeWriter.writeLine("#ifdef DLL_PUBLIC\nDLL_PUBLIC\n#endif");
 		codeWriter.writeLine("GDefineMetaInfo " + funcName + "()");
 
 		codeWriter.beginBlock();

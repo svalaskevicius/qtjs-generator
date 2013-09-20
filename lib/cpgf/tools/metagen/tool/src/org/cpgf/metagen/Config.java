@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -106,7 +106,6 @@ public class Config {
 	// If this property is false, only header files will be generated
 	// so you need to call the reflect function manually.
 	public boolean autoRegisterToGlobal = true;
-	public boolean generateRegisterHeader = true;
 	
 	// A string of namespace for meta data.
 	// All meta data will be put into the namespace (pseudo class).

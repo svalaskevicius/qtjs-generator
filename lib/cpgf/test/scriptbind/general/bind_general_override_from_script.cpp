@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,22 +30,21 @@ template <typename T>
 void doTestOverrideCppFunctionFromScriptClass(T * binding, TestScriptContext * context)
 {
 	if(context->isLua()) {
-		QDO(function funcOverride(me) return me.n + me.m end)
+		QDO(function funcOverride(me) return me.n + 15 end)
 	}
-	if(context->isV8()) {
-		QDO(function funcOverride(me) { return me.n + me.m; })
+	if(context->isV8() || context->isSpiderMonkey()) {
+		QDO(function funcOverride(me) { return me.n + 15; })
 	}
 	if(context->isPython()) {
-		QDO(def funcOverride(me): return me.n + me.m)
+		QDO(def funcOverride(me): return me.n + 15)
 	}
 
 	QNEWOBJ(a, ScriptOverride(3))
 	QASSERT(a.getValue() == 3);
 	QDO(ScriptOverride.getValue = funcOverride)
-	QDO(a.m = 15)
 	QASSERT(a.getValue() == 18);
 
-	ScriptOverride * objA = static_cast<ScriptOverride *>(binding->getObject("a"));
+	ScriptOverride * objA = static_cast<ScriptOverride *>(scriptGetValue(binding, "a").toObjectAddress(NULL, NULL));
 	GEQUAL(18, objA->getValue());
 }
 
@@ -75,7 +74,7 @@ void doTestOverrideCppFunctionFromScriptObject(T * binding, TestScriptContext * 
 		QDO(function funcOverrideA(me) return 38 end)
 		QDO(function funcOverrideB(me) return 18 end)
 	}
-	if(context->isV8()) {
+	if(context->isV8() || context->isSpiderMonkey()) {
 		QDO(function funcOverrideA(me) { return 38; })
 		QDO(function funcOverrideB(me) { return 18; })
 	}
@@ -95,10 +94,10 @@ void doTestOverrideCppFunctionFromScriptObject(T * binding, TestScriptContext * 
 	QASSERT(a.getValue() == 38);
 	QASSERT(b.getValue() == 18);
 
-	ScriptOverrideBase * objA = static_cast<ScriptOverrideBase *>(static_cast<ScriptOverride *>(binding->getObject("a")));
+	ScriptOverrideBase * objA = static_cast<ScriptOverrideBase *>(static_cast<ScriptOverride *>(scriptGetValue(binding, "a").toObjectAddress(NULL, NULL)));
 	GEQUAL(38, objA->getValue());
 
-	ScriptOverride * objB = static_cast<ScriptOverride *>(binding->getObject("b"));
+	ScriptOverride * objB = static_cast<ScriptOverride *>(scriptGetValue(binding, "b").toObjectAddress(NULL, NULL));
 	GEQUAL(18, objB->getValue());
 }
 

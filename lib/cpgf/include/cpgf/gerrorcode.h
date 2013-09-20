@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -65,6 +65,8 @@ extern int Error_ScriptBinding_AccessMemberWithWrongObject;
 extern int Error_ScriptBinding_CantBindRaw;
 extern int Error_ScriptBinding_NoContext;
 extern int Error_ScriptBinding_CantFindMatchedOperator;
+extern int Error_ScriptBinding_NotSupportedFeature;
+extern int Error_ScriptBinding_CantSetScriptValue;
 extern int Error_ScriptBinding_End;
 
 extern int Error_Serialization_Begin;
@@ -75,6 +77,9 @@ extern int Error_Serialization_UnknownType;
 extern int Error_Serialization_InvalidStorage;
 extern int Error_Serialization_End;
 
+extern int Error_Tween_Begin;
+extern int Error_Tween_TweenableNotOwnedByTimeline;
+extern int Error_Tween_End ;
 
 } // namespace cpgf
 

@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,28 +47,6 @@ public:
 	CLASS(const string &) {}
 
 	CLASS(int) {}
-
-	string real_name() {
-        return "Class";
-	}
-	virtual string name() {
-        return "Class";
-	}
-};
-
-class AnotherCLASS {
-	virtual void empty() {
-	}
-};
-
-class SUBCLASS : public CLASS, public AnotherCLASS {
-public:
-	string real_name() {
-        return "SubClass";
-	}
-	virtual string name() {
-        return "SubClass";
-	}
 };
 
 GTEST(TestVariant_Cast)
@@ -169,19 +147,6 @@ GTEST(TestVariant_CastFromFloat)
 	CAN_FROM(const void * const, value);
 }
 
-GTEST(TestVariant_CastSubClassPtr)
-{
-    SUBCLASS obj;
-    GVariant value = createTypedVariant(&obj);
 
-    AnotherCLASS *asAnotherParent = fromVariant<AnotherCLASS*>(value);
-    CLASS *asParent = fromVariant<CLASS*>(value);
 
-    GCHECK((void*)asParent == (void*)(CLASS *)&obj);
-    GCHECK((void*)asAnotherParent == (void*)(AnotherCLASS *)&obj);
-}
-
-}
-
-}
-
+} }

@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -55,6 +55,7 @@ class GImplObject
 {
 public:
 	GImplObject();
+	virtual ~GImplObject();
 
 	uint32_t queryInterface(void *, void *);
 	uint32_t addReference();

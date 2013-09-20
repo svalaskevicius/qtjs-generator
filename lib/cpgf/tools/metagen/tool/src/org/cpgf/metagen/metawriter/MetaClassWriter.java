@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -201,7 +201,7 @@ public class MetaClassWriter {
 			
 			if(item.isBitField()) {
 				CppField field = (CppField)(item);
-				if(WriterUtil.shouldGenerateBitfieldWrapper(this.metaInfo, field)) {
+				if(WriterUtil.shouldGenerateBitfieldWrapper(this.config, field)) {
 					this.codeWriter.writeLine(WriterUtil.getReflectionAction(this.define, "_property") + "(" + Util.quoteText(name)
 							+ ", &" + WriterUtil.getBitfieldWrapperGetterName(field)
 							+ ", &" + WriterUtil.getBitfieldWrapperSetterName(field)
@@ -283,19 +283,18 @@ public class MetaClassWriter {
 	private void writeConstants() {
 		String action = WriterUtil.getReflectionAction(this.define, "_enum");
 
-		boolean haveItems = false;
+		if(this.cppClass.getConstantList().size() == 0) {
+			return;
+		}
+
+		this.codeWriter.writeLine(action + "<long long>(" + Util.quoteText("GlobalDefine_" + this.config.projectID + "_" + this.getUniqueText()) + ")");
+		this.codeWriter.incIndent();
 
 		for(Constant item : this.cppClass.getConstantList()) {
 			this.doCallback(item);
 			
 			if(this.shouldSkipItem(item)) {
 				continue;
-			}
-
-			if (!haveItems) {
-		        this.codeWriter.writeLine(action + "<long long>(" + Util.quoteText("GlobalDefine_" + this.config.projectID + "_" + this.getUniqueText()) + ")");
-        		this.codeWriter.incIndent();
-                haveItems = true;
 			}
 			
 			String value = item.getValue();
@@ -305,10 +304,9 @@ public class MetaClassWriter {
 			
 			this.codeWriter.writeLine("._element(" + Util.quoteText(item.getPrimaryName()) + ", " + item.getPrimaryName() + ")");
 		}
-	    if (haveItems) {
-		    this.codeWriter.decIndent();
-		    this.codeWriter.writeLine(";");
-        }
+		
+		this.codeWriter.decIndent();
+		this.codeWriter.writeLine(";");
 	}
 
 	private void writeOperators() {
