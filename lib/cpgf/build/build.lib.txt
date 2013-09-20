@@ -24,6 +24,7 @@ set(SRC_META
 	${SRC_PATH}/gvariant.cpp
 
 	${SRC_PATH}/scriptbind/gbindcommon.cpp
+	${SRC_PATH}/scriptbind/gscriptvalue.cpp
 	${SRC_PATH}/scriptbind/gscriptbind.cpp
 	${SRC_PATH}/scriptbind/gscriptbindapi.cpp
 	${SRC_PATH}/scriptbind/gscriptbindutil.cpp
@@ -54,7 +55,14 @@ set(SRC_META
 	${SRC_PATH}/serialization/gmetastorage_textstream.cpp
 	${SRC_PATH}/serialization/gmetastorage_xml.cpp
 	
-	${SRC_PATH}/thirdparty/jsoncpp/jsoncpp.cpp
+	${SRC_PATH}/tween/gtween.cpp
+	${SRC_PATH}/tween/gtweenlist.cpp
+	${SRC_PATH}/tween/gtweencommon.cpp
+	${SRC_PATH}/tween/gtimeline.cpp
+	
+	${SRC_PATH}/thirdparty/jsoncpp/json_reader.cpp
+	${SRC_PATH}/thirdparty/jsoncpp/json_value.cpp
+	${SRC_PATH}/thirdparty/jsoncpp/json_writer.cpp
 )
 
 set(SRC_LUA_BIND )
@@ -82,12 +90,20 @@ if(${HAS_PYTHON})
 	)
 endif(${HAS_PYTHON})
 
+if(${HAS_SPIDERMONKEY})
+	set(SRC_SPIDERMONKEY_BIND
+		${SRC_PATH}/scriptbind/gspidermonkeybind.cpp
+		${SRC_PATH}/scriptbind/gspidermonkeyrunner.cpp
+	)
+endif(${HAS_SPIDERMONKEY})
+
 set(SRC_LIB
 	${SRC_META}
 	
 	${SRC_LUA_BIND}
 	${SRC_V8_BIND}
 	${SRC_PYTHON_BIND}
+	${SRC_SPIDERMONKEY_BIND}
 )
 
 
@@ -104,11 +120,15 @@ if(${HAS_PYTHON})
 	include_directories(${PYTHON_INC})
 endif(${HAS_PYTHON})
 
+if(${HAS_SPIDERMONKEY})
+	include_directories(${SPIDERMONKEY_INC})
+endif(${HAS_SPIDERMONKEY})
+
 
 
 set(LIB_COMPILE_FLAGS " ")
 if(CMAKE_COMPILER_IS_GNUCC)
-	set(LIB_COMPILE_FLAGS "-Wall -Wextra -Wundef -O0 -g")
+	set(LIB_COMPILE_FLAGS "-Wall -Wextra -Wundef -O3")
 
 	if(SUPPORT_GCC_0X)
 		if(MINGW)
@@ -128,15 +148,16 @@ endif(MSVC)
 
 add_library(
 	${TARGET_LIB}
-	SHARED
-	${SRC_LIB}
+		STATIC
+		${SRC_LIB}
 )
+
+add_definitions(${SPIDERMONKEY_DEFINE})
 
 set_target_properties(
 	${TARGET_LIB}
 	PROPERTIES
 	OUTPUT_NAME ${OUTNAME_LIB}
 	ARCHIVE_OUTPUT_DIRECTORY ${LIB_PATH}
-	LIBRARY_OUTPUT_DIRECTORY ${LIB_PATH}
 	COMPILE_FLAGS ${LIB_COMPILE_FLAGS}
 )

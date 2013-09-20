@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -60,6 +60,8 @@ private:
 	typedef std::vector<HandlerType> HandlerListType;
 
 public:
+	virtual ~GScriptLibraryLoader() {}
+
 	void loaded(const std::string & libraryName);
 	void addHandler(IScriptLibraryLoaderHandler * handler);
 
@@ -86,6 +88,7 @@ private:
 
 public:
 	explicit GScriptLibraryNamedLoaderHandler(GScriptObject * scriptObject);
+	virtual ~GScriptLibraryNamedLoaderHandler() {}
 	
 	void addHandler(const char * libraryName, const GScriptLibraryLoaderCallback & callback);
 	

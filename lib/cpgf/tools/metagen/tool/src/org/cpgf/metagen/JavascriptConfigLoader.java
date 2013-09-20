@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,25 +32,9 @@ import org.mozilla.javascript.Function;
 import org.mozilla.javascript.NativeArray;
 import org.mozilla.javascript.NativeObject;
 import org.mozilla.javascript.Scriptable;
-import org.mozilla.javascript.ScriptableObject;
 
 
 public class JavascriptConfigLoader implements IOutputCallback {
-    static class Shell extends ScriptableObject {
-
-        @Override
-        public String getClassName() {
-            return "global";
-        }
-
-        public static void print(Context cx, Scriptable thisObj, Object[] args, Function funObj) {
-            for (int i = 0; i < args.length; i++) {
-                String s = Context.toString(args[i]);
-                System.out.print(s);
-            }
-        }
-    }
-
 	private static Context context;
 	private static Scriptable scope;
 	private Config config;
@@ -76,10 +60,7 @@ public class JavascriptConfigLoader implements IOutputCallback {
 			context = Context.enter();
 		}
 		if(scope == null) {
-  			Shell shell = new Shell();
-  			String[] names = {"print"};
-  			shell.defineFunctionProperties(names, Shell.class, ScriptableObject.DONTENUM);
- 			scope = context.initStandardObjects(shell);
+			scope = context.initStandardObjects();
 		}
 
         context.evaluateString(scope, javascriptCode, configFileName, 1, null);

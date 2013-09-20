@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -75,17 +75,6 @@ size_t GMetaDefaultParamList::loadDefaultParams(
 	}
 
 	return passedParamCount;
-}
-
-void handleForbidAccessError(bool isRead)
-{
-	if(isRead) {
-		raiseCoreException(Error_Meta_ReadDenied);
-	}
-	else {
-		raiseCoreException(Error_Meta_WriteDenied);
-	}
-
 }
 
 void makeFullName(const GMetaItem * item, std::string * outName, const char * delimiter)

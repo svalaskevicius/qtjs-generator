@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -73,6 +73,8 @@ int Error_ScriptBinding_AccessMemberWithWrongObject	= Error_ScriptBinding_Begin 
 int Error_ScriptBinding_CantBindRaw			= Error_ScriptBinding_Begin + 15;
 int Error_ScriptBinding_NoContext				= Error_ScriptBinding_Begin + 16;
 int Error_ScriptBinding_CantFindMatchedOperator		= Error_ScriptBinding_Begin + 17;
+int Error_ScriptBinding_NotSupportedFeature		= Error_ScriptBinding_Begin + 18;
+int Error_ScriptBinding_CantSetScriptValue		= Error_ScriptBinding_Begin + 19;
 int Error_ScriptBinding_End			= 300;
 
 int Error_Serialization_Begin = 301;
@@ -83,6 +85,9 @@ int Error_Serialization_UnknownType = Error_Serialization_Begin + 3;
 int Error_Serialization_InvalidStorage = Error_Serialization_Begin + 4;
 int Error_Serialization_End = 400;
 
+int Error_Tween_Begin = 401;
+int Error_Tween_TweenableNotOwnedByTimeline = Error_Tween_Begin + 0;
+int Error_Tween_End = 500;
 
 GException::GException(int errorCode, const char * message)
 	: super(message), errorCode(errorCode)
@@ -153,13 +158,16 @@ namespace {
 		{ Error_ScriptBinding_AccessMemberWithWrongObject,		"Access class member with wrong object." },
 		{ Error_ScriptBinding_CantBindRaw, 						"Failed to bind raw data." },
 		{ Error_ScriptBinding_NoContext,						"Script context doesn't exist." },
-		{ Error_ScriptBinding_CantFindMatchedOperator,			"Can't find matched opereator to invoke" },
+		{ Error_ScriptBinding_CantFindMatchedOperator,			"Can't find matched opereator to invoke." },
+		{ Error_ScriptBinding_CantSetScriptValue,				"Can't set the script value to script engine." },
 
 		{ Error_Serialization_TypeMismatch,			"Type mismatch when reading serialized object." },
 		{ Error_Serialization_CannotFindObjectType,	"Can't find object type." },
 		{ Error_Serialization_MissingMetaClass,		"Meta class type is missing." },
 		{ Error_Serialization_UnknownType,			"Unknow meta type." },
 		{ Error_Serialization_InvalidStorage,			"Serializing storage is corrupted." },
+		
+		{ Error_Tween_TweenableNotOwnedByTimeline,		"Tweenable is not owned by the timeline it is adding to." },
 
 
 		{ -1, NULL },
@@ -171,6 +179,7 @@ namespace {
 		{ Error_ScriptBinding_ScriptMethodParamMismatch,		"Can't pass parameter at index %d in function %s" },
 		{ Error_ScriptBinding_ScriptFunctionReturnError,		"Error when calling function %s, message: %s" },
 		{ Error_ScriptBinding_CantReturnMultipleValue,			"Can't return multiple value when calling function %s" },
+		{ Error_ScriptBinding_NotSupportedFeature,				"Feature %s it not supported by script binding for %s" },
 	};
 
 	const char * notFoundErrorMessage = "Can't find error message.";

@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -232,7 +232,7 @@ result = result + "static IScriptFunction * xxx = NULL;\n"; //temp
 		List<CppField> fieldList = cls.getFieldList();
 		CppWriter codeWriter = new CppWriter();
 		for(CppField field : fieldList) {
-			if(! WriterUtil.shouldGenerateBitfieldWrapper(this.metaInfo, field)) {
+			if(! WriterUtil.shouldGenerateBitfieldWrapper(this.config, field)) {
 				continue;
 			}
 			
@@ -359,7 +359,6 @@ result = result + "static IScriptFunction * xxx = NULL;\n"; //temp
 			codeWriter.write(this.callbackData.getSourceCode() + "\n\n");
 		}
 
-		codeWriter.writeLine("#ifdef DLL_PUBLIC\nDLL_PUBLIC\n#endif");
 		codeWriter.writeLine("GDefineMetaInfo " + funcName + "()");
 
 		codeWriter.beginBlock();

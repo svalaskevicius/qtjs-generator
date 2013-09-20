@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,6 +44,8 @@ using namespace rapidxml;
 
 namespace cpgf {
 
+// This function is defined in gvariant.cpp, for internal use.
+GVariant createVariantFromData(const GVariantData & data);
 
 namespace {
 
@@ -293,7 +295,9 @@ private:
 	typedef stack<XmlNodeType *> ObjectNodeStack;
 
 public:
-	GXmlStorageWriter(xml_document<> * xml, XmlNodeType * dataNode, XmlNodeType * classTypeNode, serialization_internal::FuncStreamWriteFundamental streamWriteFundamental);
+	GXmlStorageWriter(xml_document<> * xml, XmlNodeType * dataNode, XmlNodeType * classTypeNode,
+		serialization_internal::FuncStreamWriteFundamental streamWriteFundamental);
+	virtual ~GXmlStorageWriter();
 
 protected:
 	G_INTERFACE_IMPL_OBJECT
@@ -344,8 +348,9 @@ private:
 	typedef stack<GXmlReaderNodeNameTracker> ObjectNodeStack;
 
 public:
-	GXmlStorageReader(XmlNodeType * dataNode, XmlNodeType * classTypeNode, serialization_internal::FuncStreamReadFundamental streamReadFundamental);
-	~GXmlStorageReader();
+	GXmlStorageReader(XmlNodeType * dataNode, XmlNodeType * classTypeNode,
+		serialization_internal::FuncStreamReadFundamental streamReadFundamental);
+	virtual ~GXmlStorageReader();
 
 protected:
 	G_INTERFACE_IMPL_OBJECT
@@ -407,15 +412,21 @@ IMetaStorageReader * doCreateXmlMetaReader(const GMetaXmlStorage & xmlStorage, F
 }
 
 
-GXmlStorageWriter::GXmlStorageWriter(xml_document<> * xml, XmlNodeType * dataNode, XmlNodeType * classTypeNode, serialization_internal::FuncStreamWriteFundamental streamWriteFundamental)
-	: xml(xml), dataNode(dataNode), classTypeNode(classTypeNode), streamWriteFundamental(streamWriteFundamental), variantTypeMap(defaultVariantTypeMap)
+GXmlStorageWriter::GXmlStorageWriter(xml_document<> * xml, XmlNodeType * dataNode, XmlNodeType * classTypeNode,
+	serialization_internal::FuncStreamWriteFundamental streamWriteFundamental)
+	: xml(xml), dataNode(dataNode), classTypeNode(classTypeNode), streamWriteFundamental(streamWriteFundamental),
+		variantTypeMap(defaultVariantTypeMap)
 {
 	this->nodeStack.push(this->dataNode);
 }
 
+GXmlStorageWriter::~GXmlStorageWriter()
+{
+}
+
 void G_API_CC GXmlStorageWriter::writeFundamental(const char * name, const GVariantData * value)
 {
-	GVariant v(*value);
+	GVariant v(createVariantFromData(*value));
 
 	this->clearTextStream();
 	this->streamWriteFundamental(this->textStream, v);

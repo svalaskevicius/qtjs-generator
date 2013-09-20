@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,6 +35,7 @@ public:
 
 public:
 	CLASS() : fieldMethodInt(0) {} // class CLASS
+	virtual ~CLASS() {}
 
 	int methodGetInt() const {
 		return fieldMethodInt;

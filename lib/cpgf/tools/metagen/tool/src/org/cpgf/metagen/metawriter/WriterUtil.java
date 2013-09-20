@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -213,8 +213,8 @@ public class WriterUtil {
 		return getBitfieldWrapperName(field) + "_setter";
 	}
 
-	public static boolean shouldGenerateBitfieldWrapper(MetaInfo metaInfo, CppField field) {
-		return metaInfo.getConfig().wrapBitField && field.isBitField() && Util.allowMetaData(metaInfo.getConfig(), field) && !field.getOwner().isTemplate() && !metaInfo.getCallbackClassMap().getData(field).isSkipBind();
+	public static boolean shouldGenerateBitfieldWrapper(Config config, CppField field) {
+		return config.wrapBitField && field.isBitField() && Util.allowMetaData(config, field) && !field.getOwner().isTemplate();
 	}
 
 	public static String getOperatorWraperNamePrefix(MetaInfo metaInfo, Operator op) {
@@ -280,7 +280,7 @@ public class WriterUtil {
 			className = className.toLowerCase();
 		}
 		else {
-			className = Util.normalizeSymbol(cppClassName);
+			className = cppClassName;
 		}
 		className = Util.upcaseFirst(className);
 			

@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -42,6 +42,8 @@ bool itemEuqal(IMetaItem * a, IMetaItem * b)
 class XA
 {
 	int a;
+public:
+	virtual ~XA() {}
 	virtual void x() {}
 };
 

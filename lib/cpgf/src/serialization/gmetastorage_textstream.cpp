@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,6 +28,8 @@
 
 namespace cpgf {
 
+// This function is defined in gvariant.cpp, for internal use.
+GVariant createVariantFromData(const GVariantData & data);
 
 class GMetaArchiveTypeSession
 {
@@ -119,6 +121,7 @@ private:
 
 public:
 	GTextStreamMetaWriter(std::ostream & outputStream, serialization_internal::FuncStreamWriteFundamental streamWriteFundamental);
+	virtual ~GTextStreamMetaWriter();
 
 protected:
 	G_INTERFACE_IMPL_OBJECT
@@ -175,6 +178,7 @@ private:
 
 public:
 	GTextStreamMetaReader(std::istream & inputStream, serialization_internal::FuncStreamReadFundamental streamReadFundamental);
+	virtual ~GTextStreamMetaReader();
 
 protected:
 	G_INTERFACE_IMPL_OBJECT
@@ -229,6 +233,10 @@ GTextStreamMetaWriter::GTextStreamMetaWriter(std::ostream & outputStream, serial
 {
 }
 
+GTextStreamMetaWriter::~GTextStreamMetaWriter()
+{
+}
+
 void GTextStreamMetaWriter::setTypeInSession(int type)
 {
 	bool needType = true;
@@ -247,7 +255,7 @@ void GTextStreamMetaWriter::setTypeInSession(int type)
 
 void G_API_CC GTextStreamMetaWriter::writeFundamental(const char * /*name*/, const GVariantData * value)
 {
-	GVariant v(*value);
+	GVariant v(createVariantFromData(*value));
 
 	int type = getMappedTypeFromMap(this->variantTypeMap, v.getType());
 	
@@ -377,6 +385,10 @@ void GTextStreamMetaWriter::doWriteString(const char * s)
 
 GTextStreamMetaReader::GTextStreamMetaReader(std::istream & inputStream, serialization_internal::FuncStreamReadFundamental streamReadFundamental)
 	: inputStream(inputStream), streamReadFundamental(streamReadFundamental), variantTypeMap(defaultVariantTypeMap)
+{
+}
+
+GTextStreamMetaReader::~GTextStreamMetaReader()
 {
 }
 
