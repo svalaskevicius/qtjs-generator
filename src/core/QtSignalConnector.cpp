@@ -131,7 +131,7 @@ void convertQtDataToGVariantData(int type, void *data, GVariantData *dest)
 
 QtSignalConnector::~QtSignalConnector()
 {
-for (CallInfo * p : callbacks) {
+    for (CallInfo * p : callbacks) {
         delete p;
     }
     callbacks.clear();
