@@ -53,7 +53,7 @@ bool executeJs(const char *fileName)
 
     scriptObject->bindCoreService("cpgf", NULL);
     GScopedInterface<IMetaClass> metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())));
-    scriptObject->bindClass("qt", metaClass.get());
+    scriptSetValue(scriptObject.get(), "qt", GScriptValue::fromClass(metaClass.get()));
 
     bool ret = runner->executeFile(fileName);
 
