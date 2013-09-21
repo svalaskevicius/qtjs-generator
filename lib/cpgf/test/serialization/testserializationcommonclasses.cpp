@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -183,11 +183,16 @@ bool TestSerializeArray::operator == (const TestSerializeArray & other) const
 #undef EQ2
 #undef EQ3
 
-	LOOP3(B1, B2, B3) if(ps[z1][z2][z3] != &s[z1][z2][z3]) return false;
-	LOOP3(B1, B2, B3) if(other.ps[z1][z2][z3] != &other.s[z1][z2][z3]) return false;
+	LOOP3(B1, B2, B3) if(z1 && z2 && z3 && ps[z1][z2][z3] != &s[z1][z2][z3]) return false;
+	LOOP3(B1, B2, B3) if(z1 && z2 && z3 && other.ps[z1][z2][z3] != &other.s[z1][z2][z3]) return false;
 	
-	LOOP3(B1, B2, B3) if(po[z1][z2][z3] != &o[z1][z2][z3]) return false;
-	LOOP3(B1, B2, B3) if(other.po[z1][z2][z3] != &other.o[z1][z2][z3]) return false;
+	LOOP3(B1, B2, B3) if(z1 && z2 && z3 && po[z1][z2][z3] != &o[z1][z2][z3]) return false;
+	LOOP3(B1, B2, B3) if(z1 && z2 && z3 && other.po[z1][z2][z3] != &other.o[z1][z2][z3]) return false;
+	
+	if(ps[0][0][0] != NULL) return false;
+	if(other.ps[0][0][0] != NULL) return false;
+	if(po[0][0][0] != NULL) return false;
+	if(other.po[0][0][0] != NULL) return false;
 	
 	LOOP3(B1, B2, B3) if(*npo[z1][z2][z3] != *other.npo[z1][z2][z3]) return false;
 
@@ -229,6 +234,10 @@ void TestSerializeArray::init()
 
 	LOOP3(B1, B2, B3) ps[z1][z2][z3] = &s[z1][z2][z3];
 	LOOP3(B1, B2, B3) po[z1][z2][z3] = &o[z1][z2][z3];
+
+	ps[0][0][0] = NULL;
+	po[0][0][0] = NULL;
+
 	LOOP3(B1, B2, B3) {
 		npo[z1][z2][z3] = new TestSerializeClass();
 		initTestValue(*npo[z1][z2][z3], getTestSeed(z1 * B2 * B3 + z2 * B3 + z3 + 1));

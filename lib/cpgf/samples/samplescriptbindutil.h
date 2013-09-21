@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,18 +24,26 @@
 
 namespace cpgf {
 	struct IMetaService;
+	struct IScriptObject;
 } // namespace cpgf
 
-enum ScriptLanguage {
-	slJavascript, slLua, slPython
+class ScriptHelperImplement;
+
+class ScriptHelper
+{
+public:
+	ScriptHelper(int argc, char * argv[]);
+	~ScriptHelper();
+
+	bool execute();
+	
+	cpgf::IMetaService * borrowService() const;
+	cpgf::IScriptObject * borrowScriptObject() const;
+	
+private:
+	cpgf::GScopedPointer<ScriptHelperImplement> implement;
 };
 
-ScriptLanguage getScriptLanguageFromFileName(const char * fileName);
-cpgf::GScriptRunner * createScriptRunnerFromScriptLanguage(ScriptLanguage lang, cpgf::IMetaService * service);
-const char * getLanguageText(ScriptLanguage lang);
-
-void intializeScriptEngine(ScriptLanguage lang);
-void finalizeScriptEngine(ScriptLanguage lang);
 
 
 #endif

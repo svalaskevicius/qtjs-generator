@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@ string makeObject(const string & name, TestScriptContext * context)
 	if(context->isLua()) {
 		return "" + name + (name == "" ? "" : " = ") + " { myInt = 20 }";
 	}
-	if(context->isV8()) {
+	if(context->isV8() || context->isSpiderMonkey()) {
 //		return "function " + name + "() { this.myInt = 20; }";
 		return "function xxx() { this.myInt = 20; }; " + name + " = new xxx();";
 	}
@@ -50,7 +50,7 @@ void doTestScriptObjectCallback(T * binding, TestScriptContext * context)
 	QDO(b = a.scriptObjectCallback(fcallback))
 	QASSERT(b == 20 + 38)
 	
-	if(context->isV8()) {
+	if(context->isV8() || context->isSpiderMonkey()) {
 		return;
 	}
 

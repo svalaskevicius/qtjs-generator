@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@
 #define __GMETADATA_CONTAINER_COMMON_H
 
 #include "cpgf/metadata/stl/gmetadata_iterator.h"
-#include "cpgf/gfunctionextractor.h"
+#include "cpgf/gselectfunctionbyarity.h"
 
 #include "cpgf/gmetadefine.h"
 
@@ -46,8 +46,8 @@ void buildMetaData_CommonContainer(const GMetaDataConfigFlags & /*config*/, Meta
 		.CPGF_MD_TEMPLATE _method("end", (typename T::const_iterator (T::*)() const) &T::end) // end is keyword in Lua
 		.CPGF_MD_TEMPLATE _method("_end", (typename T::iterator (T::*)()) &T::end)
 		.CPGF_MD_TEMPLATE _method("_end", (typename T::const_iterator (T::*)() const) &T::end)
-		.CPGF_MD_TEMPLATE _method("erase", extractFunction1(&T::erase))
-		.CPGF_MD_TEMPLATE _method("erase", extractFunction2(&T::erase))
+		.CPGF_MD_TEMPLATE _method("erase", selectFunctionByArity1(&T::erase))
+		.CPGF_MD_TEMPLATE _method("erase", selectFunctionByArity2(&T::erase))
 		.CPGF_MD_TEMPLATE _method("rbegin", (typename T::reverse_iterator (T::*)()) &T::rbegin)
 		.CPGF_MD_TEMPLATE _method("rbegin", (typename T::const_reverse_iterator (T::*)() const) &T::rbegin)
 		.CPGF_MD_TEMPLATE _method("rend", (typename T::reverse_iterator (T::*)()) &T::rend)

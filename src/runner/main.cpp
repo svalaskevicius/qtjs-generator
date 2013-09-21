@@ -65,15 +65,13 @@ bool executeJs(const char *fileName)
 
     scriptObject->bindCoreService("cpgf", NULL);
     GScopedInterface<IMetaClass> metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())));
-    scriptObject->bindClass("qt", metaClass.get());
+    scriptSetValue(scriptObject.get(), "qt", GScriptValue::fromClass(metaClass.get()));
 
     bool ret = runner->executeFile(fileName);
 
     while (!v8::V8::IdleNotification()); // run GC
     clearV8DataPool();
     qtjs_binder::QtSignalConnectorBinder::reset();
-
-    service->releaseReference();
 
     return ret;
 }

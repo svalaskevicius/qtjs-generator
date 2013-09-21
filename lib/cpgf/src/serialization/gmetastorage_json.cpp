@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,9 @@
 #include "cpgf/gerrorcode.h"
 #include "../pinclude/gmetaarchivecommonimpl.h"
 
-#include "../thirdparty/jsoncpp/json/json.h"
+#include "cpgf/thirdparty/jsoncpp/value.h"
+#include "cpgf/thirdparty/jsoncpp/reader.h"
+#include "cpgf/thirdparty/jsoncpp/writer.h"
 
 #include <stack>
 #include <sstream>
@@ -40,6 +42,8 @@ using namespace Json;
 
 namespace cpgf {
 
+// This function is defined in gvariant.cpp, for internal use.
+GVariant createVariantFromData(const GVariantData & data);
 
 namespace {
 
@@ -287,7 +291,7 @@ private:
 
 public:
 	GJsonStorageWriter(JsonNodeType * dataNode, JsonNodeType * classTypeNode);
-	~GJsonStorageWriter();
+	virtual ~GJsonStorageWriter();
 
 protected:
 	G_INTERFACE_IMPL_OBJECT
@@ -329,7 +333,7 @@ private:
 
 public:
 	GJsonStorageReader(JsonNodeType * dataNode, JsonNodeType * classTypeNode);
-	~GJsonStorageReader();
+	virtual ~GJsonStorageReader();
 
 protected:
 	G_INTERFACE_IMPL_OBJECT
@@ -385,7 +389,7 @@ GJsonStorageWriter::~GJsonStorageWriter()
 
 void G_API_CC GJsonStorageWriter::writeFundamental(const char * name, const GVariantData * value)
 {
-	GVariant v(*value);
+	GVariant v(createVariantFromData(*value));
 
 	GVariantType vt = v.getType();
 

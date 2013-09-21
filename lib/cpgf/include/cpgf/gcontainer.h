@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,6 +21,7 @@
 #define __GCONTAINER_H
 
 #include <ctime>
+#include <cstring>
 #include <cstddef>
 #include <algorithm>
 #include <functional>
@@ -28,7 +29,6 @@
 #include <list>
 
 #include <math.h>
-#include <string.h>
 #include <assert.h>
 
 

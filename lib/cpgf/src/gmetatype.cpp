@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -129,31 +129,6 @@ bool GMetaType::baseIsClass() const
 bool GMetaType::isFundamental() const
 {
 	return vtIsFundamental(this->getVariantType());
-}
-
-bool GMetaType::isBoolean() const
-{
-	return vtIsBoolean(this->getVariantType());
-}
-
-bool GMetaType::isInteger() const
-{
-	return vtIsInteger(this->getVariantType());
-}
-
-bool GMetaType::isSignedInteger() const
-{
-	return vtIsSignedInteger(this->getVariantType());
-}
-
-bool GMetaType::isUnsignedInteger() const
-{
-	return vtIsUnsignedInteger(this->getVariantType());
-}
-
-bool GMetaType::isReal() const
-{
-	return vtIsReal(this->getVariantType());
 }
 
 bool GMetaType::baseIsArray() const

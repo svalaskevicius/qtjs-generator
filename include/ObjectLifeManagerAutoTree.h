@@ -28,6 +28,7 @@ class AutoTree : public cpgf::IMetaObjectLifeManager {
 
 public:
     explicit AutoTree(const GTypeConverterCallback & caster) : caster(caster) {}
+    virtual ~AutoTree() {}
 
 protected:
     virtual void G_API_CC retainObject(void * object) {
