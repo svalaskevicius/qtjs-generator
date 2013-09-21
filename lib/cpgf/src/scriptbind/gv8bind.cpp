@@ -74,6 +74,15 @@ GGlueDataWrapperPool * getV8DataWrapperPool()
 // Declarations
 //*********************************************
 
+
+class v8RuntimeException : public std::runtime_error 
+{
+private:
+    Local<Value> error;
+public:
+    v8RuntimeException(Local<Value> error) : error(error), std::runtime_error(*String::AsciiValue(error)) {}
+};
+
 class GV8BindingContext : public GBindingContext, public GShareFromBase
 {
 private:
@@ -978,11 +987,15 @@ GVariant invokeV8FunctionIndirectly(const GContextPointer & context, Local<Objec
 		}
 
 		Local<Value> result;
+		TryCatch trycatch;
 		if(func->IsFunction()) {
 			result = Local<Function>::Cast(func)->Call(object, static_cast<int>(paramCount), v8Params);
 		}
 		else {
 			result = Local<Object>::Cast(func)->CallAsFunction(object, static_cast<int>(paramCount), v8Params);
+		}
+		if (result.IsEmpty()) {
+		    throw v8RuntimeException(trycatch.Exception());
 		}
 
 		return v8ToScriptValue(context, object->CreationContext(), result, NULL).getValue();
