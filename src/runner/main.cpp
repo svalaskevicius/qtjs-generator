@@ -61,8 +61,6 @@ bool executeJs(const char *fileName)
     clearV8DataPool();
     qtjs_binder::QtSignalConnectorBinder::reset();
 
-    service->releaseReference();
-
     return ret;
 }
 
