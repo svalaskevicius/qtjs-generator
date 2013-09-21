@@ -715,6 +715,7 @@ Handle<Value> objectConstructor(const Arguments & args)
 		return ThrowException(String::New("Cannot call constructor as function"));
 	}
 
+    HandleScope scope;
 	Persistent<Object> self = Persistent<Object>::New(args.Holder());
 
 	if(args.Length() == 1 && args[0]->IsExternal() && External::Unwrap(args[0]) == &signatureKey) {
@@ -745,7 +746,7 @@ Handle<Value> objectConstructor(const Arguments & args)
 		}
 	}
 
-	return self;
+	return scope.Close(self);
 
 	LEAVE_V8(return Handle<Value>());
 }
