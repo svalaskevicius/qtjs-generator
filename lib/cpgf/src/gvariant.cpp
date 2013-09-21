@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,6 +38,7 @@ class GVariantTypedVar : public IVariantTypedVar
 {
 public:
 	GVariantTypedVar(const GVariant & value, const GMetaType & type);
+	virtual ~GVariantTypedVar();
 	
 	G_INTERFACE_IMPL_OBJECT
 
@@ -54,6 +55,10 @@ GVariantTypedVar::GVariantTypedVar(const GVariant & value, const GMetaType & typ
 	: value(value), type(type)
 {
 	fixupMetaType(&this->type);
+}
+
+GVariantTypedVar::~GVariantTypedVar()
+{
 }
 	
 void G_API_CC GVariantTypedVar::getValue(GVariantData * outValue)
@@ -178,6 +183,11 @@ void adjustVariantType(GVariant * var)
 
 } // namespace variant_internal
 
+
+GVariant createVariantFromData(const GVariantData & data)
+{
+	return GVariant(data);
+}
 
 GVariant::GVariant()
 {
@@ -410,7 +420,7 @@ GVariant getVariantRealValue(const GVariant & value)
 	if(vtIsTypedVar(value.getType())) {
 		GVariantData data;
 		value.refData().valueTypedVar->getValue(&data);
-		return GVariant(data);
+		return createVariantFromData(data);
 	}
 	else {
 		return value;

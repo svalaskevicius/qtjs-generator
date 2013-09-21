@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,6 +25,8 @@
 #include "cpgf/gmetapolicy.h"
 #include "cpgf/gcallback.h"
 #include "cpgf/gifelse.h"
+#include "cpgf/accessor/ggetter.h"
+#include "cpgf/accessor/gsetter.h"
 
 
 #if defined(_MSC_VER)
@@ -42,378 +44,46 @@ namespace cpgf {
 
 namespace meta_internal {
 
-template <typename Getter, typename Policy, typename Enabled = void>
-class GMetaGetter
-{
-public:
-	typedef int PropertyType;
-	
-	G_STATIC_CONSTANT(bool, HasGetter = false);
-	G_STATIC_CONSTANT(bool, Readable = false);
-
-public:
-	GMetaGetter(const Getter & /*getter*/) {
-	}
-
-	GVariant get(void * /*instance*/) const {
-
-		return GVariant();
-	}
-
-	void * getPropertyAddress(void * /*instance*/) const {
-		return NULL;
-	}
-};
-
-
 template <typename Getter, typename Policy>
-class GMetaGetter <Getter, Policy, typename GEnableIfResult<
-	GAndResult<
-		GNotResult<IsFunction<Getter> >,
-		GNotResult<MemberDataTrait<Getter> >,
-		GNotResult<IsFundamental<Getter> >
-	>
-	>::Result
->
+class GMetaGetter : public GInstanceGetter <Getter, Policy>
 {
-	GASSERT_STATIC(IsPointer<Getter>::Result);
-
-public:
-	G_STATIC_CONSTANT(bool, HasGetter = true);
-	G_STATIC_CONSTANT(bool, Readable = (PolicyNotHasRule<Policy, GMetaRuleForbidRead>::Result));
-
-public:
-	typedef typename RemovePointer<Getter>::Result PropertyType;
-
-public:
-	GMetaGetter(const Getter & getter) : getter(getter) {
-	}
-
-	GMetaGetter(const GMetaGetter & other) : getter(other.getter) {
-	}
-
-	GMetaGetter & operator = (const GMetaGetter & other) {
-		if(this != &other) {
-			this->getter = other.getter;
-		}
-	}
-
-	GVariant get(const void * instance) const {
-		return this->doGet<void>(instance);
-	}
-	
-	void * getPropertyAddress(const void * /*instance*/) const {
-		return this->getter;
-	}
-
-private:	
-	template <typename T>
-	GVariant doGet(typename GEnableIf<Readable, T>::Result const * /*instance*/) const {
-		GVarTypeData data = GVarTypeData();
-		deduceVariantType<PropertyType>(data, true);
-		return GVariant(data, *(this->getter));
-	}
-	
-	template <typename T>
-	GVariant doGet(typename GDisableIf<Readable, T>::Result const * /*instance*/) const {
-		meta_internal::handleForbidAccessError(true);
-		
-		return GVariant();
-	}
-	
-
 private:
-	Getter getter;
-};
-
-template <typename Getter, typename Policy>
-class GMetaGetter <Getter, Policy, typename GEnableIfResult<
-	GAndResult<
-		GNotResult<IsFunction<Getter> >,
-		MemberDataTrait<Getter>
-	>
-	>::Result
->
-{
-public:
-	G_STATIC_CONSTANT(bool, HasGetter = true);
-	G_STATIC_CONSTANT(bool, Readable = (PolicyNotHasRule<Policy, GMetaRuleForbidRead>::Result));
+	typedef GInstanceGetter <Getter, Policy> super;
 
 public:
-	typedef typename MemberDataTrait<Getter>::FieldType PropertyType;
-
-public:
-	GMetaGetter(const Getter & getter) : getter(getter) {
-	}
-
-	GMetaGetter(const GMetaGetter & other) : getter(other.getter) {
-	}
-
-	GMetaGetter & operator = (const GMetaGetter & other) {
-		if(this != &other) {
-			this->getter = other.getter;
-		}
+	GMetaGetter(const Getter & getter) : super(getter) {
 	}
 
 	GVariant get(const void * instance) const {
-		return this->doGet<void>(instance);
+		GVarTypeData data = GVarTypeData();
+		deduceVariantType<typename super::ValueType>(data, true);
+		return GVariant(data, super::get(instance));
 	}
-	
+
 	void * getPropertyAddress(const void * instance) const {
-		return &(static_cast<typename MemberDataTrait<Getter>::ObjectType *>(const_cast<void *>(instance))->*(this->getter));
+		return super::getAddress(instance);
 	}
-
-private:	
-	template <typename T>
-	GVariant doGet(typename GEnableIf<Readable, T>::Result const * instance) const {
-		GVarTypeData data = GVarTypeData();
-		deduceVariantType<PropertyType>(data, true);
-		return GVariant(data, static_cast<typename MemberDataTrait<Getter>::ObjectType const *>(instance)->*(this->getter));
-	}
-
-	template <typename T>
-	GVariant doGet(typename GDisableIf<Readable, T>::Result const * /*instance*/) const {
-		meta_internal::handleForbidAccessError(true);
-		
-		return GVariant();
-	}
-	
-private:
-	Getter getter;
-};
-
-template <typename Getter, typename Policy>
-class GMetaGetter <Getter, Policy, typename GEnableIfResult<IsFunction<Getter> >::Result>
-{
-public:
-	G_STATIC_CONSTANT(bool, HasGetter = true);
-	G_STATIC_CONSTANT(bool, Readable = (PolicyNotHasRule<Policy, GMetaRuleForbidRead>::Result));
-	G_STATIC_CONSTANT(bool, ExplicitThis = (PolicyHasRule<Policy, GMetaRuleExplicitThis>::Result || PolicyHasRule<Policy, GMetaRuleGetterExplicitThis>::Result));
-	G_STATIC_CONSTANT(bool, NotExplicitThis = !ExplicitThis);
-
-public:
-	typedef typename GFunctionTraits<Getter>::ResultType PropertyType;
-
-public:
-	GMetaGetter(const Getter & getter) : callback(makeCallback(getter)) {
-	}
-
-	GMetaGetter(const GMetaGetter & other) : callback(other.callback) {
-	}
-
-	GMetaGetter & operator = (const GMetaGetter & other) {
-		if(this != &other) {
-			this->callback = other.callback;
-		}
-	}
-
-	GVariant get(const void * instance) const {
-		return this->doGet<void>(instance);
-	}
-	
-	void * getPropertyAddress(const void * /*instance*/) const {
-		return NULL;
-	}
-
-private:	
-	template <typename T>
-	GVariant doGet(typename GEnableIf<Readable && NotExplicitThis, T>::Result const * instance) const {
-		this->callback.setObject(const_cast<void *>(instance));
-		
-		GVarTypeData data = GVarTypeData();
-		deduceVariantType<PropertyType>(data, true);
-		return GVariant(data, this->callback());
-	}
-
-	template <typename T>
-	GVariant doGet(typename GEnableIf<Readable && ExplicitThis, T>::Result const * instance) const {
-		this->callback.setObject(const_cast<void *>(instance));
-		
-		GVarTypeData data = GVarTypeData();
-		deduceVariantType<PropertyType>(data, true);
-		return GVariant(data, this->callback((typename GFunctionTraits<Getter>::ArgList::Arg0)(instance)));
-	}
-
-	template <typename T>
-	GVariant doGet(typename GDisableIf<Readable, T>::Result const * /*instance*/) const {
-		meta_internal::handleForbidAccessError(true);
-		
-		return GVariant();
-	}
-	
-private:
-	typename FunctionCallbackType<Getter>::Result callback;
-};
-
-
-template <typename Setter, typename Policy, typename Enabled = void>
-class GMetaSetter
-{
-public:
-	typedef int PropertyType;
-
-	G_STATIC_CONSTANT(bool, HasSetter = false);
-	G_STATIC_CONSTANT(bool, Writable = false);
-
-public:
-	GMetaSetter(const Setter & /*setter*/) {
-	}
-
-	void set(void * /*instance*/, const GVariant & /*value*/) const {
-	}
-
 };
 
 
 template <typename Setter, typename Policy>
-class GMetaSetter <Setter, Policy, typename GEnableIfResult<
-	GAndResult<
-		GNotResult<IsFunction<Setter> >,
-		GNotResult<MemberDataTrait<Setter> >,
-		GNotResult<IsFundamental<Setter> >
-	>
-	>::Result
->
+class GMetaSetter : public GInstanceSetter <Setter, Policy>
 {
-	GASSERT_STATIC(IsPointer<Setter>::Result);
+private:
+	typedef GInstanceSetter <Setter, Policy> super;
 
 public:
-	G_STATIC_CONSTANT(bool, HasSetter = true);
-	G_STATIC_CONSTANT(bool, Writable = (PolicyNotHasRule<Policy, GMetaRuleForbidWrite>::Result));
-
-public:
-	typedef typename RemovePointer<Setter>::Result PropertyType;
-
-public:
-	GMetaSetter(const Setter & setter) : setter(setter) {
-	}
-
-	GMetaSetter(const GMetaSetter & other) : setter(other.setter) {
-	}
-
-	GMetaSetter & operator = (const GMetaSetter & other) {
-		if(this != &other) {
-			this->setter = other.setter;
-		}
+	GMetaSetter(const Setter & setter) : super(setter) {
 	}
 
 	void set(void * instance, const GVariant & value) const {
-		this->doSet<void>(instance, value);
+		super::set(instance, fromVariant<typename RemoveReference<typename super::ValueType>::Result>(value));
 	}
 
-private:	
-	template <typename T>
-	void doSet(typename GEnableIf<Writable, T>::Result * /*instance*/, const GVariant & value) const {
-		*(this->setter) = fromVariant<PropertyType>(value);
+	void * getPropertyAddress(void * instance) const {
+		return super::getAddress(instance);
 	}
 
-	template <typename T>
-	void doSet(typename GDisableIf<Writable, T>::Result * /*instance*/, const GVariant & /*value*/) const {
-		meta_internal::handleForbidAccessError(false);
-	}
-
-private:
-	Setter setter;
-};
-
-template <typename Setter, typename Policy>
-class GMetaSetter <Setter, Policy, typename GEnableIfResult<
-	GAndResult<
-		GNotResult<IsFunction<Setter> >,
-		MemberDataTrait<Setter>
-	>
-	>::Result
->
-{
-public:
-	G_STATIC_CONSTANT(bool, HasSetter = true);
-	G_STATIC_CONSTANT(bool, Writable = (PolicyNotHasRule<Policy, GMetaRuleForbidWrite>::Result));
-
-public:
-	typedef typename MemberDataTrait<Setter>::FieldType PropertyType;
-
-public:
-	GMetaSetter(const Setter & setter) : setter(setter) {
-	}
-
-	GMetaSetter(const GMetaSetter & other) : setter(other.setter) {
-	}
-
-	GMetaSetter & operator = (const GMetaSetter & other) {
-		if(this != &other) {
-			this->setter = other.setter;
-		}
-	}
-
-	void set(void * instance, const GVariant & value) const {
-		this->doSet<void>(instance, value);
-	}
-
-private:	
-	template <typename T>
-	void doSet(typename GEnableIf<Writable, T>::Result * instance, const GVariant & value) const {
-		static_cast<typename MemberDataTrait<Setter>::ObjectType *>(instance)->*(this->setter) = fromVariant<PropertyType>(value);
-	}
-
-	template <typename T>
-	void doSet(typename GDisableIf<Writable, T>::Result * /*instance*/, const GVariant & /*value*/) const {
-		meta_internal::handleForbidAccessError(false);
-	}
-
-private:
-	Setter setter;
-};
-
-template <typename Setter, typename Policy>
-class GMetaSetter <Setter, Policy, typename GEnableIfResult<IsFunction<Setter> >::Result>
-{
-public:
-	G_STATIC_CONSTANT(bool, HasSetter = true);
-	G_STATIC_CONSTANT(bool, Writable = (PolicyNotHasRule<Policy, GMetaRuleForbidWrite>::Result));
-	G_STATIC_CONSTANT(bool, ExplicitThis = (PolicyHasRule<Policy, GMetaRuleExplicitThis>::Result || PolicyHasRule<Policy, GMetaRuleSetterExplicitThis>::Result));
-	G_STATIC_CONSTANT(bool, NotExplicitThis = !ExplicitThis);
-
-public:
-	typedef typename GFunctionTraits<Setter>::ArgList::Arg0 PropertyType;
-
-public:
-	GMetaSetter(const Setter & setter) : callback(makeCallback(setter)) {
-	}
-
-	GMetaSetter(const GMetaSetter & other) : callback(other.callback) {
-	}
-
-	GMetaSetter & operator = (const GMetaSetter & other) {
-		if(this != &other) {
-			this->callback = other.callback;
-		}
-	}
-
-	void set(void * instance, const GVariant & value) const {
-		this->doSet<void>(instance, value);
-	}
-
-private:	
-	template <typename T>
-	void doSet(typename GEnableIf<Writable && NotExplicitThis, T>::Result * instance, const GVariant & value) const {
-		this->callback.setObject(instance);
-		this->callback(fromVariant<PropertyType, typename GIfElseResult<PolicyHasRule<Policy, GMetaRuleCopyConstReference<0> >, VarantCastCopyConstRef, VarantCastKeepConstRef>::Result>(value));
-	}
-
-	template <typename T>
-	void doSet(typename GEnableIf<Writable && ExplicitThis, T>::Result * instance, const GVariant & value) const {
-		this->callback.setObject(instance);
-		this->callback((typename GFunctionTraits<Setter>::ArgList::Arg0)(instance),
-			fromVariant<typename GFunctionTraits<Setter>::ArgList::Arg1, typename GIfElseResult<PolicyHasRule<Policy, GMetaRuleCopyConstReference<0> >, VarantCastCopyConstRef, VarantCastKeepConstRef>::Result>(value));
-	}
-
-	template <typename T>
-	void doSet(typename GDisableIf<Writable, T>::Result * /*instance*/, const GVariant & /*value*/) const {
-		meta_internal::handleForbidAccessError(false);
-	}
-
-private:
-	typename FunctionCallbackType<Setter>::Result callback;
 };
 
 
@@ -482,14 +152,14 @@ private:
 
 	static size_t virtualGetPropertySize() {
 		if(GetterType::HasGetter) {
-			return sizeof(typename GetterType::PropertyType);
+			return sizeof(typename GetterType::ValueType);
 		}
 
 		if(SetterType::HasSetter) {
-			return sizeof(typename SetterType::PropertyType);
+			return sizeof(typename SetterType::ValueType);
 		}
 
-		meta_internal::handleForbidAccessError(true);
+		raiseCoreException(Error_Meta_ReadDenied);
 		
 		return 0;
 	}
@@ -497,11 +167,11 @@ private:
 	static GMetaExtendType virtualGetItemExtendType(uint32_t flags, const GMetaItem * metaItem)
 	{
 		if(GetterType::HasGetter) {
-			return createMetaExtendType<typename GetterType::PropertyType>(flags, metaItem);
+			return createMetaExtendType<typename GetterType::ValueType>(flags, metaItem);
 		}
 
 		if(SetterType::HasSetter) {
-			return createMetaExtendType<typename SetterType::PropertyType>(flags, metaItem);
+			return createMetaExtendType<typename SetterType::ValueType>(flags, metaItem);
 		}
 
 		return GMetaExtendType();
@@ -531,11 +201,11 @@ private:
 template <typename Getter, typename Setter, typename Policy>
 GMetaType createPropertyType() {
 	if(GMetaGetter<Getter, Policy>::HasGetter) {
-		return createMetaType<typename GMetaGetter<Getter, Policy>::PropertyType>();
+		return createMetaType<typename GMetaGetter<Getter, Policy>::ValueType>();
 	}
 
 	if(GMetaSetter<Setter, Policy>::HasSetter) {
-		return createMetaType<typename GMetaSetter<Setter, Policy>::PropertyType>();
+		return createMetaType<typename GMetaSetter<Setter, Policy>::ValueType>();
 	}
 
 	return GMetaType();

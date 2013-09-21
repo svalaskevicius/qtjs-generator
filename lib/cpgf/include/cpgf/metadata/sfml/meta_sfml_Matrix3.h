@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -57,7 +57,7 @@ void buildMetaClass_Matrix3(const cpgf::GMetaDataConfigFlags & config, D _d)
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     _d.CPGF_MD_TEMPLATE _constructor<void * (float, float, float, float, float, float, float, float, float)>();
-    _d.CPGF_MD_TEMPLATE _field("Identity", &D::ClassType::Identity);
+//    _d.CPGF_MD_TEMPLATE _field("Identity", &D::ClassType::Identity);
     _d.CPGF_MD_TEMPLATE _method("SetFromTransformations", &D::ClassType::SetFromTransformations);
     _d.CPGF_MD_TEMPLATE _method("Transform", &D::ClassType::Transform);
     _d.CPGF_MD_TEMPLATE _method("GetInverse", &D::ClassType::GetInverse);

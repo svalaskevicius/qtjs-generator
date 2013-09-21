@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,14 +28,14 @@ void doTestNotReflected(T * binding, TestScriptContext * context)
 {
 	(void)binding;
 
-	QNEWOBJ(obj, TestObject())
-	QDO(a = obj.pointerRaw())
+	QVARNEWOBJ(obj, TestObject())
+	QVAR(a = obj.pointerRaw())
 	QASSERT(obj.isRawPointer(a))
 	QASSERT(obj.isRawRef(a))
 	QDO(obj.setRaw(a, 38, "what"))
 
-	QNEWOBJ(obj2, TestObject())
-	QDO(b = obj2.refRaw())
+	QVARNEWOBJ(obj2, TestObject())
+	QVAR(b = obj2.refRaw())
 	QASSERT(obj2.isRawPointer(b))
 	QASSERT(obj2.isRawRef(b))
 	QDO(obj2.setRaw(b, 19, "how"))
@@ -58,15 +58,15 @@ void testNotReflected(TestScriptContext * context)
 	if(bindingLib) {
 		doTestNotReflected(bindingLib, context);
 
-		a = bindingLib->getRaw("a");
-		b = bindingLib->getRaw("b");
+		a = bindingLib->getValue("a").toRaw();
+		b = bindingLib->getValue("b").toRaw();
 	}
 	
 	if(bindingApi) {
 		doTestNotReflected(bindingApi, context);
 		
-		bindingApi->getRaw(&a.refData(), "a");
-		bindingApi->getRaw(&b.refData(), "b");
+		a = scriptGetValue(bindingApi, "a").toRaw();
+		b = scriptGetValue(bindingApi, "b").toRaw();
 	}
 
 	GCHECK(!a.isEmpty());

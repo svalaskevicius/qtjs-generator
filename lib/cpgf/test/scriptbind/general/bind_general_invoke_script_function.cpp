@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,7 +34,7 @@ void doTestInvokeScriptFunction(T * binding, TestScriptContext * context)
 		QDO(function funcTestData(a) return a.x + string.len(a.name) end)
 		QDO(function funcNewTestData() a = TestData() a.x = 3 a.name = "def" return a end)
 	}
-	if(context->isV8()) {
+	if(context->isV8() || context->isSpiderMonkey()) {
 		QDO(function funcAdd(a, b) { return a + b; })
 		QDO(function funcLen(a, b) { return a.length + b; })
 		QDO(function funcTestData(a) { return a.x + a.name.length; })

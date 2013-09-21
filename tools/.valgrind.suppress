@@ -706,3 +706,48 @@
    fun:_ZN2v87Context5EnterEv
    ...
 }
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:_Znwm
+   ...
+   fun:_ZN7QThread13currentThreadEv
+   fun:_ZN23QCoreApplicationPrivateC1ERiPPcj
+   ...
+   fun:(below main)
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:_Znwm
+   ...
+   fun:_ZN16QCoreApplication4initEv
+   fun:_ZN16QCoreApplicationC1ER23QCoreApplicationPrivate
+   fun:_ZN15QGuiApplicationC1ER22QGuiApplicationPrivate
+   ...
+   fun:(below main)
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:_Znwm
+   ...
+   fun:_ZN7QThread13currentThreadEv
+   fun:_ZN23QCoreApplicationPrivateC1ERiPPcj
+   fun:_ZN22QGuiApplicationPrivateC1ERiPPci
+   ...
+   fun:(below main)
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:_Znwm
+   fun:_ZN14QWaitConditionC1Ev
+   ...
+   fun:_ZN16QCoreApplication4initEv
+   fun:_ZN16QCoreApplicationC1ER23QCoreApplicationPrivate
+   fun:_ZN15QGuiApplicationC1ER22QGuiApplicationPrivate
+   fun:_ZN12QApplicationC1ERiPPci
+   ...
+   fun:(below main)
+}

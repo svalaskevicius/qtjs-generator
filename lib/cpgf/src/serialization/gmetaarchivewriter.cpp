@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,7 +46,7 @@ class GMetaArchiveWriter : public IMetaArchiveWriter, public IMetaSerializerWrit
 
 public:
 	GMetaArchiveWriter(IMetaService * service, IMetaStorageWriter * writer);
-	~GMetaArchiveWriter();
+	virtual ~GMetaArchiveWriter();
 
 	virtual IMetaService * G_API_CC getMetaService();
 	virtual IMetaStorageWriter * G_API_CC getStorageWriter();

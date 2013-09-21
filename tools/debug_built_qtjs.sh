@@ -5,7 +5,7 @@ TOPDIR="$MYDIR/.."
 
 export LD_LIBRARY_PATH="$TOPDIR/lib/cpgf/lib:$TOPDIR/build/core:$TOPDIR/build/widgets:$TOPDIR/build/qml:$TOPDIR/build/gui"
 
-gdb "$TOPDIR/build/runner/qtjs" "$@"
+gdb --args "$TOPDIR/build/runner/qtjs" "$@"
 
 exit $?
 
