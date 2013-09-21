@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -43,8 +43,8 @@ void buildMetaClass_String(const cpgf::GMetaDataConfigFlags & config, D _d)
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     _d.CPGF_MD_TEMPLATE _constructor<void * (const Unicode::Text &, const Font &, float)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
-        ._default(copyVariantFromCopyable(30.f))
-        ._default(copyVariantFromCopyable(Font::GetDefaultFont()))
+//        ._default(copyVariantFromCopyable(30.f))
+//        ._default(copyVariantFromCopyable(Font::GetDefaultFont()))
     ;
     _d.CPGF_MD_TEMPLATE _method("SetText", &D::ClassType::SetText, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("SetFont", &D::ClassType::SetFont);

@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +47,6 @@ struct VarantCastKeepConstRef {};
 struct VarantCastCopyConstRef {};
 
 class GVariant;
-class GMetaVariant;
 
 class GMetaType;
 struct GMetaTypeData;
@@ -136,9 +135,11 @@ GMAKE_FINAL(GVariant)
 
 class GVariant : GFINAL_BASE(GVariant)
 {
+private:
+	GVariant(const GVariantData & data);
+
 public:
 	GVariant();
-	GVariant(const GVariantData & data);
 
 	template <typename T>
 	GVariant(const T & value) {
@@ -194,7 +195,7 @@ private:
 	GVariantData data;
 
 private:
-	GVariant(const GMetaVariant &); //disable
+	friend GVariant createVariantFromData(const GVariantData & data);
 };
 
 inline void swap(GVariant & a, GVariant & b)
@@ -209,6 +210,7 @@ void checkFailCast(bool success);
 
 
 #include "cpgf/private/gvariant_p.h"
+#include "cpgf/private/gvariant_cancast_p.h"
 
 
 template <typename T>

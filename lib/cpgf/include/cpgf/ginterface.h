@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,7 +33,6 @@ struct IObject
    virtual uint32_t G_API_CC unused_queryInterface(void *, void *) = 0;
    virtual uint32_t G_API_CC addReference() = 0;
    virtual uint32_t G_API_CC releaseReference() = 0;
-   virtual ~IObject(){}
 };
 
 
