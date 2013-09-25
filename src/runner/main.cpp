@@ -210,14 +210,16 @@ void static qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
     }
 }
 
-const static QMetaObject staticMetaObject;
+const static QMetaObject X_staticMetaObject;
 
 
 const QMetaObject *metaObject() const
 {
-    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+    return &X_staticMetaObject;
+    //return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
+/*
 void *qt_metacast(const char *_clname)
 {
         qDebug() << "metacast: "<<_clname;
@@ -226,6 +228,7 @@ void *qt_metacast(const char *_clname)
         return static_cast<void*>(const_cast< KeyGenerator*>(this));
     return QObject::qt_metacast(_clname);
 }
+*/
 
 virtual int qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
@@ -287,36 +290,36 @@ virtual int qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void typeChanged()
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, 0);
+    QMetaObject::activate(this, &X_staticMetaObject, 0, 0);
 }
 
 // SIGNAL 1
 void typesChanged()
 {
-    QMetaObject::activate(this, &staticMetaObject, 1, 0);
+    QMetaObject::activate(this, &X_staticMetaObject, 1, 0);
 }
 
 // SIGNAL 2
 void filenameChanged()
 {
-    QMetaObject::activate(this, &staticMetaObject, 2, 0);
+    QMetaObject::activate(this, &X_staticMetaObject, 2, 0);
 }
 
 // SIGNAL 3
 void passphraseChanged()
 {
-    QMetaObject::activate(this, &staticMetaObject, 3, 0);
+    QMetaObject::activate(this, &X_staticMetaObject, 3, 0);
 }
 
 // SIGNAL 4
 void keyGenerated(bool _t1)
 {
     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
-    QMetaObject::activate(this, &staticMetaObject, 4, _a);
+    QMetaObject::activate(this, &X_staticMetaObject, 4, _a);
 }
 };
 
-const QMetaObject KeyGenerator::staticMetaObject = {
+const QMetaObject KeyGenerator::X_staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_KeyGenerator.data,
       qt_meta_data_KeyGenerator,  qt_static_metacall, 0, 0}
 };
@@ -470,13 +473,62 @@ bool executeJs(const char *fileName)
     return ret;
 }
 
+
+#define X_QML_GETTYPENAMES \
+    const char *className = T::X_staticMetaObject.className(); \
+    const int nameLen = int(strlen(className)); \
+    QVarLengthArray<char,48> pointerName(nameLen+2); \
+    memcpy(pointerName.data(), className, nameLen); \
+    pointerName[nameLen] = '*'; \
+    pointerName[nameLen+1] = '\0'; \
+    const int listLen = int(strlen("QQmlListProperty<")); \
+    QVarLengthArray<char,64> listName(listLen + nameLen + 2); \
+    memcpy(listName.data(), "QQmlListProperty<", listLen); \
+    memcpy(listName.data()+listLen, className, nameLen); \
+    listName[listLen+nameLen] = '>'; \
+    listName[listLen+nameLen+1] = '\0';
+
+
+template<typename T>
+int X_qmlRegisterType(const QMetaObject *metaObject, const char *uri, int versionMajor, int versionMinor, const char *qmlName)
+{
+    X_QML_GETTYPENAMES
+
+    QQmlPrivate::RegisterType type = {
+        0, 
+
+        qRegisterNormalizedMetaType<T *>(pointerName.constData()),
+        qRegisterNormalizedMetaType<QQmlListProperty<T> >(listName.constData()),
+        sizeof(T), QQmlPrivate::createInto<T>,
+        QString(),
+
+        uri, versionMajor, versionMinor, qmlName, metaObject,
+
+        QQmlPrivate::attachedPropertiesFunc<T>(),
+        QQmlPrivate::attachedPropertiesMetaObject<T>(),
+
+        QQmlPrivate::StaticCastSelector<T,QQmlParserStatus>::cast(), 
+        QQmlPrivate::StaticCastSelector<T,QQmlPropertyValueSource>::cast(),
+        QQmlPrivate::StaticCastSelector<T,QQmlPropertyValueInterceptor>::cast(),
+
+        0, 0,
+
+        0,
+        0
+    };
+
+    return QQmlPrivate::qmlregister(QQmlPrivate::TypeRegistration, &type);
+}
+
+#undef X_QML_GETTYPENAMES
+
 } // namespace
 
 int main(int argc, char * argv[])
 {
     QApplication app(argc, argv);
 
-    qmlRegisterType<KeyGenerator>("com.ics.demo", 1, 0, "KeyGenerator");
+    X_qmlRegisterType<KeyGenerator>(&KeyGenerator::X_staticMetaObject, "com.ics.demo", 1, 0, "KeyGenerator");
 
     const char * fileName = "main.js";
     if (argc > 1) {
