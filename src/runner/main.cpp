@@ -29,6 +29,7 @@
 #include <QFile>
 #include <QProcess>
 #include <QDebug>
+#include <private/qmetaobjectbuilder_p.h>
 
 using namespace cpgf;
 using namespace std;
@@ -47,6 +48,12 @@ void setExitCode(int code)
 {
     __exitCode = code;
 }
+
+
+
+
+
+/*
 
 struct qt_meta_stringdata_KeyGenerator_t {
     QByteArrayData data[13];
@@ -127,6 +134,9 @@ static const uint qt_meta_data_KeyGenerator[] = {
 
        0        // eod
 };
+
+*/
+
 class KeyGenerator : public QObject
 {
 public:
@@ -210,13 +220,12 @@ void static qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
     }
 }
 
-static QMetaObject X_staticMetaObject;
+static QMetaObject *X_staticMetaObject;
 
 
 const QMetaObject *metaObject() const
 {
-    return &X_staticMetaObject;
-    //return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+    return X_staticMetaObject;
 }
 
 
@@ -309,11 +318,6 @@ void keyGenerated(bool _t1)
 }
 };
 
-QMetaObject KeyGenerator::X_staticMetaObject = {
-    { &QObject::staticMetaObject, qt_meta_stringdata_KeyGenerator.data,
-      qt_meta_data_KeyGenerator,  qt_static_metacall, 0, 0}
-};
-
 
 KeyGenerator::KeyGenerator()
     : _type("rsa"), _types{"dsa", "ecdsa", "rsa", "rsa1"}
@@ -401,6 +405,7 @@ void KeyGenerator::generateKey()
 }
 
 
+QMetaObject *KeyGenerator::X_staticMetaObject = nullptr;
 
 
 
@@ -452,7 +457,7 @@ bool executeJs(const char *fileName)
 
 
 #define X_QML_GETTYPENAMES \
-    const char *className = T::X_staticMetaObject.className(); \
+    const char *className = metaObject->className(); \
     const int nameLen = int(strlen(className)); \
     QVarLengthArray<char,48> pointerName(nameLen+2); \
     memcpy(pointerName.data(), className, nameLen); \
@@ -505,7 +510,27 @@ int main(int argc, char * argv[])
 {
     QApplication app(argc, argv);
 
-    X_qmlRegisterType<KeyGenerator>(&KeyGenerator::X_staticMetaObject, "com.ics.demo", 1, 0, "KeyGenerator");
+    QMetaObjectBuilder builder;
+    builder.setSuperClass(&QObject::staticMetaObject);
+    builder.setStaticMetacallFunction(KeyGenerator::qt_static_metacall);
+    builder.addSignal("typeChanged()");
+    builder.addSignal("typesChanged()");
+    builder.addSignal("filenameChanged()");
+    builder.addSignal("passphraseChanged()");
+    builder.addSignal("keyGenerated(bool)").setParameterNames(QList<QByteArray>{"success"});
+    builder.addSlot("generateKey()");
+    builder.addProperty("type", "QString", builder.indexOfSignal("typeChanged"));
+    builder.addProperty("types", "QStringList", builder.indexOfSignal("typesChanged"));
+    builder.addProperty("filename", "QString", builder.indexOfSignal("filenameChanged"));
+    builder.addProperty("passphrase", "QString", builder.indexOfSignal("passphraseChanged"));
+
+    KeyGenerator::X_staticMetaObject = builder.toMetaObject();
+//QMetaObject KeyGenerator::X_staticMetaObject = {
+//    { &QObject::staticMetaObject, qt_meta_stringdata_KeyGenerator.data,
+//      qt_meta_data_KeyGenerator,  qt_static_metacall, 0, 0}
+//};
+
+    X_qmlRegisterType<KeyGenerator>(KeyGenerator::X_staticMetaObject, "com.ics.demo", 1, 0, "KeyGenerator");
 
     const char * fileName = "main.js";
     if (argc > 1) {
@@ -521,6 +546,7 @@ int main(int argc, char * argv[])
 
     v8::V8::Dispose();
 
+    free(KeyGenerator::X_staticMetaObject);
     return __exitCode;
 }
 

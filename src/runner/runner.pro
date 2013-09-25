@@ -1,7 +1,7 @@
 
 include (../qtjs.pri)
 
-QT += core widgets qml quick gui
+QT += core widgets qml quick gui core-private
 TEMPLATE = app
 
 TARGET=qtjs
