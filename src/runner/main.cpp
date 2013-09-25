@@ -210,7 +210,7 @@ void static qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
     }
 }
 
-const static QMetaObject X_staticMetaObject;
+static QMetaObject X_staticMetaObject;
 
 
 const QMetaObject *metaObject() const
@@ -219,16 +219,6 @@ const QMetaObject *metaObject() const
     //return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-/*
-void *qt_metacast(const char *_clname)
-{
-        qDebug() << "metacast: "<<_clname;
-    if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_KeyGenerator.stringdata))
-        return static_cast<void*>(const_cast< KeyGenerator*>(this));
-    return QObject::qt_metacast(_clname);
-}
-*/
 
 virtual int qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
@@ -290,54 +280,41 @@ virtual int qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void typeChanged()
 {
-    QMetaObject::activate(this, &X_staticMetaObject, 0, 0);
+    QMetaObject::activate(this, metaObject(), 0, 0);
 }
 
 // SIGNAL 1
 void typesChanged()
 {
-    QMetaObject::activate(this, &X_staticMetaObject, 1, 0);
+    QMetaObject::activate(this, metaObject(), 1, 0);
 }
 
 // SIGNAL 2
 void filenameChanged()
 {
-    QMetaObject::activate(this, &X_staticMetaObject, 2, 0);
+    QMetaObject::activate(this, metaObject(), 2, 0);
 }
 
 // SIGNAL 3
 void passphraseChanged()
 {
-    QMetaObject::activate(this, &X_staticMetaObject, 3, 0);
+    QMetaObject::activate(this, metaObject(), 3, 0);
 }
 
 // SIGNAL 4
 void keyGenerated(bool _t1)
 {
     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
-    QMetaObject::activate(this, &X_staticMetaObject, 4, _a);
+    QMetaObject::activate(this, metaObject(), 4, _a);
 }
 };
 
-const QMetaObject KeyGenerator::X_staticMetaObject = {
+QMetaObject KeyGenerator::X_staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_KeyGenerator.data,
       qt_meta_data_KeyGenerator,  qt_static_metacall, 0, 0}
 };
 
 
-/*
-int KeyGenerator::qt_metacall(QMetaObject::Call call, int id, void **data)
-{
-    id = QObject::qt_metacall(call, id, data);
-    qDebug() << id;
-    if (id == -1 || call != QMetaObject::InvokeMetaMethod) {
-        return id;
-    }
-
-    return -1;
-}
-
-*/
 KeyGenerator::KeyGenerator()
     : _type("rsa"), _types{"dsa", "ecdsa", "rsa", "rsa1"}
 {
