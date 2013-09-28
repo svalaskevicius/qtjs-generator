@@ -109,7 +109,7 @@ ApplicationWindow {
         }
     }
 
-    KeyGenerator {
+    KeyGenerator1 {
         id: keygen
         filename: filename.text
         passphrase: passphrase.text

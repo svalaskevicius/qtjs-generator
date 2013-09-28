@@ -30,6 +30,25 @@
 #include <QProcess>
 #include <QDebug>
 #include <private/qmetaobjectbuilder_p.h>
+#include <qqmlprivate.h>
+
+#define __STDC_LIMIT_MACROS
+#define __STDC_CONSTANT_MACROS
+
+#include "llvm/ExecutionEngine/GenericValue.h"
+#include "llvm/ExecutionEngine/Interpreter.h"
+#include "llvm/ExecutionEngine/JIT.h"
+#include "llvm/Constants.h"
+#include "llvm/DerivedTypes.h"
+#include "llvm/IRBuilder.h"
+#include "llvm/Instructions.h"
+#include "llvm/LLVMContext.h"
+#include "llvm/Module.h"
+#include "llvm/Support/ManagedStatic.h"
+#include "llvm/Support/TargetSelect.h"
+#include "llvm/Support/raw_ostream.h"
+
+#include <sstream>
 
 using namespace cpgf;
 using namespace std;
@@ -53,93 +72,17 @@ void setExitCode(int code)
 
 
 
-/*
-
-struct qt_meta_stringdata_KeyGenerator_t {
-    QByteArrayData data[13];
-    char stringdata[138];
-};
-#define QT_MOC_LITERAL(idx, ofs, len) \
-    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_KeyGenerator_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData) \
-    )
-static const qt_meta_stringdata_KeyGenerator_t qt_meta_stringdata_KeyGenerator = {
-    {
-QT_MOC_LITERAL(0, 0, 12),
-QT_MOC_LITERAL(1, 13, 11),
-QT_MOC_LITERAL(2, 25, 0),
-QT_MOC_LITERAL(3, 26, 12),
-QT_MOC_LITERAL(4, 39, 15),
-QT_MOC_LITERAL(5, 55, 17),
-QT_MOC_LITERAL(6, 73, 12),
-QT_MOC_LITERAL(7, 86, 7),
-QT_MOC_LITERAL(8, 94, 11),
-QT_MOC_LITERAL(9, 106, 4),
-QT_MOC_LITERAL(10, 111, 5),
-QT_MOC_LITERAL(11, 117, 8),
-QT_MOC_LITERAL(12, 126, 10)
-    },
-    "KeyGenerator\0typeChanged\0\0typesChanged\0"
-    "filenameChanged\0passphraseChanged\0"
-    "keyGenerated\0success\0generateKey\0type\0"
-    "types\0filename\0passphrase\0"
-};
-#undef QT_MOC_LITERAL
-
-static const uint qt_meta_data_KeyGenerator[] = {
-
- // content:
-       7,       // revision
-       0,       // classname
-       0,    0, // classinfo
-       6,   14, // methods
-       4,   52, // properties
-       0,    0, // enums/sets
-       0,    0, // constructors
-       0,       // flags
-       5,       // signalCount
-
- // signals: name, argc, parameters, tag, flags
-       1,    0,   44,    2, 0x05,
-       3,    0,   45,    2, 0x05,
-       4,    0,   46,    2, 0x05,
-       5,    0,   47,    2, 0x05,
-       6,    1,   48,    2, 0x05,
-
- // slots: name, argc, parameters, tag, flags
-       8,    0,   51,    2, 0x0a,
-
- // signals: parameters
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool,    7,
-
- // slots: parameters
-    QMetaType::Void,
-
- // properties: name, type, flags
-       9, QMetaType::QString, 0x00495103,
-      10, QMetaType::QStringList, 0x00495001,
-      11, QMetaType::QString, 0x00495103,
-      12, QMetaType::QString, 0x00495103,
-
- // properties: notify_signal_id
-       0,
-       1,
-       2,
-       3,
-
-       0        // eod
-};
-
-*/
 
 class KeyGenerator : public QObject
 {
+    private:
+        int classIdx;
 public:
+
+    void __setClassIdx(int classIdx) {
+        this->classIdx = classIdx;
+        std::cout << "setting idx "<< classIdx << " for "<<(void*)this<<std::endl;
+    };
     KeyGenerator();
     ~KeyGenerator();
 
@@ -220,12 +163,13 @@ void static qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
     }
 }
 
-static QMetaObject *X_staticMetaObject;
+static QMetaObject *X_staticMetaObject[2];
 
 
 const QMetaObject *metaObject() const
 {
-    return X_staticMetaObject;
+    std::cout << "metaobject requested! from " <<(void*)this<< " idx: "<< classIdx<<std::endl;
+    return X_staticMetaObject[classIdx];
 }
 
 
@@ -378,7 +322,7 @@ void KeyGenerator::setPassphrase(const QString &p)
 
 void KeyGenerator::generateKey()
 {
-    qDebug() << "generating: "<< _passphrase;
+    qDebug() << "generating: "<< _passphrase<< " "<<metaObject()->className();
         emit keyGenerated(false);
         return;
 
@@ -405,7 +349,7 @@ void KeyGenerator::generateKey()
 }
 
 
-QMetaObject *KeyGenerator::X_staticMetaObject = nullptr;
+QMetaObject *KeyGenerator::X_staticMetaObject[2] = {nullptr, nullptr};
 
 
 
@@ -470,9 +414,143 @@ bool executeJs(const char *fileName)
     listName[listLen+nameLen] = '>'; \
     listName[listLen+nameLen+1] = '\0';
 
+/*
+template<typename T>
+void X_createInto(int classIdx, void * memory)
+{
+    std::cout << "creating element: "<<classIdx<<std::endl;
+    using namespace QQmlPrivate;
+    new (memory) QQmlElement<T>;
+    ((QQmlElement<T>*)memory)->__setClassIdx(classIdx);
+} */
+
+typedef void (*CreateIntoFuncPtr)(void *);
+typedef void (*SetIndexFuncPtr)(void *, int);
+
+class LLVM_MANAGER {
+public:
+    llvm::LLVMContext *Context;
+    llvm::Module *M;
+    llvm::ExecutionEngine* EE;
+
+    LLVM_MANAGER() {
+        llvm::InitializeNativeTarget();
+        Context = new llvm::LLVMContext();
+        M = new llvm::Module("jitkjbjhb", *Context);
+        EE = nullptr;
+    }
+    ~LLVM_MANAGER() {
+        delete M;
+        delete Context;
+        if (EE) {
+        // segfault??    delete EE;
+        }
+        llvm::llvm_shutdown();
+    }
+    void createEngine() {
+        EE = llvm::EngineBuilder(M).create();
+        EE->DisableSymbolSearching();
+    }
+};
+
+LLVM_MANAGER _llvm;
+
+template <typename T>
+void setIndexPtr(void *target, int index)
+{
+    using namespace QQmlPrivate;
+    ((QQmlElement<T> *)target)->__setClassIdx(index);
+}
+
+CreateIntoFuncPtr generateCreateInto(int classIdx, CreateIntoFuncPtr createInto, SetIndexFuncPtr setIndex) 
+{
+    static int counter = 0;
+    using namespace llvm;
+    counter++;
+    stringstream sa;
+
+    sa << "createInto_closure_"<<counter;
+    Function *closure = cast<Function>(
+        _llvm.M->getOrInsertFunction(
+            sa.str(),
+            Type::getInt32Ty(*_llvm.Context),
+            Type::getInt32Ty(*_llvm.Context),
+            (Type *)0
+        )
+    );
+
+    // Add a basic block to the function. As before, it automatically inserts
+    // because of the last argument.
+    BasicBlock *BB = BasicBlock::Create(*_llvm.Context, "EntryBlock", closure);
+
+    // Create a basic block builder with default parameters.  The builder will
+    // automatically append instructions to the basic block `BB'.
+    IRBuilder<> builder(BB);
+
+    // Get pointers to the integer argument of the add1 function...
+    assert(closure->arg_begin() != closure->arg_end()); // Make sure there's an arg
+    Argument *ArgX = closure->arg_begin();  // Get the arg
+    ArgX->setName("targetPtr");            // Give it a nice symbolic name for fun.
+
+    stringstream ss;
+    ss << "createInto_" << counter;
+    string wrappedCreateIntoName = ss.str();//((void*)createInto);
+std::cout<<wrappedCreateIntoName<<endl;
+    llvm::Type *voidPtrT = builder.getInt8PtrTy();
+    std::vector<llvm::Type*> args(1, voidPtrT);
+    llvm::Function* wrappedCreateInto = llvm::Function::Create(
+        llvm::FunctionType::get(
+            builder.getVoidTy(),
+            args,
+            false
+        ),
+        Function::ExternalLinkage,
+        wrappedCreateIntoName,
+        _llvm.M
+    );
+    // Create the add instruction, inserting it into the end of BB.
+    //Value *Add = builder.CreateAdd(One, ArgX);
+
+    builder.CreateCall(wrappedCreateInto, ArgX, wrappedCreateIntoName);
+
+    ss.str("");
+    ss << "setIndex_" << counter;
+    string wrappedSetIndexName = ss.str();//((void*)createInto);
+std::cout<<wrappedSetIndexName<<endl;
+    //llvm::Type *voidPtrT = builder.getInt8PtrTy();
+    llvm::Type *intPtrT = builder.getInt32Ty();
+    std::vector<llvm::Type*> args2 = {voidPtrT, intPtrT};
+    llvm::Function* wrappedSetIndex = llvm::Function::Create(
+        llvm::FunctionType::get(
+            builder.getVoidTy(),
+            args2,
+            false
+        ),
+        Function::ExternalLinkage,
+        wrappedSetIndexName,
+        _llvm.M
+    );
+    // Create the add instruction, inserting it into the end of BB.
+    //Value *Add = builder.CreateAdd(One, ArgX);
+    Value *idx = ConstantInt::get(Type::getInt32Ty(*_llvm.Context), classIdx);
+    builder.CreateCall2(wrappedSetIndex, ArgX, idx, wrappedSetIndexName);
+
+
+    // Create the return instruction and add it to the basic block
+    // builder.CreateRet(Add);
+    builder.CreateRetVoid();
+
+    
+
+    _llvm.createEngine();
+    _llvm.EE->addGlobalMapping(wrappedCreateInto, ((void *)createInto)); // LLVM always takes non-const pointers
+    _llvm.EE->addGlobalMapping(wrappedSetIndex, ((void *)setIndex)); // LLVM always takes non-const pointers
+
+    return (CreateIntoFuncPtr) _llvm.EE->getPointerToFunction(closure);
+}
 
 template<typename T>
-int X_qmlRegisterType(const QMetaObject *metaObject, const char *uri, int versionMajor, int versionMinor, const char *qmlName)
+int X_qmlRegisterType(const QMetaObject *metaObject, int classIdx, const char *uri, int versionMajor, int versionMinor, const char *qmlName)
 {
     X_QML_GETTYPENAMES
 
@@ -481,7 +559,7 @@ int X_qmlRegisterType(const QMetaObject *metaObject, const char *uri, int versio
 
         qRegisterNormalizedMetaType<T *>(pointerName.constData()),
         qRegisterNormalizedMetaType<QQmlListProperty<T> >(listName.constData()),
-        sizeof(T), QQmlPrivate::createInto<T>,
+        sizeof(T), generateCreateInto(classIdx, QQmlPrivate::createInto<T>, setIndexPtr<T>),
         QString(),
 
         uri, versionMajor, versionMinor, qmlName, metaObject,
@@ -510,7 +588,9 @@ int main(int argc, char * argv[])
 {
     QApplication app(argc, argv);
 
+    {
     QMetaObjectBuilder builder;
+    builder.setClassName("Keygen1");
     builder.setSuperClass(&QObject::staticMetaObject);
     builder.setStaticMetacallFunction(KeyGenerator::qt_static_metacall);
     builder.addSignal("typeChanged()");
@@ -524,14 +604,31 @@ int main(int argc, char * argv[])
     builder.addProperty("filename", "QString", builder.indexOfSignal("filenameChanged"));
     builder.addProperty("passphrase", "QString", builder.indexOfSignal("passphraseChanged"));
 
-    KeyGenerator::X_staticMetaObject = builder.toMetaObject();
-//QMetaObject KeyGenerator::X_staticMetaObject = {
-//    { &QObject::staticMetaObject, qt_meta_stringdata_KeyGenerator.data,
-//      qt_meta_data_KeyGenerator,  qt_static_metacall, 0, 0}
-//};
+    KeyGenerator::X_staticMetaObject[0] = builder.toMetaObject();
 
-    X_qmlRegisterType<KeyGenerator>(KeyGenerator::X_staticMetaObject, "com.ics.demo", 1, 0, "KeyGenerator");
+    X_qmlRegisterType<KeyGenerator>(KeyGenerator::X_staticMetaObject[0], 0, "com.ics.demo", 1, 0, "KeyGenerator0");
+}{
 
+
+    QMetaObjectBuilder builder;
+    builder.setClassName("Keygen2");
+    builder.setSuperClass(&QObject::staticMetaObject);
+    builder.setStaticMetacallFunction(KeyGenerator::qt_static_metacall);
+    builder.addSignal("typeChanged()");
+    builder.addSignal("typesChanged()");
+    builder.addSignal("filenameChanged()");
+    builder.addSignal("passphraseChanged()");
+    builder.addSignal("keyGenerated(bool)").setParameterNames(QList<QByteArray>{"success"});
+    builder.addSlot("generateKey()");
+    builder.addProperty("type", "QString", builder.indexOfSignal("typeChanged"));
+    builder.addProperty("types", "QStringList", builder.indexOfSignal("typesChanged"));
+    builder.addProperty("filename", "QString", builder.indexOfSignal("filenameChanged"));
+    builder.addProperty("passphrase", "QString", builder.indexOfSignal("passphraseChanged"));
+
+    KeyGenerator::X_staticMetaObject[1] = builder.toMetaObject();
+}
+
+    X_qmlRegisterType<KeyGenerator>(KeyGenerator::X_staticMetaObject[1], 1, "com.ics.demo", 1, 0, "KeyGenerator1");
     const char * fileName = "main.js";
     if (argc > 1) {
         fileName = argv[1];
@@ -546,7 +643,8 @@ int main(int argc, char * argv[])
 
     v8::V8::Dispose();
 
-    free(KeyGenerator::X_staticMetaObject);
+    free(KeyGenerator::X_staticMetaObject[0]);
+    free(KeyGenerator::X_staticMetaObject[1]);
     return __exitCode;
 }
 
