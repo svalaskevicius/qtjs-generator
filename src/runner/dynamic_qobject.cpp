@@ -22,25 +22,24 @@
 
 namespace qtjs_binder {
 
-using namespace cpgf;
 
 namespace {
-    QVector<int> metaMethodParamTypeIds(QMetaMethod m) {
-        QVector<int> ret;
-        int maxCnt = m.parameterCount();
-        for (int i = 0; i < maxCnt; i++) {
-            ret.push_back(m.parameterType(i));
-        }
-        return ret;
+
+QVector<int> metaMethodParamTypeIds(QMetaMethod m) {
+    QVector<int> ret;
+    int maxCnt = m.parameterCount();
+    for (int i = 0; i < maxCnt; i++) {
+        ret.push_back(m.parameterType(i));
     }
-};
+    return ret;
+}
 
 
-void convertQtDataToGVariantData(int type, void *data, GVariantData *dest)
+void convertQtDataToGVariantData(int type, void *data, cpgf::GVariantData *dest)
 {
-#define CONV_TYPED_VARIANT_DATA(cl) *dest = createTypedVariant(static_cast<const cl *>(data)).takeData()
+#define CONV_TYPED_VARIANT_DATA(cl) *dest = cpgf::createTypedVariant(static_cast<const cl *>(data)).takeData()
     if (type == qMetaTypeId<QVariant>()) {
-        *dest = createTypedVariant(((QVariant *)data)).takeData();
+        *dest = cpgf::createTypedVariant(((QVariant *)data)).takeData();
     } else {
         switch (type) {
             case QVariant::String:
@@ -141,6 +140,10 @@ void convertQtDataToGVariantData(int type, void *data, GVariantData *dest)
 #undef CONV_TYPED_VARIANT_DATA
 }
 
+}
+
+
+
 QtSignalConnector::~QtSignalConnector()
 {
     for (CallInfo * p : callbacks) {
@@ -149,7 +152,7 @@ QtSignalConnector::~QtSignalConnector()
     callbacks.clear();
 }
 
-bool QtSignalConnector::connectToSignal(QObject *obj, const char *signal, IScriptFunction * callback)
+bool QtSignalConnector::connectToSignal(QObject *obj, const char *signal, cpgf::IScriptFunction * callback)
 {
     QByteArray normalised_signal = QMetaObject::normalizedSignature(signal);
     int signal_idx = obj->metaObject()->indexOfSignal(normalised_signal);
@@ -200,7 +203,7 @@ void CallInfo::invoke(void **data)
 {
     int maxCnt = parameterTypeIds.size();
     cpgf::GVariantData params[REF_MAX_ARITY];
-    GVariant result;
+    cpgf::GVariant result;
     for (int i = 0; i < maxCnt; i++) {
         convertQtDataToGVariantData(parameterTypeIds[i], data[i + 1], &params[i]);
     }
