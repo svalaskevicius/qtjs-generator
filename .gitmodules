@@ -1,6 +1,0 @@
-[submodule "lib/nanojit"]
-	path = lib/nanojit
-	url = https://github.com/svalaskevicius/nanojit.git
-[submodule "lib/luajit-2.0"]
-	path = lib/luajit-2.0
-	url = http://luajit.org/git/luajit-2.0.git
