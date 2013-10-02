@@ -1,6 +1,6 @@
 
 
-#include <QtSignalConnector.h>
+#include <dynamic_qobject.h>
 #include <QDebug>
 
 #include <QStringList>
@@ -191,6 +191,19 @@ void QtSignalConnector::CallInfo::invoke(void **data)
         releaseVariantData(&params[i]);
     }
 }
+
+void QtSignalConnectorBinder::connect(QObject *obj, const char * signal, cpgf::IScriptFunction *callback) {
+    Q_ASSERT(connector);
+    connector->connectToSignal(obj, signal, callback);
+}
+void QtSignalConnectorBinder::reset(QtSignalConnector *newConnector) {
+    if (connector) {
+        delete connector;
+    }
+    connector = newConnector;
+}
+
+QtSignalConnector* QtSignalConnectorBinder::connector = nullptr;
 
 }
 

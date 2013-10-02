@@ -20,7 +20,7 @@
 #include <QtCore/QObject>
 #include <QtCore/QSharedPointer>
 
-#include "QtSignalConnector.h"
+#include "dynamic_qobject.h"
 
 using namespace cpgf;
 using namespace std;
