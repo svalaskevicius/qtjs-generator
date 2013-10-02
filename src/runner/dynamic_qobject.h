@@ -1,4 +1,6 @@
 
+#pragma once
+
 #include "_base.h"
 
 #include "cpgf/gmetadefine.h"
@@ -31,21 +33,12 @@ public:
 };
 
 struct DLL_PUBLIC QtSignalConnectorBinder {
-    static void connect(QObject *obj, const char * signal, cpgf::IScriptFunction *callback) {
-        Q_ASSERT(connector);
-        connector->connectToSignal(obj, signal, callback);
-    }
-    static void reset(QtSignalConnector *newConnector = nullptr) {
-        if (connector) {
-            delete connector;
-        }
-        connector = newConnector;
-    }
+    static void connect(QObject *obj, const char * signal, cpgf::IScriptFunction *callback);
+    static void reset(QtSignalConnector *newConnector = nullptr);
 private:
     static QtSignalConnector *connector;
 };
 
-QtSignalConnector* QtSignalConnectorBinder::connector = nullptr;
 
 }
 
