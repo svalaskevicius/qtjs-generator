@@ -15,18 +15,20 @@
 
 namespace qtjs_binder {
 
+struct CallInfo {
+    QVector<int> parameterTypeIds;
+    int returnTypeId;
+    cpgf::IScriptFunction * callback;
+    void invoke(void **);
+    ~CallInfo();
+};
+
 class DLL_PUBLIC QtSignalConnector : public QObject {
 public:
     ~QtSignalConnector();
     bool connectToSignal(QObject *obj, const char *signal, cpgf::IScriptFunction * callback);
 
 protected:
-    struct CallInfo {
-        QMetaMethod metaMethod;
-        cpgf::IScriptFunction * callback;
-        void invoke(void **);
-        ~CallInfo();
-    };
     QVector<CallInfo *> callbacks;
 public:
     virtual int qt_metacall(QMetaObject::Call, int, void **);

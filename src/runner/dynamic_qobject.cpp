@@ -24,6 +24,18 @@ namespace qtjs_binder {
 
 using namespace cpgf;
 
+namespace {
+    QVector<int> metaMethodParamTypeIds(QMetaMethod m) {
+        QVector<int> ret;
+        int maxCnt = m.parameterCount();
+        for (int i = 0; i < maxCnt; i++) {
+            ret.push_back(m.parameterType(i));
+        }
+        return ret;
+    }
+};
+
+
 void convertQtDataToGVariantData(int type, void *data, GVariantData *dest)
 {
 #define CONV_TYPED_VARIANT_DATA(cl) *dest = createTypedVariant(static_cast<const cl *>(data)).takeData()
@@ -152,7 +164,13 @@ bool QtSignalConnector::connectToSignal(QObject *obj, const char *signal, IScrip
         callbacks.count() + QObject::metaObject()->methodCount()
     );
     callback->addReference();
-    callbacks.push_back(new CallInfo( {obj->metaObject()->method(signal_idx), callback}));
+    callbacks.push_back(
+        new CallInfo({
+            metaMethodParamTypeIds( obj->metaObject()->method(signal_idx) ),
+            -1,
+            callback
+        })
+    );
 
     return true;
 }
@@ -171,20 +189,20 @@ int QtSignalConnector::qt_metacall(QMetaObject::Call call, int id, void **data)
     return -1;
 }
 
-QtSignalConnector::CallInfo::~CallInfo()
+CallInfo::~CallInfo()
 {
     if (callback) {
         callback->releaseReference();
     }
 }
 
-void QtSignalConnector::CallInfo::invoke(void **data)
+void CallInfo::invoke(void **data)
 {
-    int maxCnt = metaMethod.parameterCount();
+    int maxCnt = parameterTypeIds.size();
     cpgf::GVariantData params[REF_MAX_ARITY];
     GVariant result;
     for (int i = 0; i < maxCnt; i++) {
-        convertQtDataToGVariantData(metaMethod.parameterType(i), data[i + 1], &params[i]);
+        convertQtDataToGVariantData(parameterTypeIds[i], data[i + 1], &params[i]);
     }
     callback->invoke(&result.refData(), params, maxCnt);
     for (int i = 0; i < maxCnt; i++) {
