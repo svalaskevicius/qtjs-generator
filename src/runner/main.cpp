@@ -21,6 +21,7 @@
 #include <QtCore/QSharedPointer>
 
 #include "dynamic_qobject.h"
+#include "qmlRegisterType.h"
 
 using namespace cpgf;
 using namespace std;
@@ -46,6 +47,9 @@ void registerQt(GDefineMetaNamespace &define)
     meta_qtgui::registerMain_QtGui(define);
     meta_qtwidgets::registerMain_QtWidgets(define);
     meta_qtqml::registerMain_QtQml(define);
+
+    define._class(qtjs_binder::createMetaClass_DynamicMetaObjectBuilder());
+    define._method("finalizeAndRegisterMetaObjectBuilderToQml", &qtjs_binder::finalizeAndRegisterMetaObjectBuilderToQml);
 
     qtjs_binder::QtSignalConnectorBinder::reset(new qtjs_binder::QtSignalConnector());
     define._method("connect", &qtjs_binder::QtSignalConnectorBinder::connect);

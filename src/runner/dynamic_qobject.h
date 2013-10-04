@@ -41,6 +41,58 @@ private:
     static QtSignalConnector *connector;
 };
 
+struct DynamicMetaObjectBuilderPrivate;
+
+class DynamicMetaObjectBuilder {
+public:
+    DynamicMetaObjectBuilder();
+    ~DynamicMetaObjectBuilder();
+
+    void setClassName(QString name);
+    void addSignal(QString signature, QStringList argumentNames);
+    void addSlot(QString signature, cpgf::IScriptFunction *callback);
+    void addProperty(QString name, QString type);
+
+    QMetaObject *toMetaObject(int classId);
+    std::map<int, cpgf::IScriptFunction *> getCallbacks();
+private:
+    DynamicMetaObjectBuilderPrivate *_p;
+};
+
+class DynamicMetaObjects {
+private:
+    QMetaObject **metaObjects;
+    unsigned int lastId;
+    unsigned int allocated;
+
+    typedef std::map<size_t, CallInfo *> ClassCallbacks;
+    typedef std::map<size_t, ClassCallbacks> ClassesInfo;
+    ClassesInfo classesInfo;
+public:
+    DynamicMetaObjects();
+    ~DynamicMetaObjects();
+
+    unsigned int finalizeBuild(DynamicMetaObjectBuilder &builder);
+    QMetaObject *getMetaObject(unsigned int id);
+
+    void metacall(size_t classIdx, QObject *obj, QMetaObject::Call _c, int _id, void **_a);
+};
+
+extern DynamicMetaObjects dynamicMetaObjects;
+
+class DynamicQObject : public QObject
+{
+private:
+    int classIdx;
+
+public:
+    void __setClassIdx(int classIdx);
+
+    const QMetaObject *metaObject() const;
+
+    virtual int qt_metacall(QMetaObject::Call _c, int _id, void **_a);
+};
+
+cpgf::GDefineMetaInfo createMetaClass_DynamicMetaObjectBuilder();
 
 }
-
