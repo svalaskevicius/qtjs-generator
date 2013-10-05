@@ -49,11 +49,13 @@ public:
     ~DynamicMetaObjectBuilder();
 
     void setClassName(QString name);
+    void setInit(cpgf::IScriptFunction *callback);
     void addSignal(QString signature, QStringList argumentNames);
     void addSlot(QString signature, cpgf::IScriptFunction *callback);
     void addProperty(QString name, QString type);
 
     QMetaObject *toMetaObject(int classId);
+    cpgf::IScriptFunction *getInitCallback();
     std::map<int, cpgf::IScriptFunction *> getCallbacks();
 private:
     DynamicMetaObjectBuilderPrivate *_p;
@@ -65,8 +67,11 @@ private:
     unsigned int lastId;
     unsigned int allocated;
 
-    typedef std::map<size_t, CallInfo *> ClassCallbacks;
-    typedef std::map<size_t, ClassCallbacks> ClassesInfo;
+    struct ClassInfo {
+        CallInfo *initCallback;
+        std::map<size_t, CallInfo *> callbacks;
+    };
+    typedef std::map<size_t, ClassInfo> ClassesInfo;
     ClassesInfo classesInfo;
 public:
     DynamicMetaObjects();
@@ -75,6 +80,7 @@ public:
     unsigned int finalizeBuild(DynamicMetaObjectBuilder &builder);
     QMetaObject *getMetaObject(unsigned int id);
 
+    void callInit(size_t classIdx, QObject *obj);
     void metacall(size_t classIdx, QObject *obj, QMetaObject::Call _c, int _id, void **_a);
 };
 

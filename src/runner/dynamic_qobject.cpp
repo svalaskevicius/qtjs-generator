@@ -214,6 +214,7 @@ void CallInfo::invoke(void **data)
         convertQtDataToGVariantData(parameterTypeIds[i], data[i + 1], &params[i]);
     }
     callback->invoke(&result.refData(), params, maxCnt);
+    cpgf::metaCheckError(callback);
     for (int i = 0; i < maxCnt; i++) {
         releaseVariantData(&params[i]);
     }
@@ -239,6 +240,7 @@ struct DynamicMetaObjectBuilderPrivate
 {
     QMetaObjectBuilder builder;
     std::map<int, cpgf::IScriptFunction *> callbacks;
+    cpgf::IScriptFunction *initCallback;
 };
 
 DynamicMetaObjectBuilder::DynamicMetaObjectBuilder()
@@ -256,6 +258,12 @@ void DynamicMetaObjectBuilder::setClassName(QString name)
     _p->builder.setClassName(name.toLatin1());
 }
 
+void DynamicMetaObjectBuilder::setInit(cpgf::IScriptFunction *callback)
+{
+    callback->addReference();
+    _p->initCallback = callback;
+}
+
 void DynamicMetaObjectBuilder::addSignal(QString signature, QStringList argumentNames)
 {
     QList<QByteArray> arguments;
@@ -271,6 +279,7 @@ void DynamicMetaObjectBuilder::addSlot(QString signature, cpgf::IScriptFunction 
     int idx = _p->builder.addSlot(signature.toLatin1()).index();
     assert(_p->callbacks.find(idx) == _p->callbacks.end());
 
+    callback->addReference();
     _p->callbacks[idx] = callback;
 }
 
@@ -286,6 +295,11 @@ QMetaObject *DynamicMetaObjectBuilder::toMetaObject(int classId)
         llvmApi.generateDynamicObjectStaticMetaCall(classId)
     );
     return _p->builder.toMetaObject();
+}
+
+cpgf::IScriptFunction * DynamicMetaObjectBuilder::getInitCallback()
+{
+    return _p->initCallback;
 }
 
 std::map<int, cpgf::IScriptFunction *> DynamicMetaObjectBuilder::getCallbacks()
@@ -319,9 +333,20 @@ unsigned int DynamicMetaObjects::finalizeBuild(DynamicMetaObjectBuilder &builder
     lastId++;
 
     metaObjects[currentId] = builder.toMetaObject(currentId);
-    classesInfo[currentId].clear();
+    auto initFnc = builder.getInitCallback();
+    if (initFnc) {
+        classesInfo[currentId].initCallback =
+                new CallInfo({
+                                 {QMetaType::QObjectStar},
+                                 -1,
+                                 initFnc
+                             });
+    } else {
+        classesInfo[currentId].initCallback = nullptr;
+    }
+    classesInfo[currentId].callbacks.clear();
     for (auto it : builder.getCallbacks()) {
-        classesInfo[currentId][it.first] =
+        classesInfo[currentId].callbacks[it.first] =
                 new CallInfo({
                                  metaMethodParamTypeIds( metaObjects[currentId]->method(it.first) ),
                                  -1,
@@ -340,6 +365,16 @@ QMetaObject *DynamicMetaObjects::getMetaObject(unsigned int id)
     return metaObjects[id];
 }
 
+void DynamicMetaObjects::callInit(size_t classIdx, QObject *obj)
+{
+    if (classesInfo[classIdx].initCallback) {
+        void **data = new void*[2];
+        data[0] = 0;
+        data[1] = QMetaType::create(QMetaType::QObjectStar, &obj);
+        classesInfo[classIdx].initCallback->invoke(data);
+        delete data;
+    }
+}
 
 void DynamicMetaObjects::metacall(size_t classIdx, QObject *obj, QMetaObject::Call _c, int _id, void **_a)
 {
@@ -349,8 +384,8 @@ void DynamicMetaObjects::metacall(size_t classIdx, QObject *obj, QMetaObject::Ca
 
     if (_c == QMetaObject::InvokeMetaMethod) {
         qDebug() << "static invoke mete method: "<<_id;
-        assert(classesInfo[classIdx].find(_id) != classesInfo[classIdx].end());
-        classesInfo[classIdx][_id]->invoke(_a);
+        assert(classesInfo[classIdx].callbacks.find(_id) != classesInfo[classIdx].callbacks.end());
+        classesInfo[classIdx].callbacks[_id]->invoke(_a);
     } else if (_c == QMetaObject::IndexOfMethod) {
         throw std::runtime_error("IndexOfMethod support is not implemented for DynamicQObject");
     }
@@ -367,6 +402,7 @@ DynamicMetaObjects dynamicMetaObjects;
 void DynamicQObject::__setClassIdx(int classIdx) 
 {
     this->classIdx = classIdx;
+    dynamicMetaObjects.callInit(classIdx, this);
 }
 
 const QMetaObject * DynamicQObject::metaObject() const
@@ -624,6 +660,7 @@ cpgf::GDefineMetaInfo createMetaClass_DynamicMetaObjectBuilder()
     {
         GDefineMetaClass<DynamicMetaObjectBuilder> _nd = GDefineMetaClass<DynamicMetaObjectBuilder>::declare("DynamicMetaObjectBuilder");
         _nd._method("setClassName", &DynamicMetaObjectBuilder::setClassName);
+        _nd._method("setInit", &DynamicMetaObjectBuilder::setInit);
         _nd._method("addSignal", &DynamicMetaObjectBuilder::addSignal);
         _nd._method("addSlot", &DynamicMetaObjectBuilder::addSlot);
         _nd._method("addProperty", &DynamicMetaObjectBuilder::addProperty);
