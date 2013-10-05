@@ -5,6 +5,13 @@ cpgf.import("cpgf", "builtin.core");
 
     var b = new qt.DynamicMetaObjectBuilder();
     b.setClassName(new qt.QString("KeyGenerator"));
+    b.setInit(function(obj){
+      obj.setProperty("type", new qt.QString("rsa"));
+      var aa = new qt.QStringList();
+      aa._opLeftShift(new qt.QString("rsa"));
+      aa._opLeftShift(new qt.QString("dsa"));
+      obj.setProperty("types", aa);
+    });
     var aa = new qt.QStringList();
     aa._opLeftShift(new qt.QString("success"));
     b.addSignal(new qt.QString("keyGenerated(bool)"), aa);
