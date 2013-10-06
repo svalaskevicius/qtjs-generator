@@ -1,3 +1,5 @@
+qt.include("core.js");
+
 cpgf.import("cpgf", "builtin.core");
 
 (function() {
@@ -62,7 +64,7 @@ cpgf.import("cpgf", "builtin.core");
     try {
         var engine = new qt.QQmlEngine();
         //    engine.rootContext().setContextProperty(new qt.QString('keygen'), qt.newKeyGenerator());
-        var component = new qt.QQmlComponent(engine, new qt.QString("qml/main.qml"));
+        var component = new qt.QQmlComponent(engine, new qt.QString(qt.makeIncludePathAbsolute("qml/main.qml")));
         if (!component.isReady() ) {
             throw component.errorString();
         }

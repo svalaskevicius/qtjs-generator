@@ -23,6 +23,10 @@
 #include "dynamic_qobject.h"
 #include "qmlRegisterType.h"
 
+#include <QDebug>
+#include <QFileInfo>
+#include <QDir>
+
 using namespace cpgf;
 using namespace std;
 
@@ -41,6 +45,47 @@ void setExitCode(int code)
     __exitCode = code;
 }
 
+struct ExecutionStackNode {
+    std::string filename;
+};
+
+typedef std::vector<ExecutionStackNode> ExecutionStack;
+
+ExecutionStack executionStack;
+GScriptRunner *globalScriptRunnerInstance = nullptr;
+
+const char *currentJsFileName()
+{
+    assert(executionStack.size());
+    return executionStack.back().filename.c_str();
+}
+
+const char *makeIncludePathAbsolute(const char *fileName)
+{
+    if (QFileInfo(fileName).isRelative()) {
+        QDir baseDir;
+        if (executionStack.size()) {
+            baseDir = QFileInfo(currentJsFileName()).absoluteDir();
+        } else {
+            baseDir = QDir::current();
+        }
+        return baseDir.absoluteFilePath(fileName).toLatin1().constData();
+    }
+    return fileName;
+}
+
+bool includeJsFile(const char *fileName) {
+    if (!globalScriptRunnerInstance) {
+        throw std::logic_error("a global script runner has to be registered before including js files");
+    }
+
+    fileName = makeIncludePathAbsolute(fileName);
+    executionStack.push_back({fileName});
+    int ret = globalScriptRunnerInstance->executeFile(fileName);
+    executionStack.pop_back();
+    return ret;
+}
+
 void registerQt(GDefineMetaNamespace &define)
 {
     meta_qtcore::registerMain_QtCore(define);
@@ -55,7 +100,11 @@ void registerQt(GDefineMetaNamespace &define)
     define._method("connect", &qtjs_binder::QtSignalConnectorBinder::connect);
     define._method("programArguments", &programArguments);
     define._method("setExitCode", &setExitCode);
+    define._method("include", &includeJsFile);
+    define._method("__fileName__", &currentJsFileName);
+    define._method("makeIncludePathAbsolute", &makeIncludePathAbsolute);
 }
+
 
 bool executeJs(const char *fileName)
 {
@@ -71,7 +120,9 @@ bool executeJs(const char *fileName)
     GScopedInterface<IMetaClass> metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())));
     scriptSetValue(scriptObject.get(), "qt", GScriptValue::fromClass(metaClass.get()));
 
-    bool ret = runner->executeFile(fileName);
+    globalScriptRunnerInstance = runner.get();
+    bool ret = includeJsFile(fileName);
+    globalScriptRunnerInstance = nullptr;
 
     while (!v8::V8::IdleNotification()); // run GC
     clearV8DataPool();
