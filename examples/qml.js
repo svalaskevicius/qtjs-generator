@@ -34,6 +34,10 @@ cpgf.import("cpgf", "builtin.core");
 
         qt.finalizeAndRegisterMetaObjectBuilderToQml(b, "com.ics.demo", 1, 0, "KeyGenerator");
     }
+
+
+
+
     {
         var b = new qt.DynamicMetaObjectBuilder();
         b.setClassName(new qt.QString("IntIncrementer"));
@@ -51,6 +55,10 @@ cpgf.import("cpgf", "builtin.core");
 
         qt.finalizeAndRegisterMetaObjectBuilderToQml(b, "com.ics.demo", 1, 0, "IntIncrementer");
     }
+
+
+
+
     try {
         var engine = new qt.QQmlEngine();
         //    engine.rootContext().setContextProperty(new qt.QString('keygen'), qt.newKeyGenerator());
