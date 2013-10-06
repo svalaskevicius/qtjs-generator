@@ -8,6 +8,7 @@
         ._opLeftShift(qt.programArguments().size())
         ._opLeftShift(qt.QString.fromLatin1(pt.toString()))
         ._opLeftShift(new qt.QString("a string"))
+        ._opLeftShift("a string. seconds string")
         ._opLeftShift(123)
         ._opLeftShift(true)
         ._opLeftShift(pt.y())
