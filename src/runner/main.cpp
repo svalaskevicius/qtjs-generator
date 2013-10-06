@@ -48,7 +48,7 @@ void registerQt(GDefineMetaNamespace &define)
     meta_qtwidgets::registerMain_QtWidgets(define);
     meta_qtqml::registerMain_QtQml(define);
 
-    define._class(qtjs_binder::createMetaClass_DynamicMetaObjectBuilder());
+    define._class(qtjs_binder::createDynamicObjectsMetaClasses());
     define._method("finalizeAndRegisterMetaObjectBuilderToQml", &qtjs_binder::finalizeAndRegisterMetaObjectBuilderToQml);
 
     qtjs_binder::QtSignalConnectorBinder::reset(new qtjs_binder::QtSignalConnector());
