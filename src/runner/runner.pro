@@ -6,6 +6,9 @@ TEMPLATE = app
 
 TARGET=qtjs
 
+CONFIG -= release
+CONFIG += debug
+
 SOURCES += main.cpp dynamic_qobject.cpp \
     qmlRegisterType.cpp \
     llvmapi.cpp

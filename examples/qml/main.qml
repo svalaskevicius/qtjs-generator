@@ -33,7 +33,7 @@ ApplicationWindow {
                 id: combobox
                 Layout.fillWidth: true
                 model: keygen.types
-                currentIndex: 2
+                currentIndex: 0
             }
         }
 
