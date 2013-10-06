@@ -3,36 +3,54 @@ cpgf.import("cpgf", "builtin.core");
 (function() {
     "use strict";
 
-    var b = new qt.DynamicMetaObjectBuilder();
-    b.setClassName(new qt.QString("KeyGenerator"));
-    b.setInit(function($this){
-        $this.setProperty("type", new qt.QVariant(new qt.QString("rsa")));
+    {
+        var b = new qt.DynamicMetaObjectBuilder();
+        b.setClassName(new qt.QString("KeyGenerator"));
+        b.setInit(function($this){
+            $this.setProperty("type", new qt.QVariant(new qt.QString("rsa")));
+            var aa = new qt.QStringList();
+            aa._opLeftShift(new qt.QString("rsa"));
+            aa._opLeftShift(new qt.QString("dsa"));
+            $this.setProperty("types", new qt.QVariant(aa));
+        });
         var aa = new qt.QStringList();
-        aa._opLeftShift(new qt.QString("rsa"));
-        aa._opLeftShift(new qt.QString("dsa"));
-        $this.setProperty("types", new qt.QVariant(aa));
-    });
-    var aa = new qt.QStringList();
-    aa._opLeftShift(new qt.QString("success"));
+        aa._opLeftShift(new qt.QString("success"));
 
-    b.addSignal(new qt.QString("keyGenerated(bool)"), aa);
-    b.addProperty(new qt.QString("type"), new qt.QString("QString"));
-    b.addProperty(new qt.QString("types"), new qt.QString("QStringList"));
-    b.addProperty(new qt.QString("passphrase"), new qt.QString("QString"));
-    b.addProperty(new qt.QString("filename"), new qt.QString("QString"));
+        b.addSignal(new qt.QString("keyGenerated(bool)"), aa);
+        b.addProperty(new qt.QString("type"), new qt.QString("QString"));
+        b.addProperty(new qt.QString("types"), new qt.QString("QStringList"));
+        b.addProperty(new qt.QString("passphrase"), new qt.QString("QString"));
+        b.addProperty(new qt.QString("filename"), new qt.QString("QString"));
 
-    b.addSlot('generateKey()', function($this){
-      var log = new qt.QMessageLogger();
+        b.addSlot('generateKey()', function($this){
+            var log = new qt.QMessageLogger();
 
-      log.debug()
-        ._opLeftShift(new qt.QString("invoking generate! "))
-        ._opLeftShift($this.property("passphrase").toString());
+            log.debug()
+            ._opLeftShift(new qt.QString("invoking generate! "))
+            ._opLeftShift($this.property("passphrase").toString());
 
-      $this.emitSignal("keyGenerated(bool)", new qt.QVariant(false));
-    });
+            $this.emitSignal("keyGenerated(bool)", new qt.QVariant(true));
+        });
 
-    qt.finalizeAndRegisterMetaObjectBuilderToQml(b, "com.ics.demo", 1, 0, "KeyGenerator");
+        qt.finalizeAndRegisterMetaObjectBuilderToQml(b, "com.ics.demo", 1, 0, "KeyGenerator");
+    }
+    {
+        var b = new qt.DynamicMetaObjectBuilder();
+        b.setClassName(new qt.QString("IntIncrementer"));
+        b.setInit(function($this){
+            $this.setProperty("value", new qt.QVariant(0));
+        });
+        var aa = new qt.QStringList();
+        aa._opLeftShift(new qt.QString("newValue"));
+        b.addSignal(new qt.QString("incremented(int)"), aa);
+        b.addProperty(new qt.QString("value"), new qt.QString("int"));
+        b.addSlot('increment()', function($this){
+            $this.setProperty('value', new qt.QVariant($this.property("value").toInt()+1));
+            $this.emitSignal("incremented(int)", new qt.QVariant($this.property("value").toInt()));
+        });
 
+        qt.finalizeAndRegisterMetaObjectBuilderToQml(b, "com.ics.demo", 1, 0, "IntIncrementer");
+    }
     try {
         var engine = new qt.QQmlEngine();
         //    engine.rootContext().setContextProperty(new qt.QString('keygen'), qt.newKeyGenerator());

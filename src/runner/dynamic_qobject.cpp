@@ -447,6 +447,7 @@ int DynamicQObject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         void *_v = _a[0];
         auto prop = metaObject()->property(origId);
         QVariant data = propertyStorage[_id];
+#pragma message "TODO: try out the void * functionality of QVariant instead of the switch"
         switch (prop.type()) {
         case QVariant::String:
             *reinterpret_cast< QString*>(_v) = data.toString();
@@ -532,9 +533,6 @@ int DynamicQObject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case QMetaType::Float:
             *reinterpret_cast< float*>(_v) = data.toFloat();
             break;
-            //            case QMetaType::QObjectStar:
-            //                *reinterpret_cast< QObject * const*>(_v) = data.();
-            //                break;
         case QVariant::LongLong:
             *reinterpret_cast< qlonglong*>(_v) = data.toLongLong();
             break;
@@ -637,9 +635,6 @@ int DynamicQObject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case QMetaType::Float:
             propertyStorage[_id] = *reinterpret_cast< float*>(_v);
             break;
-            //            case QMetaType::QObjectStar:
-            //                *reinterpret_cast< QObject * const*>(_v) = data.();
-            //                break;
         case QVariant::LongLong:
             propertyStorage[_id] = *reinterpret_cast< qlonglong*>(_v);
             break;
