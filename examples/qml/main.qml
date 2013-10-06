@@ -93,6 +93,10 @@ ApplicationWindow {
                 text: qsTr("Quit")
                 onClicked: Qt.quit()
             }
+            Button {
+                text: qsTr("Increment!")
+                onClicked: incrementer.increment()
+            }
         }
 
     }
@@ -120,6 +124,17 @@ ApplicationWindow {
             } else {
                 status.text = qsTr('<font color="red">Key generation failed</font>')
             }
+        }
+    }
+
+    IntIncrementer {
+        id: incrementer
+        value: 9
+        onValueChanged: {
+            status.text += "value changed to "+incrementer.value
+        }
+        onIncremented: {
+            status.text += "value changed to "+newValue
         }
     }
 
