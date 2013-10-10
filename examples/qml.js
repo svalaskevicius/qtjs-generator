@@ -7,7 +7,7 @@ cpgf.import("cpgf", "builtin.core");
 
     {
         var b = new qt.DynamicMetaObjectBuilder();
-        b.setClassName(new qt.QString("KeyGenerator"));
+        b.setClassName("KeyGenerator");
         b.setInit(function($this){
             $this.setProperty("type", new qt.QVariant(new qt.QString("rsa")));
             var aa = new qt.QStringList();
@@ -18,11 +18,11 @@ cpgf.import("cpgf", "builtin.core");
         var aa = new qt.QStringList();
         aa._opLeftShift(new qt.QString("success"));
 
-        b.addSignal(new qt.QString("keyGenerated(bool)"), aa);
-        b.addProperty(new qt.QString("type"), new qt.QString("QString"));
-        b.addProperty(new qt.QString("types"), new qt.QString("QStringList"));
-        b.addProperty(new qt.QString("passphrase"), new qt.QString("QString"));
-        b.addProperty(new qt.QString("filename"), new qt.QString("QString"));
+        b.addSignal("keyGenerated(bool)", aa);
+        b.addProperty("type", "QString");
+        b.addProperty("types", "QStringList");
+        b.addProperty("passphrase", "QString");
+        b.addProperty("filename", "QString");
 
         b.addSlot('generateKey()', function($this){
             var log = new qt.QMessageLogger();
@@ -42,14 +42,14 @@ cpgf.import("cpgf", "builtin.core");
 
     {
         var b = new qt.DynamicMetaObjectBuilder();
-        b.setClassName(new qt.QString("IntIncrementer"));
+        b.setClassName("IntIncrementer");
         b.setInit(function($this){
             $this.setProperty("value", new qt.QVariant(0));
         });
         var aa = new qt.QStringList();
         aa._opLeftShift(new qt.QString("newValue"));
-        b.addSignal(new qt.QString("incremented(int)"), aa);
-        b.addProperty(new qt.QString("value"), new qt.QString("int"));
+        b.addSignal("incremented(int)", aa);
+        b.addProperty("value", "int");
         b.addSlot('increment()', function($this){
             $this.setProperty('value', new qt.QVariant($this.property("value").toInt()+1));
             $this.emitSignal("incremented(int)", new qt.QVariant($this.property("value").toInt()));

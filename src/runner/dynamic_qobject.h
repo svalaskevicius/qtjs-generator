@@ -48,11 +48,11 @@ public:
     DynamicMetaObjectBuilder();
     ~DynamicMetaObjectBuilder();
 
-    void setClassName(QString name);
+    void setClassName(const char * name);
     void setInit(cpgf::IScriptFunction *callback);
-    void addSignal(QString signature, QStringList argumentNames);
-    void addSlot(QString signature, cpgf::IScriptFunction *callback);
-    void addProperty(QString name, QString type);
+    void addSignal(const char * signature, QStringList argumentNames);
+    void addSlot(const char * signature, cpgf::IScriptFunction *callback);
+    void addProperty(const char * name, const char * type);
 
     QMetaObject *toMetaObject(int classId);
     cpgf::IScriptFunction *getInitCallback();
