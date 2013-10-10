@@ -137,6 +137,11 @@ int main(int argc, char * argv[])
 {
     QApplication app(argc, argv);
 
+    if ((argc > 1) && (!strcmp("-v", argv[1]))) {
+        cout << "v8 version: "<<v8::V8::GetVersion() << endl;
+        return 0;
+    }
+
     const char * fileName = "main.js";
     if (argc > 1) {
         fileName = argv[1];
