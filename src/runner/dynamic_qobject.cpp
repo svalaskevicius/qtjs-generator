@@ -255,9 +255,9 @@ DynamicMetaObjectBuilder::~DynamicMetaObjectBuilder()
     delete _p;
 }
 
-void DynamicMetaObjectBuilder::setClassName(QString name)
+void DynamicMetaObjectBuilder::setClassName(const char * name)
 {
-    _p->builder.setClassName(name.toLatin1());
+    _p->builder.setClassName(name);
 }
 
 void DynamicMetaObjectBuilder::setInit(cpgf::IScriptFunction *callback)
@@ -266,29 +266,29 @@ void DynamicMetaObjectBuilder::setInit(cpgf::IScriptFunction *callback)
     _p->initCallback = callback;
 }
 
-void DynamicMetaObjectBuilder::addSignal(QString signature, QStringList argumentNames)
+void DynamicMetaObjectBuilder::addSignal(const char * signature, QStringList argumentNames)
 {
     QList<QByteArray> arguments;
     for (auto name : argumentNames) {
         arguments.push_back(name.toLatin1());
     }
     qDebug() << "adding signal "<<signature<<arguments;
-    _p->builder.addSignal(signature.toLatin1()).setParameterNames(arguments);
+    _p->builder.addSignal(signature).setParameterNames(arguments);
 }
 
-void DynamicMetaObjectBuilder::addSlot(QString signature, cpgf::IScriptFunction *callback)
+void DynamicMetaObjectBuilder::addSlot(const char * signature, cpgf::IScriptFunction *callback)
 {
-    int idx = _p->builder.addSlot(signature.toLatin1()).index();
+    int idx = _p->builder.addSlot(signature).index();
     assert(_p->callbacks.find(idx) == _p->callbacks.end());
 
     callback->addReference();
     _p->callbacks[idx] = callback;
 }
 
-void DynamicMetaObjectBuilder::addProperty(QString name, QString type)
+void DynamicMetaObjectBuilder::addProperty(const char * name, const char * type)
 {
-    int idx = _p->builder.addSignal((name+"Changed()").toLatin1()).index();
-    _p->builder.addProperty(name.toLatin1(), type.toLatin1(), idx);
+    int idx = _p->builder.addSignal((QString(name)+"Changed()").toLatin1()).index();
+    _p->builder.addProperty(name, type, idx);
 }
 
 QMetaObject *DynamicMetaObjectBuilder::toMetaObject(int classId)
