@@ -1,9 +1,10 @@
+"use strict";
+
 qt.include("core.js");
 
 cpgf.import("cpgf", "builtin.core");
 
 (function() {
-    "use strict";
 
     {
         var b = new qt.DynamicMetaObjectBuilder();
