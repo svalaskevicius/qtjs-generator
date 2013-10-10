@@ -88,6 +88,8 @@ function shouldAllowClassWrapper(item) {
     case 'qGreater':
     case 'QBitRef':
     case 'QByteRef':
+    case 'QByteArray':
+    case 'QBitArray':
     case 'QCoreApplication':
     case 'QFile': // TODO: need to fix binding generator for static methods
     case 'QPostEventList':
@@ -161,7 +163,6 @@ function processCallback(item, data)
     'QAbstractState',
     'QDynamicMetaObjectData',
     'QRegularExpression',
-    'QByteArray',
     'QDataStream',
     'QNoImplicitBoolCast',
     'QResource',
@@ -173,8 +174,8 @@ function processCallback(item, data)
     'QListData',
     'QXmlStream',
     'QStringListModel',
-    'QBitArray',
-    'QNoDebug'
+    'QNoDebug',
+    'QByteArrayMatcher'
   ];
 
   for (var i in skipByLocationPart) {
