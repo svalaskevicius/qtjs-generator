@@ -108,12 +108,14 @@ void registerQt(GDefineMetaNamespace &define)
 
 bool executeJs(const char *fileName)
 {
+    v8::Persistent<v8::Context> ctx = v8::Context::New();
+
     GDefineMetaNamespace define = GDefineMetaNamespace::declare("qt");
     registerQt(define);
 
     GScopedPointer<GScriptRunner> runner;
     GScopedInterface<IMetaService> service(createDefaultMetaService());
-    runner.reset(createV8ScriptRunner(service.get()));
+    runner.reset(createV8ScriptRunner(service.get(), ctx));
     GScopedInterface<IScriptObject> scriptObject(runner->getScripeObject());
 
     scriptObject->bindCoreService("cpgf", NULL);
