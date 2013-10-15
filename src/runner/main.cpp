@@ -224,13 +224,29 @@ int main(int argc, char * argv[])
 
         CpgfBinder cpgfBinder(context);
 
+        QTimer nodeLoopTimer;
+        bool appHadQuitRequest = false;
+        bool finalisingNodeLoop = false;
+        QObject::connect(&app, &QCoreApplication::aboutToQuit, [&appHadQuitRequest]{ appHadQuitRequest = true; });
+        QObject::connect(&nodeLoopTimer, &QTimer::timeout, [&finalisingNodeLoop, &app]{
+            int ret = uv_run(uv_default_loop(), UV_RUN_NOWAIT);
+            if (!ret && finalisingNodeLoop) {
+                app.quit();
+            }
+            std::cout << std::endl << ">> " <<ret << " xx ";std::cout.flush();
+        });
+        nodeLoopTimer.start(100);
+
         // Create all the objects, load modules, do everything.
         // so your next reading stop should be node::Load()!
         node::Load(process_l);
 
-        QTimer nodeLoopTimer;
-        QTimer::connect(&nodeLoopTimer, &QTimer::timeout, []{ uv_run(uv_default_loop(), UV_RUN_NOWAIT); });
-        nodeLoopTimer.start(100);
+        std::cout << std::endl << ">> after node load. had quit req? "<<appHadQuitRequest<<std::endl;std::cout.flush();
+
+        if (!appHadQuitRequest) {
+            finalisingNodeLoop = true;
+            app.exec();
+        }
 
         node::EmitExit(process_l);
         node::RunAtExit();
