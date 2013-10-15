@@ -233,15 +233,12 @@ int main(int argc, char * argv[])
             if (!ret && finalisingNodeLoop) {
                 app.quit();
             }
-            std::cout << std::endl << ">> " <<ret << " xx ";std::cout.flush();
         });
         nodeLoopTimer.start(100);
 
         // Create all the objects, load modules, do everything.
         // so your next reading stop should be node::Load()!
         node::Load(process_l);
-
-        std::cout << std::endl << ">> after node load. had quit req? "<<appHadQuitRequest<<std::endl;std::cout.flush();
 
         if (!appHadQuitRequest) {
             finalisingNodeLoop = true;
