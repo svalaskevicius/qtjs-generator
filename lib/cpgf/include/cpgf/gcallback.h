@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -112,6 +112,10 @@ public:
 		return this->getBase() == NULL;
 	}
 
+	operator bool() const {
+		return ! this->empty();
+	}
+
 };
 
 
@@ -203,7 +207,7 @@ struct GlobalCallbackSelector <GFunctionTraitNullType>
 
 template <typename FT>
 typename FunctionCallbackType<FT>::Result
-makeCallback(const FT & func) {
+makeCallback(FT func) {
 	return callback_internal::GlobalCallbackSelector<typename GFunctionTraits<FT>::ObjectType>::makeCallback(func);
 }
 

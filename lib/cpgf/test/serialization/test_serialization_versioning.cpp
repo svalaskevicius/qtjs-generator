@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -69,6 +69,8 @@ class MetaSerializerA : public IMetaSerializer
 	G_INTERFACE_IMPL_EXTENDOBJECT
 	
 public:
+	virtual ~MetaSerializerA() {}
+
 	virtual const char * G_API_CC getClassTypeName(IMetaArchiveWriter * /*archiveWriter*/, const void * /*instance*/, IMetaClass * metaClass) {
 		return metaClass->getQualifiedName();
 	}

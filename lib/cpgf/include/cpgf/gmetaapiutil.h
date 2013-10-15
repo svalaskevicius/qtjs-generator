@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -42,6 +42,7 @@ GPP_REPEAT_2(REF_MAX_ARITY, DEF_CALL_HELPER, GPP_EMPTY())
 void metaCheckError(IExtendObject * object);
 
 GMetaType metaGetItemType(IMetaItem * item);
+GMetaType metaGetTypedItemMetaType(IMetaTypedItem * item);
 GMetaExtendType metaGetItemExtendType(IMetaItem * item, uint32_t flags);
 
 GMetaType metaGetResultType(IMetaCallable * callable);

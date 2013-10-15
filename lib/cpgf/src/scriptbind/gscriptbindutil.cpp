@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -104,18 +104,55 @@ std::string normalizeReflectName(const char * name)
 }
 
 
-GVariant scriptGetFundamental(GScriptObject * scriptObject, const char * name)
+GScriptValue scriptGetValue(GScriptObject * scriptObject, const char * name)
 {
-	return scriptObject->getFundamental(name);
+	return scriptObject->getValue(name);
 }
 
-GVariant scriptGetFundamental(IScriptObject * scriptObject, const char * name)
+// This function is defined in gscriptvalue.cpp internally.
+GScriptValue createScriptValueFromData(const GScriptValueData & data);
+
+GScriptValue scriptGetValue(IScriptObject * scriptObject, const char * name)
 {
-	GVariant v;
-	scriptObject->getFundamental(&v.refData(), name);
-	return v;
+	GScriptValueData data;
+	scriptObject->getValue(&data, name);
+	return createScriptValueFromData(data);
 }
 
+void scriptSetValue(GScriptObject * scriptObject, const char * name, const GScriptValue & value)
+{
+	scriptObject->setValue(name, value);
+}
+
+void scriptSetValue(IScriptObject * scriptObject, const char * name, const GScriptValue & value)
+{
+	GScriptValueData data(GScriptValue(value).takeData());
+	scriptObject->setValue(name, &data);
+}
+
+GScriptValue scriptGetScriptFunction(GScriptObject * scriptObject, const char * name)
+{
+	return scriptObject->getScriptFunction(name);
+}
+
+GScriptValue scriptGetScriptFunction(IScriptObject * scriptObject, const char * name)
+{
+	GScriptValueData data;
+	scriptObject->getScriptFunction(&data, name);
+	return createScriptValueFromData(data);
+}
+
+GScriptValue scriptCreateScriptObject(GScriptObject * scriptObject, const char * name)
+{
+	return scriptObject->createScriptObject(name);
+}
+
+GScriptValue scriptCreateScriptObject(IScriptObject * scriptObject, const char * name)
+{
+	GScriptValueData data;
+	scriptObject->createScriptObject(&data, name);
+	return createScriptValueFromData(data);
+}
 
 IScriptObject * scriptObjectToInterface(GScriptObject * scriptObject, bool freeObject)
 {
@@ -135,7 +172,7 @@ void injectObjectToScript(IScriptObject * scriptObject, IMetaClass * metaClass, 
 	
 	GScopedInterface<IScriptObject> namespaceHolder;
 	if(namespaceName != NULL && *namespaceName) {
-		namespaceHolder.reset(scriptObject->createScriptObject(namespaceName));
+		namespaceHolder.reset(scriptCreateScriptObject(scriptObject, namespaceName).toScriptObject());
 		scriptObject = namespaceHolder.get();
 	}
 	
@@ -147,7 +184,8 @@ void injectObjectToScript(IScriptObject * scriptObject, IMetaClass * metaClass, 
 
 		switch(item->getType()) {
 			case mmitMethod:
-				scriptObject->bindMethod(normalizeReflectName(name).c_str(), instance, gdynamic_cast<IMetaMethod *>(metaObject.get()));
+				scriptSetValue(scriptObject, normalizeReflectName(name).c_str(),
+					GScriptValue::fromMethod(instance, gdynamic_cast<IMetaMethod *>(metaObject.get())));
 				break;
 
 			case mmitMethodList: {
@@ -157,24 +195,28 @@ void injectObjectToScript(IScriptObject * scriptObject, IMetaClass * metaClass, 
 					GScopedInterface<IMetaItem> metaItem(metaList->getAt(i));
 					newMetaList->add(metaItem.get(), instance);
 				}
-				scriptObject->bindMethodList(normalizeReflectName(name).c_str(), newMetaList.get());
+				scriptSetValue(scriptObject, normalizeReflectName(name).c_str(),
+					GScriptValue::fromOverloadedMethods(newMetaList.get()));
 			}
 				break;
 
 			case mmitProperty:
 			case mmitField:
-				scriptObject->bindAccessible(normalizeReflectName(name).c_str(), instance, gdynamic_cast<IMetaAccessible *>(metaObject.get()));
+				scriptSetValue(scriptObject, normalizeReflectName(name).c_str(),
+					GScriptValue::fromAccessible(instance, gdynamic_cast<IMetaAccessible *>(metaObject.get())));
 				break;
 
 			case mmitEnum:
-				scriptObject->bindEnum(normalizeReflectName(name).c_str(), gdynamic_cast<IMetaEnum *>(metaObject.get()));
+				scriptSetValue(scriptObject, normalizeReflectName(name).c_str(),
+					GScriptValue::fromEnum(gdynamic_cast<IMetaEnum *>(metaObject.get())));
 				break;
 
 			case mmitEnumValue:
 				break;
 
 			case mmitClass:
-				scriptObject->bindClass(normalizeReflectName(name).c_str(), gdynamic_cast<IMetaClass *>(metaObject.get()));
+				scriptSetValue(scriptObject, normalizeReflectName(name).c_str(),
+					GScriptValue::fromClass(gdynamic_cast<IMetaClass *>(metaObject.get())));
 				break;
 
 			default:
@@ -209,7 +251,7 @@ IScriptObject * createScriptObject(IScriptObject * owner, const char * namespace
 		return owner;
 	}
 	else {
-		return owner->createScriptObject(namespaces);
+		return scriptCreateScriptObject(owner, namespaces).toScriptObject();
 	}
 }
 

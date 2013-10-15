@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,6 +31,10 @@
 #include "cpgf/scriptbind/gpythonbind.h"
 #endif
 
+#if ENABLE_SPIDERMONKEY
+#include "cpgf/scriptbind/gspidermonkeybind.h"
+#endif
+
 
 using namespace cpgf;
 using namespace std;
@@ -56,6 +60,10 @@ std::string TestScriptCoder::newObject(const std::string & lhs, const std::strin
 	return s;
 }
 
+std::string TestScriptCoder::getVarPrefix()
+{
+	return "";
+}
 
 
 TestScriptContext::TestScriptContext(TestScriptCoder * coder)
@@ -377,6 +385,178 @@ private:
 #endif
 
 
+#if ENABLE_SPIDERMONKEY
+
+using namespace JS;
+
+template <int Arity, typename F>
+struct JSNewRuntimeCaller
+{
+};
+
+template <typename F>
+struct JSNewRuntimeCaller <1, F>
+{
+	static JSRuntime * call(F * f) {
+		return f(128L * 1024L * 1024L);
+	}
+};
+
+template <typename F>
+struct JSNewRuntimeCaller <2, F>
+{
+	static JSRuntime * call(F * f) {
+		return f(512L * 1024L * 1024L, JS_NO_HELPER_THREADS);
+	}
+};
+
+template <typename F>
+JSRuntime * callJSNewRuntime(F * f)
+{
+	return JSNewRuntimeCaller<GFunctionTraits<F>::Arity, F>::call(f);
+}
+
+class TestScriptCoderSpiderMonkey : public TestScriptCoder
+{
+public:
+	virtual std::string getNew() {
+		return " new ";
+	}
+	
+	virtual std::string getVarPrefix() {
+		return "var ";
+	}
+};
+
+class SpiderMonkeyRuntime
+{
+public:
+	SpiderMonkeyRuntime()
+		: jsRuntime(callJSNewRuntime(&JS_NewRuntime))
+	{
+	}
+
+	~SpiderMonkeyRuntime() {
+		JS_DestroyRuntime(this->jsRuntime);
+		JS_ShutDown();
+	}
+
+public:
+	JSRuntime * jsRuntime;
+};
+static GScopedPointer<SpiderMonkeyRuntime> spiderMonkeyRuntime;
+
+void reportError(JSContext *cx, const char *message, JSErrorReport *report)
+{
+//	fprintf(stderr, "SpiderMonkey error: %s\n", message);
+}
+
+class SpiderMonkeyEnv
+{
+public:
+	SpiderMonkeyEnv()
+	{
+		if(!spiderMonkeyRuntime)
+		{
+			spiderMonkeyRuntime.reset();
+			spiderMonkeyRuntime.reset(new SpiderMonkeyRuntime);
+		}
+		this->jsContext = JS_NewContext(spiderMonkeyRuntime->jsRuntime, 8192);
+//		JS_SetOptions(this->jsContext, JSOPTION_VAROBJFIX | JSOPTION_METHODJIT);
+		JS_SetOptions(this->jsContext, JSOPTION_METHODJIT);
+		JS_SetVersion(this->jsContext, JSVERSION_LATEST);
+		JS_SetErrorReporter(this->jsContext, &reportError);
+		this->jsGlobal = createSpiderMonkeyGlobaObject(this->jsContext);
+		JS_InitStandardClasses(this->jsContext, this->jsGlobal);
+	}
+
+	~SpiderMonkeyEnv() {
+//		JS_DestroyContext(this->jsContext);
+//		JS_DestroyContextNoGC(this->jsContext);
+	}
+
+	void resetContext() {
+//		JS_ClearNonGlobalObject(this->jsContext, this->jsGlobal);
+	}
+
+public:
+	JSContext * jsContext;
+	JSObject  * jsGlobal;
+};
+
+static GScopedPointer<SpiderMonkeyEnv> spiderMonkeyEnv;
+
+const char * const SpiderMonkeyNullObjects[] = {
+	"nso", "methodConst", "incStaticValue", "add", "Inner"
+};
+
+class TestScriptContextSpiderMonkey : public TestScriptContext
+{
+private:
+	typedef TestScriptContext super;
+
+public:
+	TestScriptContextSpiderMonkey(TestScriptApi api)
+		: super(new TestScriptCoderSpiderMonkey)
+	{
+		if(! spiderMonkeyEnv)
+		{
+			spiderMonkeyEnv.reset();
+			spiderMonkeyEnv.reset(new SpiderMonkeyEnv());
+		}
+		spiderMonkeyEnv->resetContext();
+
+		if(api == tsaLib) {
+			this->setBinding(cpgf::createSpiderMonkeyScriptObject(this->getService(), spiderMonkeyEnv->jsContext, spiderMonkeyEnv->jsGlobal, GScriptConfig()));
+			
+			this->nullObjects();
+		}
+
+		if(api == tsaApi) {
+			this->setBinding(cpgf::createSpiderMonkeyScriptInterface(this->getService(), spiderMonkeyEnv->jsContext, spiderMonkeyEnv->jsGlobal, cpgf::GScriptConfig()));
+
+			this->nullObjects();
+		}
+	}
+
+	~TestScriptContextSpiderMonkey() {
+	}
+
+	virtual bool isSpiderMonkey() const {
+		return true;
+	}
+
+protected:
+	virtual bool doLib(const char * code) const {
+		return this->executeString(code, this->canPrintError());
+	}
+
+	virtual bool doApi(const char * code) const {
+		return this->executeString(code, this->canPrintError());
+	}
+
+	bool executeString(const char * source, bool printError) const {
+		jsval result;
+		JSBool success = JS_EvaluateScript(spiderMonkeyEnv->jsContext, spiderMonkeyEnv->jsGlobal, source, (unsigned int)strlen(source), "script", 1, &result);
+		return success == JS_TRUE;
+	}
+
+	void nullObjects() {
+		for(int i = 0; i < sizeof(SpiderMonkeyNullObjects) / sizeof(SpiderMonkeyNullObjects[0]); ++i) {
+			if(this->getBindingLib()) {
+				scriptSetValue(this->getBindingLib(), SpiderMonkeyNullObjects[i], GScriptValue::fromNull());
+			}
+			else {
+				scriptSetValue(this->getBindingApi(), SpiderMonkeyNullObjects[i], GScriptValue::fromNull());
+			}
+		}
+	}
+};
+
+
+#endif
+
+
 TestScriptContext * createTestScriptContext(TestScriptLang lang, TestScriptApi api)
 {
 	switch(lang) {
@@ -397,6 +577,13 @@ TestScriptContext * createTestScriptContext(TestScriptLang lang, TestScriptApi a
 	case tslPython:
 #if ENABLE_PYTHON
 		return new TestScriptContextPython(api);
+#else
+		break;
+#endif
+
+	case tslSpider:
+#if ENABLE_SPIDERMONKEY
+		return new TestScriptContextSpiderMonkey(api);
 #else
 		break;
 #endif

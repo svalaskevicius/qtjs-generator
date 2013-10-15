@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -97,6 +97,32 @@ GTEST(MK(CASE, _Python_Api))
 }
 
 #endif
+
+
+
+#if ENABLE_SPIDERMONKEY
+
+GTEST(MK(CASE, _SpiderMonkey_Lib))
+{
+	GScopedPointer<TestScriptContext> context(createTestScriptContext(tslSpider, tsaLib));
+
+	TEST_BIND(context->getBindingLib(), context->getService());
+
+	CASE(context.get());
+}
+
+
+GTEST(MK(CASE, _SpiderMonkey_Api))
+{
+	GScopedPointer<TestScriptContext> context(createTestScriptContext(tslSpider, tsaApi));
+
+	TEST_BIND(context->getBindingApi(), context->getService());
+
+	CASE(context.get());
+}
+
+#endif
+
 
 
 

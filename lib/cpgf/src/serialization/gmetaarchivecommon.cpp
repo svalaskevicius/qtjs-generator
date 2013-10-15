@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -59,12 +59,12 @@ GMetaArchiveConfig GMetaArchiveConfigMap::getConfig(IMetaClass * metaClass) cons
 }
 
 
-GMetaArchiveConfig::GMetaArchiveConfig() : version(0), flags(defaultConfig)
+GMetaArchiveConfig::GMetaArchiveConfig() : version(0), flags(ConfigFlags(defaultConfig))
 {
 }
 
 GMetaArchiveConfig::GMetaArchiveConfig(const GMetaArchiveConfigData & data)
-	: version(data.version), flags(data.flags)
+	: version(data.version), flags(ConfigFlags(data.flags))
 {
 }
 

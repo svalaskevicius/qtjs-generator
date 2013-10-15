@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,9 +23,14 @@
 #include "cpgf/gmetacommon.h"
 #include "cpgf/gmetatype.h"
 #include "cpgf/gmetapolicy.h"
+#include "cpgf/gexception.h"
 
 
 namespace cpgf {
+
+
+extern int Error_Meta_ReadDenied;
+extern int Error_Meta_WriteDenied;
 
 namespace meta_internal {
 
@@ -127,7 +132,7 @@ private:
 
 	template <typename T>
 	GVariant  doGet(typename GDisableIf<Readable, T>::Result const * /*instance*/) const {
-		meta_internal::handleForbidAccessError(true);
+		raiseCoreException(Error_Meta_ReadDenied);
 		
 		return GVariant();
 	}
@@ -139,7 +144,7 @@ private:
 
 	template <typename T>
 	void doSet(typename GDisableIf<Writable && !IsArray<FT>::Result, T>::Result * /*instance*/, const GVariant & /*value*/) const {
-		meta_internal::handleForbidAccessError(false);
+		raiseCoreException(Error_Meta_WriteDenied);
 	}
 
 private:
@@ -205,7 +210,7 @@ private:
 
 	template <typename T>
 	GVariant  doGet(typename GDisableIf<Readable, T>::Result const * /*instance*/) const {
-		meta_internal::handleForbidAccessError(true);
+		raiseCoreException(Error_Meta_ReadDenied);
 		
 		return GVariant();
 	}
@@ -217,7 +222,7 @@ private:
 
 	template <typename T>
 	void doSet(typename GDisableIf<Writable && !IsArray<FT>::Result, T>::Result * /*instance*/, const GVariant & /*value*/) const {
-		meta_internal::handleForbidAccessError(false);
+		raiseCoreException(Error_Meta_WriteDenied);
 	}
 
 private:

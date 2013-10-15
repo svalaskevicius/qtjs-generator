@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,6 +24,10 @@
 #include "cpgf/genableif.h"
 #include "cpgf/gtypelist.h"
 #include "cpgf/gfunctiontraits.h"
+
+#ifdef _MSC_VER
+#include <wchar.h>
+#endif
 
 #ifdef G_COMPILER_CPPBUILDER
 #include <type_traits>

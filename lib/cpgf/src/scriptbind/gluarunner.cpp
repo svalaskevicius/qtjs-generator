@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -57,7 +57,8 @@ GLuaScriptRunnerImplement::GLuaScriptRunnerImplement(IMetaService * service)
 {
 	luaL_openlibs(this->luaState);
 
-	GScopedInterface<IScriptObject> scriptObject(createLuaScriptInterface(this->getService(), this->luaState, GScriptConfig()));
+	GScopedInterface<IMetaService> metaService(this->getService());
+	GScopedInterface<IScriptObject> scriptObject(createLuaScriptInterface(metaService.get(), this->luaState, GScriptConfig()));
 	this->setScripeObject(scriptObject.get());
 }
 
