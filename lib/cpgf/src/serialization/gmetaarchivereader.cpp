@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -42,7 +42,7 @@ class GMetaArchiveReader : public IMetaArchiveReader, public IMetaSerializerRead
 
 public:
 	GMetaArchiveReader(IMetaService * service, IMetaStorageReader * reader);
-	~GMetaArchiveReader();
+	virtual ~GMetaArchiveReader();
 
 	virtual IMetaService * G_API_CC getMetaService();
 	virtual IMetaStorageReader * G_API_CC getStorageReader();
@@ -405,6 +405,9 @@ void GMetaArchiveReader::doReadMember(void * instance, IMetaAccessible * accessi
 	}
 }
 
+// This function is defined in gvariant.cpp, for internal use.
+GVariant createVariantFromData(const GVariantData & data);
+
 void GMetaArchiveReader::doReadValue(const char * name, void * address, const GMetaType & metaType, IMetaSerializer * serializer)
 {
 	size_t pointers = metaType.getPointerDimension();
@@ -449,7 +452,7 @@ void GMetaArchiveReader::doReadValue(const char * name, void * address, const GM
 			if(metaType.isFundamental()) {
 				vtSetType(data.typeData, metaType.getVariantType());
 				this->reader->readFundamental(name, &data);
-				writeFundamental(address, metaType, GVariant(data));
+				writeFundamental(address, metaType, createVariantFromData(data));
 			}
 			else {
 				serializeError(Error_Serialization_TypeMismatch);

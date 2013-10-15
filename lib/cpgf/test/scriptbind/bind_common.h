@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,6 +29,9 @@
 #ifndef ENABLE_PYTHON
 #define ENABLE_PYTHON 1
 #endif
+#ifndef ENABLE_SPIDERMONKEY
+#define ENABLE_SPIDERMONKEY 1
+#endif
 
 
 #include "cpgf/gmetaapi.h"
@@ -40,10 +43,12 @@
 
 #define QSTR(...) # __VA_ARGS__
 
+#define VAR context->getCoder()->getVarPrefix()
 #define DO(s) GCHECK(context->doString(s));
 #define ERR(s) GCHECK(context->doError(s));
 #define QDO(...) DO(# __VA_ARGS__)
 #define QERR(...) ERR(# __VA_ARGS__)
+#define QVAR(...) DO(VAR + # __VA_ARGS__)
 
 #define DOASSERT(...) DO(std::string("scriptAssert(") + __VA_ARGS__ + ")")
 #define DOASSERTNOT(...) DO(std::string("scriptNot(") + __VA_ARGS__ + ")")
@@ -53,6 +58,7 @@
 
 #define NEWOBJ(lhs, ...) DO(context->getCoder()->newObject(lhs, __VA_ARGS__))
 #define QNEWOBJ(lhs, ...) DO(context->getCoder()->newObject(# lhs, # __VA_ARGS__))
+#define QVARNEWOBJ(lhs, ...) DO(context->getCoder()->newObject(VAR + # lhs, # __VA_ARGS__))
 #define ERR_NEWOBJ(lhs, ...) ERR(context->getCoder()->newObject(lhs, __VA_ARGS__))
 #define ERR_QNEWOBJ(lhs, ...) ERR(context->getCoder()->newObject(# lhs, # __VA_ARGS__))
 
@@ -60,7 +66,7 @@
 namespace testscript {
 
 enum TestScriptLang {
-	tslLua, tslV8, tslPython
+	tslLua, tslV8, tslPython, tslSpider
 };
 
 enum TestScriptApi {
@@ -75,6 +81,7 @@ public:
 
 	virtual std::string getNew() = 0;
 	virtual std::string newObject(const std::string & lhs, const std::string & className);
+	virtual std::string getVarPrefix();
 };
 
 class TestScriptContext
@@ -117,6 +124,14 @@ public:
 		return false;
 	}
 
+	virtual bool isSpiderMonkey() const {
+		return false;
+	}
+	
+	bool isJavascript() const {
+		return this->isV8() || this->isSpiderMonkey();
+	}
+	
 protected:
 	virtual bool doLib(const char * code) const = 0;
 	virtual bool doApi(const char * code) const = 0;

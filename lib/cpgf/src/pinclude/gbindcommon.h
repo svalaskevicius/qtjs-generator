@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,6 +21,7 @@
 #define __GBINDCOMMON_H
 
 #include "cpgf/scriptbind/gscriptbind.h"
+#include "cpgf/scriptbind/gscriptvalue.h"
 #include "cpgf/scriptbind/gscriptwrapper.h"
 #include "cpgf/gmetaclasstraveller.h"
 #include "cpgf/gmetaclass.h"
@@ -82,12 +83,6 @@ enum GMetaMapItemType {
 	mmitEnumValue = 5,
 	mmitClass = 6,
 	mmitNone = 100,
-};
-
-enum GGlueDataMethodType {
-	gdmtMethod,
-	gdmtMethodList,
-	gdmtInternal
 };
 
 enum GBindValueFlagValues {
@@ -227,7 +222,7 @@ class GClassGlueData : public GGlueData, public GShareFromThis<GClassGlueData>
 private:
 	typedef GGlueData super;
 
-private:
+protected:
 	GClassGlueData(const GContextPointer & context, IMetaClass * metaClass);
 
 public:
@@ -405,8 +400,8 @@ private:
 	typedef GGlueData super;
 
 private:
-	GMethodGlueData(const GContextPointer & context, const GClassGlueDataPointer & classGlueData, IMetaList * methodList, const char * name, GGlueDataMethodType methodType)
-		: super(gdtMethod, context), classGlueData(classGlueData), methodList(methodList), name(name), methodType(methodType) {
+	GMethodGlueData(const GContextPointer & context, const GClassGlueDataPointer & classGlueData, IMetaList * methodList, const char * name)
+		: super(gdtMethod, context), classGlueData(classGlueData), methodList(methodList), name(name) {
 	}
 
 public:
@@ -422,15 +417,10 @@ public:
 		return this->name;
 	}
 
-	GGlueDataMethodType getMethodType() const {
-		return this->methodType;
-	}
-
 private:
 	GWeakClassGlueDataPointer classGlueData;
 	GSharedInterface<IMetaList> methodList;
 	std::string name;
-	GGlueDataMethodType methodType;
 
 private:
 	friend class GBindingContext;
@@ -608,6 +598,9 @@ class GScriptDataStorage : public IScriptDataStorage
 private:
 	explicit GScriptDataStorage(const GObjectGlueDataPointer & object);
 
+public:	
+	virtual ~GScriptDataStorage();
+
 protected:
 	virtual IScriptFunction * G_API_CC getScriptFunction(const char * name);
 
@@ -719,7 +712,7 @@ public:
 		const GBindValueFlags & flags, ObjectPointerCV cv);
 	
 	GMethodGlueDataPointer newMethodGlueData(const GClassGlueDataPointer & classData,
-		IMetaList * methodList, const char * name, GGlueDataMethodType methodType);
+		IMetaList * methodList, const char * name);
 	
 	GEnumGlueDataPointer newEnumGlueData(IMetaEnum * metaEnum);
 
@@ -768,10 +761,8 @@ public:
 class CallableParamData
 {
 public:
-	GVariant value;
+	GScriptValue value;
 	GGlueDataPointer glueData;
-	GScriptDataType dataType;
-	GScopedInterface<IMetaTypedItem> typeItem;
 };
 
 class InvokeCallableParam
@@ -846,23 +837,13 @@ private:
 	typedef GScriptObject super;
 
 public:
-	GScriptObjectBase(const GContextPointer & context, const GScriptConfig & config)
-		: super(config), context(context)
-	{
-	}
-
-	GScriptObjectBase(const GScriptObjectBase & other)
-		: super(other), context(other.context)
-	{
-	}
+	GScriptObjectBase(const GContextPointer & context, const GScriptConfig & config);
+	GScriptObjectBase(const GScriptObjectBase & other);
+	virtual ~GScriptObjectBase();
 
 	IMetaClass * cloneMetaClass(IMetaClass * metaClass);
 
-	IMetaService * getMetaService() {
-		IMetaService * service = this->context->getService();
-		service->addReference();
-		return service;
-	}
+	IMetaService * getMetaService();
 
 protected:
 	const GContextPointer & getContext() const {
@@ -911,7 +892,7 @@ bool shouldRemoveReference(const GMetaType & type);
 wchar_t * stringToWideString(const char * s);
 char * wideStringToString(const wchar_t * ws);
 
-GVariant glueDataToVariant(const GGlueDataPointer & glueData);
+GScriptValue glueDataToScriptValue(const GGlueDataPointer & glueData);
 
 GVariant getAccessibleValueAndType(void * instance, IMetaAccessible * accessible, GMetaType * outType, bool instanceIsConst);
 
@@ -927,10 +908,11 @@ void * getGlueDataInstance(const GGlueDataPointer & glueData);
 IMetaClass * getGlueDataMetaClass(const GGlueDataPointer & glueData);
 IMetaSharedPointerTraits * getGlueDataSharedPointerTraits(const GGlueDataPointer & glueData);
 
-GScriptDataType methodTypeToGlueDataType(GGlueDataMethodType methodType);
 InvokeCallableResult doInvokeOperator(const GContextPointer & context, const GObjectGlueDataPointer & objectData, IMetaClass * metaClass, GMetaOpType op, InvokeCallableParam * callableParam);
 
 IMetaObjectLifeManager * createObjectLifeManagerForInterface(const GVariant & value);
+
+IMetaList * getMethodListFromMapItem(GMetaMapItem * mapItem, void * instance);
 
 template <typename Getter, typename Predict>
 int findAppropriateCallable(IMetaService * service,
@@ -995,7 +977,7 @@ typename Methods::ResultType complexVariantToScript(const GContextPointer & cont
 		return Methods::doRawToScript(context, value, outputGlueData);
 	}
 
-	return typename Methods::ResultType();
+	return Methods::defaultValue();
 }
 
 
@@ -1036,7 +1018,7 @@ typename Methods::ResultType converterToScript(const GContextPointer & context, 
 		}
 	}
 
-	return typename Methods::ResultType();
+	return Methods::defaultValue();
 }
 
 
@@ -1083,7 +1065,7 @@ template <typename Methods>
 typename Methods::ResultType extendVariantToScript(const GContextPointer & context, const GMetaExtendType & extendType,
 		const GVariant & value, const GBindValueFlags & flags)
 {
-	typename Methods::ResultType result = typename Methods::ResultType();
+	typename Methods::ResultType result = Methods::defaultValue();
 
 	GScopedInterface<IMetaConverter> converter(extendType.getConverter());
 	if(converter) {
@@ -1177,7 +1159,7 @@ typename Methods::ResultType methodResultToScript(const GContextPointer & contex
 		return result;
 	}
 
-	return typename Methods::ResultType();
+	return Methods::defaultValue();
 }
 
 
@@ -1212,6 +1194,10 @@ typename Methods::ResultType namedMemberToScript(const GGlueDataPointer & glueDa
 	else {
 		GASSERT(glueData->getType() == gdtClass);
 		classData = sharedStaticCast<GClassGlueData>(glueData);
+	}
+
+	if(! classData->getMetaClass()) {
+		return Methods::defaultValue();
 	}
 
 	const GScriptConfig & config = classData->getContext()->getConfig();
@@ -1280,7 +1266,7 @@ typename Methods::ResultType namedMemberToScript(const GGlueDataPointer & glueDa
 		}
 	}
 
-	return typename Methods::ResultType();
+	return Methods::defaultValue();
 }
 
 

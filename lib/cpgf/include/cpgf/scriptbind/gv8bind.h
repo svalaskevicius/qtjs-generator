@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,16 @@
 
 #include "cpgf/scriptbind/gscriptbind.h"
 
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable:4100 4127)
+#endif
+
 #include "v8.h"
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 
 namespace cpgf {

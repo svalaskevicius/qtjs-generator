@@ -9,6 +9,9 @@ set(HAS_V8 1)
 # set 1 to enable Python binding, 0 to disable
 set(HAS_PYTHON 0)
 
+# set 1 to enable Mozilla SpiderMonkey binding, 0 to disable
+set(HAS_SPIDERMONKEY 0)
+
 # set 1 to enable C++ 0X in GCC, then rvalue reference is enabled
 # 0 to disable rvalue reference
 set(SUPPORT_GCC_0X 1)
@@ -55,52 +58,78 @@ set(UNIT_TEST_DIR
 
 ### Lua config
 
-set(LUA_DIR
-	e:/SourceCode/cpp/lua
-)
+if(${HAS_LUA})
+	set(LUA_DIR
+		c:/source/lua
+	)
 
-set(LUA_INC ${LUA_DIR}/src/ ${LUA_DIR}/etc/)
+	set(LUA_INC ${LUA_DIR}/src/ ${LUA_DIR}/etc/)
 
-if(CMAKE_COMPILER_IS_GNUCC)
-	set(LUA_LIB ${LUA_DIR}/src/liblua.a)
-endif(CMAKE_COMPILER_IS_GNUCC)
+	if(CMAKE_COMPILER_IS_GNUCC)
+		set(LUA_LIB ${LUA_DIR}/src/liblua.a)
+	endif(CMAKE_COMPILER_IS_GNUCC)
 
-if(MSVC)
-	set(LUA_LIB ${LUA_DIR}/src/lua51.lib)
-endif(MSVC)
+	if(MSVC)
+		set(LUA_LIB ${LUA_DIR}/src/lua51.lib)
+	endif(MSVC)
 
-if(UNIX)
-	set(LUA_LIB ${LUA_LIB} "dl")
-endif(UNIX)
+	if(UNIX)
+		set(LUA_LIB ${LUA_LIB} "dl")
+	endif(UNIX)
+endif(${HAS_LUA})
 
 
 ### V8 config
 
 set(V8_DIR
-	/home/sarunas/bin/Qt5.0.1/5.0.1/gcc_64/include/QtV8/5.0.1/QtV8/private/
+	/home/sarunas/bin/Qt5.1.0/5.1.0/gcc_64/include/QtV8/5.1.0/QtV8/private/
 )
 
 set(V8_INC ${V8_DIR})
 
-set(V8_LIB /home/sarunas/bin/Qt5.0.1/5.0.1/gcc_64/lib/libQt5V8.so)
+set(V8_LIB /home/sarunas/bin/Qt5.1.0/5.1.0/gcc_64/lib/libQt5V8.so)
 
 
 
 ### Python config
 
-set(PYTHON_DIR
-	d:/Python
-)
+if(${HAS_PYTHON})
+	set(PYTHON_DIR
+		c:/source/Python
+	)
 
-set(PYTHON_INC ${PYTHON_DIR}/include)
+	set(PYTHON_INC ${PYTHON_DIR}/include)
 
-if(CMAKE_COMPILER_IS_GNUCC)
-	set(PYTHON_LIB ${PYTHON_DIR}/libs/libpython27.a)
-endif(CMAKE_COMPILER_IS_GNUCC)
+	if(CMAKE_COMPILER_IS_GNUCC)
+		set(PYTHON_LIB ${PYTHON_DIR}/libs/libpython27.a)
+	endif(CMAKE_COMPILER_IS_GNUCC)
 
-if(MSVC)
-	set(PYTHON_LIB ${PYTHON_DIR}/libs/python27_d.lib)
-endif(MSVC)
+	if(MSVC)
+		set(PYTHON_LIB ${PYTHON_DIR}/libs/python27_d.lib)
+	endif(MSVC)
+endif(${HAS_PYTHON})
+
+
+
+### SpiderMonkey config
+
+if(${HAS_SPIDERMONKEY})
+	set(SPIDERMONKEY_DIR
+		c:/source/xulrunner-sdk
+	)
+
+	set(SPIDERMONKEY_INC ${SPIDERMONKEY_DIR}/include)
+
+	if(CMAKE_COMPILER_IS_GNUCC)
+	#	set(SPIDERMONKEY_LIB ${SPIDERMONKEY_DIR}/lib/lib.a)
+		set(SPIDERMONKEY_DEFINE )
+	endif(CMAKE_COMPILER_IS_GNUCC)
+
+	if(MSVC)
+		set(SPIDERMONKEY_LIB ${SPIDERMONKEY_DIR}/lib/mozjs.lib)
+		set(SPIDERMONKEY_DEFINE -DXP_WIN)
+	endif(MSVC)
+endif(${HAS_SPIDERMONKEY})
 
 
 
@@ -108,14 +137,14 @@ endif(MSVC)
 
 if(CMAKE_COMPILER_IS_GNUCC)
 	set(GLUT_DIR
-		e:/SourceCode/cpp/freeglut/mingw
+		c:/source/freeglut/mingw
 	)
 	set(GLUT_LIB ${GLUT_DIR}/lib/libfreeglut.a opengl32 glu32)
 endif(CMAKE_COMPILER_IS_GNUCC)
 
 if(MSVC)
 	set(GLUT_DIR
-		e:/SourceCode/cpp/freeglut/vc
+		c:/source/freeglut/vc
 	)
 	set(GLUT_LIB ${GLUT_DIR}/lib/freeglut.lib)
 endif(MSVC)
@@ -127,7 +156,7 @@ set(GLUT_INC ${GLUT_DIR}/include)
 ### Box2D config
 
 set(BOX2D_DIR
-	e:/SourceCode/cpp/Box2D/Box2D
+	c:/source/Box2D/Box2D
 )
 if(CMAKE_COMPILER_IS_GNUCC)
 	set(BOX2D_LIB ${BOX2D_DIR}/lib/libBox2D.a)
@@ -145,7 +174,7 @@ set(BOX2D_INC ${BOX2D_DIR}/)
 ### SFML config
 
 set(SFML_DIR
-	e:/SourceCode/cpp/SFML-1.6
+	c:/source/SFML-1.6
 )
 if(CMAKE_COMPILER_IS_GNUCC)
 	set(SFML_LIB_DIR ${SFML_DIR}/lib/gcc)
@@ -175,7 +204,7 @@ set(SFML_INC ${SFML_DIR}/include)
 ### irrlicht config
 
 set(IRRLICHT_DIR
-	E:/SourceCode/CPP/irrlicht-1.8
+	c:/source/irrlicht-1.8
 )
 if(CMAKE_COMPILER_IS_GNUCC)
 endif(CMAKE_COMPILER_IS_GNUCC)

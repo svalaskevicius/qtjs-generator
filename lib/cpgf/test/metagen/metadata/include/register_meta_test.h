@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,11 +31,15 @@ using namespace cpgf;
 namespace meta_test { 
 
 
+GDefineMetaInfo createMetaClass_ChainedObjectA();
+GDefineMetaInfo createMetaClass_ChainedObjectB();
+GDefineMetaInfo createMetaClass_ChainedObjectC();
 GDefineMetaInfo createMetaClass_Global_global();
 GDefineMetaInfo createMetaClass_Global_metagen_multiple_inheritance_cast();
 GDefineMetaInfo createMetaClass_Global_simpleobject();
 GDefineMetaInfo createMetaClass_Global_testobjectarray();
 GDefineMetaInfo createMetaClass_MetagenMethodOverload();
+GDefineMetaInfo createMetaClass_MetagenMethodOverloadByFundamental();
 GDefineMetaInfo createMetaClass_MetagenNonconstructable();
 GDefineMetaInfo createMetaClass_MetagenOperatorArithmetic();
 GDefineMetaInfo createMetaClass_MetagenOperatorArithmeticAssign();
@@ -73,11 +77,15 @@ GDefineMetaInfo createMetaClass_TestMethodMethodData();
 template <typename Meta>
 void registerMain_metatest(Meta _d)
 {
+    _d._class(createMetaClass_ChainedObjectA());
+    _d._class(createMetaClass_ChainedObjectB());
+    _d._class(createMetaClass_ChainedObjectC());
     _d._class(createMetaClass_Global_global());
     _d._class(createMetaClass_Global_metagen_multiple_inheritance_cast());
     _d._class(createMetaClass_Global_simpleobject());
     _d._class(createMetaClass_Global_testobjectarray());
     _d._class(createMetaClass_MetagenMethodOverload());
+    _d._class(createMetaClass_MetagenMethodOverloadByFundamental());
     _d._class(createMetaClass_MetagenNonconstructable());
     _d._class(createMetaClass_MetagenOperatorArithmetic());
     _d._class(createMetaClass_MetagenOperatorArithmeticAssign());

@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -464,6 +464,7 @@ public:
 	USE_POOL(ImplMetaAnnotationValue)
 
 	ImplMetaAnnotationValue(const GAnnotationValue * value, bool);
+	virtual ~ImplMetaAnnotationValue();
 
 	G_INTERFACE_IMPL_OBJECT
 	G_INTERFACE_IMPL_EXTENDOBJECT
@@ -595,7 +596,7 @@ public:
 	USE_POOL(ImplMetaModule)
 
 	ImplMetaModule(GMetaModule * module, GMetaClass * metaClass);
-	~ImplMetaModule();
+	virtual ~ImplMetaModule();
 
 	G_INTERFACE_IMPL_OBJECT
 	G_INTERFACE_IMPL_EXTENDOBJECT
@@ -623,7 +624,7 @@ public:
 	USE_POOL(ImplMetaService)
 
 	ImplMetaService();
-	~ImplMetaService();
+	virtual ~ImplMetaService();
 
 	G_INTERFACE_IMPL_OBJECT
 	G_INTERFACE_IMPL_EXTENDOBJECT
@@ -668,6 +669,9 @@ void loadMetaList(IMetaList * metaList, GMetaList * rawMetaList)
 		item->releaseReference();
 	}
 }
+
+// This function is defined in gvariant.cpp, for internal use.
+GVariant createVariantFromData(const GVariantData & data);
 
 
 ImplMetaItem::ImplMetaItem(const GMetaItem * item, bool freeItem)
@@ -987,7 +991,7 @@ gapi_bool ImplMetaCallable::doCheckParam(const GVariantData * param, uint32_t pa
 {
 	ENTER_META_API()
 
-	return this->getCallable()->checkParam(GVariant(*param), paramIndex);
+	return this->getCallable()->checkParam(createVariantFromData(*param), paramIndex);
 
 	LEAVE_META_API(return false)
 }
@@ -1050,7 +1054,7 @@ void ImplMetaAccessible::doSet(void * instance, const GVariantData * value)
 {
 	ENTER_META_API()
 
-	this->getAccessible()->set(instance, GVariant(*value));
+	this->getAccessible()->set(instance, createVariantFromData(*value));
 
 	LEAVE_META_API()
 }
@@ -1154,7 +1158,7 @@ void G_API_CC ImplMetaMethod::invoke(GVariantData * outResult, void * instance, 
 	GVariant variants[REF_MAX_ARITY];
 
 	for(uint32_t i = 0; i < paramCount; ++i) {
-		variants[i] = GVariant(params[i]);
+		variants[i] = createVariantFromData(params[i]);
 	}
 
 	if(outResult == NULL) {
@@ -1176,7 +1180,7 @@ void G_API_CC ImplMetaMethod::invokeIndirectly(GVariantData * outResult, void * 
 	GVariant variants[REF_MAX_ARITY];
 
 	for(uint32_t i = 0; i < paramCount; ++i) {
-		variants[i] = GVariant(*params[i]);
+		variants[i] = createVariantFromData(*params[i]);
 	}
 
 	if(outResult == NULL) {
@@ -1221,7 +1225,7 @@ void * G_API_CC ImplMetaConstructor::invoke(const GVariantData * params, uint32_
 	GVariant variants[REF_MAX_ARITY];
 
 	for(uint32_t i = 0; i < paramCount; ++i) {
-		variants[i] = GVariant(params[i]);
+		variants[i] = createVariantFromData(params[i]);
 	}
 
 	return objectAddressFromVariant(this->getConstructor()->execute(NULL, variants, paramCount));
@@ -1238,7 +1242,7 @@ void * G_API_CC ImplMetaConstructor::invokeIndirectly(GVariantData const * const
 	GVariant variants[REF_MAX_ARITY];
 
 	for(uint32_t i = 0; i < paramCount; ++i) {
-		variants[i] = GVariant(*params[i]);
+		variants[i] = createVariantFromData(*params[i]);
 	}
 
 	return objectAddressFromVariant(this->getConstructor()->execute(NULL, variants, paramCount));
@@ -1277,10 +1281,10 @@ void G_API_CC ImplMetaOperator::invokeUnary(GVariantData * outResult, const GVar
 	ENTER_META_API()
 
 	if(outResult == NULL) {
-		this->getOperatorItem()->invokeUnary(GVariant(*p0));
+		this->getOperatorItem()->invokeUnary(createVariantFromData(*p0));
 	}
 	else {
-		*outResult = this->getOperatorItem()->invokeUnary(GVariant(*p0)).takeData();
+		*outResult = this->getOperatorItem()->invokeUnary(createVariantFromData(*p0)).takeData();
 	}
 
 	LEAVE_META_API()
@@ -1291,10 +1295,10 @@ void G_API_CC ImplMetaOperator::invokeBinary(GVariantData * outResult, const GVa
 	ENTER_META_API()
 
 	if(outResult == NULL) {
-		this->getOperatorItem()->invokeBinary(GVariant(*p0), GVariant(*p1));
+		this->getOperatorItem()->invokeBinary(createVariantFromData(*p0), createVariantFromData(*p1));
 	}
 	else {
-		*outResult = this->getOperatorItem()->invokeBinary(GVariant(*p0), GVariant(*p1)).takeData();
+		*outResult = this->getOperatorItem()->invokeBinary(createVariantFromData(*p0), createVariantFromData(*p1)).takeData();
 	}
 
 	LEAVE_META_API()
@@ -1309,7 +1313,7 @@ void G_API_CC ImplMetaOperator::invokeFunctor(GVariantData * outResult, void * i
 	GVariant variants[REF_MAX_ARITY];
 
 	for(uint32_t i = 0; i < paramCount; ++i) {
-		variants[i] = GVariant(params[i]);
+		variants[i] = createVariantFromData(params[i]);
 	}
 
 	if(outResult == NULL) {
@@ -1331,7 +1335,7 @@ void G_API_CC ImplMetaOperator::invokeFunctorIndirectly(GVariantData * outResult
 	GVariant variants[REF_MAX_ARITY];
 
 	for(uint32_t i = 0; i < paramCount; ++i) {
-		variants[i] = GVariant(*params[i]);
+		variants[i] = createVariantFromData(*params[i]);
 	}
 
 	if(outResult == NULL) {
@@ -1409,6 +1413,10 @@ int32_t G_API_CC ImplMetaEnum::findKey(const char * key)
 
 ImplMetaAnnotationValue::ImplMetaAnnotationValue(const GAnnotationValue * value, bool)
 	: value(value)
+{
+}
+
+ImplMetaAnnotationValue::~ImplMetaAnnotationValue()
 {
 }
 

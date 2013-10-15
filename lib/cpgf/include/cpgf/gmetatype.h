@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -128,11 +128,6 @@ public:
 	bool baseIsArray() const;
 	
 	bool isFundamental() const;
-	bool isBoolean() const;
-	bool isInteger() const;
-	bool isSignedInteger() const;
-	bool isUnsignedInteger() const;
-	bool isReal() const;
 	
 	bool isFunction() const;
 	bool isConstFunction() const;

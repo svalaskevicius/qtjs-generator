@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +32,9 @@
 #endif
 
 
-#if defined(_WIN32) || defined(WIN32) || defined(__WIN32__) || defined(__WINDOWS__) || defined(_WIN32_WCE)
+#if defined(_WIN64) || defined(WIN64) || defined(__WIN64_) || defined(_WIN64_WCE)
+	#define G_OS_WIN64
+#elif defined(_WIN32) || defined(WIN32) || defined(__WIN32__) || defined(_WIN32_WCE)
 	#define G_OS_WIN32
 #elif defined(linux) || defined(__linux) || defined(__linux__) || defined(__GNU__) || defined(__GLIBC__) 
 	#define G_OS_LINUX
@@ -70,6 +72,11 @@
     #endif
 
     #ifdef G_COMPILER_CPPBUILDER
+		#undef G_SUPPORT_STDCALL
+		#undef G_SUPPORT_FASTCALL
+    #endif
+
+    #ifdef G_OS_WIN64
 		#undef G_SUPPORT_STDCALL
 		#undef G_SUPPORT_FASTCALL
     #endif

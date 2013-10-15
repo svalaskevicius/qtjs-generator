@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,6 +20,8 @@
 #ifndef __GFLAGS_H
 #define __GFLAGS_H
 
+#include "cpgf/genableif.h"
+#include "cpgf/gtypetraits.h"
 
 namespace cpgf {
 
@@ -56,19 +58,11 @@ public:
 	
 	GFlags(T flags) : value(flags) {
 	}
-	
-	GFlags(int flags) : value(flags) {
+
+	template <typename U>
+	GFlags(U flags, typename GEnableIf<IsInteger<U>::Result && !IsSameType<U, T>::Result >::Result * = 0) : value(flags) {
 	}
-	
-	GFlags(long long flags) : value(flags) {
-	}
-	
-	GFlags(unsigned int flags) : value(flags) {
-	}
-	
-	GFlags(unsigned long long flags) : value(flags) {
-	}
-	
+
 	GFlags(const GFlags & other) : value(other.value) {
 	}
 	
@@ -100,6 +94,10 @@ public:
 	
 	void clear(T flags) {
 		this->value &= ~flags;
+	}
+	
+	void toggle(T flags) {
+		this->value ^= flags;
 	}
 	
 	void setByBool(T flags, bool value) {

@@ -1,6 +1,6 @@
 /*
   cpgf Library
-  Copyright (C) 2011, 2012 Wang Qi http://www.cpgf.org/
+  Copyright (C) 2011 - 2013 Wang Qi http://www.cpgf.org/
   All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,13 +26,13 @@ namespace {
 template <typename T>
 void doTestAccessData(T * binding, TestScriptContext * context)
 {
-	QNEWOBJ(a, TestObject())
+	QVARNEWOBJ(a, TestObject())
 	QASSERT(a.data.x == 0)
 	QASSERT(a.data.name == "")
 
 	TestObject * obj;
 	
-	obj = static_cast<TestObject *>(binding->getObject("a"));
+	obj = static_cast<TestObject *>(scriptGetValue(binding, "a").toObjectAddress(NULL, NULL));
 	obj->data.x = 38;
 	obj->data.name = "blah";
 
@@ -42,16 +42,16 @@ void doTestAccessData(T * binding, TestScriptContext * context)
 	QDO(a.data.x = 5)
 	QDO(a.data.name = "script")
 
-	obj = static_cast<TestObject *>(binding->getObject("a"));
+	obj = static_cast<TestObject *>(scriptGetValue(binding, "a").toObjectAddress(NULL, NULL));
 	GCHECK(obj->data.x == 5);
 	GCHECK(obj->data.name == "script");
 
-	QNEWOBJ(b, TestData())
+	QVARNEWOBJ(b, TestData())
 	QDO(b.x = 96)
 	QDO(b.name = "what")
 	QDO(a.data = b)
 
-	obj = static_cast<TestObject *>(binding->getObject("a"));
+	obj = static_cast<TestObject *>(scriptGetValue(binding, "a").toObjectAddress(NULL, NULL));
 	GCHECK(obj->data.x == 96);
 	GCHECK(obj->data.name == "what");
 }
@@ -78,16 +78,16 @@ void testAccessData(TestScriptContext * context)
 template <typename T>
 void doTestRefData(T * binding, TestScriptContext * context)
 {
-	QNEWOBJ(a, TestObject())
+	QVARNEWOBJ(a, TestObject())
 	QASSERT(a.data.x == 0)
 	QASSERT(a.data.name == "")
 
 	TestObject * obj;
 	
-	QDO(b = a.refData())
-	QDO(c = a.constRefData())
+	QVAR(b = a.refData())
+	QVAR(c = a.constRefData())
 	
-	obj = static_cast<TestObject *>(binding->getObject("a"));
+	obj = static_cast<TestObject *>(scriptGetValue(binding, "a").toObjectAddress(NULL, NULL));
 	obj->data.x = 38;
 	obj->data.name = "blah";
 
@@ -102,7 +102,7 @@ void doTestRefData(T * binding, TestScriptContext * context)
 	QDO(b = a.pointerData())
 	QDO(c = a.constPointerData())
 	
-	obj = static_cast<TestObject *>(binding->getObject("a"));
+	obj = static_cast<TestObject *>(scriptGetValue(binding, "a").toObjectAddress(NULL, NULL));
 	GCHECK(obj->data.x == 96);
 	GCHECK(obj->data.name == "what");
 	
@@ -116,7 +116,7 @@ void doTestRefData(T * binding, TestScriptContext * context)
 	QASSERT(c.x == 18)
 	QASSERT(c.name == "how")
 
-	obj = static_cast<TestObject *>(binding->getObject("a"));
+	obj = static_cast<TestObject *>(scriptGetValue(binding, "a").toObjectAddress(NULL, NULL));
 	GCHECK(obj->data.x == 18);
 	GCHECK(obj->data.name == "how");
 
@@ -146,15 +146,15 @@ void testRefData(TestScriptContext * context)
 template <typename T>
 void doTestDataConstness(T * binding, TestScriptContext * context)
 {
-	QNEWOBJ(a, TestObject())
+	QVARNEWOBJ(a, TestObject())
 	
-	QDO(b = a.selfConst())
+	QVAR(b = a.selfConst())
 	QASSERT(a.data.x == 0)
 	QASSERT(a.data.name == "")
 
 	TestObject * obj;
 	
-	obj = static_cast<TestObject *>(binding->getObject("a"));
+	obj = static_cast<TestObject *>(scriptGetValue(binding, "a").toObjectAddress(NULL, NULL));
 	obj->data.x = 38;
 	obj->data.name = "blah";
 
