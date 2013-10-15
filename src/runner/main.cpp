@@ -11,6 +11,7 @@
 #include <iostream>
 #include <string.h>
 #include "v8.h"
+#include "../../lib/node/src/v8_typed_array.h"
 
 #include "register_meta_qtcore.h"
 #include "register_meta_qtgui.h"
@@ -26,9 +27,21 @@
 #include <QDebug>
 #include <QFileInfo>
 #include <QDir>
+#include <QTimer>
+
+
+#include "uv.h"
 
 using namespace cpgf;
 using namespace std;
+
+namespace node {
+char** Init(int argc, char *argv[]);
+v8::Handle<v8::Object> SetupProcessObject(int argc, char *argv[]);
+void Load(v8::Handle<v8::Object> process_l);
+void EmitExit(v8::Handle<v8::Object> process_l);
+void RunAtExit();
+}
 
 namespace {
 
@@ -105,38 +118,78 @@ void registerQt(GDefineMetaNamespace &define)
     define._method("makeIncludePathAbsolute", &makeIncludePathAbsolute);
 }
 
-
-bool executeJs(const char *fileName)
-{
-    v8::Persistent<v8::Context> ctx = v8::Context::New();
-
-    GDefineMetaNamespace define = GDefineMetaNamespace::declare("qt");
-    registerQt(define);
-
+struct CpgfBinder {
+    GDefineMetaNamespace define;
+    GScopedInterface<IMetaService> service;
     GScopedPointer<GScriptRunner> runner;
-    GScopedInterface<IMetaService> service(createDefaultMetaService());
-    runner.reset(createV8ScriptRunner(service.get(), ctx));
-    GScopedInterface<IScriptObject> scriptObject(runner->getScripeObject());
+    GScopedInterface<IScriptObject> scriptObject;
+    GScopedInterface<IMetaClass> metaClass;
 
-    scriptObject->bindCoreService("cpgf", NULL);
-    GScopedInterface<IMetaClass> metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())));
-    scriptSetValue(scriptObject.get(), "qt", GScriptValue::fromClass(metaClass.get()));
+    CpgfBinder(v8::Persistent<v8::Context> ctx)
+        : define(GDefineMetaNamespace::declare("qt")),
+          service(createDefaultMetaService()),
+          runner(createV8ScriptRunner(service.get(), ctx)),
+          scriptObject(runner->getScripeObject()),
+          metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())))
+    {
+        registerQt(define);
+        scriptObject->bindCoreService("cpgf", NULL);
+        scriptSetValue(scriptObject.get(), "qt", GScriptValue::fromClass(metaClass.get()));
+        globalScriptRunnerInstance = runner.get();
+    }
 
-    globalScriptRunnerInstance = runner.get();
-    bool ret = includeJsFile(fileName);
-    globalScriptRunnerInstance = nullptr;
+    ~CpgfBinder()
+    {
+        globalScriptRunnerInstance = nullptr;
+        while (!v8::V8::IdleNotification()); // run GC
+        clearV8DataPool();
+        qtjs_binder::QtSignalConnectorBinder::reset();
+    }
+};
 
-    while (!v8::V8::IdleNotification()); // run GC
-    clearV8DataPool();
-    qtjs_binder::QtSignalConnectorBinder::reset();
+static char **copy_argv(int argc, char **argv) {
+  size_t strlen_sum;
+  char **argv_copy;
+  char *argv_data;
+  size_t len;
+  int i;
 
-    return ret;
+  strlen_sum = 0;
+  for(i = 0; i < argc; i++) {
+    strlen_sum += strlen(argv[i]) + 1;
+  }
+
+  argv_copy = (char **) malloc(sizeof(char *) * (argc + 1) + strlen_sum);
+  if (!argv_copy) {
+    return NULL;
+  }
+
+  argv_data = (char *) argv_copy + sizeof(char *) * (argc + 1);
+
+  for(i = 0; i < argc; i++) {
+    argv_copy[i] = argv_data;
+    len = strlen(argv[i]) + 1;
+    memcpy(argv_data, argv[i], len);
+    argv_data += len;
+  }
+
+  argv_copy[argc] = NULL;
+
+  return argv_copy;
 }
+
 
 } // namespace
 
 int main(int argc, char * argv[])
 {
+    // Hack aroung with the argv pointer. Used for process.title = "blah".
+    argv = uv_setup_args(argc, argv);
+
+    // Logic to duplicate argv as Init() modifies arguments
+    // that are passed into it.
+    char **argv_copy = copy_argv(argc, argv);
+
     QApplication app(argc, argv);
 
     if ((argc > 1) && (!strcmp("-v", argv[1]))) {
@@ -152,11 +205,43 @@ int main(int argc, char * argv[])
         __programArguments.append(argv[i]);
     }
 
-    if (!executeJs(fileName)) {
-        cerr << "Failed to execute " << fileName << ", maybe it doesn't exist?" << endl;
-    }
+    // This needs to run *before* V8::Initialize()
+    // Use copy here as to not modify the original argv:
+    node::Init(argc, argv_copy);
 
+    v8::V8::Initialize();
+    {
+        v8::Locker locker;
+        v8::HandleScope handle_scope;
+
+        // Create the one and only Context.
+        v8::Persistent<v8::Context> context = v8::Context::New();
+        v8::Context::Scope context_scope(context);
+
+        // Use original argv, as we're just copying values out of it.
+        v8::Handle<v8::Object> process_l = node::SetupProcessObject(argc, argv);
+        v8_typed_array::AttachBindings(context->Global());
+
+        CpgfBinder cpgfBinder(context);
+
+        // Create all the objects, load modules, do everything.
+        // so your next reading stop should be node::Load()!
+        node::Load(process_l);
+
+        QTimer nodeLoopTimer;
+        QTimer::connect(&nodeLoopTimer, &QTimer::timeout, []{ uv_run(uv_default_loop(), UV_RUN_NOWAIT); });
+        nodeLoopTimer.start(100);
+
+        node::EmitExit(process_l);
+        node::RunAtExit();
+
+        context.Dispose();
+
+    }
     v8::V8::Dispose();
+
+    // Clean up the copy:
+    free(argv_copy);
 
     return __exitCode;
 }
