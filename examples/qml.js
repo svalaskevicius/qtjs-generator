@@ -88,10 +88,6 @@ cpgf.import("cpgf", "builtin.core");
     }
 
 
-    //    var window = new qt.QQuickView();
-    //    window.setSource(qt.QUrl.fromLocalFile(new qt.QString("qml/main.qml")));
-    //    window.show();
-
     qt.setExitCode(
         qt.QCoreApplication.instance().exec()
     );
