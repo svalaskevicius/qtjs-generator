@@ -60,28 +60,28 @@ const char *currentJsFileName()
     return executionStack.back().filename.c_str();
 }
 
-std::string makeIncludePathAbsolute(std::string fileName)
+QString makeIncludePathAbsolute(QString fileName)
 {
-    if (QFileInfo(fileName.c_str()).isRelative()) {
+    if (QFileInfo(fileName).isRelative()) {
         QDir baseDir;
         if (executionStack.size()) {
             baseDir = QFileInfo(currentJsFileName()).absoluteDir();
         } else {
             baseDir = QDir::current();
         }
-        return baseDir.absoluteFilePath(fileName.c_str()).toLatin1().constData();
+        return baseDir.absoluteFilePath(fileName);
     }
     return fileName;
 }
 
-bool includeJsFile(std::string fileName) {
+bool includeJsFile(QString fileName) {
     if (!globalScriptRunnerInstance) {
         throw std::logic_error("a global script runner has to be registered before including js files");
     }
 
     fileName = makeIncludePathAbsolute(fileName);
-    executionStack.push_back({fileName});
-    int ret = globalScriptRunnerInstance->executeFile(fileName.c_str());
+    executionStack.push_back({fileName.toLatin1().constData()});
+    int ret = globalScriptRunnerInstance->executeFile(fileName.toLatin1().constData());
     executionStack.pop_back();
     return ret;
 }
