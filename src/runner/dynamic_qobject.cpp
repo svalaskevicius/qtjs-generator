@@ -309,33 +309,47 @@ std::map<int, cpgf::IScriptFunction *> DynamicMetaObjectBuilder::getCallbacks()
 
 DynamicMetaObjects::DynamicMetaObjects()
 {
-    lastId = 0;
+    nextId = 0;
     allocated = 10;
     metaObjects = (QMetaObject **) malloc(sizeof(QMetaObject *) * allocated);
 }
 
 DynamicMetaObjects::~DynamicMetaObjects()
 {
-    for (unsigned int i = 0; i < lastId; i++) {
-        free(metaObjects[i]);
+    dispose();
+}
+
+void DynamicMetaObjects::dispose()
+{
+    if (metaObjects) {
+        for (unsigned int i = 0; i < nextId; i++) {
+            free(metaObjects[i]);
+        }
+        free(metaObjects);
+        metaObjects = nullptr;
     }
-    free(metaObjects);
     for (auto ci : classesInfo) {
+        if (ci.second.initCallback) {
+            delete ci.second.initCallback;
+        }
         for (auto callback : ci.second.callbacks) {
             delete callback.second;
         }
         ci.second.callbacks.clear();
     }
+    classesInfo.clear();
+    nextId = 0;
+    allocated = 0;
 }
 
 unsigned int DynamicMetaObjects::finalizeBuild(DynamicMetaObjectBuilder &builder)
 {
-    if (lastId >= allocated) {
+    if (nextId >= allocated) {
         allocated *= 2;
         metaObjects = (QMetaObject **) realloc(metaObjects, sizeof(QMetaObject *) * allocated);
     }
-    unsigned int currentId = lastId;
-    lastId++;
+    unsigned int currentId = nextId;
+    nextId++;
 
     metaObjects[currentId] = builder.toMetaObject(currentId);
     auto initFnc = builder.getInitCallback();
@@ -364,7 +378,7 @@ unsigned int DynamicMetaObjects::finalizeBuild(DynamicMetaObjectBuilder &builder
 
 QMetaObject *DynamicMetaObjects::getMetaObject(unsigned int id) 
 {
-    if (id >= lastId) {
+    if (id >= nextId) {
         return nullptr;
     }
     return metaObjects[id];

@@ -66,7 +66,7 @@ class DynamicQObject;
 class DynamicMetaObjects {
 private:
     QMetaObject **metaObjects;
-    unsigned int lastId;
+    unsigned int nextId;
     unsigned int allocated;
 
     struct ClassInfo {
@@ -78,6 +78,8 @@ private:
 public:
     DynamicMetaObjects();
     ~DynamicMetaObjects();
+
+    void dispose();
 
     unsigned int finalizeBuild(DynamicMetaObjectBuilder &builder);
     QMetaObject *getMetaObject(unsigned int id);
