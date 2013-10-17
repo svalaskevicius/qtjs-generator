@@ -776,3 +776,12 @@
    ...
    obj:/usr/lib/x86_64-linux-gnu/libcairo.so.2.11200.14
 }
+{
+   llvm stuff
+   Memcheck:Leak
+   fun:_Znwm
+   fun:_ZN4llvm3sys14DynamicLibrary19getPermanentLibraryEPKcPSs
+   fun:_ZN4llvm13EngineBuilder6createEPNS_13TargetMachineE
+   fun:_ZN4llvm13EngineBuilder6createEv
+   ...
+}
