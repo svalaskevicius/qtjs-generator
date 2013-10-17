@@ -1,12 +1,12 @@
 {
-   <insert_a_suppression_name_here>
+   font related
    Memcheck:Addr8
    ...
    fun:FcFontMatch
    ...
 }
 {
-   <insert_a_suppression_name_here>
+   gtk stuff
    Memcheck:Leak
    ...
    fun:gtk_init_check
@@ -14,61 +14,61 @@
    ...
 }
 {
-   <insert_a_suppression_name_here>
+   gtk stuff
    Memcheck:Leak
    ...
    obj:/usr/lib/*/libgtk-x11-2.0.so*
    ...
 }
 {
-   <insert_a_suppression_name_here>
+   gtk stuff
    Memcheck:Leak
    ...
    obj:/usr/lib/*/libpango-1.0.so*
    ...
 }
 {
-   <insert_a_suppression_name_here>
+   gtk stuff
    Memcheck:Leak
    ...
    fun:g_main_context_*
    ...
 }
 {
-   <insert_a_suppression_name_here>
+   gtk stuff
    Memcheck:Leak
    ...
    obj:/usr/lib/*/libgconf-2.so*
 }
 {
-   <insert_a_suppression_name_here>
+   gtk stuff
    Memcheck:Leak
    ...
    obj:/usr/lib/*/libgdk-x11-2.0.so*
    ...
 }
 {
-   <insert_a_suppression_name_here>
+   gtk stuff
    Memcheck:Leak
    ...
    obj:/usr/lib/*/libatk-1.0.so*
    ...
 }
 {
-   <insert_a_suppression_name_here>
+   gtk stuff
    Memcheck:Leak
    ...
    obj:/usr/lib/*/libgobject-2.0.so*
    ...
 }
 {
-   <insert_a_suppression_name_here>
+   gtk stuff
    Memcheck:Leak
    ...
    obj:/usr/lib/*/gtk-2.0/2.*/engines/*
 }
 {
-   <insert_a_suppression_name_here>
+   gtk stuff
    Memcheck:Leak
    ...
    obj:/usr/lib/*/libpangocairo-1.0.so*
@@ -108,13 +108,13 @@
    fun:_dl_catch_error
 }
 {
-   <insert_a_suppression_name_here>
+   font related
    Memcheck:Leak
    ...
    fun:FcInit
 }
 {
-   <insert_a_suppression_name_here>
+   font related
    Memcheck:Leak
    ...
    fun:FcInitLoadConfig
@@ -750,4 +750,29 @@
    fun:_ZN12QApplicationC1ERiPPci
    ...
    fun:(below main)
+}
+{
+   including llvm
+   Memcheck:Leak
+   ...
+   fun:_ZN4llvm2cl4listIPKNS_8PassInfoEbNS_14PassNameParserEED1Ev
+   ...
+   fun:__run_exit_handlers
+   fun:exit
+   fun:(below main)
+}
+{
+   qt
+   Memcheck:Leak
+   ...
+   fun:xcb_flush
+   ...
+   fun:_ZN14QWidgetPrivate16syncBackingStoreEv
+   fun:_ZN7QWidget5eventEP6QEvent
+}
+{
+   cairo stuff
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libcairo.so.2.11200.14
 }
