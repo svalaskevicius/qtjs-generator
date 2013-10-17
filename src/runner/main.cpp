@@ -125,8 +125,10 @@ bool executeJs(const char *fileName)
     globalScriptRunnerInstance = nullptr;
 
     while (!v8::V8::IdleNotification()); // run GC
+
     clearV8DataPool();
     qtjs_binder::QtSignalConnectorBinder::reset();
+    qtjs_binder::dynamicMetaObjects.dispose();
 
     return ret;
 }
