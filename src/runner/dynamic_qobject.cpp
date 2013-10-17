@@ -317,9 +317,15 @@ DynamicMetaObjects::DynamicMetaObjects()
 DynamicMetaObjects::~DynamicMetaObjects()
 {
     for (unsigned int i = 0; i < lastId; i++) {
-        delete metaObjects[i];
+        free(metaObjects[i]);
     }
     free(metaObjects);
+    for (auto ci : classesInfo) {
+        for (auto callback : ci.second.callbacks) {
+            delete callback.second;
+        }
+        ci.second.callbacks.clear();
+    }
 }
 
 unsigned int DynamicMetaObjects::finalizeBuild(DynamicMetaObjectBuilder &builder)
@@ -371,7 +377,7 @@ void DynamicMetaObjects::callInit(size_t classIdx, DynamicQObject *obj)
         data[0] = 0;
         data[1] = obj;
         classesInfo[classIdx].initCallback->invoke(data);
-        delete data;
+        delete [] data;
     }
 }
 
