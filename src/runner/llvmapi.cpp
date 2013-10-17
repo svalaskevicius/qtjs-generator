@@ -51,14 +51,11 @@ void static_metacall(size_t classIdx, DynamicQObject *obj, QMetaObject::Call _c,
 
 struct LlvmpApiPrivate {
     llvm::LLVMContext *Context;
-    std::vector<llvm::Module*> Ms;
     std::vector<llvm::ExecutionEngine*> EEs;
 
     llvm::Module* createModule()
     {
-        auto M = new llvm::Module("main", *Context);
-        Ms.push_back(M);
-        return M;
+        return new llvm::Module("main", *Context);
     }
 
     llvm::ExecutionEngine* createEngine(llvm::Module *M)
@@ -81,15 +78,11 @@ LlvmApi::LlvmApi()
 LlvmApi::~LlvmApi()
 {
     for (auto EE : _p->EEs) {
-#pragma message "TODO: fix segfault (double free or corruption????)"
-     //   delete EE;
-    }
-    for (auto M : _p->Ms) {
-        delete M;
+        delete EE;
     }
     delete _p->Context;
-    llvm::llvm_shutdown();
     delete _p;
+    llvm::llvm_shutdown();
 }
 
 llvm::Function* generateFunctionWrapper(std::string name, llvm::Module *M, llvm::Type* retType, std::vector<llvm::Type*> args)
