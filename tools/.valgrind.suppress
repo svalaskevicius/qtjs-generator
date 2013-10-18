@@ -785,3 +785,49 @@
    fun:_ZN4llvm13EngineBuilder6createEv
    ...
 }
+{
+   QML
+   Memcheck:Leak
+   ...
+   obj:*/lib/libQt5Qml.so.5.1.0
+}
+{
+   QML
+   Memcheck:Leak
+   ...
+   obj:*/lib/libQt5Qml.so.5.1.0
+   fun:_ZN12QQmlDataBlob7tryDoneEv
+}
+{
+   QML
+   Memcheck:Leak
+   fun:_Znwm
+   obj:*/QtQuick/Dialogs/libdialogplugin.so
+   obj:*/lib/libQt5Qml.so.5.1.0
+   ...
+}
+{
+   qt gui
+   Memcheck:Leak
+   ...
+   obj:*/lib/libQt5Gui.so.5.1.0
+}
+{
+   qt find font
+   Memcheck:Leak
+   ...
+   fun:_ZN13QFontDatabase8findFontEiPK12QFontPrivateRK8QFontDefb
+   ...
+}
+{
+   qt quick
+   Memcheck:Leak
+   ...
+   obj:*/lib/libQt5Quick.so.5.1.0
+}
+{
+   qt quick layout plugin
+   Memcheck:Leak
+   ...
+   obj:*/qml/QtQuick/Layouts/libqquicklayoutsplugin.so
+}
