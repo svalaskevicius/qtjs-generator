@@ -12,3 +12,6 @@ SOURCES += $$files(../../metagen/build/QtQml/src/*.cpp)
 HEADERS += \
     ../../include/qtQml_cpgf_compat.h
 
+OTHER_FILES += \
+    ../../metagen/qtQml_cfg.js
+
