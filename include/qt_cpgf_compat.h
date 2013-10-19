@@ -20,3 +20,36 @@
     };
 
 
+#define NOT_CONVERTIBLE(TO) \
+template <typename From> \
+struct IsConvertible < From, TO, typename GEnableIfResult < \
+        GOrResult < \
+        GOrResult < \
+        IsSameType<From, bool>, \
+        IsSameType<From, short int>, \
+        IsSameType<From, short unsigned int>, \
+        IsSameType<From, int>, \
+        IsSameType<From, unsigned int>, \
+        IsSameType<From, long int>, \
+        IsSameType<From, long unsigned int>, \
+        IsSameType<From, long long int>, \
+        IsSameType<From, long long unsigned int> \
+        >, \
+        GOrResult < \
+        IsSameType<From, char>, \
+        IsSameType<From, signed char>, \
+        IsSameType<From, unsigned char>, \
+        IsSameType<From, wchar_t>, \
+        IsSameType<From, float>, \
+        IsSameType<From, double>, \
+        IsSameType<From, long double>, \
+        IsPointer<From> \
+        > \
+        > \
+        >::Result \
+        > { \
+    G_STATIC_CONSTANT(bool, Result = false); \
+}; \
+template <typename From> \
+struct IsConvertible < From, const TO &> : public IsConvertible < From, TO> {};
+

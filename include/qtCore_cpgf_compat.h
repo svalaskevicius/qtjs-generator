@@ -17,6 +17,7 @@
 #include <QLibrary>
 #include <QRegularExpression>
 #include <QLocale>
+#include <QUrlQuery>
 #include <QUrl>
 #include <QStandardPaths>
 
@@ -239,6 +240,22 @@ struct IsConvertible < From, const ::QVariant &, typename GEnableIfResult <
 };
 
 template <>
+struct IsConvertible < char *, const ::QString &>
+{
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+template <>
+struct IsConvertible < const char *, const ::QString &>
+{
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+template <>
+struct IsConvertible < const ::QString &, char *>
+{
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+
+template <>
 struct IsConvertible <const QDynamicMetaObjectData &, const cpgf::IObject &> {
     G_STATIC_CONSTANT(bool, Result = false);
 };
@@ -247,7 +264,6 @@ template <>
 struct IsConvertible <const QPostEventList &, const cpgf::IObject &> {
     G_STATIC_CONSTANT(bool, Result = false);
 };
-
 
 ENABLE_INT_TYPE_CONVERSION(QString::SectionFlags)
 ENABLE_INT_TYPE_CONVERSION(QEventLoop::ProcessEventsFlags)

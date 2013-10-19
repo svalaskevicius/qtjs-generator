@@ -13,33 +13,104 @@
 #include "v8.h"
 
 #include "register_meta_qtcore.h"
+#include "register_meta_qtgui.h"
 #include "register_meta_qtwidgets.h"
+#include "register_meta_qtqml.h"
 
 #include <QtCore/QObject>
 #include <QtCore/QSharedPointer>
 
-#include "QtSignalConnector.h"
+#include "dynamic_qobject.h"
+#include "qmlRegisterType.h"
+
+#include <QDebug>
+#include <QFileInfo>
+#include <QDir>
 
 using namespace cpgf;
 using namespace std;
 
 namespace {
 
+QStringList __programArguments;
 int __exitCode = 1;
+
+QStringList programArguments() 
+{
+    return __programArguments;
+}
+
 void setExitCode(int code)
 {
     __exitCode = code;
 }
 
+struct ExecutionStackNode {
+    std::string filename;
+};
+
+typedef std::vector<ExecutionStackNode> ExecutionStack;
+
+ExecutionStack executionStack;
+GScriptRunner *globalScriptRunnerInstance = nullptr;
+
+const char *currentJsFileName()
+{
+    assert(executionStack.size());
+    return executionStack.back().filename.c_str();
+}
+
+void invokeV8Gc()
+{
+    while (!v8::V8::IdleNotification());
+}
+
+QString makeIncludePathAbsolute(QString fileName)
+{
+    if (QFileInfo(fileName).isRelative()) {
+        QDir baseDir;
+        if (executionStack.size()) {
+            baseDir = QFileInfo(currentJsFileName()).absoluteDir();
+        } else {
+            baseDir = QDir::current();
+        }
+        return baseDir.absoluteFilePath(fileName);
+    }
+    return fileName;
+}
+
+bool includeJsFile(QString fileName) {
+    if (!globalScriptRunnerInstance) {
+        throw std::logic_error("a global script runner has to be registered before including js files");
+    }
+
+    fileName = makeIncludePathAbsolute(fileName);
+    executionStack.push_back({fileName.toLatin1().constData()});
+    int ret = globalScriptRunnerInstance->executeFile(fileName.toLatin1().constData());
+    executionStack.pop_back();
+    return ret;
+}
+
 void registerQt(GDefineMetaNamespace &define)
 {
     meta_qtcore::registerMain_QtCore(define);
+    meta_qtgui::registerMain_QtGui(define);
     meta_qtwidgets::registerMain_QtWidgets(define);
+    meta_qtqml::registerMain_QtQml(define);
+
+    define._class(qtjs_binder::createDynamicObjectsMetaClasses());
+    define._method("finalizeAndRegisterMetaObjectBuilderToQml", &qtjs_binder::finalizeAndRegisterMetaObjectBuilderToQml);
 
     qtjs_binder::QtSignalConnectorBinder::reset(new qtjs_binder::QtSignalConnector());
     define._method("connect", &qtjs_binder::QtSignalConnectorBinder::connect);
+    define._method("programArguments", &programArguments);
     define._method("setExitCode", &setExitCode);
+    define._method("include", &includeJsFile);
+    define._method("__fileName__", &currentJsFileName);
+    define._method("makeIncludePathAbsolute", &makeIncludePathAbsolute);
+    define._method("invokeV8Gc", &invokeV8Gc);
 }
+
 
 bool executeJs(const char *fileName)
 {
@@ -55,11 +126,15 @@ bool executeJs(const char *fileName)
     GScopedInterface<IMetaClass> metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())));
     scriptSetValue(scriptObject.get(), "qt", GScriptValue::fromClass(metaClass.get()));
 
-    bool ret = runner->executeFile(fileName);
+    globalScriptRunnerInstance = runner.get();
+    bool ret = includeJsFile(fileName);
+    globalScriptRunnerInstance = nullptr;
 
-    while (!v8::V8::IdleNotification()); // run GC
+    invokeV8Gc();
+
     clearV8DataPool();
     qtjs_binder::QtSignalConnectorBinder::reset();
+    qtjs_binder::dynamicMetaObjects.dispose();
 
     return ret;
 }
@@ -73,6 +148,9 @@ int main(int argc, char * argv[])
     const char * fileName = "main.js";
     if (argc > 1) {
         fileName = argv[1];
+    }
+    for (int i = 2; i < argc; i++) {
+        __programArguments.append(argv[i]);
     }
 
     if (!executeJs(fileName)) {
