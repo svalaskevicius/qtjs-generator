@@ -8,7 +8,14 @@ TARGET=qtjs_core
 
 QMAKE_CXXFLAGS += -DBUILDING_DLL
 
-SOURCES += QtSignalConnector.cpp
-
 SOURCES += $$files(../../metagen/build/QtCore/src/*.cpp) 
+
+HEADERS += \
+    ../../include/qt_cpgf_compat.h \
+    ../../include/ObjectLifeManagerAutoTree.h \
+    ../../include/_base.h \
+    ../../include/qtCore_cpgf_compat.h
+
+OTHER_FILES += \
+    ../../metagen/qtCore_cfg.js
 

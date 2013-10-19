@@ -5,6 +5,8 @@ INCLUDEPATH += \
     ../../lib/cpgf/include/ \
     ../../metagen/build/QtCore/include \
     ../../metagen/build/QtWidgets/include \
+    ../../metagen/build/QtQml/include \
+    ../../metagen/build/QtGui/include \
     ../../include
 
 
