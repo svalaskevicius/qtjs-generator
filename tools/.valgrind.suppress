@@ -831,3 +831,10 @@
    ...
    obj:*/qml/QtQuick/Layouts/libqquicklayoutsplugin.so
 }
+{
+   qt qlistdata::detach_grow
+   Memcheck:Leak
+   fun:malloc
+   fun:_ZN9QListData11detach_growEPii
+   ...
+}
