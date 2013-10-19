@@ -113,6 +113,9 @@ function processCallback(item, data)
       item.getTraits().setDefaultConstructorHidden(true);
       item.getTraits().setCopyConstructorHidden(true);
       break;
+    case "QQmlComponent::create":
+      item.setTransferResultOwnership(true);
+      break;
   }
   if (item.isMethod() || item.isConstructor() || item.isOperator()) {
     if (typeof item.getResultType !== 'undefined' && item.getResultType()) {
