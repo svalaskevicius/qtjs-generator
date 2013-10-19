@@ -16,3 +16,6 @@ HEADERS += \
     ../../include/_base.h \
     ../../include/qtCore_cpgf_compat.h
 
+OTHER_FILES += \
+    ../../metagen/qtCore_cfg.js
+

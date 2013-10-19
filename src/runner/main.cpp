@@ -73,7 +73,12 @@ const char *currentJsFileName()
     return executionStack.back().filename.c_str();
 }
 
-const char *makeIncludePathAbsolute(const char *fileName)
+void invokeV8Gc()
+{
+    while (!v8::V8::IdleNotification());
+}
+
+QString makeIncludePathAbsolute(QString fileName)
 {
     if (QFileInfo(fileName).isRelative()) {
         QDir baseDir;
@@ -82,19 +87,19 @@ const char *makeIncludePathAbsolute(const char *fileName)
         } else {
             baseDir = QDir::current();
         }
-        return baseDir.absoluteFilePath(fileName).toLatin1().constData();
+        return baseDir.absoluteFilePath(fileName);
     }
     return fileName;
 }
 
-bool includeJsFile(const char *fileName) {
+bool includeJsFile(QString fileName) {
     if (!globalScriptRunnerInstance) {
         throw std::logic_error("a global script runner has to be registered before including js files");
     }
 
     fileName = makeIncludePathAbsolute(fileName);
-    executionStack.push_back({fileName});
-    int ret = globalScriptRunnerInstance->executeFile(fileName);
+    executionStack.push_back({fileName.toLatin1().constData()});
+    int ret = globalScriptRunnerInstance->executeFile(fileName.toLatin1().constData());
     executionStack.pop_back();
     return ret;
 }
@@ -116,6 +121,7 @@ void registerQt(GDefineMetaNamespace &define)
     define._method("include", &includeJsFile);
     define._method("__fileName__", &currentJsFileName);
     define._method("makeIncludePathAbsolute", &makeIncludePathAbsolute);
+    define._method("invokeV8Gc", &invokeV8Gc);
 }
 
 struct CpgfBinder {
@@ -141,9 +147,10 @@ struct CpgfBinder {
     ~CpgfBinder()
     {
         globalScriptRunnerInstance = nullptr;
-        while (!v8::V8::IdleNotification()); // run GC
+        invokeV8Gc();
         clearV8DataPool();
         qtjs_binder::QtSignalConnectorBinder::reset();
+        qtjs_binder::dynamicMetaObjects.dispose();
     }
 };
 

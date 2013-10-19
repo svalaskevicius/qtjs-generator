@@ -1,7 +1,5 @@
 
-
 #include <dynamic_qobject.h>
-#include <QDebug>
 
 #include <QStringList>
 #include <QDate>
@@ -18,6 +16,7 @@
 #include <QPointF>
 #include <QUrl>
 #include <QEasingCurve>
+#include <QLocale>
 
 #include <private/qmetaobjectbuilder_p.h>
 
@@ -165,7 +164,6 @@ bool QtSignalConnector::connectToSignal(QObject *obj, const char *signal, cpgf::
     QByteArray normalised_signal = QMetaObject::normalizedSignature(signal);
     int signal_idx = obj->metaObject()->indexOfSignal(normalised_signal);
     if (signal_idx < 0) {
-        qDebug() << "no signal found: " << normalised_signal;
         return false;
     }
     QMetaObject::connect(
@@ -272,7 +270,6 @@ void DynamicMetaObjectBuilder::addSignal(const char * signature, QStringList arg
     for (auto name : argumentNames) {
         arguments.push_back(name.toLatin1());
     }
-    qDebug() << "adding signal "<<signature<<arguments;
     _p->builder.addSignal(signature).setParameterNames(arguments);
 }
 
@@ -312,27 +309,47 @@ std::map<int, cpgf::IScriptFunction *> DynamicMetaObjectBuilder::getCallbacks()
 
 DynamicMetaObjects::DynamicMetaObjects()
 {
-    lastId = 0;
+    nextId = 0;
     allocated = 10;
     metaObjects = (QMetaObject **) malloc(sizeof(QMetaObject *) * allocated);
 }
 
 DynamicMetaObjects::~DynamicMetaObjects()
 {
-    for (unsigned int i = 0; i < lastId; i++) {
-        delete metaObjects[i];
+    dispose();
+}
+
+void DynamicMetaObjects::dispose()
+{
+    if (metaObjects) {
+        for (unsigned int i = 0; i < nextId; i++) {
+            free(metaObjects[i]);
+        }
+        free(metaObjects);
+        metaObjects = nullptr;
     }
-    free(metaObjects);
+    for (auto ci : classesInfo) {
+        if (ci.second.initCallback) {
+            delete ci.second.initCallback;
+        }
+        for (auto callback : ci.second.callbacks) {
+            delete callback.second;
+        }
+        ci.second.callbacks.clear();
+    }
+    classesInfo.clear();
+    nextId = 0;
+    allocated = 0;
 }
 
 unsigned int DynamicMetaObjects::finalizeBuild(DynamicMetaObjectBuilder &builder)
 {
-    if (lastId >= allocated) {
+    if (nextId >= allocated) {
         allocated *= 2;
         metaObjects = (QMetaObject **) realloc(metaObjects, sizeof(QMetaObject *) * allocated);
     }
-    unsigned int currentId = lastId;
-    lastId++;
+    unsigned int currentId = nextId;
+    nextId++;
 
     metaObjects[currentId] = builder.toMetaObject(currentId);
     auto initFnc = builder.getInitCallback();
@@ -348,7 +365,6 @@ unsigned int DynamicMetaObjects::finalizeBuild(DynamicMetaObjectBuilder &builder
     }
     classesInfo[currentId].callbacks.clear();
     for (auto it : builder.getCallbacks()) {
-        qDebug()<<"register callback "<<currentId<< " " << it.first;
         classesInfo[currentId].callbacks[it.first] =
                 new CallInfo({
                                  QVector<int>({qMetaTypeId<DynamicQObject>()}) << metaMethodParamTypeIds( metaObjects[currentId]->method(it.first) ),
@@ -362,7 +378,7 @@ unsigned int DynamicMetaObjects::finalizeBuild(DynamicMetaObjectBuilder &builder
 
 QMetaObject *DynamicMetaObjects::getMetaObject(unsigned int id) 
 {
-    if (id >= lastId) {
+    if (id >= nextId) {
         return nullptr;
     }
     return metaObjects[id];
@@ -375,7 +391,7 @@ void DynamicMetaObjects::callInit(size_t classIdx, DynamicQObject *obj)
         data[0] = 0;
         data[1] = obj;
         classesInfo[classIdx].initCallback->invoke(data);
-        delete data;
+        delete [] data;
     }
 }
 
@@ -383,10 +399,8 @@ void DynamicMetaObjects::metacall(size_t classIdx, DynamicQObject *obj, QMetaObj
 {
     auto metaObject = getMetaObject(classIdx);
     assert(metaObject);
-#pragma message "remove debug lines"
 
     if (_c == QMetaObject::InvokeMetaMethod) {
-        qDebug() << "static invoke mete method: "<<_id;
         assert(classesInfo[classIdx].callbacks.find(_id) != classesInfo[classIdx].callbacks.end());
         int paramCnt = classesInfo[classIdx].callbacks[_id]->parameterTypeIds.count();
         void **data = new void*[paramCnt+2];
@@ -413,7 +427,6 @@ DynamicMetaObjects dynamicMetaObjects;
 void DynamicQObject::__setClassIdx(int classIdx) 
 {
     this->classIdx = classIdx;
-    qDebug() << "calling init with; "<<(void*)this;
     dynamicMetaObjects.callInit(classIdx, this);
 }
 
@@ -427,27 +440,23 @@ const QMetaObject * DynamicQObject::metaObject() const
 int DynamicQObject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     int origId = _id;
-    qDebug() << "orig id: "<<_id;
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0) {
         return _id;
     }
-#pragma message "remove debug lines"
+
     if (_c == QMetaObject::InvokeMetaMethod) {
         dynamicMetaObjects.metacall(classIdx, this, _c, _id, _a);
         return -1;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        qDebug() << "register method argument metatype: "<<_id;
         *reinterpret_cast<int*>(_a[0]) = -1;
         return -1;
     }
 #ifndef QT_NO_PROPERTIES
     else if (_c == QMetaObject::ReadProperty) {
-        qDebug() << "read property: "<<origId;
         void *_v = _a[0];
         auto prop = metaObject()->property(origId);
-        QVariant data = propertyStorage[_id];
-#pragma message "TODO: try out the void * functionality of QVariant instead of the switch"
+        QVariant & data = propertyStorage[_id];
         switch (prop.type()) {
         case QVariant::String:
             *reinterpret_cast< QString*>(_v) = data.toString();
@@ -542,22 +551,17 @@ int DynamicQObject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         }
         return -1;
     } else if (_c == QMetaObject::WriteProperty) {
-        qDebug() << "write property: "<<origId;
         void *_v = _a[0];
 
         auto prop = metaObject()->property(origId);
-        qDebug() << "prop type: "<<prop.type()<<" name: "<<prop.name();
         switch (prop.type()) {
         case QVariant::String:
-            qDebug()<<"writing a string: "<<*reinterpret_cast< QString*>(_v);
             propertyStorage[_id] = *reinterpret_cast< QString*>(_v);
             break;
         case QVariant::Char:
             propertyStorage[_id] = *reinterpret_cast< QChar*>(_v);
             break;
         case QVariant::StringList:
-            qDebug()<<"writing a string list: "<<reinterpret_cast< QVariant*>(_v)->toStringList();
-            qDebug()<<"writing a string list: "<<*reinterpret_cast< QStringList*>(_v);
             propertyStorage[_id] = *reinterpret_cast< QStringList*>(_v);
             break;
         case QVariant::Map:
@@ -644,7 +648,6 @@ int DynamicQObject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         }
         if (prop.hasNotifySignal()) {
             int signal = prop.notifySignalIndex();
-            qDebug() << "emitting notify signal: "<< signal;
             QMetaObject::activate(this, signal, 0);
         }
         return -1;
@@ -700,7 +703,6 @@ void DynamicQObject::emitSignal(char *signature,
         break;
         default: throw std::logic_error("unexpected paramCount");
     }
-    qDebug() << "emit signal: "<<idx<<" "<<arg1.toBool();
     QMetaObject::activate(this, idx, argv);
     delete argv;
 }
