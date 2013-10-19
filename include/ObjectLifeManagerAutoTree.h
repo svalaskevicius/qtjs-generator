@@ -35,7 +35,7 @@ protected:
         memorySet().insert(object);
     }
 
-    virtual void G_API_CC releaseObject(void * object) {
+    virtual void G_API_CC releaseObject(void *) {
     }
 
     virtual void G_API_CC freeObject(void * object, cpgf::IMetaClass *) {
