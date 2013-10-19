@@ -838,3 +838,9 @@
    fun:_ZN9QListData11detach_growEPii
    ...
 }
+{
+   intel video driver
+   Memcheck:Cond
+   obj:*/dri/i965_dri.so
+   ...
+}
