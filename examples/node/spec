@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd $(dirname "$0")
+
+../../tools/invoke_built_qtjs.sh  node_modules/mocha/bin/mocha
+
