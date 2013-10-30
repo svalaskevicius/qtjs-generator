@@ -42,7 +42,6 @@ SOURCES +=  ../../lib/node/src/fs_event_wrap.cc \
             ../../lib/node/src/node_constants.cc \
             ../../lib/node/src/node_extensions.cc \
             ../../lib/node/src/node_file.cc \
-            ../../lib/node/src/node_crypto.cc \
             ../../lib/node/src/node_http_parser.cc \
             ../../lib/node/src/node_javascript.cc \
             ../../lib/node/src/node_os.cc \
@@ -52,6 +51,7 @@ SOURCES +=  ../../lib/node/src/fs_event_wrap.cc \
             ../../lib/node/src/node_zlib.cc \
             ../../lib/node/src/pipe_wrap.cc \
             ../../lib/node/src/signal_wrap.cc \
+            ../../lib/node/src/string_bytes.cc \
             ../../lib/node/src/stream_wrap.cc \
             ../../lib/node/src/slab_allocator.cc \
             ../../lib/node/src/tcp_wrap.cc \
@@ -59,7 +59,8 @@ SOURCES +=  ../../lib/node/src/fs_event_wrap.cc \
             ../../lib/node/src/tty_wrap.cc \
             ../../lib/node/src/process_wrap.cc \
             ../../lib/node/src/v8_typed_array.cc \
-            ../../lib/node/src/udp_wrap.cc
+            ../../lib/node/src/udp_wrap.cc \
+            ../../lib/node/src/node_crypto.cc
 
 
 nodeconfig.target = ../../lib/node/out/Makefile
