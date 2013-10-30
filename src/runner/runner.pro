@@ -14,7 +14,7 @@ SOURCES += main.cpp dynamic_qobject.cpp \
     llvmapi.cpp
 
 LIBPATH += ../core ../widgets ../qml ../gui /usr/lib/llvm-3.2/lib ../../lib/node/out/Release/
-LIBS += -lqtjs_core -lqtjs_widgets -lqtjs_qml -lqtjs_gui -lLLVM-3.2 -luv -lcares -lhttp_parser -lchrome_zlib -lz
+LIBS += -lqtjs_core -lqtjs_widgets -lqtjs_qml -lqtjs_gui -lLLVM-3.2 -luv -lcares -lhttp_parser -lchrome_zlib -lz -lopenssl
 unix:LIBS += -ldl -lrt
 
 HEADERS += \
@@ -22,12 +22,14 @@ HEADERS += \
     dynamic_qobject.h \
     llvmapi.h
 
-QMAKE_CXXFLAGS += -DNODE_WANT_INTERNALS
-DEFINES += "ARCH=\"\\\"$$QMAKE_HOST.arch\\\"\""
+QMAKE_CXXFLAGS += -pthread -fno-strict-aliasing -fno-tree-vrp
+QMAKE_CXXFLAGS_RELEASE += -Wno-unused-parameter
+DEFINES += "ARCH=\"\\\"$$QMAKE_HOST.arch\\\"\"" HAVE_OPENSSL=1 NODE_WANT_INTERNALS=1
 
 unix:DEFINES += __POSIX__ "PLATFORM=\"\\\"unix\\\"\""
 win32:DEFINES += PLATFORM=win32 FD_SETSIZE=1024 _UNICODE=1  HAVE_PERFCTR
 
+INCLUDEPATH += ../../lib/node/deps/openssl/openssl/include
 INCLUDEPATH += ../../lib/node/deps/uv/include/
 INCLUDEPATH += ../../lib/node/deps/http_parser/
 INCLUDEPATH += ../../lib/node/out/Release/obj/gen/
@@ -40,6 +42,7 @@ SOURCES +=  ../../lib/node/src/fs_event_wrap.cc \
             ../../lib/node/src/node_constants.cc \
             ../../lib/node/src/node_extensions.cc \
             ../../lib/node/src/node_file.cc \
+            ../../lib/node/src/node_crypto.cc \
             ../../lib/node/src/node_http_parser.cc \
             ../../lib/node/src/node_javascript.cc \
             ../../lib/node/src/node_os.cc \
@@ -83,10 +86,16 @@ libzlib.target = ../../lib/node/out/Release/libchrome_zlib.a
 libzlib.commands = cd ../../lib/node/out/ && make zlib
 libzlib.depends = ../../lib/node/out/Makefile
 
-QMAKE_EXTRA_TARGETS += node_natives nodeconfig node_natives libuv libcares libhttp_parser libzlib
+libopenssl.target = ../../lib/node/out/Release/libopenssl.a
+libopenssl.commands = cd ../../lib/node/out/ && make openssl
+libopenssl.depends = ../../lib/node/out/Makefile
+
+
+QMAKE_EXTRA_TARGETS += node_natives nodeconfig node_natives libuv libcares libhttp_parser libzlib libopenssl
 
 PRE_TARGETDEPS +=   ../../lib/node/out/Release/obj/gen/node_natives.h \
                     ../../lib/node/out/Release/libuv.a \
                     ../../lib/node/out/Release/libcares.a \
                     ../../lib/node/out/Release/libhttp_parser.a \
-                    ../../lib/node/out/Release/libchrome_zlib.a
+                    ../../lib/node/out/Release/libchrome_zlib.a \
+                    ../../lib/node/out/Release/libopenssl.a
