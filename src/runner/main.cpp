@@ -45,13 +45,7 @@ void RunAtExit();
 
 namespace {
 
-QStringList __programArguments;
 int __exitCode = 1;
-
-QStringList programArguments() 
-{
-    return __programArguments;
-}
 
 void setExitCode(int code)
 {
@@ -116,7 +110,6 @@ void registerQt(GDefineMetaNamespace &define)
 
     qtjs_binder::QtSignalConnectorBinder::reset(new qtjs_binder::QtSignalConnector());
     define._method("connect", &qtjs_binder::QtSignalConnectorBinder::connect);
-    define._method("programArguments", &programArguments);
     define._method("setExitCode", &setExitCode);
     define._method("include", &includeJsFile);
     define._method("__fileName__", &currentJsFileName);
@@ -202,14 +195,6 @@ int main(int argc, char * argv[])
     if ((argc > 1) && (!strcmp("-v", argv[1]))) {
         cout << "v8 version: "<<v8::V8::GetVersion() << endl;
         return 0;
-    }
-
-    const char * fileName = "main.js";
-    if (argc > 1) {
-        fileName = argv[1];
-    }
-    for (int i = 2; i < argc; i++) {
-        __programArguments.append(argv[i]);
     }
 
     // This needs to run *before* V8::Initialize()
