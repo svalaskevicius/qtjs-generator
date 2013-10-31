@@ -29,8 +29,7 @@
 #include <QDir>
 #include <QTimer>
 
-
-#include "uv.h"
+#include "eventdispatcherlibuv.h"
 
 using namespace cpgf;
 using namespace std;
@@ -181,6 +180,8 @@ static char **copy_argv(int argc, char **argv) {
 
 } // namespace
 
+
+
 int main(int argc, char * argv[])
 {
     // Hack aroung with the argv pointer. Used for process.title = "blah".
@@ -190,6 +191,7 @@ int main(int argc, char * argv[])
     // that are passed into it.
     char **argv_copy = copy_argv(argc, argv);
 
+    QCoreApplication::setEventDispatcher(new EventDispatcherLibUv());
     QApplication app(argc, argv);
 
     if ((argc > 1) && (!strcmp("-v", argv[1]))) {
@@ -216,24 +218,16 @@ int main(int argc, char * argv[])
 
         CpgfBinder cpgfBinder(context);
 
-        QTimer nodeLoopTimer;
         bool appHadQuitRequest = false;
-        bool finalisingNodeLoop = false;
-        QObject::connect(&app, &QCoreApplication::aboutToQuit, [&appHadQuitRequest]{ appHadQuitRequest = true; });
-        QObject::connect(&nodeLoopTimer, &QTimer::timeout, [&finalisingNodeLoop, &app]{
-            int ret = uv_run(uv_default_loop(), UV_RUN_NOWAIT);
-            if (!ret && finalisingNodeLoop) {
-                app.quit();
-            }
+        QObject::connect(&app, &QCoreApplication::aboutToQuit, [&appHadQuitRequest]{
+            appHadQuitRequest = true;
         });
-        nodeLoopTimer.start(100);
 
         // Create all the objects, load modules, do everything.
         // so your next reading stop should be node::Load()!
         node::Load(process_l);
 
         if (!appHadQuitRequest) {
-            finalisingNodeLoop = true;
             app.exec();
         }
 
