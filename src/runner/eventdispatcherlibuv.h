@@ -2,15 +2,17 @@
 #define EVENTDISPATCHERLIBUV_H
 
 #include <QAbstractEventDispatcher>
+#include <QCoreApplication>
 
 #include "uv.h"
-
+#include <QDebug>
 
 class EventDispatcherLibUv : public QAbstractEventDispatcher {
     Q_OBJECT
 
     bool hasPending;
 public:
+    bool finalize;
     explicit EventDispatcherLibUv(QObject* parent = 0);
     virtual ~EventDispatcherLibUv(void) {}
 
@@ -25,7 +27,15 @@ public:
     }
 
     virtual bool processEvents(QEventLoop::ProcessEventsFlags flags) {
+        emit awake();
+        QCoreApplication::sendPostedEvents();
         hasPending = uv_run(uv_default_loop(), UV_RUN_ONCE);
+        qDebug() << "prc ev" << hasPending;
+        if (!hasPending && finalize) {
+            QCoreApplication::instance()->quit();
+        }
+        return hasPending;
+
     }
     virtual bool hasPendingEvents(void) {
         return hasPending;
