@@ -11,7 +11,8 @@ CONFIG += debug
 
 SOURCES += main.cpp dynamic_qobject.cpp \
     qmlRegisterType.cpp \
-    llvmapi.cpp
+    llvmapi.cpp \
+    eventdispatcherlibuv.cpp
 
 LIBPATH += ../core ../widgets ../qml ../gui /usr/lib/llvm-3.2/lib ../../lib/node/out/Release/
 LIBS += -lqtjs_core -lqtjs_widgets -lqtjs_qml -lqtjs_gui -lLLVM-3.2 -luv -lcares -lhttp_parser -lchrome_zlib -lz -lopenssl
@@ -20,7 +21,8 @@ unix:LIBS += -ldl -lrt
 HEADERS += \
     qmlRegisterType.h \
     dynamic_qobject.h \
-    llvmapi.h
+    llvmapi.h \
+    eventdispatcherlibuv.h
 
 QMAKE_CXXFLAGS += -pthread -fno-strict-aliasing -fno-tree-vrp
 QMAKE_CXXFLAGS_RELEASE += -Wno-unused-parameter
