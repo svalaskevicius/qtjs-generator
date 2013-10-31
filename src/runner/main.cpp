@@ -191,7 +191,8 @@ int main(int argc, char * argv[])
     // that are passed into it.
     char **argv_copy = copy_argv(argc, argv);
 
-    QCoreApplication::setEventDispatcher(new EventDispatcherLibUv());
+    auto ev_dispatcher = new EventDispatcherLibUv();
+    QCoreApplication::setEventDispatcher(ev_dispatcher);
     QApplication app(argc, argv);
 
     if ((argc > 1) && (!strcmp("-v", argv[1]))) {
@@ -228,6 +229,7 @@ int main(int argc, char * argv[])
         node::Load(process_l);
 
         if (!appHadQuitRequest) {
+            ev_dispatcher->finalize = true;
             app.exec();
         }
 
