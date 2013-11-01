@@ -2,10 +2,6 @@
 #define EVENTDISPATCHERLIBUV_H
 
 #include <QAbstractEventDispatcher>
-#include <QCoreApplication>
-
-#include "uv.h"
-#include <QDebug>
 
 class EventDispatcherLibUv : public QAbstractEventDispatcher {
     Q_OBJECT
@@ -14,59 +10,23 @@ class EventDispatcherLibUv : public QAbstractEventDispatcher {
 public:
     bool finalize;
     explicit EventDispatcherLibUv(QObject* parent = 0);
-    virtual ~EventDispatcherLibUv(void) {}
+    virtual ~EventDispatcherLibUv(void);
 
-    virtual void wakeUp(void) {
-        Q_UNIMPLEMENTED();
-    }
-    virtual void interrupt(void) {
-        Q_UNIMPLEMENTED();
-    }
-    virtual void flush(void) {
-        Q_UNIMPLEMENTED();
-    }
+    virtual void wakeUp(void);
+    virtual void interrupt(void);
+    virtual void flush(void);
 
-    virtual bool processEvents(QEventLoop::ProcessEventsFlags flags) {
-        emit awake();
-        QCoreApplication::sendPostedEvents();
-        hasPending = uv_run(uv_default_loop(), UV_RUN_ONCE);
-        qDebug() << "prc ev" << hasPending;
-        if (!hasPending && finalize) {
-            QCoreApplication::instance()->quit();
-        }
-        return hasPending;
+    virtual bool processEvents(QEventLoop::ProcessEventsFlags flags);
+    virtual bool hasPendingEvents(void);
 
-    }
-    virtual bool hasPendingEvents(void) {
-        return hasPending;
-    }
+    virtual void registerSocketNotifier(QSocketNotifier* notifier);
+    virtual void unregisterSocketNotifier(QSocketNotifier* notifier);
 
-    virtual void registerSocketNotifier(QSocketNotifier* notifier) {
-        Q_UNIMPLEMENTED();
-    }
-    virtual void unregisterSocketNotifier(QSocketNotifier* notifier) {
-        Q_UNIMPLEMENTED();
-    }
-
-    virtual void registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject* object) {
-        Q_UNIMPLEMENTED();
-    }
-    virtual bool unregisterTimer(int timerId) {
-        Q_UNIMPLEMENTED();
-        return false;
-    }
-    virtual bool unregisterTimers(QObject* object) {
-        Q_UNIMPLEMENTED();
-        return false;
-    }
-    virtual QList<QAbstractEventDispatcher::TimerInfo> registeredTimers(QObject* object) const {
-        Q_UNIMPLEMENTED();
-        return QList<QAbstractEventDispatcher::TimerInfo>();
-    }
-    virtual int remainingTime(int timerId) {
-        Q_UNIMPLEMENTED();
-        return 0;
-    }
+    virtual void registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject* object);
+    virtual bool unregisterTimer(int timerId);
+    virtual bool unregisterTimers(QObject* object);
+    virtual QList<QAbstractEventDispatcher::TimerInfo> registeredTimers(QObject* object) const;
+    virtual int remainingTime(int timerId);
 
 private:
     Q_DISABLE_COPY(EventDispatcherLibUv)
