@@ -30,6 +30,7 @@
 #include <QTimer>
 
 #include "eventdispatcherlibuv.h"
+#include "uv.h"
 
 using namespace cpgf;
 using namespace std;
