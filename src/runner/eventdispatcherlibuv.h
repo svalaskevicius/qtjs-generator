@@ -61,6 +61,7 @@ public:
     }
     virtual QList<QAbstractEventDispatcher::TimerInfo> registeredTimers(QObject* object) const {
         Q_UNIMPLEMENTED();
+        return QList<QAbstractEventDispatcher::TimerInfo>();
     }
     virtual int remainingTime(int timerId) {
         Q_UNIMPLEMENTED();
