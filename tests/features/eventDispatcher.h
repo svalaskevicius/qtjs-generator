@@ -1,16 +1,14 @@
 
-#include <igloo/igloo_alt.h>
-//#include <CppSpec.h>
+#include <catch.hpp>
 
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QCoreApplication>
 
-using namespace std;
-using namespace igloo;
+using namespace Catch;
 
-Describe(event_dispatcher) {
-    It(dispatches_QSocketNotifier_events) {
+TEST_CASE("libuv based event dispatcher") {
+    SECTION("it dispatches QSocketNotifier events") {
 
         int argc = 0;
         char *argv[1] = {0};
@@ -21,12 +19,14 @@ Describe(event_dispatcher) {
             QTcpSocket *socket = server.nextPendingConnection();
             QObject::connect(socket, &QTcpSocket::readyRead, [socket]{
                 int bytes = socket->bytesAvailable();
-                Assert::That( bytes , Is().EqualTo(4));
+
+                REQUIRE( bytes == 4);
+
                 auto data = socket->readAll();
                 socket->write(data);
             });
         });
-        Assert::That( server.listen() , Is().EqualTo(true));
+        REQUIRE( server.listen() );
 
         bool processed = false;
 
@@ -48,6 +48,6 @@ Describe(event_dispatcher) {
             app.processEvents();
         }
 
-        Assert::That( result.constData() , Is().EqualTo("test"));
+        REQUIRE_THAT( result.constData(), Equals("test") );
     }
-};
+}
