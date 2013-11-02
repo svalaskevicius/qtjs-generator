@@ -8,7 +8,7 @@
 
 
 struct SocketInfo {
-    SocketInfo() : notifier({nullptr, nullptr}), registered(false), started(false) {}
+    SocketInfo() : notifier{nullptr, nullptr}, registered(false), started(false) {}
     uv_poll_t uvHandle;
     QSocketNotifier* notifier[2]; // read, write
     bool registered;
