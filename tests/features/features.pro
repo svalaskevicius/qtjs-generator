@@ -1,7 +1,7 @@
 
 include (../../src/runner/runner.pri)
 
-TARGET = spec
+TARGET = features
 CONFIG   += console
 CONFIG   -= app_bundle
 
@@ -20,3 +20,6 @@ libcppspec.commands = mkdir -p $${ROOT}/tests/lib/cppspec/build && cd $${ROOT}/t
 QMAKE_EXTRA_TARGETS += libcppspec
 
 PRE_TARGETDEPS += $${ROOT}/tests/lib/cppspec/build/lib/libCppSpec.so
+
+HEADERS += \
+    eventDispatcher.h
