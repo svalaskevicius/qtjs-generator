@@ -1,5 +1,5 @@
 
-#include <dynamic_qobject.h>
+#include "dynamic_qobject.h"
 
 #include <QStringList>
 #include <QDate>

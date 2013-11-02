@@ -1,13 +1,16 @@
 
 QT += qml v8-private qml-private
 
+ROOT = $${PWD}/../
+BUILD = $$shadowed($$PWD)/../
+
 INCLUDEPATH += \
-    ../../lib/cpgf/include/ \
-    ../../metagen/build/QtCore/include \
-    ../../metagen/build/QtWidgets/include \
-    ../../metagen/build/QtQml/include \
-    ../../metagen/build/QtGui/include \
-    ../../include
+    $${ROOT}/lib/cpgf/include/ \
+    $${ROOT}/metagen/build/QtCore/include \
+    $${ROOT}/metagen/build/QtWidgets/include \
+    $${ROOT}/metagen/build/QtQml/include \
+    $${ROOT}/metagen/build/QtGui/include \
+    $${ROOT}/include
 
 
 CONFIG += c++11 exceptions release
@@ -28,6 +31,6 @@ QMAKE_LFLAGS_RELEASE += -fvisibility=hidden -fvisibility-inlines-hidden -s
 # QMAKE_CXXFLAGS += -fexceptions -ftemplate-backtrace-limit=0 -g -O0
 
 
-LIBPATH += ../../lib/cpgf/lib/
+LIBPATH += $${ROOT}/lib/cpgf/lib/
 LIBS += -lcpgf
 

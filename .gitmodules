@@ -1,3 +1,6 @@
 [submodule "lib/node"]
 	path = lib/node
 	url = https://github.com/joyent/node.git
+[submodule "spec/lib/igloo"]
+	path = spec/lib/igloo
+	url = https://github.com/joakimkarlsson/igloo.git
