@@ -10,6 +10,6 @@ echo "running specs.."
 
 echo ""
 echo "running features"
-"$TOPDIR/build/tests/features/features" --output=color || exit 1
+"$TOPDIR/build/tests/features/features"
 
 
