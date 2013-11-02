@@ -13,7 +13,7 @@ INCLUDEPATH += \
     $${ROOT}/include
 
 
-CONFIG += c++11 exceptions release
+CONFIG += c++11 exceptions
 
 QMAKE_CXXFLAGS += -shared-libgcc
 QMAKE_LFLAGS += -shared-libgcc
