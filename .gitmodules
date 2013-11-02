@@ -1,9 +1,9 @@
 [submodule "lib/node"]
 	path = lib/node
 	url = https://github.com/joyent/node.git
-[submodule "spec/lib/igloo"]
-	path = spec/lib/igloo
+[submodule "tests/lib/igloo"]
+	path = tests/lib/igloo
 	url = https://github.com/joakimkarlsson/igloo.git
-[submodule "spec/lib/cppspec"]
-	path = spec/lib/cppspec
+[submodule "tests/lib/cppspec"]
+	path = tests/lib/cppspec
 	url = https://github.com/tpuronen/cppspec.git
