@@ -2,10 +2,13 @@
 include (../../src/runner/runner.pri)
 
 TARGET = features
-CONFIG   += console
+CONFIG   += console network
 CONFIG   -= app_bundle
 
 TEMPLATE = app
+
+CONFIG -= release
+CONFIG += debug
 
 INCLUDEPATH += $${ROOT}/tests/lib/igloo $${ROOT}/tests/lib/cppspec/include $${ROOT}/tests/lib/turtle
 LIBPATH += $${ROOT}/tests/lib/cppspec/build/lib/
