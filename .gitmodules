@@ -4,3 +4,6 @@
 [submodule "spec/lib/igloo"]
 	path = spec/lib/igloo
 	url = https://github.com/joakimkarlsson/igloo.git
+[submodule "spec/lib/cppspec"]
+	path = spec/lib/cppspec
+	url = https://github.com/tpuronen/cppspec.git
