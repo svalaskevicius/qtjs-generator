@@ -5,14 +5,19 @@
 #include <QTcpSocket>
 #include <QCoreApplication>
 
-using namespace Catch;
+#include <chrono>
+
+#include "../src/runner/eventdispatcherlibuv.h"
 
 TEST_CASE("libuv based event dispatcher") {
-    SECTION("it dispatches QSocketNotifier events") {
 
-        int argc = 0;
-        char *argv[1] = {0};
-        QCoreApplication app(argc, argv, 0);
+    auto ev_dispatcher = new EventDispatcherLibUv();
+    QCoreApplication::setEventDispatcher(ev_dispatcher);
+    int argc = 0;
+    char *argv[1] = {0};
+    QCoreApplication app(argc, argv, 0);
+
+    SECTION("it dispatches QSocketNotifier events") {
 
         QTcpServer server;
         QObject::connect(&server, &QTcpServer::newConnection, [&server]{
@@ -44,8 +49,12 @@ TEST_CASE("libuv based event dispatcher") {
         client.connectToHost(QHostAddress("127.0.0.1"), server.serverPort());
 
 
+        using namespace std::chrono;
+        steady_clock::time_point t1 = steady_clock::now();
         while (!processed) {
             app.processEvents();
+            steady_clock::time_point t2 = steady_clock::now();
+            REQUIRE (duration_cast<seconds>(t2-t1).count() < 1);
         }
 
         REQUIRE_THAT( result.constData(), Equals("test") );
