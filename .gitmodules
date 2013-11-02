@@ -1,12 +1,6 @@
 [submodule "lib/node"]
 	path = lib/node
 	url = https://github.com/joyent/node.git
-[submodule "tests/lib/igloo"]
-	path = tests/lib/igloo
-	url = https://github.com/joakimkarlsson/igloo.git
-[submodule "tests/lib/cppspec"]
-	path = tests/lib/cppspec
-	url = https://github.com/tpuronen/cppspec.git
 [submodule "tests/lib/catch"]
 	path = tests/lib/catch
 	url = https://github.com/philsquared/Catch.git
