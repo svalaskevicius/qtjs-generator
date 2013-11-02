@@ -10,7 +10,7 @@ TEMPLATE = app
 CONFIG -= release
 CONFIG += debug
 
-INCLUDEPATH += $${ROOT}/tests/lib/catch/single_include $${ROOT}/tests/lib/cppspec/include $${ROOT}/tests/lib/turtle
+INCLUDEPATH += $${ROOT}/tests/lib/catch/single_include $${ROOT}/tests/lib/turtle
 
 SOURCES += \
     main.cpp

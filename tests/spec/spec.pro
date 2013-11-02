@@ -7,16 +7,8 @@ CONFIG   -= app_bundle
 
 TEMPLATE = app
 
-INCLUDEPATH += $${ROOT}/tests/lib/igloo $${ROOT}/tests/lib/cppspec/include $${ROOT}/tests/lib/turtle
-LIBPATH += $${ROOT}/tests/lib/cppspec/build/lib/
-LIBS += -lCppSpec
+INCLUDEPATH += $${ROOT}/tests/lib/catch/single_include $${ROOT}/tests/lib/turtle
 
 SOURCES += \
     main.cpp
 
-libcppspec.target = $${ROOT}/tests/lib/cppspec/build/lib/libCppSpec.so
-libcppspec.commands = mkdir -p $${ROOT}/tests/lib/cppspec/build && cd $${ROOT}/tests/lib/cppspec/build && cmake ../../cppspec-notests/ && make
-
-QMAKE_EXTRA_TARGETS += libcppspec
-
-PRE_TARGETDEPS += $${ROOT}/tests/lib/cppspec/build/lib/libCppSpec.so
