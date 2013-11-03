@@ -6,8 +6,14 @@
 
 #include <memory>
 #include <map>
+#include <functional>
 
 namespace qtjs {
+
+struct SocketCallbacks {
+    std::function<void()> readAvailable;
+    std::function<void()> writeAvailable;
+};
 
 void uv_socket_watcher(uv_poll_t* handle, int status, int events);
 
