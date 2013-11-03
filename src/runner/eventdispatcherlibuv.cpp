@@ -237,18 +237,21 @@ void EventDispatcherLibUv::unregisterSocketNotifier(QSocketNotifier* notifier)
 
 void EventDispatcherLibUv::registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject* object)
 {
-    impl->registerTimer(timerId, interval, [timerId, object]{
+    impl->registerTimer(timerId, interval, [timerId, object, this] {
         QTimerEvent e(timerId);
         QCoreApplication::sendEvent(object, &e);
+        clock_gettime( CLOCK_REALTIME, &timerInvokations[timerId] );
     });
     timers[object].append(QAbstractEventDispatcher::TimerInfo(timerId, interval, timerType));
     timerLookup[timerId] = object;
+    clock_gettime( CLOCK_REALTIME, &timerInvokations[timerId] );
 }
 bool EventDispatcherLibUv::unregisterTimer(int timerId) {
     bool ret = impl->unregisterTimer(timerId);
     if (ret) {
         untrackObjectTimer(timerLookup[timerId], timerId);
         timerLookup.remove(timerId);
+        timerInvokations.remove(timerId);
     }
     return ret;
 }
@@ -278,7 +281,18 @@ QList<QAbstractEventDispatcher::TimerInfo> EventDispatcherLibUv::registeredTimer
     return timers[object];
 }
 int EventDispatcherLibUv::remainingTime(int timerId) {
-    Q_UNIMPLEMENTED();
+    struct timespec now;
+    clock_gettime( CLOCK_REALTIME, &now );
+    struct timespec last = timerInvokations[timerId];
+    u_int64_t diff = (now.tv_sec - last.tv_sec)*1000000000 + now.tv_nsec - last.tv_nsec;
+    if (diff > 0) {
+        uint msecs = diff / 1000000;
+        for (auto info : timers[timerLookup[timerId]]) {
+            if (info.timerId == timerId) {
+                return info.interval - msecs;
+            }
+        }
+    }
     return 0;
 }
 
