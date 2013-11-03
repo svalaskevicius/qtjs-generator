@@ -33,6 +33,7 @@ public:
 private:
     std::unique_ptr<LibuvApi> api;
     std::map<int, uv_poll_t> socketWatchers;
+    uv_poll_t &findOrCreateWatcher(int fd);
 };
 
 }
