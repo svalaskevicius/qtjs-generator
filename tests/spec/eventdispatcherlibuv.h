@@ -49,7 +49,7 @@ struct PollMocker {
 
 }
 
-TEST_CASE("libuv based event dispatcher")
+TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
 {
     SECTION("registerSocketNotifier initialises libuv handle for the given read fd")
     {
@@ -119,6 +119,7 @@ TEST_CASE("libuv based event dispatcher")
     {
         int callbackInvoked = 0;
         qtjs::SocketCallbacks callbacks = {
+            UV_READABLE,
             [&callbackInvoked]{ callbackInvoked++; },
             []{ FAIL("unexpected call"); }
         };
@@ -135,6 +136,7 @@ TEST_CASE("libuv based event dispatcher")
     {
         int callbackInvoked = 0;
         qtjs::SocketCallbacks callbacks = {
+            UV_WRITABLE,
             []{ FAIL("unexpected call"); },
             [&callbackInvoked]{ callbackInvoked++; }
         };
@@ -203,4 +205,30 @@ TEST_CASE("libuv based event dispatcher")
         REQUIRE( callbackInvoked == 2 );
     }
 
+    SECTION("unregisterSocketNotifier only unregisters the requested events type")
+    {
+        MockedLibuvApi *api = new MockedLibuvApi();
+        PollMocker pollMocker;
+        pollMocker.mockInit(api, 20, UV_WRITABLE);
+        pollMocker.mockInit(api, 20, UV_READABLE);
+
+        qtjs::EventDispatcherLibUvPrivate dispatcher(api);
+        dispatcher.registerSocketNotifier(20, QSocketNotifier::Write, []{});
+        dispatcher.registerSocketNotifier(20, QSocketNotifier::Read, []{});
+
+        pollMocker.checkHandles();
+
+        MOCK_VERIFY(api->uv_poll_init);
+        MOCK_RESET(api->uv_poll_init);
+        MOCK_VERIFY(api->uv_poll_start);
+        MOCK_RESET(api->uv_poll_start);
+
+        pollMocker.mockStop(api);
+        MOCK_EXPECT( api->uv_poll_start ).once()
+                .with( mock::retrieve(pollMocker.startedHandle), mock::equal(UV_READABLE), mock::equal(&qtjs::uv_socket_watcher) )
+                .returns(0);
+        dispatcher.unregisterSocketNotifier(20, QSocketNotifier::Write);
+
+        pollMocker.checkHandles();
+    }
 }

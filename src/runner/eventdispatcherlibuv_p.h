@@ -11,6 +11,7 @@
 namespace qtjs {
 
 struct SocketCallbacks {
+    int eventMask;
     std::function<void()> readAvailable;
     std::function<void()> writeAvailable;
 };
