@@ -33,6 +33,12 @@ int LibuvApi::uv_poll_start(uv_poll_t* handle, int events, uv_poll_cb cb)
     return ::uv_poll_start(handle, events, cb);
 }
 
+int LibuvApi::uv_poll_stop(uv_poll_t* handle)
+{
+    return ::uv_poll_stop(handle);
+}
+
+
 EventDispatcherLibUvPrivate::EventDispatcherLibUvPrivate(LibuvApi *api) : api(api)
 {
     if (!this->api) {
@@ -43,11 +49,21 @@ void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier
 {
     int uvType = translateQSocketNotifierTypeToUv(type);
     if (uvType < 0) {
-        qWarning("unsupported notifier type");
+        qWarning() << "unsupported notifier type" << type;
+        return;
     }
-    uv_poll_t fdWatcher;
+    uv_poll_t &fdWatcher = socketWatchers[fd];
     api->uv_poll_init(uv_default_loop(), &fdWatcher, fd);
     api->uv_poll_start(&fdWatcher, uvType, &qtjs::uv_socket_watcher);
+}
+
+void EventDispatcherLibUvPrivate::unregisterSocketNotifier(int fd, QSocketNotifier::Type type)
+{
+    auto it = socketWatchers.find(fd);
+    if (socketWatchers.end() != it) {
+        uv_poll_t &fdWatcher = socketWatchers[fd];
+        api->uv_poll_stop(&fdWatcher);
+    }
 }
 
 
