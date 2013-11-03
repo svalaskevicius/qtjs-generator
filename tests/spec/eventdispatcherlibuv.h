@@ -8,8 +8,9 @@
 
 
 MOCK_BASE_CLASS( MockedLibuvApi, qtjs::LibuvApi ) {
-    MOCK_METHOD(uv_poll_init, 3);
-    MOCK_METHOD(uv_poll_start, 3);
+    MOCK_METHOD(uv_poll_init, 3)
+    MOCK_METHOD(uv_poll_start, 3)
+    MOCK_METHOD(uv_poll_stop, 1)
 };
 
 namespace {
@@ -59,4 +60,34 @@ TEST_CASE("libuv based event dispatcher")
         pollMocker.checkHandles();
     }
 
+    SECTION("unregisterSocketNotifier stops uv poller for a registered handle")
+    {
+        MockedLibuvApi *api = new MockedLibuvApi();
+        pollInitMocker pollMocker(api, 20, UV_WRITABLE);
+
+        uv_poll_t *usedHandle;
+
+        MOCK_EXPECT( api->uv_poll_stop ).once()
+                .with( mock::retrieve(usedHandle) )
+                .returns(0);
+
+        qtjs::EventDispatcherLibUvPrivate dispatcher(api);
+        dispatcher.registerSocketNotifier(20, QSocketNotifier::Write);
+        dispatcher.unregisterSocketNotifier(20, QSocketNotifier::Write);
+
+        pollMocker.checkHandles();
+        REQUIRE( usedHandle );
+        REQUIRE( usedHandle == pollMocker.registeredHandle );
+    }
+
+
+    SECTION("unregisterSocketNotifier does not call libuv if the socket was not registered")
+    {
+        MockedLibuvApi *api = new MockedLibuvApi();
+
+        MOCK_EXPECT( api->uv_poll_stop ).never();
+
+        qtjs::EventDispatcherLibUvPrivate dispatcher(api);
+        dispatcher.unregisterSocketNotifier(20, QSocketNotifier::Write);
+    }
 }
