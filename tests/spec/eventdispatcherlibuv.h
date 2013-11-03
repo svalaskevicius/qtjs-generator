@@ -269,6 +269,23 @@ TEST_CASE("EventDispatcherLibUv supports QTimer registration")
         REQUIRE( callbackInvoked == 1 );
     }
 
+    SECTION("registerTimer initialises timeout callback")
+    {
+        int callbackInvoked = 0;
+        MockedLibuvApi *api = new MockedLibuvApi();
+        TimerMocker mocker(api);
+        mocker.mockInit();
+        mocker.mockStart(30);
+
+        qtjs::EventDispatcherLibUvPrivate dispatcher(api);
+        dispatcher.registerTimer(83, 30, [&callbackInvoked]{ callbackInvoked++; });
+
+        mocker.checkHandles();
+        REQUIRE( mocker.startedHandle->data );
+        ((qtjs::TimerData *)mocker.startedHandle->data)->timeout();
+        REQUIRE( callbackInvoked == 1 );
+    }
+
 }
 
 
