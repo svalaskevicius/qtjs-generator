@@ -104,16 +104,25 @@ void EventDispatcherLibUvPrivate::unregisterSocketNotifier(int fd, QSocketNotifi
     auto it = socketWatchers.find(fd);
     if (socketWatchers.end() != it) {
         uv_poll_t &fdWatcher = it->second;
-        api->uv_poll_stop(&fdWatcher);
-        SocketCallbacks *callbacks = ((SocketCallbacks *)fdWatcher.data);
-        callbacks->eventMask &= ~uvType;
-        if (!callbacks->eventMask) {
+        if (unregisterPollWatcher(fdWatcher, uvType)) {
             socketWatchers.erase(it);
-        } else {
-            api->uv_poll_start(&fdWatcher, callbacks->eventMask, &qtjs::uv_socket_watcher);
         }
     }
 }
+
+bool EventDispatcherLibUvPrivate::unregisterPollWatcher(uv_poll_t &fdWatcher, unsigned int eventMask)
+{
+    api->uv_poll_stop(&fdWatcher);
+    SocketCallbacks *callbacks = (SocketCallbacks *)fdWatcher.data;
+    callbacks->eventMask &= ~eventMask;
+    if (!callbacks->eventMask) {
+        delete callbacks;
+        return true;
+    }
+    api->uv_poll_start(&fdWatcher, callbacks->eventMask, &qtjs::uv_socket_watcher);
+    return false;
+}
+
 
 void EventDispatcherLibUvPrivate::registerTimer(int timerId, int interval, std::function<void()> callback)
 {
