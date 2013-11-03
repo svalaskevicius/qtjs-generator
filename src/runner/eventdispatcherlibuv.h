@@ -3,8 +3,15 @@
 
 #include <QAbstractEventDispatcher>
 
+#include <memory>
+
+namespace qtjs {
+
+class EventDispatcherLibUvPrivate;
+
 class EventDispatcherLibUv : public QAbstractEventDispatcher {
     Q_OBJECT
+    std::unique_ptr<EventDispatcherLibUvPrivate> impl;
 
     bool hasPending;
 public:
@@ -32,5 +39,6 @@ private:
     Q_DISABLE_COPY(EventDispatcherLibUv)
 };
 
+}
 
 #endif // EVENTDISPATCHERLIBUV_H
