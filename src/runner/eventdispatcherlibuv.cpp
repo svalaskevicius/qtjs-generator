@@ -52,15 +52,7 @@ void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier
         qWarning() << "unsupported notifier type" << type;
         return;
     }
-    auto it = socketWatchers.find(fd);
-    if (socketWatchers.end() == it) {
-        socketWatchers.insert(std::make_pair(fd, uv_poll_t()));
-        it = socketWatchers.find(fd);
-        Q_ASSERT(socketWatchers.end() != it);
-        it->second.data = new SocketCallbacks();
-        api->uv_poll_init(uv_default_loop(), &it->second, fd);
-    }
-    uv_poll_t &fdWatcher = it->second;
+    uv_poll_t &fdWatcher = findOrCreateWatcher(fd);
 
     SocketCallbacks *callbacks = ((SocketCallbacks *)fdWatcher.data);
     callbacks->eventMask |= uvType;
@@ -71,6 +63,19 @@ void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier
         callbacks->writeAvailable = callback;
     }
     api->uv_poll_start(&fdWatcher, uvType, &qtjs::uv_socket_watcher);
+}
+
+uv_poll_t &EventDispatcherLibUvPrivate::findOrCreateWatcher(int fd)
+{
+    auto it = socketWatchers.find(fd);
+    if (socketWatchers.end() == it) {
+        socketWatchers.insert(std::make_pair(fd, uv_poll_t()));
+        it = socketWatchers.find(fd);
+        Q_ASSERT(socketWatchers.end() != it);
+        it->second.data = new SocketCallbacks();
+        api->uv_poll_init(uv_default_loop(), &it->second, fd);
+    }
+    return it->second;
 }
 
 void EventDispatcherLibUvPrivate::unregisterSocketNotifier(int fd, QSocketNotifier::Type type)

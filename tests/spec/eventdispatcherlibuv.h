@@ -55,6 +55,21 @@ struct PollMocker {
             REQUIRE( registeredHandle == stoppedHandle );
         }
     }
+
+    void verifyAndReset(MockedLibuvApi *api) {
+        MOCK_VERIFY(api->uv_poll_init);
+        MOCK_RESET(api->uv_poll_init);
+        if (checkStart) {
+            MOCK_VERIFY(api->uv_poll_start);
+            MOCK_RESET(api->uv_poll_start);
+            checkStart = false;
+        }
+        if (checkStop) {
+            MOCK_VERIFY(api->uv_poll_stop);
+            MOCK_RESET(api->uv_poll_stop);
+            checkStop = false;
+        }
+    }
 };
 
 }
@@ -227,14 +242,11 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
         dispatcher.registerSocketNotifier(20, QSocketNotifier::Read, []{});
 
         pollMocker.checkHandles();
-
-        MOCK_VERIFY(api->uv_poll_init);
-        MOCK_RESET(api->uv_poll_init);
-        MOCK_VERIFY(api->uv_poll_start);
-        MOCK_RESET(api->uv_poll_start);
+        pollMocker.verifyAndReset(api);
 
         pollMocker.mockStop(api);
         pollMocker.mockStart(api, UV_READABLE);
+
         dispatcher.unregisterSocketNotifier(20, QSocketNotifier::Write);
 
         pollMocker.checkHandles();
