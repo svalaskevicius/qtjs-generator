@@ -54,6 +54,23 @@ TEST_CASE("libuv based event dispatcher") {
 
         REQUIRE ( processed );
     }
+
+    SECTION("it supports QTimer singleShot events") {
+        unsigned long long count = 0;
+        bool processed = false;
+        QTimer timer;
+        QObject::connect(&timer, &QTimer::timeout, [&count, &processed]{
+            if (++count >= 1) {
+                processed = true;
+            }
+        });
+        timer.setSingleShot(true);
+        timer.start(0);
+        processAppEvents(app, processed, 1);
+        REQUIRE ( processed );
+        app.processEvents();
+        REQUIRE ( count == 1 );
+    }
 }
 
 namespace {
