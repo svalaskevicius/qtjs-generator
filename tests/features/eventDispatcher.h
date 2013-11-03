@@ -4,6 +4,7 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QCoreApplication>
+#include <QTimer>
 
 #include <chrono>
 
@@ -37,6 +38,21 @@ TEST_CASE("libuv based event dispatcher") {
         processAppEvents(app, processed, 1);
 
         REQUIRE_THAT( result.constData(), Equals("test") );
+    }
+
+    SECTION("it dispatches QTimerEvent events") {
+        unsigned long long count = 0;
+        bool processed = false;
+        QTimer timer;
+        QObject::connect(&timer, &QTimer::timeout, [&count, &processed]{
+            if (++count >= 10) {
+                processed = true;
+            }
+        });
+        timer.start(2);
+        processAppEvents(app, processed, 1);
+
+        REQUIRE ( processed );
     }
 }
 
