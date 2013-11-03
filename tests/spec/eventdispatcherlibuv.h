@@ -253,6 +253,22 @@ TEST_CASE("EventDispatcherLibUv supports QTimer registration")
 
         mocker.checkHandles();
     }
+
+    SECTION("timer watcher invokes timeout callback")
+    {
+        int callbackInvoked = 0;
+        qtjs::TimerData data = {
+            [&callbackInvoked]{ callbackInvoked++; }
+        };
+
+        uv_timer_t request;
+        request.data = &data;
+
+        qtjs::uv_timer_watcher(&request, 0);
+
+        REQUIRE( callbackInvoked == 1 );
+    }
+
 }
 
 

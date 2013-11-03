@@ -149,6 +149,10 @@ void uv_socket_watcher(uv_poll_t* req, int status, int events)
 
 void uv_timer_watcher(uv_timer_t* handle, int status)
 {
+    TimerData *data = (TimerData *) handle->data;
+    if (data) {
+        data->timeout();
+    }
 }
 
 EventDispatcherLibUv::EventDispatcherLibUv(QObject *parent) :
@@ -194,12 +198,15 @@ void EventDispatcherLibUv::unregisterSocketNotifier(QSocketNotifier* notifier)
     impl->unregisterSocketNotifier(notifier->socket(), notifier->type());
 }
 
-void EventDispatcherLibUv::registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject* object) {
-    Q_UNIMPLEMENTED();
+void EventDispatcherLibUv::registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject* object)
+{
+    impl->registerTimer(timerId, interval, [timerId, object]{
+        QTimerEvent e(timerId);
+        QCoreApplication::sendEvent(object, &e);
+    });
 }
 bool EventDispatcherLibUv::unregisterTimer(int timerId) {
-    Q_UNIMPLEMENTED();
-    return false;
+    return impl->unregisterTimer(timerId);
 }
 bool EventDispatcherLibUv::unregisterTimers(QObject* object) {
     Q_UNIMPLEMENTED();
