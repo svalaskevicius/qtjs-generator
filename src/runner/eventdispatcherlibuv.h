@@ -2,6 +2,7 @@
 #define EVENTDISPATCHERLIBUV_H
 
 #include <QAbstractEventDispatcher>
+#include <QMap>
 
 #include <memory>
 
@@ -36,7 +37,11 @@ public:
     virtual int remainingTime(int timerId);
 
 private:
+    QMap<void *, QList<QAbstractEventDispatcher::TimerInfo>> timers;
+    QMap<int, void *> timerLookup;
     Q_DISABLE_COPY(EventDispatcherLibUv)
+
+    void untrackObjectTimer(void *obj, int id);
 };
 
 }
