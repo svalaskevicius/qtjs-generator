@@ -168,81 +168,10 @@ bool EventDispatcherLibUv::hasPendingEvents(void) {
 
 void EventDispatcherLibUv::registerSocketNotifier(QSocketNotifier* notifier)
 {
-//    int fd = notifier->socket();
-//    SocketInfo &info = sockets[fd];
-//    if (info.registered) {
-//        if (info.started) {
-//            uv_poll_stop(&info.uvHandle);
-//            info.started = false;
-//        }
-//    } else {
-//        uv_poll_init(uv_default_loop(), &info.uvHandle, fd);
-//        info.registered = true;
-//    }
 
-//    if (notifier->type() == QSocketNotifier::Read) {
-//        info.notifier[0] = notifier;
-//    } else if (notifier->type() == QSocketNotifier::Write) {
-//        info.notifier[1] = notifier;
-//    }
-
-//    int events = 0;
-//    if (info.notifier[0]) {
-//        events |= UV_READABLE;
-//    }
-//    if (info.notifier[1]) {
-//        events |= UV_WRITABLE;
-//    }
-
-//    if (events) {
-//        socketLookup[&info.uvHandle] = &info;
-//        uv_poll_start(&info.uvHandle, events, uv_socket_watcher);
-//        info.started = true;
-//    } else {
-//        socketLookup.erase(&info.uvHandle);
-//        sockets.erase(fd);
-//    }
 }
 void EventDispatcherLibUv::unregisterSocketNotifier(QSocketNotifier* notifier)
 {
-//    int fd = notifier->socket();
-//    auto it = sockets.find(fd);
-//    if (sockets.end() == it) {
-//        qWarning() << "socket is not registered";
-//        return;
-//    }
-//    SocketInfo &info = it->second;
-//    if (!info.registered) {
-//        qWarning() << "socket is not registered";
-//        return;
-//    }
-//    if (info.started) {
-//        uv_poll_stop(&info.uvHandle);
-//        info.started = false;
-//    }
-
-//    if ((notifier->type() == QSocketNotifier::Read) && info.notifier[0]) {
-//        info.notifier[0] = 0;
-//    } else if ((notifier->type() == QSocketNotifier::Write) && info.notifier[1]) {
-//        info.notifier[0] = 0;
-//    }
-
-//    int events = 0;
-//    if (info.notifier[0]) {
-//        events |= UV_READABLE;
-//    }
-//    if (info.notifier[1]) {
-//        events |= UV_WRITABLE;
-//    }
-
-//    if (events) {
-//        socketLookup[&info.uvHandle] = &info;
-//        uv_poll_start(&info.uvHandle, events, uv_socket_watcher);
-//        info.started = true;
-//    } else {
-//        socketLookup.erase(&info.uvHandle);
-//        sockets.erase(fd);
-//    }
 }
 
 void EventDispatcherLibUv::registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject* object) {
