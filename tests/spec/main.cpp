@@ -7,32 +7,53 @@ struct turtle_catch_policy
     static Result abort()
     {
         FAIL("ABORT");
+        return 0;
     }
 
     template< typename Context >
     static void fail( const char* message, const Context&, const char* file = "unknown location", int line = 0 )
     {
-        Catch::AssertionInfo assertionInfo( "FAIL", ::Catch::SourceLineInfo( file, static_cast<std::size_t>( line ) ), "", Catch::ResultDisposition::Normal );
-        if( Catch::ResultAction::Value internal_catch_action = Catch::getResultCapture().acceptExpression( Catch::ExpressionResultBuilder( Catch::ResultWas::ExplicitFailure ) << message, assertionInfo )  ) {
-            if( internal_catch_action & Catch::ResultAction::Debug ) BreakIntoDebugger();
-            if( internal_catch_action & Catch::ResultAction::Abort ) throw Catch::TestFailureException();
-            if( !Catch::shouldContinueOnFailure( Catch::ResultDisposition::Normal ) ) throw Catch::TestFailureException();
-        }
+        processAssertionInfo(
+            Catch::AssertionInfo(
+                "FAIL",
+                ::Catch::SourceLineInfo( file, static_cast<std::size_t>( line ) ),
+                "",
+                Catch::ResultDisposition::Normal
+            ),
+            Catch::ResultWas::ExplicitFailure,
+            message
+        );
     }
     template< typename Context >
-    static void call( const Context& context, const char* file, int line )
+    static void call( const Context&, const char* file, int line )
     {
-        Catch::AssertionInfo assertionInfo( "CALL MOCK", ::Catch::SourceLineInfo( file, static_cast<std::size_t>( line ) ), "", Catch::ResultDisposition::Normal );
-        if( Catch::ResultAction::Value internal_catch_action = Catch::getResultCapture().acceptExpression( Catch::ExpressionResultBuilder( Catch::ResultWas::Ok ) << "call mock", assertionInfo )  ) {
-            if( internal_catch_action & Catch::ResultAction::Debug ) BreakIntoDebugger();
-            if( internal_catch_action & Catch::ResultAction::Abort ) throw Catch::TestFailureException();
-            if( !Catch::shouldContinueOnFailure( Catch::ResultDisposition::Normal ) ) throw Catch::TestFailureException();
-        }
+        processAssertionInfo(
+            Catch::AssertionInfo(
+                "CALL MOCK",
+                ::Catch::SourceLineInfo( file, static_cast<std::size_t>( line ) ),
+                "",
+                Catch::ResultDisposition::Normal
+            ),
+            Catch::ResultWas::Ok,
+            "call mock"
+        );
     }
     static void pass( const char* file, int line )
     {
-        Catch::AssertionInfo assertionInfo( "PASS", ::Catch::SourceLineInfo( file, static_cast<std::size_t>( line ) ), "", Catch::ResultDisposition::Normal );
-        if( Catch::ResultAction::Value internal_catch_action = Catch::getResultCapture().acceptExpression( Catch::ExpressionResultBuilder( Catch::ResultWas::Ok ), assertionInfo )  ) {
+        processAssertionInfo(
+            Catch::AssertionInfo(
+                "PASS",
+                ::Catch::SourceLineInfo( file, static_cast<std::size_t>( line ) ),
+                "",
+                Catch::ResultDisposition::Normal
+            ),
+            Catch::ResultWas::Ok
+        );
+    }
+
+    static void processAssertionInfo(Catch::AssertionInfo assertionInfo, Catch::ResultWas::OfType resultType, std::string message = "")
+    {
+        if( Catch::ResultAction::Value internal_catch_action = Catch::getResultCapture().acceptExpression( Catch::ExpressionResultBuilder( resultType ) << message, assertionInfo )  ) {
             if( internal_catch_action & Catch::ResultAction::Debug ) BreakIntoDebugger();
             if( internal_catch_action & Catch::ResultAction::Abort ) throw Catch::TestFailureException();
             if( !Catch::shouldContinueOnFailure( Catch::ResultDisposition::Normal ) ) throw Catch::TestFailureException();
