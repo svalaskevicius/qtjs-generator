@@ -241,17 +241,41 @@ void EventDispatcherLibUv::registerTimer(int timerId, int interval, Qt::TimerTyp
         QTimerEvent e(timerId);
         QCoreApplication::sendEvent(object, &e);
     });
+    timers[object].append(QAbstractEventDispatcher::TimerInfo(timerId, interval, timerType));
+    timerLookup[timerId] = object;
 }
 bool EventDispatcherLibUv::unregisterTimer(int timerId) {
-    return impl->unregisterTimer(timerId);
+    bool ret = impl->unregisterTimer(timerId);
+    if (ret) {
+        untrackObjectTimer(timerLookup[timerId], timerId);
+        timerLookup.remove(timerId);
+    }
+    return ret;
 }
+void EventDispatcherLibUv::untrackObjectTimer(void *obj, int id)
+{
+    QMutableListIterator<QAbstractEventDispatcher::TimerInfo> it(timers[obj]);
+    while (it.hasNext()) {
+        if (it.next().timerId == id) {
+            it.remove();
+            if (timers[obj].empty()) {
+                timers.remove(obj);
+            }
+            return;
+        }
+    }
+}
+
 bool EventDispatcherLibUv::unregisterTimers(QObject* object) {
-    Q_UNIMPLEMENTED();
-    return false;
+    bool ret = true;
+    for (auto info : registeredTimers(object)) {
+        ret &= unregisterTimer(info.timerId);
+    }
+    return ret;
 }
-QList<QAbstractEventDispatcher::TimerInfo> EventDispatcherLibUv::registeredTimers(QObject* object) const {
-    Q_UNIMPLEMENTED();
-    return QList<QAbstractEventDispatcher::TimerInfo>();
+QList<QAbstractEventDispatcher::TimerInfo> EventDispatcherLibUv::registeredTimers(QObject* object) const
+{
+    return timers[object];
 }
 int EventDispatcherLibUv::remainingTime(int timerId) {
     Q_UNIMPLEMENTED();
