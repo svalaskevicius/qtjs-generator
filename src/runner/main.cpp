@@ -192,7 +192,7 @@ int main(int argc, char * argv[])
     // that are passed into it.
     char **argv_copy = copy_argv(argc, argv);
 
-    auto ev_dispatcher = new EventDispatcherLibUv();
+    auto ev_dispatcher = new qtjs::EventDispatcherLibUv();
     QCoreApplication::setEventDispatcher(ev_dispatcher);
     QApplication app(argc, argv);
 

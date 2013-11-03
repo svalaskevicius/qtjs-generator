@@ -52,10 +52,14 @@ void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier
         qWarning() << "unsupported notifier type" << type;
         return;
     }
-    uv_poll_t &fdWatcher = socketWatchers[fd];
-    if (!fdWatcher.data) {
-        fdWatcher.data = new SocketCallbacks();
+    auto it = socketWatchers.find(fd);
+    if (socketWatchers.end() == it) {
+        socketWatchers.insert(std::make_pair(fd, uv_poll_t()));
+        it = socketWatchers.find(fd);
+        Q_ASSERT(socketWatchers.end() != it);
+        it->second.data = new SocketCallbacks();
     }
+    uv_poll_t &fdWatcher = it->second;
     SocketCallbacks *callbacks = ((SocketCallbacks *)fdWatcher.data);
     if (uvType == UV_READABLE) {
         callbacks->readAvailable = callback;
@@ -92,51 +96,10 @@ void uv_socket_watcher(uv_poll_t* req, int status, int events)
     }
 }
 
-}
 
-
-struct SocketInfo {
-    SocketInfo() : notifier{nullptr, nullptr}, registered(false), started(false) {}
-    uv_poll_t uvHandle;
-    QSocketNotifier* notifier[2]; // read, write
-    bool registered;
-    bool started;
-};
-std::map<int, SocketInfo> sockets;
-std::map<uv_poll_t*, SocketInfo*> socketLookup;
-
-namespace {
-
-//void uv_socket_watcher(uv_poll_t* handle, int status, int events)
-//{
-//    auto it = socketLookup.find(handle);
-//    if (socketLookup.end() == it) {
-//        qWarning() << "unknown socket to notify";
-//        return;
-//    }
-
-//    qDebug() << status;
-//    SocketInfo &info = *(it->second);
-//    QEvent event(QEvent::SockAct);
-//    if (events & UV_READABLE) {
-//        qDebug() << "prc ev R";
-
-//        Q_ASSERT(info.notifier[0]);
-//        QCoreApplication::sendEvent(info.notifier[0], &event);
-//    }
-//    if (events & UV_WRITABLE) {
-//        qDebug() << "prc ev W";
-
-
-//        Q_ASSERT(info.notifier[1]);
-//        QCoreApplication::sendEvent(info.notifier[1], &event);
-//    }
-//}
-
-}
 
 EventDispatcherLibUv::EventDispatcherLibUv(QObject *parent) :
-    QAbstractEventDispatcher(parent), hasPending(true), finalize(false)
+    QAbstractEventDispatcher(parent), impl(new EventDispatcherLibUvPrivate()), hasPending(true), finalize(false)
 {
 }
 
@@ -168,7 +131,10 @@ bool EventDispatcherLibUv::hasPendingEvents(void) {
 
 void EventDispatcherLibUv::registerSocketNotifier(QSocketNotifier* notifier)
 {
-
+    impl->registerSocketNotifier(notifier->socket(), notifier->type(), [notifier]{
+        QEvent event(QEvent::SockAct);
+        QCoreApplication::sendEvent(notifier, &event);
+    });
 }
 void EventDispatcherLibUv::unregisterSocketNotifier(QSocketNotifier* notifier)
 {
@@ -192,4 +158,6 @@ QList<QAbstractEventDispatcher::TimerInfo> EventDispatcherLibUv::registeredTimer
 int EventDispatcherLibUv::remainingTime(int timerId) {
     Q_UNIMPLEMENTED();
     return 0;
+}
+
 }

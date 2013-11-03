@@ -19,7 +19,7 @@ void processAppEvents(QCoreApplication &app, bool &stopFlag, int timeoutSeconds)
 
 TEST_CASE("libuv based event dispatcher") {
 
-    auto ev_dispatcher = new EventDispatcherLibUv();
+    auto ev_dispatcher = new qtjs::EventDispatcherLibUv();
     QCoreApplication::setEventDispatcher(ev_dispatcher);
     int argc = 0;
     char *argv[1] = {0};
@@ -76,7 +76,9 @@ void processAppEvents(QCoreApplication &app, bool &stopFlag, int timeoutSeconds)
     while (!stopFlag) {
         app.processEvents();
         steady_clock::time_point t2 = steady_clock::now();
-        REQUIRE (duration_cast<seconds>(t2-t1).count() < timeoutSeconds);
+        if (duration_cast<seconds>(t2-t1).count() >= timeoutSeconds) {
+            FAIL("timeout reached");
+        }
     }
 }
 
