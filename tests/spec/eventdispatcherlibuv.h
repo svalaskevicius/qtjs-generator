@@ -27,8 +27,9 @@ struct PollMocker {
     PollMocker(MockedLibuvApi *api);
     void mockInit(int fd);
     void mockStart(int type);
-    void mockInitAndStart(int fd, int type);
-    void mockStop();
+    void mockInitAndExecute(int fd, int type);
+    void mockStartAndStop(int type);
+    void mockStop(bool implicit = false);
     void checkHandles();
     void verifyAndReset();
 };
@@ -54,7 +55,7 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
     {
         MockedLibuvApi *api = new MockedLibuvApi();
         PollMocker pollMocker(api);
-        pollMocker.mockInitAndStart(19, UV_READABLE);
+        pollMocker.mockInitAndExecute(19, UV_READABLE);
 
         qtjs::EventDispatcherLibUvPrivate dispatcher(api);
         dispatcher.registerSocketNotifier(19, QSocketNotifier::Read, []{});
@@ -66,7 +67,7 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
     {
         MockedLibuvApi *api = new MockedLibuvApi();
         PollMocker pollMocker(api);
-        pollMocker.mockInitAndStart(20, UV_WRITABLE);
+        pollMocker.mockInitAndExecute(20, UV_WRITABLE);
 
         qtjs::EventDispatcherLibUvPrivate dispatcher(api);
         dispatcher.registerSocketNotifier(20, QSocketNotifier::Write, []{});
@@ -78,7 +79,7 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
     {
         MockedLibuvApi *api = new MockedLibuvApi();
         PollMocker pollMocker(api);
-        pollMocker.mockInitAndStart(20, UV_WRITABLE);
+        pollMocker.mockInitAndExecute(20, UV_WRITABLE);
         pollMocker.mockStop();
 
         qtjs::EventDispatcherLibUvPrivate dispatcher(api);
@@ -103,7 +104,7 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
     {
         MockedLibuvApi *api = new MockedLibuvApi();
         PollMocker pollMocker(api);
-        pollMocker.mockInitAndStart(20, UV_WRITABLE);
+        pollMocker.mockInitAndExecute(20, UV_WRITABLE);
         pollMocker.mockStop();
 
         qtjs::EventDispatcherLibUvPrivate dispatcher(api);
@@ -154,7 +155,7 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
         int callbackInvoked = 0;
         MockedLibuvApi *api = new MockedLibuvApi();
         PollMocker pollMocker(api);
-        pollMocker.mockInitAndStart(19, UV_READABLE);
+        pollMocker.mockInitAndExecute(19, UV_READABLE);
 
         qtjs::EventDispatcherLibUvPrivate dispatcher(api);
         dispatcher.registerSocketNotifier(19, QSocketNotifier::Read, [&callbackInvoked]{ callbackInvoked++; });
@@ -171,7 +172,7 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
         int callbackInvoked = 0;
         MockedLibuvApi *api = new MockedLibuvApi();
         PollMocker pollMocker(api);
-        pollMocker.mockInitAndStart(19, UV_WRITABLE);
+        pollMocker.mockInitAndExecute(19, UV_WRITABLE);
 
         qtjs::EventDispatcherLibUvPrivate dispatcher(api);
         dispatcher.registerSocketNotifier(19, QSocketNotifier::Write, [&callbackInvoked]{ callbackInvoked++; });
@@ -188,7 +189,7 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
         int callbackInvoked = 0;
         MockedLibuvApi *api = new MockedLibuvApi();
         PollMocker pollMocker(api);
-        pollMocker.mockInitAndStart(19, UV_READABLE);
+        pollMocker.mockInitAndExecute(19, UV_READABLE);
         pollMocker.mockStart(UV_WRITABLE);
 
         qtjs::EventDispatcherLibUvPrivate dispatcher(api);
@@ -208,7 +209,7 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
     {
         MockedLibuvApi *api = new MockedLibuvApi();
         PollMocker pollMocker(api);
-        pollMocker.mockInitAndStart(20, UV_WRITABLE);
+        pollMocker.mockInitAndExecute(20, UV_WRITABLE);
         pollMocker.mockStart(UV_READABLE);
 
         qtjs::EventDispatcherLibUvPrivate dispatcher(api);
@@ -313,18 +314,26 @@ void PollMocker::mockStart(int type)
     checkStart = true;
 }
 
-void PollMocker::mockInitAndStart(int fd, int type)
+void PollMocker::mockInitAndExecute(int fd, int type)
 {
     mockInit(fd);
-    mockStart(type);
+    mockStartAndStop(type);
 }
 
-void PollMocker::mockStop()
+void PollMocker::mockStop(bool implicit)
 {
     MOCK_EXPECT( api->uv_poll_stop ).once()
             .with( mock::retrieve(stoppedHandle) )
             .returns(0);
-    checkStop = true;
+    if (!implicit) {
+        checkStop = true;
+    }
+}
+
+void PollMocker::mockStartAndStop(int type)
+{
+    mockStart(type);
+    mockStop(true);
 }
 
 void PollMocker::checkHandles()
