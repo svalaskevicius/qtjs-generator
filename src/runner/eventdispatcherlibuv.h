@@ -5,6 +5,8 @@
 #include <QMap>
 
 #include <memory>
+#include <time.h>
+
 
 namespace qtjs {
 
@@ -39,6 +41,7 @@ public:
 private:
     QMap<void *, QList<QAbstractEventDispatcher::TimerInfo>> timers;
     QMap<int, void *> timerLookup;
+    QMap<int, struct timespec> timerInvokations;
     Q_DISABLE_COPY(EventDispatcherLibUv)
 
     void untrackObjectTimer(void *obj, int id);

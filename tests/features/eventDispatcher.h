@@ -95,6 +95,16 @@ TEST_CASE("libuv based event dispatcher") {
         app.processEvents();
         REQUIRE ( clock == obj.clock );
     }
+
+    SECTION("it knows how much is left until next invocation") {
+        QTimer timer;
+        timer.start(100);
+        usleep(2000);
+
+        auto remainingTime = QCoreApplication::instance()->eventDispatcher()->remainingTime(timer.timerId());
+        REQUIRE ( remainingTime >= 97 );
+        REQUIRE ( remainingTime <= 99 );
+    }
 }
 
 namespace {
