@@ -7,6 +7,7 @@
 #include <QTimer>
 
 #include <chrono>
+#include <functional>
 
 #include "../src/runner/eventdispatcherlibuv.h"
 
@@ -15,6 +16,17 @@ namespace {
 void launchServer(QTcpServer &server);
 void launchClient(QTcpSocket &client, bool &processed, QByteArray &result, int port);
 void processAppEvents(QCoreApplication &app, bool &stopFlag, int timeoutSeconds);
+void processAppEvents(QCoreApplication &app, std::function<bool()> stopCheck, int timeoutSeconds);
+
+class TimerTestObject : public QObject {
+protected:
+   virtual void timerEvent(QTimerEvent * event) {
+        clock++;
+    }
+public:
+    uint64_t clock;
+    TimerTestObject() : QObject(), clock(0) {}
+};
 
 }
 
@@ -71,6 +83,18 @@ TEST_CASE("libuv based event dispatcher") {
         app.processEvents();
         REQUIRE ( count == 1 );
     }
+
+    SECTION("it supports disconnect by QObject") {
+        TimerTestObject obj;
+        obj.startTimer(1);
+        processAppEvents(app, [&obj]{ return obj.clock >= 2;}, 1);
+        uint64_t clock = obj.clock;
+        REQUIRE ( clock >= 2 );
+        QCoreApplication::instance()->eventDispatcher()->unregisterTimers(&obj);
+        usleep(1500);
+        app.processEvents();
+        REQUIRE ( clock == obj.clock );
+    }
 }
 
 namespace {
@@ -107,6 +131,18 @@ void processAppEvents(QCoreApplication &app, bool &stopFlag, int timeoutSeconds)
     using namespace std::chrono;
     steady_clock::time_point t1 = steady_clock::now();
     while (!stopFlag) {
+        app.processEvents();
+        steady_clock::time_point t2 = steady_clock::now();
+        if (duration_cast<seconds>(t2-t1).count() >= timeoutSeconds) {
+            FAIL("timeout reached");
+        }
+    }
+}
+
+void processAppEvents(QCoreApplication &app, std::function<bool()> stopCheck, int timeoutSeconds) {
+    using namespace std::chrono;
+    steady_clock::time_point t1 = steady_clock::now();
+    while (!stopCheck()) {
         app.processEvents();
         steady_clock::time_point t2 = steady_clock::now();
         if (duration_cast<seconds>(t2-t1).count() >= timeoutSeconds) {
