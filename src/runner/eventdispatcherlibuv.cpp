@@ -61,8 +61,9 @@ void EventDispatcherLibUvPrivate::unregisterSocketNotifier(int fd, QSocketNotifi
 {
     auto it = socketWatchers.find(fd);
     if (socketWatchers.end() != it) {
-        uv_poll_t &fdWatcher = socketWatchers[fd];
+        uv_poll_t &fdWatcher = it->second;
         api->uv_poll_stop(&fdWatcher);
+        socketWatchers.erase(it);
     }
 }
 
