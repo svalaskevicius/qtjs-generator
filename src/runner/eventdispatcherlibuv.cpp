@@ -71,15 +71,12 @@ void EventDispatcherLibUvPrivate::unregisterSocketNotifier(int fd, QSocketNotifi
 
 void uv_socket_watcher(uv_poll_t* req, int status, int events)
 {
-    if (events & UV_READABLE) {
-        SocketCallbacks *callbacks = (SocketCallbacks *) req->data;
-        if (callbacks) {
+    SocketCallbacks *callbacks = (SocketCallbacks *) req->data;
+    if (callbacks) {
+        if (events & UV_READABLE) {
             callbacks->readAvailable();
         }
-    }
-    if (events & UV_WRITABLE) {
-        SocketCallbacks *callbacks = (SocketCallbacks *) req->data;
-        if (callbacks) {
+        if (events & UV_WRITABLE) {
             callbacks->writeAvailable();
         }
     }
