@@ -30,9 +30,12 @@ public:
     EventDispatcherLibUvPrivate(LibuvApi *api = nullptr);
     void registerSocketNotifier(int fd, QSocketNotifier::Type type, std::function<void()> callback);
     void unregisterSocketNotifier(int fd, QSocketNotifier::Type type);
+    void registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject* object);
+    bool unregisterTimer(int timerId);
 private:
     std::unique_ptr<LibuvApi> api;
     std::map<int, uv_poll_t> socketWatchers;
+    std::map<int, bool> timers;
     uv_poll_t &findOrCreateWatcher(int fd);
 };
 
