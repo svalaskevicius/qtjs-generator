@@ -42,6 +42,7 @@ struct TimerMocker {
     TimerMocker(MockedLibuvApi *api);
     void mockInit();
     void mockStart(uint64_t timeout);
+    void mockImplicitStop();
     void mockStop();
     void checkHandles();
     void verifyAndReset();
@@ -266,6 +267,19 @@ TEST_CASE("EventDispatcherLibUv supports QTimer registration")
         mocker.checkHandles();
     }
 
+    SECTION("it unregisters a registered timer on destruction")
+    {
+        MockedLibuvApi *api = new MockedLibuvApi();
+        qtjs::EventDispatcherLibUvPrivate dispatcher(api);
+
+        TimerMocker mocker(api);
+        mocker.mockInit();
+        mocker.mockStart(30);
+        mocker.mockStop();
+
+        dispatcher.registerTimer(83, 30, []{});
+    }
+
     SECTION("timer watcher invokes timeout callback")
     {
         int callbackInvoked = 0;
@@ -391,9 +405,17 @@ void TimerMocker::mockStart(uint64_t timeout)
         .with( mock::retrieve(startedHandle),  mock::equal(&qtjs::uv_timer_watcher), mock::equal(timeout), mock::equal(timeout) )
         .returns(0);
     checkStart = true;
+    mockImplicitStop();
 }
+
+void TimerMocker::mockImplicitStop()
+{
+    MOCK_EXPECT( api->uv_timer_stop ).returns(0);
+}
+
 void TimerMocker::mockStop()
 {
+    MOCK_RESET(api->uv_timer_stop);
     MOCK_EXPECT( api->uv_timer_stop ).once()
         .with( mock::retrieve(stoppedHandle))
         .returns(0);
@@ -411,17 +433,18 @@ void TimerMocker::checkHandles()
 }
 void TimerMocker::verifyAndReset()
 {
-    MOCK_VERIFY(api->uv_poll_init);
-    MOCK_RESET(api->uv_poll_init);
+    MOCK_VERIFY(api->uv_timer_init);
+    MOCK_RESET(api->uv_timer_init);
     if (checkStart) {
-        MOCK_VERIFY(api->uv_poll_start);
-        MOCK_RESET(api->uv_poll_start);
+        MOCK_VERIFY(api->uv_timer_start);
+        MOCK_RESET(api->uv_timer_start);
         checkStart = false;
     }
     if (checkStop) {
-        MOCK_VERIFY(api->uv_poll_stop);
-        MOCK_RESET(api->uv_poll_stop);
+        MOCK_VERIFY(api->uv_timer_stop);
+        MOCK_RESET(api->uv_timer_stop);
         checkStop = false;
+        mockImplicitStop();
     }
 }
 

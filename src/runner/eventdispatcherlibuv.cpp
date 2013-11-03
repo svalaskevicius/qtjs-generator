@@ -68,6 +68,10 @@ EventDispatcherLibUvPrivate::~EventDispatcherLibUvPrivate()
         unregisterPollWatcher(it.second, UV_READABLE | UV_WRITABLE);
     }
     socketWatchers.clear();
+    for (auto it : timers) {
+        unregisterTimerWatcher(it.second);
+    }
+    timers.clear();
 }
 
 void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier::Type type, std::function<void()> callback)
@@ -153,10 +157,15 @@ bool EventDispatcherLibUvPrivate::unregisterTimer(int timerId) {
     if (it == timers.end()) {
         return false;
     }
-    uv_timer_t &timer = it->second;
-    api->uv_timer_stop(&timer);
+    unregisterTimerWatcher(it->second);
     timers.erase(it);
     return true;
+}
+
+void EventDispatcherLibUvPrivate::unregisterTimerWatcher(uv_timer_t &watcher)
+{
+    api->uv_timer_stop(&watcher);
+    delete ((TimerData *)watcher.data);
 }
 
 
