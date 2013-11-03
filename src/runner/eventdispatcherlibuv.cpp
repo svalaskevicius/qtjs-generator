@@ -30,7 +30,12 @@ void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier
 {
     uv_poll_t fdWatcher;
     api->uv_poll_init(uv_default_loop(), &fdWatcher, fd);
-    api->uv_poll_start(&fdWatcher, UV_READABLE, &qtjs::uv_socket_watcher);
+    if (type == QSocketNotifier::Read) {
+        api->uv_poll_start(&fdWatcher, UV_READABLE, &qtjs::uv_socket_watcher);
+    }
+    if (type == QSocketNotifier::Write) {
+        api->uv_poll_start(&fdWatcher, UV_WRITABLE, &qtjs::uv_socket_watcher);
+    }
 }
 
 
