@@ -8,6 +8,19 @@
 
 #include "eventdispatcherlibuv_p.h"
 
+
+namespace {
+
+inline int translateQSocketNotifierTypeToUv(QSocketNotifier::Type type) {
+    switch (type) {
+        case QSocketNotifier::Read: return UV_READABLE;
+        case QSocketNotifier::Write: return UV_WRITABLE;
+        default: return -1;
+    }
+}
+
+}
+
 namespace qtjs {
 
 int LibuvApi::uv_poll_init(uv_loop_t* loop, uv_poll_t* handle, int fd)
@@ -28,14 +41,13 @@ EventDispatcherLibUvPrivate::EventDispatcherLibUvPrivate(LibuvApi *api) : api(ap
 }
 void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier::Type type)
 {
+    int uvType = translateQSocketNotifierTypeToUv(type);
+    if (uvType < 0) {
+        qWarning("unsupported notifier type");
+    }
     uv_poll_t fdWatcher;
     api->uv_poll_init(uv_default_loop(), &fdWatcher, fd);
-    if (type == QSocketNotifier::Read) {
-        api->uv_poll_start(&fdWatcher, UV_READABLE, &qtjs::uv_socket_watcher);
-    }
-    if (type == QSocketNotifier::Write) {
-        api->uv_poll_start(&fdWatcher, UV_WRITABLE, &qtjs::uv_socket_watcher);
-    }
+    api->uv_poll_start(&fdWatcher, uvType, &qtjs::uv_socket_watcher);
 }
 
 
