@@ -7,10 +7,10 @@ TOPDIR="$MYDIR/.."
 export LD_LIBRARY_PATH="$TOPDIR/lib/cpgf/lib:$TOPDIR/build/src/core:$TOPDIR/build/src/widgets:$TOPDIR/build/src/qml:$TOPDIR/build/src/gui"
 
 if test "$MYNAME" = "spec" ; then 
-    "$TOPDIR/build/tests/spec/spec" "$@" || exit 1
+    $PRECMD "$TOPDIR/build/tests/spec/spec" "$@" || exit 1
 fi
 
 if test "$MYNAME" = "features" ; then 
-    "$TOPDIR/build/tests/features/features" "$@" || exit 1
+    $PRECMD "$TOPDIR/build/tests/features/features" "$@" || exit 1
 fi
 
