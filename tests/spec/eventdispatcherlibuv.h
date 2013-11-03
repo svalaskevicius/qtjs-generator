@@ -58,7 +58,7 @@ TEST_CASE("libuv based event dispatcher")
         pollMocker.mockInit(api, 19, UV_READABLE);
 
         qtjs::EventDispatcherLibUvPrivate dispatcher(api);
-        dispatcher.registerSocketNotifier(19, QSocketNotifier::Read);
+        dispatcher.registerSocketNotifier(19, QSocketNotifier::Read, []{});
 
         pollMocker.checkHandles();
     }
@@ -70,7 +70,7 @@ TEST_CASE("libuv based event dispatcher")
         pollMocker.mockInit(api, 20, UV_WRITABLE);
 
         qtjs::EventDispatcherLibUvPrivate dispatcher(api);
-        dispatcher.registerSocketNotifier(20, QSocketNotifier::Write);
+        dispatcher.registerSocketNotifier(20, QSocketNotifier::Write, []{});
 
         pollMocker.checkHandles();
     }
@@ -83,7 +83,7 @@ TEST_CASE("libuv based event dispatcher")
         pollMocker.mockStop(api);
 
         qtjs::EventDispatcherLibUvPrivate dispatcher(api);
-        dispatcher.registerSocketNotifier(20, QSocketNotifier::Write);
+        dispatcher.registerSocketNotifier(20, QSocketNotifier::Write, []{});
         dispatcher.unregisterSocketNotifier(20, QSocketNotifier::Write);
 
         pollMocker.checkHandles();
@@ -108,7 +108,7 @@ TEST_CASE("libuv based event dispatcher")
         pollMocker.mockStop(api);
 
         qtjs::EventDispatcherLibUvPrivate dispatcher(api);
-        dispatcher.registerSocketNotifier(20, QSocketNotifier::Write);
+        dispatcher.registerSocketNotifier(20, QSocketNotifier::Write, []{});
         dispatcher.unregisterSocketNotifier(20, QSocketNotifier::Write);
         dispatcher.unregisterSocketNotifier(20, QSocketNotifier::Write);
 
@@ -146,4 +146,61 @@ TEST_CASE("libuv based event dispatcher")
 
         REQUIRE( callbackInvoked == 1 );
     }
+
+
+    SECTION("registerSocketNotifier initialises libuv handle read callback")
+    {
+        int callbackInvoked = 0;
+        MockedLibuvApi *api = new MockedLibuvApi();
+        PollMocker pollMocker;
+        pollMocker.mockInit(api, 19, UV_READABLE);
+
+        qtjs::EventDispatcherLibUvPrivate dispatcher(api);
+        dispatcher.registerSocketNotifier(19, QSocketNotifier::Read, [&callbackInvoked]{ callbackInvoked++; });
+
+        pollMocker.checkHandles();
+        REQUIRE( pollMocker.startedHandle->data );
+        ((qtjs::SocketCallbacks *)pollMocker.startedHandle->data)->readAvailable();
+        REQUIRE_THROWS( ((qtjs::SocketCallbacks *)pollMocker.startedHandle->data)->writeAvailable() );
+        REQUIRE( callbackInvoked == 1 );
+    }
+
+    SECTION("registerSocketNotifier initialises libuv handle write callback")
+    {
+        int callbackInvoked = 0;
+        MockedLibuvApi *api = new MockedLibuvApi();
+        PollMocker pollMocker;
+        pollMocker.mockInit(api, 19, UV_WRITABLE);
+
+        qtjs::EventDispatcherLibUvPrivate dispatcher(api);
+        dispatcher.registerSocketNotifier(19, QSocketNotifier::Write, [&callbackInvoked]{ callbackInvoked++; });
+
+        pollMocker.checkHandles();
+        REQUIRE( pollMocker.startedHandle->data );
+        REQUIRE_THROWS( ((qtjs::SocketCallbacks *)pollMocker.startedHandle->data)->readAvailable() );
+        ((qtjs::SocketCallbacks *)pollMocker.startedHandle->data)->writeAvailable();
+        REQUIRE( callbackInvoked == 1 );
+    }
+
+    SECTION("registerSocketNotifier combines libuv handle read&write callbacks")
+    {
+        int callbackInvoked = 0;
+        MockedLibuvApi *api = new MockedLibuvApi();
+        PollMocker pollMocker;
+        pollMocker.mockInit(api, 19, UV_READABLE);
+        pollMocker.mockInit(api, 19, UV_WRITABLE);
+
+        qtjs::EventDispatcherLibUvPrivate dispatcher(api);
+        dispatcher.registerSocketNotifier(19, QSocketNotifier::Read, [&callbackInvoked]{ callbackInvoked++; });
+        dispatcher.registerSocketNotifier(19, QSocketNotifier::Write, [&callbackInvoked]{ callbackInvoked++; });
+
+        pollMocker.checkHandles();
+        REQUIRE( pollMocker.startedHandle->data );
+
+        ((qtjs::SocketCallbacks *)pollMocker.startedHandle->data)->readAvailable();
+        ((qtjs::SocketCallbacks *)pollMocker.startedHandle->data)->writeAvailable();
+
+        REQUIRE( callbackInvoked == 2 );
+    }
+
 }
