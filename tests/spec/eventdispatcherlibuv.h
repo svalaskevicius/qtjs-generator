@@ -200,7 +200,7 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
         MockedLibuvApi *api = new MockedLibuvApi();
         PollMocker pollMocker;
         pollMocker.mockInitAndStart(api, 19, UV_READABLE);
-        pollMocker.mockInitAndStart(api, 19, UV_WRITABLE);
+        pollMocker.mockStart(api, UV_WRITABLE);
 
         qtjs::EventDispatcherLibUvPrivate dispatcher(api);
         dispatcher.registerSocketNotifier(19, QSocketNotifier::Read, [&callbackInvoked]{ callbackInvoked++; });
@@ -220,7 +220,7 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
         MockedLibuvApi *api = new MockedLibuvApi();
         PollMocker pollMocker;
         pollMocker.mockInitAndStart(api, 20, UV_WRITABLE);
-        pollMocker.mockInitAndStart(api, 20, UV_READABLE);
+        pollMocker.mockStart(api, UV_READABLE);
 
         qtjs::EventDispatcherLibUvPrivate dispatcher(api);
         dispatcher.registerSocketNotifier(20, QSocketNotifier::Write, []{});

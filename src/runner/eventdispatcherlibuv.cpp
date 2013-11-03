@@ -58,9 +58,9 @@ void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier
         it = socketWatchers.find(fd);
         Q_ASSERT(socketWatchers.end() != it);
         it->second.data = new SocketCallbacks();
+        api->uv_poll_init(uv_default_loop(), &it->second, fd);
     }
     uv_poll_t &fdWatcher = it->second;
-    api->uv_poll_init(uv_default_loop(), &fdWatcher, fd);
 
     SocketCallbacks *callbacks = ((SocketCallbacks *)fdWatcher.data);
     callbacks->eventMask |= uvType;
