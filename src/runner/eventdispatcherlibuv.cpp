@@ -60,6 +60,8 @@ void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier
         it->second.data = new SocketCallbacks();
     }
     uv_poll_t &fdWatcher = it->second;
+    api->uv_poll_init(uv_default_loop(), &fdWatcher, fd);
+
     SocketCallbacks *callbacks = ((SocketCallbacks *)fdWatcher.data);
     callbacks->eventMask |= uvType;
     if (uvType == UV_READABLE) {
@@ -68,7 +70,6 @@ void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier
     if (uvType == UV_WRITABLE) {
         callbacks->writeAvailable = callback;
     }
-    api->uv_poll_init(uv_default_loop(), &fdWatcher, fd);
     api->uv_poll_start(&fdWatcher, uvType, &qtjs::uv_socket_watcher);
 }
 
