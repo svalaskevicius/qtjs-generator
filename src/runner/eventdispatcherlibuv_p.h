@@ -16,6 +16,10 @@ struct SocketCallbacks {
     std::function<void()> writeAvailable;
 };
 
+struct TimerData {
+    std::function<void()> timeout;
+};
+
 void uv_socket_watcher(uv_poll_t* handle, int status, int events);
 void uv_timer_watcher(uv_timer_t* handle, int status);
 
