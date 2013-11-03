@@ -16,7 +16,8 @@ HEADERS += \
     $$PWD/qmlRegisterType.h \
     $$PWD/dynamic_qobject.h \
     $$PWD/llvmapi.h \
-    $$PWD/eventdispatcherlibuv.h
+    $$PWD/eventdispatcherlibuv.h \
+    ../../src/runner/eventdispatcherlibuv_p.h
 
 QMAKE_CXXFLAGS += -pthread -fno-strict-aliasing -fno-tree-vrp
 QMAKE_CXXFLAGS_RELEASE += -Wno-unused-parameter

@@ -12,3 +12,6 @@ INCLUDEPATH += $${ROOT}/tests/lib/catch/single_include $${ROOT}/tests/lib/turtle
 SOURCES += \
     main.cpp
 
+HEADERS += \
+    eventdispatcherlibuv.h
+
