@@ -48,6 +48,7 @@ private:
     std::map<int, uv_timer_t> timers;
     uv_poll_t &findOrCreateWatcher(int fd);
     bool unregisterPollWatcher(uv_poll_t &fdWatcher, unsigned int eventMask);
+    void unregisterTimerWatcher(uv_timer_t &watcher);
 };
 
 }
