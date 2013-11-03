@@ -28,8 +28,8 @@ struct PollMocker {
     void mockInit(int fd);
     void mockStart(int type);
     void mockInitAndExecute(int fd, int type);
-    void mockStartAndStop(int type);
-    void mockStop(bool implicit = false);
+    void mockImplicitStop();
+    void mockStop();
     void checkHandles();
     void verifyAndReset();
 };
@@ -317,23 +317,22 @@ void PollMocker::mockStart(int type)
 void PollMocker::mockInitAndExecute(int fd, int type)
 {
     mockInit(fd);
-    mockStartAndStop(type);
+    mockStart(type);
+    mockImplicitStop();
 }
 
-void PollMocker::mockStop(bool implicit)
+void PollMocker::mockStop()
 {
+    MOCK_RESET(api->uv_poll_stop);
     MOCK_EXPECT( api->uv_poll_stop ).once()
             .with( mock::retrieve(stoppedHandle) )
             .returns(0);
-    if (!implicit) {
-        checkStop = true;
-    }
+    checkStop = true;
 }
 
-void PollMocker::mockStartAndStop(int type)
+void PollMocker::mockImplicitStop()
 {
-    mockStart(type);
-    mockStop(true);
+    MOCK_EXPECT( api->uv_poll_stop ).returns(0);
 }
 
 void PollMocker::checkHandles()
