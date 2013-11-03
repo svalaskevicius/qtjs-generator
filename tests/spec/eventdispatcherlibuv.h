@@ -11,6 +11,10 @@ MOCK_BASE_CLASS( MockedLibuvApi, qtjs::LibuvApi ) {
     MOCK_METHOD(uv_poll_init, 3)
     MOCK_METHOD(uv_poll_start, 3)
     MOCK_METHOD(uv_poll_stop, 1)
+
+    MOCK_METHOD(uv_timer_init, 2)
+    MOCK_METHOD(uv_timer_start, 4)
+    MOCK_METHOD(uv_timer_stop, 1)
 };
 
 namespace {
@@ -24,6 +28,19 @@ struct PollMocker {
     void mockInit(int fd);
     void mockStart(int type);
     void mockInitAndStart(int fd, int type);
+    void mockStop();
+    void checkHandles();
+    void verifyAndReset();
+};
+
+struct TimerMocker {
+    uv_timer_t *registeredHandle, *startedHandle, *stoppedHandle;
+    bool checkStart, checkStop;
+    MockedLibuvApi *api;
+
+    TimerMocker(MockedLibuvApi *api);
+    void mockInit();
+    void mockStart(uint64_t timeout);
     void mockStop();
     void checkHandles();
     void verifyAndReset();
@@ -295,4 +312,56 @@ void PollMocker::verifyAndReset()
         checkStop = false;
     }
 }
+
+
+
+TimerMocker::TimerMocker(MockedLibuvApi *api) : checkStart(false), checkStop(false), api(api)
+{
+}
+void TimerMocker::mockInit()
+{
+    MOCK_EXPECT( api->uv_timer_init ).once()
+        .with( mock::equal(uv_default_loop()), mock::retrieve(registeredHandle) )
+        .returns(0);
+}
+void TimerMocker::mockStart(uint64_t timeout)
+{
+    MOCK_EXPECT( api->uv_timer_start ).once()
+        .with( mock::retrieve(startedHandle),  mock::equal(&qtjs::uv_timer_watcher), mock::equal(timeout), mock::equal(timeout) )
+        .returns(0);
+    checkStart = true;
+}
+void TimerMocker::mockStop()
+{
+    MOCK_EXPECT( api->uv_timer_stop ).once()
+        .with( mock::retrieve(stoppedHandle))
+        .returns(0);
+    checkStop = true;
+}
+void TimerMocker::checkHandles()
+{
+    REQUIRE( registeredHandle );
+    if (checkStart) {
+        REQUIRE( registeredHandle == startedHandle );
+    }
+    if (checkStop) {
+        REQUIRE( registeredHandle == stoppedHandle );
+    }
+}
+void TimerMocker::verifyAndReset()
+{
+    MOCK_VERIFY(api->uv_poll_init);
+    MOCK_RESET(api->uv_poll_init);
+    if (checkStart) {
+        MOCK_VERIFY(api->uv_poll_start);
+        MOCK_RESET(api->uv_poll_start);
+        checkStart = false;
+    }
+    if (checkStop) {
+        MOCK_VERIFY(api->uv_poll_stop);
+        MOCK_RESET(api->uv_poll_stop);
+        checkStop = false;
+    }
+}
+
 }

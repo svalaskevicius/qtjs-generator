@@ -38,6 +38,22 @@ int LibuvApi::uv_poll_stop(uv_poll_t* handle)
     return ::uv_poll_stop(handle);
 }
 
+int LibuvApi::uv_timer_init(uv_loop_t* loop, uv_timer_t* handle)
+{
+    return ::uv_timer_init(loop, handle);
+}
+
+int LibuvApi::uv_timer_start(uv_timer_t* handle, uv_timer_cb cb, uint64_t timeout, uint64_t repeat)
+{
+    return ::uv_timer_start(handle, cb, timeout, repeat);
+}
+
+int LibuvApi::uv_timer_stop(uv_timer_t* handle)
+{
+    return ::uv_timer_stop(handle);
+}
+
+
 
 EventDispatcherLibUvPrivate::EventDispatcherLibUvPrivate(LibuvApi *api) : api(api)
 {
@@ -122,7 +138,9 @@ void uv_socket_watcher(uv_poll_t* req, int status, int events)
     }
 }
 
-
+void uv_timer_watcher(uv_timer_t* handle, int status)
+{
+}
 
 EventDispatcherLibUv::EventDispatcherLibUv(QObject *parent) :
     QAbstractEventDispatcher(parent), impl(new EventDispatcherLibUvPrivate()), hasPending(true), finalize(false)
