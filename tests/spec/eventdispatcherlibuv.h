@@ -89,6 +89,16 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
         pollMocker.checkHandles();
     }
 
+    SECTION("it implicitly stops uv poller for a registered handle on destruction")
+    {
+        MockedLibuvApi *api = new MockedLibuvApi();
+        PollMocker pollMocker(api);
+        pollMocker.mockInitAndExecute(20, UV_WRITABLE);
+        pollMocker.mockStop();
+
+        qtjs::EventDispatcherLibUvPrivate dispatcher(api);
+        dispatcher.registerSocketNotifier(20, QSocketNotifier::Write, []{});
+    }
 
     SECTION("unregisterSocketNotifier does not call libuv if the socket was not registered")
     {
@@ -225,6 +235,7 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
         dispatcher.unregisterSocketNotifier(20, QSocketNotifier::Write);
 
         pollMocker.checkHandles();
+        pollMocker.verifyAndReset();
     }
 }
 
@@ -359,6 +370,7 @@ void PollMocker::verifyAndReset()
         MOCK_VERIFY(api->uv_poll_stop);
         MOCK_RESET(api->uv_poll_stop);
         checkStop = false;
+        mockImplicitStop();
     }
 }
 

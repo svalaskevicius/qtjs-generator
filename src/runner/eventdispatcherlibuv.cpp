@@ -61,6 +61,15 @@ EventDispatcherLibUvPrivate::EventDispatcherLibUvPrivate(LibuvApi *api) : api(ap
         this->api.reset(new LibuvApi());
     }
 }
+
+EventDispatcherLibUvPrivate::~EventDispatcherLibUvPrivate()
+{
+    for (auto it : socketWatchers) {
+        unregisterPollWatcher(it.second, UV_READABLE | UV_WRITABLE);
+    }
+    socketWatchers.clear();
+}
+
 void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier::Type type, std::function<void()> callback)
 {
     int uvType = translateQSocketNotifierTypeToUv(type);

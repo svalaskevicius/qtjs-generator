@@ -37,6 +37,7 @@ struct LibuvApi {
 class EventDispatcherLibUvPrivate {
 public:
     EventDispatcherLibUvPrivate(LibuvApi *api = nullptr);
+    virtual ~EventDispatcherLibUvPrivate();
     void registerSocketNotifier(int fd, QSocketNotifier::Type type, std::function<void()> callback);
     void unregisterSocketNotifier(int fd, QSocketNotifier::Type type);
     void registerTimer(int timerId, int interval, std::function<void()> callback);
