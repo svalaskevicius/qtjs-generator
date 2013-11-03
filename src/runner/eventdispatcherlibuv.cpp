@@ -45,7 +45,7 @@ EventDispatcherLibUvPrivate::EventDispatcherLibUvPrivate(LibuvApi *api) : api(ap
         this->api.reset(new LibuvApi());
     }
 }
-void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier::Type type)
+void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier::Type type, std::function<void()> callback)
 {
     int uvType = translateQSocketNotifierTypeToUv(type);
     if (uvType < 0) {
@@ -53,6 +53,16 @@ void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier
         return;
     }
     uv_poll_t &fdWatcher = socketWatchers[fd];
+    if (!fdWatcher.data) {
+        fdWatcher.data = new SocketCallbacks();
+    }
+    SocketCallbacks *callbacks = ((SocketCallbacks *)fdWatcher.data);
+    if (uvType == UV_READABLE) {
+        callbacks->readAvailable = callback;
+    }
+    if (uvType == UV_WRITABLE) {
+        callbacks->writeAvailable = callback;
+    }
     api->uv_poll_init(uv_default_loop(), &fdWatcher, fd);
     api->uv_poll_start(&fdWatcher, uvType, &qtjs::uv_socket_watcher);
 }
