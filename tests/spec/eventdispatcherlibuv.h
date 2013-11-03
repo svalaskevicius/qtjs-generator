@@ -114,4 +114,36 @@ TEST_CASE("libuv based event dispatcher")
 
         pollMocker.checkHandles();
     }
+
+    SECTION("socket watcher invokes read callback")
+    {
+        int callbackInvoked = 0;
+        qtjs::SocketCallbacks callbacks = {
+            [&callbackInvoked]{ callbackInvoked++; },
+            []{ FAIL("unexpected call"); }
+        };
+
+        uv_poll_t request;
+        request.data = &callbacks;
+
+        qtjs::uv_socket_watcher(&request, 0, UV_READABLE);
+
+        REQUIRE( callbackInvoked == 1 );
+    }
+
+    SECTION("socket watcher invokes write callback")
+    {
+        int callbackInvoked = 0;
+        qtjs::SocketCallbacks callbacks = {
+            []{ FAIL("unexpected call"); },
+            [&callbackInvoked]{ callbackInvoked++; }
+        };
+
+        uv_poll_t request;
+        request.data = &callbacks;
+
+        qtjs::uv_socket_watcher(&request, 0, UV_WRITABLE);
+
+        REQUIRE( callbackInvoked == 1 );
+    }
 }
