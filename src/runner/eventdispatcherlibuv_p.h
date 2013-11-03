@@ -4,19 +4,25 @@
 
 #include "uv.h"
 
+#include <memory>
+
 namespace qtjs {
 
+void uv_socket_watcher(uv_poll_t* handle, int status, int events);
+
 struct LibuvApi {
-    virtual int uv_poll_init(uv_loop_t* loop, uv_poll_t* handle, int fd) {
-        return ::uv_poll_init(loop, handle, fd);
-    }
+    virtual ~LibuvApi() {}
+    virtual int uv_poll_init(uv_loop_t* loop, uv_poll_t* handle, int fd);
+    virtual int uv_poll_start(uv_poll_t* handle, int events, uv_poll_cb cb);
+
 };
 
 class EventDispatcherLibUvPrivate {
 public:
-    virtual void registerSocketNotifier(int fd, QSocketNotifier::Type type) {
-
-    }
+    EventDispatcherLibUvPrivate(LibuvApi *api = nullptr);
+    virtual void registerSocketNotifier(int fd, QSocketNotifier::Type type);
+private:
+    std::unique_ptr<LibuvApi> api;
 };
 
 }

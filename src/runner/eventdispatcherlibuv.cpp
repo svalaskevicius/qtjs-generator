@@ -6,6 +6,42 @@
 #include "uv.h"
 #include <QDebug>
 
+#include "eventdispatcherlibuv_p.h"
+
+namespace qtjs {
+
+int LibuvApi::uv_poll_init(uv_loop_t* loop, uv_poll_t* handle, int fd)
+{
+    return ::uv_poll_init(loop, handle, fd);
+}
+
+int LibuvApi::uv_poll_start(uv_poll_t* handle, int events, uv_poll_cb cb)
+{
+    return ::uv_poll_start(handle, events, cb);
+}
+
+EventDispatcherLibUvPrivate::EventDispatcherLibUvPrivate(LibuvApi *api) : api(api)
+{
+    if (!this->api) {
+        this->api.reset(new LibuvApi());
+    }
+}
+void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier::Type type)
+{
+    uv_poll_t fdWatcher;
+    api->uv_poll_init(uv_default_loop(), &fdWatcher, fd);
+    api->uv_poll_start(&fdWatcher, UV_READABLE, &qtjs::uv_socket_watcher);
+}
+
+
+
+void uv_socket_watcher(uv_poll_t* handle, int status, int events)
+{
+
+}
+
+}
+
 
 struct SocketInfo {
     SocketInfo() : notifier{nullptr, nullptr}, registered(false), started(false) {}
@@ -19,25 +55,31 @@ std::map<uv_poll_t*, SocketInfo*> socketLookup;
 
 namespace {
 
-void uv_socket_watcher(uv_poll_t* handle, int status, int events)
-{
-    auto it = socketLookup.find(handle);
-    if (socketLookup.end() == it) {
-        qWarning() << "unknown socket to notify";
-        return;
-    }
+//void uv_socket_watcher(uv_poll_t* handle, int status, int events)
+//{
+//    auto it = socketLookup.find(handle);
+//    if (socketLookup.end() == it) {
+//        qWarning() << "unknown socket to notify";
+//        return;
+//    }
 
-    SocketInfo &info = *(it->second);
-    QEvent event(QEvent::SockAct);
-    if (events & UV_READABLE) {
-        Q_ASSERT(info.notifier[0]);
-        QCoreApplication::sendEvent(info.notifier[0], &event);
-    }
-    if (events & UV_WRITABLE) {
-        Q_ASSERT(info.notifier[1]);
-        QCoreApplication::sendEvent(info.notifier[1], &event);
-    }
-}
+//    qDebug() << status;
+//    SocketInfo &info = *(it->second);
+//    QEvent event(QEvent::SockAct);
+//    if (events & UV_READABLE) {
+//        qDebug() << "prc ev R";
+
+//        Q_ASSERT(info.notifier[0]);
+//        QCoreApplication::sendEvent(info.notifier[0], &event);
+//    }
+//    if (events & UV_WRITABLE) {
+//        qDebug() << "prc ev W";
+
+
+//        Q_ASSERT(info.notifier[1]);
+//        QCoreApplication::sendEvent(info.notifier[1], &event);
+//    }
+//}
 
 }
 
@@ -62,7 +104,6 @@ bool EventDispatcherLibUv::processEvents(QEventLoop::ProcessEventsFlags flags) {
     QCoreApplication::sendPostedEvents();
     emit aboutToBlock();
     hasPending = uv_run(uv_default_loop(), UV_RUN_ONCE);
-    qDebug() << "prc ev" << hasPending;
     if (!hasPending && finalize) {
         QCoreApplication::instance()->quit();
     }
@@ -75,80 +116,81 @@ bool EventDispatcherLibUv::hasPendingEvents(void) {
 
 void EventDispatcherLibUv::registerSocketNotifier(QSocketNotifier* notifier)
 {
-    int fd = notifier->socket();
-    SocketInfo &info = sockets[fd];
-    if (info.registered) {
-        if (info.started) {
-            uv_poll_stop(&info.uvHandle);
-            info.started = false;
-        }
-    } else {
-        uv_poll_init(uv_default_loop(), &info.uvHandle, fd);
-        info.registered = true;
-    }
+//    int fd = notifier->socket();
+//    SocketInfo &info = sockets[fd];
+//    if (info.registered) {
+//        if (info.started) {
+//            uv_poll_stop(&info.uvHandle);
+//            info.started = false;
+//        }
+//    } else {
+//        uv_poll_init(uv_default_loop(), &info.uvHandle, fd);
+//        info.registered = true;
+//    }
 
-    if (notifier->type() == QSocketNotifier::Read) {
-        info.notifier[0] = notifier;
-    } else if (notifier->type() == QSocketNotifier::Write) {
-        info.notifier[1] = notifier;
-    }
+//    if (notifier->type() == QSocketNotifier::Read) {
+//        info.notifier[0] = notifier;
+//    } else if (notifier->type() == QSocketNotifier::Write) {
+//        info.notifier[1] = notifier;
+//    }
 
-    int events = 0;
-    if (info.notifier[0]) {
-        events |= UV_READABLE;
-    }
-    if (info.notifier[1]) {
-        events |= UV_WRITABLE;
-    }
+//    int events = 0;
+//    if (info.notifier[0]) {
+//        events |= UV_READABLE;
+//    }
+//    if (info.notifier[1]) {
+//        events |= UV_WRITABLE;
+//    }
 
-    if (events) {
-        socketLookup[&info.uvHandle] = &info;
-        uv_poll_start(&info.uvHandle, events, uv_socket_watcher);
-        info.started = true;
-    } else {
-        socketLookup.erase(&info.uvHandle);
-        sockets.erase(fd);
-    }
+//    if (events) {
+//        socketLookup[&info.uvHandle] = &info;
+//        uv_poll_start(&info.uvHandle, events, uv_socket_watcher);
+//        info.started = true;
+//    } else {
+//        socketLookup.erase(&info.uvHandle);
+//        sockets.erase(fd);
+//    }
 }
-void EventDispatcherLibUv::unregisterSocketNotifier(QSocketNotifier* notifier) {
-    int fd = notifier->socket();
-    auto it = sockets.find(fd);
-    if (sockets.end() == it) {
-        qWarning() << "socket is not registered";
-        return;
-    }
-    SocketInfo &info = it->second;
-    if (!info.registered) {
-        qWarning() << "socket is not registered";
-        return;
-    }
-    if (info.started) {
-        uv_poll_stop(&info.uvHandle);
-        info.started = false;
-    }
+void EventDispatcherLibUv::unregisterSocketNotifier(QSocketNotifier* notifier)
+{
+//    int fd = notifier->socket();
+//    auto it = sockets.find(fd);
+//    if (sockets.end() == it) {
+//        qWarning() << "socket is not registered";
+//        return;
+//    }
+//    SocketInfo &info = it->second;
+//    if (!info.registered) {
+//        qWarning() << "socket is not registered";
+//        return;
+//    }
+//    if (info.started) {
+//        uv_poll_stop(&info.uvHandle);
+//        info.started = false;
+//    }
 
-    if ((notifier->type() == QSocketNotifier::Read) && info.notifier[0]) {
-        info.notifier[0] = 0;
-    } else if ((notifier->type() == QSocketNotifier::Write) && info.notifier[1]) {
-        info.notifier[0] = 0;
-    }
+//    if ((notifier->type() == QSocketNotifier::Read) && info.notifier[0]) {
+//        info.notifier[0] = 0;
+//    } else if ((notifier->type() == QSocketNotifier::Write) && info.notifier[1]) {
+//        info.notifier[0] = 0;
+//    }
 
-    int events = 0;
-    if (info.notifier[0]) {
-        events |= UV_READABLE;
-    }
-    if (info.notifier[1]) {
-        events |= UV_WRITABLE;
-    }
+//    int events = 0;
+//    if (info.notifier[0]) {
+//        events |= UV_READABLE;
+//    }
+//    if (info.notifier[1]) {
+//        events |= UV_WRITABLE;
+//    }
 
-    if (events) {
-        socketLookup[&info.uvHandle] = &info;
-        uv_poll_start(&info.uvHandle, events, uv_socket_watcher);
-        info.started = true;
-    } else {
-        socketLookup.erase(&info.uvHandle);
-        sockets.erase(fd);
-    }
+//    if (events) {
+//        socketLookup[&info.uvHandle] = &info;
+//        uv_poll_start(&info.uvHandle, events, uv_socket_watcher);
+//        info.started = true;
+//    } else {
+//        socketLookup.erase(&info.uvHandle);
+//        sockets.erase(fd);
+//    }
 }
 
 void EventDispatcherLibUv::registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject* object) {
