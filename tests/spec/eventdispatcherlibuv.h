@@ -210,6 +210,29 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
     }
 }
 
+TEST_CASE("EventDispatcherLibUv supports QTimer registration")
+{
+    SECTION("it does not unregister a non-existing timer")
+    {
+        MockedLibuvApi *api = new MockedLibuvApi();
+        qtjs::EventDispatcherLibUvPrivate dispatcher(api);
+
+        REQUIRE( dispatcher.unregisterTimer(83) == false );
+    }
+
+    SECTION("it unregisters a registered timer")
+    {
+        MockedLibuvApi *api = new MockedLibuvApi();
+        qtjs::EventDispatcherLibUvPrivate dispatcher(api);
+
+        dispatcher.registerTimer(83, 30, Qt::CoarseTimer, nullptr);
+        REQUIRE( dispatcher.unregisterTimer(83) == true );
+    }
+}
+
+
+
+
 
 namespace {
 

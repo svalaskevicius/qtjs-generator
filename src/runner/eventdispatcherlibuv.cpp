@@ -99,6 +99,14 @@ void EventDispatcherLibUvPrivate::unregisterSocketNotifier(int fd, QSocketNotifi
     }
 }
 
+void EventDispatcherLibUvPrivate::registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject* object) {
+    timers[timerId] = true;
+}
+bool EventDispatcherLibUvPrivate::unregisterTimer(int timerId) {
+    return timers.find(timerId) != timers.end();
+}
+
+
 
 
 void uv_socket_watcher(uv_poll_t* req, int status, int events)
