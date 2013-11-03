@@ -61,6 +61,7 @@ void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier
     }
     uv_poll_t &fdWatcher = it->second;
     SocketCallbacks *callbacks = ((SocketCallbacks *)fdWatcher.data);
+    callbacks->eventMask |= uvType;
     if (uvType == UV_READABLE) {
         callbacks->readAvailable = callback;
     }
@@ -73,11 +74,22 @@ void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier
 
 void EventDispatcherLibUvPrivate::unregisterSocketNotifier(int fd, QSocketNotifier::Type type)
 {
+    int uvType = translateQSocketNotifierTypeToUv(type);
+    if (uvType < 0) {
+        qWarning() << "unsupported notifier type" << type;
+        return;
+    }
     auto it = socketWatchers.find(fd);
     if (socketWatchers.end() != it) {
         uv_poll_t &fdWatcher = it->second;
         api->uv_poll_stop(&fdWatcher);
-        socketWatchers.erase(it);
+        SocketCallbacks *callbacks = ((SocketCallbacks *)fdWatcher.data);
+        callbacks->eventMask &= ~uvType;
+        if (!callbacks->eventMask) {
+            socketWatchers.erase(it);
+        } else {
+            api->uv_poll_start(&fdWatcher, callbacks->eventMask, &qtjs::uv_socket_watcher);
+        }
     }
 }
 
@@ -138,6 +150,7 @@ void EventDispatcherLibUv::registerSocketNotifier(QSocketNotifier* notifier)
 }
 void EventDispatcherLibUv::unregisterSocketNotifier(QSocketNotifier* notifier)
 {
+    impl->unregisterSocketNotifier(notifier->socket(), notifier->type());
 }
 
 void EventDispatcherLibUv::registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject* object) {
