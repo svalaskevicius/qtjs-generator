@@ -115,11 +115,20 @@ void EventDispatcherLibUvPrivate::unregisterSocketNotifier(int fd, QSocketNotifi
     }
 }
 
-void EventDispatcherLibUvPrivate::registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject* object) {
-    timers[timerId] = true;
+void EventDispatcherLibUvPrivate::registerTimer(int timerId, int interval, std::function<void()> callback) {
+    uv_timer_t &timer = timers[timerId];
+    api->uv_timer_init(uv_default_loop(), &timer);
+    api->uv_timer_start(&timer, &uv_timer_watcher, interval, interval);
 }
 bool EventDispatcherLibUvPrivate::unregisterTimer(int timerId) {
-    return timers.find(timerId) != timers.end();
+    auto it = timers.find(timerId);
+    if (it == timers.end()) {
+        return false;
+    }
+    uv_timer_t &timer = it->second;
+    api->uv_timer_stop(&timer);
+    timers.erase(it);
+    return true;
 }
 
 

@@ -237,13 +237,21 @@ TEST_CASE("EventDispatcherLibUv supports QTimer registration")
         REQUIRE( dispatcher.unregisterTimer(83) == false );
     }
 
-    SECTION("it unregisters a registered timer")
+    SECTION("it unregisters a registered timer once")
     {
         MockedLibuvApi *api = new MockedLibuvApi();
         qtjs::EventDispatcherLibUvPrivate dispatcher(api);
 
-        dispatcher.registerTimer(83, 30, Qt::CoarseTimer, nullptr);
+        TimerMocker mocker(api);
+        mocker.mockInit();
+        mocker.mockStart(30);
+        mocker.mockStop();
+
+        dispatcher.registerTimer(83, 30, []{});
         REQUIRE( dispatcher.unregisterTimer(83) == true );
+        REQUIRE( dispatcher.unregisterTimer(83) == false );
+
+        mocker.checkHandles();
     }
 }
 
