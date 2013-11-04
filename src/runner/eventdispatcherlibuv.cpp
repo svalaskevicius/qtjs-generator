@@ -53,6 +53,11 @@ int LibuvApi::uv_timer_stop(uv_timer_t* handle)
     return ::uv_timer_stop(handle);
 }
 
+uint64_t LibuvApi::uv_hrtime()
+{
+    return ::uv_hrtime();
+}
+
 
 
 EventDispatcherLibUvSocketNotifier::EventDispatcherLibUvSocketNotifier(LibuvApi *api) : api(api)
@@ -183,14 +188,35 @@ void EventDispatcherLibUvTimerNotifier::unregisterTimerWatcher(uv_timer_t &watch
 }
 
 
+EventDispatcherLibUvTimerWatcher::EventDispatcherLibUvTimerWatcher(LibuvApi *api) : api(api)
+{
+    if (!this->api) {
+        this->api.reset(new LibuvApi());
+    }
+}
+
 void EventDispatcherLibUvTimerWatcher::registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject *object)
 {
     timers[object].append(QAbstractEventDispatcher::TimerInfo(timerId, interval, timerType));
+    timerLastFired[timerId] = api->uv_hrtime() / 1000000;
+    timerIntervals[timerId] = interval;
 }
 
 QList<QAbstractEventDispatcher::TimerInfo> EventDispatcherLibUvTimerWatcher::getTimerInfo(QObject *object)
 {
     return timers[object];
+}
+
+void EventDispatcherLibUvTimerWatcher::fireTimer(int timerId)
+{
+    timerLastFired[timerId] = api->uv_hrtime() / 1000000;
+}
+
+int EventDispatcherLibUvTimerWatcher::remainingTime(int timerId)
+{
+    return timerIntervals[timerId]
+            + timerLastFired[timerId]
+            - api->uv_hrtime() / 1000000;
 }
 
 

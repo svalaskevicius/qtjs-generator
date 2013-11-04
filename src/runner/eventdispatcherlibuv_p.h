@@ -33,6 +33,8 @@ struct LibuvApi {
     virtual int uv_timer_init(uv_loop_t*, uv_timer_t* handle);
     virtual int uv_timer_start(uv_timer_t* handle, uv_timer_cb cb, uint64_t timeout, uint64_t repeat);
     virtual int uv_timer_stop(uv_timer_t* handle);
+
+    virtual uint64_t uv_hrtime(void);
 };
 
 class EventDispatcherLibUvSocketNotifier {
@@ -62,10 +64,16 @@ private:
 
 class EventDispatcherLibUvTimerWatcher {
 public:
+    EventDispatcherLibUvTimerWatcher(LibuvApi *api = nullptr);
     void registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject *object);
     QList<QAbstractEventDispatcher::TimerInfo> getTimerInfo(QObject *object);
+    void fireTimer(int timerId);
+    int remainingTime(int timerId);
 private:
+    std::unique_ptr<LibuvApi> api;
     std::map<void *, QList<QAbstractEventDispatcher::TimerInfo>> timers;
+    std::map<int, unsigned long> timerLastFired;
+    std::map<int, int> timerIntervals;
 };
 
 }
