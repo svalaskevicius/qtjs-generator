@@ -62,9 +62,9 @@ private:
     void unregisterTimerWatcher(uv_timer_t &watcher);
 };
 
-class EventDispatcherLibUvTimerWatcher {
+class EventDispatcherLibUvTimerTracker {
 public:
-    EventDispatcherLibUvTimerWatcher(LibuvApi *api = nullptr);
+    EventDispatcherLibUvTimerTracker(LibuvApi *api = nullptr);
     void registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject *object);
     void unregisterTimer(int timerId);
     QList<QAbstractEventDispatcher::TimerInfo> getTimerInfo(QObject *object);

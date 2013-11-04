@@ -320,13 +320,13 @@ TEST_CASE("EventDispatcherLibUv tracks timer execution")
 {
     SECTION("TimerWatcher returns empty list when there are no timers registered")
     {
-        qtjs::EventDispatcherLibUvTimerWatcher watcher;
+        qtjs::EventDispatcherLibUvTimerTracker watcher;
         REQUIRE( watcher.getTimerInfo(nullptr).empty() );
     }
 
     SECTION("TimerWatcher returns a list of registered timers for object")
     {
-        qtjs::EventDispatcherLibUvTimerWatcher watcher;
+        qtjs::EventDispatcherLibUvTimerTracker watcher;
         watcher.registerTimer(12, 101, Qt::CoarseTimer, (QObject *)919192);
         auto list = watcher.getTimerInfo((QObject *)919192);
         REQUIRE( list.count() == 1 );
@@ -338,7 +338,7 @@ TEST_CASE("EventDispatcherLibUv tracks timer execution")
     SECTION("TimerWatcher returns time left until next firing at the start")
     {
         MockedLibuvApi *api = new MockedLibuvApi();
-        qtjs::EventDispatcherLibUvTimerWatcher watcher(api);
+        qtjs::EventDispatcherLibUvTimerTracker watcher(api);
 
         uint64_t returnedValues[] = {1000000, 3000000},
                  *pReturnedValues = returnedValues;
@@ -354,7 +354,7 @@ TEST_CASE("EventDispatcherLibUv tracks timer execution")
     SECTION("TimerWatcher returns time left until next firing after firing")
     {
         MockedLibuvApi *api = new MockedLibuvApi();
-        qtjs::EventDispatcherLibUvTimerWatcher watcher(api);
+        qtjs::EventDispatcherLibUvTimerTracker watcher(api);
 
         uint64_t returnedValues[] = {1000000, 3000000, 4000000},
                  *pReturnedValues = returnedValues;
@@ -371,7 +371,7 @@ TEST_CASE("EventDispatcherLibUv tracks timer execution")
 
     SECTION("TimerWatcher unregisters timerinfo")
     {
-        qtjs::EventDispatcherLibUvTimerWatcher watcher;
+        qtjs::EventDispatcherLibUvTimerTracker watcher;
         watcher.registerTimer(12, 101, Qt::CoarseTimer, (QObject *)919192);
         watcher.unregisterTimer(12);
         REQUIRE( watcher.getTimerInfo((QObject *)919192).empty() );
