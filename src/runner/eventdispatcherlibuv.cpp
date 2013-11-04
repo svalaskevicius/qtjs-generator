@@ -184,6 +184,15 @@ void EventDispatcherLibUvTimerNotifier::unregisterTimerWatcher(uv_timer_t &watch
 
 
 
+QList<QAbstractEventDispatcher::TimerInfo> EventDispatcherLibUvTimerWatcher::getTimerInfo(QObject *object)
+{
+    return QList<QAbstractEventDispatcher::TimerInfo>();
+}
+
+
+
+
+
 
 void uv_socket_watcher(uv_poll_t* req, int /* status */, int events)
 {
