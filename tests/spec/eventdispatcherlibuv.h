@@ -15,6 +15,8 @@ MOCK_BASE_CLASS( MockedLibuvApi, qtjs::LibuvApi ) {
     MOCK_METHOD(uv_timer_init, 2)
     MOCK_METHOD(uv_timer_start, 4)
     MOCK_METHOD(uv_timer_stop, 1)
+
+    MOCK_METHOD(uv_hrtime, 0)
 };
 
 namespace {
@@ -314,12 +316,16 @@ TEST_CASE("EventDispatcherLibUv supports QTimer registration")
 
 }
 
-TEST_CASE("EventDispatcherLibUv tracks timer execution") {
-    SECTION("TimerWatcher returns empty list when there are no timers registered") {
+TEST_CASE("EventDispatcherLibUv tracks timer execution")
+{
+    SECTION("TimerWatcher returns empty list when there are no timers registered")
+    {
         qtjs::EventDispatcherLibUvTimerWatcher watcher;
         REQUIRE( watcher.getTimerInfo(nullptr).empty() );
     }
-    SECTION("TimerWatcher returns a list of registered timers for object") {
+
+    SECTION("TimerWatcher returns a list of registered timers for object")
+    {
         qtjs::EventDispatcherLibUvTimerWatcher watcher;
         watcher.registerTimer(12, 101, Qt::CoarseTimer, (QObject *)919192);
         auto list = watcher.getTimerInfo((QObject *)919192);
@@ -328,6 +334,41 @@ TEST_CASE("EventDispatcherLibUv tracks timer execution") {
         REQUIRE( list.back().interval == 101 );
         REQUIRE( list.back().timerType == Qt::CoarseTimer );
     }
+
+    SECTION("TimerWatcher returns time left until next firing at the start")
+    {
+        MockedLibuvApi *api = new MockedLibuvApi();
+        qtjs::EventDispatcherLibUvTimerWatcher watcher(api);
+
+        uint64_t returnedValues[] = {1000000, 3000000},
+                 *pReturnedValues = returnedValues;
+
+        MOCK_EXPECT( api->uv_hrtime ).exactly(2)
+            .calls([&pReturnedValues]() { return *pReturnedValues++; });
+
+        watcher.registerTimer(12, 5, Qt::CoarseTimer, (QObject *)919192);
+
+        REQUIRE( watcher.remainingTime(12) == 3 );
+    }
+
+    SECTION("TimerWatcher returns time left until next firing after firing")
+    {
+        MockedLibuvApi *api = new MockedLibuvApi();
+        qtjs::EventDispatcherLibUvTimerWatcher watcher(api);
+
+        uint64_t returnedValues[] = {1000000, 3000000, 4000000},
+                 *pReturnedValues = returnedValues;
+
+        MOCK_EXPECT( api->uv_hrtime ).exactly(3)
+            .calls([&pReturnedValues]() { return *pReturnedValues++; });
+
+        watcher.registerTimer(12, 5, Qt::CoarseTimer, (QObject *)919192);
+
+        watcher.fireTimer(12);
+
+        REQUIRE( watcher.remainingTime(12) == 4 );
+    }
+
 }
 
 
