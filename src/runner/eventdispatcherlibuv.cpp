@@ -265,6 +265,9 @@ void uv_timer_watcher(uv_timer_t* handle, int /* status */)
     }
 }
 
+
+
+
 EventDispatcherLibUv::EventDispatcherLibUv(QObject *parent) :
     QAbstractEventDispatcher(parent),
     socketNotifier(new EventDispatcherLibUvSocketNotifier()),
@@ -276,16 +279,22 @@ EventDispatcherLibUv::EventDispatcherLibUv(QObject *parent) :
 
 EventDispatcherLibUv::~EventDispatcherLibUv(void) {}
 
-void EventDispatcherLibUv::wakeUp(void) {
+void EventDispatcherLibUv::wakeUp(void)
+{
     Q_UNIMPLEMENTED();
-}
-void EventDispatcherLibUv::interrupt(void) {
-    Q_UNIMPLEMENTED();
-}
-void EventDispatcherLibUv::flush(void) {
 }
 
-bool EventDispatcherLibUv::processEvents(QEventLoop::ProcessEventsFlags flags) {
+void EventDispatcherLibUv::interrupt(void)
+{
+    Q_UNIMPLEMENTED();
+}
+
+void EventDispatcherLibUv::flush(void)
+{
+}
+
+bool EventDispatcherLibUv::processEvents(QEventLoop::ProcessEventsFlags flags)
+{
     emit awake();
     QCoreApplication::sendPostedEvents();
     emit aboutToBlock();
@@ -296,7 +305,9 @@ bool EventDispatcherLibUv::processEvents(QEventLoop::ProcessEventsFlags flags) {
     return hasPending;
 
 }
-bool EventDispatcherLibUv::hasPendingEvents(void) {
+
+bool EventDispatcherLibUv::hasPendingEvents(void)
+{
     return hasPending;
 }
 
@@ -321,7 +332,9 @@ void EventDispatcherLibUv::registerTimer(int timerId, int interval, Qt::TimerTyp
     });
     timerTracker->registerTimer(timerId, interval, timerType, object);
 }
-bool EventDispatcherLibUv::unregisterTimer(int timerId) {
+
+bool EventDispatcherLibUv::unregisterTimer(int timerId)
+{
     bool ret = timerNotifier->unregisterTimer(timerId);
     if (ret) {
         timerTracker->unregisterTimer(timerId);
@@ -329,7 +342,8 @@ bool EventDispatcherLibUv::unregisterTimer(int timerId) {
     return ret;
 }
 
-bool EventDispatcherLibUv::unregisterTimers(QObject* object) {
+bool EventDispatcherLibUv::unregisterTimers(QObject* object)
+{
     bool ret = true;
     for (auto info : registeredTimers(object)) {
         ret &= unregisterTimer(info.timerId);
