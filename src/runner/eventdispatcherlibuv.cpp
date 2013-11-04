@@ -204,6 +204,7 @@ void EventDispatcherLibUvTimerTracker::registerTimer(int timerId, int interval, 
 void EventDispatcherLibUvTimerTracker::unregisterTimer(int timerId)
 {
     void *object = timerInfos[timerId].object;
+    timerInfos.erase(timerId);
     QMutableListIterator<QAbstractEventDispatcher::TimerInfo> it(timers[object]);
     while (it.hasNext()) {
         if (it.next().timerId == timerId) {
