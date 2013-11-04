@@ -34,20 +34,28 @@ struct LibuvApi {
     virtual int uv_timer_stop(uv_timer_t* handle);
 };
 
-class EventDispatcherLibUvPrivate {
+class EventDispatcherLibUvSocketNotifier {
 public:
-    EventDispatcherLibUvPrivate(LibuvApi *api = nullptr);
-    virtual ~EventDispatcherLibUvPrivate();
+    EventDispatcherLibUvSocketNotifier(LibuvApi *api = nullptr);
+    virtual ~EventDispatcherLibUvSocketNotifier();
     void registerSocketNotifier(int fd, QSocketNotifier::Type type, std::function<void()> callback);
     void unregisterSocketNotifier(int fd, QSocketNotifier::Type type);
+private:
+    std::unique_ptr<LibuvApi> api;
+    std::map<int, uv_poll_t> socketWatchers;
+    uv_poll_t &findOrCreateWatcher(int fd);
+    bool unregisterPollWatcher(uv_poll_t &fdWatcher, unsigned int eventMask);
+};
+
+class EventDispatcherLibUvTimerNotifier {
+public:
+    EventDispatcherLibUvTimerNotifier(LibuvApi *api = nullptr);
+    virtual ~EventDispatcherLibUvTimerNotifier();
     void registerTimer(int timerId, int interval, std::function<void()> callback);
     bool unregisterTimer(int timerId);
 private:
     std::unique_ptr<LibuvApi> api;
-    std::map<int, uv_poll_t> socketWatchers;
     std::map<int, uv_timer_t> timers;
-    uv_poll_t &findOrCreateWatcher(int fd);
-    bool unregisterPollWatcher(uv_poll_t &fdWatcher, unsigned int eventMask);
     void unregisterTimerWatcher(uv_timer_t &watcher);
 };
 
