@@ -20,7 +20,7 @@ void processAppEvents(QCoreApplication &app, std::function<bool()> stopCheck, in
 
 class TimerTestObject : public QObject {
 protected:
-   virtual void timerEvent(QTimerEvent * event) {
+   virtual void timerEvent(QTimerEvent *) {
         clock++;
     }
 public:
@@ -68,7 +68,7 @@ TEST_CASE("libuv based event dispatcher") {
     }
 
     SECTION("it supports QTimer singleShot events") {
-        unsigned long long count = 0;
+        uint64_t count = 0;
         bool processed = false;
         QTimer timer;
         QObject::connect(&timer, &QTimer::timeout, [&count, &processed]{
