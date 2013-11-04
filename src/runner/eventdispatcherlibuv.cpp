@@ -185,7 +185,7 @@ void EventDispatcherLibUvTimerNotifier::unregisterTimerWatcher(uv_timer_t &watch
 
 
 
-void uv_socket_watcher(uv_poll_t* req, int status, int events)
+void uv_socket_watcher(uv_poll_t* req, int /* status */, int events)
 {
     SocketCallbacks *callbacks = (SocketCallbacks *) req->data;
     if (callbacks) {
@@ -198,7 +198,7 @@ void uv_socket_watcher(uv_poll_t* req, int status, int events)
     }
 }
 
-void uv_timer_watcher(uv_timer_t* handle, int status)
+void uv_timer_watcher(uv_timer_t* handle, int /* status */)
 {
     TimerData *data = (TimerData *) handle->data;
     if (data) {
