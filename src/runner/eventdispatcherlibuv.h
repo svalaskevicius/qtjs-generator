@@ -12,11 +12,13 @@ namespace qtjs {
 
 class EventDispatcherLibUvSocketNotifier;
 class EventDispatcherLibUvTimerNotifier;
+class EventDispatcherLibUvTimerTracker;
 
 class EventDispatcherLibUv : public QAbstractEventDispatcher {
     Q_OBJECT
     std::unique_ptr<EventDispatcherLibUvSocketNotifier> socketNotifier;
     std::unique_ptr<EventDispatcherLibUvTimerNotifier> timerNotifier;
+    std::unique_ptr<EventDispatcherLibUvTimerTracker> timerTracker;
 
     bool hasPending;
 public:
@@ -41,12 +43,7 @@ public:
     virtual int remainingTime(int timerId);
 
 private:
-    QMap<void *, QList<QAbstractEventDispatcher::TimerInfo>> timers;
-    QMap<int, void *> timerLookup;
-    QMap<int, struct timespec> timerInvokations;
     Q_DISABLE_COPY(EventDispatcherLibUv)
-
-    void untrackObjectTimer(void *obj, int id);
 };
 
 }

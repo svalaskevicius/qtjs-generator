@@ -269,6 +269,7 @@ EventDispatcherLibUv::EventDispatcherLibUv(QObject *parent) :
     QAbstractEventDispatcher(parent),
     socketNotifier(new EventDispatcherLibUvSocketNotifier()),
     timerNotifier(new EventDispatcherLibUvTimerNotifier()),
+    timerTracker(new EventDispatcherLibUvTimerTracker),
     hasPending(true), finalize(false)
 {
 }
@@ -314,35 +315,18 @@ void EventDispatcherLibUv::unregisterSocketNotifier(QSocketNotifier* notifier)
 void EventDispatcherLibUv::registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject* object)
 {
     timerNotifier->registerTimer(timerId, interval, [timerId, object, this] {
+        timerTracker->fireTimer(timerId);
         QTimerEvent e(timerId);
         QCoreApplication::sendEvent(object, &e);
-        clock_gettime( CLOCK_REALTIME, &timerInvokations[timerId] );
     });
-    timers[object].append(QAbstractEventDispatcher::TimerInfo(timerId, interval, timerType));
-    timerLookup[timerId] = object;
-    clock_gettime( CLOCK_REALTIME, &timerInvokations[timerId] );
+    timerTracker->registerTimer(timerId, interval, timerType, object);
 }
 bool EventDispatcherLibUv::unregisterTimer(int timerId) {
     bool ret = timerNotifier->unregisterTimer(timerId);
     if (ret) {
-        untrackObjectTimer(timerLookup[timerId], timerId);
-        timerLookup.remove(timerId);
-        timerInvokations.remove(timerId);
+        timerTracker->unregisterTimer(timerId);
     }
     return ret;
-}
-void EventDispatcherLibUv::untrackObjectTimer(void *obj, int id)
-{
-    QMutableListIterator<QAbstractEventDispatcher::TimerInfo> it(timers[obj]);
-    while (it.hasNext()) {
-        if (it.next().timerId == id) {
-            it.remove();
-            if (timers[obj].empty()) {
-                timers.remove(obj);
-            }
-            return;
-        }
-    }
 }
 
 bool EventDispatcherLibUv::unregisterTimers(QObject* object) {
@@ -352,24 +336,15 @@ bool EventDispatcherLibUv::unregisterTimers(QObject* object) {
     }
     return ret;
 }
+
 QList<QAbstractEventDispatcher::TimerInfo> EventDispatcherLibUv::registeredTimers(QObject* object) const
 {
-    return timers[object];
+    return timerTracker->getTimerInfo(object);
 }
-int EventDispatcherLibUv::remainingTime(int timerId) {
-    struct timespec now;
-    clock_gettime( CLOCK_REALTIME, &now );
-    struct timespec last = timerInvokations[timerId];
-    u_int64_t diff = (now.tv_sec - last.tv_sec)*1000000000 + now.tv_nsec - last.tv_nsec;
-    if (diff > 0) {
-        uint msecs = diff / 1000000;
-        for (auto info : timers[timerLookup[timerId]]) {
-            if (info.timerId == timerId) {
-                return info.interval - msecs;
-            }
-        }
-    }
-    return 0;
+
+int EventDispatcherLibUv::remainingTime(int timerId)
+{
+    return timerTracker->remainingTime(timerId);
 }
 
 }
