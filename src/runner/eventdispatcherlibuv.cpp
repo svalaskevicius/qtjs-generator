@@ -198,8 +198,22 @@ EventDispatcherLibUvTimerWatcher::EventDispatcherLibUvTimerWatcher(LibuvApi *api
 void EventDispatcherLibUvTimerWatcher::registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject *object)
 {
     timers[object].append(QAbstractEventDispatcher::TimerInfo(timerId, interval, timerType));
-    timerLastFired[timerId] = api->uv_hrtime() / 1000000;
-    timerIntervals[timerId] = interval;
+    timerInfos[timerId] = {api->uv_hrtime() / 1000000, interval, object};
+}
+
+void EventDispatcherLibUvTimerWatcher::unregisterTimer(int timerId)
+{
+    void *object = timerInfos[timerId].object;
+    QMutableListIterator<QAbstractEventDispatcher::TimerInfo> it(timers[object]);
+    while (it.hasNext()) {
+        if (it.next().timerId == timerId) {
+            it.remove();
+            if (timers[object].empty()) {
+                timers.erase(object);
+            }
+            return;
+        }
+    }
 }
 
 QList<QAbstractEventDispatcher::TimerInfo> EventDispatcherLibUvTimerWatcher::getTimerInfo(QObject *object)
@@ -209,13 +223,14 @@ QList<QAbstractEventDispatcher::TimerInfo> EventDispatcherLibUvTimerWatcher::get
 
 void EventDispatcherLibUvTimerWatcher::fireTimer(int timerId)
 {
-    timerLastFired[timerId] = api->uv_hrtime() / 1000000;
+    timerInfos[timerId].lastFired = api->uv_hrtime() / 1000000;
 }
 
 int EventDispatcherLibUvTimerWatcher::remainingTime(int timerId)
 {
-    return timerIntervals[timerId]
-            + timerLastFired[timerId]
+    const TimerInfo &timerInfo = timerInfos[timerId];
+    return timerInfo.interval
+            + timerInfo.lastFired
             - api->uv_hrtime() / 1000000;
 }
 

@@ -369,6 +369,14 @@ TEST_CASE("EventDispatcherLibUv tracks timer execution")
         REQUIRE( watcher.remainingTime(12) == 4 );
     }
 
+    SECTION("TimerWatcher unregisters timerinfo")
+    {
+        qtjs::EventDispatcherLibUvTimerWatcher watcher;
+        watcher.registerTimer(12, 101, Qt::CoarseTimer, (QObject *)919192);
+        watcher.unregisterTimer(12);
+        REQUIRE( watcher.getTimerInfo((QObject *)919192).empty() );
+    }
+
 }
 
 
