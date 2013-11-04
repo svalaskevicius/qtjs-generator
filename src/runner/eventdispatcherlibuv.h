@@ -10,11 +10,13 @@
 
 namespace qtjs {
 
-class EventDispatcherLibUvPrivate;
+class EventDispatcherLibUvSocketNotifier;
+class EventDispatcherLibUvTimerNotifier;
 
 class EventDispatcherLibUv : public QAbstractEventDispatcher {
     Q_OBJECT
-    std::unique_ptr<EventDispatcherLibUvPrivate> impl;
+    std::unique_ptr<EventDispatcherLibUvSocketNotifier> socketNotifier;
+    std::unique_ptr<EventDispatcherLibUvTimerNotifier> timerNotifier;
 
     bool hasPending;
 public:

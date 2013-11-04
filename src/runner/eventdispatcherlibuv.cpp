@@ -55,26 +55,22 @@ int LibuvApi::uv_timer_stop(uv_timer_t* handle)
 
 
 
-EventDispatcherLibUvPrivate::EventDispatcherLibUvPrivate(LibuvApi *api) : api(api)
+EventDispatcherLibUvSocketNotifier::EventDispatcherLibUvSocketNotifier(LibuvApi *api) : api(api)
 {
     if (!this->api) {
         this->api.reset(new LibuvApi());
     }
 }
 
-EventDispatcherLibUvPrivate::~EventDispatcherLibUvPrivate()
+EventDispatcherLibUvSocketNotifier::~EventDispatcherLibUvSocketNotifier()
 {
     for (auto it : socketWatchers) {
         unregisterPollWatcher(it.second, UV_READABLE | UV_WRITABLE);
     }
     socketWatchers.clear();
-    for (auto it : timers) {
-        unregisterTimerWatcher(it.second);
-    }
-    timers.clear();
 }
 
-void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier::Type type, std::function<void()> callback)
+void EventDispatcherLibUvSocketNotifier::registerSocketNotifier(int fd, QSocketNotifier::Type type, std::function<void()> callback)
 {
     int uvType = translateQSocketNotifierTypeToUv(type);
     if (uvType < 0) {
@@ -94,7 +90,7 @@ void EventDispatcherLibUvPrivate::registerSocketNotifier(int fd, QSocketNotifier
     api->uv_poll_start(&fdWatcher, uvType, &qtjs::uv_socket_watcher);
 }
 
-uv_poll_t &EventDispatcherLibUvPrivate::findOrCreateWatcher(int fd)
+uv_poll_t &EventDispatcherLibUvSocketNotifier::findOrCreateWatcher(int fd)
 {
     auto it = socketWatchers.find(fd);
     if (socketWatchers.end() == it) {
@@ -107,7 +103,7 @@ uv_poll_t &EventDispatcherLibUvPrivate::findOrCreateWatcher(int fd)
     return it->second;
 }
 
-void EventDispatcherLibUvPrivate::unregisterSocketNotifier(int fd, QSocketNotifier::Type type)
+void EventDispatcherLibUvSocketNotifier::unregisterSocketNotifier(int fd, QSocketNotifier::Type type)
 {
     int uvType = translateQSocketNotifierTypeToUv(type);
     if (uvType < 0) {
@@ -123,7 +119,7 @@ void EventDispatcherLibUvPrivate::unregisterSocketNotifier(int fd, QSocketNotifi
     }
 }
 
-bool EventDispatcherLibUvPrivate::unregisterPollWatcher(uv_poll_t &fdWatcher, unsigned int eventMask)
+bool EventDispatcherLibUvSocketNotifier::unregisterPollWatcher(uv_poll_t &fdWatcher, unsigned int eventMask)
 {
     api->uv_poll_stop(&fdWatcher);
     SocketCallbacks *callbacks = (SocketCallbacks *)fdWatcher.data;
@@ -137,7 +133,25 @@ bool EventDispatcherLibUvPrivate::unregisterPollWatcher(uv_poll_t &fdWatcher, un
 }
 
 
-void EventDispatcherLibUvPrivate::registerTimer(int timerId, int interval, std::function<void()> callback)
+
+
+EventDispatcherLibUvTimerNotifier::EventDispatcherLibUvTimerNotifier(LibuvApi *api) : api(api)
+{
+    if (!this->api) {
+        this->api.reset(new LibuvApi());
+    }
+}
+
+EventDispatcherLibUvTimerNotifier::~EventDispatcherLibUvTimerNotifier()
+{
+    for (auto it : timers) {
+        unregisterTimerWatcher(it.second);
+    }
+    timers.clear();
+}
+
+
+void EventDispatcherLibUvTimerNotifier::registerTimer(int timerId, int interval, std::function<void()> callback)
 {
     auto it = timers.find(timerId);
     if (timers.end() == it) {
@@ -152,7 +166,7 @@ void EventDispatcherLibUvPrivate::registerTimer(int timerId, int interval, std::
     api->uv_timer_start(&timer, &uv_timer_watcher, interval, interval);
 }
 
-bool EventDispatcherLibUvPrivate::unregisterTimer(int timerId) {
+bool EventDispatcherLibUvTimerNotifier::unregisterTimer(int timerId) {
     auto it = timers.find(timerId);
     if (it == timers.end()) {
         return false;
@@ -162,7 +176,7 @@ bool EventDispatcherLibUvPrivate::unregisterTimer(int timerId) {
     return true;
 }
 
-void EventDispatcherLibUvPrivate::unregisterTimerWatcher(uv_timer_t &watcher)
+void EventDispatcherLibUvTimerNotifier::unregisterTimerWatcher(uv_timer_t &watcher)
 {
     api->uv_timer_stop(&watcher);
     delete ((TimerData *)watcher.data);
@@ -193,7 +207,10 @@ void uv_timer_watcher(uv_timer_t* handle, int status)
 }
 
 EventDispatcherLibUv::EventDispatcherLibUv(QObject *parent) :
-    QAbstractEventDispatcher(parent), impl(new EventDispatcherLibUvPrivate()), hasPending(true), finalize(false)
+    QAbstractEventDispatcher(parent),
+    socketNotifier(new EventDispatcherLibUvSocketNotifier()),
+    timerNotifier(new EventDispatcherLibUvTimerNotifier()),
+    hasPending(true), finalize(false)
 {
 }
 
@@ -225,19 +242,19 @@ bool EventDispatcherLibUv::hasPendingEvents(void) {
 
 void EventDispatcherLibUv::registerSocketNotifier(QSocketNotifier* notifier)
 {
-    impl->registerSocketNotifier(notifier->socket(), notifier->type(), [notifier]{
+    socketNotifier->registerSocketNotifier(notifier->socket(), notifier->type(), [notifier]{
         QEvent event(QEvent::SockAct);
         QCoreApplication::sendEvent(notifier, &event);
     });
 }
 void EventDispatcherLibUv::unregisterSocketNotifier(QSocketNotifier* notifier)
 {
-    impl->unregisterSocketNotifier(notifier->socket(), notifier->type());
+    socketNotifier->unregisterSocketNotifier(notifier->socket(), notifier->type());
 }
 
 void EventDispatcherLibUv::registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject* object)
 {
-    impl->registerTimer(timerId, interval, [timerId, object, this] {
+    timerNotifier->registerTimer(timerId, interval, [timerId, object, this] {
         QTimerEvent e(timerId);
         QCoreApplication::sendEvent(object, &e);
         clock_gettime( CLOCK_REALTIME, &timerInvokations[timerId] );
@@ -247,7 +264,7 @@ void EventDispatcherLibUv::registerTimer(int timerId, int interval, Qt::TimerTyp
     clock_gettime( CLOCK_REALTIME, &timerInvokations[timerId] );
 }
 bool EventDispatcherLibUv::unregisterTimer(int timerId) {
-    bool ret = impl->unregisterTimer(timerId);
+    bool ret = timerNotifier->unregisterTimer(timerId);
     if (ret) {
         untrackObjectTimer(timerLookup[timerId], timerId);
         timerLookup.remove(timerId);
