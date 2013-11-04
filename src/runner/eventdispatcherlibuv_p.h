@@ -66,14 +66,19 @@ class EventDispatcherLibUvTimerWatcher {
 public:
     EventDispatcherLibUvTimerWatcher(LibuvApi *api = nullptr);
     void registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject *object);
+    void unregisterTimer(int timerId);
     QList<QAbstractEventDispatcher::TimerInfo> getTimerInfo(QObject *object);
     void fireTimer(int timerId);
     int remainingTime(int timerId);
 private:
+    struct TimerInfo {
+        unsigned long lastFired;
+        int interval;
+        void *object;
+    };
     std::unique_ptr<LibuvApi> api;
     std::map<void *, QList<QAbstractEventDispatcher::TimerInfo>> timers;
-    std::map<int, unsigned long> timerLastFired;
-    std::map<int, int> timerIntervals;
+    std::map<int, TimerInfo> timerInfos;
 };
 
 }
