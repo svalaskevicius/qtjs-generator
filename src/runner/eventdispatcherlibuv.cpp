@@ -218,7 +218,11 @@ void EventDispatcherLibUvTimerWatcher::unregisterTimer(int timerId)
 
 QList<QAbstractEventDispatcher::TimerInfo> EventDispatcherLibUvTimerWatcher::getTimerInfo(QObject *object)
 {
-    return timers[object];
+    auto it = timers.find(object);
+    if (timers.end() == it) {
+        return QList<QAbstractEventDispatcher::TimerInfo>();
+    }
+    return it->second;
 }
 
 void EventDispatcherLibUvTimerWatcher::fireTimer(int timerId)
