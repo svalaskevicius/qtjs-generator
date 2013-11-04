@@ -62,7 +62,10 @@ private:
 
 class EventDispatcherLibUvTimerWatcher {
 public:
+    void registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject *object);
     QList<QAbstractEventDispatcher::TimerInfo> getTimerInfo(QObject *object);
+private:
+    std::map<void *, QList<QAbstractEventDispatcher::TimerInfo>> timers;
 };
 
 }

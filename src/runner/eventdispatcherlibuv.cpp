@@ -183,10 +183,14 @@ void EventDispatcherLibUvTimerNotifier::unregisterTimerWatcher(uv_timer_t &watch
 }
 
 
+void EventDispatcherLibUvTimerWatcher::registerTimer(int timerId, int interval, Qt::TimerType timerType, QObject *object)
+{
+    timers[object].append(QAbstractEventDispatcher::TimerInfo(timerId, interval, timerType));
+}
 
 QList<QAbstractEventDispatcher::TimerInfo> EventDispatcherLibUvTimerWatcher::getTimerInfo(QObject *object)
 {
-    return QList<QAbstractEventDispatcher::TimerInfo>();
+    return timers[object];
 }
 
 

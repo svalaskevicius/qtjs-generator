@@ -319,6 +319,15 @@ TEST_CASE("EventDispatcherLibUv tracks timer execution") {
         qtjs::EventDispatcherLibUvTimerWatcher watcher;
         REQUIRE( watcher.getTimerInfo(nullptr).empty() );
     }
+    SECTION("TimerWatcher returns a list of registered timers for object") {
+        qtjs::EventDispatcherLibUvTimerWatcher watcher;
+        watcher.registerTimer(12, 101, Qt::CoarseTimer, (QObject *)919192);
+        auto list = watcher.getTimerInfo((QObject *)919192);
+        REQUIRE( list.count() == 1 );
+        REQUIRE( list.back().timerId == 12 );
+        REQUIRE( list.back().interval == 101 );
+        REQUIRE( list.back().timerType == Qt::CoarseTimer );
+    }
 }
 
 
