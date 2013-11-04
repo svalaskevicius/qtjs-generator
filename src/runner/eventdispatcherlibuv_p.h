@@ -1,5 +1,6 @@
 #pragma once
 
+#include <QAbstractEventDispatcher>
 #include <QSocketNotifier>
 
 #include "uv.h"
@@ -57,6 +58,11 @@ private:
     std::unique_ptr<LibuvApi> api;
     std::map<int, uv_timer_t> timers;
     void unregisterTimerWatcher(uv_timer_t &watcher);
+};
+
+class EventDispatcherLibUvTimerWatcher {
+public:
+    QList<QAbstractEventDispatcher::TimerInfo> getTimerInfo(QObject *object);
 };
 
 }

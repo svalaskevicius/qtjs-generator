@@ -314,6 +314,13 @@ TEST_CASE("EventDispatcherLibUv supports QTimer registration")
 
 }
 
+TEST_CASE("EventDispatcherLibUv tracks timer execution") {
+    SECTION("TimerWatcher returns empty list when there are no timers registered") {
+        qtjs::EventDispatcherLibUvTimerWatcher watcher;
+        REQUIRE( watcher.getTimerInfo(nullptr).empty() );
+    }
+}
+
 
 
 
