@@ -205,17 +205,23 @@ void EventDispatcherLibUvTimerTracker::unregisterTimer(int timerId)
 {
     void *object = timerInfos[timerId].object;
     timerInfos.erase(timerId);
+    cleanTimerFromObject(timerId, object);
+    if (timers[object].empty()) {
+        timers.erase(object);
+    }
+}
+
+void EventDispatcherLibUvTimerTracker::cleanTimerFromObject(int timerId, void *object)
+{
     QMutableListIterator<QAbstractEventDispatcher::TimerInfo> it(timers[object]);
     while (it.hasNext()) {
         if (it.next().timerId == timerId) {
             it.remove();
-            if (timers[object].empty()) {
-                timers.erase(object);
-            }
             return;
         }
     }
 }
+
 
 QList<QAbstractEventDispatcher::TimerInfo> EventDispatcherLibUvTimerTracker::getTimerInfo(QObject *object)
 {

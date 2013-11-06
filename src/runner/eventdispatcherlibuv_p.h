@@ -71,6 +71,7 @@ public:
     void fireTimer(int timerId);
     int remainingTime(int timerId);
 private:
+    void cleanTimerFromObject(int timerId, void *object);
     struct TimerInfo {
         unsigned long lastFired;
         int interval;
