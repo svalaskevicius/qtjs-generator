@@ -1,6 +1,4 @@
 
-QT += qml v8-private qml-private
-
 ROOT = $${PWD}/../
 BUILD = $$shadowed($$PWD)/../
 
@@ -10,7 +8,8 @@ INCLUDEPATH += \
     $${ROOT}/metagen/build/QtWidgets/include \
     $${ROOT}/metagen/build/QtQml/include \
     $${ROOT}/metagen/build/QtGui/include \
-    $${ROOT}/include
+    $${ROOT}/include \
+    $${ROOT}/lib/node/deps/v8/include
 
 
 CONFIG += c++11 exceptions
@@ -31,6 +30,22 @@ QMAKE_LFLAGS_RELEASE += -fvisibility=hidden -fvisibility-inlines-hidden -s
 # QMAKE_CXXFLAGS += -fexceptions -ftemplate-backtrace-limit=0 -g -O0
 
 
-LIBPATH += $${ROOT}/lib/cpgf/lib/
-LIBS += -lcpgf
+LIBPATH += $${ROOT}/lib/cpgf/lib/ $${ROOT}/lib/node/deps/v8/out/native/lib.target/
+LIBS += -lcpgf -lv8
+
+
+
+
+
+v8_gyp.target = $${ROOT}/lib/node/deps/v8/build/gyp/gyp
+v8_gyp.commands = cd $${ROOT}/lib/node/deps/v8/ && rm -f build/gyp && ln -s $${ROOT}/lib/node/tools/gyp build/gyp
+v8_gyp.depends = $${ROOT}/lib/node/deps/v8/Makefile
+
+dep_v8.target = $${ROOT}/lib/node/deps/v8/out/native/lib.target/libv8.so
+dep_v8.commands = cd $${ROOT}/lib/node/deps/v8/ && make native -j4 library=shared
+dep_v8.depends = $${ROOT}/lib/node/deps/v8/build/gyp/gyp
+
+QMAKE_EXTRA_TARGETS += v8_gyp dep_v8
+
+PRE_TARGETDEPS +=   $${ROOT}/lib/node/deps/v8/out/native/lib.target/libv8.so
 
