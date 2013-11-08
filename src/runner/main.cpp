@@ -11,7 +11,6 @@
 #include <iostream>
 #include <string.h>
 #include "v8.h"
-#include "../../lib/node/src/v8_typed_array.h"
 
 #include "register_meta_qtcore.h"
 #include "register_meta_qtgui.h"
@@ -32,15 +31,26 @@
 #include "eventdispatcherlibuv.h"
 #include "uv.h"
 
+#include "../../lib/node/src/env.h"
+
 using namespace cpgf;
 using namespace std;
 
 namespace node {
-char** Init(int argc, char *argv[]);
+char** Init(int* argc,
+            const char** argv,
+            int* exec_argc,
+            const char*** exec_argv);
 v8::Handle<v8::Object> SetupProcessObject(int argc, char *argv[]);
 void Load(v8::Handle<v8::Object> process_l);
-void EmitExit(v8::Handle<v8::Object> process_l);
-void RunAtExit();
+void EmitExit(Environment* env);
+void RunAtExit(Environment* env);
+static void InstallEarlyDebugSignalHandler();
+Environment* CreateEnvironment(v8::Isolate* isolate,
+                                int argc,
+                                const char* const* argv,
+                                int exec_argc,
+                                const char* const* exec_argv);
 }
 
 namespace {
@@ -124,7 +134,7 @@ struct CpgfBinder {
     GScopedInterface<IScriptObject> scriptObject;
     GScopedInterface<IMetaClass> metaClass;
 
-    CpgfBinder(v8::Persistent<v8::Context> ctx)
+    CpgfBinder(v8::Handle<v8::Context> ctx)
         : define(GDefineMetaNamespace::declare("qt")),
           service(createDefaultMetaService()),
           runner(createV8ScriptRunner(service.get(), ctx)),
@@ -185,66 +195,75 @@ static char **copy_argv(int argc, char **argv) {
 
 int main(int argc, char * argv[])
 {
-    // Hack aroung with the argv pointer. Used for process.title = "blah".
-    argv = uv_setup_args(argc, argv);
+//#if !defined(_WIN32)
+//  // Try hard not to lose SIGUSR1 signals during the bootstrap process.
+//  node::InstallEarlyDebugSignalHandler();
+//#endif
 
-    // Logic to duplicate argv as Init() modifies arguments
-    // that are passed into it.
-    char **argv_copy = copy_argv(argc, argv);
+  assert(argc > 0);
 
-    auto ev_dispatcher = new qtjs::EventDispatcherLibUv();
-    QCoreApplication::setEventDispatcher(ev_dispatcher);
-    QApplication app(argc, argv);
+  // Hack around with the argv pointer. Used for process.title = "blah".
+  argv = uv_setup_args(argc, argv);
 
-    if ((argc > 1) && (!strcmp("-v", argv[1]))) {
-        cout << "v8 version: "<<v8::V8::GetVersion() << endl;
-        return 0;
+
+  auto ev_dispatcher = new qtjs::EventDispatcherLibUv();
+  QCoreApplication::setEventDispatcher(ev_dispatcher);
+  QApplication app(argc, argv);
+
+  if ((argc > 1) && (!strcmp("-v", argv[1]))) {
+      cout << "v8 version: "<<v8::V8::GetVersion() << endl;
+      return 0;
+  }
+
+
+  // This needs to run *before* V8::Initialize().  The const_cast is not
+  // optional, in case you're wondering.
+  int exec_argc;
+  const char** exec_argv;
+  node::Init(&argc, const_cast<const char**>(argv), &exec_argc, &exec_argv);
+
+//#if HAVE_OPENSSL
+//  // V8 on Windows doesn't have a good source of entropy. Seed it from
+//  // OpenSSL's pool.
+//  V8::SetEntropySource(crypto::EntropySource);
+//#endif
+
+  v8::V8::Initialize();
+  {
+    v8::Isolate* node_isolate = NULL;
+
+    v8::Locker locker(node_isolate);
+    node::Environment* env = node::CreateEnvironment(node_isolate, argc, argv, exec_argc, exec_argv);
+    v8::Context::Scope context_scope(env->context());
+    v8::HandleScope handle_scope(env->isolate());
+
+    CpgfBinder cpgfBinder(env->context());
+
+    bool appHadQuitRequest = false;
+    QObject::connect(&app, &QCoreApplication::aboutToQuit, [&appHadQuitRequest]{
+        appHadQuitRequest = true;
+    });
+
+    //    uv_run(env->event_loop(), UV_RUN_DEFAULT);
+    if (!appHadQuitRequest) {
+        ev_dispatcher->finalize = true;
+        app.exec();
     }
 
-    // This needs to run *before* V8::Initialize()
-    // Use copy here as to not modify the original argv:
-    node::Init(argc, argv_copy);
+    node::EmitExit(env);
+    node::RunAtExit(env);
+    env->Dispose();
+    env = NULL;
+  }
 
-    v8::V8::Initialize();
-    {
-        v8::Locker locker;
-        v8::HandleScope handle_scope;
+#ifndef NDEBUG
+  // Clean up. Not strictly necessary.
+  v8::V8::Dispose();
+#endif  // NDEBUG
 
-        // Create the one and only Context.
-        v8::Persistent<v8::Context> context = v8::Context::New();
-        v8::Context::Scope context_scope(context);
+  delete[] exec_argv;
+  exec_argv = NULL;
 
-        // Use original argv, as we're just copying values out of it.
-        v8::Handle<v8::Object> process_l = node::SetupProcessObject(argc, argv);
-        v8_typed_array::AttachBindings(context->Global());
-
-        CpgfBinder cpgfBinder(context);
-
-        bool appHadQuitRequest = false;
-        QObject::connect(&app, &QCoreApplication::aboutToQuit, [&appHadQuitRequest]{
-            appHadQuitRequest = true;
-        });
-
-        // Create all the objects, load modules, do everything.
-        // so your next reading stop should be node::Load()!
-        node::Load(process_l);
-
-        if (!appHadQuitRequest) {
-            ev_dispatcher->finalize = true;
-            app.exec();
-        }
-
-        node::EmitExit(process_l);
-        node::RunAtExit();
-
-        context.Dispose();
-
-    }
-    v8::V8::Dispose();
-
-    // Clean up the copy:
-    free(argv_copy);
-
-    return __exitCode;
+  return __exitCode;
 }
 

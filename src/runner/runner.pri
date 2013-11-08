@@ -21,7 +21,7 @@ HEADERS += \
 
 QMAKE_CXXFLAGS += -pthread -fno-strict-aliasing -fno-tree-vrp
 QMAKE_CXXFLAGS_RELEASE += -Wno-unused-parameter
-DEFINES += "ARCH=\"\\\"$$QMAKE_HOST.arch\\\"\"" HAVE_OPENSSL=1 NODE_WANT_INTERNALS=1
+DEFINES += "ARCH=\"\\\"$$QMAKE_HOST.arch\\\"\"" HAVE_OPENSSL=1 NODE_WANT_INTERNALS=1 OPENSSL_NO_SSL2=1
 
 unix:DEFINES += __POSIX__ "PLATFORM=\"\\\"unix\\\"\""
 win32:DEFINES += PLATFORM=win32 FD_SETSIZE=1024 _UNICODE=1  HAVE_PERFCTR
@@ -42,23 +42,25 @@ SOURCES +=  $${ROOT}/lib/node/src/fs_event_wrap.cc \
             $${ROOT}/lib/node/src/node_http_parser.cc \
             $${ROOT}/lib/node/src/node_javascript.cc \
             $${ROOT}/lib/node/src/node_os.cc \
-            $${ROOT}/lib/node/src/node_script.cc \
             $${ROOT}/lib/node/src/node_stat_watcher.cc \
-            $${ROOT}/lib/node/src/node_string.cc \
             $${ROOT}/lib/node/src/node_zlib.cc \
             $${ROOT}/lib/node/src/pipe_wrap.cc \
             $${ROOT}/lib/node/src/signal_wrap.cc \
             $${ROOT}/lib/node/src/string_bytes.cc \
             $${ROOT}/lib/node/src/stream_wrap.cc \
-            $${ROOT}/lib/node/src/slab_allocator.cc \
             $${ROOT}/lib/node/src/tcp_wrap.cc \
             $${ROOT}/lib/node/src/timer_wrap.cc \
             $${ROOT}/lib/node/src/tty_wrap.cc \
             $${ROOT}/lib/node/src/process_wrap.cc \
-            $${ROOT}/lib/node/src/v8_typed_array.cc \
             $${ROOT}/lib/node/src/udp_wrap.cc \
-            $${ROOT}/lib/node/src/node_crypto.cc
-
+            $${ROOT}/lib/node/src/node_crypto.cc \
+            $${ROOT}/lib/node/src/node_crypto_bio.cc \
+            $${ROOT}/lib/node/src/node_crypto_clienthello.cc \
+            $${ROOT}/lib/node/src/tls_wrap.cc \
+            $${ROOT}/lib/node/src/node_contextify.cc \
+            $${ROOT}/lib/node/src/node_watchdog.cc \
+            $${ROOT}/lib/node/src/smalloc.cc \
+            $${ROOT}/lib/node/src/uv.cc
 
 nodeconfig.target = $${ROOT}/lib/node/out/Makefile
 nodeconfig.commands = cd $${ROOT}/lib/node && ./configure
