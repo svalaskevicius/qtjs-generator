@@ -63,47 +63,47 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
     SECTION("registerSocketNotifier initialises libuv handle for the given read fd")
     {
         MockedLibuvApi *api = new MockedLibuvApi();
-        PollMocker pollMocker(api);
-        pollMocker.mockInitAndExecute(19, UV_READABLE);
+        PollMocker mocker(api);
+        mocker.mockInitAndExecute(19, UV_READABLE);
 
         qtjs::EventDispatcherLibUvSocketNotifier dispatcher(api);
         dispatcher.registerSocketNotifier(19, QSocketNotifier::Read, []{});
 
-        pollMocker.checkHandles();
+        mocker.checkHandles();
     }
 
     SECTION("registerSocketNotifier initialises libuv handle for the given write fd")
     {
         MockedLibuvApi *api = new MockedLibuvApi();
-        PollMocker pollMocker(api);
-        pollMocker.mockInitAndExecute(20, UV_WRITABLE);
+        PollMocker mocker(api);
+        mocker.mockInitAndExecute(20, UV_WRITABLE);
 
         qtjs::EventDispatcherLibUvSocketNotifier dispatcher(api);
         dispatcher.registerSocketNotifier(20, QSocketNotifier::Write, []{});
 
-        pollMocker.checkHandles();
+        mocker.checkHandles();
     }
 
     SECTION("unregisterSocketNotifier stops uv poller for a registered handle")
     {
         MockedLibuvApi *api = new MockedLibuvApi();
-        PollMocker pollMocker(api);
-        pollMocker.mockInitAndExecute(20, UV_WRITABLE);
-        pollMocker.mockStop();
+        PollMocker mocker(api);
+        mocker.mockInitAndExecute(20, UV_WRITABLE);
+        mocker.mockStop();
 
         qtjs::EventDispatcherLibUvSocketNotifier dispatcher(api);
         dispatcher.registerSocketNotifier(20, QSocketNotifier::Write, []{});
         dispatcher.unregisterSocketNotifier(20, QSocketNotifier::Write);
 
-        pollMocker.checkHandles();
+        mocker.checkHandles();
     }
 
     SECTION("it implicitly stops uv poller for a registered handle on destruction")
     {
         MockedLibuvApi *api = new MockedLibuvApi();
-        PollMocker pollMocker(api);
-        pollMocker.mockInitAndExecute(20, UV_WRITABLE);
-        pollMocker.mockStop();
+        PollMocker mocker(api);
+        mocker.mockInitAndExecute(20, UV_WRITABLE);
+        mocker.mockStop();
 
         qtjs::EventDispatcherLibUvSocketNotifier dispatcher(api);
         dispatcher.registerSocketNotifier(20, QSocketNotifier::Write, []{});
@@ -122,16 +122,16 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
     SECTION("unregisterSocketNotifier stops uv poller just once for a registered handle")
     {
         MockedLibuvApi *api = new MockedLibuvApi();
-        PollMocker pollMocker(api);
-        pollMocker.mockInitAndExecute(20, UV_WRITABLE);
-        pollMocker.mockStop();
+        PollMocker mocker(api);
+        mocker.mockInitAndExecute(20, UV_WRITABLE);
+        mocker.mockStop();
 
         qtjs::EventDispatcherLibUvSocketNotifier dispatcher(api);
         dispatcher.registerSocketNotifier(20, QSocketNotifier::Write, []{});
         dispatcher.unregisterSocketNotifier(20, QSocketNotifier::Write);
         dispatcher.unregisterSocketNotifier(20, QSocketNotifier::Write);
 
-        pollMocker.checkHandles();
+        mocker.checkHandles();
     }
 
     SECTION("socket watcher invokes read callback")
@@ -173,16 +173,16 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
     {
         int callbackInvoked = 0;
         MockedLibuvApi *api = new MockedLibuvApi();
-        PollMocker pollMocker(api);
-        pollMocker.mockInitAndExecute(19, UV_READABLE);
+        PollMocker mocker(api);
+        mocker.mockInitAndExecute(19, UV_READABLE);
 
         qtjs::EventDispatcherLibUvSocketNotifier dispatcher(api);
         dispatcher.registerSocketNotifier(19, QSocketNotifier::Read, [&callbackInvoked]{ callbackInvoked++; });
 
-        pollMocker.checkHandles();
-        REQUIRE( pollMocker.startedHandle->data );
-        ((qtjs::SocketCallbacks *)pollMocker.startedHandle->data)->readAvailable();
-        REQUIRE_THROWS( ((qtjs::SocketCallbacks *)pollMocker.startedHandle->data)->writeAvailable() );
+        mocker.checkHandles();
+        REQUIRE( mocker.startedHandle->data );
+        ((qtjs::SocketCallbacks *)mocker.startedHandle->data)->readAvailable();
+        REQUIRE_THROWS( ((qtjs::SocketCallbacks *)mocker.startedHandle->data)->writeAvailable() );
         REQUIRE( callbackInvoked == 1 );
     }
 
@@ -190,16 +190,16 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
     {
         int callbackInvoked = 0;
         MockedLibuvApi *api = new MockedLibuvApi();
-        PollMocker pollMocker(api);
-        pollMocker.mockInitAndExecute(19, UV_WRITABLE);
+        PollMocker mocker(api);
+        mocker.mockInitAndExecute(19, UV_WRITABLE);
 
         qtjs::EventDispatcherLibUvSocketNotifier dispatcher(api);
         dispatcher.registerSocketNotifier(19, QSocketNotifier::Write, [&callbackInvoked]{ callbackInvoked++; });
 
-        pollMocker.checkHandles();
-        REQUIRE( pollMocker.startedHandle->data );
-        REQUIRE_THROWS( ((qtjs::SocketCallbacks *)pollMocker.startedHandle->data)->readAvailable() );
-        ((qtjs::SocketCallbacks *)pollMocker.startedHandle->data)->writeAvailable();
+        mocker.checkHandles();
+        REQUIRE( mocker.startedHandle->data );
+        REQUIRE_THROWS( ((qtjs::SocketCallbacks *)mocker.startedHandle->data)->readAvailable() );
+        ((qtjs::SocketCallbacks *)mocker.startedHandle->data)->writeAvailable();
         REQUIRE( callbackInvoked == 1 );
     }
 
@@ -207,19 +207,19 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
     {
         int callbackInvoked = 0;
         MockedLibuvApi *api = new MockedLibuvApi();
-        PollMocker pollMocker(api);
-        pollMocker.mockInitAndExecute(19, UV_READABLE);
-        pollMocker.mockStart(UV_WRITABLE);
+        PollMocker mocker(api);
+        mocker.mockInitAndExecute(19, UV_READABLE);
+        mocker.mockStart(UV_WRITABLE);
 
         qtjs::EventDispatcherLibUvSocketNotifier dispatcher(api);
         dispatcher.registerSocketNotifier(19, QSocketNotifier::Read, [&callbackInvoked]{ callbackInvoked++; });
         dispatcher.registerSocketNotifier(19, QSocketNotifier::Write, [&callbackInvoked]{ callbackInvoked++; });
 
-        pollMocker.checkHandles();
-        REQUIRE( pollMocker.startedHandle->data );
+        mocker.checkHandles();
+        REQUIRE( mocker.startedHandle->data );
 
-        ((qtjs::SocketCallbacks *)pollMocker.startedHandle->data)->readAvailable();
-        ((qtjs::SocketCallbacks *)pollMocker.startedHandle->data)->writeAvailable();
+        ((qtjs::SocketCallbacks *)mocker.startedHandle->data)->readAvailable();
+        ((qtjs::SocketCallbacks *)mocker.startedHandle->data)->writeAvailable();
 
         REQUIRE( callbackInvoked == 2 );
     }
@@ -227,38 +227,40 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
     SECTION("unregisterSocketNotifier only unregisters the requested events type")
     {
         MockedLibuvApi *api = new MockedLibuvApi();
-        PollMocker pollMocker(api);
-        pollMocker.mockInitAndExecute(20, UV_WRITABLE);
-        pollMocker.mockStart(UV_READABLE);
+        PollMocker mocker(api);
+        mocker.mockInitAndExecute(20, UV_WRITABLE);
+        mocker.mockStart(UV_READABLE);
 
         qtjs::EventDispatcherLibUvSocketNotifier dispatcher(api);
         dispatcher.registerSocketNotifier(20, QSocketNotifier::Write, []{});
         dispatcher.registerSocketNotifier(20, QSocketNotifier::Read, []{});
 
-        pollMocker.checkHandles();
-        pollMocker.verifyAndReset();
+        mocker.checkHandles();
+        mocker.verifyAndReset();
 
-        pollMocker.mockStop();
-        pollMocker.mockStart(UV_READABLE);
+        mocker.mockStop();
+        mocker.mockStart(UV_READABLE);
 
         dispatcher.unregisterSocketNotifier(20, QSocketNotifier::Write);
 
-        pollMocker.checkHandles();
-        pollMocker.verifyAndReset();
+        mocker.checkHandles();
+        mocker.verifyAndReset();
     }
 
     SECTION("unregisterSocketNotifier calls uv_close before deallocation")
     {
         MockedLibuvApi *api = new MockedLibuvApi();
-        PollMocker pollMocker(api);
-        pollMocker.mockInitAndExecute(20, UV_WRITABLE);
-        pollMocker.mockClose();
+        PollMocker mocker(api);
+        mocker.mockInitAndExecute(20, UV_WRITABLE);
+        mocker.mockClose();
 
         qtjs::EventDispatcherLibUvSocketNotifier dispatcher(api);
         dispatcher.registerSocketNotifier(20, QSocketNotifier::Write, []{});
         dispatcher.unregisterSocketNotifier(20, QSocketNotifier::Write);
 
-        pollMocker.checkHandles();
+        mocker.checkHandles();
+    }
+
     }
 }
 
