@@ -87,7 +87,7 @@ EventDispatcherLibUvAsyncChannel::~EventDispatcherLibUvAsyncChannel()
 }
 void EventDispatcherLibUvAsyncChannel::send()
 {
-
+    api->uv_async_send(&handle);
 }
 
 
