@@ -58,6 +58,11 @@ uint64_t LibuvApi::uv_hrtime()
     return ::uv_hrtime();
 }
 
+void LibuvApi::uv_close(uv_handle_t* handle, uv_close_cb close_cb)
+{
+    return ::uv_close(handle, close_cb);
+}
+
 
 
 EventDispatcherLibUvSocketNotifier::EventDispatcherLibUvSocketNotifier(LibuvApi *api) : api(api)
@@ -271,6 +276,10 @@ void uv_timer_watcher(uv_timer_t* handle, int /* status */)
     }
 }
 
+void uv_close_callback(uv_handle_t* handle)
+{
+
+}
 
 
 

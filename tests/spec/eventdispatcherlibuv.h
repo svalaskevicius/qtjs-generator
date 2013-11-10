@@ -17,13 +17,16 @@ MOCK_BASE_CLASS( MockedLibuvApi, qtjs::LibuvApi ) {
     MOCK_METHOD(uv_timer_stop, 1)
 
     MOCK_METHOD(uv_hrtime, 0)
+
+    MOCK_METHOD(uv_close, 2)
 };
 
 namespace {
 
 struct PollMocker {
     uv_poll_t *registeredHandle, *startedHandle, *stoppedHandle;
-    bool checkStart, checkStop;
+    uv_handle_t *closedHandle;
+    bool checkStart, checkStop, checkClose;
     MockedLibuvApi *api;
 
     PollMocker(MockedLibuvApi *api);
@@ -32,6 +35,7 @@ struct PollMocker {
     void mockInitAndExecute(int fd, int type);
     void mockImplicitStop();
     void mockStop();
+    void mockClose();
     void checkHandles();
     void verifyAndReset();
 };
@@ -240,6 +244,20 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
         pollMocker.checkHandles();
         pollMocker.verifyAndReset();
     }
+
+    SECTION("unregisterSocketNotifier calls uv_close before deallocation")
+    {
+        MockedLibuvApi *api = new MockedLibuvApi();
+        PollMocker pollMocker(api);
+        pollMocker.mockInitAndExecute(20, UV_WRITABLE);
+        pollMocker.mockClose();
+
+        qtjs::EventDispatcherLibUvSocketNotifier dispatcher(api);
+        dispatcher.registerSocketNotifier(20, QSocketNotifier::Write, []{});
+        dispatcher.unregisterSocketNotifier(20, QSocketNotifier::Write);
+
+        pollMocker.checkHandles();
+    }
 }
 
 TEST_CASE("EventDispatcherLibUv supports QTimer registration")
@@ -385,7 +403,7 @@ TEST_CASE("EventDispatcherLibUv tracks timer execution")
 
 namespace {
 
-PollMocker::PollMocker(MockedLibuvApi *api) : checkStart(false), checkStop(false), api(api)
+PollMocker::PollMocker(MockedLibuvApi *api) : checkStart(false), checkStop(false), checkClose(false), api(api)
 {
 }
 
@@ -419,6 +437,12 @@ void PollMocker::mockStop()
             .returns(0);
     checkStop = true;
 }
+void PollMocker::mockClose()
+{
+    MOCK_EXPECT( api->uv_close ).once()
+        .with( mock::retrieve(closedHandle), mock::equal(&qtjs::uv_close_callback));
+    checkClose = true;
+}
 
 void PollMocker::mockImplicitStop()
 {
@@ -433,6 +457,9 @@ void PollMocker::checkHandles()
     }
     if (checkStop) {
         REQUIRE( registeredHandle == stoppedHandle );
+    }
+    if (checkClose) {
+        REQUIRE( (uv_handle_t *)registeredHandle == closedHandle );
     }
 }
 
