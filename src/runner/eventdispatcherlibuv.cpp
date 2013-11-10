@@ -136,8 +136,6 @@ bool EventDispatcherLibUvSocketNotifier::unregisterPollWatcher(uv_poll_t *fdWatc
     callbacks->eventMask &= ~eventMask;
     if (!callbacks->eventMask) {
         api->uv_close((uv_handle_t *) fdWatcher, uv_close_pollHandle);
-        uv_run(uv_default_loop(), UV_RUN_NOWAIT);
-        delete callbacks;
         return true;
     }
     api->uv_poll_start(fdWatcher, callbacks->eventMask, &qtjs::uv_socket_watcher);
@@ -280,7 +278,9 @@ void uv_timer_watcher(uv_timer_t* handle, int /* status */)
 
 void uv_close_pollHandle(uv_handle_t* handle)
 {
-
+    uv_poll_t *fdWatcher = (uv_poll_t *)handle;
+    delete (SocketCallbacks *)fdWatcher->data;
+    delete fdWatcher;
 }
 
 
