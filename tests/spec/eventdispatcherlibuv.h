@@ -294,15 +294,20 @@ TEST_CASE("EventDispatcherLibUv async wakeups")
         mocker.checkHandles();
     }
 
-//    SECTION("it uses async handle to wake up")
-//    {
-//        MockedLibuvApi *api = new MockedLibuvApi();
-//        AsyncMocker mocker(api);
-//        mocker.mockAsyncSend();
+    SECTION("it uses async handle to wake up")
+    {
+        MockedLibuvApi *api = new MockedLibuvApi();
+        AsyncMocker mocker(api);
+        mocker.mockInit();
+        mocker.mockAsyncSend();
 
-//        qtjs::EventDispatcherLibUvAsyncChannel channel(api);
-//        channel.send();
-//    }
+        {
+            qtjs::EventDispatcherLibUvAsyncChannel channel(api);
+            channel.send();
+        }
+
+        mocker.checkHandles();
+    }
 }
 
 TEST_CASE("EventDispatcherLibUv supports QTimer registration")
