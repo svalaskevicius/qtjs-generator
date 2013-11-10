@@ -74,11 +74,16 @@ int LibuvApi::uv_async_send(uv_async_t* async)
 
 
 
-EventDispatcherLibUvAsyncChannel::EventDispatcherLibUvAsyncChannel(LibuvApi *api)
+EventDispatcherLibUvAsyncChannel::EventDispatcherLibUvAsyncChannel(LibuvApi *api) : api(api)
 {
+    if (!this->api) {
+        this->api.reset(new LibuvApi());
+    }
+    api->uv_async_init(uv_default_loop(), &handle, nullptr);
 }
 EventDispatcherLibUvAsyncChannel::~EventDispatcherLibUvAsyncChannel()
 {
+    api->uv_close((uv_handle_t *)&handle, &uv_close_asyncHandle);
 }
 void EventDispatcherLibUvAsyncChannel::send()
 {
