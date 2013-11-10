@@ -12,7 +12,6 @@
 namespace qtjs {
 
 
-
 EventDispatcherLibUv::EventDispatcherLibUv(QObject *parent) :
     QAbstractEventDispatcher(parent),
     socketNotifier(new EventDispatcherLibUvSocketNotifier()),

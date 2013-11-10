@@ -1,6 +1,4 @@
-
-#include <catch.hpp>
-#include <turtle/mock.hpp>
+#include "test_setup.h"
 
 #include "../src/runner/eventdispatcherlibuv_p.h"
 
@@ -668,3 +666,4 @@ void TimerMocker::verifyAndReset()
 }
 
 }
+
