@@ -87,9 +87,9 @@ void EventDispatcherLibUvSocketNotifier::registerSocketNotifier(int fd, QSocketN
         qWarning() << "unsupported notifier type" << type;
         return;
     }
-    uv_poll_t &fdWatcher = findOrCreateWatcher(fd);
+    uv_poll_t *fdWatcher = findOrCreateWatcher(fd);
 
-    SocketCallbacks *callbacks = ((SocketCallbacks *)fdWatcher.data);
+    SocketCallbacks *callbacks = ((SocketCallbacks *)fdWatcher->data);
     callbacks->eventMask |= uvType;
     if (uvType == UV_READABLE) {
         callbacks->readAvailable = callback;
@@ -97,18 +97,18 @@ void EventDispatcherLibUvSocketNotifier::registerSocketNotifier(int fd, QSocketN
     if (uvType == UV_WRITABLE) {
         callbacks->writeAvailable = callback;
     }
-    api->uv_poll_start(&fdWatcher, uvType, &qtjs::uv_socket_watcher);
+    api->uv_poll_start(fdWatcher, uvType, &qtjs::uv_socket_watcher);
 }
 
-uv_poll_t &EventDispatcherLibUvSocketNotifier::findOrCreateWatcher(int fd)
+uv_poll_t *EventDispatcherLibUvSocketNotifier::findOrCreateWatcher(int fd)
 {
     auto it = socketWatchers.find(fd);
     if (socketWatchers.end() == it) {
-        socketWatchers.insert(std::make_pair(fd, uv_poll_t()));
+        socketWatchers.insert(std::make_pair(fd, new uv_poll_t()));
         it = socketWatchers.find(fd);
         Q_ASSERT(socketWatchers.end() != it);
-        it->second.data = new SocketCallbacks();
-        api->uv_poll_init(uv_default_loop(), &it->second, fd);
+        it->second->data = new SocketCallbacks();
+        api->uv_poll_init(uv_default_loop(), it->second, fd);
     }
     return it->second;
 }
@@ -122,24 +122,25 @@ void EventDispatcherLibUvSocketNotifier::unregisterSocketNotifier(int fd, QSocke
     }
     auto it = socketWatchers.find(fd);
     if (socketWatchers.end() != it) {
-        uv_poll_t &fdWatcher = it->second;
+        uv_poll_t *fdWatcher = it->second;
         if (unregisterPollWatcher(fdWatcher, uvType)) {
             socketWatchers.erase(it);
         }
     }
 }
 
-bool EventDispatcherLibUvSocketNotifier::unregisterPollWatcher(uv_poll_t &fdWatcher, unsigned int eventMask)
+bool EventDispatcherLibUvSocketNotifier::unregisterPollWatcher(uv_poll_t *fdWatcher, unsigned int eventMask)
 {
-    api->uv_poll_stop(&fdWatcher);
-    SocketCallbacks *callbacks = (SocketCallbacks *)fdWatcher.data;
+    api->uv_poll_stop(fdWatcher);
+    SocketCallbacks *callbacks = (SocketCallbacks *)fdWatcher->data;
     callbacks->eventMask &= ~eventMask;
     if (!callbacks->eventMask) {
-        api->uv_close((uv_handle_t *) &fdWatcher, uv_close_callback);
+        api->uv_close((uv_handle_t *) fdWatcher, uv_close_pollHandle);
+        uv_run(uv_default_loop(), UV_RUN_NOWAIT);
         delete callbacks;
         return true;
     }
-    api->uv_poll_start(&fdWatcher, callbacks->eventMask, &qtjs::uv_socket_watcher);
+    api->uv_poll_start(fdWatcher, callbacks->eventMask, &qtjs::uv_socket_watcher);
     return false;
 }
 
@@ -277,7 +278,7 @@ void uv_timer_watcher(uv_timer_t* handle, int /* status */)
     }
 }
 
-void uv_close_callback(uv_handle_t* handle)
+void uv_close_pollHandle(uv_handle_t* handle)
 {
 
 }

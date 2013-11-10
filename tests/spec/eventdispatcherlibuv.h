@@ -441,7 +441,7 @@ void PollMocker::mockClose()
 {
     MOCK_RESET(api->uv_close);
     MOCK_EXPECT( api->uv_close ).once()
-        .with( mock::retrieve(closedHandle), mock::equal(&qtjs::uv_close_callback));
+        .with( mock::retrieve(closedHandle), mock::equal(&qtjs::uv_close_pollHandle));
     checkClose = true;
 }
 
