@@ -165,15 +165,15 @@ void EventDispatcherLibUvTimerNotifier::registerTimer(int timerId, int interval,
 {
     auto it = timers.find(timerId);
     if (timers.end() == it) {
-        timers.insert(std::make_pair(timerId, uv_timer_t()));
+        timers.insert(std::make_pair(timerId, new uv_timer_t()));
         it = timers.find(timerId);
         Q_ASSERT(timers.end() != it);
-        it->second.data = new TimerData();
-        api->uv_timer_init(uv_default_loop(), &it->second);
+        it->second->data = new TimerData();
+        api->uv_timer_init(uv_default_loop(), it->second);
     }
-    uv_timer_t &timer = it->second;
-    ((TimerData *)timer.data)->timeout = callback;
-    api->uv_timer_start(&timer, &uv_timer_watcher, interval, interval);
+    uv_timer_t *timer = it->second;
+    ((TimerData *)timer->data)->timeout = callback;
+    api->uv_timer_start(timer, &uv_timer_watcher, interval, interval);
 }
 
 bool EventDispatcherLibUvTimerNotifier::unregisterTimer(int timerId) {
@@ -186,10 +186,10 @@ bool EventDispatcherLibUvTimerNotifier::unregisterTimer(int timerId) {
     return true;
 }
 
-void EventDispatcherLibUvTimerNotifier::unregisterTimerWatcher(uv_timer_t &watcher)
+void EventDispatcherLibUvTimerNotifier::unregisterTimerWatcher(uv_timer_t *watcher)
 {
-    api->uv_timer_stop(&watcher);
-    delete ((TimerData *)watcher.data);
+    api->uv_timer_stop(watcher);
+    api->uv_close((uv_handle_t *)watcher, &uv_close_timerHandle);
 }
 
 
@@ -283,6 +283,12 @@ void uv_close_pollHandle(uv_handle_t* handle)
     delete fdWatcher;
 }
 
+void uv_close_timerHandle(uv_handle_t* handle)
+{
+    uv_timer_t *timer = (uv_timer_t *)handle;
+    delete ((TimerData *)timer->data);
+    delete timer;
+}
 
 
 EventDispatcherLibUv::EventDispatcherLibUv(QObject *parent) :
