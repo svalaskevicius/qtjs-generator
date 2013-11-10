@@ -23,6 +23,7 @@ struct TimerData {
 
 void uv_socket_watcher(uv_poll_t* handle, int status, int events);
 void uv_timer_watcher(uv_timer_t* handle, int status);
+void uv_close_callback(uv_handle_t* handle);
 
 struct LibuvApi {
     virtual ~LibuvApi() {}
@@ -35,6 +36,8 @@ struct LibuvApi {
     virtual int uv_timer_stop(uv_timer_t* handle);
 
     virtual uint64_t uv_hrtime(void);
+
+    virtual void uv_close(uv_handle_t* handle, uv_close_cb close_cb);
 };
 
 class EventDispatcherLibUvSocketNotifier {
