@@ -43,6 +43,8 @@ struct LibuvApi {
 
     virtual int uv_async_init(uv_loop_t*, uv_async_t* async, uv_async_cb async_cb);
     virtual int uv_async_send(uv_async_t* async);
+
+    virtual void uv_unref(uv_handle_t* handle);
 };
 
 class EventDispatcherLibUvAsyncChannel {
@@ -52,7 +54,7 @@ public:
     void send();
 private:
     std::unique_ptr<LibuvApi> api;
-    uv_async_t handle;
+    uv_async_t *handle;
 };
 
 class EventDispatcherLibUvSocketNotifier {
