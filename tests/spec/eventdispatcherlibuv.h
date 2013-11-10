@@ -19,6 +19,9 @@ MOCK_BASE_CLASS( MockedLibuvApi, qtjs::LibuvApi ) {
     MOCK_METHOD(uv_hrtime, 0)
 
     MOCK_METHOD(uv_close, 2)
+
+    MOCK_METHOD(uv_async_init, 3)
+    MOCK_METHOD(uv_async_send, 1)
 };
 
 namespace {
@@ -38,6 +41,19 @@ struct PollMocker {
     void mockClose();
     void checkHandles();
     void verifyAndReset();
+};
+
+struct AsyncMocker {
+    uv_handle_t *closedHandle;
+    uv_async_t *registeredHandle, *asyncHandleSend;
+    bool checkClose, checkAsync;
+    MockedLibuvApi *api;
+
+    AsyncMocker(MockedLibuvApi *api);
+    void mockInit();
+    void mockClose();
+    void mockAsyncSend();
+    void checkHandles();
 };
 
 struct TimerMocker {
@@ -260,8 +276,33 @@ TEST_CASE("EventDispatcherLibUv supports QSocketNotifier registration")
 
         mocker.checkHandles();
     }
+}
 
+TEST_CASE("EventDispatcherLibUv async wakeups")
+{
+    SECTION("it manages async handles lifetime")
+    {
+        MockedLibuvApi *api = new MockedLibuvApi();
+        AsyncMocker mocker(api);
+        mocker.mockInit();
+        mocker.mockClose();
+
+        {
+            qtjs::EventDispatcherLibUvAsyncChannel channel(api);
+        }
+
+        mocker.checkHandles();
     }
+
+//    SECTION("it uses async handle to wake up")
+//    {
+//        MockedLibuvApi *api = new MockedLibuvApi();
+//        AsyncMocker mocker(api);
+//        mocker.mockAsyncSend();
+
+//        qtjs::EventDispatcherLibUvAsyncChannel channel(api);
+//        channel.send();
+//    }
 }
 
 TEST_CASE("EventDispatcherLibUv supports QTimer registration")
@@ -424,7 +465,8 @@ TEST_CASE("EventDispatcherLibUv tracks timer execution")
 
 namespace {
 
-PollMocker::PollMocker(MockedLibuvApi *api) : checkStart(false), checkStop(false), checkClose(false), api(api)
+PollMocker::PollMocker(MockedLibuvApi *api)
+    : checkStart(false), checkStop(false), checkClose(false), api(api)
 {
 }
 
@@ -502,6 +544,47 @@ void PollMocker::verifyAndReset()
         mockImplicitStopClose();
     }
 }
+
+
+
+AsyncMocker::AsyncMocker(MockedLibuvApi *api) : checkClose(false), checkAsync(false), api(api)
+{
+}
+void AsyncMocker::mockInit()
+{
+    MOCK_EXPECT(api->uv_async_init).once()
+        .with( mock::equal(uv_default_loop()), mock::retrieve(registeredHandle), mock::equal(nullptr))
+        .returns(0);
+    MOCK_EXPECT(api->uv_close);
+}
+void AsyncMocker::mockClose()
+{
+    MOCK_RESET(api->uv_close);
+    MOCK_EXPECT( api->uv_close ).once()
+        .with( mock::retrieve(closedHandle), mock::equal(&qtjs::uv_close_asyncHandle));
+    checkClose = true;
+}
+
+void AsyncMocker::mockAsyncSend()
+{
+    MOCK_EXPECT(api->uv_async_send).once()
+        .with( mock::retrieve(asyncHandleSend))
+        .returns(0);
+    checkAsync = true;
+}
+
+void AsyncMocker::checkHandles()
+{
+    REQUIRE( registeredHandle );
+    if (checkClose) {
+        REQUIRE( (uv_handle_t *)registeredHandle == closedHandle );
+    }
+    if (checkAsync) {
+        REQUIRE(registeredHandle == asyncHandleSend);
+    }
+}
+
+
 
 
 

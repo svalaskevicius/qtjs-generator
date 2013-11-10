@@ -25,6 +25,7 @@ void uv_socket_watcher(uv_poll_t* handle, int status, int events);
 void uv_timer_watcher(uv_timer_t* handle, int status);
 void uv_close_pollHandle(uv_handle_t* handle);
 void uv_close_timerHandle(uv_handle_t* handle);
+void uv_close_asyncHandle(uv_handle_t* handle);
 
 struct LibuvApi {
     virtual ~LibuvApi() {}
@@ -39,6 +40,18 @@ struct LibuvApi {
     virtual uint64_t uv_hrtime(void);
 
     virtual void uv_close(uv_handle_t* handle, uv_close_cb close_cb);
+
+    virtual int uv_async_init(uv_loop_t*, uv_async_t* async, uv_async_cb async_cb);
+    virtual int uv_async_send(uv_async_t* async);
+};
+
+class EventDispatcherLibUvAsyncChannel {
+public:
+    EventDispatcherLibUvAsyncChannel(LibuvApi *api = nullptr);
+    virtual ~EventDispatcherLibUvAsyncChannel();
+    void send();
+private:
+    std::unique_ptr<LibuvApi> api;
 };
 
 class EventDispatcherLibUvSocketNotifier {
@@ -47,6 +60,7 @@ public:
     virtual ~EventDispatcherLibUvSocketNotifier();
     void registerSocketNotifier(int fd, QSocketNotifier::Type type, std::function<void()> callback);
     void unregisterSocketNotifier(int fd, QSocketNotifier::Type type);
+    void wakeup(){}
 private:
     std::unique_ptr<LibuvApi> api;
     std::map<int, uv_poll_t*> socketWatchers;
