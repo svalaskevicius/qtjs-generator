@@ -22,6 +22,8 @@ MOCK_BASE_CLASS( MockedLibuvApi, qtjs::LibuvApi ) {
 
     MOCK_METHOD(uv_async_init, 3)
     MOCK_METHOD(uv_async_send, 1)
+
+    MOCK_METHOD(uv_unref, 1)
 };
 
 namespace {
@@ -44,7 +46,7 @@ struct PollMocker {
 };
 
 struct AsyncMocker {
-    uv_handle_t *closedHandle;
+    uv_handle_t *closedHandle, *unreffedHandle;
     uv_async_t *registeredHandle, *asyncHandleSend;
     bool checkClose, checkAsync;
     MockedLibuvApi *api;
@@ -560,6 +562,8 @@ void AsyncMocker::mockInit()
     MOCK_EXPECT(api->uv_async_init).once()
         .with( mock::equal(uv_default_loop()), mock::retrieve(registeredHandle), mock::equal(nullptr))
         .returns(0);
+    MOCK_EXPECT(api->uv_unref).once()
+        .with( mock::retrieve(unreffedHandle));
     MOCK_EXPECT(api->uv_close);
 }
 void AsyncMocker::mockClose()
@@ -581,6 +585,7 @@ void AsyncMocker::mockAsyncSend()
 void AsyncMocker::checkHandles()
 {
     REQUIRE( registeredHandle );
+    REQUIRE( (uv_handle_t *)registeredHandle == unreffedHandle );
     if (checkClose) {
         REQUIRE( (uv_handle_t *)registeredHandle == closedHandle );
     }

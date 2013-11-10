@@ -69,25 +69,33 @@ int LibuvApi::uv_async_init(uv_loop_t* loop, uv_async_t* async, uv_async_cb asyn
 }
 int LibuvApi::uv_async_send(uv_async_t* async)
 {
-    return uv_async_send(async);
+    return ::uv_async_send(async);
+}
+
+void LibuvApi::uv_unref(uv_handle_t* handle)
+{
+    ::uv_unref(handle);
 }
 
 
 
-EventDispatcherLibUvAsyncChannel::EventDispatcherLibUvAsyncChannel(LibuvApi *api) : api(api)
+EventDispatcherLibUvAsyncChannel::EventDispatcherLibUvAsyncChannel(LibuvApi *api) : api(api), handle(nullptr)
 {
     if (!this->api) {
         this->api.reset(new LibuvApi());
     }
-    api->uv_async_init(uv_default_loop(), &handle, nullptr);
+    handle = new uv_async_t();
+    this->api->uv_async_init(uv_default_loop(), handle, nullptr);
+    this->api->uv_unref((uv_handle_t*)handle);
 }
+
 EventDispatcherLibUvAsyncChannel::~EventDispatcherLibUvAsyncChannel()
 {
-    api->uv_close((uv_handle_t *)&handle, &uv_close_asyncHandle);
+    api->uv_close((uv_handle_t *)handle, &uv_close_asyncHandle);
 }
 void EventDispatcherLibUvAsyncChannel::send()
 {
-    api->uv_async_send(&handle);
+    api->uv_async_send(handle);
 }
 
 
@@ -319,7 +327,7 @@ void uv_close_timerHandle(uv_handle_t* handle)
 
 void uv_close_asyncHandle(uv_handle_t* handle)
 {
-
+    delete (uv_async_t *)handle;
 }
 
 
@@ -327,7 +335,8 @@ EventDispatcherLibUv::EventDispatcherLibUv(QObject *parent) :
     QAbstractEventDispatcher(parent),
     socketNotifier(new EventDispatcherLibUvSocketNotifier()),
     timerNotifier(new EventDispatcherLibUvTimerNotifier()),
-    timerTracker(new EventDispatcherLibUvTimerTracker),
+    timerTracker(new EventDispatcherLibUvTimerTracker()),
+    asyncChannel(new EventDispatcherLibUvAsyncChannel()),
     hasPending(true), finalize(false)
 {
 }
@@ -336,7 +345,7 @@ EventDispatcherLibUv::~EventDispatcherLibUv(void) {}
 
 void EventDispatcherLibUv::wakeUp(void)
 {
-    Q_UNIMPLEMENTED();
+    asyncChannel->send();
 }
 
 void EventDispatcherLibUv::interrupt(void)

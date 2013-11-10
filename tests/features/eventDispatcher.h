@@ -112,12 +112,15 @@ TEST_CASE("libuv based event dispatcher") {
         QTcpServer server;
         bool processed = false;
 
+        app.processEvents();
+
+
         launchServer(server);
-        std::thread alarm([]{
+        std::thread alarm([&app]{
             usleep(2000);
-            QCoreApplication::instance()->eventDispatcher()->awake();
+            app.eventDispatcher()->wakeUp();
         });
-        processAppEvents(app, processed, 1);
+        app.processEvents();
         alarm.join();
     }
 }
