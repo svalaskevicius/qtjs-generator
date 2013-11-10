@@ -135,6 +135,7 @@ bool EventDispatcherLibUvSocketNotifier::unregisterPollWatcher(uv_poll_t &fdWatc
     SocketCallbacks *callbacks = (SocketCallbacks *)fdWatcher.data;
     callbacks->eventMask &= ~eventMask;
     if (!callbacks->eventMask) {
+        api->uv_close((uv_handle_t *) &fdWatcher, uv_close_callback);
         delete callbacks;
         return true;
     }

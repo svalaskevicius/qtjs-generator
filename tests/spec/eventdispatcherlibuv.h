@@ -33,7 +33,7 @@ struct PollMocker {
     void mockInit(int fd);
     void mockStart(int type);
     void mockInitAndExecute(int fd, int type);
-    void mockImplicitStop();
+    void mockImplicitStopClose();
     void mockStop();
     void mockClose();
     void checkHandles();
@@ -426,7 +426,7 @@ void PollMocker::mockInitAndExecute(int fd, int type)
 {
     mockInit(fd);
     mockStart(type);
-    mockImplicitStop();
+    mockImplicitStopClose();
 }
 
 void PollMocker::mockStop()
@@ -439,14 +439,16 @@ void PollMocker::mockStop()
 }
 void PollMocker::mockClose()
 {
+    MOCK_RESET(api->uv_close);
     MOCK_EXPECT( api->uv_close ).once()
         .with( mock::retrieve(closedHandle), mock::equal(&qtjs::uv_close_callback));
     checkClose = true;
 }
 
-void PollMocker::mockImplicitStop()
+void PollMocker::mockImplicitStopClose()
 {
     MOCK_EXPECT( api->uv_poll_stop ).returns(0);
+    MOCK_EXPECT( api->uv_close );
 }
 
 void PollMocker::checkHandles()
@@ -476,7 +478,7 @@ void PollMocker::verifyAndReset()
         MOCK_VERIFY(api->uv_poll_stop);
         MOCK_RESET(api->uv_poll_stop);
         checkStop = false;
-        mockImplicitStop();
+        mockImplicitStopClose();
     }
 }
 
