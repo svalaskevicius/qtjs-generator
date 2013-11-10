@@ -42,14 +42,16 @@ struct PollMocker {
 
 struct TimerMocker {
     uv_timer_t *registeredHandle, *startedHandle, *stoppedHandle;
-    bool checkStart, checkStop;
+    uv_handle_t *closedHandle;
+    bool checkStart, checkStop, checkClose;
     MockedLibuvApi *api;
 
     TimerMocker(MockedLibuvApi *api);
     void mockInit();
     void mockStart(uint64_t timeout);
-    void mockImplicitStop();
+    void mockImplicitStopClose();
     void mockStop();
+    void mockClose();
     void checkHandles();
     void verifyAndReset();
 };
@@ -332,6 +334,22 @@ TEST_CASE("EventDispatcherLibUv supports QTimer registration")
         REQUIRE( callbackInvoked == 1 );
     }
 
+    SECTION("calls uv_close before deallocating timer handle")
+    {
+        MockedLibuvApi *api = new MockedLibuvApi();
+        TimerMocker mocker(api);
+        mocker.mockInit();
+        mocker.mockStart(30);
+        mocker.mockStop();
+        mocker.mockClose();
+
+        qtjs::EventDispatcherLibUvTimerNotifier dispatcher(api);
+        dispatcher.registerTimer(83, 30, []{});
+        dispatcher.unregisterTimer(83);
+
+        mocker.checkHandles();
+    }
+
 }
 
 TEST_CASE("EventDispatcherLibUv tracks timer execution")
@@ -394,6 +412,7 @@ TEST_CASE("EventDispatcherLibUv tracks timer execution")
         watcher.unregisterTimer(12);
         REQUIRE( watcher.getTimerInfo((QObject *)919192).empty() );
     }
+
 
 }
 
@@ -484,7 +503,7 @@ void PollMocker::verifyAndReset()
 
 
 
-TimerMocker::TimerMocker(MockedLibuvApi *api) : checkStart(false), checkStop(false), api(api)
+TimerMocker::TimerMocker(MockedLibuvApi *api) : checkStart(false), checkStop(false), checkClose(false), api(api)
 {
 }
 void TimerMocker::mockInit()
@@ -499,12 +518,13 @@ void TimerMocker::mockStart(uint64_t timeout)
         .with( mock::retrieve(startedHandle),  mock::equal(&qtjs::uv_timer_watcher), mock::equal(timeout), mock::equal(timeout) )
         .returns(0);
     checkStart = true;
-    mockImplicitStop();
+    mockImplicitStopClose();
 }
 
-void TimerMocker::mockImplicitStop()
+void TimerMocker::mockImplicitStopClose()
 {
     MOCK_EXPECT( api->uv_timer_stop ).returns(0);
+    MOCK_EXPECT( api->uv_close );
 }
 
 void TimerMocker::mockStop()
@@ -515,6 +535,13 @@ void TimerMocker::mockStop()
         .returns(0);
     checkStop = true;
 }
+void TimerMocker::mockClose()
+{
+    MOCK_RESET(api->uv_close);
+    MOCK_EXPECT( api->uv_close ).once()
+            .with( mock::retrieve(closedHandle), mock::equal(&qtjs::uv_close_timerHandle));
+    checkClose = true;
+}
 void TimerMocker::checkHandles()
 {
     REQUIRE( registeredHandle );
@@ -523,6 +550,9 @@ void TimerMocker::checkHandles()
     }
     if (checkStop) {
         REQUIRE( registeredHandle == stoppedHandle );
+    }
+    if (checkClose) {
+        REQUIRE( (uv_handle_t *)registeredHandle == closedHandle );
     }
 }
 void TimerMocker::verifyAndReset()
@@ -538,7 +568,7 @@ void TimerMocker::verifyAndReset()
         MOCK_VERIFY(api->uv_timer_stop);
         MOCK_RESET(api->uv_timer_stop);
         checkStop = false;
-        mockImplicitStop();
+        mockImplicitStopClose();
     }
 }
 

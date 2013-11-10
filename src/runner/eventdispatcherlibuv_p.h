@@ -24,6 +24,7 @@ struct TimerData {
 void uv_socket_watcher(uv_poll_t* handle, int status, int events);
 void uv_timer_watcher(uv_timer_t* handle, int status);
 void uv_close_pollHandle(uv_handle_t* handle);
+void uv_close_timerHandle(uv_handle_t* handle);
 
 struct LibuvApi {
     virtual ~LibuvApi() {}
@@ -61,8 +62,8 @@ public:
     bool unregisterTimer(int timerId);
 private:
     std::unique_ptr<LibuvApi> api;
-    std::map<int, uv_timer_t> timers;
-    void unregisterTimerWatcher(uv_timer_t &watcher);
+    std::map<int, uv_timer_t*> timers;
+    void unregisterTimerWatcher(uv_timer_t *watcher);
 };
 
 class EventDispatcherLibUvTimerTracker {
