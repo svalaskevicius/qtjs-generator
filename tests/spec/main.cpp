@@ -7,7 +7,6 @@ struct turtle_catch_policy
     static Result abort()
     {
         FAIL("ABORT");
-        return 0;
     }
 
     template< typename Context >
@@ -60,6 +59,20 @@ struct turtle_catch_policy
         }
     }
 };
+
+template<>
+struct turtle_catch_policy<int> : turtle_catch_policy<void>
+{
+    static int abort()
+    {
+        FAIL("ABORT");
+        return 0;
+    }
+};
+
+template<>
+struct turtle_catch_policy<long unsigned int> : turtle_catch_policy<int>
+{};
 
 #define MOCK_ERROR_POLICY turtle_catch_policy
 
