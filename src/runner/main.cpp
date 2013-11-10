@@ -37,20 +37,24 @@ using namespace cpgf;
 using namespace std;
 
 namespace node {
+
+extern v8::Isolate* node_isolate;
+bool v8_is_profiling;
+
 char** Init(int* argc,
             const char** argv,
             int* exec_argc,
             const char*** exec_argv);
-v8::Handle<v8::Object> SetupProcessObject(int argc, char *argv[]);
-void Load(v8::Handle<v8::Object> process_l);
+void SetupProcessObject(Environment* env,
+                        int argc,
+                        const char* const* argv,
+                        int exec_argc,
+                        const char* const* exec_argv);
+void Load(Environment* env);
 void EmitExit(Environment* env);
 void RunAtExit(Environment* env);
 static void InstallEarlyDebugSignalHandler();
-Environment* CreateEnvironment(v8::Isolate* isolate,
-                                int argc,
-                                const char* const* argv,
-                                int exec_argc,
-                                const char* const* exec_argv);
+void StartProfilerIdleNotifier(Environment* env);
 }
 
 namespace {
@@ -157,36 +161,57 @@ struct CpgfBinder {
     }
 };
 
-static char **copy_argv(int argc, char **argv) {
-  size_t strlen_sum;
-  char **argv_copy;
-  char *argv_data;
-  size_t len;
-  int i;
 
-  strlen_sum = 0;
-  for(i = 0; i < argc; i++) {
-    strlen_sum += strlen(argv[i]) + 1;
+
+node::Environment* CreateNodeEnvironment(v8::Isolate* isolate,
+                               int argc,
+                               const char* const* argv,
+                               int exec_argc,
+                               const char* const* exec_argv) {
+  using namespace v8;
+  using namespace node;
+
+  HandleScope handle_scope(isolate);
+
+  Local<Context> context = Context::New(isolate);
+  Context::Scope context_scope(context);
+  Environment* env = Environment::New(context);
+
+  uv_check_init(env->event_loop(), env->immediate_check_handle());
+  uv_unref(
+      reinterpret_cast<uv_handle_t*>(env->immediate_check_handle()));
+  uv_idle_init(env->event_loop(), env->immediate_idle_handle());
+
+  // Inform V8's CPU profiler when we're idle.  The profiler is sampling-based
+  // but not all samples are created equal; mark the wall clock time spent in
+  // epoll_wait() and friends so profiling tools can filter it out.  The samples
+  // still end up in v8.log but with state=IDLE rather than state=EXTERNAL.
+  // TODO(bnoordhuis) Depends on a libuv implementation detail that we should
+  // probably fortify in the API contract, namely that the last started prepare
+  // or check watcher runs first.  It's not 100% foolproof; if an add-on starts
+  // a prepare or check watcher after us, any samples attributed to its callback
+  // will be recorded with state=IDLE.
+  uv_prepare_init(env->event_loop(), env->idle_prepare_handle());
+  uv_check_init(env->event_loop(), env->idle_check_handle());
+  uv_unref(reinterpret_cast<uv_handle_t*>(env->idle_prepare_handle()));
+  uv_unref(reinterpret_cast<uv_handle_t*>(env->idle_check_handle()));
+
+  if (v8_is_profiling) {
+    StartProfilerIdleNotifier(env);
   }
 
-  argv_copy = (char **) malloc(sizeof(char *) * (argc + 1) + strlen_sum);
-  if (!argv_copy) {
-    return NULL;
-  }
+  Local<FunctionTemplate> process_template = FunctionTemplate::New();
+  process_template->SetClassName(FIXED_ONE_BYTE_STRING(isolate, "process"));
 
-  argv_data = (char *) argv_copy + sizeof(char *) * (argc + 1);
+  Local<Object> process_object = process_template->GetFunction()->NewInstance();
+  env->set_process_object(process_object);
 
-  for(i = 0; i < argc; i++) {
-    argv_copy[i] = argv_data;
-    len = strlen(argv[i]) + 1;
-    memcpy(argv_data, argv[i], len);
-    argv_data += len;
-  }
+  SetupProcessObject(env, argc, argv, exec_argc, exec_argv);
 
-  argv_copy[argc] = NULL;
-
-  return argv_copy;
+  return env;
 }
+
+
 
 
 } // namespace
@@ -230,14 +255,16 @@ int main(int argc, char * argv[])
 
   v8::V8::Initialize();
   {
-    v8::Isolate* node_isolate = NULL;
-
-    v8::Locker locker(node_isolate);
-    node::Environment* env = node::CreateEnvironment(node_isolate, argc, argv, exec_argc, exec_argv);
+    v8::Locker locker(node::node_isolate);
+    qDebug() << "locked!";
+    node::Environment* env = CreateNodeEnvironment(node::node_isolate, argc, argv, exec_argc, exec_argv);
+    qDebug() << "env created!";
+    qDebug() << "BINDING!";
+    CpgfBinder cpgfBinder(env->context());
     v8::Context::Scope context_scope(env->context());
     v8::HandleScope handle_scope(env->isolate());
-
-    CpgfBinder cpgfBinder(env->context());
+    qDebug() << "LOADING!";
+    node::Load(env);
 
     bool appHadQuitRequest = false;
     QObject::connect(&app, &QCoreApplication::aboutToQuit, [&appHadQuitRequest]{
