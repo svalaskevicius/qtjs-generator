@@ -8,6 +8,7 @@
 
 #include <chrono>
 #include <functional>
+#include <thread>
 
 #include "../src/runner/eventdispatcherlibuv.h"
 
@@ -104,6 +105,20 @@ TEST_CASE("libuv based event dispatcher") {
         auto remainingTime = QCoreApplication::instance()->eventDispatcher()->remainingTime(timer.timerId());
         REQUIRE ( remainingTime >= 97 );
         REQUIRE ( remainingTime <= 99 );
+    }
+
+
+    SECTION("it can be awoken from another thread") {
+        QTcpServer server;
+        bool processed = false;
+
+        launchServer(server);
+        std::thread alarm([]{
+            usleep(2000);
+            QCoreApplication::instance()->eventDispatcher()->awake();
+        });
+        processAppEvents(app, processed, 1);
+        alarm.join();
     }
 }
 

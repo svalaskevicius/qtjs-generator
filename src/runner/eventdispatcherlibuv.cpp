@@ -63,6 +63,28 @@ void LibuvApi::uv_close(uv_handle_t* handle, uv_close_cb close_cb)
     return ::uv_close(handle, close_cb);
 }
 
+int LibuvApi::uv_async_init(uv_loop_t* loop, uv_async_t* async, uv_async_cb async_cb)
+{
+    return ::uv_async_init(loop, async, async_cb);
+}
+int LibuvApi::uv_async_send(uv_async_t* async)
+{
+    return uv_async_send(async);
+}
+
+
+
+EventDispatcherLibUvAsyncChannel::EventDispatcherLibUvAsyncChannel(LibuvApi *api)
+{
+}
+EventDispatcherLibUvAsyncChannel::~EventDispatcherLibUvAsyncChannel()
+{
+}
+void EventDispatcherLibUvAsyncChannel::send()
+{
+
+}
+
 
 
 EventDispatcherLibUvSocketNotifier::EventDispatcherLibUvSocketNotifier(LibuvApi *api) : api(api)
@@ -288,6 +310,11 @@ void uv_close_timerHandle(uv_handle_t* handle)
     uv_timer_t *timer = (uv_timer_t *)handle;
     delete ((TimerData *)timer->data);
     delete timer;
+}
+
+void uv_close_asyncHandle(uv_handle_t* handle)
+{
+
 }
 
 
