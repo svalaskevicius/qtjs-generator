@@ -350,7 +350,7 @@ void EventDispatcherLibUv::wakeUp(void)
 
 void EventDispatcherLibUv::interrupt(void)
 {
-    Q_UNIMPLEMENTED();
+    asyncChannel->send();
 }
 
 void EventDispatcherLibUv::flush(void)

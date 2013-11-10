@@ -110,15 +110,25 @@ TEST_CASE("libuv based event dispatcher") {
 
     SECTION("it can be awoken from another thread") {
         QTcpServer server;
-        bool processed = false;
-
         app.processEvents();
-
 
         launchServer(server);
         std::thread alarm([&app]{
             usleep(2000);
             app.eventDispatcher()->wakeUp();
+        });
+        app.processEvents();
+        alarm.join();
+    }
+
+    SECTION("it can be interrupted from another thread") {
+        QTcpServer server;
+        app.processEvents();
+
+        launchServer(server);
+        std::thread alarm([&app]{
+            usleep(2000);
+            app.eventDispatcher()->interrupt();
         });
         app.processEvents();
         alarm.join();
