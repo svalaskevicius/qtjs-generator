@@ -52,6 +52,7 @@ public:
     void send();
 private:
     std::unique_ptr<LibuvApi> api;
+    uv_async_t handle;
 };
 
 class EventDispatcherLibUvSocketNotifier {
