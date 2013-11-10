@@ -11,6 +11,7 @@
 
 namespace qtjs {
 
+
 struct SocketCallbacks {
     int eventMask;
     std::function<void()> readAvailable;
@@ -21,11 +22,15 @@ struct TimerData {
     std::function<void()> timeout;
 };
 
+
+
 void uv_socket_watcher(uv_poll_t* handle, int status, int events);
 void uv_timer_watcher(uv_timer_t* handle, int status);
 void uv_close_pollHandle(uv_handle_t* handle);
 void uv_close_timerHandle(uv_handle_t* handle);
 void uv_close_asyncHandle(uv_handle_t* handle);
+
+
 
 struct LibuvApi {
     virtual ~LibuvApi() {}
@@ -47,6 +52,9 @@ struct LibuvApi {
     virtual void uv_unref(uv_handle_t* handle);
 };
 
+
+
+
 class EventDispatcherLibUvAsyncChannel {
 public:
     EventDispatcherLibUvAsyncChannel(LibuvApi *api = nullptr);
@@ -56,6 +64,9 @@ private:
     std::unique_ptr<LibuvApi> api;
     uv_async_t *handle;
 };
+
+
+
 
 class EventDispatcherLibUvSocketNotifier {
 public:
@@ -71,6 +82,9 @@ private:
     bool unregisterPollWatcher(uv_poll_t *fdWatcher, unsigned int eventMask);
 };
 
+
+
+
 class EventDispatcherLibUvTimerNotifier {
 public:
     EventDispatcherLibUvTimerNotifier(LibuvApi *api = nullptr);
@@ -82,6 +96,9 @@ private:
     std::map<int, uv_timer_t*> timers;
     void unregisterTimerWatcher(uv_timer_t *watcher);
 };
+
+
+
 
 class EventDispatcherLibUvTimerTracker {
 public:
@@ -102,5 +119,6 @@ private:
     std::map<void *, QList<QAbstractEventDispatcher::TimerInfo>> timers;
     std::map<int, TimerInfo> timerInfos;
 };
+
 
 }
