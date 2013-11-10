@@ -7,11 +7,11 @@ SOURCES += $$PWD/dynamic_qobject.cpp \
     $$PWD/qmlRegisterType.cpp \
     $$PWD/llvmapi.cpp \
     $$PWD/eventdispatcherlibuv.cpp \
-    ../../src/runner/eventdispatcherlibuv/timer_notifier.cpp \
-    ../../src/runner/eventdispatcherlibuv/time_tracker.cpp \
-    ../../src/runner/eventdispatcherlibuv/socket_notifier.cpp \
-    ../../src/runner/eventdispatcherlibuv/async_channel.cpp \
-    ../../src/runner/eventdispatcherlibuv/libuv_api.cpp
+    $$PWD/eventdispatcherlibuv/timer_notifier.cpp \
+    $$PWD/eventdispatcherlibuv/time_tracker.cpp \
+    $$PWD/eventdispatcherlibuv/socket_notifier.cpp \
+    $$PWD/eventdispatcherlibuv/async_channel.cpp \
+    $$PWD/eventdispatcherlibuv/libuv_api.cpp
 
 LIBPATH += $$BUILD/src/core $$BUILD/src/widgets $$BUILD/src/qml $$BUILD/src/gui /usr/lib/llvm-3.2/lib $${ROOT}/lib/node/out/Release/
 LIBS += -lqtjs_core -lqtjs_widgets -lqtjs_qml -lqtjs_gui -lLLVM-3.2 -luv -lcares -lhttp_parser -lchrome_zlib -lz -lopenssl

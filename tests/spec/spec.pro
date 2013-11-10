@@ -10,8 +10,9 @@ TEMPLATE = app
 INCLUDEPATH += $${ROOT}/tests/lib/catch/single_include $${ROOT}/tests/lib/turtle
 
 SOURCES += \
-    main.cpp
+    main.cpp \
+    eventdispatcherlibuvSpec.cpp
 
 HEADERS += \
-    eventdispatcherlibuv.h
+    test_setup.h
 
