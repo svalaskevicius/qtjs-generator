@@ -55,6 +55,8 @@ using namespace v8;
 
 
 namespace cpgf {
+    
+extern v8::Isolate *cpgf_isolate;
 
 namespace {
 
@@ -105,11 +107,12 @@ public:
 
 	Handle<Object > getRawObject() {
 		if(this->objectTemplate.IsEmpty()) {
-			this->objectTemplate  = Persistent<ObjectTemplate>::New(ObjectTemplate::New());
-			this->objectTemplate->SetInternalFieldCount(1);
+		    Local<ObjectTemplate> local = ObjectTemplate::New();
+			local->SetInternalFieldCount(1);
+			this->objectTemplate  = Persistent<ObjectTemplate>(cpgf_isolate, local);
 		}
 
-		return this->objectTemplate->NewInstance();
+		return Local<ObjectTemplate>::New(cpgf_isolate, this->objectTemplate)->NewInstance();
 	}
 
 private:
@@ -136,7 +139,7 @@ public:
 
 public:
 	Local<Object> getObject() const {
-		return Local<Object>::New(this->object);
+		return Local<Object>::New(cpgf_isolate, this->object);
 	}
 
 protected:
@@ -188,7 +191,7 @@ class GFunctionTemplateUserData : public GUserData
 {
 public:
 	explicit GFunctionTemplateUserData(Handle<FunctionTemplate> functionTemplate)
-		: functionTemplate(Persistent<FunctionTemplate>::New(functionTemplate))
+		: functionTemplate(Persistent<FunctionTemplate>(cpgf_isolate, functionTemplate))
 	{
 	}
 
@@ -198,7 +201,7 @@ public:
 	}
 
 	Local<FunctionTemplate> getFunctionTemplate() const {
-		return Local<FunctionTemplate>::New(this->functionTemplate);
+		return Local<FunctionTemplate>::New(cpgf_isolate, this->functionTemplate);
 	}
 
 private:
@@ -210,7 +213,7 @@ class GObjectTemplateUserData : public GUserData
 {
 public:
 	explicit GObjectTemplateUserData(Handle<ObjectTemplate> objectTemplate)
-		: objectTemplate(Persistent<ObjectTemplate>::New(objectTemplate))
+		: objectTemplate(Persistent<ObjectTemplate>(cpgf_isolate, objectTemplate))
 	{
 	}
 
@@ -220,7 +223,7 @@ public:
 	}
 
 	Local<ObjectTemplate> getObjectTemplate() const {
-		return Local<ObjectTemplate>::New(this->objectTemplate);
+		return Local<ObjectTemplate>::New(cpgf_isolate, this->objectTemplate);
 	}
 
 private:
@@ -236,7 +239,7 @@ Handle<FunctionTemplate> createMethodTemplate(const GContextPointer & context, c
 	const char * name, Handle<FunctionTemplate> classTemplate);
 Handle<ObjectTemplate> createEnumTemplate(const GContextPointer & context);
 
-void loadCallableParam(const Arguments & args, const GContextPointer & context, InvokeCallableParam * callableParam);
+void loadCallableParam(const v8::FunctionCallbackInfo<Value>& info, const GContextPointer & context, InvokeCallableParam * callableParam);
 
 
 //*********************************************
@@ -249,18 +252,19 @@ void error(const char * message)
 	ThrowException(String::New(message));
 }
 
-void weakHandleCallback(Persistent<Value> object, void * parameter)
+template <class T>
+static void weakHandleCallback(Isolate* isolate, Persistent<T> *object, GGlueDataWrapper * dataWrapper)
 {
-    void *address = v8ToObject(object, NULL);
+    HandleScope scope(cpgf_isolate);
+    void *address = v8ToObject(Local<Value>::New(cpgf_isolate, *object), NULL);
     if (address) {
         allocatedObjects.erase(address);
     }
 
-	GGlueDataWrapper * dataWrapper = static_cast<GGlueDataWrapper *>(parameter);
 	freeGlueDataWrapper(dataWrapper, getV8DataWrapperPool());
 
-	object.Dispose();
-	object.Clear();
+	object->Dispose();
+	object->Clear();
 }
 
 const char * signatureKey = "i_sig_cpgf";
@@ -292,7 +296,7 @@ bool isGlobalObject(Handle<Value> object)
 {
 	if(object->IsObject() || object->IsFunction()) {
 		return Handle<Object>::Cast(object)->InternalFieldCount () == 0
-			|| Handle<Object>::Cast(object)->GetPointerFromInternalField(0) == NULL;
+			|| Handle<Object>::Cast(object)->GetAlignedPointerFromInternalField(0) == NULL;
 	}
 	else {
 		return false;
@@ -304,7 +308,7 @@ static inline GGlueDataWrapper * retrieveNativeObjectPtr(v8::Handle<v8::Value> v
     while (value->IsObject()) {
         v8::Local<v8::Object> obj = value->ToObject();
         if (0 < obj->InternalFieldCount()) {
-            GGlueDataWrapper * native = static_cast<GGlueDataWrapper *>(obj->GetPointerFromInternalField(0));
+            GGlueDataWrapper * native = static_cast<GGlueDataWrapper *>(obj->GetAlignedPointerFromInternalField(0));
             if (native) {
                 return native;
             }
@@ -400,26 +404,28 @@ Handle<Value> objectToV8(const GContextPointer & context, const GClassGlueDataPo
 	if (opcvNone == cv) {
 		auto foundObjectIt = allocatedObjects.find(objectAddressFromVariant(instance));
 		if (foundObjectIt != allocatedObjects.end()) {
-			return foundObjectIt->second;
+			return Local<Object>::New(cpgf_isolate, foundObjectIt->second);
 		}
 	}
 
 	Handle<FunctionTemplate> functionTemplate = createClassTemplate(context, classData);
 	Handle<Value> external = External::New(&signatureKey);
-	Persistent<Object> self = Persistent<Object>::New(functionTemplate->GetFunction()->NewInstance(1, &external));
+    Local<Object> object = functionTemplate->GetFunction()->NewInstance(1, &external);
 
 	GObjectGlueDataPointer objectData(context->newOrReuseObjectGlueData(classData, instance, flags, cv));
 	GGlueDataWrapper * dataWrapper = newGlueDataWrapper(objectData, getV8DataWrapperPool());
+
+	object->SetAlignedPointerInInternalField(0, dataWrapper);
+	setObjectSignature(&object);
+
+	Persistent<Object> self(cpgf_isolate, object);
 	self.MakeWeak(dataWrapper, weakHandleCallback);
 
 	if(outputGlueData != NULL) {
 		*outputGlueData = objectData;
 	}
 
-	self->SetPointerInInternalField(0, dataWrapper);
-	setObjectSignature(&self);
-
-	return self;
+	return Local<Object>::New(cpgf_isolate, self);
 }
 
 void * v8ToObject(Handle<Value> value, GMetaType * outType)
@@ -446,20 +452,21 @@ void * v8ToObject(Handle<Value> value, GMetaType * outType)
 Handle<Value> rawToV8(const GContextPointer & context, const GVariant & value, GGlueDataPointer * outputGlueData)
 {
 	if(context->getConfig().allowAccessRawData()) {
-		Persistent<Object> self = Persistent<Object>::New(sharedStaticCast<GV8BindingContext>(context)->getRawObject());
-
+        Local<Object> object = sharedStaticCast<GV8BindingContext>(context)->getRawObject();
 		GRawGlueDataPointer rawData(context->newRawGlueData(value));
 		GGlueDataWrapper * dataWrapper = newGlueDataWrapper(rawData, getV8DataWrapperPool());
-		self.MakeWeak(dataWrapper, weakHandleCallback);
 
 		if(outputGlueData != NULL) {
 			*outputGlueData = rawData;
 		}
 
-		self->SetPointerInInternalField(0, dataWrapper);
-		setObjectSignature(&self);
+		object->SetAlignedPointerInInternalField(0, dataWrapper);
+		setObjectSignature(&object);
 
-		return self;
+		Persistent<Object> self(cpgf_isolate, object);
+		self.MakeWeak(dataWrapper, weakHandleCallback);
+
+		return Local<Object>::New(cpgf_isolate, self);
 	}
 
 	return Handle<Value>();
@@ -625,7 +632,7 @@ void helperBindAccessible(const GContextPointer & context, Local<Object> contain
 	container->SetAccessor(String::New(name), &accessibleGet, &accessibleSet, data);
 }
 
-Handle<Value> callbackMethodList(const Arguments & args)
+Handle<Value> callbackMethodList(const FunctionCallbackInfo<Value>& info)
 {
 	ENTER_V8()
 
@@ -650,7 +657,7 @@ Handle<Value> callbackMethodList(const Arguments & args)
 	GMethodGlueDataPointer methodData(methodDataWrapper->getAs<GMethodGlueData>());
 
 	InvokeCallableParam callableParam(args.Length());
-	loadCallableParam(args, methodData->getContext(), &callableParam);
+	loadCallableParam(info, methodData->getContext(), &callableParam);
 
 	InvokeCallableResult result = doInvokeMethodList(methodData->getContext(), objectData, methodData, &callableParam);
 	return methodResultToScript<GV8Methods>(methodData->getContext(), result.callable.get(), &result);
@@ -748,7 +755,7 @@ Persistent<Object> helperBindEnum(const GContextPointer & context, Handle<Object
 	Persistent<Object> obj = Persistent<Object>::New(objectTemplate->NewInstance());
 	GEnumGlueDataPointer enumGlueData(context->newEnumGlueData(metaEnum));
 	GGlueDataWrapper * dataWrapper = newGlueDataWrapper(enumGlueData, getV8DataWrapperPool());
-	obj->SetPointerInInternalField(0, dataWrapper);
+	obj->SetAlignedPointerInInternalField(0, dataWrapper);
 	obj.MakeWeak(dataWrapper, weakHandleCallback);
 	setObjectSignature(&obj);
 
@@ -760,9 +767,9 @@ Handle<Value> getNamedMember(const GGlueDataPointer & glueData, const char * nam
 	return namedMemberToScript<GV8Methods>(glueData, name);
 }
 
-void loadCallableParam(const Arguments & args, const GContextPointer & context, InvokeCallableParam * callableParam)
+void loadCallableParam(const FunctionCallbackInfo<Value>& info, const GContextPointer & context, InvokeCallableParam * callableParam)
 {
-	for(int i = 0; i < args.Length(); ++i) {
+	for(int i = 0; i < info.Length(); ++i) {
 		callableParam->params[i].value = v8ToScriptValue(context, args.Holder()->CreationContext(), args[i], &callableParam->params[i].glueData);
 	}
 }
@@ -799,7 +806,7 @@ Handle<Value> objectConstructor(const Arguments & args)
 			GGlueDataWrapper * objectWrapper = newGlueDataWrapper(objectData, getV8DataWrapperPool());
 			self.MakeWeak(objectWrapper, weakHandleCallback);
 
-			self->SetPointerInInternalField(0, objectWrapper);
+			self->SetAlignedPointerInInternalField(0, objectWrapper);
 			setObjectSignature(&self);
 
 			allocatedObjects[instance] = self;
