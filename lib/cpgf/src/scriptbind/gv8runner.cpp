@@ -30,6 +30,7 @@ using namespace v8;
 
 namespace cpgf {
 
+static v8::Isolate *cpgf_isolate = NULL;
 
 namespace {
 
@@ -58,13 +59,13 @@ private:
 
 
 GV8ScriptRunnerImplement::GV8ScriptRunnerImplement(IMetaService * service)
-	: super(service), handleScope(), context(Context::New())
+	: super(service), handleScope(cpgf_isolate), context(Context::New())
 {
     init();
 }
 
 GV8ScriptRunnerImplement::GV8ScriptRunnerImplement(IMetaService * service, Handle<Context> ctx)
-	: super(service), handleScope(), context(ctx)
+	: super(service), handleScope(cpgf_isolate), context(ctx)
 {
     init();
 }
@@ -92,7 +93,7 @@ bool GV8ScriptRunnerImplement::executeJsString(const char * source)
 	using namespace v8;
 
     context->Enter();
-	v8::HandleScope handle_scope;
+	v8::HandleScope handle_scope(cpgf_isolate);
 	v8::TryCatch try_catch;
 	v8::Handle<v8::Script> script = v8::Script::Compile(String::New(source), String::New("cpgf"));
 	if(script.IsEmpty()) {
