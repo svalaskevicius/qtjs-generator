@@ -82,7 +82,7 @@ class v8RuntimeException : public std::runtime_error
 private:
     Local<Value> error;
 public:
-    v8RuntimeException(Local<Value> error) : error(error), std::runtime_error(*String::AsciiValue(error)) {}
+    v8RuntimeException(Local<Value> error) : std::runtime_error(*String::AsciiValue(error)), error(error) {}
 };
 
 class GV8BindingContext : public GBindingContext, public GShareFromBase
