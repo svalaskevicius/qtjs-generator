@@ -256,7 +256,7 @@ template <class T>
 static void weakHandleCallback(Isolate* isolate, Persistent<T> *object, GGlueDataWrapper * dataWrapper)
 {
     HandleScope scope(cpgf_isolate);
-    void *address = v8ToObject(Local<Value>::New(cpgf_isolate, *object), NULL);
+    void *address = v8ToObject(Local<T>::New(cpgf_isolate, *object), NULL);
     if (address) {
         allocatedObjects.erase(address);
     }
@@ -1110,7 +1110,7 @@ GVariant GV8ScriptFunction::invokeIndirectly(GVariant const * const * params, si
 {
 	HandleScope handleScope(cpgf_isolate);
 
-	Local<Object> receiver = Local<Object>::New(this->receiver);
+	Local<Object> receiver = Local<Object>::New(cpgf_isolate, this->receiver);
 	return invokeV8FunctionIndirectly(this->getContext(), receiver, Local<Value>::New(this->func), params, paramCount, "");
 }
 
@@ -1132,7 +1132,7 @@ GV8ScriptObject::~GV8ScriptObject()
 GScriptValue GV8ScriptObject::doGetValue(const char * name)
 {
 	HandleScope handleScope(cpgf_isolate);
-	Local<Object> localObject(Local<Object>::New(this->object));
+	Local<Object> localObject(Local<Object>::New(cpgf_isolate, this->object));
 
 	Local<Value> value = localObject->Get(String::New(name));
 	return v8ToScriptValue(this->getContext(), this->object->CreationContext(), value, NULL);
@@ -1141,7 +1141,7 @@ GScriptValue GV8ScriptObject::doGetValue(const char * name)
 void GV8ScriptObject::doBindClass(const char * name, IMetaClass * metaClass)
 {
 	HandleScope handleScope(cpgf_isolate);
-	Local<Object> localObject(Local<Object>::New(this->object));
+	Local<Object> localObject(Local<Object>::New(cpgf_isolate, this->object));
 
 	helperBindClass(this->getContext(), localObject, name, metaClass);
 }
@@ -1149,7 +1149,7 @@ void GV8ScriptObject::doBindClass(const char * name, IMetaClass * metaClass)
 void GV8ScriptObject::doBindEnum(const char * name, IMetaEnum * metaEnum)
 {
 	HandleScope handleScope(cpgf_isolate);
-	Local<Object> localObject(Local<Object>::New(this->object));
+	Local<Object> localObject(Local<Object>::New(cpgf_isolate, this->object));
 
 	Handle<ObjectTemplate> objectTemplate = createEnumTemplate(this->getContext());
 
@@ -1161,7 +1161,7 @@ void GV8ScriptObject::doBindEnum(const char * name, IMetaEnum * metaEnum)
 GScriptObject * GV8ScriptObject::doCreateScriptObject(const char * name)
 {
 	HandleScope handleScope(cpgf_isolate);
-	Local<Object> localObject(Local<Object>::New(this->object));
+	Local<Object> localObject(Local<Object>::New(cpgf_isolate, this->object));
 
 	Local<Value> value = localObject->Get(String::New(name));
 	if(isValidObject(value)) {
@@ -1191,7 +1191,7 @@ GScriptObject * GV8ScriptObject::doCreateScriptObject(const char * name)
 GScriptValue GV8ScriptObject::getScriptFunction(const char * name)
 {
 	HandleScope handleScope(cpgf_isolate);
-	Local<Object> localObject(Local<Object>::New(this->object));
+	Local<Object> localObject(Local<Object>::New(cpgf_isolate, this->object));
 
 	Local<Value> value = localObject->Get(String::New(name));
 
@@ -1220,7 +1220,7 @@ GVariant GV8ScriptObject::invoke(const char * name, const GVariant * params, siz
 GVariant GV8ScriptObject::invokeIndirectly(const char * name, GVariant const * const * params, size_t paramCount)
 {
 	HandleScope handleScope(cpgf_isolate);
-	Local<Object> localObject(Local<Object>::New(this->object));
+	Local<Object> localObject(Local<Object>::New(cpgf_isolate, this->object));
 
 	Local<Value> func = localObject->Get(String::New(name));
 
@@ -1230,7 +1230,7 @@ GVariant GV8ScriptObject::invokeIndirectly(const char * name, GVariant const * c
 void GV8ScriptObject::doBindNull(const char * name)
 {
 	HandleScope handleScope(cpgf_isolate);
-	Local<Object> localObject(Local<Object>::New(this->object));
+	Local<Object> localObject(Local<Object>::New(cpgf_isolate, this->object));
 
 	localObject->Set(String::New(name), Null());
 }
@@ -1240,7 +1240,7 @@ void GV8ScriptObject::doBindFundamental(const char * name, const GVariant & valu
 	GASSERT_MSG(vtIsFundamental(vtGetType(value.refData().typeData)), "Only fundamental value can be bound via bindFundamental");
 
 	HandleScope handleScope(cpgf_isolate);
-	Local<Object> localObject(Local<Object>::New(this->object));
+	Local<Object> localObject(Local<Object>::New(cpgf_isolate, this->object));
 
 	localObject->Set(String::New(name), variantToV8(this->getContext(), value, GBindValueFlags(bvfAllowRaw), NULL));
 }
@@ -1248,7 +1248,7 @@ void GV8ScriptObject::doBindFundamental(const char * name, const GVariant & valu
 void GV8ScriptObject::doBindAccessible(const char * name, void * instance, IMetaAccessible * accessible)
 {
 	HandleScope handleScope(cpgf_isolate);
-	Local<Object> localObject(Local<Object>::New(this->object));
+	Local<Object> localObject(Local<Object>::New(cpgf_isolate, this->object));
 
 	helperBindAccessible(this->getContext(), localObject, name, instance, accessible);
 }
@@ -1256,7 +1256,7 @@ void GV8ScriptObject::doBindAccessible(const char * name, void * instance, IMeta
 void GV8ScriptObject::doBindString(const char * stringName, const char * s)
 {
 	HandleScope handleScope(cpgf_isolate);
-	Local<Object> localObject(Local<Object>::New(this->object));
+	Local<Object> localObject(Local<Object>::New(cpgf_isolate, this->object));
 
 	localObject->Set(String::New(stringName), String::New(s));
 }
@@ -1264,7 +1264,7 @@ void GV8ScriptObject::doBindString(const char * stringName, const char * s)
 void GV8ScriptObject::doBindObject(const char * objectName, void * instance, IMetaClass * type, bool transferOwnership)
 {
 	HandleScope handleScope(cpgf_isolate);
-	Local<Object> localObject(Local<Object>::New(this->object));
+	Local<Object> localObject(Local<Object>::New(cpgf_isolate, this->object));
 
 	GBindValueFlags flags;
 	flags.setByBool(bvfAllowGC, transferOwnership);
@@ -1275,7 +1275,7 @@ void GV8ScriptObject::doBindObject(const char * objectName, void * instance, IMe
 void GV8ScriptObject::doBindRaw(const char * name, const GVariant & value)
 {
 	HandleScope handleScope(cpgf_isolate);
-	Local<Object> localObject(Local<Object>::New(this->object));
+	Local<Object> localObject(Local<Object>::New(cpgf_isolate, this->object));
 
 	localObject->Set(String::New(name), rawToV8(this->getContext(), value, NULL));
 }
@@ -1300,7 +1300,7 @@ void GV8ScriptObject::doBindMethodList(const char * name, IMetaList * methodList
 void GV8ScriptObject::assignValue(const char * fromName, const char * toName)
 {
 	HandleScope handleScope(cpgf_isolate);
-	Local<Object> localObject(Local<Object>::New(this->object));
+	Local<Object> localObject(Local<Object>::New(cpgf_isolate, this->object));
 
 	Local<Value> value = localObject->Get(String::New(fromName));
 	localObject->Set(String::New(toName), value);
@@ -1314,7 +1314,7 @@ void GV8ScriptObject::doBindCoreService(const char * name, IScriptLibraryLoader 
 void GV8ScriptObject::helperBindMethodList(const char * name, IMetaList * methodList)
 {
 	HandleScope handleScope(cpgf_isolate);
-	Local<Object> localObject(Local<Object>::New(this->object));
+	Local<Object> localObject(Local<Object>::New(cpgf_isolate, this->object));
 
 	Handle<FunctionTemplate> functionTemplate = createMethodTemplate(this->getContext(), GClassGlueDataPointer(), true, methodList, name,
 		Handle<FunctionTemplate>());
@@ -1328,7 +1328,7 @@ void GV8ScriptObject::helperBindMethodList(const char * name, IMetaList * method
 GMethodGlueDataPointer GV8ScriptObject::doGetMethodData(const char * methodName)
 {
 	HandleScope handleScope(cpgf_isolate);
-	Local<Object> localObject(Local<Object>::New(this->object));
+	Local<Object> localObject(Local<Object>::New(cpgf_isolate, this->object));
 
 	Local<Value> value = localObject->Get(String::New(methodName));
 	if(isValidObject(value)) {
