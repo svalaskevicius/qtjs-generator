@@ -72,8 +72,9 @@ GV8ScriptRunnerImplement::GV8ScriptRunnerImplement(IMetaService * service, Handl
 
 void GV8ScriptRunnerImplement::init()
 {
-	contextScope = new Context::Scope(context);
-	Local<Object> global = context->Global();
+	contextScope = new Context::Scope(cpgf_isolate, context);
+	Local<Context> ctx = Local<Context>::New(cpgf_isolate, context);
+	Local<Object> global = ctx->Global();
 
 	GScopedInterface<IMetaService> metaService(getService());
 	GScopedInterface<IScriptObject> scriptObject(createV8ScriptInterface(metaService.get(), global, GScriptConfig()));
@@ -92,19 +93,20 @@ bool GV8ScriptRunnerImplement::executeJsString(const char * source)
 {
 	using namespace v8;
 
-    context->Enter();
+	Local<Context> ctx = Local<Context>::New(cpgf_isolate, context);
+    ctx->Enter();
 	v8::HandleScope handle_scope(cpgf_isolate);
 	v8::TryCatch try_catch;
 	v8::Handle<v8::Script> script = v8::Script::Compile(String::New(source), String::New("cpgf"));
 	if(script.IsEmpty()) {
 		v8::String::AsciiValue error(try_catch.Exception());
-	    context->Exit();
+	    ctx->Exit();
 		this->error(*error);
 		return false;
 	}
 	else {
 		v8::Handle<v8::Value> result = script->Run();
-	    context->Exit();
+	    ctx->Exit();
 		if(result.IsEmpty()) {
 			v8::String::AsciiValue error(try_catch.Exception());
 			this->error(*error);
