@@ -755,10 +755,10 @@ Local<Object> helperBindEnum(const GContextPointer & context, Handle<ObjectTempl
 	GEnumGlueDataPointer enumGlueData(context->newEnumGlueData(metaEnum));
 	GGlueDataWrapper * dataWrapper = newGlueDataWrapper(enumGlueData, getV8DataWrapperPool());
 	instance->SetAlignedPointerInInternalField(0, dataWrapper);
+	setObjectSignature(&instance);
 
 	Persistent<Object> obj(cpgf_isolate, instance);
 	obj.MakeWeak(dataWrapper, weakHandleCallback);
-	setObjectSignature(&obj);
 
 	return Local<Object>::New(cpgf_isolate, obj);
 }
@@ -809,9 +809,9 @@ void objectConstructor(const v8::FunctionCallbackInfo<Value> & args)
 
             Local<Object> localSelf = args.Holder();
 			localSelf->SetAlignedPointerInInternalField(0, objectWrapper);
+			setObjectSignature(&localSelf);
 
 	        Persistent<Object> self(cpgf_isolate, localSelf);
-			setObjectSignature(&self);
 			self.MakeWeak(objectWrapper, weakHandleCallback);
 			allocatedObjects[instance] = self;
 	        args.GetReturnValue().Set( scope.Close(Local<Object>::New(cpgf_isolate, self)) );
