@@ -30,7 +30,7 @@ using namespace v8;
 
 namespace cpgf {
 
-static v8::Isolate *cpgf_isolate = NULL;
+v8::Isolate *cpgf_isolate = NULL;
 
 namespace {
 
