@@ -59,7 +59,7 @@ void StartProfilerIdleNotifier(Environment* env);
 
 namespace {
 
-int __exitCode = 1;
+int __exitCode = -1;
 
 void setExitCode(int code)
 {
@@ -266,14 +266,7 @@ int main(int argc, char * argv[])
     qDebug() << "LOADING!";
     node::Load(env);
 
-    bool appHadQuitRequest = false;
-    QObject::connect(&app, &QCoreApplication::aboutToQuit, [&appHadQuitRequest]{
-        appHadQuitRequest = true;
-    });
-
-    //    uv_run(env->event_loop(), UV_RUN_DEFAULT);
-    if (!appHadQuitRequest) {
-        ev_dispatcher->finalize = true;
+    if (__exitCode < 0) {
         app.exec();
     }
 
