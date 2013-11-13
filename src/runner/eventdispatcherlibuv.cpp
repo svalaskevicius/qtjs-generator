@@ -8,6 +8,10 @@
 
 #include "eventdispatcherlibuv_p.h"
 
+#include <5.1.0/QtGui/qpa/qwindowsysteminterface.h>
+
+extern uint qGlobalPostedEventsCount(); // from qapplication.cpp
+
 
 namespace qtjs {
 
@@ -42,6 +46,7 @@ bool EventDispatcherLibUv::processEvents(QEventLoop::ProcessEventsFlags flags)
 {
     emit awake();
     QCoreApplication::sendPostedEvents();
+    QWindowSystemInterface::sendWindowSystemEvents(flags);
     emit aboutToBlock();
     hasPending = uv_run(uv_default_loop(), UV_RUN_ONCE);
     if (!hasPending && finalize) {
@@ -53,6 +58,7 @@ bool EventDispatcherLibUv::processEvents(QEventLoop::ProcessEventsFlags flags)
 
 bool EventDispatcherLibUv::hasPendingEvents(void)
 {
+    return qGlobalPostedEventsCount();
     return hasPending;
 }
 
