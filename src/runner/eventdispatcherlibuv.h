@@ -21,10 +21,7 @@ class EventDispatcherLibUv : public QAbstractEventDispatcher {
     std::unique_ptr<EventDispatcherLibUvTimerNotifier> timerNotifier;
     std::unique_ptr<EventDispatcherLibUvTimerTracker> timerTracker;
     std::unique_ptr<EventDispatcherLibUvAsyncChannel> asyncChannel;
-
-    bool hasPending;
 public:
-    bool finalize;
     explicit EventDispatcherLibUv(QObject* parent = 0);
     virtual ~EventDispatcherLibUv(void);
 

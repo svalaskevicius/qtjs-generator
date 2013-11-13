@@ -21,8 +21,7 @@ EventDispatcherLibUv::EventDispatcherLibUv(QObject *parent) :
     socketNotifier(new EventDispatcherLibUvSocketNotifier()),
     timerNotifier(new EventDispatcherLibUvTimerNotifier()),
     timerTracker(new EventDispatcherLibUvTimerTracker()),
-    asyncChannel(new EventDispatcherLibUvAsyncChannel()),
-    hasPending(true), finalize(false)
+    asyncChannel(new EventDispatcherLibUvAsyncChannel())
 {
 }
 
@@ -48,18 +47,13 @@ bool EventDispatcherLibUv::processEvents(QEventLoop::ProcessEventsFlags flags)
     QCoreApplication::sendPostedEvents();
     QWindowSystemInterface::sendWindowSystemEvents(flags);
     emit aboutToBlock();
-    hasPending = uv_run(uv_default_loop(), UV_RUN_ONCE);
-    if (!hasPending && finalize) {
-        QCoreApplication::instance()->quit();
-    }
-    return hasPending;
 
+    return uv_run(uv_default_loop(), UV_RUN_ONCE);
 }
 
 bool EventDispatcherLibUv::hasPendingEvents(void)
 {
     return qGlobalPostedEventsCount();
-    return hasPending;
 }
 
 void EventDispatcherLibUv::registerSocketNotifier(QSocketNotifier* notifier)
