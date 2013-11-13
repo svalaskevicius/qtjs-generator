@@ -36,6 +36,11 @@
 using namespace cpgf;
 using namespace std;
 
+namespace cpgf {
+extern v8::Isolate *cpgf_isolate;
+}
+
+
 namespace node {
 
 extern v8::Isolate* node_isolate;
@@ -255,12 +260,13 @@ int main(int argc, char * argv[])
 
   v8::V8::Initialize();
   {
-    v8::Locker locker(node::node_isolate);
-    qDebug() << "locked!";
     node::Environment* env = CreateNodeEnvironment(node::node_isolate, argc, argv, exec_argc, exec_argv);
     qDebug() << "env created!";
     qDebug() << "BINDING!";
+    cpgf_isolate = node::node_isolate;
     CpgfBinder cpgfBinder(env->context());
+    v8::Locker locker(node::node_isolate);
+    qDebug() << "locked!";
     v8::Context::Scope context_scope(env->context());
     v8::HandleScope handle_scope(env->isolate());
     qDebug() << "LOADING!";
