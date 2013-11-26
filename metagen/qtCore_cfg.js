@@ -100,6 +100,9 @@ function shouldAllowClassWrapper(item) {
     case 'QCharRef':
     case 'QThreadStorageData':
     case 'QVariant':
+    case 'QtMetaTypePrivate::QAssociativeIterableImpl':
+    case 'QtMetaTypePrivate::QPairVariantInterfaceImpl':
+    case 'QtMetaTypePrivate::QSequentialIterableImpl':
       return false;
     default:
       if (item.getQualifiedName().indexOf(/QPrivate/) >=0 ) {
@@ -191,14 +194,39 @@ function processCallback(item, data)
     }
   }
 
+  if ((""+item.getQualifiedName()).indexOf('QtPrivate::') >= 0) {
+      data.skipBind = true;
+    print("skip: " + item.getQualifiedName() + "\n");
+      return;
+  }
+
+  if ((""+item.getQualifiedName()).indexOf('QtMetaTypePrivate::') >= 0) {
+      data.skipBind = true;
+    print("skip: " + item.getQualifiedName() + "\n");
+      return;
+  }
+
   switch (""+item.getQualifiedName()) {
     case "qErrnoWarning":
     case "qDebug":
     case "qWarning":
     case "qCritical":
     case "qFatal":
+    case "AbstractConverterFunction":
+    case "AbstractComparatorFunction":
+    case "AbstractDebugStreamFunction":
+    case "AssociativeContainerAccessor":
+    case "AssociativeContainerConverterHelper":
+    case "AssociativeValueTypeIsMetaType":
+    case "IsMetaTypePair":
+    case "KeyAndValueTypeIsMetaType":
+    case "SequentialContainerConverterHelper":
+    case "SharedPointerMetaTypeIdHelper":
+    case "StlStyleAssociativeContainerAccessor":
+    case "ValueTypeIsMetaType":
     case "QT_NO_QDEBUG_MACRO":
     case "QT_NO_QWARNING_MACRO":
+    case "Q_DECLARE_SEQUENTIAL_CONTAINER_METATYPE":
     case "QMessageLogContext":
     case "QString::vsprintf":
     case "QString::fromStdString":
@@ -309,6 +337,8 @@ function processCallback(item, data)
         case 'const QMimeTypePrivate &':
         case 'QFileInfoPrivate *':
         case 'typename QList<T >::Node*':
+        case 'const QSequentialIterableImpl &':
+        case 'const QAssociativeIterableImpl &':
         data.skipBind = true;
         break;
         case 'Type':
@@ -339,6 +369,18 @@ function processCallback(item, data)
           params.get(i).getType().setLiteralType('QUrl::ComponentFormattingOptions');
           break;
         default:
+  if ((""+params.get(i).getType().getLiteralType()).indexOf('QtPrivate::') >= 0) {
+      data.skipBind = true;
+    print("skip: " + item.getQualifiedName() + "\n");
+      return;
+  }
+
+  if ((""+params.get(i).getType().getLiteralType()).indexOf('QtMetaTypePrivate::') >= 0) {
+      data.skipBind = true;
+    print("skip: " + item.getQualifiedName() + "\n");
+      return;
+  }
+
           print("TYPE: "+params.get(i).getType().getLiteralType()+"\n");
       }
       switch (""+params.get(i).getDefaultValue()) {
