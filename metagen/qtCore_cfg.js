@@ -178,12 +178,14 @@ function processCallback(item, data)
   for (var i in skipByLocationPart) {
     if(item.getLocation().indexOf(skipByLocationPart[i]) >= 0) {
       data.skipBind = true;
+    print("skip by location: " + item.getLiteralName() + " " + skipByLocationPart[i] + "\n");
       return;
     }
   }
   for (var i in skipByNamePart) {
     if(item.getPrimaryName().indexOf(skipByNamePart[i]) >= 0) {
       data.skipBind = true;
+    print("skip by name part: " + item.getLiteralName() + " " + skipByLocationPart[i] + "\n");
       return;
     }
   }
@@ -236,6 +238,7 @@ function processCallback(item, data)
     case "QUrl::data_ptr":
     case "QUrlQuery::data_ptr":
       data.skipBind = true;
+    print("skip directly: " + item.getLiteralName()+ "\n");
       break;
 
     case "QArrayData":
