@@ -62,7 +62,8 @@ var config = {
     +"#include <QtCore/QReadWriteLock>\n"
     +"#include <QtCore/QPauseAnimation>\n"
     +"#include <QtCore/qmetaobject.h>\n"
-    +"#include <QtCore/QState>\n",
+    +"#include <QtCore/QState>\n"
+    +"#include <QtCore/QTimeZone>\n", // required by qdatetime
   //	sourceHeaderReplacer : [ "!.*Box2D[^/]*/Box2D!i", "Box2D" ],
 //	metaHeaderPath : "cpgf/metadata/box2d/",
   parameterTypeReplacer : [
