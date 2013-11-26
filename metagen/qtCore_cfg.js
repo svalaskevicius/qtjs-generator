@@ -114,9 +114,6 @@ function processCallback(item, data)
     data.skipBind = true;
     return;
   }
-  switch (""+item.getQualifiedName()) {
-    case 'QList': return;
-  }
   var skipByLocationPart = [
     '/private/',
     'qobject_impl',
