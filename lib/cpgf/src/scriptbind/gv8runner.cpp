@@ -59,7 +59,7 @@ private:
 
 
 GV8ScriptRunnerImplement::GV8ScriptRunnerImplement(IMetaService * service)
-	: super(service), handleScope(cpgf_isolate), context(cpgf_isolate, Context::New())
+	: super(service), handleScope(cpgf_isolate), context(cpgf_isolate, Context::New(cpgf_isolate))
 {
     init();
 }
