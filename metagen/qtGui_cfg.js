@@ -103,6 +103,7 @@ function processCallback(item, data)
   var skipByNamePart = [
     'Private',
     'data_ptr',
+    'QPalette::Data',
   ];
 
   for (var i in skipByLocationPart) {
@@ -112,7 +113,7 @@ function processCallback(item, data)
     }
   }
   for (var i in skipByNamePart) {
-    if(item.getPrimaryName().indexOf(skipByNamePart[i]) >= 0) {
+    if(item.getQualifiedName().indexOf(skipByNamePart[i]) >= 0) {
       data.skipBind = true;
       return;
     }
