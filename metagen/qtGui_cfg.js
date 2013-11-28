@@ -28,6 +28,7 @@ var config = {
     +"#include <QtCore/QEvent>\n"
     +"#include <QtCore/QDebug>\n"
     +"#include <QtCore/QState>\n"
+    +"#include <QtGui/QOpenGLPixelTransferOptions>\n"
   ,
   //	sourceHeaderReplacer : [ "!.*Box2D[^/]*/Box2D!i", "Box2D" ],
 //	metaHeaderPath : "cpgf/metadata/box2d/",
