@@ -7,6 +7,7 @@
 #include "cpgf/gscopedinterface.h"
 #include "cpgf/scriptbind/gv8runner.h"
 #include "cpgf/scriptbind/gv8bind.h"
+#include "cpgf/glifecycle.h"
 
 #include <iostream>
 #include <string.h>
@@ -31,7 +32,9 @@
 #include "eventdispatcherlibuv.h"
 #include "uv.h"
 
+#include "../../lib/node/src/node.h"
 #include "../../lib/node/src/env.h"
+#include "../../lib/node/src/node_internals.h"
 
 using namespace cpgf;
 using namespace std;
@@ -60,6 +63,12 @@ void EmitExit(Environment* env);
 void RunAtExit(Environment* env);
 static void InstallEarlyDebugSignalHandler();
 void StartProfilerIdleNotifier(Environment* env);
+
+v8::Handle<v8::Value> MakeCallback(Environment* env,
+                           const v8::Handle<v8::Object> object,
+                           const v8::Handle<v8::Function> callback,
+                           int argc,
+                           v8::Handle<v8::Value> argv[]);
 }
 
 namespace {
@@ -158,9 +167,9 @@ struct CpgfBinder {
 
     ~CpgfBinder()
     {
-        globalScriptRunnerInstance = nullptr;
         invokeV8Gc();
         clearV8DataPool();
+        globalScriptRunnerInstance = nullptr;
         qtjs_binder::QtSignalConnectorBinder::reset();
         qtjs_binder::dynamicMetaObjects.dispose();
     }
@@ -217,7 +226,27 @@ node::Environment* CreateNodeEnvironment(v8::Isolate* isolate,
 }
 
 
+void EmitNodeExit(node::Environment* env) {
+  // process.emit('exit')
+  using namespace v8;
+  using namespace node;
+  Context::Scope context_scope(env->context());
+  HandleScope handle_scope(env->isolate());
+  Local<Object> process_object = env->process_object();
+  process_object->Set(FIXED_ONE_BYTE_STRING(node_isolate, "_exiting"),
+                      True(node_isolate));
 
+  Handle<String> exitCode = FIXED_ONE_BYTE_STRING(node_isolate, "exitCode");
+  int code = process_object->Get(exitCode)->IntegerValue();
+
+  Local<Value> args[] = {
+    FIXED_ONE_BYTE_STRING(node_isolate, "exit"),
+    Integer::New(code, node_isolate)
+  };
+
+  MakeCallback(env, process_object, "emit", ARRAY_SIZE(args), args);
+//  exit(code);
+}
 
 } // namespace
 
@@ -264,8 +293,8 @@ int main(int argc, char * argv[])
     qDebug() << "env created!";
     qDebug() << "BINDING!";
     cpgf_isolate = node::node_isolate;
-    CpgfBinder cpgfBinder(env->context());
     v8::Locker locker(node::node_isolate);
+    CpgfBinder cpgfBinder(env->context());
     qDebug() << "locked!";
     v8::Context::Scope context_scope(env->context());
     v8::HandleScope handle_scope(env->isolate());
@@ -276,16 +305,14 @@ int main(int argc, char * argv[])
         app.exec();
     }
 
-    node::EmitExit(env);
+    EmitNodeExit(env);
     node::RunAtExit(env);
     env->Dispose();
     env = NULL;
   }
 
-#ifndef NDEBUG
-  // Clean up. Not strictly necessary.
   v8::V8::Dispose();
-#endif  // NDEBUG
+  cpgf::shutDownLibrary();
 
   delete[] exec_argv;
   exec_argv = NULL;
