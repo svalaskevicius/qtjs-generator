@@ -6,12 +6,8 @@ QT += core widgets qml quick gui core-private
 SOURCES += $$PWD/dynamic_qobject.cpp \
     $$PWD/qmlRegisterType.cpp \
     $$PWD/llvmapi.cpp \
-    $$PWD/eventdispatcherlibuv.cpp \
-    $$PWD/eventdispatcherlibuv/timer_notifier.cpp \
-    $$PWD/eventdispatcherlibuv/time_tracker.cpp \
-    $$PWD/eventdispatcherlibuv/socket_notifier.cpp \
-    $$PWD/eventdispatcherlibuv/async_channel.cpp \
-    $$PWD/eventdispatcherlibuv/libuv_api.cpp
+    $$ROOT/lib/qt-event-dispatcher-libuv/src/eventdispatcherlibuv.cpp \
+    $$files($$ROOT/lib/qt-event-dispatcher-libuv/src/eventdispatcherlibuv/*.cpp)
 
 LIBPATH += $$BUILD/src/core $$BUILD/src/widgets $$BUILD/src/qml $$BUILD/src/gui /usr/lib/llvm-3.2/lib $${ROOT}/lib/node/out/Release/
 LIBS += -lqtjs_core -lqtjs_widgets -lqtjs_qml -lqtjs_gui -lLLVM-3.2 -luv -lcares -lhttp_parser -lchrome_zlib -lz -lopenssl
@@ -21,8 +17,7 @@ HEADERS += \
     $$PWD/qmlRegisterType.h \
     $$PWD/dynamic_qobject.h \
     $$PWD/llvmapi.h \
-    $$PWD/eventdispatcherlibuv.h \
-    ../../src/runner/eventdispatcherlibuv_p.h
+    $$files($$ROOT/lib/qt-event-dispatcher-libuv/src/*.h)
 
 QMAKE_CXXFLAGS += -pthread -fno-strict-aliasing -fno-tree-vrp
 QMAKE_CXXFLAGS_RELEASE += -Wno-unused-parameter

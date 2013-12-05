@@ -10,10 +10,10 @@ TEMPLATE = app
 CONFIG -= release
 CONFIG += debug
 
-INCLUDEPATH += $${ROOT}/tests/lib/catch/single_include $${ROOT}/tests/lib/turtle
+INCLUDEPATH += $${ROOT}/tests/lib/catch/single_include $${ROOT}/tests/lib/turtle $$ROOT/lib/qt-event-dispatcher-libuv/
 
 SOURCES += \
     main.cpp
 
 HEADERS += \
-    eventDispatcher.h
+    $$files($$ROOT/lib/qt-event-dispatcher-libuv/features/*.h)
