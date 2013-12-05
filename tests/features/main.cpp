@@ -1,5 +1,5 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
-#include "eventDispatcher.h"
+#include "features/eventDispatcher.h"
 

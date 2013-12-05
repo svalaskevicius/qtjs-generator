@@ -7,11 +7,11 @@ CONFIG   -= app_bundle
 
 TEMPLATE = app
 
-INCLUDEPATH += $${ROOT}/tests/lib/catch/single_include $${ROOT}/tests/lib/turtle
+INCLUDEPATH += $${ROOT}/tests/lib/catch/single_include $${ROOT}/tests/lib/turtle $$ROOT/lib/qt-event-dispatcher-libuv/src/
 
 SOURCES += \
     main.cpp \
-    eventdispatcherlibuvSpec.cpp
+    $$files($$ROOT/lib/qt-event-dispatcher-libuv/spec/*.cpp)
 
 HEADERS += \
     test_setup.h
