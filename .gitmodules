@@ -1,0 +1,6 @@
+[submodule "lib/node"]
+	path = lib/node
+	url = https://github.com/joyent/node.git
+[submodule "tests/lib/catch"]
+	path = tests/lib/catch
+	url = https://github.com/philsquared/Catch.git

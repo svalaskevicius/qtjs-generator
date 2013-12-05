@@ -1,5 +1,5 @@
 
-#include <dynamic_qobject.h>
+#include "dynamic_qobject.h"
 
 #include <QStringList>
 #include <QDate>
@@ -410,7 +410,7 @@ void DynamicMetaObjects::metacall(size_t classIdx, DynamicQObject *obj, QMetaObj
             data[i+2] = _a[i+1];
         }
         classesInfo[classIdx].callbacks[_id]->invoke(data);
-        delete data;
+        delete [] data;
     } else if (_c == QMetaObject::IndexOfMethod) {
         throw std::runtime_error("IndexOfMethod support is not implemented for DynamicQObject");
     }
@@ -704,7 +704,7 @@ void DynamicQObject::emitSignal(char *signature,
         default: throw std::logic_error("unexpected paramCount");
     }
     QMetaObject::activate(this, idx, argv);
-    delete argv;
+    delete [] argv;
 }
 
 }
