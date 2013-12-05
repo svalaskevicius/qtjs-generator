@@ -4,3 +4,6 @@
 [submodule "tests/lib/catch"]
 	path = tests/lib/catch
 	url = https://github.com/philsquared/Catch.git
+[submodule "lib/qt-event-dispatcher-libuv"]
+	path = lib/qt-event-dispatcher-libuv
+	url = https://github.com/svalaskevicius/qt-event-dispatcher-libuv.git
