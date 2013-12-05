@@ -27,6 +27,7 @@ var config = {
      "#include <QtCore/qglobal.h>\n"
     +"#include <QtCore/QEvent>\n"
     +"#include <QtCore/QDebug>\n"
+    +"#include <QtCore/QFileSelector>\n"
     +"#include <QtCore/QState>\n"
   ,
   //	sourceHeaderReplacer : [ "!.*Box2D[^/]*/Box2D!i", "Box2D" ],
@@ -51,6 +52,7 @@ function shouldAllowClassWrapper(item) {
     case 'QJSValueIterator':
     case "QQuickWindow":
     case "QQuickView":
+    case "QQmlFileSelector":
       return false;
     default:
       ;
@@ -110,6 +112,13 @@ function processCallback(item, data)
     case "QSGFlatColorMaterial":
     case "QSGSimpleTextureNode":
     case "QSGOpaqueTextureMaterial":
+    case "QSGNode":
+    case "QSGBasicGeometryNode":
+    case "QSGGeometryNode":
+    case "QSGClipNode":
+    case "QSGOpacityNode":
+    case "QSGRootNode":
+    case "QSGTransformNode":
       item.getTraits().setDefaultConstructorHidden(true);
       item.getTraits().setCopyConstructorHidden(true);
       break;
@@ -136,8 +145,22 @@ function processCallback(item, data)
     }
     var params = item.getParameterList();
     for(var i = 0; i < params.size(); i++) {
+    print("TYPE: "+params.get(i).getType().getLiteralType()+"\n");
       switch (""+params.get(i).getType().getLiteralType()) {
         case '...':
+        case 'QJSEnginePrivate &':
+        case 'QQmlComponentPrivate &':
+        case 'QQmlEnginePrivate &':
+        case 'QQuickItemPrivate &':
+        case 'QQuickPaintedItemPrivate &':
+        case 'QQuickTransformPrivate &':
+        case 'QQuickWindowPrivate &':
+        case 'QSGBasicGeometryNodePrivate &':
+        case 'QSGGeometryNodePrivate &':
+        case 'QSGNodePrivate &':
+        case 'QSGTexturePrivate &':
+        case 'QJSValuePrivate *':
+        case 'QQmlInfoPrivate *':
           data.skipBind = true;
           return;
         case 'Flags':

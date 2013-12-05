@@ -30,6 +30,7 @@ using namespace v8;
 
 namespace cpgf {
 
+v8::Isolate *cpgf_isolate = NULL;
 
 namespace {
 
@@ -40,6 +41,7 @@ private:
 
 public:
 	GV8ScriptRunnerImplement(IMetaService * service);
+	GV8ScriptRunnerImplement(IMetaService * service, Handle<Context> ctx);
 	~GV8ScriptRunnerImplement();
 
 	virtual void executeString(const char * code);
@@ -47,6 +49,7 @@ public:
 private:
 	bool executeJsString(const char * source);
 	void error(const char * message) const;
+	void init();
 
 private:
 	HandleScope handleScope;
@@ -56,14 +59,26 @@ private:
 
 
 GV8ScriptRunnerImplement::GV8ScriptRunnerImplement(IMetaService * service)
-	: super(service), handleScope(), context(Context::New())
+	: super(service), handleScope(cpgf_isolate), context(cpgf_isolate, Context::New(cpgf_isolate))
 {
-	this->contextScope = new Context::Scope(this->context);
-	Local<Object> global = context->Global();
+    init();
+}
 
-	GScopedInterface<IMetaService> metaService(this->getService());
+GV8ScriptRunnerImplement::GV8ScriptRunnerImplement(IMetaService * service, Handle<Context> ctx)
+	: super(service), handleScope(cpgf_isolate), context(cpgf_isolate, ctx)
+{
+    init();
+}
+
+void GV8ScriptRunnerImplement::init()
+{
+	contextScope = new Context::Scope(cpgf_isolate, context);
+	Local<Context> ctx = Local<Context>::New(cpgf_isolate, context);
+	Local<Object> global = ctx->Global();
+
+	GScopedInterface<IMetaService> metaService(getService());
 	GScopedInterface<IScriptObject> scriptObject(createV8ScriptInterface(metaService.get(), global, GScriptConfig()));
-	this->setScripeObject(scriptObject.get());
+	setScripeObject(scriptObject.get());
 }
 
 GV8ScriptRunnerImplement::~GV8ScriptRunnerImplement()
@@ -78,19 +93,20 @@ bool GV8ScriptRunnerImplement::executeJsString(const char * source)
 {
 	using namespace v8;
 
-    context->Enter();
-	v8::HandleScope handle_scope;
+	Local<Context> ctx = Local<Context>::New(cpgf_isolate, context);
+    ctx->Enter();
+	v8::HandleScope handle_scope(cpgf_isolate);
 	v8::TryCatch try_catch;
 	v8::Handle<v8::Script> script = v8::Script::Compile(String::New(source), String::New("cpgf"));
 	if(script.IsEmpty()) {
 		v8::String::AsciiValue error(try_catch.Exception());
-	    context->Exit();
+	    ctx->Exit();
 		this->error(*error);
 		return false;
 	}
 	else {
 		v8::Handle<v8::Value> result = script->Run();
-	    context->Exit();
+	    ctx->Exit();
 		if(result.IsEmpty()) {
 			v8::String::AsciiValue error(try_catch.Exception());
 			this->error(*error);
@@ -121,6 +137,10 @@ GScriptRunner * createV8ScriptRunner(IMetaService * service)
 	return GScriptRunnerImplement::createScriptRunner(new GV8ScriptRunnerImplement(service));
 }
 
+GScriptRunner * createV8ScriptRunner(IMetaService * service, Handle<Context> ctx)
+{
+	return GScriptRunnerImplement::createScriptRunner(new GV8ScriptRunnerImplement(service, ctx));
+}
 
 
 } // namespace cpgf

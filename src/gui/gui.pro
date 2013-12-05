@@ -5,6 +5,8 @@ TEMPLATE = lib
 
 TARGET=qtjs_gui
 
+CONFIG += release
+
 QMAKE_CXXFLAGS += -DBUILDING_DLL 
 
 SOURCES += $$files(../../metagen/build/QtGui/src/*.cpp) 
