@@ -72,6 +72,7 @@ var config = {
     +"#include <QtWidgets/QMdiSubWindow>\n"
     +"#include <QtWidgets/QMenuBar>\n"
     +"#include <QtWidgets/QStatusBar>\n"
+    +"#include <QtWidgets/QCheckBox>\n"
     +"#include <QtWidgets/QToolBar>\n"
     +"#include <QtWidgets/QDockWidget>\n"
     +"#include <QtWidgets/QHeaderView>\n"
@@ -132,21 +133,25 @@ function processCallback(item, data)
     'Dialog',
     'QDirModel',
     'QHeaderView',
+    'QSizePolicy::Bits',
   ];
 
   for (var i in skipByLocationPart) {
     if(item.getLocation().indexOf(skipByLocationPart[i]) >= 0) {
       data.skipBind = true;
+    print("skip by location: " + item.getLiteralName() + " " + skipByLocationPart[i] + "\n");
       return;
     }
   }
   for (var i in skipByNamePart) {
-    if(item.getPrimaryName().indexOf(skipByNamePart[i]) >= 0) {
+    if(item.getQualifiedName().indexOf(skipByNamePart[i]) >= 0) {
       data.skipBind = true;
+    print("skip by name part: " + item.getQualifiedName() + " " + skipByNamePart[i] + "\n");
       return;
     }
   }
   switch (""+item.getQualifiedName()) {
+    case "Q_FORWARD_DECLARE_OBJC_CLASS":
     case "QGraphicsEffect::source":
     case "QMenu::platformMenu":
     case "QMenuBar::platformMenuBar":
@@ -171,6 +176,7 @@ function processCallback(item, data)
     case "QMacCocoaViewContainer":
     case "QAbstractItemView::update":
       data.skipBind = true;
+    print("skip directly: " + item.getLiteralName()+ "\n");
       return;
     case "QAbstractGraphicsShapeItem":
     case "QGraphicsObject":
@@ -288,6 +294,7 @@ function processCallback(item, data)
     }
   }
 
+    print("USE: " + item.getLiteralName()+ " : " + item.getQualifiedName() + "\n");
   if (shouldAllowClassWrapper(item)) {
     data.getWrapperConfig().setWrapClass(true);
     print("setting wrapper: "+item.getLiteralName()+"\n");

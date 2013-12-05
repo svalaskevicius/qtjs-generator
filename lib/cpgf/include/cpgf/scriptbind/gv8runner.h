@@ -25,6 +25,8 @@
 
 namespace cpgf {
 
+extern v8::Isolate *cpgf_isolate;
+
 class GScriptRunner;
 struct IMetaService;
 
