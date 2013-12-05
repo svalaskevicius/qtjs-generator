@@ -29,6 +29,13 @@ function prepare_file() {
     $s =~ s/Q_REVISION\s*\(\s*[0-9]+\s*\)//g;
     $s =~ s/Q_DECLARE_FLAGS\s*\(([^,()]+),\s*([^,()]+)\)/typedef QFlags<\2> \1;/g;
 
+    $s =~ s/class QByteArray;//g;
+    $s =~ s/template<(class|typename)\s*T>\s*class\s*QList;//g;
+    $s =~ s/template<(class|typename)\s*Key,\s*(class|typename)\s*Value> class QMap;//g;
+    $s =~ s/class QString;//g;
+    $s =~ s/class QStringList;//g;
+    $s =~ s/class QVariant;//g;
+
     open FH, ">".@ARGV[0];
     print FH $s;
     close FH;' "$1"

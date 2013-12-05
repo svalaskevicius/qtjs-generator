@@ -6,6 +6,8 @@ TEMPLATE = lib
 
 TARGET=qtjs_core
 
+CONFIG += release
+
 QMAKE_CXXFLAGS += -DBUILDING_DLL
 
 SOURCES += $$files(../../metagen/build/QtCore/src/*.cpp) 

@@ -82,12 +82,12 @@ endif(${HAS_LUA})
 ### V8 config
 
 set(V8_DIR
-	/home/sarunas/bin/Qt5.1.0/5.1.0/gcc_64/include/QtV8/5.1.0/QtV8/private/
+	../../node/deps/v8/include/
 )
 
 set(V8_INC ${V8_DIR})
 
-set(V8_LIB /home/sarunas/bin/Qt5.1.0/5.1.0/gcc_64/lib/libQt5V8.so)
+set(V8_LIB ../../node/deps/v8/out/native/lib.target/libv8.so)
 
 
 

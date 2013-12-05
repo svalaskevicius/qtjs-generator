@@ -5,24 +5,7 @@ function error(text)
 {
     var log = new qt.QMessageLogger();
     log.critical()._opLeftShift(new qt.QString(text));
-}
-
-function setSelf(self) {
-    obj = self;
-    while (typeof obj === 'object') {
-        if (typeof obj.self !== 'undefined') {
-            throw "setSelf trying to override this!";
-        }
-        obj.self = self;
-        obj = obj.prototype;
-    }
-}
-
-function getSelf(self) {
-    if (typeof self.self === 'undefined') {
-        throw "getSelf does not have 'this' assigned, use setSelf first";
-    }
-    return self.self;
+    //log.critical()._opLeftShift(text);
 }
 
 var App = (function(App) {
@@ -43,15 +26,15 @@ var App = (function(App) {
     };
     App.MovingRectItem.paint = function($this, painter, option, widget) {
         var r = $this.rect();
-        r.setRight(r.right() + getSelf($this).getDirection());
+        r.setRight(r.right() + $this.getDirection());
         $this.setRect(r);
         $this.super_paint(painter, option, widget);
     };
 
-    App.MovingRectItemChild = function(rect) {
-        this.prototype = this.__proto__ = new App.MovingRectItem(rect);
-        setSelf(this);
-        this.speed = 2;
+    App.createMovingRectItem = function(rect) {
+        var item = new App.MovingRectItem(rect);
+        item.speed = 2;
+        return item;
     };
 
     return App;
@@ -60,7 +43,7 @@ var App = (function(App) {
 
 function createGraphicsView() {
 
-    var myItem = new App.MovingRectItemChild(new qt.QRectF(20, 30, 40, 50));
+    var myItem = App.createMovingRectItem(new qt.QRectF(20, 30, 40, 50));
 
     var scene = new qt.QGraphicsScene();
     var view = new qt.QGraphicsView(scene);

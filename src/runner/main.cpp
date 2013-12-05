@@ -7,11 +7,11 @@
 #include "cpgf/gscopedinterface.h"
 #include "cpgf/scriptbind/gv8runner.h"
 #include "cpgf/scriptbind/gv8bind.h"
+#include "cpgf/glifecycle.h"
 
 #include <iostream>
 #include <string.h>
 #include "v8.h"
-#include "../../lib/node/src/v8_typed_array.h"
 
 #include "register_meta_qtcore.h"
 #include "register_meta_qtgui.h"
@@ -29,23 +29,51 @@
 #include <QDir>
 #include <QTimer>
 
-
+#include "eventdispatcherlibuv.h"
 #include "uv.h"
+
+#include "../../lib/node/src/node.h"
+#include "../../lib/node/src/env.h"
+#include "../../lib/node/src/node_internals.h"
 
 using namespace cpgf;
 using namespace std;
 
+namespace cpgf {
+extern v8::Isolate *cpgf_isolate;
+}
+
+
 namespace node {
-char** Init(int argc, char *argv[]);
-v8::Handle<v8::Object> SetupProcessObject(int argc, char *argv[]);
-void Load(v8::Handle<v8::Object> process_l);
-void EmitExit(v8::Handle<v8::Object> process_l);
-void RunAtExit();
+
+extern v8::Isolate* node_isolate;
+bool v8_is_profiling;
+
+char** Init(int* argc,
+            const char** argv,
+            int* exec_argc,
+            const char*** exec_argv);
+void SetupProcessObject(Environment* env,
+                        int argc,
+                        const char* const* argv,
+                        int exec_argc,
+                        const char* const* exec_argv);
+void Load(Environment* env);
+void EmitExit(Environment* env);
+void RunAtExit(Environment* env);
+static void InstallEarlyDebugSignalHandler();
+void StartProfilerIdleNotifier(Environment* env);
+
+v8::Handle<v8::Value> MakeCallback(Environment* env,
+                           const v8::Handle<v8::Object> object,
+                           const v8::Handle<v8::Function> callback,
+                           int argc,
+                           v8::Handle<v8::Value> argv[]);
 }
 
 namespace {
 
-int __exitCode = 1;
+int __exitCode = -1;
 
 void setExitCode(int code)
 {
@@ -124,7 +152,7 @@ struct CpgfBinder {
     GScopedInterface<IScriptObject> scriptObject;
     GScopedInterface<IMetaClass> metaClass;
 
-    CpgfBinder(v8::Persistent<v8::Context> ctx)
+    CpgfBinder(v8::Handle<v8::Context> ctx)
         : define(GDefineMetaNamespace::declare("qt")),
           service(createDefaultMetaService()),
           runner(createV8ScriptRunner(service.get(), ctx)),
@@ -139,115 +167,156 @@ struct CpgfBinder {
 
     ~CpgfBinder()
     {
-        globalScriptRunnerInstance = nullptr;
         invokeV8Gc();
         clearV8DataPool();
+        globalScriptRunnerInstance = nullptr;
         qtjs_binder::QtSignalConnectorBinder::reset();
         qtjs_binder::dynamicMetaObjects.dispose();
     }
 };
 
-static char **copy_argv(int argc, char **argv) {
-  size_t strlen_sum;
-  char **argv_copy;
-  char *argv_data;
-  size_t len;
-  int i;
 
-  strlen_sum = 0;
-  for(i = 0; i < argc; i++) {
-    strlen_sum += strlen(argv[i]) + 1;
+
+node::Environment* CreateNodeEnvironment(v8::Isolate* isolate,
+                               int argc,
+                               const char* const* argv,
+                               int exec_argc,
+                               const char* const* exec_argv) {
+  using namespace v8;
+  using namespace node;
+
+  HandleScope handle_scope(isolate);
+
+  Local<Context> context = Context::New(isolate);
+  Context::Scope context_scope(context);
+  Environment* env = Environment::New(context);
+
+  uv_check_init(env->event_loop(), env->immediate_check_handle());
+  uv_unref(
+      reinterpret_cast<uv_handle_t*>(env->immediate_check_handle()));
+  uv_idle_init(env->event_loop(), env->immediate_idle_handle());
+
+  // Inform V8's CPU profiler when we're idle.  The profiler is sampling-based
+  // but not all samples are created equal; mark the wall clock time spent in
+  // epoll_wait() and friends so profiling tools can filter it out.  The samples
+  // still end up in v8.log but with state=IDLE rather than state=EXTERNAL.
+  // TODO(bnoordhuis) Depends on a libuv implementation detail that we should
+  // probably fortify in the API contract, namely that the last started prepare
+  // or check watcher runs first.  It's not 100% foolproof; if an add-on starts
+  // a prepare or check watcher after us, any samples attributed to its callback
+  // will be recorded with state=IDLE.
+  uv_prepare_init(env->event_loop(), env->idle_prepare_handle());
+  uv_check_init(env->event_loop(), env->idle_check_handle());
+  uv_unref(reinterpret_cast<uv_handle_t*>(env->idle_prepare_handle()));
+  uv_unref(reinterpret_cast<uv_handle_t*>(env->idle_check_handle()));
+
+  if (v8_is_profiling) {
+    StartProfilerIdleNotifier(env);
   }
 
-  argv_copy = (char **) malloc(sizeof(char *) * (argc + 1) + strlen_sum);
-  if (!argv_copy) {
-    return NULL;
-  }
+  Local<FunctionTemplate> process_template = FunctionTemplate::New();
+  process_template->SetClassName(FIXED_ONE_BYTE_STRING(isolate, "process"));
 
-  argv_data = (char *) argv_copy + sizeof(char *) * (argc + 1);
+  Local<Object> process_object = process_template->GetFunction()->NewInstance();
+  env->set_process_object(process_object);
 
-  for(i = 0; i < argc; i++) {
-    argv_copy[i] = argv_data;
-    len = strlen(argv[i]) + 1;
-    memcpy(argv_data, argv[i], len);
-    argv_data += len;
-  }
+  SetupProcessObject(env, argc, argv, exec_argc, exec_argv);
 
-  argv_copy[argc] = NULL;
-
-  return argv_copy;
+  return env;
 }
 
 
+void EmitNodeExit(node::Environment* env) {
+  // process.emit('exit')
+  using namespace v8;
+  using namespace node;
+  Context::Scope context_scope(env->context());
+  HandleScope handle_scope(env->isolate());
+  Local<Object> process_object = env->process_object();
+  process_object->Set(FIXED_ONE_BYTE_STRING(node_isolate, "_exiting"),
+                      True(node_isolate));
+
+  Handle<String> exitCode = FIXED_ONE_BYTE_STRING(node_isolate, "exitCode");
+  int code = process_object->Get(exitCode)->IntegerValue();
+
+  Local<Value> args[] = {
+    FIXED_ONE_BYTE_STRING(node_isolate, "exit"),
+    Integer::New(code, node_isolate)
+  };
+
+  MakeCallback(env, process_object, "emit", ARRAY_SIZE(args), args);
+//  exit(code);
+}
+
 } // namespace
+
+
 
 int main(int argc, char * argv[])
 {
-    // Hack aroung with the argv pointer. Used for process.title = "blah".
-    argv = uv_setup_args(argc, argv);
+//#if !defined(_WIN32)
+//  // Try hard not to lose SIGUSR1 signals during the bootstrap process.
+//  node::InstallEarlyDebugSignalHandler();
+//#endif
 
-    // Logic to duplicate argv as Init() modifies arguments
-    // that are passed into it.
-    char **argv_copy = copy_argv(argc, argv);
+  assert(argc > 0);
 
-    QApplication app(argc, argv);
+  // Hack around with the argv pointer. Used for process.title = "blah".
+  argv = uv_setup_args(argc, argv);
 
-    if ((argc > 1) && (!strcmp("-v", argv[1]))) {
-        cout << "v8 version: "<<v8::V8::GetVersion() << endl;
-        return 0;
+
+  auto ev_dispatcher = new qtjs::EventDispatcherLibUv();
+  QCoreApplication::setEventDispatcher(ev_dispatcher);
+  QApplication app(argc, argv);
+
+  if ((argc > 1) && (!strcmp("-v", argv[1]))) {
+      cout << "v8 version: "<<v8::V8::GetVersion() << endl;
+      return 0;
+  }
+
+
+  // This needs to run *before* V8::Initialize().  The const_cast is not
+  // optional, in case you're wondering.
+  int exec_argc;
+  const char** exec_argv;
+  node::Init(&argc, const_cast<const char**>(argv), &exec_argc, &exec_argv);
+
+//#if HAVE_OPENSSL
+//  // V8 on Windows doesn't have a good source of entropy. Seed it from
+//  // OpenSSL's pool.
+//  V8::SetEntropySource(crypto::EntropySource);
+//#endif
+
+  v8::V8::Initialize();
+  {
+    node::Environment* env = CreateNodeEnvironment(node::node_isolate, argc, argv, exec_argc, exec_argv);
+    qDebug() << "env created!";
+    qDebug() << "BINDING!";
+    cpgf_isolate = node::node_isolate;
+    v8::Locker locker(node::node_isolate);
+    CpgfBinder cpgfBinder(env->context());
+    qDebug() << "locked!";
+    v8::Context::Scope context_scope(env->context());
+    v8::HandleScope handle_scope(env->isolate());
+    qDebug() << "LOADING!";
+    node::Load(env);
+
+    if (__exitCode < 0) {
+        app.exec();
     }
 
-    // This needs to run *before* V8::Initialize()
-    // Use copy here as to not modify the original argv:
-    node::Init(argc, argv_copy);
+    EmitNodeExit(env);
+    node::RunAtExit(env);
+    env->Dispose();
+    env = NULL;
+  }
 
-    v8::V8::Initialize();
-    {
-        v8::Locker locker;
-        v8::HandleScope handle_scope;
+  v8::V8::Dispose();
+  cpgf::shutDownLibrary();
 
-        // Create the one and only Context.
-        v8::Persistent<v8::Context> context = v8::Context::New();
-        v8::Context::Scope context_scope(context);
+  delete[] exec_argv;
+  exec_argv = NULL;
 
-        // Use original argv, as we're just copying values out of it.
-        v8::Handle<v8::Object> process_l = node::SetupProcessObject(argc, argv);
-        v8_typed_array::AttachBindings(context->Global());
-
-        CpgfBinder cpgfBinder(context);
-
-        QTimer nodeLoopTimer;
-        bool appHadQuitRequest = false;
-        bool finalisingNodeLoop = false;
-        QObject::connect(&app, &QCoreApplication::aboutToQuit, [&appHadQuitRequest]{ appHadQuitRequest = true; });
-        QObject::connect(&nodeLoopTimer, &QTimer::timeout, [&finalisingNodeLoop, &app]{
-            int ret = uv_run(uv_default_loop(), UV_RUN_NOWAIT);
-            if (!ret && finalisingNodeLoop) {
-                app.quit();
-            }
-        });
-        nodeLoopTimer.start(100);
-
-        // Create all the objects, load modules, do everything.
-        // so your next reading stop should be node::Load()!
-        node::Load(process_l);
-
-        if (!appHadQuitRequest) {
-            finalisingNodeLoop = true;
-            app.exec();
-        }
-
-        node::EmitExit(process_l);
-        node::RunAtExit();
-
-        context.Dispose();
-
-    }
-    v8::V8::Dispose();
-
-    // Clean up the copy:
-    free(argv_copy);
-
-    return __exitCode;
+  return __exitCode;
 }
 
