@@ -272,6 +272,7 @@ int main(int argc, char * argv[])
   auto ev_dispatcher = new qtjs::EventDispatcherLibUv();
   QCoreApplication::setEventDispatcher(ev_dispatcher);
   QApplication app(argc, argv);
+  ev_dispatcher->setFinalise();
 
   if ((argc > 1) && (!strcmp("-v", argv[1]))) {
       cout << "v8 version: "<<v8::V8::GetVersion() << endl;
@@ -306,8 +307,7 @@ int main(int argc, char * argv[])
     node::Load(env);
 
     if (__exitCode < 0) {
-        ev_dispatcher->setFinalise();
-        app.exec();
+        QCoreApplication::exec();
     }
 
     EmitNodeExit(env);
