@@ -30,6 +30,7 @@ INCLUDEPATH += $${ROOT}/lib/node/deps/openssl/openssl/include
 INCLUDEPATH += $${ROOT}/lib/node/deps/uv/include/
 INCLUDEPATH += $${ROOT}/lib/node/deps/http_parser/
 INCLUDEPATH += $${ROOT}/lib/node/out/Release/obj/gen/
+INCLUDEPATH += $$ROOT/lib/qt-event-dispatcher-libuv/src/
 
 SOURCES +=  $${ROOT}/lib/node/src/fs_event_wrap.cc \
             $${ROOT}/lib/node/src/cares_wrap.cc \

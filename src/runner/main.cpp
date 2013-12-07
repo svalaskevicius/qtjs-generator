@@ -245,6 +245,10 @@ void EmitNodeExit(node::Environment* env) {
   };
 
   MakeCallback(env, process_object, "emit", ARRAY_SIZE(args), args);
+
+  if (__exitCode < 0) {
+      __exitCode = code;
+  }
 //  exit(code);
 }
 
