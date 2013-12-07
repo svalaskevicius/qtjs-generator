@@ -306,6 +306,7 @@ int main(int argc, char * argv[])
     node::Load(env);
 
     if (__exitCode < 0) {
+        ev_dispatcher->setFinalise();
         app.exec();
     }
 
