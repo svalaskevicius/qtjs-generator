@@ -1,5 +1,5 @@
-// SSH key generator UI
 
+// SSH key generator UI
 import QtQuick 2.1
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
@@ -10,9 +10,9 @@ ApplicationWindow {
     title: qsTr("SSH Key Generator")
 
     statusBar: StatusBar {
-    RowLayout {
-        Label {
-            id: status
+        RowLayout {
+            Label {
+                id: status
             }
         }
     }
@@ -66,7 +66,6 @@ ApplicationWindow {
                 echoMode: TextInput.Password
                 onTextChanged: updateStatusBar()
             }
-
         }
 
         // Confirm Passphrase
@@ -106,7 +105,7 @@ ApplicationWindow {
         title: qsTr("Select a file")
         selectMultiple: false
         selectFolder: false
-        nameFilters: [ "All files (*)" ]
+        nameFilters: ["All files (*)"]
         selectedNameFilter: "All files (*)"
         onAccepted: {
             filename.text = fileUrl.toString().replace("file://", "")
@@ -120,9 +119,11 @@ ApplicationWindow {
         type: combobox.currentText
         onKeyGenerated: {
             if (success) {
-                status.text = qsTr('<font color="green">Key generation succeeded.</font>')
+                status.text = qsTr(
+                            '<font color="green">Key generation succeeded.</font>')
             } else {
-                status.text = qsTr('<font color="red">Key generation failed</font>')
+                status.text = qsTr(
+                            '<font color="red">Key generation failed</font>')
             }
         }
     }
@@ -131,19 +132,21 @@ ApplicationWindow {
         id: incrementer
         value: 9
         onValueChanged: {
-            status.text += "value changed to "+incrementer.value
+            status.text += "value changed to " + incrementer.value
         }
         onIncremented: {
-            status.text += "value changed to "+newValue
+            status.text += "value changed to " + newValue
         }
     }
 
     function updateStatusBar() {
         if (passphrase.text != confirm.text) {
-            status.text = qsTr('<font color="red">Pass phrase does not match.</font>')
+            status.text = qsTr(
+                        '<font color="red">Pass phrase does not match.</font>')
             generate.enabled = false
         } else if (passphrase.text.length > 0 && passphrase.text.length < 5) {
-            status.text = qsTr('<font color="red">Pass phrase too short.</font>')
+            status.text = qsTr(
+                        '<font color="red">Pass phrase too short.</font>')
             generate.enabled = false
         } else if (filename.text == "") {
             status.text = qsTr('<font color="red">Enter a filename.</font>')
@@ -155,7 +158,6 @@ ApplicationWindow {
     }
 
     Component.onCompleted: {
-        updateStatusBar();
+        updateStatusBar()
     }
 }
-
