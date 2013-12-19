@@ -73,6 +73,7 @@ var config = {
 
   predefinedTemplateInstances: [
     'QList<QString>', '',
+    'QList<QObject*>', 'QList_QObject_ptr',
   ]
 };
 

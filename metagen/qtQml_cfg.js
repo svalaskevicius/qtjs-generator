@@ -53,6 +53,7 @@ function shouldAllowClassWrapper(item) {
     case "QQuickWindow":
     case "QQuickView":
     case "QQmlFileSelector":
+    case "QQmlComponent":
       return false;
     default:
       ;
