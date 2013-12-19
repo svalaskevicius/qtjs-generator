@@ -95,6 +95,10 @@ const char *currentJsFileName()
     return executionStack.back().filename.c_str();
 }
 
+QObject *objectFromVariant(QVariant *v) {
+    return v->value<QObject *>();
+}
+
 void invokeV8Gc()
 {
     while (!v8::V8::IdleNotification());
@@ -143,6 +147,7 @@ void registerQt(GDefineMetaNamespace &define)
     define._method("__fileName__", &currentJsFileName);
     define._method("makeIncludePathAbsolute", &makeIncludePathAbsolute);
     define._method("invokeV8Gc", &invokeV8Gc);
+    define._method("objectFromVariant", &objectFromVariant);
 }
 
 struct CpgfBinder {
