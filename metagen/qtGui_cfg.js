@@ -173,6 +173,8 @@ function processCallback(item, data)
     case "QTextBlock::iterator::p":
     case "QWindow::handle":
     case "QOpenGLContext::versionFunctions": //does not link due to AbstractOpenGlFunctions symbol not found
+    case "QAccessibleEvent::m_child":
+    case "QAccessibleEvent::m_uniqueId":
       data.skipBind = true;
       return;
     case "QColor::alpha":

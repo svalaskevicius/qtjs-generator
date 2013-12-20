@@ -101,6 +101,7 @@ function shouldAllowClassWrapper(item) {
     case 'QCharRef':
     case 'QThreadStorageData':
     case 'QVariant':
+    case 'QLockFile':
     case 'QtMetaTypePrivate::QAssociativeIterableImpl':
     case 'QtMetaTypePrivate::QPairVariantInterfaceImpl':
     case 'QtMetaTypePrivate::QSequentialIterableImpl':
