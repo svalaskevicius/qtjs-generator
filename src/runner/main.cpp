@@ -301,15 +301,11 @@ int main(int argc, char * argv[])
   v8::V8::Initialize();
   {
     node::Environment* env = CreateNodeEnvironment(node::node_isolate, argc, argv, exec_argc, exec_argv);
-    qDebug() << "env created!";
-    qDebug() << "BINDING!";
     cpgf_isolate = node::node_isolate;
     v8::Locker locker(node::node_isolate);
     CpgfBinder cpgfBinder(env->context());
-    qDebug() << "locked!";
     v8::Context::Scope context_scope(env->context());
     v8::HandleScope handle_scope(env->isolate());
-    qDebug() << "LOADING!";
     node::Load(env);
 
     if (__exitCode < 0) {
