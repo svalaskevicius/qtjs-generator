@@ -1,0 +1,9 @@
+#!/bin/sh
+
+echo "running specs with valgrind"
+export PRECMD="valgrind --tool=memcheck --leak-check=full"
+./spec "$@"
+echo "running specs with gdb"
+export PRECMD="gdb --args"
+./spec "$@"
+
