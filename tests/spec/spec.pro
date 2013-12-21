@@ -5,6 +5,9 @@ TARGET = spec
 CONFIG   += console
 CONFIG   -= app_bundle
 
+CONFIG -= release
+CONFIG += debug
+
 TEMPLATE = app
 
 INCLUDEPATH += $${ROOT}/tests/lib/catch/single_include $${ROOT}/tests/lib/turtle $$ROOT/lib/qt-event-dispatcher-libuv/src/
