@@ -34,6 +34,7 @@
 
 #include "../../lib/node/src/node.h"
 #include "../../lib/node/src/env.h"
+#include "../../lib/node/src/env-inl.h"
 #include "../../lib/node/src/node_internals.h"
 
 using namespace cpgf;

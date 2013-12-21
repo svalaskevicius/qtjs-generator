@@ -4,8 +4,7 @@ include (./runner.pri)
 TEMPLATE = app
 TARGET=qtjs
 
-CONFIG -= release
-CONFIG += debug
+CONFIG += release
 
 SOURCES += main.cpp
 
