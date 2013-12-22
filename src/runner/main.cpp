@@ -277,8 +277,6 @@ int main(int argc, char * argv[])
 
   auto ev_dispatcher = new qtjs::EventDispatcherLibUv();
   QCoreApplication::setEventDispatcher(ev_dispatcher);
-  QApplication app(argc, argv);
-  ev_dispatcher->setFinalise();
 
   if ((argc > 1) && (!strcmp("-v", argv[1]))) {
       cout << "v8 version: "<<v8::V8::GetVersion() << endl;
@@ -303,13 +301,19 @@ int main(int argc, char * argv[])
     node::Environment* env = CreateNodeEnvironment(node::node_isolate, argc, argv, exec_argc, exec_argv);
     cpgf_isolate = node::node_isolate;
     v8::Locker locker(node::node_isolate);
-    CpgfBinder cpgfBinder(env->context());
     v8::Context::Scope context_scope(env->context());
     v8::HandleScope handle_scope(env->isolate());
-    node::Load(env);
 
-    if (__exitCode < 0) {
-        QCoreApplication::exec();
+    {
+        QApplication app(argc, argv);
+        ev_dispatcher->setFinalise();
+        CpgfBinder cpgfBinder(env->context());
+
+        node::Load(env);
+
+        if (__exitCode < 0) {
+            QCoreApplication::exec();
+        }
     }
 
     EmitNodeExit(env);
