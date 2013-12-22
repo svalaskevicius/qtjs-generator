@@ -22,7 +22,16 @@
 
 #include "llvmapi.h"
 
+// for QVariant - cpgf interop ->
+#include <qtCore_cpgf_compat.h>
+#include <qtGui_cpgf_compat.h>
+#include <qtQml_cpgf_compat.h>
+#include <qtWidgets_cpgf_compat.h>
 
+#include <QUuid>
+#include <QJsonArray>
+#include <QJsonDocument>
+// <- for QVariant - cpgf interop
 
 
 namespace qtjs_binder {
@@ -43,12 +52,10 @@ QVector<int> metaMethodParamTypeIds(QMetaMethod m) {
 void convertQtDataToGVariantData(int type, void *data, cpgf::GVariantData *dest)
 {
 #define CONV_TYPED_VARIANT_DATA(cl) *dest = cpgf::createTypedVariant(static_cast<const cl *>(data)).takeData()
-    if (type == qMetaTypeId<QVariant>()) {
-        *dest = cpgf::createTypedVariant(((QVariant *)data)).takeData();
-    } else if (type == qMetaTypeId<DynamicQObject>()) {
+    if (type == qMetaTypeId<DynamicQObject>()) {
         *dest = cpgf::createTypedVariant((DynamicQObject *)data).takeData();
     } else {
-        switch (type) {
+        switch ((QMetaType::Type)type) {
         case QVariant::String:
             CONV_TYPED_VARIANT_DATA(QString);
             break;
@@ -142,6 +149,129 @@ void convertQtDataToGVariantData(int type, void *data, cpgf::GVariantData *dest)
         case QVariant::ULongLong:
             CONV_TYPED_VARIANT_DATA(qulonglong);
             break;
+        case QMetaType::Long:
+            CONV_TYPED_VARIANT_DATA(long);
+            break;
+        case QMetaType::Short:
+            CONV_TYPED_VARIANT_DATA(short);
+            break;
+        case QMetaType::Char:
+            CONV_TYPED_VARIANT_DATA(char);
+            break;
+        case QMetaType::ULong:
+            CONV_TYPED_VARIANT_DATA(ulong);
+            break;
+        case QMetaType::UShort:
+            CONV_TYPED_VARIANT_DATA(ushort);
+            break;
+        case QMetaType::UChar:
+            CONV_TYPED_VARIANT_DATA(uchar);
+            break;
+        case QMetaType::SChar:
+            CONV_TYPED_VARIANT_DATA(signed char);
+            break;
+        case QMetaType::QUuid:
+            CONV_TYPED_VARIANT_DATA(QUuid);
+            break;
+        case QMetaType::QVariant:
+            *dest = cpgf::createTypedVariant(((QVariant *)data)).takeData();
+            break;
+        case QMetaType::QModelIndex:
+            CONV_TYPED_VARIANT_DATA(QModelIndex);
+            break;
+        case QMetaType::QRegularExpression:
+            CONV_TYPED_VARIANT_DATA(QRegularExpression);
+            break;
+        case QMetaType::QJsonValue:
+            CONV_TYPED_VARIANT_DATA(QJsonValue);
+            break;
+        case QMetaType::QJsonObject:
+            CONV_TYPED_VARIANT_DATA(QJsonObject);
+            break;
+        case QMetaType::QJsonArray:
+            CONV_TYPED_VARIANT_DATA(QJsonArray);
+            break;
+        case QMetaType::QJsonDocument:
+            CONV_TYPED_VARIANT_DATA(QJsonDocument);
+            break;
+        case QMetaType::QFont:
+            CONV_TYPED_VARIANT_DATA(QFont);
+            break;
+        case QMetaType::QPixmap:
+            CONV_TYPED_VARIANT_DATA(QPixmap);
+            break;
+        case QMetaType::QBrush:
+            CONV_TYPED_VARIANT_DATA(QBrush);
+            break;
+        case QMetaType::QColor:
+            CONV_TYPED_VARIANT_DATA(QColor);
+            break;
+        case QMetaType::QPalette:
+            CONV_TYPED_VARIANT_DATA(QPalette);
+            break;
+        case QMetaType::QIcon:
+            CONV_TYPED_VARIANT_DATA(QIcon);
+            break;
+        case QMetaType::QImage:
+            CONV_TYPED_VARIANT_DATA(QImage);
+            break;
+        case QMetaType::QPolygon:
+            CONV_TYPED_VARIANT_DATA(QPolygon);
+            break;
+        case QMetaType::QRegion:
+            CONV_TYPED_VARIANT_DATA(QRegion);
+            break;
+        case QMetaType::QBitmap:
+            CONV_TYPED_VARIANT_DATA(QBitmap);
+            break;
+        case QMetaType::QCursor:
+            CONV_TYPED_VARIANT_DATA(QCursor);
+            break;
+        case QMetaType::QKeySequence:
+            CONV_TYPED_VARIANT_DATA(QKeySequence);
+            break;
+        case QMetaType::QPen:
+            CONV_TYPED_VARIANT_DATA(QPen);
+            break;
+        case QMetaType::QTextLength:
+            CONV_TYPED_VARIANT_DATA(QTextLength);
+            break;
+        case QMetaType::QTextFormat:
+            CONV_TYPED_VARIANT_DATA(QTextFormat);
+            break;
+        case QMetaType::QMatrix:
+            CONV_TYPED_VARIANT_DATA(QMatrix);
+            break;
+        case QMetaType::QTransform:
+            CONV_TYPED_VARIANT_DATA(QTransform);
+            break;
+        case QMetaType::QMatrix4x4:
+            CONV_TYPED_VARIANT_DATA(QMatrix4x4);
+            break;
+        case QMetaType::QVector2D:
+            CONV_TYPED_VARIANT_DATA(QVector2D);
+            break;
+        case QMetaType::QVector3D:
+            CONV_TYPED_VARIANT_DATA(QVector3D);
+            break;
+        case QMetaType::QVector4D:
+            CONV_TYPED_VARIANT_DATA(QVector4D);
+            break;
+        case QMetaType::QQuaternion:
+            CONV_TYPED_VARIANT_DATA(QQuaternion);
+            break;
+        case QMetaType::QPolygonF:
+            CONV_TYPED_VARIANT_DATA(QPolygonF);
+            break;
+        case QMetaType::QSizePolicy:
+            CONV_TYPED_VARIANT_DATA(QSizePolicy);
+            break;
+        case QMetaType::VoidStar:
+        case QMetaType::Void:
+        case QMetaType::User:
+        case QMetaType::UnknownType:
+            throw std::runtime_error("Unsupported Qt type is used in DynamicQObject");
+            ;
         }
     }
 #undef CONV_TYPED_VARIANT_DATA
@@ -457,7 +587,7 @@ int DynamicQObject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         void *_v = _a[0];
         auto prop = metaObject()->property(origId);
         QVariant & data = propertyStorage[_id];
-        switch (prop.type()) {
+        switch ((QMetaType::Type)prop.type()) {
         case QVariant::String:
             *reinterpret_cast< QString*>(_v) = data.toString();
             break;
@@ -548,13 +678,142 @@ int DynamicQObject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case QVariant::ULongLong:
             *reinterpret_cast< qulonglong*>(_v) = data.toULongLong();
             break;
+        case QMetaType::Long:
+            *reinterpret_cast< long*>(_v) = data.value<long>();
+            break;
+        case QMetaType::Short:
+            *reinterpret_cast< short*>(_v) = data.value<short>();
+            break;
+        case QMetaType::Char:
+            *reinterpret_cast< char*>(_v) = data.value<char>();
+            break;
+        case QMetaType::ULong:
+            *reinterpret_cast< ulong*>(_v) = data.value<ulong>();
+            break;
+        case QMetaType::UShort:
+            *reinterpret_cast< ushort*>(_v) = data.value<ushort>();
+            break;
+        case QMetaType::UChar:
+            *reinterpret_cast< uchar*>(_v) = data.value<uchar>();
+            break;
+        case QMetaType::SChar:
+            *reinterpret_cast< signed char*>(_v) = data.value<signed char>();
+            break;
+        case QMetaType::VoidStar:
+            *reinterpret_cast< void**>(_v) = data.value<void *>();
+            break;
+        case QMetaType::QUuid:
+            *reinterpret_cast< QUuid*>(_v) = data.value<QUuid>();
+            break;
+        case QMetaType::QVariant:
+            *reinterpret_cast< QVariant*>(_v) = data.value<QVariant>();
+            break;
+        case QMetaType::QModelIndex:
+            *reinterpret_cast< QModelIndex*>(_v) = data.value<QModelIndex>();
+            break;
+        case QMetaType::QRegularExpression:
+            *reinterpret_cast< QRegularExpression*>(_v) = data.value<QRegularExpression>();
+            break;
+        case QMetaType::QJsonValue:
+            *reinterpret_cast< QJsonValue*>(_v) = data.value<QJsonValue>();
+            break;
+        case QMetaType::QJsonObject:
+            *reinterpret_cast< QJsonObject*>(_v) = data.value<QJsonObject>();
+            break;
+        case QMetaType::QJsonArray:
+            *reinterpret_cast< QJsonArray*>(_v) = data.value<QJsonArray>();
+            break;
+        case QMetaType::QJsonDocument:
+            *reinterpret_cast< QJsonDocument*>(_v) = data.value<QJsonDocument>();
+            break;
+        case QMetaType::QObjectStar:
+            *reinterpret_cast< QObject**>(_v) = data.value<QObject*>();
+            break;
+        case QMetaType::QFont:
+            *reinterpret_cast< QFont*>(_v) = data.value<QFont>();
+            break;
+        case QMetaType::QPixmap:
+            *reinterpret_cast< QPixmap*>(_v) = data.value<QPixmap>();
+            break;
+        case QMetaType::QBrush:
+            *reinterpret_cast< QBrush*>(_v) = data.value<QBrush>();
+            break;
+        case QMetaType::QColor:
+            *reinterpret_cast< QColor*>(_v) = data.value<QColor>();
+            break;
+        case QMetaType::QPalette:
+            *reinterpret_cast< QPalette*>(_v) = data.value<QPalette>();
+            break;
+        case QMetaType::QIcon:
+            *reinterpret_cast< QIcon*>(_v) = data.value<QIcon>();
+            break;
+        case QMetaType::QImage:
+            *reinterpret_cast< QImage*>(_v) = data.value<QImage>();
+            break;
+        case QMetaType::QPolygon:
+            *reinterpret_cast< QPolygon*>(_v) = data.value<QPolygon>();
+            break;
+        case QMetaType::QRegion:
+            *reinterpret_cast< QRegion*>(_v) = data.value<QRegion>();
+            break;
+        case QMetaType::QBitmap:
+            *reinterpret_cast< QBitmap*>(_v) = data.value<QBitmap>();
+            break;
+        case QMetaType::QCursor:
+            *reinterpret_cast< QCursor*>(_v) = data.value<QCursor>();
+            break;
+        case QMetaType::QKeySequence:
+            *reinterpret_cast< QKeySequence*>(_v) = data.value<QKeySequence>();
+            break;
+        case QMetaType::QPen:
+            *reinterpret_cast< QPen*>(_v) = data.value<QPen>();
+            break;
+        case QMetaType::QTextLength:
+            *reinterpret_cast< QTextLength*>(_v) = data.value<QTextLength>();
+            break;
+        case QMetaType::QTextFormat:
+            *reinterpret_cast< QTextFormat*>(_v) = data.value<QTextFormat>();
+            break;
+        case QMetaType::QMatrix:
+            *reinterpret_cast< QMatrix*>(_v) = data.value<QMatrix>();
+            break;
+        case QMetaType::QTransform:
+            *reinterpret_cast< QTransform*>(_v) = data.value<QTransform>();
+            break;
+        case QMetaType::QMatrix4x4:
+            *reinterpret_cast< QMatrix4x4*>(_v) = data.value<QMatrix4x4>();
+            break;
+        case QMetaType::QVector2D:
+            *reinterpret_cast< QVector2D*>(_v) = data.value<QVector2D>();
+            break;
+        case QMetaType::QVector3D:
+            *reinterpret_cast< QVector3D*>(_v) = data.value<QVector3D>();
+            break;
+        case QMetaType::QVector4D:
+            *reinterpret_cast< QVector4D*>(_v) = data.value<QVector4D>();
+            break;
+        case QMetaType::QQuaternion:
+            *reinterpret_cast< QQuaternion*>(_v) = data.value<QQuaternion>();
+            break;
+        case QMetaType::QPolygonF:
+            *reinterpret_cast< QPolygonF*>(_v) = data.value<QPolygonF>();
+            break;
+        case QMetaType::QSizePolicy:
+            *reinterpret_cast< QSizePolicy*>(_v) = data.value<QSizePolicy>();
+            break;
+        case QMetaType::Void:
+        case QMetaType::User:
+        case QMetaType::UnknownType:
+            throw std::runtime_error("Unsupported Qt type is used in DynamicQObject");
+            ;
+
         }
         return -1;
     } else if (_c == QMetaObject::WriteProperty) {
         void *_v = _a[0];
 
         auto prop = metaObject()->property(origId);
-        switch (prop.type()) {
+        switch ((QMetaType::Type)prop.type()) {
         case QVariant::String:
             propertyStorage[_id] = *reinterpret_cast< QString*>(_v);
             break;
@@ -645,6 +904,133 @@ int DynamicQObject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case QVariant::ULongLong:
             propertyStorage[_id] = *reinterpret_cast< qulonglong*>(_v);
             break;
+        case QMetaType::Long:
+            propertyStorage[_id] = QVariant::fromValue<long>(*reinterpret_cast< long*>(_v));
+            break;
+        case QMetaType::Short:
+            propertyStorage[_id] = *reinterpret_cast< short*>(_v);
+            break;
+        case QMetaType::Char:
+            propertyStorage[_id] = *reinterpret_cast< char*>(_v);
+            break;
+        case QMetaType::ULong:
+            propertyStorage[_id] = QVariant::fromValue<unsigned long>(*reinterpret_cast< ulong*>(_v));
+            break;
+        case QMetaType::UShort:
+            propertyStorage[_id] = *reinterpret_cast< ushort*>(_v);
+            break;
+        case QMetaType::UChar:
+            propertyStorage[_id] = *reinterpret_cast< uchar*>(_v);
+            break;
+        case QMetaType::SChar:
+            propertyStorage[_id] = *reinterpret_cast< signed char*>(_v);
+            break;
+        case QMetaType::QUuid:
+            propertyStorage[_id] = *reinterpret_cast< QUuid*>(_v);
+            break;
+        case QMetaType::QVariant:
+            propertyStorage[_id] = *reinterpret_cast< QVariant*>(_v);
+            break;
+        case QMetaType::QModelIndex:
+            propertyStorage[_id] = *reinterpret_cast< QModelIndex*>(_v);
+            break;
+        case QMetaType::QRegularExpression:
+            propertyStorage[_id] = *reinterpret_cast< QRegularExpression*>(_v);
+            break;
+        case QMetaType::QJsonValue:
+            propertyStorage[_id] = *reinterpret_cast< QJsonValue*>(_v);
+            break;
+        case QMetaType::QJsonObject:
+            propertyStorage[_id] = *reinterpret_cast< QJsonObject*>(_v);
+            break;
+        case QMetaType::QJsonArray:
+            propertyStorage[_id] = *reinterpret_cast< QJsonArray*>(_v);
+            break;
+        case QMetaType::QJsonDocument:
+            propertyStorage[_id] = *reinterpret_cast< QJsonDocument*>(_v);
+            break;
+        case QMetaType::QObjectStar:
+            propertyStorage[_id] = QVariant::fromValue<QObject*>(*reinterpret_cast< QObject**>(_v));
+            break;
+        case QMetaType::QFont:
+            propertyStorage[_id] = *reinterpret_cast< QFont*>(_v);
+            break;
+        case QMetaType::QPixmap:
+            propertyStorage[_id] = *reinterpret_cast< QPixmap*>(_v);
+            break;
+        case QMetaType::QBrush:
+            propertyStorage[_id] = *reinterpret_cast< QBrush*>(_v);
+            break;
+        case QMetaType::QColor:
+            propertyStorage[_id] = *reinterpret_cast< QColor*>(_v);
+            break;
+        case QMetaType::QPalette:
+            propertyStorage[_id] = *reinterpret_cast< QPalette*>(_v);
+            break;
+        case QMetaType::QIcon:
+            propertyStorage[_id] = *reinterpret_cast< QIcon*>(_v);
+            break;
+        case QMetaType::QImage:
+            propertyStorage[_id] = *reinterpret_cast< QImage*>(_v);
+            break;
+        case QMetaType::QPolygon:
+            propertyStorage[_id] = *reinterpret_cast< QPolygon*>(_v);
+            break;
+        case QMetaType::QRegion:
+            propertyStorage[_id] = *reinterpret_cast< QRegion*>(_v);
+            break;
+        case QMetaType::QBitmap:
+            propertyStorage[_id] = *reinterpret_cast< QBitmap*>(_v);
+            break;
+        case QMetaType::QCursor:
+            propertyStorage[_id] = *reinterpret_cast< QCursor*>(_v);
+            break;
+        case QMetaType::QKeySequence:
+            propertyStorage[_id] = *reinterpret_cast< QKeySequence*>(_v);
+            break;
+        case QMetaType::QPen:
+            propertyStorage[_id] = *reinterpret_cast< QPen*>(_v);
+            break;
+        case QMetaType::QTextLength:
+            propertyStorage[_id] = *reinterpret_cast< QTextLength*>(_v);
+            break;
+        case QMetaType::QTextFormat:
+            propertyStorage[_id] = *reinterpret_cast< QTextFormat*>(_v);
+            break;
+        case QMetaType::QMatrix:
+            propertyStorage[_id] = *reinterpret_cast< QMatrix*>(_v);
+            break;
+        case QMetaType::QTransform:
+            propertyStorage[_id] = *reinterpret_cast< QTransform*>(_v);
+            break;
+        case QMetaType::QMatrix4x4:
+            propertyStorage[_id] = *reinterpret_cast< QMatrix4x4*>(_v);
+            break;
+        case QMetaType::QVector2D:
+            propertyStorage[_id] = *reinterpret_cast< QVector2D*>(_v);
+            break;
+        case QMetaType::QVector3D:
+            propertyStorage[_id] = *reinterpret_cast< QVector3D*>(_v);
+            break;
+        case QMetaType::QVector4D:
+            propertyStorage[_id] = *reinterpret_cast< QVector4D*>(_v);
+            break;
+        case QMetaType::QQuaternion:
+            propertyStorage[_id] = *reinterpret_cast< QQuaternion*>(_v);
+            break;
+        case QMetaType::QPolygonF:
+            propertyStorage[_id] = *reinterpret_cast< QPolygonF*>(_v);
+            break;
+        case QMetaType::QSizePolicy:
+            propertyStorage[_id] = *reinterpret_cast< QSizePolicy*>(_v);
+            break;
+        case QMetaType::VoidStar:
+        case QMetaType::Void:
+        case QMetaType::User:
+        case QMetaType::UnknownType:
+            throw std::runtime_error("Unsupported Qt type is used in DynamicQObject");
+            ;
+
         }
         if (prop.hasNotifySignal()) {
             int signal = prop.notifySignalIndex();
