@@ -218,7 +218,7 @@ bool executeString(const char * source, bool printError, bool printResult = fals
 {
 	using namespace v8;
 
-	v8::HandleScope handle_scope;
+	v8::HandleScope handle_scope(cpgf_isolate);
 	v8::TryCatch try_catch;
 	v8::Handle<v8::Script> script = v8::Script::Compile(String::New(source), String::New("sample"));
 	if(script.IsEmpty()) {
@@ -254,10 +254,11 @@ private:
 
 public:
 	TestScriptContextV8(TestScriptApi api)
-		: super(new TestScriptCoderV8), handleScope(), context(Context::New())//, contextScope(context)
+		: super(new TestScriptCoderV8), handleScope(cpgf_isolate), context(cpgf_isolate, Context::New(cpgf_isolate))//, contextScope(context)
 	{
-		this->contextScope = new Context::Scope(this->context);
-		Local<Object> global = context->Global();
+		this->contextScope = new Context::Scope(cpgf_isolate, this->context);
+	    Local<Context> ctx = Local<Context>::New(cpgf_isolate, context);
+		Local<Object> global = ctx->Global();
 
 		if(api == tsaLib) {
 			this->setBinding(cpgf::createV8ScriptObject(this->getService(), global, GScriptConfig()));

@@ -81,14 +81,11 @@ endif(${HAS_LUA})
 
 ### V8 config
 
-set(V8_DIR
-	../../node/deps/v8/include/
-)
+get_filename_component(V8_DIR "../../node/deps/v8/include/" REALPATH)
 
 set(V8_INC ${V8_DIR})
 
-set(V8_LIB ../../node/deps/v8/out/native/lib.target/libv8.so)
-
+get_filename_component(V8_LIB "../../node/deps/v8/out/native/lib.target/libv8.so" REALPATH)
 
 
 ### Python config
