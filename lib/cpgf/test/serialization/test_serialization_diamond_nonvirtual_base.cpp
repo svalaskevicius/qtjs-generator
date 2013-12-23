@@ -152,7 +152,7 @@ void doTestDiamondNonvirtualBase(IMetaStorageWriter * writer, IMetaStorageReader
 
 	GScopedInterface<IMetaArchiveWriter> archiveWriter(createMetaArchiveWriter(service.get(), writer));
 
-	GScopedInterface<IMetaClass> metaClass(service->findClassByName("TestSerializeClassD"));
+	GScopedInterface<IMetaClass> metaClass(service->findClassByName("global.TestSerializeClassD"));
 
 	D instance;
 	instance.B::a = 0x1a;
