@@ -107,7 +107,7 @@ public:
 
 	const std::string & getName() const;
 	const std::string & getQualifiedName() const;
-    void resetQualifiedName() const;
+	void resetQualifiedName() const;
 	std::string makeQualifiedName(const char * delimiter) const;
 	
 	bool equals(const GMetaItem * other) const;
@@ -148,6 +148,7 @@ public:
 	virtual ~GMetaTypedItem();
 
 	const GMetaType & getMetaType() const;
+	const std::string & getQualifiedName() const;
 	virtual size_t getTypeSize() const = 0;
 
 	virtual void * createInstance() const = 0;
