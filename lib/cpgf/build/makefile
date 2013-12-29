@@ -76,7 +76,7 @@ nmake: needcmake
 linux: needcmake
 	$(MK_CACHE)_linux
 	$(CH_DIR) $(CACHE_DIR)_linux $(CMAKE) -G"Unix Makefiles"
-	$(EXEC_BUILD)_linux make $(TARGET)
+	$(EXEC_BUILD)_linux make -j4 $(TARGET)
 
 vc05: needcmake
 	$(MK_DIR) $(PROJECT_PREFIX)_vc05
