@@ -40,10 +40,6 @@
 using namespace cpgf;
 using namespace std;
 
-namespace cpgf {
-extern v8::Isolate *cpgf_isolate;
-}
-
 
 namespace node {
 
@@ -299,7 +295,7 @@ int main(int argc, char * argv[])
   v8::V8::Initialize();
   {
     node::Environment* env = CreateNodeEnvironment(node::node_isolate, argc, argv, exec_argc, exec_argv);
-    cpgf_isolate = node::node_isolate;
+    cpgf::setV8Isolate(node::node_isolate);
     v8::Locker locker(node::node_isolate);
     v8::Context::Scope context_scope(env->context());
     v8::HandleScope handle_scope(env->isolate());
