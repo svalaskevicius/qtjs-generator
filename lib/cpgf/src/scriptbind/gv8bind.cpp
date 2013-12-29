@@ -341,7 +341,7 @@ GScriptValue v8UserDataToScriptValue(const GContextPointer & context, Local<Cont
 		}
 		else {
 			if(value->IsFunction()) {
-				GScopedInterface<IScriptFunction> func(new ImplScriptFunction(new GV8ScriptFunction(context, v8Context->Global(), Local<Value>::New(value)), true));
+				GScopedInterface<IScriptFunction> func(new ImplScriptFunction(new GV8ScriptFunction(context, v8Context->Global(), Local<Value>::New(getV8Isolate(), value)), true));
 
 				return GScriptValue::fromScriptFunction(func.get());
 			}
@@ -1319,7 +1319,7 @@ void GV8ScriptObject::helperBindMethodList(const char * name, IMetaList * method
 	Handle<FunctionTemplate> functionTemplate = createMethodTemplate(this->getContext(), GClassGlueDataPointer(), true, methodList, name,
 		Handle<FunctionTemplate>());
 
-	Local<Function> func = Local<Function>::New(functionTemplate->GetFunction());
+	Local<Function> func = Local<Function>::New(getV8Isolate(), functionTemplate->GetFunction());
 	setObjectSignature(&func);
 
 	localObject->Set(String::New(name), func);

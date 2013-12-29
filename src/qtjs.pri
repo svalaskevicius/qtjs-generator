@@ -38,7 +38,7 @@ LIBS += -lcpgf -lv8
 
 
 v8_gyp.target = $${ROOT}/lib/node/deps/v8/build/gyp/gyp
-v8_gyp.commands = cd $${ROOT}/lib/node/deps/v8/ && rm -f build/gyp && ln -s $${ROOT}/lib/node/tools/gyp build/gyp
+v8_gyp.commands = cd $${ROOT}/lib/node/deps/v8/ && make dependencies
 v8_gyp.depends = $${ROOT}/lib/node/deps/v8/Makefile
 
 dep_v8.target = $${ROOT}/lib/node/deps/v8/out/native/lib.target/libv8.so
