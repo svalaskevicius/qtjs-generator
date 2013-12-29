@@ -60,7 +60,11 @@ namespace cpgf {
 
 namespace {
 
-std::unordered_map<void *, shared_ptr<Persistent<Object> > > allocatedObjects;
+std::unordered_map<void *,
+	std::map<std::string,
+		shared_ptr<Persistent<Object> >
+	>
+> allocatedObjects;
 
 GGlueDataWrapperPool * getV8DataWrapperPool()
 {
@@ -404,7 +408,11 @@ Handle<Value> objectToV8(const GContextPointer & context, const GClassGlueDataPo
 	if (opcvNone == cv) {
 		auto foundObjectIt = allocatedObjects.find(objectAddressFromVariant(instance));
 		if (foundObjectIt != allocatedObjects.end()) {
-			return Local<Object>::New(getV8Isolate(), *foundObjectIt->second);
+			std::string className = classData->getMetaClass()->getQualifiedName();
+			auto foundObject = foundObjectIt->second.find(className);
+			if (foundObject != foundObjectIt->second.end()) {
+				return Local<Object>::New(getV8Isolate(), *foundObject->second);
+			}
 		}
 	}
 
@@ -811,8 +819,10 @@ void objectConstructor(const v8::FunctionCallbackInfo<Value> & args)
 			localSelf->SetAlignedPointerInInternalField(0, objectWrapper);
 			setObjectSignature(&localSelf);
 
-			allocatedObjects[instance].reset(new Persistent<Object>(getV8Isolate(), localSelf));
-			Persistent<Object> &self = *allocatedObjects[instance];
+			auto persistentObject = new Persistent<Object>(getV8Isolate(), localSelf);
+			std::string className = classData->getMetaClass()->getQualifiedName();
+			allocatedObjects[instance][className].reset(persistentObject);
+			Persistent<Object> &self = *persistentObject;
 			self.MakeWeak(objectWrapper, weakHandleCallback);
 			args.GetReturnValue().Set( scope.Close(Local<Object>::New(getV8Isolate(), self)) );
 		}
