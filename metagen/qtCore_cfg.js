@@ -182,6 +182,7 @@ function processCallback(item, data)
     'QMimeData',
     'Q_PID',
     'RefCount',
+    'QArrayData',
     'QListData',
     'QXmlStream',
     'QStringListModel',
@@ -276,6 +277,7 @@ function processCallback(item, data)
     case "QUrlTwoFlags":
     case "QUrl::data_ptr":
     case "QUrlQuery::data_ptr":
+    case "qt_sine_table":
       data.skipBind = true;
     print("skip directly: " + item.getLiteralName()+ "\n");
       break;
