@@ -18,6 +18,9 @@ while test "$#" -gt 0 ; do
         '--callgrind')
             PRECMD="valgrind --tool=callgrind"
             ;;
+        '--massif')
+            PRECMD="valgrind --tool=massif"
+            ;;
         *) ARGS+=("$1")
             ;;
     esac
