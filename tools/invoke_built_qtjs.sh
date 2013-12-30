@@ -10,10 +10,13 @@ ARGS=()
 while test "$#" -gt 0 ; do
     case "$1" in
         '--gdb')
-            PRECMD="$PRECMD gdb --args"
+            PRECMD="gdb --args"
             ;;
         '--memcheck')
-            PRECMD="valgrind --tool=memcheck --track-origins=yes --leak-check=full --show-reachable=yes --suppressions=$MYDIR/.valgrind.suppress --gen-suppressions=all --log-file=$TOPDIR/build/memcheck.log "
+            PRECMD="valgrind --tool=memcheck --track-origins=yes --leak-check=full --show-reachable=yes --suppressions=$MYDIR/.valgrind.suppress --gen-suppressions=all --log-file=$TOPDIR/build/memcheck.log"
+            ;;
+        '--callgrind')
+            PRECMD="valgrind --tool=callgrind"
             ;;
         *) ARGS+=("$1")
             ;;
