@@ -39,6 +39,23 @@ var config = {
   ]
 };
 
+function classHasInheritedVirtualMethods(item) {
+  var methods = item.getMethodList();
+  for(var i = 0; i < methods.size(); i++) {
+    if (methods.get(i).isVirtual()) {
+      return true;
+    }
+  }
+  var bases = item.getBaseClassList();
+  for(var i = 0; i < bases.size(); i++) {
+    var baseClass = bases.get(i).getCppClass()
+    if (baseClass && classHasInheritedVirtualMethods(baseClass) ) {
+      return true;
+    }
+  }
+  return false;
+}
+
 
 function shouldAllowClassWrapper(item) {
   if (!item.isClass() || ((""+item.getLiteralName()).length == 0)) {
@@ -48,8 +65,12 @@ function shouldAllowClassWrapper(item) {
     return false;
   }
 
+  if (!classHasInheritedVirtualMethods(item)) {
+    print("skip wrapper as no virtual methods: "+item.getLiteralName()+"\n");
+    return false;
+  }
+
   switch(""+item.getLiteralName()) {
-    case 'QJSValueIterator':
     case "QQuickWindow":
     case "QQuickView":
     case "QQmlFileSelector":
