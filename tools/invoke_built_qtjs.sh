@@ -12,6 +12,9 @@ while test "$#" -gt 0 ; do
         '--gdb')
             PRECMD="$PRECMD gdb --args"
             ;;
+        '--memcheck')
+            PRECMD="valgrind --tool=memcheck --track-origins=yes --leak-check=full --show-reachable=yes --suppressions=$MYDIR/.valgrind.suppress --gen-suppressions=all --log-file=$TOPDIR/build/memcheck.log "
+            ;;
         *) ARGS+=("$1")
             ;;
     esac
