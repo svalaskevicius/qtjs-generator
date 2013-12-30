@@ -40,6 +40,23 @@ var config = {
   ]
 };
 
+function classHasInheritedVirtualMethods(item) {
+  var methods = item.getMethodList();
+  for(var i = 0; i < methods.size(); i++) {
+    if (methods.get(i).isVirtual()) {
+      return true;
+    }
+  }
+  var bases = item.getBaseClassList();
+  for(var i = 0; i < bases.size(); i++) {
+    var baseClass = bases.get(i).getCppClass()
+    if (baseClass && classHasInheritedVirtualMethods(baseClass) ) {
+      return true;
+    }
+  }
+  return false;
+}
+
 
 function shouldAllowClassWrapper(item) {
   if (!item.isClass() || ((""+item.getLiteralName()).length == 0)) {
@@ -49,18 +66,19 @@ function shouldAllowClassWrapper(item) {
     return false;
   }
 
+  if (!classHasInheritedVirtualMethods(item)) {
+    print("skip wrapper as no virtual methods: "+item.getLiteralName()+"\n");
+    return false;
+  }
+
   switch(""+item.getLiteralName()) {
     case 'QGuiApplication':
     case 'QBitmap':
-    case 'QColor':
-    case 'QGradient':
     case 'QClipboard':
-    case 'QBackingStore':
     case 'QIconEngine':
     case 'QImage':
     case 'QInputMethod':
     case 'QOffscreenSurface':
-    case 'QMatrix4x4':
     case 'QOpenGLShaderProgram':
     case 'QPdfWriter':
     case 'QPicture':
@@ -68,10 +86,6 @@ function shouldAllowClassWrapper(item) {
     case 'QSessionManager':
     case 'QStandardItem':
     case 'QSurface':
-    case 'QTransform':
-    case 'QVector2D':
-    case 'QVector3D':
-    case 'QVector4D':
     case 'QWindow':
       return false;
     default:

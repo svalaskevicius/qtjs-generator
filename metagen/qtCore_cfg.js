@@ -77,6 +77,23 @@ var config = {
   ]
 };
 
+function classHasInheritedVirtualMethods(item) {
+  var methods = item.getMethodList();
+  for(var i = 0; i < methods.size(); i++) {
+    if (methods.get(i).isVirtual()) {
+      return true;
+    }
+  }
+  var bases = item.getBaseClassList();
+  for(var i = 0; i < bases.size(); i++) {
+    var baseClass = bases.get(i).getCppClass()
+    if (baseClass && classHasInheritedVirtualMethods(baseClass) ) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function shouldAllowClassWrapper(item) {
   if (!item.isClass() || ((""+item.getLiteralName()).length == 0)) {
     return false;
@@ -85,26 +102,17 @@ function shouldAllowClassWrapper(item) {
     return false;
   }
 
+  if (!classHasInheritedVirtualMethods(item)) {
+    print("skip wrapper as no virtual methods: "+item.getLiteralName()+"\n");
+    return false;
+  }
+
   switch(""+item.getLiteralName()) {
     case 'qLess':
     case 'qGreater':
-    case 'QBitRef':
-    case 'QByteRef':
-    case 'QByteArray':
-    case 'QBitArray':
     case 'QCoreApplication':
     case 'QFile': // TODO: need to fix binding generator for static methods
     case 'QPostEventList':
-    case 'QJsonValueRef':
-    case 'QStandardPaths':
-    case 'QString':
-    case 'QCharRef':
-    case 'QThreadStorageData':
-    case 'QVariant':
-    case 'QLockFile':
-    case 'QtMetaTypePrivate::QAssociativeIterableImpl':
-    case 'QtMetaTypePrivate::QPairVariantInterfaceImpl':
-    case 'QtMetaTypePrivate::QSequentialIterableImpl':
       return false;
     default:
       if (item.getQualifiedName().indexOf(/QPrivate/) >=0 ) {
