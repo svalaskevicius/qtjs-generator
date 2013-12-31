@@ -48,6 +48,38 @@ cd build
 make
 ~~~~~
 
+Getting started
+---------------
+
+While there is no install script yet, the built qtjs runner can be launched using
+the wrapper scripts in the tools directory.
+
+~~~~bash
+    cd tools
+    ./qtjs
+~~~~~~~~
+
+You'll see the nodejs prompt. Try typing "qt<Enter>" -
+the screen should be filled with the Qt classes available
+for usage.
+
+Try the following:
+~~~~~js
+    var a = new qt.QMessageBox()
+    a.setText(new qt.QString("Hello World!"))
+    a.show()
+~~~~~~~
+
+Or check the prepared examples:
+~~~~~~~bash
+    cd examples/
+    ../tools/qtjs widgets.js
+~~~~~~~~~~~
+
+`qtjs` can by symlinked to a directory in $PATH and it will be available throughout the system.
+Also, it can act as the `node` or `nodejs` launcher with the compatible `npm` symlinked in the same
+tools directory - all node packages can be used together with the Qt bindings.
+
 License
 -------
 
