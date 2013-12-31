@@ -82,6 +82,8 @@ var config = {
     +"#include <QtWidgets/QUndoGroup>\n"
     +"#include <QtWidgets/QGraphicsProxyWidget>\n"
     +"#include <QtWidgets/QLayout>\n"
+    +"#include <QtWidgets/QLabel>\n"
+    +"#include <QtWidgets/QProgressBar>\n"
   ,
   //	sourceHeaderReplacer : [ "!.*Box2D[^/]*/Box2D!i", "Box2D" ],
 //	metaHeaderPath : "cpgf/metadata/box2d/",
@@ -152,9 +154,6 @@ function processCallback(item, data)
 
   var skipByNamePart = [
     'Private',
-    'Dialog',
-    'QDirModel',
-    'QHeaderView',
     'QSizePolicy::Bits',
   ];
 
