@@ -9,8 +9,10 @@ SOURCES += $$PWD/dynamic_qobject.cpp \
     $$ROOT/lib/qt-event-dispatcher-libuv/src/eventdispatcherlibuv.cpp \
     $$files($$ROOT/lib/qt-event-dispatcher-libuv/src/eventdispatcherlibuv/*.cpp)
 
+INCLUDEPATH += /usr/include/llvm-3.2/
+
 LIBPATH += $$BUILD/src/core $$BUILD/src/widgets $$BUILD/src/qml $$BUILD/src/gui /usr/lib/llvm-3.2/lib $${ROOT}/lib/node/out/Release/
-LIBS += -lqtjs_core -lqtjs_widgets -lqtjs_qml -lqtjs_gui -lLLVM-3.2 -luv -lcares -lhttp_parser -lchrome_zlib -lz -lopenssl
+LIBS += -lqtjs_core -lqtjs_widgets -lqtjs_qml -lqtjs_gui -lLLVM-3.2 -luv -lcares -lhttp_parser -lchrome_zlib -lopenssl
 unix:LIBS += -ldl -lrt
 
 HEADERS += \
@@ -31,6 +33,8 @@ unix:DEFINES += __POSIX__ "PLATFORM=\"\\\"unix\\\"\""
 win32:DEFINES += PLATFORM=win32 FD_SETSIZE=1024 _UNICODE=1  HAVE_PERFCTR
 
 INCLUDEPATH += $${ROOT}/lib/node/deps/openssl/openssl/include
+INCLUDEPATH += $${ROOT}/lib/node/deps/cares/include/
+INCLUDEPATH += $${ROOT}/lib/node/deps/zlib/
 INCLUDEPATH += $${ROOT}/lib/node/deps/uv/include/
 INCLUDEPATH += $${ROOT}/lib/node/deps/http_parser/
 INCLUDEPATH += $${ROOT}/lib/node/out/Release/obj/gen/
