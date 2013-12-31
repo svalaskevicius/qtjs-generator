@@ -35,7 +35,7 @@ git submodule update --init --recursive
 # build V8
 pushd lib/node/deps/v8/
 make dependencies
-CXXFLAGS='-Wno-unused-local-typedefs' make native library=shared -j4
+CXXFLAGS='-Wno-unused-local-typedefs -Wno-aggressive-loop-optimizations' make native library=shared -j4
 popd
 
 # build cpgf
