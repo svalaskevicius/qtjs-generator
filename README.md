@@ -21,7 +21,7 @@ How to build
 * bash & perl (for preprocessing etc)
 * Qt5.2
 * OpenGL development files (tested with libgl1-mesa-dev)
-* LLVM library (dev files) - tested with 3.0, 3.2
+* LLVM library (dev files) - tested with 3.2
 
 ### Building
 
