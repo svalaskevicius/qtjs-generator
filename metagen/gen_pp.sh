@@ -36,7 +36,7 @@ function prepare_file() {
     $s =~ s/class QStringList;//g;
     $s =~ s/class QVariant;//g;
 
-    $s =~ s/(([{;]|(public|protected|private):)[\s\n]*[a-zA-Z0-9_]+\(.*?\))[\s\n]*:([\s\n]*[a-zA-Z0-9_]+[\s\n]*\([^)]*\)[\s\n]*,?)+\{[^{}]*\}/\1 {}/gms;
+    $s =~ s/(([{;]|(public|protected|private):|template[\s\n]*<[^<>]*>)[\s\n]*[a-zA-Z0-9_]+\(.*?\))[\s\n]*:([\s\n]*[a-zA-Z0-9_]+[\s\n]*\([^)]*\)[\s\n]*,?)+\{[^{}]*\}/\1 {}/gms;
 
     open FH, ">".@ARGV[0];
     print FH $s;
