@@ -71,7 +71,7 @@ function prepare_files() {
                     [a-zA-Z0-9_]+
                     [\s\n]*
                     \(
-                        [^()]*
+                        .*?
                     \)
                 )
             )+
