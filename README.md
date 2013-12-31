@@ -12,25 +12,45 @@ How to build
 
 ### Requirements
 
-* C++11 supporting compiler, tested with gcc 4.7.2
+* git
+* subversion (for V8 make dependencies)
+* C++11 supporting compiler, tested with gcc 4.7.2, 4.7.3
 * doxygen
 * JDK (for building the metadata generator)
 * cmake (for building cpgf library)
 * bash & perl (for preprocessing etc)
-* Qt5
+* Qt5.2
+* OpenGL development files (tested with libgl1-mesa-dev)
+* LLVM library (dev files) - tested with 3.0, 3.2
 
 ### Building
 
 ~~~~~bash
+
+# download source
+git clone https://github.com/svalaskevicius/qtjs-generator.git
+cd qtjs-generator/
+git submodule update --init --recursive
+
+# build V8
+pushd lib/node/deps/v8/
+make dependencies
+make native library=shared -j4
+popd
+
 # build cpgf
 pushd lib/cpgf/build/
-vim build.config.txt # adjust paths to the libraries used
+# vim build.config.txt # adjust paths to the libraries used (usually no changes required)
 make linux TARGET=lib # or an alternative for your platform, see cpgf documentation
 popd
 
 # build metagen tool 
 pushd lib/cpgf/tools/metagen
-# **download rhino from https://developer.mozilla.org/en-US/docs/Rhino/Download_Rhino and put js.jar here**
+
+    # **download rhino from https://developer.mozilla.org/en-US/docs/Rhino/Download_Rhino and put js.jar here**
+    wget https://github.com/downloads/mozilla/rhino/rhino1_7R4.zip
+    unzip -j rhino1_7R4.zip '*/js.jar'
+
 cd tool
 bash compile.sh
 popd
@@ -44,8 +64,9 @@ popd
 # build it!
 mkdir -p build
 cd build
-<path to Qt>/bin/qmake ../src
-make
+<path to Qt>/bin/qmake ../ -recursive
+make -j4
+# (this will take a while)
 ~~~~~
 
 Getting started
