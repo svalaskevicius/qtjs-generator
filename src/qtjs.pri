@@ -31,7 +31,7 @@ QMAKE_LFLAGS_RELEASE += -fvisibility=hidden -fvisibility-inlines-hidden -s
 
 
 LIBPATH += $${ROOT}/lib/cpgf/lib/ $${ROOT}/lib/node/deps/v8/out/native/lib.target/
-LIBS += -lcpgf -lv8
+LIBS += -lcpgf -lv8 -licuuc -licui18n
 
 
 
