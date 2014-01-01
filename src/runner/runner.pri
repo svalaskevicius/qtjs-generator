@@ -12,7 +12,7 @@ SOURCES += $$PWD/dynamic_qobject.cpp \
 INCLUDEPATH += /usr/include/llvm-3.2/
 
 LIBPATH += $$BUILD/src/core $$BUILD/src/widgets $$BUILD/src/qml $$BUILD/src/gui /usr/lib/llvm-3.2/lib $${ROOT}/lib/node/out/Release/
-LIBS += -lqtjs_core -lqtjs_widgets -lqtjs_qml -lqtjs_gui -lLLVM-3.2 -luv -lcares -lhttp_parser -lchrome_zlib -lopenssl
+LIBS += -lqtjs_core -lqtjs_widgets -lqtjs_qml -lqtjs_gui -lLLVM-3.2 -luv -lcares -lhttp_parser -lopenssl -lchrome_zlib
 unix:LIBS += -ldl -lrt
 
 HEADERS += \
@@ -100,7 +100,7 @@ libopenssl.commands = cd $${ROOT}/lib/node/out/ && make openssl
 libopenssl.depends = $${ROOT}/lib/node/out/Makefile
 
 
-QMAKE_EXTRA_TARGETS += node_natives nodeconfig node_natives libuv libcares libhttp_parser libzlib libopenssl
+QMAKE_EXTRA_TARGETS += nodeconfig node_natives libuv libcares libhttp_parser libzlib libopenssl
 
 PRE_TARGETDEPS +=   $${ROOT}/lib/node/out/Release/obj/gen/node_natives.h \
                     $${ROOT}/lib/node/out/Release/libuv.a \
