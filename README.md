@@ -20,7 +20,7 @@ How to build
 * cmake (for building cpgf library)
 * bash & perl (for preprocessing etc)
 * Qt5.2
-* OpenGL development files (tested with libgl1-mesa-dev)
+* OpenGL development files
 * LLVM library (dev files) - tested with 3.2
 
 ### Building
