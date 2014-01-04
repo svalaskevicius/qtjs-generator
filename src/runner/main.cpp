@@ -273,7 +273,7 @@ int main(int argc, char * argv[])
 
   auto ev_dispatcher = new qtjs::EventDispatcherLibUv();
   QCoreApplication::setEventDispatcher(ev_dispatcher);
-  QApplication app(argc, argv);
+  QApplication *app = new QApplication(argc, argv);
   ev_dispatcher->setFinalise();
 
   if ((argc > 1) && (!strcmp("-v", argv[1]))) {
@@ -314,6 +314,7 @@ int main(int argc, char * argv[])
 
     EmitNodeExit(env);
     node::RunAtExit(env);
+    delete app;
     env->Dispose();
     env = NULL;
   }
