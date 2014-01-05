@@ -46,6 +46,7 @@ function prepare_files() {
 
         $s =~ s/\r/\n/g;
 
+        # remove constructor initialisers:
         $s =~ s/
             (
                 (
@@ -79,6 +80,23 @@ function prepare_files() {
             [\s\n]*
             \{
             /\1 {/xgm;
+
+        # transplant QMetaObject::Connection to its parent class:
+        $s =~ s/
+            (struct\s+Q_CORE_EXPORT\s+QMetaObject\s*\{\s*)
+            (class\s+Connection)
+            (.*?)
+            class\s+Q_CORE_EXPORT\s+QMetaObject::Connection\s*\{
+            ((?&TEXT))
+            \};
+
+              (?(DEFINE)
+                 (?<WORD>      \s* [^{}]+ )
+                 (?<BRACKETED> \s* \{ (?&TEXT)? \s* \} )
+                 (?<TEXT>      (?: (?&WORD) | (?&BRACKETED) )+ )
+              )
+            /\1\2 {\4}\3/xms;
+
 
         open my $fh, ">".$filename;
         print $fh $s;
