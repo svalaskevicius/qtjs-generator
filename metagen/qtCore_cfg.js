@@ -193,14 +193,14 @@ function processCallback(item, data)
   for (var i in skipByLocationPart) {
     if(item.getLocation().indexOf(skipByLocationPart[i]) >= 0) {
       data.skipBind = true;
-    print("skip by location: " + item.getLiteralName() + " " + skipByLocationPart[i] + "\n");
+    print("skip by location: " + item.getQualifiedName() + " " + skipByLocationPart[i] + "\n");
       return;
     }
   }
   for (var i in skipByNamePart) {
     if(item.getPrimaryName().indexOf(skipByNamePart[i]) >= 0) {
       data.skipBind = true;
-    print("skip by name part: " + item.getLiteralName() + " " + skipByLocationPart[i] + "\n");
+    print("skip by name part: " + item.getQualifiedName() + " " + skipByLocationPart[i] + "\n");
       return;
     }
   }
@@ -279,7 +279,7 @@ function processCallback(item, data)
     case "QUrlQuery::data_ptr":
     case "qt_sine_table":
       data.skipBind = true;
-    print("skip directly: " + item.getLiteralName()+ "\n");
+    print("skip directly: " + item.getQualifiedName()+ "\n");
       break;
 
     case "QArrayData":
