@@ -140,7 +140,6 @@ function processCallback(item, data)
     'windows.h',
     'qglobal',
     'blackberry',
-    'qobjectdefs',
     'qcompilerdetection',
     'qexception',
 
@@ -169,6 +168,7 @@ function processCallback(item, data)
     'Q_EXTERN_C',
     'QTypeInfo',
     'typedef',
+    'QArgument',
 
     'QAnimationGroup',
     'QAbstractState',
@@ -218,6 +218,26 @@ function processCallback(item, data)
   }
 
   switch (""+item.getQualifiedName()) {
+    case "signals":
+    case "define":
+    case "QT_TR_FUNCTIONS":
+    case "Q_OBJECT_CHECK":
+    case "Q_DECL_HIDDEN_STATIC_METACALL":
+    case "Q_OBJECT":
+    case "Q_OBJECT_FAKE":
+    case "Q_GADGET":
+    case "QLOCATION":
+    case "QMETHOD_CODE":
+    case "QSLOT_CODE":
+    case "QSIGNAL_CODE":
+    case "QMetaObject::superdata":
+    case "QMetaObject::stringdata":
+    case "QMetaObject::data":
+    case "QMetaObject::static_metacall":
+    case "QMetaObject::relatedMetaObjects":
+    case "QMetaObject::extradata":
+    case "QMetaObject::d":
+    case "QMetaObject::Connection":
     case "qErrnoWarning":
     case "qDebug":
     case "qWarning":
