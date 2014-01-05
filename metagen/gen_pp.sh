@@ -97,8 +97,8 @@ cp -R "$QTINC" qtheaders
 pushd qtheaders
 rm -R QtCLucene QtConcurrent QtDBus QtDeclarative QtDesigner QtDesignerComponents \
       QtHelp QtMultimedia QtMultimediaQuick_p QtMultimediaWidgets QtNetwork QtOpenGL \
-      QtPlatformSupport QtPrintSupport QtQmlDevTools \
-      QtScript QtScriptTools QtSql QtSvg QtTest QtUiTools QtV8 QtWebKit \
+      QtPlatformSupport QtPrintSupport \
+      QtScript QtScriptTools QtSql QtSvg QtTest QtUiTools QtWebKit \
       QtWebKitWidgets QtXml QtXmlPatterns QtZlib
 popd
 
