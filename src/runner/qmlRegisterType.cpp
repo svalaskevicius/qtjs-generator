@@ -20,7 +20,7 @@ namespace qtjs_binder {
 
 int qmlRegisterDynamicType(int classIdx, const char *uri, int versionMajor, int versionMinor, const char *qmlName)
 {
-    const QMetaObject *metaObject = dynamicMetaObjects.getMetaObject(classIdx);
+    const QMetaObject *metaObject = dynamicMetaObjects().getMetaObject(classIdx);
 
     X_QML_GETTYPENAMES;
 
@@ -54,7 +54,7 @@ int qmlRegisterDynamicType(int classIdx, const char *uri, int versionMajor, int 
 
 void finalizeAndRegisterMetaObjectBuilderToQml(DynamicMetaObjectBuilder *builder, const char *uri, int versionMajor, int versionMinor, const char *qmlName)
 {
-    size_t id = dynamicMetaObjects.finalizeBuild(*builder);
+    size_t id = dynamicMetaObjects().finalizeBuild(*builder);
     qmlRegisterDynamicType(id, uri, versionMajor, versionMinor, qmlName);
 }
 

@@ -546,8 +546,12 @@ void DynamicMetaObjects::metacall(size_t classIdx, DynamicQObject *obj, QMetaObj
     }
 }
 
-DynamicMetaObjects dynamicMetaObjects;
 
+DynamicMetaObjects &dynamicMetaObjects()
+{
+    static DynamicMetaObjects _dynamicMetaObjects;
+    return _dynamicMetaObjects;
+}
 
 
 
@@ -557,12 +561,12 @@ DynamicMetaObjects dynamicMetaObjects;
 void DynamicQObject::__setClassIdx(int classIdx) 
 {
     this->classIdx = classIdx;
-    dynamicMetaObjects.callInit(classIdx, this);
+    dynamicMetaObjects().callInit(classIdx, this);
 }
 
 const QMetaObject * DynamicQObject::metaObject() const
 {
-    auto ret = dynamicMetaObjects.getMetaObject(classIdx);
+    auto ret = dynamicMetaObjects().getMetaObject(classIdx);
     assert(ret);
     return ret;
 }
@@ -576,7 +580,7 @@ int DynamicQObject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     }
 
     if (_c == QMetaObject::InvokeMetaMethod) {
-        dynamicMetaObjects.metacall(classIdx, this, _c, _id, _a);
+        dynamicMetaObjects().metacall(classIdx, this, _c, _id, _a);
         return -1;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         *reinterpret_cast<int*>(_a[0]) = -1;
@@ -1111,6 +1115,13 @@ cpgf::GDefineMetaInfo createDynamicObjectsMetaClasses()
         _nd._method("addSignal", &DynamicMetaObjectBuilder::addSignal);
         _nd._method("addSlot", &DynamicMetaObjectBuilder::addSlot);
         _nd._method("addProperty", &DynamicMetaObjectBuilder::addProperty);
+
+        _d._class(_nd);
+    }
+    {
+        GDefineMetaClass<DynamicMetaObjects> _nd = GDefineMetaClass<DynamicMetaObjects>::declare("DynamicMetaObjects");
+        _nd._method("finalizeBuild", &DynamicMetaObjects::finalizeBuild);
+        _nd._method("getMetaObject", &DynamicMetaObjects::getMetaObject);
 
         _d._class(_nd);
     }

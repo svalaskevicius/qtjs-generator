@@ -135,6 +135,8 @@ void registerQt(GDefineMetaNamespace &define)
     meta_qtqml::registerMain_QtQml(define);
 
     define._class(qtjs_binder::createDynamicObjectsMetaClasses());
+    define._method("dynamicMetaObjects", &qtjs_binder::dynamicMetaObjects);
+    define._method("qmlRegisterDynamicType", &qtjs_binder::qmlRegisterDynamicType);
     define._method("finalizeAndRegisterMetaObjectBuilderToQml", &qtjs_binder::finalizeAndRegisterMetaObjectBuilderToQml);
 
     qtjs_binder::QtSignalConnectorBinder::reset(new qtjs_binder::QtSignalConnector());
@@ -173,7 +175,7 @@ struct CpgfBinder {
         clearV8DataPool();
         globalScriptRunnerInstance = nullptr;
         qtjs_binder::QtSignalConnectorBinder::reset();
-        qtjs_binder::dynamicMetaObjects.dispose();
+        qtjs_binder::dynamicMetaObjects().dispose();
     }
 };
 

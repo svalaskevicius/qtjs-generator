@@ -88,7 +88,7 @@ public:
     void metacall(size_t classIdx, DynamicQObject *obj, QMetaObject::Call _c, int _id, void **_a);
 };
 
-extern DynamicMetaObjects dynamicMetaObjects;
+DynamicMetaObjects &dynamicMetaObjects();
 
 class DynamicQObject : public QObject
 {
