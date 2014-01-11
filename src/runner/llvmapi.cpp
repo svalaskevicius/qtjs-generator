@@ -60,7 +60,11 @@ struct LlvmpApiPrivate {
 
     llvm::ExecutionEngine* createEngine(llvm::Module *M)
     {
-        auto EE = llvm::EngineBuilder(M).create();
+        llvm::TargetOptions options;
+        options.JITExceptionHandling = true;
+        auto EE = llvm::EngineBuilder(M)
+                .setTargetOptions(options)
+                .create();
         EE->DisableSymbolSearching();
         EEs.push_back(EE);
         return EE;
