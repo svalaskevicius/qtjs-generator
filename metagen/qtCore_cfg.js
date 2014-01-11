@@ -74,6 +74,9 @@ var config = {
   predefinedTemplateInstances: [
     'QList<QString>', '',
     'QList<QObject*>', 'QList_QObject_ptr',
+    'QArgument<QVariant>', 'QVariantArgument',
+    'QArgument<QString>', 'QStringArgument',
+    'QArgument<QObject*>', 'QObjectArgument',
   ]
 };
 
@@ -168,7 +171,6 @@ function processCallback(item, data)
     'Q_EXTERN_C',
     'QTypeInfo',
     'typedef',
-    'QArgument',
 
     'QAnimationGroup',
     'QAbstractState',
@@ -238,6 +240,7 @@ function processCallback(item, data)
     case "QMetaObject::extradata":
     case "QMetaObject::d":
     case "QMetaObject::Connection":
+    case "QArgument< T & >":
     case "qErrnoWarning":
     case "qDebug":
     case "qWarning":
@@ -438,6 +441,9 @@ function processCallback(item, data)
   if (shouldAllowClassWrapper(item)) {
     data.getWrapperConfig().setWrapClass(true);
     print("setting wrapper: "+item.getLiteralName()+"\n");
+  }
+  if (!data.skipBind) {
+    print("binding: " + item.getQualifiedName() + "\n");
   }
 }
 
