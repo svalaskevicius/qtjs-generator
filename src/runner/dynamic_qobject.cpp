@@ -482,6 +482,7 @@ unsigned int DynamicMetaObjects::finalizeBuild(DynamicMetaObjectBuilder &builder
     nextId++;
 
     metaObjects[currentId] = builder.toMetaObject(currentId);
+
     auto initFnc = builder.getInitCallback();
     if (initFnc) {
         classesInfo[currentId].initCallback =
@@ -512,6 +513,13 @@ QMetaObject *DynamicMetaObjects::getMetaObject(unsigned int id)
         return nullptr;
     }
     return metaObjects[id];
+}
+
+DynamicQObject *DynamicMetaObjects::construct(unsigned int id, QObject *parent)
+{
+    DynamicQObject *ret = new DynamicQObject(parent);
+    ret->__setClassIdx(id);
+    return ret;
 }
 
 void DynamicMetaObjects::callInit(size_t classIdx, DynamicQObject *obj)
@@ -1122,6 +1130,8 @@ cpgf::GDefineMetaInfo createDynamicObjectsMetaClasses()
         GDefineMetaClass<DynamicMetaObjects> _nd = GDefineMetaClass<DynamicMetaObjects>::declare("DynamicMetaObjects");
         _nd._method("finalizeBuild", &DynamicMetaObjects::finalizeBuild);
         _nd._method("getMetaObject", &DynamicMetaObjects::getMetaObject);
+        _nd._method("construct", &DynamicMetaObjects::construct)
+            ._default(copyVariantFromCopyable(0));
 
         _d._class(_nd);
     }

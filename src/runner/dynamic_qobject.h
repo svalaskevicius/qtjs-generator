@@ -83,6 +83,7 @@ public:
 
     unsigned int finalizeBuild(DynamicMetaObjectBuilder &builder);
     QMetaObject *getMetaObject(unsigned int id);
+    DynamicQObject *construct(unsigned int id, QObject *parent = nullptr);
 
     void callInit(size_t classIdx, DynamicQObject *obj);
     void metacall(size_t classIdx, DynamicQObject *obj, QMetaObject::Call _c, int _id, void **_a);
@@ -98,8 +99,8 @@ private:
 public:
     void __setClassIdx(int classIdx);
 
-    DynamicQObject()
-        : QObject(),classIdx(-1)
+    DynamicQObject(QObject *parent = nullptr)
+        : QObject(parent), classIdx(-1)
     {
     }
 
