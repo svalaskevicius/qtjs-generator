@@ -44,7 +44,7 @@ std::string formatCountedName(std::string prefix, size_t counter)
 
 void static_metacall(size_t classIdx, DynamicQObject *obj, QMetaObject::Call _c, int _id, void **_a)
 {
-    dynamicMetaObjects.metacall(classIdx, obj, _c, _id, _a);
+    dynamicMetaObjects().metacall(classIdx, obj, _c, _id, _a);
 }
 
 }
