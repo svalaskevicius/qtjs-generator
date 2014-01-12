@@ -44,9 +44,9 @@ protected:
             if (!AutoTreeHelper<C>::hasParent(instance)) {
                 AutoTreeHelper<C>::traverseChildren(
                     instance,
-                [this](void * c) {
-                    memorySet().erase(c);
-                }
+                    [this](void * c) {
+                        memorySet().erase(c);
+                    }
                 );
                 delete instance;
             }
