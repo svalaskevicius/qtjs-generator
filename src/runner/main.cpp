@@ -312,10 +312,11 @@ int main(int argc, char * argv[])
         if (__exitCode < 0) {
             QCoreApplication::exec();
         }
+
+        EmitNodeExit(env);
+        node::RunAtExit(env);
     }
 
-    EmitNodeExit(env);
-    node::RunAtExit(env);
     delete app;
     env->Dispose();
     env = NULL;
