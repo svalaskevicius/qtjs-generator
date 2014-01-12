@@ -44,15 +44,15 @@ using namespace v8;
 
 
 #define ENTER_V8() \
-    try {
+	try {
 
 #define LEAVE_V8(...) \
 	} \
-    catch(const v8RuntimeException & e) { ThrowException(e.getV8Error()); } \
-    catch(const GException & e) { error(e.getMessage()); } \
-    catch(const exception & e) { error(e.what()); } \
-    catch(const char * & e) { error(e); } \
-    catch(...) { error("Unknown exception occurred."); } \
+	catch(const v8RuntimeException & e) { ThrowException(e.getV8Error()); } \
+	catch(const GException & e) { error(e.getMessage()); } \
+	catch(const exception & e) { error(e.what()); } \
+	catch(const char * & e) { error(e); } \
+	catch(...) { error("Unknown exception occurred."); } \
 	__VA_ARGS__;
 
 
@@ -89,7 +89,7 @@ private:
 	Local<Value> error;
 public:
 	v8RuntimeException(Local<Value> error) : std::runtime_error(*String::AsciiValue(error)), error(error) {}
-    Local<Value> getV8Error() const {return error;}
+	Local<Value> getV8Error() const {return error;}
 };
 
 class GV8BindingContext : public GBindingContext, public GShareFromBase
@@ -402,12 +402,13 @@ GScriptValue v8ToScriptValue(const GContextPointer & context, Local<Context> v8C
 Handle<Value> objectToV8(const GContextPointer & context, const GClassGlueDataPointer & classData,
 						 const GVariant & instance, const GBindValueFlags & flags, ObjectPointerCV cv, GGlueDataPointer * outputGlueData)
 {
-	if(objectAddressFromVariant(instance) == NULL) {
+	void * address = objectAddressFromVariant(instance);
+	if(!address) {
 		return Handle<Value>();
 	}
 
 	if (opcvNone == cv) {
-		auto foundObjectIt = allocatedObjects.find(objectAddressFromVariant(instance));
+		auto foundObjectIt = allocatedObjects.find(address);
 		if (foundObjectIt != allocatedObjects.end()) {
 			std::string className = classData->getMetaClass()->getQualifiedName();
 			auto foundObject = foundObjectIt->second.find(className);
