@@ -16,7 +16,8 @@ HEADERS += \
     ../../include/qt_cpgf_compat.h \
     ../../include/ObjectLifeManagerAutoTree.h \
     ../../include/_base.h \
-    ../../include/qtCore_cpgf_compat.h
+    ../../include/qtCore_cpgf_compat.h \
+    $$files(../../metagen/build/QtCore/include/*.h)
 
 OTHER_FILES += \
     ../../metagen/qtCore_cfg.js

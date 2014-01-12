@@ -12,7 +12,9 @@ QMAKE_CXXFLAGS += -DBUILDING_DLL
 SOURCES += $$files(../../metagen/build/QtQml/src/*.cpp) 
 
 HEADERS += \
-    ../../include/qtQml_cpgf_compat.h
+    ../../include/qtQml_cpgf_compat.h \
+    $$files(../../metagen/build/QtQml/include/*.h)
+
 
 OTHER_FILES += \
     ../../metagen/qtQml_cfg.js
