@@ -310,7 +310,11 @@ int main(int argc, char * argv[])
         node::Load(env);
 
         if (__exitCode < 0) {
-            QCoreApplication::exec();
+            try {
+                QCoreApplication::exec();
+            } catch (const char * &e) {
+                std::cerr << "failed execution: "<<e<<std::endl;
+            }
         }
 
         EmitNodeExit(env);
