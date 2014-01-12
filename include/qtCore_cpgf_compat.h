@@ -325,7 +325,7 @@ struct AutoTreeHelper<QObject> {
     template <typename T>
     static void traverseChildren(QObject *object, T callback) {
         callback(object);
-for (QObject * c : object->children()) {
+        for (QObject * c : object->children()) {
             traverseChildren(c, callback);
         }
     }
@@ -338,12 +338,12 @@ for (QObject * c : object->children()) {
 template <typename T>
 struct GMetaTraitsCreateObjectLifeManager < T, typename GEnableIfResult <
         GAndResult <
-        IsConvertible<T *, QObject *>,
-        GNotResult< IsConvertible<T *, QGraphicsObject *> >,
-        GNotResult< IsConvertible<T *, QGraphicsScene *> >
+            IsConvertible<T *, QObject *>,
+            GNotResult< IsConvertible<T *, QGraphicsObject *> >,
+            GNotResult< IsConvertible<T *, QGraphicsScene *> >
         >
-        >::Result
-        > {
+    >::Result
+> {
     static IMetaObjectLifeManager * createObjectLifeManager(const GMetaTraitsParam &) {
         return new qtjs::MetaObjectLifeManager::AutoTree<QObject>(GTypeConverter<T *, QObject *>());
     }
