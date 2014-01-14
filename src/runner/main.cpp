@@ -180,6 +180,11 @@ struct CpgfBinder {
 };
 
 
+void Exit(const v8::FunctionCallbackInfo<v8::Value>& args) {
+  v8::HandleScope scope(node::node_isolate);
+  __exitCode = args[0]->IntegerValue();
+  qApp->exit(__exitCode);
+}
 
 node::Environment* CreateNodeEnvironment(v8::Isolate* isolate,
                                int argc,
@@ -225,7 +230,7 @@ node::Environment* CreateNodeEnvironment(v8::Isolate* isolate,
   env->set_process_object(process_object);
 
   SetupProcessObject(env, argc, argv, exec_argc, exec_argv);
-
+  NODE_SET_METHOD(process_object, "reallyExit", Exit);
   return env;
 }
 
