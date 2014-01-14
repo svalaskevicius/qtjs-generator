@@ -1130,7 +1130,7 @@ cpgf::GDefineMetaInfo createDynamicObjectsMetaClasses()
         GDefineMetaClass<DynamicMetaObjects> _nd = GDefineMetaClass<DynamicMetaObjects>::declare("DynamicMetaObjects");
         _nd._method("finalizeBuild", &DynamicMetaObjects::finalizeBuild);
         _nd._method("getMetaObject", &DynamicMetaObjects::getMetaObject);
-        _nd._method("construct", &DynamicMetaObjects::construct)
+        _nd._method("construct", &DynamicMetaObjects::construct, cpgf::MakePolicy<cpgf::GMetaRuleTransferOwnership<-1> >())
             ._default(copyVariantFromCopyable(0));
 
         _d._class(_nd);

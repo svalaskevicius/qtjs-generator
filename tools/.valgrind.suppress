@@ -844,3 +844,154 @@
    obj:*/dri/i965_dri.so
    ...
 }
+{
+   open gl
+   Memcheck:Cond
+   fun:glXCreatePbuffer
+   ...
+}
+{
+   open gl
+   Memcheck:Cond
+   obj:*/libGL.so.*
+   ...
+}
+{
+   node crypto
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_ZN4node6crypto14InitCryptoOnceEv
+   ...
+}
+{
+   node cares
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   ...
+   fun:ares_init_options.part.3
+   ...
+}
+{
+   node cares
+   Memcheck:Leak
+   match-leak-kinds: definite
+   ...
+   fun:ares_init_options.part.3
+   ...
+}
+{
+   QSessionManager
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   ...
+   fun:_ZN15QSessionManagerC1EP15QGuiApplicationR7QStringS3_
+   fun:_ZN22QGuiApplicationPrivate4initEv
+   ...
+}
+{
+   QSessionManager
+   Memcheck:Leak
+   match-leak-kinds: definite
+   ...
+   fun:_ZN15QSessionManagerC1EP15QGuiApplicationR7QStringS3_
+   fun:_ZN22QGuiApplicationPrivate4initEv
+   ...
+}
+{
+   QSessionManager
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_ZN15QSessionManagerC1EP15QGuiApplicationR7QStringS3_
+   fun:_ZN22QGuiApplicationPrivate4initEv
+   ...
+}
+{
+   V8 Regexp
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_ZN2v88internal21Runtime_RegExpCompileEiPPNS0_6ObjectEPNS0_7IsolateE
+   ...
+}
+{
+   V8 internal
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_ZN2v812_GLOBAL__N_128PrepareExternalArrayElementsENS_8internal6HandleINS1_8JSObjectEEEPvNS_17ExternalArrayTypeEi
+   fun:_ZN2v86Object39SetIndexedPropertiesToExternalArrayDataEPvNS_17ExternalArrayTypeEi
+   ...
+}
+{
+   QML plugin init
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   obj:/home/sarunas/bin/Qt5.2.0/5.2.0/gcc_64/lib/libQt5Qml.so.5.2.0
+   fun:call_init.part.0
+   ...
+}
+{
+   QPlatformIntegration
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:XextCreateExtension
+   obj:/usr/lib/x86_64-linux-gnu/libXext.so.6.4.0
+   obj:/usr/lib/x86_64-linux-gnu/libXext.so.6.4.0
+   fun:XextAddDisplay
+   ...
+   fun:_ZN27QPlatformIntegrationFactory6createERK7QStringRK11QStringListRiPPcS2_
+}
+{
+   QPlatformIntegration
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   ...
+   fun:_ZN27QPlatformIntegrationFactory6createERK7QStringRK11QStringListRiPPcS2_
+   fun:_ZN22QGuiApplicationPrivate25createPlatformIntegrationEv
+   fun:_ZN22QGuiApplicationPrivate20eventDispatcherReadyEv
+   fun:_ZN16QCoreApplication4initEv
+   fun:_ZN16QCoreApplicationC1ER23QCoreApplicationPrivate
+   ...
+}
+{
+   QPlatformIntegration
+   Memcheck:Leak
+   match-leak-kinds: definite
+   ...
+   fun:_ZN27QPlatformIntegrationFactory6createERK7QStringRK11QStringListRiPPcS2_
+   fun:_ZN22QGuiApplicationPrivate25createPlatformIntegrationEv
+   fun:_ZN22QGuiApplicationPrivate20eventDispatcherReadyEv
+   fun:_ZN16QCoreApplication4initEv
+   fun:_ZN16QCoreApplicationC1ER23QCoreApplicationPrivate
+   ...
+}
+{
+   Qt Codecs
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   ...
+   fun:_ZN10QTextCodec14codecForLocaleEv
+   ...
+}
+{
+   Node's SignalWrap
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:_Znwm
+   fun:_ZN4node10SignalWrap3NewERKN2v820FunctionCallbackInfoINS1_5ValueEEE
+   fun:_ZN2v88internal25FunctionCallbackArguments4CallEPFvRKNS_20FunctionCallbackInfoINS_5ValueEEEE
+   ...
+}
+{
+   Node's TTYWrap
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:_Znwm
+   fun:_ZN4node7TTYWrap3NewERKN2v820FunctionCallbackInfoINS1_5ValueEEE
+   fun:_ZN2v88internal25FunctionCallbackArguments4CallEPFvRKNS_20FunctionCallbackInfoINS_5ValueEEEE
+   ...
+}
