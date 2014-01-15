@@ -978,6 +978,15 @@
    ...
 }
 {
+   Qt MimeData
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:_Znwm
+   fun:_ZN9QMimeDataC1Ev
+   fun:_ZN17QInternalMimeDataC1Ev
+   ...
+}
+{
    Node's SignalWrap
    Memcheck:Leak
    match-leak-kinds: possible
