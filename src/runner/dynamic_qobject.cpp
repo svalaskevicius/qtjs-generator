@@ -335,19 +335,43 @@ CallInfo::~CallInfo()
     }
 }
 
+struct RAII_Helper
+{
+    std::function<void()> destruct;
+
+    RAII_Helper(std::function<void()> construct, std::function<void()> destruct)
+        : destruct(destruct)
+    {
+        construct();
+    }
+
+    ~RAII_Helper()
+    {
+        destruct();
+    }
+};
+
 void CallInfo::invoke(void **data)
 {
     int maxCnt = parameterTypeIds.size();
     cpgf::GVariantData params[REF_MAX_ARITY];
     cpgf::GVariant result;
-    for (int i = 0; i < maxCnt; i++) {
-        convertQtDataToGVariantData(parameterTypeIds[i], data[i + 1], &params[i]);
-    }
+    RAII_Helper paramInitialiser(
+        [&](){
+            for (int i = 0; i < maxCnt; i++) {
+                convertQtDataToGVariantData(parameterTypeIds[i], data[i + 1], &params[i]);
+            }
+        },
+        [&](){
+            for (int i = 0; i < maxCnt; i++) {
+                releaseVariantData(&params[i]);
+            }
+        }
+    );
+    Q_UNUSED(paramInitialiser);
+
     callback->invoke(&result.refData(), params, maxCnt);
     cpgf::metaCheckError(callback);
-    for (int i = 0; i < maxCnt; i++) {
-        releaseVariantData(&params[i]);
-    }
 }
 
 void QtSignalConnectorBinder::connect(QObject *obj, const char * signal, cpgf::IScriptFunction *callback) {
@@ -551,14 +575,24 @@ void DynamicMetaObjects::metacall(size_t classIdx, DynamicQObject *obj, QMetaObj
     if (_c == QMetaObject::InvokeMetaMethod) {
         assert(classesInfo[classIdx].callbacks.find(_id) != classesInfo[classIdx].callbacks.end());
         int paramCnt = classesInfo[classIdx].callbacks[_id]->parameterTypeIds.count();
-        void **data = new void*[paramCnt+2];
-        data[0] = _a[0];
-        data[1] = obj;
-        for (int i = 0; i < paramCnt; i++) {
-            data[i+2] = _a[i+1];
-        }
+        void **data = nullptr;
+
+        RAII_Helper paramInitialiser(
+            [&](){
+                data = new void*[paramCnt+2];
+                data[0] = _a[0];
+                data[1] = obj;
+                for (int i = 0; i < paramCnt; i++) {
+                    data[i+2] = _a[i+1];
+                }
+            },
+            [&](){
+                delete [] data;
+            }
+        );
+        Q_UNUSED(paramInitialiser);
+
         classesInfo[classIdx].callbacks[_id]->invoke(data);
-        delete [] data;
     } else if (_c == QMetaObject::IndexOfMethod) {
         throw std::runtime_error("IndexOfMethod support is not implemented for DynamicQObject");
     }
