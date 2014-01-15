@@ -57,6 +57,7 @@ public:
     QMetaObject *toMetaObject(int classId);
     cpgf::IScriptFunction *getInitCallback();
     std::map<int, cpgf::IScriptFunction *> getCallbacks();
+    QByteArray methodSignature(int id);
 private:
     DynamicMetaObjectBuilderPrivate *_p;
 };
