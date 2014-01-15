@@ -548,9 +548,6 @@ void DynamicMetaObjects::callInit(size_t classIdx, DynamicQObject *obj)
 
 void DynamicMetaObjects::metacall(size_t classIdx, DynamicQObject *obj, QMetaObject::Call _c, int _id, void **_a)
 {
-    auto metaObject = getMetaObject(classIdx);
-    assert(metaObject);
-
     if (_c == QMetaObject::InvokeMetaMethod) {
         assert(classesInfo[classIdx].callbacks.find(_id) != classesInfo[classIdx].callbacks.end());
         int paramCnt = classesInfo[classIdx].callbacks[_id]->parameterTypeIds.count();
