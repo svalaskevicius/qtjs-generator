@@ -437,6 +437,15 @@ std::map<int, cpgf::IScriptFunction *> DynamicMetaObjectBuilder::getCallbacks()
 }
 
 
+QByteArray DynamicMetaObjectBuilder::methodSignature(int id)
+{
+    return QMetaObject::normalizedSignature(_p->builder.method(id).signature() );
+}
+
+
+
+
+
 DynamicMetaObjects::DynamicMetaObjects()
 {
     nextId = 0;
@@ -496,9 +505,13 @@ unsigned int DynamicMetaObjects::finalizeBuild(DynamicMetaObjectBuilder &builder
     }
     classesInfo[currentId].callbacks.clear();
     for (auto it : builder.getCallbacks()) {
+
+        int methodID = metaObjects[currentId]->indexOfMethod( builder.methodSignature(it.first) );
+        assert(methodID >= 0);
+
         classesInfo[currentId].callbacks[it.first] =
                 new CallInfo({
-                                 QVector<int>({qMetaTypeId<DynamicQObject>()}) << metaMethodParamTypeIds( metaObjects[currentId]->method(it.first) ),
+                                 QVector<int>({qMetaTypeId<DynamicQObject>()}) << metaMethodParamTypeIds( metaObjects[currentId]->method(methodID) ),
                                  -1,
                                  it.second
                              });
