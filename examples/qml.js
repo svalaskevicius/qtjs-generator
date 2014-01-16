@@ -50,7 +50,7 @@ MySyntaxHighlighter.highlightBlock = function($this , text ) {
                         new qt.QString("invoking generate! "))._opLeftShift(
                         $this.property("passphrase").toString())
 
-            $this.emitSignal("keyGenerated(bool)",
+            qt.emitSignal($this, "keyGenerated(bool)",
                              new qt.QVariant(true))
         })
 
@@ -73,7 +73,7 @@ MySyntaxHighlighter.highlightBlock = function($this , text ) {
             $this.setProperty('value',
                               new qt.QVariant($this.property(
                                                   "value").toInt() + 1))
-            $this.emitSignal("incremented(int)",
+            qt.emitSignal($this, "incremented(int)",
                              new qt.QVariant($this.property(
                                                  "value").toInt()))
         })
