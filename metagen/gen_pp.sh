@@ -108,7 +108,7 @@ function prepare_files() {
     '
 }
 
-rm -Rf qtheaders xml build
+rm -Rf qtheaders xml 
 
 cp -R "$QTINC" qtheaders
 
