@@ -1113,42 +1113,6 @@ int DynamicQObject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 
-void DynamicQObject::emitSignal(char *signature,
-                                  QVariant arg1,
-                                  QVariant arg2,
-                                  QVariant arg3,
-                                  QVariant arg4,
-                                  QVariant arg5,
-                                  QVariant arg6,
-                                  QVariant arg7,
-                                  QVariant arg8,
-                                  QVariant arg9
-                                  )
-{
-    int idx = metaObject()->indexOfSignal(signature);
-    int paramCount = metaObject()->method(idx).parameterCount();
-    if (paramCount > 9) {
-        throw std::runtime_error("dynamic signals with more than 9 parameters are not supported");
-    }
-    void **argv = new void*[paramCount+1];
-    switch (paramCount) {
-        case 9: argv[9] = arg9.data();
-        case 8: argv[8] = arg8.data();
-        case 7: argv[7] = arg7.data();
-        case 6: argv[6] = arg6.data();
-        case 5: argv[5] = arg5.data();
-        case 4: argv[4] = arg4.data();
-        case 3: argv[3] = arg3.data();
-        case 2: argv[2] = arg2.data();
-        case 1: argv[1] = arg1.data();
-        case 0: argv[0] = 0;
-        break;
-        default: throw std::logic_error("unexpected paramCount");
-    }
-    QMetaObject::activate(this, idx, argv);
-    delete [] argv;
-}
-
 }
 
 #include "qtQml_cpgf_compat.h"
@@ -1181,17 +1145,6 @@ cpgf::GDefineMetaInfo createDynamicObjectsMetaClasses()
     }
     {
         GDefineMetaClass<DynamicQObject, QObject> _nd = GDefineMetaClass<DynamicQObject, QObject>::declare("DynamicQObject");
-        _nd._method("emitSignal", &DynamicQObject::emitSignal)
-                ._default(copyVariantFromCopyable(0))
-                ._default(copyVariantFromCopyable(0))
-                ._default(copyVariantFromCopyable(0))
-                ._default(copyVariantFromCopyable(0))
-                ._default(copyVariantFromCopyable(0))
-                ._default(copyVariantFromCopyable(0))
-                ._default(copyVariantFromCopyable(0))
-                ._default(copyVariantFromCopyable(0))
-                ._default(copyVariantFromCopyable(0))
-                ;
         _d._class(_nd);
     }
 

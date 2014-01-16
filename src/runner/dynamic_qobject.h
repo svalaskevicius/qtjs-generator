@@ -122,18 +122,6 @@ public:
     const QMetaObject *metaObject() const;
 
     virtual int qt_metacall(QMetaObject::Call _c, int _id, void **_a);
-
-    void emitSignal(char *signature,
-                      QVariant arg1 = 0,
-                      QVariant arg2 = 0,
-                      QVariant arg3 = 0,
-                      QVariant arg4 = 0,
-                      QVariant arg5 = 0,
-                      QVariant arg6 = 0,
-                      QVariant arg7 = 0,
-                      QVariant arg8 = 0,
-                      QVariant arg9 = 0);
-
 };
 
 cpgf::GDefineMetaInfo createDynamicObjectsMetaClasses();

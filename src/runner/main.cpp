@@ -24,6 +24,17 @@
 #include "dynamic_qobject.h"
 #include "qmlRegisterType.h"
 
+// for QVariant - cpgf interop ->
+#include <qtCore_cpgf_compat.h>
+#include <qtGui_cpgf_compat.h>
+#include <qtQml_cpgf_compat.h>
+#include <qtWidgets_cpgf_compat.h>
+
+#include <QUuid>
+#include <QJsonArray>
+#include <QJsonDocument>
+// <- for QVariant - cpgf interop
+
 #include <QDebug>
 #include <QFileInfo>
 #include <QDir>
@@ -37,7 +48,6 @@
 #include "../../lib/node/src/env-inl.h"
 #include "../../lib/node/src/node_internals.h"
 
-using namespace cpgf;
 using namespace std;
 
 
@@ -127,6 +137,47 @@ bool includeJsFile(QString fileName) {
     return ret;
 }
 
+void emitQObjectSignal(QObject *obj,
+                       char *signature,
+                      QVariant arg1,
+                      QVariant arg2,
+                      QVariant arg3,
+                      QVariant arg4,
+                      QVariant arg5,
+                      QVariant arg6,
+                      QVariant arg7,
+                      QVariant arg8,
+                      QVariant arg9
+                      )
+{
+    const QMetaObject *mobj = obj->metaObject();
+    int idx = mobj->indexOfSignal(signature);
+    if (idx < 0) {
+        throw std::runtime_error("cannot find signal to invoke");
+    }
+    int paramCount = mobj->method(idx).parameterCount();
+    if (paramCount > 9) {
+        throw std::runtime_error("dynamic signals with more than 9 parameters are not supported");
+    }
+    void **argv = new void*[paramCount+1];
+    switch (paramCount) {
+        case 9: argv[9] = arg9.data();
+        case 8: argv[8] = arg8.data();
+        case 7: argv[7] = arg7.data();
+        case 6: argv[6] = arg6.data();
+        case 5: argv[5] = arg5.data();
+        case 4: argv[4] = arg4.data();
+        case 3: argv[3] = arg3.data();
+        case 2: argv[2] = arg2.data();
+        case 1: argv[1] = arg1.data();
+        case 0: argv[0] = 0;
+        break;
+        default: throw std::logic_error("unexpected paramCount");
+    }
+    QMetaObject::activate(obj, idx, argv);
+    delete [] argv;
+}
+
 void registerQt(GDefineMetaNamespace &define)
 {
     meta_qtcore::registerMain_QtCore(define);
@@ -147,6 +198,18 @@ void registerQt(GDefineMetaNamespace &define)
     define._method("makeIncludePathAbsolute", &makeIncludePathAbsolute);
     define._method("invokeV8Gc", &invokeV8Gc);
     define._method("objectFromVariant", &objectFromVariant);
+
+    define._method("emitSignal", &emitQObjectSignal)
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ;
 }
 
 struct CpgfBinder {
@@ -278,7 +341,7 @@ int main(int argc, char * argv[])
   argv = uv_setup_args(argc, argv);
 
 
-  auto ev_dispatcher = new qtjs::EventDispatcherLibUv();
+  auto ev_dispatcher = new ::qtjs::EventDispatcherLibUv();
   QCoreApplication::setEventDispatcher(ev_dispatcher);
   QApplication *app = new QApplication(argc, argv);
   ev_dispatcher->setFinalise();
@@ -287,7 +350,6 @@ int main(int argc, char * argv[])
       cout << "v8 version: "<<v8::V8::GetVersion() << endl;
       return 0;
   }
-
 
   // This needs to run *before* V8::Initialize().  The const_cast is not
   // optional, in case you're wondering.
