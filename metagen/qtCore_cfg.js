@@ -74,9 +74,6 @@ var config = {
   predefinedTemplateInstances: [
     'QList<QString>', '',
     'QList<QObject*>', 'QList_QObject_ptr',
-    'QArgument<QVariant>', 'QVariantArgument',
-    'QArgument<QString>', 'QStringArgument',
-    'QArgument<QObject*>', 'QObjectArgument',
   ]
 };
 
