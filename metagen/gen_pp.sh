@@ -126,3 +126,5 @@ doxygen qt.doxyfile
 
 find xml -type f -name '*.xml' -exec perl -p -i -e "s#$MYDIR/qtheaders#$QTINC#g" '{}' \;
 
+./metagen.sh "$QTINC"
+
