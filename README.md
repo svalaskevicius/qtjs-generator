@@ -15,10 +15,7 @@ How to build
 * git
 * subversion (for V8 make dependencies)
 * C++11 supporting compiler, tested with gcc 4.7.2, 4.7.3
-* doxygen
-* JDK (for building the metadata generator)
 * cmake (for building cpgf library)
-* bash & perl (for preprocessing etc)
 * Qt5.2
 * OpenGL development files
 * LLVM library (dev files) - tested with 3.2
@@ -44,6 +41,27 @@ pushd lib/cpgf/build/
 make linux TARGET=lib # or an alternative for your platform, see cpgf documentation
 popd
 
+# build it!
+mkdir -p build
+cd build
+<path to Qt>/bin/qmake ../ -recursive
+make -j4
+# (this will take a while)
+~~~~~
+
+Updating Qt bindings
+--------------------
+
+### Requirements
+
+* doxygen
+* JDK (for building the metadata generator)
+* bash & perl (for preprocessing etc)
+
+### Steps
+
+~~~~~bash
+
 # build metagen tool 
 pushd lib/cpgf/tools/metagen
 
@@ -57,16 +75,9 @@ popd
 
 # generate binding code
 pushd metagen
-bash gen_pp.sh <path to Qt includes>
-sh metagen.sh
+bash generate_bindings.sh <path to Qt includes>
 popd
 
-# build it!
-mkdir -p build
-cd build
-<path to Qt>/bin/qmake ../ -recursive
-make -j4
-# (this will take a while)
 ~~~~~
 
 Getting started
