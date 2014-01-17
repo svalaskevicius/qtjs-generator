@@ -22,4 +22,3 @@
     obj.setObjectName(new qt.QString("new name"));
 })();
 
-qt.setExitCode(0);
