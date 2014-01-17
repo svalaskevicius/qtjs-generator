@@ -1,6 +1,8 @@
 "use strict"
 
-qt.include("core.js")
+require('./core.js')
+var path = require('path')
+
 cpgf.import("cpgf", "builtin.core");
 
 var MySyntaxHighlighter = cpgf.cloneClass(qt.QSyntaxHighlighterWrapper);
@@ -87,8 +89,7 @@ MySyntaxHighlighter.highlightBlock = function($this , text ) {
         var engine = new qt.QQmlEngine()
         //    engine.rootContext().setContextProperty(new qt.QString('keygen'), qt.newKeyGenerator());
         var component = new qt.QQmlComponent(engine,
-                                             qt.makeIncludePathAbsolute(
-                                                 new qt.QString("qml/main.qml")))
+                                                 new qt.QString(path.resolve("qml/main.qml")))
         if (!component.isReady()) {
             throw component.errorString()
         }
@@ -129,11 +130,10 @@ MySyntaxHighlighter.highlightBlock = function($this , text ) {
         if (err instanceof qt.QString) {
             var log = new qt.QMessageLogger()
             log.critical()._opLeftShift(err)
-            qt.setExitCode(1)
+            process.exit(1)
             return
         }
         throw err
     }
 
-    qt.setExitCode(qt.QCoreApplication.instance().exec())
 })()

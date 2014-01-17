@@ -84,26 +84,6 @@ namespace {
 
 int __exitCode = -1;
 
-void setExitCode(int code)
-{
-    __exitCode = code;
-}
-
-struct ExecutionStackNode {
-    std::string filename;
-};
-
-typedef std::vector<ExecutionStackNode> ExecutionStack;
-
-ExecutionStack executionStack;
-GScriptRunner *globalScriptRunnerInstance = nullptr;
-
-const char *currentJsFileName()
-{
-    assert(executionStack.size());
-    return executionStack.back().filename.c_str();
-}
-
 QObject *objectFromVariant(QVariant *v) {
     return v->value<QObject *>();
 }
@@ -111,32 +91,6 @@ QObject *objectFromVariant(QVariant *v) {
 void invokeV8Gc()
 {
     while (!v8::V8::IdleNotification());
-}
-
-QString makeIncludePathAbsolute(QString fileName)
-{
-    if (QFileInfo(fileName).isRelative()) {
-        QDir baseDir;
-        if (executionStack.size()) {
-            baseDir = QFileInfo(currentJsFileName()).absoluteDir();
-        } else {
-            baseDir = QDir::current();
-        }
-        return baseDir.absoluteFilePath(fileName);
-    }
-    return fileName;
-}
-
-bool includeJsFile(QString fileName) {
-    if (!globalScriptRunnerInstance) {
-        throw std::logic_error("a global script runner has to be registered before including js files");
-    }
-
-    fileName = makeIncludePathAbsolute(fileName);
-    executionStack.push_back({fileName.toLatin1().constData()});
-    int ret = globalScriptRunnerInstance->executeFile(fileName.toLatin1().constData());
-    executionStack.pop_back();
-    return ret;
 }
 
 void emitQObjectSignal(QObject *obj,
@@ -194,10 +148,6 @@ void registerQt(GDefineMetaNamespace &define)
 
     qtjs_binder::SignalConnectorBinder::reset(new qtjs_binder::SignalConnector());
     define._method("connect", &qtjs_binder::SignalConnectorBinder::connect);
-    define._method("setExitCode", &setExitCode);
-    define._method("include", &includeJsFile);
-    define._method("__fileName__", &currentJsFileName);
-    define._method("makeIncludePathAbsolute", &makeIncludePathAbsolute);
     define._method("invokeV8Gc", &invokeV8Gc);
     define._method("objectFromVariant", &objectFromVariant);
 
@@ -231,14 +181,12 @@ struct CpgfBinder {
         registerQt(define);
         scriptObject->bindCoreService("cpgf", NULL);
         scriptSetValue(scriptObject.get(), "qt", GScriptValue::fromClass(metaClass.get()));
-        globalScriptRunnerInstance = runner.get();
     }
 
     ~CpgfBinder()
     {
         invokeV8Gc();
         clearV8DataPool();
-        globalScriptRunnerInstance = nullptr;
         qtjs_binder::SignalConnectorBinder::reset();
         qtjs_binder::dynamicQObjectManager().dispose();
     }

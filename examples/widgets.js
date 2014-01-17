@@ -85,15 +85,13 @@ function createMainWindow() {
     return self;
 }
 
-(function() {
-    try {
-        var window = createMainWindow();
-        window.show();
-        qt.setExitCode(
-           qt.QCoreApplication.instance().exec()
-        );
-    } catch (e) {
-        error(e);
-        qt.setExitCode(1);
-    }
-})();
+try {
+    var window = createMainWindow();
+    window.show();
+    process.exit(
+       qt.QCoreApplication.instance().exec()
+    );
+} catch (e) {
+    error(e);
+    process.exit(1);
+}
