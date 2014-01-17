@@ -6,6 +6,9 @@
 #include "dynamicQObject.h"
 #include "llvmapi.h"
 
+#include <qqmlprivate.h>
+#include <QQmlComponent>
+
 namespace qtjs_binder {
 
 
