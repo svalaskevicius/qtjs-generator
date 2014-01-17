@@ -62,6 +62,10 @@ struct LlvmpApiPrivate {
     {
         llvm::TargetOptions options;
         options.JITExceptionHandling = true;
+#ifdef DEBUG
+        options.JITEmitDebugInfo = true;
+        options.NoFramePointerElim = true;
+#endif
         auto EE = llvm::EngineBuilder(M)
                 .setTargetOptions(options)
                 .create();
