@@ -3,7 +3,8 @@ include (../qtjs.pri)
 
 QT += core widgets qml quick gui core-private
 
-SOURCES += $$PWD/dynamic_qobject.cpp \
+SOURCES += \
+    $$PWD/cpgfApi.cpp \
     $$PWD/qmlRegisterType.cpp \
     $$PWD/llvmapi.cpp \
     $$ROOT/lib/qt-event-dispatcher-libuv/src/eventdispatcherlibuv.cpp \
@@ -22,7 +23,7 @@ unix:LIBS += -ldl -lrt
 
 HEADERS += \
     $$PWD/qmlRegisterType.h \
-    $$PWD/dynamic_qobject.h \
+    $$PWD/cpgfApi.h \
     $$PWD/llvmapi.h \
     $$files($$ROOT/lib/qt-event-dispatcher-libuv/src/*.h) \
     $$PWD/dynamicQObject.h \
