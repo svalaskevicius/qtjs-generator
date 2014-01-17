@@ -17,23 +17,6 @@ namespace qtjs_binder {
 
 struct CallInfo;
 
-class DLL_PUBLIC QtSignalConnector : public QObject {
-public:
-    ~QtSignalConnector();
-    bool connectToSignal(QObject *obj, const char *signal, cpgf::IScriptFunction * callback);
-
-protected:
-    QVector<CallInfo *> callbacks;
-public:
-    virtual int qt_metacall(QMetaObject::Call, int, void **);
-};
-
-struct DLL_PUBLIC QtSignalConnectorBinder {
-    static void connect(QObject *obj, const char * signal, cpgf::IScriptFunction *callback);
-    static void reset(QtSignalConnector *newConnector = nullptr);
-private:
-    static QtSignalConnector *connector;
-};
 
 struct DynamicMetaObjectBuilderPrivate;
 

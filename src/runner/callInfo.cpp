@@ -301,4 +301,14 @@ void CallInfo::invoke(void **data)
     cpgf::metaCheckError(callback);
 }
 
+QVector<int> metaMethodParamTypeIds(QMetaMethod m) {
+    QVector<int> ret;
+    int maxCnt = m.parameterCount();
+    for (int i = 0; i < maxCnt; i++) {
+        ret.push_back(m.parameterType(i));
+    }
+    return ret;
+}
+
+
 }
