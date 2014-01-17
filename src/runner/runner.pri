@@ -8,7 +8,8 @@ SOURCES += $$PWD/dynamic_qobject.cpp \
     $$PWD/llvmapi.cpp \
     $$ROOT/lib/qt-event-dispatcher-libuv/src/eventdispatcherlibuv.cpp \
     $$files($$ROOT/lib/qt-event-dispatcher-libuv/src/eventdispatcherlibuv/*.cpp) \
-    $$PWD/dynamicQObject.cpp
+    $$PWD/dynamicQObject.cpp \
+    $$PWD/callInfo.cpp
 
 INCLUDEPATH += /usr/include/llvm-3.2/
 
@@ -22,7 +23,8 @@ HEADERS += \
     $$PWD/llvmapi.h \
     $$files($$ROOT/lib/qt-event-dispatcher-libuv/src/*.h) \
     $$PWD/dynamicQObject.h \
-    autoCallback.h
+    $$PWD/autoCallback.h \
+    $$PWD/callInfo.h
 
 
 QMAKE_CXXFLAGS_RELEASE -= -Os
