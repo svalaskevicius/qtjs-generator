@@ -5,7 +5,6 @@ QT += core widgets qml quick gui core-private
 
 SOURCES += \
     $$PWD/cpgfApi.cpp \
-    $$PWD/qmlRegisterType.cpp \
     $$PWD/llvmapi.cpp \
     $$ROOT/lib/qt-event-dispatcher-libuv/src/eventdispatcherlibuv.cpp \
     $$files($$ROOT/lib/qt-event-dispatcher-libuv/src/eventdispatcherlibuv/*.cpp) \
@@ -22,7 +21,6 @@ LIBS += -lqtjs_core -lqtjs_widgets -lqtjs_qml -lqtjs_gui -lLLVM-3.2 -luv -lcares
 unix:LIBS += -ldl -lrt
 
 HEADERS += \
-    $$PWD/qmlRegisterType.h \
     $$PWD/cpgfApi.h \
     $$PWD/llvmapi.h \
     $$files($$ROOT/lib/qt-event-dispatcher-libuv/src/*.h) \
