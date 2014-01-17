@@ -11,7 +11,8 @@ SOURCES += $$PWD/dynamic_qobject.cpp \
     $$PWD/dynamicQObject.cpp \
     $$PWD/callInfo.cpp \
     $$PWD/signalConnector.cpp \
-    $$PWD/dynamicMetaObjectBuilder.cpp
+    $$PWD/dynamicMetaObjectBuilder.cpp \
+    $$PWD/dynamicQObjectManager.cpp
 
 INCLUDEPATH += /usr/include/llvm-3.2/
 
@@ -28,7 +29,8 @@ HEADERS += \
     $$PWD/autoCallback.h \
     $$PWD/callInfo.h \
     $$PWD/signalConnector.h \
-    $$PWD/dynamicMetaObjectBuilder.h
+    $$PWD/dynamicMetaObjectBuilder.h \
+    $$PWD/dynamicQObjectManager.h
 
 
 QMAKE_CXXFLAGS_RELEASE -= -Os
