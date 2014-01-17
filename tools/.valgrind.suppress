@@ -867,15 +867,6 @@
 {
    node cares
    Memcheck:Leak
-   match-leak-kinds: indirect
-   ...
-   fun:ares_init_options.part.3
-   ...
-}
-{
-   node cares
-   Memcheck:Leak
-   match-leak-kinds: definite
    ...
    fun:ares_init_options.part.3
    ...
