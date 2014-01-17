@@ -13,31 +13,11 @@
 #include <QMetaObject>
 #include <QMetaMethod>
 
+#include "dynamicMetaObjectBuilder.h"
+
 namespace qtjs_binder {
 
 struct CallInfo;
-
-
-struct DynamicMetaObjectBuilderPrivate;
-
-class DynamicMetaObjectBuilder {
-public:
-    DynamicMetaObjectBuilder();
-    ~DynamicMetaObjectBuilder();
-
-    void setClassName(const char * name);
-    void setInit(cpgf::IScriptFunction *callback);
-    void addSignal(const char * signature, QStringList argumentNames);
-    void addSlot(const char * signature, cpgf::IScriptFunction *callback);
-    void addProperty(const char * name, const char * type);
-
-    QMetaObject *toMetaObject(int classId);
-    cpgf::IScriptFunction *getInitCallback();
-    std::map<int, cpgf::IScriptFunction *> getCallbacks();
-    QByteArray methodSignature(int id);
-private:
-    DynamicMetaObjectBuilderPrivate *_p;
-};
 
 class DynamicQObject;
 
