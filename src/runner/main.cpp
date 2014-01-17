@@ -48,6 +48,9 @@
 #include "../../lib/node/src/env-inl.h"
 #include "../../lib/node/src/node_internals.h"
 
+#include "signalConnector.h"
+
+
 using namespace std;
 
 
@@ -190,8 +193,8 @@ void registerQt(GDefineMetaNamespace &define)
     define._method("qmlRegisterDynamicType", &qtjs_binder::qmlRegisterDynamicType);
     define._method("finalizeAndRegisterMetaObjectBuilderToQml", &qtjs_binder::finalizeAndRegisterMetaObjectBuilderToQml);
 
-    qtjs_binder::QtSignalConnectorBinder::reset(new qtjs_binder::QtSignalConnector());
-    define._method("connect", &qtjs_binder::QtSignalConnectorBinder::connect);
+    qtjs_binder::SignalConnectorBinder::reset(new qtjs_binder::SignalConnector());
+    define._method("connect", &qtjs_binder::SignalConnectorBinder::connect);
     define._method("setExitCode", &setExitCode);
     define._method("include", &includeJsFile);
     define._method("__fileName__", &currentJsFileName);
@@ -237,7 +240,7 @@ struct CpgfBinder {
         invokeV8Gc();
         clearV8DataPool();
         globalScriptRunnerInstance = nullptr;
-        qtjs_binder::QtSignalConnectorBinder::reset();
+        qtjs_binder::SignalConnectorBinder::reset();
         qtjs_binder::dynamicMetaObjects().dispose();
     }
 };

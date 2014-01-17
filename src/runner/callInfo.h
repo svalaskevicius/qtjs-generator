@@ -23,4 +23,7 @@ struct CallInfo {
     ~CallInfo();
 };
 
+QVector<int> metaMethodParamTypeIds(QMetaMethod m);
+
+
 }
