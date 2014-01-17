@@ -38,12 +38,12 @@ namespace qtjs_binder {
 void DynamicQObject::__setClassIdx(int classIdx)
 {
     this->classIdx = classIdx;
-    dynamicMetaObjects().callInit(classIdx, this);
+    dynamicQObjectManager().callInit(classIdx, this);
 }
 
 const QMetaObject * DynamicQObject::metaObject() const
 {
-    auto ret = dynamicMetaObjects().getMetaObject(classIdx);
+    auto ret = dynamicQObjectManager().getMetaObject(classIdx);
     assert(ret);
     return ret;
 }
@@ -57,7 +57,7 @@ int DynamicQObject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     }
 
     if (_c == QMetaObject::InvokeMetaMethod) {
-        dynamicMetaObjects().metacall(classIdx, this, _c, _id, _a);
+        dynamicQObjectManager().metacall(classIdx, this, _c, _id, _a);
         return -1;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         *reinterpret_cast<int*>(_a[0]) = -1;
