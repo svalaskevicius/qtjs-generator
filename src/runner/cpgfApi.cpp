@@ -1,42 +1,9 @@
 
-#include "dynamic_qobject.h"
+#include "cpgfApi.h"
 
-#include <QStringList>
-#include <QDate>
-#include <QTime>
-#include <QDateTime>
-#include <QBitArray>
-#include <QSize>
-#include <QSizeF>
-#include <QRect>
-#include <QRectF>
-#include <QLine>
-#include <QLineF>
-#include <QPoint>
-#include <QPointF>
-#include <QUrl>
-#include <QEasingCurve>
-#include <QLocale>
-
-#include <private/qmetaobjectbuilder_p.h>
-
-#include "llvmapi.h"
-
-// for QVariant - cpgf interop ->
-#include <qtCore_cpgf_compat.h>
-#include <qtGui_cpgf_compat.h>
-#include <qtQml_cpgf_compat.h>
-#include <qtWidgets_cpgf_compat.h>
-
-#include <QUuid>
-#include <QJsonArray>
-#include <QJsonDocument>
-// <- for QVariant - cpgf interop
-
-#include "callInfo.h"
-#include "autoCallback.h"
-
-#include "qtQml_cpgf_compat.h"
+#include "dynamicMetaObjectBuilder.h"
+#include "dynamicQObjectManager.h"
+#include "dynamicQObject.h"
 
 namespace qtjs_binder {
 

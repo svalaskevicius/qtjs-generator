@@ -1,7 +1,10 @@
 #pragma once
 
-#include <QStringList>
+#include <QObject>
+#include <QVector>
 #include <QMetaObject>
+#include <QMetaMethod>
+#include <QStringList>
 
 #include "cpgf/scriptbind/gscriptbindutil.h"
 
