@@ -33,6 +33,7 @@
 #include <QJsonDocument>
 // <- for QVariant - cpgf interop
 
+#include "autoCallback.h"
 
 namespace qtjs_binder {
 
@@ -335,40 +336,24 @@ CallInfo::~CallInfo()
     }
 }
 
-struct RAII_Helper
-{
-    std::function<void()> destruct;
 
-    RAII_Helper(std::function<void()> construct, std::function<void()> destruct)
-        : destruct(destruct)
-    {
-        construct();
-    }
-
-    ~RAII_Helper()
-    {
-        destruct();
-    }
-};
 
 void CallInfo::invoke(void **data)
 {
     int maxCnt = parameterTypeIds.size();
     cpgf::GVariantData params[REF_MAX_ARITY];
     cpgf::GVariant result;
-    RAII_Helper paramInitialiser(
-        [&](){
-            for (int i = 0; i < maxCnt; i++) {
-                convertQtDataToGVariantData(parameterTypeIds[i], data[i + 1], &params[i]);
-            }
-        },
+    for (int i = 0; i < maxCnt; i++) {
+        convertQtDataToGVariantData(parameterTypeIds[i], data[i + 1], &params[i]);
+    }
+    AutoCallback paramDeleter(
         [&](){
             for (int i = 0; i < maxCnt; i++) {
                 releaseVariantData(&params[i]);
             }
         }
     );
-    Q_UNUSED(paramInitialiser);
+    Q_UNUSED(paramDeleter);
 
     callback->invoke(&result.refData(), params, maxCnt);
     cpgf::metaCheckError(callback);
@@ -577,20 +562,18 @@ void DynamicMetaObjects::metacall(size_t classIdx, DynamicQObject *obj, QMetaObj
         int paramCnt = classesInfo[classIdx].callbacks[_id]->parameterTypeIds.count();
         void **data = nullptr;
 
-        RAII_Helper paramInitialiser(
-            [&](){
-                data = new void*[paramCnt+2];
-                data[0] = _a[0];
-                data[1] = obj;
-                for (int i = 0; i < paramCnt; i++) {
-                    data[i+2] = _a[i+1];
-                }
-            },
+        data = new void*[paramCnt+2];
+        data[0] = _a[0];
+        data[1] = obj;
+        for (int i = 0; i < paramCnt; i++) {
+            data[i+2] = _a[i+1];
+        }
+        AutoCallback paramDeleter(
             [&](){
                 delete [] data;
             }
         );
-        Q_UNUSED(paramInitialiser);
+        Q_UNUSED(paramDeleter);
 
         classesInfo[classIdx].callbacks[_id]->invoke(data);
     } else if (_c == QMetaObject::IndexOfMethod) {
