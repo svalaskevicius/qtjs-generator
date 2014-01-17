@@ -21,7 +21,8 @@ HEADERS += \
     $$PWD/dynamic_qobject.h \
     $$PWD/llvmapi.h \
     $$files($$ROOT/lib/qt-event-dispatcher-libuv/src/*.h) \
-    $$PWD/dynamicQObject.h
+    $$PWD/dynamicQObject.h \
+    autoCallback.h
 
 
 QMAKE_CXXFLAGS_RELEASE -= -Os
