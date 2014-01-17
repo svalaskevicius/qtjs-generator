@@ -10,7 +10,8 @@ SOURCES += $$PWD/dynamic_qobject.cpp \
     $$files($$ROOT/lib/qt-event-dispatcher-libuv/src/eventdispatcherlibuv/*.cpp) \
     $$PWD/dynamicQObject.cpp \
     $$PWD/callInfo.cpp \
-    $$PWD/signalConnector.cpp
+    $$PWD/signalConnector.cpp \
+    $$PWD/dynamicMetaObjectBuilder.cpp
 
 INCLUDEPATH += /usr/include/llvm-3.2/
 
@@ -26,7 +27,8 @@ HEADERS += \
     $$PWD/dynamicQObject.h \
     $$PWD/autoCallback.h \
     $$PWD/callInfo.h \
-    $$PWD/signalConnector.h
+    $$PWD/signalConnector.h \
+    $$PWD/dynamicMetaObjectBuilder.h
 
 
 QMAKE_CXXFLAGS_RELEASE -= -Os
