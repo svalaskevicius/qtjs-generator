@@ -21,9 +21,6 @@
 #include <QtCore/QObject>
 #include <QtCore/QSharedPointer>
 
-#include "dynamic_qobject.h"
-#include "qmlRegisterType.h"
-
 // for QVariant - cpgf interop ->
 #include <qtCore_cpgf_compat.h>
 #include <qtGui_cpgf_compat.h>
@@ -48,8 +45,10 @@
 #include "../../lib/node/src/env-inl.h"
 #include "../../lib/node/src/node_internals.h"
 
-#include "signalConnector.h"
 
+#include "signalConnector.h"
+#include "cpgfApi.h"
+#include "dynamicQObjectManager.h"
 
 using namespace std;
 
