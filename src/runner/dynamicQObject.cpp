@@ -30,7 +30,7 @@
 
 
 #include "dynamicQObject.h"
-#include "dynamic_qobject.h"
+#include "dynamicQObjectManager.h"
 
 namespace qtjs_binder {
 
