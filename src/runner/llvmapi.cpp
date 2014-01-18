@@ -1,12 +1,13 @@
 #define __STDC_LIMIT_MACROS
 #define __STDC_CONSTANT_MACROS
 
-
-#include "llvmapi.h"
-#include "dynamic_qobject.h"
-
 #include <qqmlprivate.h>
 #include <QQmlComponent>
+#include <QVariant>
+
+#include "llvmapi.h"
+#include "dynamicQObject.h"
+#include "dynamicQObjectManager.h"
 
 #include <sstream>
 
