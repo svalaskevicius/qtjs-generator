@@ -318,16 +318,23 @@ namespace MetaObjectLifeManager {
 
 template <>
 struct AutoTreeHelper<QObject> {
-    static bool hasParent(QObject* object) {
+    inline static bool hasParent(QObject* object) {
         return object->parent();
     }
 
-    template <typename T>
-    static void traverseChildren(QObject *object, T callback) {
-        callback(object);
+    static void deleteObjectTree(QObject *object) {
+        deleteFromMemorySet(object);
         for (QObject * c : object->children()) {
-            traverseChildren(c, callback);
+            deleteFromMemorySet(c);
         }
+    }
+
+    inline static void deletingInstance(QObject *) {
+        // address is deleted on object destroyed signal, invoked by QObject destructor
+    }
+
+    inline static void newAddress(QObject *object) {
+        QObject::connect(object, &QObject::destroyed, deleteObjectTree);
     }
 };
 
