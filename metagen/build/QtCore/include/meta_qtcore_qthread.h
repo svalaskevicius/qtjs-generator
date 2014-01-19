@@ -286,7 +286,7 @@ void buildMetaClass_QThreadWrapper(const cpgf::GMetaDataConfigFlags & config, D 
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("setTerminationEnabled", (void (*) (bool))&D::ClassType::setTerminationEnabled)
+    _d.CPGF_MD_TEMPLATE _method("setTerminationEnabled", (void (D::ClassType::*) (bool))&D::ClassType::setTerminationEnabled)
         ._default(copyVariantFromCopyable(true))
     ;
     _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
