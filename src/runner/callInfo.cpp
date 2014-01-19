@@ -132,7 +132,7 @@ void convertQtDataToGVariantData(int type, void *data, cpgf::GVariantData *dest)
             CONV_TYPED_VARIANT_DATA(float);
             break;
         case QMetaType::QObjectStar:
-            *dest = cpgf::createTypedVariant((QObject *)data).takeData();
+            CONV_TYPED_VARIANT_DATA(QObject *);
             break;
         case QVariant::LongLong:
             CONV_TYPED_VARIANT_DATA(qlonglong);
