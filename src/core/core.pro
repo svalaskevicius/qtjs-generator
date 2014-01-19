@@ -6,6 +6,9 @@ TEMPLATE = lib
 
 TARGET=qtjs_core
 
+PRECOMPILED_HEADER = precompiledIncludes.h
+CONFIG += precompile_header
+
 CONFIG += release
 
 QMAKE_CXXFLAGS += -DBUILDING_DLL
@@ -18,7 +21,8 @@ HEADERS += \
     ../../include/ObjectLifeManagerAutoTree.h \
     ../../include/_base.h \
     ../../include/qtCore_cpgf_compat.h \
-    $$files(../../metagen/build/QtCore/include/*.h)
+    $$files(../../metagen/build/QtCore/include/*.h) \
+    precompiledIncludes.h
 
 OTHER_FILES += \
     ../../metagen/qtCore_cfg.js
