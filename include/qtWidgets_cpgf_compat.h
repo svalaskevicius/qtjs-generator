@@ -335,10 +335,6 @@ struct AutoTreeHelper<QGraphicsObject> {
     inline static void deletingInstance(QGraphicsObject *object) {
         deleteObjectTree(object);
     }
-
-    inline static void newAddress(QGraphicsObject *) {
-    }
-
 };
 
 template <>
@@ -362,21 +358,7 @@ struct AutoTreeHelper<QGraphicsItem> {
     inline static void deletingInstance(QGraphicsItem *object) {
         deleteObjectTree(object);
     }
-
-    inline static void newAddress(QGraphicsItem *) {
-    }
-
 };
-
-void AutoTreeHelper<QGraphicsObject>::deleteObjectTree(QGraphicsObject *object) {
-    deleteFromMemorySet(object);
-    for (QObject * c : object->children()) {
-        AutoTreeHelper<QObject>::deleteObjectTree(c);
-    }
-    for (QGraphicsItem * c : object->childItems()) {
-        AutoTreeHelper<QGraphicsItem>::deleteObjectTree(c);
-    }
-}
 
 
 
@@ -395,9 +377,6 @@ struct AutoTreeHelper<QGraphicsScene> {
 
     inline static void deletingInstance(QGraphicsScene *object) {
         deleteObjectTree(object);
-    }
-
-    inline static void newAddress(QGraphicsScene *) {
     }
 };
 

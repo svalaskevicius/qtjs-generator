@@ -325,16 +325,12 @@ struct AutoTreeHelper<QObject> {
     static void deleteObjectTree(QObject *object) {
         deleteFromMemorySet(object);
         for (QObject * c : object->children()) {
-            deleteFromMemorySet(c);
+            deleteObjectTree(c);
         }
     }
 
-    inline static void deletingInstance(QObject *) {
-        // address is deleted on object destroyed signal, invoked by QObject destructor
-    }
-
-    inline static void newAddress(QObject *object) {
-        QObject::connect(object, &QObject::destroyed, deleteObjectTree);
+    inline static void deletingInstance(QObject *object) {
+        deleteObjectTree(object);
     }
 };
 

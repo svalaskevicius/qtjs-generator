@@ -17,7 +17,7 @@ SOURCES += \
 INCLUDEPATH += /usr/include/llvm-3.2/
 
 LIBPATH += $$BUILD/src/core $$BUILD/src/widgets $$BUILD/src/qml $$BUILD/src/gui /usr/lib/llvm-3.2/lib $${ROOT}/lib/node/out/Release/
-LIBS += -lqtjs_core -lqtjs_widgets -lqtjs_qml -lqtjs_gui -lLLVM-3.2 -luv -lcares -lhttp_parser -lopenssl -lchrome_zlib
+LIBS += -lqtjs_widgets -lqtjs_qml -lqtjs_gui -lqtjs_core -lLLVM-3.2 -luv -lcares -lhttp_parser -lopenssl -lchrome_zlib
 unix:LIBS += -ldl -lrt
 
 HEADERS += \
