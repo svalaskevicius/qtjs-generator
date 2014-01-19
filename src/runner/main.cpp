@@ -336,6 +336,7 @@ int main(int argc, char * argv[])
 
         EmitNodeExit(env);
         node::RunAtExit(env);
+        env->context()->Global().Clear();
     }
 
     delete app;
