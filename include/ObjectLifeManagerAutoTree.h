@@ -33,16 +33,16 @@ public:
 
 protected:
     virtual void G_API_CC retainObject(void * address) {
-        memorySet().insert(address);
-        notifyTreeHelperNewAddress(address);
+        C *instance = static_cast<C *>(caster(address));
+        memorySet().insert(instance);
     }
 
     virtual void G_API_CC releaseObject(void *) {
     }
 
     virtual void G_API_CC freeObject(void * address, cpgf::IMetaClass *) {
-        if (haveObject(address)) {
-            C *instance = static_cast<C *>(caster(address));
+        C *instance = static_cast<C *>(caster(address));
+        if (haveObject(instance)) {
             if (!AutoTreeHelper<C>::hasParent(instance)) {
                 notifyTreeHelperDeletingInstance(instance);
                 delete instance;
@@ -51,23 +51,16 @@ protected:
     }
 
     virtual void G_API_CC returnedFromMethod(void *address) {
-        if (!haveObject(address)) {
-            memorySet().insert(address);
-            notifyTreeHelperNewAddress(address);
-        }
+        C *instance = static_cast<C *>(caster(address));
+        memorySet().insert(instance);
     }
 
     inline void notifyTreeHelperDeletingInstance(C *object) {
         AutoTreeHelper<C>::deletingInstance(object);
     }
 
-    inline void notifyTreeHelperNewAddress(void *address) {
-        C *instance = static_cast<C *>(caster(address));
-        AutoTreeHelper<C>::newAddress(instance);
-    }
-
-    inline bool haveObject(void *address) {
-        return memorySet().find(address) != memorySet().end();
+    inline bool haveObject(C *instance) {
+        return memorySet().find(instance) != memorySet().end();
     }
 
 private:
