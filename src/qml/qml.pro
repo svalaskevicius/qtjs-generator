@@ -8,7 +8,6 @@ TARGET=qtjs_qml
 PRECOMPILED_HEADER = precompiledIncludes.h
 CONFIG += precompile_header
 
-CONFIG += release
 
 QMAKE_CXXFLAGS += -DBUILDING_DLL 
 
