@@ -9,6 +9,8 @@
 #include <qqmlprivate.h>
 #include <QQmlComponent>
 
+#include <qtCore_cpgf_compat.h>
+
 namespace qtjs_binder {
 
 
