@@ -1,0 +1,4 @@
+#ifndef QTCOREINCLUDES_H
+#define QTCOREINCLUDES_H
+
+#endif // QTCOREINCLUDES_H

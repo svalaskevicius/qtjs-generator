@@ -330,8 +330,15 @@ struct AutoTreeHelper<QGraphicsObject> {
         return object->parentItem() || object->parent();
     }
 
-    template <typename T>
-    static void traverseChildren(QGraphicsObject *object, T callback);
+    static void deleteObjectTree(QGraphicsObject *object);
+
+    inline static void deletingInstance(QGraphicsObject *object) {
+        deleteObjectTree(object);
+    }
+
+    inline static void newAddress(QGraphicsObject *) {
+    }
+
 };
 
 template <>
@@ -340,31 +347,38 @@ struct AutoTreeHelper<QGraphicsItem> {
         return object->parentItem();
     }
 
-    template <typename T>
-    static void traverseChildren(QGraphicsItem *object, T callback) {
+    static void deleteObjectTree(QGraphicsItem *object) {
         QGraphicsObject *asGrObject = dynamic_cast<QGraphicsObject *>(object);
         if (asGrObject) {
-            AutoTreeHelper<QGraphicsObject>::traverseChildren(asGrObject, callback);
+            AutoTreeHelper<QGraphicsObject>::deleteObjectTree(asGrObject);
         } else {
-            callback(object);
-for (QGraphicsItem * c : object->childItems()) {
-                traverseChildren(c, callback);
+            deleteFromMemorySet(object);
+            for (QGraphicsItem * c : object->childItems()) {
+                deleteObjectTree(c);
             }
         }
     }
+
+    inline static void deletingInstance(QGraphicsItem *object) {
+        deleteObjectTree(object);
+    }
+
+    inline static void newAddress(QGraphicsItem *) {
+    }
+
 };
 
-template <typename T>
-void AutoTreeHelper<QGraphicsObject>::traverseChildren(QGraphicsObject *object, T callback)
-{
-    callback(object);
-for (QObject * c : object->children()) {
-        AutoTreeHelper<QObject>::traverseChildren(c, callback);
+void AutoTreeHelper<QGraphicsObject>::deleteObjectTree(QGraphicsObject *object) {
+    deleteFromMemorySet(object);
+    for (QObject * c : object->children()) {
+        AutoTreeHelper<QObject>::deleteObjectTree(c);
     }
-for (QGraphicsItem * c : object->childItems()) {
-        AutoTreeHelper<QGraphicsItem>::traverseChildren(c, callback);
+    for (QGraphicsItem * c : object->childItems()) {
+        AutoTreeHelper<QGraphicsItem>::deleteObjectTree(c);
     }
 }
+
+
 
 template <>
 struct AutoTreeHelper<QGraphicsScene> {
@@ -372,12 +386,18 @@ struct AutoTreeHelper<QGraphicsScene> {
         return AutoTreeHelper<QObject>::hasParent(object);
     }
 
-    template <typename T>
-    static void traverseChildren(QGraphicsScene *object, T callback) {
-for (QGraphicsItem * c : object->items()) {
-            AutoTreeHelper<QGraphicsItem>::traverseChildren(c, callback);
+    static void deleteObjectTree(QGraphicsScene *object) {
+        for (QGraphicsItem * c : object->items()) {
+            AutoTreeHelper<QGraphicsItem>::deleteObjectTree(c);
         }
-        AutoTreeHelper<QObject>::traverseChildren(object, callback);
+        AutoTreeHelper<QObject>::deleteObjectTree(object);
+    }
+
+    inline static void deletingInstance(QGraphicsScene *object) {
+        deleteObjectTree(object);
+    }
+
+    inline static void newAddress(QGraphicsScene *) {
     }
 };
 
