@@ -14,8 +14,10 @@ INCLUDEPATH += \
 
 CONFIG += c++11 exceptions
 
+linux-g++ {
 QMAKE_CXXFLAGS += -shared-libgcc
 QMAKE_LFLAGS += -shared-libgcc
+}
 
 QMAKE_CXXFLAGS_RELEASE -= -O2
 QMAKE_CXXFLAGS_RELEASE += -Os
