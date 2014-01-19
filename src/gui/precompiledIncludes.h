@@ -1,4 +1,14 @@
-#ifndef PRECOMPILEDINCLUDES_H
-#define PRECOMPILEDINCLUDES_H
 
-#endif // PRECOMPILEDINCLUDES_H
+#include <QtCore/qglobal.h>
+#include <QtCore/QEvent>
+#include <QtCore/QDebug>
+#include <QtCore/QState>
+#include <QtGui/QOpenGLPixelTransferOptions>
+
+
+#include <qtGui_cpgf_compat.h>
+
+#include "cpgf/gmetadefine.h"
+#include "cpgf/metadata/gmetadataconfig.h"
+#include "cpgf/metadata/private/gmetadata_header.h"
+#include "cpgf/gmetapolicy.h"

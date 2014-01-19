@@ -5,6 +5,9 @@ TEMPLATE = lib
 
 TARGET=qtjs_qml
 
+PRECOMPILED_HEADER = precompiledIncludes.h
+CONFIG += precompile_header
+
 CONFIG += release
 
 QMAKE_CXXFLAGS += -DBUILDING_DLL 
@@ -13,7 +16,8 @@ SOURCES += $$files(../../metagen/build/QtQml/src/*.cpp)
 
 HEADERS += \
     ../../include/qtQml_cpgf_compat.h \
-    $$files(../../metagen/build/QtQml/include/*.h)
+    $$files(../../metagen/build/QtQml/include/*.h) \
+    precompiledIncludes.h
 
 
 OTHER_FILES += \
