@@ -19,6 +19,7 @@ How to build
 * Qt5.2
 * OpenGL development files
 * LLVM library (dev files) - tested with 3.2
+* Boost (required for tests) - tested with 1.52
 
 ### Building
 
