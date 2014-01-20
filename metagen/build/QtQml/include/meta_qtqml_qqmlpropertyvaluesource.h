@@ -56,11 +56,18 @@ public:
             cpgf::invokeScriptFunction(func.get(), this, __arg0);
             return;
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     void super_setTarget(const QQmlProperty & __arg0)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
+    }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_setTarget", (void (D::ClassType::*) (const QQmlProperty &))&D::ClassType::super_setTarget, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
 };
 
@@ -73,7 +80,7 @@ void buildMetaClass_QQmlPropertyValueSourceWrapper(const cpgf::GMetaDataConfigFl
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    _d.CPGF_MD_TEMPLATE _method("super_setTarget", (void (D::ClassType::*) (const QQmlProperty &))&D::ClassType::super_setTarget, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    QQmlPropertyValueSourceWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QQmlPropertyValueSource<D>(config, _d);
 }

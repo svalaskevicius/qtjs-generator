@@ -40,11 +40,18 @@ public:
         {
             return cpgf::fromVariant<QStringList >(cpgf::invokeScriptFunction(func.get(), this));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QStringList super_keys() const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
+    }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_keys", (QStringList (D::ClassType::*) () const)&D::ClassType::super_keys);
     }
 };
 
@@ -56,7 +63,7 @@ void buildMetaClass_QFactoryInterfaceWrapper(const cpgf::GMetaDataConfigFlags & 
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("super_keys", (QStringList (D::ClassType::*) () const)&D::ClassType::super_keys);
+    QFactoryInterfaceWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QFactoryInterface<D>(config, _d);
 }

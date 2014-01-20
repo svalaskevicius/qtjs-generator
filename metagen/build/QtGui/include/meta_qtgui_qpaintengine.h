@@ -318,11 +318,11 @@ public:
         {
             return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, pdev));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     bool super_begin(QPaintDevice * pdev)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     bool end()
@@ -332,11 +332,11 @@ public:
         {
             return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     bool super_end()
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     void drawPath(const QPainterPath & path)
@@ -362,11 +362,11 @@ public:
             cpgf::invokeScriptFunction(func.get(), this, state);
             return;
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     void super_updateState(const QPaintEngineState & state)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     void drawTiledPixmap(const QRectF & r, const QPixmap & pixmap, const QPointF & s)
@@ -407,11 +407,11 @@ public:
             cpgf::invokeScriptFunction(func.get(), this, r, pm, sr);
             return;
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     void super_drawPixmap(const QRectF & r, const QPixmap & pm, const QRectF & sr)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     QPaintEngine::Type type() const
@@ -421,11 +421,11 @@ public:
         {
             return cpgf::fromVariant<QPaintEngine::Type >(cpgf::invokeScriptFunction(func.get(), this));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QPaintEngine::Type super_type() const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     void drawLines(const QLineF * lines, int lineCount)
@@ -442,6 +442,34 @@ public:
     {
         QPaintEngine::drawLines(lines, lineCount);
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_drawTextItem", (void (D::ClassType::*) (const QPointF &, const QTextItem &))&D::ClassType::super_drawTextItem, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_drawLines", (void (D::ClassType::*) (const QLine *, int))&D::ClassType::super_drawLines);
+        _d.CPGF_MD_TEMPLATE _method("super_drawPoints", (void (D::ClassType::*) (const QPoint *, int))&D::ClassType::super_drawPoints);
+        _d.CPGF_MD_TEMPLATE _method("super_drawEllipse", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_drawEllipse);
+        _d.CPGF_MD_TEMPLATE _method("super_drawImage", (void (D::ClassType::*) (const QRectF &, const QImage &, const QRectF &, Qt::ImageConversionFlags))&D::ClassType::super_drawImage)
+            ._default(copyVariantFromCopyable(Qt::AutoColor))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_drawEllipse", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_drawEllipse);
+        _d.CPGF_MD_TEMPLATE _method("super_drawPolygon", (void (D::ClassType::*) (const QPoint *, int, QPaintEngine::PolygonDrawMode))&D::ClassType::super_drawPolygon);
+        _d.CPGF_MD_TEMPLATE _method("super_drawRects", (void (D::ClassType::*) (const QRectF *, int))&D::ClassType::super_drawRects);
+        _d.CPGF_MD_TEMPLATE _method("super_drawPoints", (void (D::ClassType::*) (const QPointF *, int))&D::ClassType::super_drawPoints);
+        _d.CPGF_MD_TEMPLATE _method("super_drawRects", (void (D::ClassType::*) (const QRect *, int))&D::ClassType::super_drawRects);
+        _d.CPGF_MD_TEMPLATE _method("super_coordinateOffset", (QPoint (D::ClassType::*) () const)&D::ClassType::super_coordinateOffset);
+        _d.CPGF_MD_TEMPLATE _method("super_begin", (bool (D::ClassType::*) (QPaintDevice *))&D::ClassType::super_begin);
+        _d.CPGF_MD_TEMPLATE _method("super_end", (bool (D::ClassType::*) ())&D::ClassType::super_end);
+        _d.CPGF_MD_TEMPLATE _method("super_drawPath", (void (D::ClassType::*) (const QPainterPath &))&D::ClassType::super_drawPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_updateState", (void (D::ClassType::*) (const QPaintEngineState &))&D::ClassType::super_updateState);
+        _d.CPGF_MD_TEMPLATE _method("super_drawTiledPixmap", (void (D::ClassType::*) (const QRectF &, const QPixmap &, const QPointF &))&D::ClassType::super_drawTiledPixmap, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
+        _d.CPGF_MD_TEMPLATE _method("super_drawPolygon", (void (D::ClassType::*) (const QPointF *, int, QPaintEngine::PolygonDrawMode))&D::ClassType::super_drawPolygon);
+        _d.CPGF_MD_TEMPLATE _method("super_drawPixmap", (void (D::ClassType::*) (const QRectF &, const QPixmap &, const QRectF &))&D::ClassType::super_drawPixmap);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (QPaintEngine::Type (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_drawLines", (void (D::ClassType::*) (const QLineF *, int))&D::ClassType::super_drawLines);
+    }
 };
 
 
@@ -455,28 +483,7 @@ void buildMetaClass_QPaintEngineWrapper(const cpgf::GMetaDataConfigFlags & confi
         ._default(copyVariantFromCopyable(0))
     ;
     
-    _d.CPGF_MD_TEMPLATE _method("super_drawTextItem", (void (D::ClassType::*) (const QPointF &, const QTextItem &))&D::ClassType::super_drawTextItem, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_drawLines", (void (D::ClassType::*) (const QLine *, int))&D::ClassType::super_drawLines);
-    _d.CPGF_MD_TEMPLATE _method("super_drawPoints", (void (D::ClassType::*) (const QPoint *, int))&D::ClassType::super_drawPoints);
-    _d.CPGF_MD_TEMPLATE _method("super_drawEllipse", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_drawEllipse);
-    _d.CPGF_MD_TEMPLATE _method("super_drawImage", (void (D::ClassType::*) (const QRectF &, const QImage &, const QRectF &, Qt::ImageConversionFlags))&D::ClassType::super_drawImage)
-        ._default(copyVariantFromCopyable(Qt::AutoColor))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_drawEllipse", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_drawEllipse);
-    _d.CPGF_MD_TEMPLATE _method("super_drawPolygon", (void (D::ClassType::*) (const QPoint *, int, QPaintEngine::PolygonDrawMode))&D::ClassType::super_drawPolygon);
-    _d.CPGF_MD_TEMPLATE _method("super_drawRects", (void (D::ClassType::*) (const QRectF *, int))&D::ClassType::super_drawRects);
-    _d.CPGF_MD_TEMPLATE _method("super_drawPoints", (void (D::ClassType::*) (const QPointF *, int))&D::ClassType::super_drawPoints);
-    _d.CPGF_MD_TEMPLATE _method("super_drawRects", (void (D::ClassType::*) (const QRect *, int))&D::ClassType::super_drawRects);
-    _d.CPGF_MD_TEMPLATE _method("super_coordinateOffset", (QPoint (D::ClassType::*) () const)&D::ClassType::super_coordinateOffset);
-    _d.CPGF_MD_TEMPLATE _method("super_begin", (bool (D::ClassType::*) (QPaintDevice *))&D::ClassType::super_begin);
-    _d.CPGF_MD_TEMPLATE _method("super_end", (bool (D::ClassType::*) ())&D::ClassType::super_end);
-    _d.CPGF_MD_TEMPLATE _method("super_drawPath", (void (D::ClassType::*) (const QPainterPath &))&D::ClassType::super_drawPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_updateState", (void (D::ClassType::*) (const QPaintEngineState &))&D::ClassType::super_updateState);
-    _d.CPGF_MD_TEMPLATE _method("super_drawTiledPixmap", (void (D::ClassType::*) (const QRectF &, const QPixmap &, const QPointF &))&D::ClassType::super_drawTiledPixmap, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
-    _d.CPGF_MD_TEMPLATE _method("super_drawPolygon", (void (D::ClassType::*) (const QPointF *, int, QPaintEngine::PolygonDrawMode))&D::ClassType::super_drawPolygon);
-    _d.CPGF_MD_TEMPLATE _method("super_drawPixmap", (void (D::ClassType::*) (const QRectF &, const QPixmap &, const QRectF &))&D::ClassType::super_drawPixmap);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (QPaintEngine::Type (D::ClassType::*) () const)&D::ClassType::super_type);
-    _d.CPGF_MD_TEMPLATE _method("super_drawLines", (void (D::ClassType::*) (const QLineF *, int))&D::ClassType::super_drawLines);
+    QPaintEngineWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QPaintEngine<D>(config, _d);
 }

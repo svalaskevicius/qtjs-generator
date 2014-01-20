@@ -46,11 +46,18 @@ public:
             cpgf::invokeScriptFunction(func.get(), this);
             return;
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     void super_run()
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
+    }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_run", (void (D::ClassType::*) ())&D::ClassType::super_run);
     }
 };
 
@@ -63,7 +70,7 @@ void buildMetaClass_QRunnableWrapper(const cpgf::GMetaDataConfigFlags & config, 
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    _d.CPGF_MD_TEMPLATE _method("super_run", (void (D::ClassType::*) ())&D::ClassType::super_run);
+    QRunnableWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QRunnable<D>(config, _d);
 }

@@ -1024,6 +1024,118 @@ public:
     {
         return QStandardItemModel::insertRows(row, count, parent);
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("beginResetModel", (void (D::ClassType::*) ())&D::ClassType::beginResetModel);
+        _d.CPGF_MD_TEMPLATE _method("beginInsertRows", (void (D::ClassType::*) (const QModelIndex &, int, int))&D::ClassType::beginInsertRows);
+        _d.CPGF_MD_TEMPLATE _method("endMoveRows", (void (D::ClassType::*) ())&D::ClassType::endMoveRows);
+        _d.CPGF_MD_TEMPLATE _method("encodeData", (void (D::ClassType::*) (const QModelIndexList &, QDataStream &) const)&D::ClassType::encodeData, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<1> >());
+        _d.CPGF_MD_TEMPLATE _method("changePersistentIndex", (void (D::ClassType::*) (const QModelIndex &, const QModelIndex &))&D::ClassType::changePersistentIndex);
+        _d.CPGF_MD_TEMPLATE _method("endRemoveRows", (void (D::ClassType::*) ())&D::ClassType::endRemoveRows);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("endResetModel", (void (D::ClassType::*) ())&D::ClassType::endResetModel);
+        _d.CPGF_MD_TEMPLATE _method("endMoveColumns", (void (D::ClassType::*) ())&D::ClassType::endMoveColumns);
+        _d.CPGF_MD_TEMPLATE _method("beginRemoveRows", (void (D::ClassType::*) (const QModelIndex &, int, int))&D::ClassType::beginRemoveRows);
+        _d.CPGF_MD_TEMPLATE _method("resetInternalData", (void (D::ClassType::*) ())&D::ClassType::resetInternalData);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("beginMoveColumns", (bool (D::ClassType::*) (const QModelIndex &, int, int, const QModelIndex &, int))&D::ClassType::beginMoveColumns);
+        _d.CPGF_MD_TEMPLATE _method("beginMoveRows", (bool (D::ClassType::*) (const QModelIndex &, int, int, const QModelIndex &, int))&D::ClassType::beginMoveRows);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("createIndex", (QModelIndex (D::ClassType::*) (int, int, void *) const)&D::ClassType::createIndex)
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("endInsertRows", (void (D::ClassType::*) ())&D::ClassType::endInsertRows);
+        _d.CPGF_MD_TEMPLATE _method("decodeData", (bool (D::ClassType::*) (int, int, const QModelIndex &, QDataStream &))&D::ClassType::decodeData, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<3> >());
+        _d.CPGF_MD_TEMPLATE _method("beginRemoveColumns", (void (D::ClassType::*) (const QModelIndex &, int, int))&D::ClassType::beginRemoveColumns);
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("changePersistentIndexList", (void (D::ClassType::*) (const QModelIndexList &, const QModelIndexList &))&D::ClassType::changePersistentIndexList);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("endInsertColumns", (void (D::ClassType::*) ())&D::ClassType::endInsertColumns);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("endRemoveColumns", (void (D::ClassType::*) ())&D::ClassType::endRemoveColumns);
+        _d.CPGF_MD_TEMPLATE _method("beginInsertColumns", (void (D::ClassType::*) (const QModelIndex &, int, int))&D::ClassType::beginInsertColumns);
+        _d.CPGF_MD_TEMPLATE _method("persistentIndexList", (QModelIndexList (D::ClassType::*) () const)&D::ClassType::persistentIndexList);
+        _d.CPGF_MD_TEMPLATE _method("createIndex", (QModelIndex (D::ClassType::*) (int, int, quintptr) const)&D::ClassType::createIndex);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_setHeaderData", (bool (D::ClassType::*) (int, Qt::Orientation, const QVariant &, int))&D::ClassType::super_setHeaderData, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >())
+            ._default(copyVariantFromCopyable(Qt::EditRole))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_supportedDragActions", (Qt::DropActions (D::ClassType::*) () const)&D::ClassType::super_supportedDragActions);
+        _d.CPGF_MD_TEMPLATE _method("super_setItemData", (bool (D::ClassType::*) (const QModelIndex &, const QMap< int, QVariant > &))&D::ClassType::super_setItemData, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_fetchMore", (void (D::ClassType::*) (const QModelIndex &))&D::ClassType::super_fetchMore);
+        _d.CPGF_MD_TEMPLATE _method("super_mimeTypes", (QStringList (D::ClassType::*) () const)&D::ClassType::super_mimeTypes);
+        _d.CPGF_MD_TEMPLATE _method("super_itemData", (QMap< int, QVariant > (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_itemData);
+        _d.CPGF_MD_TEMPLATE _method("super_removeRows", (bool (D::ClassType::*) (int, int, const QModelIndex &))&D::ClassType::super_removeRows)
+            ._default(copyVariantFromCopyable(QModelIndex()))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_match", (QModelIndexList (D::ClassType::*) (const QModelIndex &, int, const QVariant &, int, Qt::MatchFlags) const)&D::ClassType::super_match, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >())
+            ._default(copyVariantFromCopyable(Qt::MatchFlags(Qt::MatchStartsWith|Qt::MatchWrap)))
+            ._default(copyVariantFromCopyable(1))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_sort", (void (D::ClassType::*) (int, Qt::SortOrder))&D::ClassType::super_sort)
+            ._default(copyVariantFromCopyable(Qt::AscendingOrder))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_sibling", (QModelIndex (D::ClassType::*) (int, int, const QModelIndex &) const)&D::ClassType::super_sibling);
+        _d.CPGF_MD_TEMPLATE _method("super_roleNames", (QHash< int, QByteArray > (D::ClassType::*) () const)&D::ClassType::super_roleNames);
+        _d.CPGF_MD_TEMPLATE _method("super_columnCount", (int (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_columnCount)
+            ._default(copyVariantFromCopyable(QModelIndex()))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_index", (QModelIndex (D::ClassType::*) (int, int, const QModelIndex &) const)&D::ClassType::super_index)
+            ._default(copyVariantFromCopyable(QModelIndex()))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_setData", (bool (D::ClassType::*) (const QModelIndex &, const QVariant &, int))&D::ClassType::super_setData, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >())
+            ._default(copyVariantFromCopyable(Qt::EditRole))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_rowCount", (int (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_rowCount)
+            ._default(copyVariantFromCopyable(QModelIndex()))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_span", (QSize (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_span);
+        _d.CPGF_MD_TEMPLATE _method("super_submit", (bool (D::ClassType::*) ())&D::ClassType::super_submit);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_flags", (Qt::ItemFlags (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_flags);
+        _d.CPGF_MD_TEMPLATE _method("super_supportedDropActions", (Qt::DropActions (D::ClassType::*) () const)&D::ClassType::super_supportedDropActions);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_insertColumns", (bool (D::ClassType::*) (int, int, const QModelIndex &))&D::ClassType::super_insertColumns)
+            ._default(copyVariantFromCopyable(QModelIndex()))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_canDropMimeData", (bool (D::ClassType::*) (const QMimeData *, Qt::DropAction, int, int, const QModelIndex &) const)&D::ClassType::super_canDropMimeData);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hasChildren", (bool (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_hasChildren)
+            ._default(copyVariantFromCopyable(QModelIndex()))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_parent", (QModelIndex (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_parent);
+        _d.CPGF_MD_TEMPLATE _method("super_canFetchMore", (bool (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_canFetchMore);
+        _d.CPGF_MD_TEMPLATE _method("super_revert", (void (D::ClassType::*) ())&D::ClassType::super_revert);
+        _d.CPGF_MD_TEMPLATE _method("super_data", (QVariant (D::ClassType::*) (const QModelIndex &, int) const)&D::ClassType::super_data)
+            ._default(copyVariantFromCopyable(Qt::DisplayRole))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_dropMimeData", (bool (D::ClassType::*) (const QMimeData *, Qt::DropAction, int, int, const QModelIndex &))&D::ClassType::super_dropMimeData);
+        _d.CPGF_MD_TEMPLATE _method("super_mimeData", (QMimeData * (D::ClassType::*) (const QModelIndexList &) const)&D::ClassType::super_mimeData);
+        _d.CPGF_MD_TEMPLATE _method("super_moveColumns", (bool (D::ClassType::*) (const QModelIndex &, int, int, const QModelIndex &, int))&D::ClassType::super_moveColumns);
+        _d.CPGF_MD_TEMPLATE _method("super_headerData", (QVariant (D::ClassType::*) (int, Qt::Orientation, int) const)&D::ClassType::super_headerData)
+            ._default(copyVariantFromCopyable(Qt::DisplayRole))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_moveRows", (bool (D::ClassType::*) (const QModelIndex &, int, int, const QModelIndex &, int))&D::ClassType::super_moveRows);
+        _d.CPGF_MD_TEMPLATE _method("super_removeColumns", (bool (D::ClassType::*) (int, int, const QModelIndex &))&D::ClassType::super_removeColumns)
+            ._default(copyVariantFromCopyable(QModelIndex()))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_buddy", (QModelIndex (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_buddy);
+        _d.CPGF_MD_TEMPLATE _method("super_insertRows", (bool (D::ClassType::*) (int, int, const QModelIndex &))&D::ClassType::super_insertRows)
+            ._default(copyVariantFromCopyable(QModelIndex()))
+        ;
+    }
 };
 
 
@@ -1034,112 +1146,7 @@ void buildMetaClass_QStandardItemModelWrapper(const cpgf::GMetaDataConfigFlags &
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("beginResetModel", (void (D::ClassType::*) ())&D::ClassType::beginResetModel);
-    _d.CPGF_MD_TEMPLATE _method("beginInsertRows", (void (D::ClassType::*) (const QModelIndex &, int, int))&D::ClassType::beginInsertRows);
-    _d.CPGF_MD_TEMPLATE _method("endMoveRows", (void (D::ClassType::*) ())&D::ClassType::endMoveRows);
-    _d.CPGF_MD_TEMPLATE _method("encodeData", (void (D::ClassType::*) (const QModelIndexList &, QDataStream &) const)&D::ClassType::encodeData, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<1> >());
-    _d.CPGF_MD_TEMPLATE _method("changePersistentIndex", (void (D::ClassType::*) (const QModelIndex &, const QModelIndex &))&D::ClassType::changePersistentIndex);
-    _d.CPGF_MD_TEMPLATE _method("endRemoveRows", (void (D::ClassType::*) ())&D::ClassType::endRemoveRows);
-    _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("endResetModel", (void (D::ClassType::*) ())&D::ClassType::endResetModel);
-    _d.CPGF_MD_TEMPLATE _method("endMoveColumns", (void (D::ClassType::*) ())&D::ClassType::endMoveColumns);
-    _d.CPGF_MD_TEMPLATE _method("beginRemoveRows", (void (D::ClassType::*) (const QModelIndex &, int, int))&D::ClassType::beginRemoveRows);
-    _d.CPGF_MD_TEMPLATE _method("resetInternalData", (void (D::ClassType::*) ())&D::ClassType::resetInternalData);
-    _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-    _d.CPGF_MD_TEMPLATE _method("beginMoveColumns", (bool (D::ClassType::*) (const QModelIndex &, int, int, const QModelIndex &, int))&D::ClassType::beginMoveColumns);
-    _d.CPGF_MD_TEMPLATE _method("beginMoveRows", (bool (D::ClassType::*) (const QModelIndex &, int, int, const QModelIndex &, int))&D::ClassType::beginMoveRows);
-    _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-    _d.CPGF_MD_TEMPLATE _method("createIndex", (QModelIndex (D::ClassType::*) (int, int, void *) const)&D::ClassType::createIndex)
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("endInsertRows", (void (D::ClassType::*) ())&D::ClassType::endInsertRows);
-    _d.CPGF_MD_TEMPLATE _method("decodeData", (bool (D::ClassType::*) (int, int, const QModelIndex &, QDataStream &))&D::ClassType::decodeData, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<3> >());
-    _d.CPGF_MD_TEMPLATE _method("beginRemoveColumns", (void (D::ClassType::*) (const QModelIndex &, int, int))&D::ClassType::beginRemoveColumns);
-    _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-    _d.CPGF_MD_TEMPLATE _method("changePersistentIndexList", (void (D::ClassType::*) (const QModelIndexList &, const QModelIndexList &))&D::ClassType::changePersistentIndexList);
-    _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-    _d.CPGF_MD_TEMPLATE _method("endInsertColumns", (void (D::ClassType::*) ())&D::ClassType::endInsertColumns);
-    _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-    _d.CPGF_MD_TEMPLATE _method("endRemoveColumns", (void (D::ClassType::*) ())&D::ClassType::endRemoveColumns);
-    _d.CPGF_MD_TEMPLATE _method("beginInsertColumns", (void (D::ClassType::*) (const QModelIndex &, int, int))&D::ClassType::beginInsertColumns);
-    _d.CPGF_MD_TEMPLATE _method("persistentIndexList", (QModelIndexList (D::ClassType::*) () const)&D::ClassType::persistentIndexList);
-    _d.CPGF_MD_TEMPLATE _method("createIndex", (QModelIndex (D::ClassType::*) (int, int, quintptr) const)&D::ClassType::createIndex);
-    _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_setHeaderData", (bool (D::ClassType::*) (int, Qt::Orientation, const QVariant &, int))&D::ClassType::super_setHeaderData, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >())
-        ._default(copyVariantFromCopyable(Qt::EditRole))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_supportedDragActions", (Qt::DropActions (D::ClassType::*) () const)&D::ClassType::super_supportedDragActions);
-    _d.CPGF_MD_TEMPLATE _method("super_setItemData", (bool (D::ClassType::*) (const QModelIndex &, const QMap< int, QVariant > &))&D::ClassType::super_setItemData, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_fetchMore", (void (D::ClassType::*) (const QModelIndex &))&D::ClassType::super_fetchMore);
-    _d.CPGF_MD_TEMPLATE _method("super_mimeTypes", (QStringList (D::ClassType::*) () const)&D::ClassType::super_mimeTypes);
-    _d.CPGF_MD_TEMPLATE _method("super_itemData", (QMap< int, QVariant > (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_itemData);
-    _d.CPGF_MD_TEMPLATE _method("super_removeRows", (bool (D::ClassType::*) (int, int, const QModelIndex &))&D::ClassType::super_removeRows)
-        ._default(copyVariantFromCopyable(QModelIndex()))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-    _d.CPGF_MD_TEMPLATE _method("super_match", (QModelIndexList (D::ClassType::*) (const QModelIndex &, int, const QVariant &, int, Qt::MatchFlags) const)&D::ClassType::super_match, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >())
-        ._default(copyVariantFromCopyable(Qt::MatchFlags(Qt::MatchStartsWith|Qt::MatchWrap)))
-        ._default(copyVariantFromCopyable(1))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-    _d.CPGF_MD_TEMPLATE _method("super_sort", (void (D::ClassType::*) (int, Qt::SortOrder))&D::ClassType::super_sort)
-        ._default(copyVariantFromCopyable(Qt::AscendingOrder))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_sibling", (QModelIndex (D::ClassType::*) (int, int, const QModelIndex &) const)&D::ClassType::super_sibling);
-    _d.CPGF_MD_TEMPLATE _method("super_roleNames", (QHash< int, QByteArray > (D::ClassType::*) () const)&D::ClassType::super_roleNames);
-    _d.CPGF_MD_TEMPLATE _method("super_columnCount", (int (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_columnCount)
-        ._default(copyVariantFromCopyable(QModelIndex()))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_index", (QModelIndex (D::ClassType::*) (int, int, const QModelIndex &) const)&D::ClassType::super_index)
-        ._default(copyVariantFromCopyable(QModelIndex()))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_setData", (bool (D::ClassType::*) (const QModelIndex &, const QVariant &, int))&D::ClassType::super_setData, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >())
-        ._default(copyVariantFromCopyable(Qt::EditRole))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_rowCount", (int (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_rowCount)
-        ._default(copyVariantFromCopyable(QModelIndex()))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_span", (QSize (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_span);
-    _d.CPGF_MD_TEMPLATE _method("super_submit", (bool (D::ClassType::*) ())&D::ClassType::super_submit);
-    _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_flags", (Qt::ItemFlags (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_flags);
-    _d.CPGF_MD_TEMPLATE _method("super_supportedDropActions", (Qt::DropActions (D::ClassType::*) () const)&D::ClassType::super_supportedDropActions);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
-    _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_insertColumns", (bool (D::ClassType::*) (int, int, const QModelIndex &))&D::ClassType::super_insertColumns)
-        ._default(copyVariantFromCopyable(QModelIndex()))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_canDropMimeData", (bool (D::ClassType::*) (const QMimeData *, Qt::DropAction, int, int, const QModelIndex &) const)&D::ClassType::super_canDropMimeData);
-    _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hasChildren", (bool (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_hasChildren)
-        ._default(copyVariantFromCopyable(QModelIndex()))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_parent", (QModelIndex (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_parent);
-    _d.CPGF_MD_TEMPLATE _method("super_canFetchMore", (bool (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_canFetchMore);
-    _d.CPGF_MD_TEMPLATE _method("super_revert", (void (D::ClassType::*) ())&D::ClassType::super_revert);
-    _d.CPGF_MD_TEMPLATE _method("super_data", (QVariant (D::ClassType::*) (const QModelIndex &, int) const)&D::ClassType::super_data)
-        ._default(copyVariantFromCopyable(Qt::DisplayRole))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-    _d.CPGF_MD_TEMPLATE _method("super_dropMimeData", (bool (D::ClassType::*) (const QMimeData *, Qt::DropAction, int, int, const QModelIndex &))&D::ClassType::super_dropMimeData);
-    _d.CPGF_MD_TEMPLATE _method("super_mimeData", (QMimeData * (D::ClassType::*) (const QModelIndexList &) const)&D::ClassType::super_mimeData);
-    _d.CPGF_MD_TEMPLATE _method("super_moveColumns", (bool (D::ClassType::*) (const QModelIndex &, int, int, const QModelIndex &, int))&D::ClassType::super_moveColumns);
-    _d.CPGF_MD_TEMPLATE _method("super_headerData", (QVariant (D::ClassType::*) (int, Qt::Orientation, int) const)&D::ClassType::super_headerData)
-        ._default(copyVariantFromCopyable(Qt::DisplayRole))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_moveRows", (bool (D::ClassType::*) (const QModelIndex &, int, int, const QModelIndex &, int))&D::ClassType::super_moveRows);
-    _d.CPGF_MD_TEMPLATE _method("super_removeColumns", (bool (D::ClassType::*) (int, int, const QModelIndex &))&D::ClassType::super_removeColumns)
-        ._default(copyVariantFromCopyable(QModelIndex()))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_buddy", (QModelIndex (D::ClassType::*) (const QModelIndex &) const)&D::ClassType::super_buddy);
-    _d.CPGF_MD_TEMPLATE _method("super_insertRows", (bool (D::ClassType::*) (int, int, const QModelIndex &))&D::ClassType::super_insertRows)
-        ._default(copyVariantFromCopyable(QModelIndex()))
-    ;
+    QStandardItemModelWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QStandardItemModel<D>(config, _d);
 }

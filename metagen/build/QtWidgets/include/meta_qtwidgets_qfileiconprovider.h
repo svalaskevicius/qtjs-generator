@@ -94,6 +94,15 @@ public:
     {
         return QFileIconProvider::type(info);
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_icon", (QIcon (D::ClassType::*) (const QFileInfo &) const)&D::ClassType::super_icon, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_icon", (QIcon (D::ClassType::*) (QFileIconProvider::IconType) const)&D::ClassType::super_icon);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (QString (D::ClassType::*) (const QFileInfo &) const)&D::ClassType::super_type, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    }
 };
 
 
@@ -104,9 +113,7 @@ void buildMetaClass_QFileIconProviderWrapper(const cpgf::GMetaDataConfigFlags & 
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("super_icon", (QIcon (D::ClassType::*) (const QFileInfo &) const)&D::ClassType::super_icon, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_icon", (QIcon (D::ClassType::*) (QFileIconProvider::IconType) const)&D::ClassType::super_icon);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (QString (D::ClassType::*) (const QFileInfo &) const)&D::ClassType::super_type, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    QFileIconProviderWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QFileIconProvider<D>(config, _d);
 }

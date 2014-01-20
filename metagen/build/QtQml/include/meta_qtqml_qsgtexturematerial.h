@@ -90,6 +90,15 @@ public:
     {
         return QSGOpaqueTextureMaterial::createShader();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_compare", (int (D::ClassType::*) (const QSGMaterial *) const)&D::ClassType::super_compare);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_createShader", (QSGMaterialShader * (D::ClassType::*) () const)&D::ClassType::super_createShader);
+    }
 };
 
 
@@ -100,9 +109,7 @@ void buildMetaClass_QSGOpaqueTextureMaterialWrapper(const cpgf::GMetaDataConfigF
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("super_compare", (int (D::ClassType::*) (const QSGMaterial *) const)&D::ClassType::super_compare);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
-    _d.CPGF_MD_TEMPLATE _method("super_createShader", (QSGMaterialShader * (D::ClassType::*) () const)&D::ClassType::super_createShader);
+    QSGOpaqueTextureMaterialWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QSGOpaqueTextureMaterial<D>(config, _d);
 }
@@ -163,6 +170,15 @@ public:
     {
         return QSGTextureMaterial::createShader();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_compare", (int (D::ClassType::*) (const QSGMaterial *) const)&D::ClassType::super_compare);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_createShader", (QSGMaterialShader * (D::ClassType::*) () const)&D::ClassType::super_createShader);
+    }
 };
 
 
@@ -173,9 +189,7 @@ void buildMetaClass_QSGTextureMaterialWrapper(const cpgf::GMetaDataConfigFlags &
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("super_compare", (int (D::ClassType::*) (const QSGMaterial *) const)&D::ClassType::super_compare);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
-    _d.CPGF_MD_TEMPLATE _method("super_createShader", (QSGMaterialShader * (D::ClassType::*) () const)&D::ClassType::super_createShader);
+    QSGTextureMaterialWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QSGTextureMaterial<D>(config, _d);
 }

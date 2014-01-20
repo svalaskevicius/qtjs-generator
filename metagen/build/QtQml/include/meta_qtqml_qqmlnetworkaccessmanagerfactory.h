@@ -40,11 +40,18 @@ public:
         {
             return cpgf::fromVariant<QNetworkAccessManager * >(cpgf::invokeScriptFunction(func.get(), this, parent));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QNetworkAccessManager * super_create(QObject * parent)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
+    }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_create", (QNetworkAccessManager * (D::ClassType::*) (QObject *))&D::ClassType::super_create);
     }
 };
 
@@ -56,7 +63,7 @@ void buildMetaClass_QQmlNetworkAccessManagerFactoryWrapper(const cpgf::GMetaData
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("super_create", (QNetworkAccessManager * (D::ClassType::*) (QObject *))&D::ClassType::super_create);
+    QQmlNetworkAccessManagerFactoryWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QQmlNetworkAccessManagerFactory<D>(config, _d);
 }

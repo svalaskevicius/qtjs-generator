@@ -465,6 +465,59 @@ public:
     {
         QItemDelegate::updateEditorGeometry(editor, option, index);
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("editorEvent", (bool (D::ClassType::*) (QEvent *, QAbstractItemModel *, const QStyleOptionViewItem &, const QModelIndex &))&D::ClassType::editorEvent);
+        _d.CPGF_MD_TEMPLATE _method("doLayout", (void (D::ClassType::*) (const QStyleOptionViewItem &, QRect *, QRect *, QRect *, bool) const)&D::ClassType::doLayout);
+        _d.CPGF_MD_TEMPLATE _method("setOptions", (QStyleOptionViewItem (D::ClassType::*) (const QModelIndex &, const QStyleOptionViewItem &) const)&D::ClassType::setOptions);
+        _d.CPGF_MD_TEMPLATE _method("rect", (QRect (D::ClassType::*) (const QStyleOptionViewItem &, const QModelIndex &, int) const)&D::ClassType::rect);
+        _d.CPGF_MD_TEMPLATE _method("drawFocus", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QRect &) const)&D::ClassType::drawFocus);
+        _d.CPGF_MD_TEMPLATE _method("drawDecoration", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QRect &, const QPixmap &) const)&D::ClassType::drawDecoration);
+        _d.CPGF_MD_TEMPLATE _method("selected", (QPixmap * (D::ClassType::*) (const QPixmap &, const QPalette &, bool) const)&D::ClassType::selected, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("doCheck", (QRect (D::ClassType::*) (const QStyleOptionViewItem &, const QRect &, const QVariant &) const)&D::ClassType::doCheck, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
+        _d.CPGF_MD_TEMPLATE _method("drawCheck", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QRect &, Qt::CheckState) const)&D::ClassType::drawCheck);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("textRectangle", (QRect (D::ClassType::*) (QPainter *, const QRect &, const QFont &, const QString &) const)&D::ClassType::textRectangle, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2>, cpgf::GMetaRuleCopyConstReference<3> >());
+        _d.CPGF_MD_TEMPLATE _method("decoration", (QPixmap (D::ClassType::*) (const QStyleOptionViewItem &, const QVariant &) const)&D::ClassType::decoration, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("drawBackground", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::drawBackground);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("drawDisplay", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QRect &, const QString &) const)&D::ClassType::drawDisplay, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<3> >());
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_editorEvent", (bool (D::ClassType::*) (QEvent *, QAbstractItemModel *, const QStyleOptionViewItem &, const QModelIndex &))&D::ClassType::super_editorEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_drawFocus", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QRect &) const)&D::ClassType::super_drawFocus);
+        _d.CPGF_MD_TEMPLATE _method("super_destroyEditor", (void (D::ClassType::*) (QWidget *, const QModelIndex &) const)&D::ClassType::super_destroyEditor);
+        _d.CPGF_MD_TEMPLATE _method("super_drawDecoration", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QRect &, const QPixmap &) const)&D::ClassType::super_drawDecoration);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_setEditorData", (void (D::ClassType::*) (QWidget *, const QModelIndex &) const)&D::ClassType::super_setEditorData);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_drawCheck", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QRect &, Qt::CheckState) const)&D::ClassType::super_drawCheck);
+        _d.CPGF_MD_TEMPLATE _method("super_helpEvent", (bool (D::ClassType::*) (QHelpEvent *, QAbstractItemView *, const QStyleOptionViewItem &, const QModelIndex &))&D::ClassType::super_helpEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_paintingRoles", (QVector< int > (D::ClassType::*) () const)&D::ClassType::super_paintingRoles);
+        _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::super_paint);
+        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) (const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::super_sizeHint);
+        _d.CPGF_MD_TEMPLATE _method("super_setModelData", (void (D::ClassType::*) (QWidget *, QAbstractItemModel *, const QModelIndex &) const)&D::ClassType::super_setModelData);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_drawDisplay", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QRect &, const QString &) const)&D::ClassType::super_drawDisplay, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<3> >());
+        _d.CPGF_MD_TEMPLATE _method("super_createEditor", (QWidget * (D::ClassType::*) (QWidget *, const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::super_createEditor);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_updateEditorGeometry", (void (D::ClassType::*) (QWidget *, const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::super_updateEditorGeometry);
+    }
 };
 
 
@@ -475,53 +528,7 @@ void buildMetaClass_QItemDelegateWrapper(const cpgf::GMetaDataConfigFlags & conf
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-    _d.CPGF_MD_TEMPLATE _method("editorEvent", (bool (D::ClassType::*) (QEvent *, QAbstractItemModel *, const QStyleOptionViewItem &, const QModelIndex &))&D::ClassType::editorEvent);
-    _d.CPGF_MD_TEMPLATE _method("doLayout", (void (D::ClassType::*) (const QStyleOptionViewItem &, QRect *, QRect *, QRect *, bool) const)&D::ClassType::doLayout);
-    _d.CPGF_MD_TEMPLATE _method("setOptions", (QStyleOptionViewItem (D::ClassType::*) (const QModelIndex &, const QStyleOptionViewItem &) const)&D::ClassType::setOptions);
-    _d.CPGF_MD_TEMPLATE _method("rect", (QRect (D::ClassType::*) (const QStyleOptionViewItem &, const QModelIndex &, int) const)&D::ClassType::rect);
-    _d.CPGF_MD_TEMPLATE _method("drawFocus", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QRect &) const)&D::ClassType::drawFocus);
-    _d.CPGF_MD_TEMPLATE _method("drawDecoration", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QRect &, const QPixmap &) const)&D::ClassType::drawDecoration);
-    _d.CPGF_MD_TEMPLATE _method("selected", (QPixmap * (D::ClassType::*) (const QPixmap &, const QPalette &, bool) const)&D::ClassType::selected, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("doCheck", (QRect (D::ClassType::*) (const QStyleOptionViewItem &, const QRect &, const QVariant &) const)&D::ClassType::doCheck, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
-    _d.CPGF_MD_TEMPLATE _method("drawCheck", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QRect &, Qt::CheckState) const)&D::ClassType::drawCheck);
-    _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-    _d.CPGF_MD_TEMPLATE _method("textRectangle", (QRect (D::ClassType::*) (QPainter *, const QRect &, const QFont &, const QString &) const)&D::ClassType::textRectangle, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2>, cpgf::GMetaRuleCopyConstReference<3> >());
-    _d.CPGF_MD_TEMPLATE _method("decoration", (QPixmap (D::ClassType::*) (const QStyleOptionViewItem &, const QVariant &) const)&D::ClassType::decoration, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-    _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-    _d.CPGF_MD_TEMPLATE _method("drawBackground", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::drawBackground);
-    _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-    _d.CPGF_MD_TEMPLATE _method("eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::eventFilter);
-    _d.CPGF_MD_TEMPLATE _method("drawDisplay", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QRect &, const QString &) const)&D::ClassType::drawDisplay, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<3> >());
-    _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-    _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_editorEvent", (bool (D::ClassType::*) (QEvent *, QAbstractItemModel *, const QStyleOptionViewItem &, const QModelIndex &))&D::ClassType::super_editorEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-    _d.CPGF_MD_TEMPLATE _method("super_drawFocus", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QRect &) const)&D::ClassType::super_drawFocus);
-    _d.CPGF_MD_TEMPLATE _method("super_destroyEditor", (void (D::ClassType::*) (QWidget *, const QModelIndex &) const)&D::ClassType::super_destroyEditor);
-    _d.CPGF_MD_TEMPLATE _method("super_drawDecoration", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QRect &, const QPixmap &) const)&D::ClassType::super_drawDecoration);
-    _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-    _d.CPGF_MD_TEMPLATE _method("super_setEditorData", (void (D::ClassType::*) (QWidget *, const QModelIndex &) const)&D::ClassType::super_setEditorData);
-    _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_drawCheck", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QRect &, Qt::CheckState) const)&D::ClassType::super_drawCheck);
-    _d.CPGF_MD_TEMPLATE _method("super_helpEvent", (bool (D::ClassType::*) (QHelpEvent *, QAbstractItemView *, const QStyleOptionViewItem &, const QModelIndex &))&D::ClassType::super_helpEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_paintingRoles", (QVector< int > (D::ClassType::*) () const)&D::ClassType::super_paintingRoles);
-    _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::super_paint);
-    _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) (const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::super_sizeHint);
-    _d.CPGF_MD_TEMPLATE _method("super_setModelData", (void (D::ClassType::*) (QWidget *, QAbstractItemModel *, const QModelIndex &) const)&D::ClassType::super_setModelData);
-    _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-    _d.CPGF_MD_TEMPLATE _method("super_drawDisplay", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QRect &, const QString &) const)&D::ClassType::super_drawDisplay, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<3> >());
-    _d.CPGF_MD_TEMPLATE _method("super_createEditor", (QWidget * (D::ClassType::*) (QWidget *, const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::super_createEditor);
-    _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
-    _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_updateEditorGeometry", (void (D::ClassType::*) (QWidget *, const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::super_updateEditorGeometry);
+    QItemDelegateWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QItemDelegate<D>(config, _d);
 }

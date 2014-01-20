@@ -49,11 +49,18 @@ public:
         {
             return cpgf::fromVariant<QUrl >(cpgf::invokeScriptFunction(func.get(), this, path, type));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QUrl super_intercept(const QUrl & path, QQmlAbstractUrlInterceptor::DataType type)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
+    }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_intercept", (QUrl (D::ClassType::*) (const QUrl &, QQmlAbstractUrlInterceptor::DataType))&D::ClassType::super_intercept, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
 };
 
@@ -66,7 +73,7 @@ void buildMetaClass_QQmlAbstractUrlInterceptorWrapper(const cpgf::GMetaDataConfi
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    _d.CPGF_MD_TEMPLATE _method("super_intercept", (QUrl (D::ClassType::*) (const QUrl &, QQmlAbstractUrlInterceptor::DataType))&D::ClassType::super_intercept, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    QQmlAbstractUrlInterceptorWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QQmlAbstractUrlInterceptor<D>(config, _d);
 }

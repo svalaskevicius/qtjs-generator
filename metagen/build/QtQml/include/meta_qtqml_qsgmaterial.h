@@ -71,11 +71,11 @@ public:
         {
             return cpgf::fromVariant<QSGMaterialType * >(cpgf::invokeScriptFunction(func.get(), this));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QSGMaterialType * super_type() const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     QSGMaterialShader * createShader() const
@@ -85,11 +85,20 @@ public:
         {
             return cpgf::fromVariant<QSGMaterialShader * >(cpgf::invokeScriptFunction(func.get(), this));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QSGMaterialShader * super_createShader() const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
+    }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_compare", (int (D::ClassType::*) (const QSGMaterial *) const)&D::ClassType::super_compare);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_createShader", (QSGMaterialShader * (D::ClassType::*) () const)&D::ClassType::super_createShader);
     }
 };
 
@@ -102,9 +111,7 @@ void buildMetaClass_QSGMaterialWrapper(const cpgf::GMetaDataConfigFlags & config
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    _d.CPGF_MD_TEMPLATE _method("super_compare", (int (D::ClassType::*) (const QSGMaterial *) const)&D::ClassType::super_compare);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
-    _d.CPGF_MD_TEMPLATE _method("super_createShader", (QSGMaterialShader * (D::ClassType::*) () const)&D::ClassType::super_createShader);
+    QSGMaterialWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QSGMaterial<D>(config, _d);
 }
@@ -265,16 +272,36 @@ public:
         {
             return cpgf::fromVariant<char const *const * >(cpgf::invokeScriptFunction(func.get(), this));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     char const *const * super_attributeNames() const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     void setShaderSourceFile(QOpenGLShader::ShaderType type, const QString & sourceFile)
     {
         QSGMaterialShader::setShaderSourceFile(type, sourceFile);
+    }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("setShaderSourceFiles", (void (D::ClassType::*) (QOpenGLShader::ShaderType, const QStringList &))&D::ClassType::setShaderSourceFiles, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("fragmentShader", (const char * (D::ClassType::*) () const)&D::ClassType::fragmentShader);
+        _d.CPGF_MD_TEMPLATE _method("compile", (void (D::ClassType::*) ())&D::ClassType::compile);
+        _d.CPGF_MD_TEMPLATE _method("vertexShader", (const char * (D::ClassType::*) () const)&D::ClassType::vertexShader);
+        _d.CPGF_MD_TEMPLATE _method("initialize", (void (D::ClassType::*) ())&D::ClassType::initialize);
+        _d.CPGF_MD_TEMPLATE _method("setShaderSourceFile", (void (D::ClassType::*) (QOpenGLShader::ShaderType, const QString &))&D::ClassType::setShaderSourceFile, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_deactivate", (void (D::ClassType::*) ())&D::ClassType::super_deactivate);
+        _d.CPGF_MD_TEMPLATE _method("super_activate", (void (D::ClassType::*) ())&D::ClassType::super_activate);
+        _d.CPGF_MD_TEMPLATE _method("super_fragmentShader", (const char * (D::ClassType::*) () const)&D::ClassType::super_fragmentShader);
+        _d.CPGF_MD_TEMPLATE _method("super_compile", (void (D::ClassType::*) ())&D::ClassType::super_compile);
+        _d.CPGF_MD_TEMPLATE _method("super_vertexShader", (const char * (D::ClassType::*) () const)&D::ClassType::super_vertexShader);
+        _d.CPGF_MD_TEMPLATE _method("super_updateState", (void (D::ClassType::*) (const QSGMaterialShader::RenderState&, QSGMaterial *, QSGMaterial *))&D::ClassType::super_updateState);
+        _d.CPGF_MD_TEMPLATE _method("super_initialize", (void (D::ClassType::*) ())&D::ClassType::super_initialize);
+        _d.CPGF_MD_TEMPLATE _method("super_attributeNames", (char const *const * (D::ClassType::*) () const)&D::ClassType::super_attributeNames);
     }
 };
 
@@ -287,20 +314,7 @@ void buildMetaClass_QSGMaterialShaderWrapper(const cpgf::GMetaDataConfigFlags & 
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    _d.CPGF_MD_TEMPLATE _method("setShaderSourceFiles", (void (D::ClassType::*) (QOpenGLShader::ShaderType, const QStringList &))&D::ClassType::setShaderSourceFiles, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("fragmentShader", (const char * (D::ClassType::*) () const)&D::ClassType::fragmentShader);
-    _d.CPGF_MD_TEMPLATE _method("compile", (void (D::ClassType::*) ())&D::ClassType::compile);
-    _d.CPGF_MD_TEMPLATE _method("vertexShader", (const char * (D::ClassType::*) () const)&D::ClassType::vertexShader);
-    _d.CPGF_MD_TEMPLATE _method("initialize", (void (D::ClassType::*) ())&D::ClassType::initialize);
-    _d.CPGF_MD_TEMPLATE _method("setShaderSourceFile", (void (D::ClassType::*) (QOpenGLShader::ShaderType, const QString &))&D::ClassType::setShaderSourceFile, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_deactivate", (void (D::ClassType::*) ())&D::ClassType::super_deactivate);
-    _d.CPGF_MD_TEMPLATE _method("super_activate", (void (D::ClassType::*) ())&D::ClassType::super_activate);
-    _d.CPGF_MD_TEMPLATE _method("super_fragmentShader", (const char * (D::ClassType::*) () const)&D::ClassType::super_fragmentShader);
-    _d.CPGF_MD_TEMPLATE _method("super_compile", (void (D::ClassType::*) ())&D::ClassType::super_compile);
-    _d.CPGF_MD_TEMPLATE _method("super_vertexShader", (const char * (D::ClassType::*) () const)&D::ClassType::super_vertexShader);
-    _d.CPGF_MD_TEMPLATE _method("super_updateState", (void (D::ClassType::*) (const QSGMaterialShader::RenderState&, QSGMaterial *, QSGMaterial *))&D::ClassType::super_updateState);
-    _d.CPGF_MD_TEMPLATE _method("super_initialize", (void (D::ClassType::*) ())&D::ClassType::super_initialize);
-    _d.CPGF_MD_TEMPLATE _method("super_attributeNames", (char const *const * (D::ClassType::*) () const)&D::ClassType::super_attributeNames);
+    QSGMaterialShaderWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QSGMaterialShader<D>(config, _d);
 }

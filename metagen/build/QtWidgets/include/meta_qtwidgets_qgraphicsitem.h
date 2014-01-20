@@ -464,11 +464,11 @@ public:
             cpgf::invokeScriptFunction(func.get(), this, painter, option, widget);
             return;
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     void super_paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = 0)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     bool sceneEvent(QEvent * event)
@@ -521,11 +521,11 @@ public:
         {
             return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QRectF super_boundingRect() const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent * event)
@@ -585,6 +585,82 @@ public:
     {
         return QGraphicsItem::shape();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
+        _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
+        _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
+        _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    }
 };
 
 
@@ -595,76 +671,7 @@ void buildMetaClass_QAbstractGraphicsShapeItemWrapper(const cpgf::GMetaDataConfi
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
-    _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
-    _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
-    _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
-    _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    QAbstractGraphicsShapeItemWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QAbstractGraphicsShapeItem<D>(config, _d);
 }
@@ -1249,6 +1256,82 @@ public:
     {
         return QGraphicsEllipseItem::shape();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
+        _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
+        _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
+        _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    }
 };
 
 
@@ -1259,76 +1342,7 @@ void buildMetaClass_QGraphicsEllipseItemWrapper(const cpgf::GMetaDataConfigFlags
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
-    _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
-    _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
-    _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
-    _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    QGraphicsEllipseItemWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QGraphicsEllipseItem<D>(config, _d);
 }
@@ -2047,11 +2061,11 @@ public:
             cpgf::invokeScriptFunction(func.get(), this, painter, option, widget);
             return;
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     void super_paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = 0)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     bool sceneEvent(QEvent * event)
@@ -2104,11 +2118,11 @@ public:
         {
             return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QRectF super_boundingRect() const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent * event)
@@ -2168,6 +2182,82 @@ public:
     {
         return QGraphicsItem::shape();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
+        _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
+        _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
+        _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    }
 };
 
 
@@ -2181,76 +2271,7 @@ void buildMetaClass_QGraphicsItemWrapper(const cpgf::GMetaDataConfigFlags & conf
         ._default(copyVariantFromCopyable(0))
     ;
     
-    _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
-    _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
-    _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
-    _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
-    _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    QGraphicsItemWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QGraphicsItem<D>(config, _d);
 }
@@ -2816,6 +2837,82 @@ public:
     {
         return QGraphicsItem::shape();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
+        _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
+        _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
+        _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    }
 };
 
 
@@ -2826,76 +2923,7 @@ void buildMetaClass_QGraphicsItemGroupWrapper(const cpgf::GMetaDataConfigFlags &
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
-    _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
-    _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
-    _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
-    _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    QGraphicsItemGroupWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QGraphicsItemGroup<D>(config, _d);
 }
@@ -3478,6 +3506,82 @@ public:
     {
         return QGraphicsLineItem::shape();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
+        _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
+        _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
+        _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    }
 };
 
 
@@ -3488,76 +3592,7 @@ void buildMetaClass_QGraphicsLineItemWrapper(const cpgf::GMetaDataConfigFlags & 
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
-    _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
-    _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
-    _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
-    _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    QGraphicsLineItemWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QGraphicsLineItem<D>(config, _d);
 }
@@ -3870,11 +3905,11 @@ public:
         {
             return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QRectF super_boundingRect() const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
@@ -4275,11 +4310,11 @@ public:
             cpgf::invokeScriptFunction(func.get(), this, painter, option, widget);
             return;
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     void super_paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = 0)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     void dragEnterEvent(QGraphicsSceneDragDropEvent * event)
@@ -4346,6 +4381,114 @@ public:
     {
         QGraphicsObject::opacityChanged();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
+        _d.CPGF_MD_TEMPLATE _method("enabledChanged", (void (D::ClassType::*) ())&D::ClassType::enabledChanged);
+        _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::event);
+        _d.CPGF_MD_TEMPLATE _method("widthChanged", (void (D::ClassType::*) ())&D::ClassType::widthChanged);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("yChanged", (void (D::ClassType::*) ())&D::ClassType::yChanged);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("scaleChanged", (void (D::ClassType::*) ())&D::ClassType::scaleChanged);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
+        _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("parentChanged", (void (D::ClassType::*) ())&D::ClassType::parentChanged);
+        _d.CPGF_MD_TEMPLATE _method("zChanged", (void (D::ClassType::*) ())&D::ClassType::zChanged);
+        _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
+        _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("childrenChanged", (void (D::ClassType::*) ())&D::ClassType::childrenChanged);
+        _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("rotationChanged", (void (D::ClassType::*) ())&D::ClassType::rotationChanged);
+        _d.CPGF_MD_TEMPLATE _method("xChanged", (void (D::ClassType::*) ())&D::ClassType::xChanged);
+        _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("visibleChanged", (void (D::ClassType::*) ())&D::ClassType::visibleChanged);
+        _d.CPGF_MD_TEMPLATE _method("heightChanged", (void (D::ClassType::*) ())&D::ClassType::heightChanged);
+        _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("opacityChanged", (void (D::ClassType::*) ())&D::ClassType::opacityChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
+        _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
+        _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
+    }
 };
 
 
@@ -4356,108 +4499,7 @@ void buildMetaClass_QGraphicsObjectWrapper(const cpgf::GMetaDataConfigFlags & co
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
-    _d.CPGF_MD_TEMPLATE _method("enabledChanged", (void (D::ClassType::*) ())&D::ClassType::enabledChanged);
-    _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::event);
-    _d.CPGF_MD_TEMPLATE _method("widthChanged", (void (D::ClassType::*) ())&D::ClassType::widthChanged);
-    _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("yChanged", (void (D::ClassType::*) ())&D::ClassType::yChanged);
-    _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-    _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("scaleChanged", (void (D::ClassType::*) ())&D::ClassType::scaleChanged);
-    _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-    _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
-    _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("parentChanged", (void (D::ClassType::*) ())&D::ClassType::parentChanged);
-    _d.CPGF_MD_TEMPLATE _method("zChanged", (void (D::ClassType::*) ())&D::ClassType::zChanged);
-    _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
-    _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-    _d.CPGF_MD_TEMPLATE _method("childrenChanged", (void (D::ClassType::*) ())&D::ClassType::childrenChanged);
-    _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("rotationChanged", (void (D::ClassType::*) ())&D::ClassType::rotationChanged);
-    _d.CPGF_MD_TEMPLATE _method("xChanged", (void (D::ClassType::*) ())&D::ClassType::xChanged);
-    _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("visibleChanged", (void (D::ClassType::*) ())&D::ClassType::visibleChanged);
-    _d.CPGF_MD_TEMPLATE _method("heightChanged", (void (D::ClassType::*) ())&D::ClassType::heightChanged);
-    _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-    _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-    _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("opacityChanged", (void (D::ClassType::*) ())&D::ClassType::opacityChanged);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-    _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-    _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
-    _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
-    _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
-    _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
-    _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
+    QGraphicsObjectWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QGraphicsObject<D>(config, _d);
 }
@@ -5031,6 +5073,82 @@ public:
     {
         return QGraphicsPathItem::shape();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
+        _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
+        _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
+        _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    }
 };
 
 
@@ -5041,76 +5159,7 @@ void buildMetaClass_QGraphicsPathItemWrapper(const cpgf::GMetaDataConfigFlags & 
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
-    _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
-    _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
-    _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
-    _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    QGraphicsPathItemWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QGraphicsPathItem<D>(config, _d);
 }
@@ -5694,6 +5743,80 @@ public:
     {
         return QGraphicsPixmapItem::shape();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
+        _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
+        _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
+        _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint);
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    }
 };
 
 
@@ -5704,74 +5827,7 @@ void buildMetaClass_QGraphicsPixmapItemWrapper(const cpgf::GMetaDataConfigFlags 
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
-    _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
-    _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
-    _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
-    _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint);
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    QGraphicsPixmapItemWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QGraphicsPixmapItem<D>(config, _d);
 }
@@ -6347,6 +6403,82 @@ public:
     {
         return QGraphicsPolygonItem::shape();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
+        _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
+        _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
+        _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    }
 };
 
 
@@ -6357,76 +6489,7 @@ void buildMetaClass_QGraphicsPolygonItemWrapper(const cpgf::GMetaDataConfigFlags
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
-    _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
-    _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
-    _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
-    _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    QGraphicsPolygonItemWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QGraphicsPolygonItem<D>(config, _d);
 }
@@ -7007,6 +7070,82 @@ public:
     {
         return QGraphicsRectItem::shape();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
+        _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
+        _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
+        _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    }
 };
 
 
@@ -7017,76 +7156,7 @@ void buildMetaClass_QGraphicsRectItemWrapper(const cpgf::GMetaDataConfigFlags & 
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
-    _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
-    _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
-    _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
-    _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    QGraphicsRectItemWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QGraphicsRectItem<D>(config, _d);
 }
@@ -7660,6 +7730,80 @@ public:
     {
         return QGraphicsSimpleTextItem::shape();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
+        _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
+        _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
+        _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint);
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    }
 };
 
 
@@ -7670,74 +7814,7 @@ void buildMetaClass_QGraphicsSimpleTextItemWrapper(const cpgf::GMetaDataConfigFl
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
-    _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
-    _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
-    _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
-    _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint);
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+    QGraphicsSimpleTextItemWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QGraphicsSimpleTextItem<D>(config, _d);
 }
@@ -8563,6 +8640,112 @@ public:
     {
         QGraphicsObject::opacityChanged();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
+        _d.CPGF_MD_TEMPLATE _method("enabledChanged", (void (D::ClassType::*) ())&D::ClassType::enabledChanged);
+        _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::event);
+        _d.CPGF_MD_TEMPLATE _method("widthChanged", (void (D::ClassType::*) ())&D::ClassType::widthChanged);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("yChanged", (void (D::ClassType::*) ())&D::ClassType::yChanged);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("scaleChanged", (void (D::ClassType::*) ())&D::ClassType::scaleChanged);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
+        _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("parentChanged", (void (D::ClassType::*) ())&D::ClassType::parentChanged);
+        _d.CPGF_MD_TEMPLATE _method("zChanged", (void (D::ClassType::*) ())&D::ClassType::zChanged);
+        _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
+        _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("childrenChanged", (void (D::ClassType::*) ())&D::ClassType::childrenChanged);
+        _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("rotationChanged", (void (D::ClassType::*) ())&D::ClassType::rotationChanged);
+        _d.CPGF_MD_TEMPLATE _method("xChanged", (void (D::ClassType::*) ())&D::ClassType::xChanged);
+        _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("visibleChanged", (void (D::ClassType::*) ())&D::ClassType::visibleChanged);
+        _d.CPGF_MD_TEMPLATE _method("heightChanged", (void (D::ClassType::*) ())&D::ClassType::heightChanged);
+        _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
+        _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
+        _d.CPGF_MD_TEMPLATE _method("opacityChanged", (void (D::ClassType::*) ())&D::ClassType::opacityChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
+        _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
+        _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
+        _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
+        _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
+            ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint);
+        _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
+    }
 };
 
 
@@ -8573,106 +8756,7 @@ void buildMetaClass_QGraphicsTextItemWrapper(const cpgf::GMetaDataConfigFlags & 
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
-    _d.CPGF_MD_TEMPLATE _method("enabledChanged", (void (D::ClassType::*) ())&D::ClassType::enabledChanged);
-    _d.CPGF_MD_TEMPLATE _method("focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::event);
-    _d.CPGF_MD_TEMPLATE _method("widthChanged", (void (D::ClassType::*) ())&D::ClassType::widthChanged);
-    _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("yChanged", (void (D::ClassType::*) ())&D::ClassType::yChanged);
-    _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-    _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("scaleChanged", (void (D::ClassType::*) ())&D::ClassType::scaleChanged);
-    _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-    _d.CPGF_MD_TEMPLATE _method("updateMicroFocus", (void (D::ClassType::*) ())&D::ClassType::updateMicroFocus);
-    _d.CPGF_MD_TEMPLATE _method("dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("parentChanged", (void (D::ClassType::*) ())&D::ClassType::parentChanged);
-    _d.CPGF_MD_TEMPLATE _method("zChanged", (void (D::ClassType::*) ())&D::ClassType::zChanged);
-    _d.CPGF_MD_TEMPLATE _method("itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("prepareGeometryChange", (void (D::ClassType::*) ())&D::ClassType::prepareGeometryChange);
-    _d.CPGF_MD_TEMPLATE _method("sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-    _d.CPGF_MD_TEMPLATE _method("childrenChanged", (void (D::ClassType::*) ())&D::ClassType::childrenChanged);
-    _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("rotationChanged", (void (D::ClassType::*) ())&D::ClassType::rotationChanged);
-    _d.CPGF_MD_TEMPLATE _method("xChanged", (void (D::ClassType::*) ())&D::ClassType::xChanged);
-    _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("visibleChanged", (void (D::ClassType::*) ())&D::ClassType::visibleChanged);
-    _d.CPGF_MD_TEMPLATE _method("heightChanged", (void (D::ClassType::*) ())&D::ClassType::heightChanged);
-    _d.CPGF_MD_TEMPLATE _method("addToIndex", (void (D::ClassType::*) ())&D::ClassType::addToIndex);
-    _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-    _d.CPGF_MD_TEMPLATE _method("hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-    _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-    _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseDoubleClickEvent);
-    _d.CPGF_MD_TEMPLATE _method("opacityChanged", (void (D::ClassType::*) ())&D::ClassType::opacityChanged);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-    _d.CPGF_MD_TEMPLATE _method("super_focusInEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusInEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-    _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_advance", (void (D::ClassType::*) (int))&D::ClassType::super_advance);
-    _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_dropEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dropEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_opaqueArea", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_opaqueArea);
-    _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_isObscuredBy", (bool (D::ClassType::*) (const QGraphicsItem *) const)&D::ClassType::super_isObscuredBy);
-    _d.CPGF_MD_TEMPLATE _method("super_itemChange", (QVariant (D::ClassType::*) (QGraphicsItem::GraphicsItemChange, const QVariant &))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_contextMenuEvent", (void (D::ClassType::*) (QGraphicsSceneContextMenuEvent *))&D::ClassType::super_contextMenuEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_sceneEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::super_contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_boundingRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_boundingRect);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_shape", (QPainterPath (D::ClassType::*) () const)&D::ClassType::super_shape);
-    _d.CPGF_MD_TEMPLATE _method("super_sceneEventFilter", (bool (D::ClassType::*) (QGraphicsItem *, QEvent *))&D::ClassType::super_sceneEventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::super_supportsExtension);
-    _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithPath", (bool (D::ClassType::*) (const QPainterPath &, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseReleaseEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_wheelEvent", (void (D::ClassType::*) (QGraphicsSceneWheelEvent *))&D::ClassType::super_wheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyPressEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyPressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_extension", (QVariant (D::ClassType::*) (const QVariant &) const)&D::ClassType::super_extension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseMoveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::super_inputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (int (D::ClassType::*) () const)&D::ClassType::super_type);
-    _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
-    _d.CPGF_MD_TEMPLATE _method("super_hoverEnterEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::super_hoverEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-    _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
-        ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint);
-    _d.CPGF_MD_TEMPLATE _method("super_dragEnterEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragEnterEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_mouseDoubleClickEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mouseDoubleClickEvent);
+    QGraphicsTextItemWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QGraphicsTextItem<D>(config, _d);
 }
