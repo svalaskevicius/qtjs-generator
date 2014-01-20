@@ -127,8 +127,9 @@ endif(${HAS_SPIDERMONKEY})
 
 
 set(LIB_COMPILE_FLAGS " ")
-if(CMAKE_COMPILER_IS_GNUCC)
+if(BUILD_DEBUG)
 	set(LIB_COMPILE_FLAGS "-Wall -Wextra -Wundef -O0 -g")
+endif(BUILD_DEBUG)
 
 	if(SUPPORT_GCC_0X)
 		if(MINGW)
@@ -136,11 +137,10 @@ if(CMAKE_COMPILER_IS_GNUCC)
 		endif(MINGW)
 
 		if(NOT MINGW)
-			set(LIB_COMPILE_FLAGS "${LIB_COMPILE_FLAGS} -std=c++0x")
+			set(LIB_COMPILE_FLAGS "${LIB_COMPILE_FLAGS} -std=c++11")
 		endif(NOT MINGW)
 	endif(SUPPORT_GCC_0X)
 
-endif(CMAKE_COMPILER_IS_GNUCC)
 
 if(MSVC)
 	set(LIB_COMPILE_FLAGS "-W4 -Wp64")
