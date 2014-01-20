@@ -9,13 +9,14 @@
 #ifndef MOCK_OBJECT_HPP_INCLUDED
 #define MOCK_OBJECT_HPP_INCLUDED
 
+#include "config.hpp"
 #include "detail/root.hpp"
 #include "detail/type_name.hpp"
 #include "detail/object_impl.hpp"
 #include <boost/test/utils/basic_cstring/basic_cstring.hpp>
 #include <boost/type_traits/is_base_of.hpp>
 #include <boost/utility/enable_if.hpp>
-#include <boost/shared_ptr.hpp>
+#include <boost/make_shared.hpp>
 #include <boost/optional.hpp>
 
 namespace mock
@@ -47,26 +48,27 @@ namespace detail
     {
     public:
         object()
-            : impl_( new detail::object_impl() )
+            : impl_( boost::make_shared< detail::object_impl >() )
         {}
     protected:
         ~object()
         {}
-    private:
-        friend void reset( const object& o );
-        friend bool verify( const object& o );
-        template< typename E >
-        friend E& detail::configure( const object& o, E& e,
-            boost::unit_test::const_string instance,
-            boost::optional< detail::type_name > type,
-            boost::unit_test::const_string name )
-        {
-            e.configure( *o.impl_, o.impl_.get(), instance, type, name );
-            return e;
-        }
-    private:
+    public:
         boost::shared_ptr< detail::object_impl > impl_;
     };
+
+namespace detail
+{
+    template< typename E >
+    E& configure( const object& o, E& e,
+                 boost::unit_test::const_string instance,
+                 boost::optional< type_name > type,
+                 boost::unit_test::const_string name )
+    {
+        e.configure( *o.impl_, o.impl_.get(), instance, type, name );
+        return e;
+    }
+}
 } // mock
 
 #endif // MOCK_OBJECT_HPP_INCLUDED

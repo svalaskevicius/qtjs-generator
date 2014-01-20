@@ -15,6 +15,7 @@
 #else
 #include <boost/bind.hpp>
 #endif
+#include <boost/move/move.hpp>
 #include <boost/function.hpp>
 
 namespace mock
@@ -36,13 +37,17 @@ namespace detail
         template< typename T >
         static functor_type make_val( T t )
         {
-            return detail::bind( &do_identity< T >, t );
+            return detail::bind( &do_val< T >, t );
         }
         template< typename T >
-        static functor_type make_val( boost::reference_wrapper< T > t )
+        static functor_type make_ref( const boost::reference_wrapper< T >& t )
         {
-            return detail::bind(
-                &do_ref_identity< T >, t.get_pointer() );
+            return detail::bind( &do_ref< T >, t.get_pointer() );
+        }
+        template< typename T >
+        static functor_type make_move( T& t )
+        {
+            return detail::bind( &do_move< T >, &t );
         }
         template< typename T >
         static functor_type make_throw( T t )
@@ -54,13 +59,19 @@ namespace detail
             return detail::bind( &do_nothing );
         }
 
+    private:
         template< typename T >
-        static T do_identity( T t )
+        static T do_val( T t )
         {
             return t;
         }
         template< typename T >
-        static T& do_ref_identity( T* t )
+        static T do_move( T* t )
+        {
+            return boost::move( *t );
+        }
+        template< typename T >
+        static T& do_ref( T* t )
         {
             return *t;
         }

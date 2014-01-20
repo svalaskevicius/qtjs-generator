@@ -9,26 +9,55 @@
 #ifndef MOCK_CONSTRAINTS_HPP_INCLUDED
 #define MOCK_CONSTRAINTS_HPP_INCLUDED
 
+#include "config.hpp"
 #include "constraint.hpp"
+#include "detail/addressof.hpp"
 #include <boost/ref.hpp>
 #include <boost/utility/enable_if.hpp>
-#include <boost/utility/addressof.hpp>
 #include <boost/type_traits/is_convertible.hpp>
+#include <boost/test/floating_point_comparison.hpp>
 
 namespace mock
 {
-    MOCK_UNARY_CONSTRAINT( any, true && &actual )
-    MOCK_UNARY_CONSTRAINT( affirm, !! actual )
-    MOCK_UNARY_CONSTRAINT( negate, ! actual )
-    MOCK_UNARY_CONSTRAINT( evaluate, actual() )
+    MOCK_UNARY_CONSTRAINT( any, 0,, true && &actual )
+    MOCK_UNARY_CONSTRAINT( affirm, 0,, !! actual )
+    MOCK_UNARY_CONSTRAINT( negate, 0,, ! actual )
+    MOCK_UNARY_CONSTRAINT( evaluate, 0,, actual() )
 
-    MOCK_BINARY_CONSTRAINT( equal, actual == boost::unwrap_ref( expected_ ) )
-    MOCK_BINARY_CONSTRAINT( less, actual < boost::unwrap_ref( expected_ ) )
-    MOCK_BINARY_CONSTRAINT( greater, actual > boost::unwrap_ref( expected_ ) )
-    MOCK_BINARY_CONSTRAINT(
-        less_equal, actual <= boost::unwrap_ref( expected_ ) )
-    MOCK_BINARY_CONSTRAINT(
-        greater_equal, actual >= boost::unwrap_ref( expected_ ) )
+    MOCK_NARY_CONSTRAINT( equal, 1, ( expected ), actual == expected )
+    MOCK_NARY_CONSTRAINT( less, 1, ( expected ), actual < expected )
+    MOCK_NARY_CONSTRAINT( greater, 1, ( expected ), actual > expected )
+    MOCK_NARY_CONSTRAINT( less_equal, 1, ( expected ), actual <= expected )
+    MOCK_NARY_CONSTRAINT( greater_equal, 1, ( expected ), actual >= expected )
+
+#ifdef BOOST_MSVC
+#   pragma push_macro( "small" )
+#   undef small
+#endif
+    MOCK_NARY_CONSTRAINT( small, 1, ( expected ), \
+        ( boost::test_tools::check_is_small( actual, expected ) ) )
+#ifdef BOOST_MSVC
+#   pragma pop_macro( "small" )
+#endif
+
+    MOCK_NARY_CONSTRAINT( close, 2, ( expected, tolerance ), \
+        ( boost::test_tools::check_is_close( \
+            actual, expected, \
+            boost::test_tools::percent_tolerance( tolerance ) ) ) )
+    MOCK_NARY_CONSTRAINT( close_fraction, 2, ( expected, tolerance ), \
+        ( boost::test_tools::check_is_close( \
+            actual, expected, \
+            boost::test_tools::fraction_tolerance( tolerance ) ) ) )
+
+#ifdef BOOST_MSVC
+#   pragma push_macro( "near" )
+#   undef near
+#endif
+    MOCK_NARY_CONSTRAINT( near, 2, ( expected, tolerance ), \
+        std::abs( actual - expected ) < tolerance )
+#ifdef BOOST_MSVC
+#   pragma pop_macro( "near" )
+#endif
 
 namespace detail
 {
@@ -36,12 +65,12 @@ namespace detail
     struct same
     {
         explicit same( const Expected& expected )
-            : expected_( boost::addressof( boost::unwrap_ref( expected ) ) )
+            : expected_( detail::addressof( boost::unwrap_ref( expected ) ) )
         {}
         template< typename Actual >
         bool operator()( const Actual& actual ) const
         {
-            return boost::addressof( actual ) == expected_;
+            return detail::addressof( actual ) == expected_;
         }
         friend std::ostream& operator<<( std::ostream& os, const same& s )
         {
@@ -55,7 +84,7 @@ namespace detail
     struct retrieve
     {
         explicit retrieve( Expected& expected )
-            : expected_( boost::addressof( boost::unwrap_ref( expected ) ) )
+            : expected_( detail::addressof( boost::unwrap_ref( expected ) ) )
         {}
         template< typename Actual >
         bool operator()( const Actual& actual,
@@ -79,7 +108,7 @@ namespace detail
                 >
             >::type* = 0 ) const
         {
-            *expected_ = boost::addressof( actual );
+            *expected_ = detail::addressof( actual );
             return true;
         }
         friend std::ostream& operator<<( std::ostream& s, const retrieve& r )

@@ -8,14 +8,21 @@
 
 #include "function_impl_template.hpp"
 
+#define MOCK_FUNCTION_CALL(z, n, d ) \
+    BOOST_PP_COMMA_IF(n) BOOST_DEDUCED_TYPENAME \
+        boost::call_traits< T##n >::param_type
+
+#define MOCK_FUNCTION_PARAM(z, n, d) \
+    MOCK_FUNCTION_CALL(z, n, d) t##n
+
 namespace mock
 {
 namespace detail
 {
     template< typename Signature > class function;
 
-    template< typename R BOOST_PP_COMMA_IF(MOCK_NUM_ARGS)
-        BOOST_PP_ENUM_PARAMS(MOCK_NUM_ARGS, typename T) >
+    template< typename R
+        BOOST_PP_ENUM_TRAILING_PARAMS(MOCK_NUM_ARGS, typename T) >
     class function< R ( BOOST_PP_ENUM_PARAMS(MOCK_NUM_ARGS, T) ) >
     {
     public:
@@ -29,14 +36,15 @@ namespace detail
 
     private:
         typedef function_impl<
-            R ( BOOST_PP_ENUM_PARAMS(MOCK_NUM_ARGS, T) ) > impl_type;
+            R ( BOOST_PP_REPEAT(MOCK_NUM_ARGS, MOCK_FUNCTION_CALL, _) )
+        > impl_type;
         typedef BOOST_DEDUCED_TYPENAME
             impl_type::expectation_type expectation_type;
         typedef BOOST_DEDUCED_TYPENAME impl_type::error_type error_type;
 
     public:
         function()
-            : impl_( new impl_type() )
+            : impl_( boost::make_shared< impl_type >() )
         {}
 
         bool verify() const
@@ -68,7 +76,8 @@ namespace detail
             return impl_->expect();
         }
 
-        R operator()( BOOST_PP_ENUM_BINARY_PARAMS(MOCK_NUM_ARGS, T, t) ) const
+        R operator()(
+            BOOST_PP_REPEAT(MOCK_NUM_ARGS, MOCK_FUNCTION_PARAM, _) ) const
         {
             return (*impl_)( BOOST_PP_ENUM_PARAMS(MOCK_NUM_ARGS, t) );
         }
@@ -105,3 +114,6 @@ namespace detail
     };
 }
 } // mock
+
+#undef MOCK_FUNCTION_CALL
+#undef MOCK_FUNCTION_PARAM

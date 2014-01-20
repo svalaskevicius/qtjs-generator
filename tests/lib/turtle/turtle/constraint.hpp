@@ -9,14 +9,24 @@
 #ifndef MOCK_CONSTRAINT_HPP_INCLUDED
 #define MOCK_CONSTRAINT_HPP_INCLUDED
 
-#include <boost/preprocessor/stringize.hpp>
+#include "config.hpp"
 #include "log.hpp"
+#include <boost/ref.hpp>
+#include <boost/preprocessor/stringize.hpp>
+#include <boost/preprocessor/control/if.hpp>
+#include <boost/preprocessor/variadic/to_array.hpp>
+#include <boost/preprocessor/repetition/enum_binary_params.hpp>
+#include <boost/preprocessor/repetition/enum_params.hpp>
+#include <boost/preprocessor/repetition/enum.hpp>
+#include <boost/preprocessor/array.hpp>
 
 namespace mock
 {
     template< typename Constraint >
     struct constraint
     {
+        constraint()
+        {}
         constraint( const Constraint& c )
             : c_( c )
         {}
@@ -25,50 +35,50 @@ namespace mock
 
 namespace detail
 {
-    template< typename Constraint1, typename Constraint2 >
+    template< typename Lhs, typename Rhs >
     class and_
     {
     public:
-        and_( const Constraint1& c1, const Constraint2& c2 )
-            : c1_( c1 )
-            , c2_( c2 )
+        and_( const Lhs& lhs, const Rhs& rhs )
+            : lhs_( lhs )
+            , rhs_( rhs )
         {}
         template< typename Actual >
         bool operator()( const Actual& actual ) const
         {
-            return c1_( actual ) && c2_( actual );
+            return lhs_( actual ) && rhs_( actual );
         }
         friend std::ostream& operator<<( std::ostream& s, const and_& a )
         {
-            return s << "( " << mock::format( a.c1_ )
-                << " && " << mock::format( a.c2_ ) << " )";
+            return s << "( " << mock::format( a.lhs_ )
+                << " && " << mock::format( a.rhs_ ) << " )";
         }
     private:
-        Constraint1 c1_;
-        Constraint2 c2_;
+        Lhs lhs_;
+        Rhs rhs_;
     };
 
-    template< typename Constraint1, typename Constraint2 >
+    template< typename Lhs, typename Rhs >
     class or_
     {
     public:
-        or_( const Constraint1& c1, const Constraint2& c2 )
-            : c1_( c1 )
-            , c2_( c2 )
+        or_( const Lhs& lhs, const Rhs& rhs )
+            : lhs_( lhs )
+            , rhs_( rhs )
         {}
         template< typename Actual >
         bool operator()( const Actual& actual ) const
         {
-            return c1_( actual ) || c2_( actual );
+            return lhs_( actual ) || rhs_( actual );
         }
         friend std::ostream& operator<<( std::ostream& s, const or_& o )
         {
-            return s << "( " << mock::format( o.c1_ )
-                << " || " << mock::format( o.c2_ )<< " )";
+            return s << "( " << mock::format( o.lhs_ )
+                << " || " << mock::format( o.rhs_ )<< " )";
         }
     private:
-        Constraint1 c1_;
-        Constraint2 c2_;
+        Lhs lhs_;
+        Rhs rhs_;
     };
 
     template< typename Constraint >
@@ -92,20 +102,20 @@ namespace detail
     };
 }
 
-    template< typename Constraint1, typename Constraint2 >
-    const constraint< detail::or_< Constraint1, Constraint2 > >
-        operator||( const constraint< Constraint1 >& lhs,
-                    const constraint< Constraint2 >& rhs )
+    template< typename Lhs, typename Rhs >
+    const constraint< detail::or_< Lhs, Rhs > >
+        operator||( const constraint< Lhs >& lhs,
+                    const constraint< Rhs >& rhs )
     {
-        return detail::or_< Constraint1, Constraint2 >( lhs.c_, rhs.c_ );
+        return detail::or_< Lhs, Rhs >( lhs.c_, rhs.c_ );
     }
 
-    template< typename Constraint1, typename Constraint2 >
-    const constraint< detail::and_< Constraint1, Constraint2 > >
-        operator&&( const constraint< Constraint1 >& lhs,
-                    const constraint< Constraint2 >& rhs )
+    template< typename Lhs, typename Rhs >
+    const constraint< detail::and_< Lhs, Rhs > >
+        operator&&( const constraint< Lhs >& lhs,
+                    const constraint< Rhs >& rhs )
     {
-        return detail::and_< Constraint1, Constraint2 >( lhs.c_, rhs.c_ );
+        return detail::and_< Lhs, Rhs >( lhs.c_, rhs.c_ );
     }
 
     template< typename Constraint >
@@ -116,57 +126,122 @@ namespace detail
     }
 } // mock
 
-#define MOCK_UNARY_CONSTRAINT(N,Expr) \
+#define MOCK_UNARY_CONSTRAINT(Name, n, Args, Expr) \
     namespace detail \
     { \
-        struct N \
+        struct Name \
         { \
             template< typename Actual > \
             bool operator()( const Actual& actual ) const \
             { \
                 return Expr; \
             } \
-            friend std::ostream& operator<<( std::ostream& s, const N& ) \
+            friend std::ostream& operator<<( std::ostream& s, const Name& ) \
             { \
-                return s << BOOST_STRINGIZE(N); \
+                return s << BOOST_STRINGIZE(Name); \
             } \
         }; \
     } \
-    template<> \
-    struct constraint< detail::N > \
-    { \
-        constraint() \
-        {} \
-        detail::N c_; \
-    }; \
-    const constraint< detail::N > N;
+    const mock::constraint< detail::Name > Name;
 
-#define MOCK_BINARY_CONSTRAINT(N,Expr) \
+#define MOCK_CONSTRAINT_ASSIGN(z, n, d) \
+    expected##n( e##n )
+
+#define MOCK_CONSTRAINT_UNWRAP_REF(z, n, d) \
+    boost::unwrap_ref( expected##n )
+
+#define MOCK_CONSTRAINT_FORMAT(z, n, d) \
+    BOOST_PP_IF(n, << ", " <<,) mock::format( c.expected##n )
+
+#define MOCK_CONSTRAINT_MEMBER(z, n, d) \
+    Expected_##n expected##n;
+
+#define MOCK_CONSTRAINT_CREF_PARAM(z, n, Args) \
+    BOOST_DEDUCED_TYPENAME \
+        boost::unwrap_reference< Expected_##n >::type \
+            BOOST_PP_ARRAY_ELEM(n, Args)
+
+#define MOCK_CONSTRAINT_PARAM(z, n, Args) \
+    T##n BOOST_PP_ARRAY_ELEM(n, Args)
+
+#define MOCK_NARY_CONSTRAINT(Name, n, Args, Expr) \
     namespace detail \
     { \
-        template< typename Expected > \
-        struct N \
+        template< BOOST_PP_ENUM_PARAMS(n, typename Expected_) > \
+        struct Name \
         { \
-            explicit N( const Expected& expected ) \
-                : expected_( expected ) \
+            explicit Name( \
+                BOOST_PP_ENUM_BINARY_PARAMS(n, const Expected_, & e) ) \
+                : BOOST_PP_ENUM(n, MOCK_CONSTRAINT_ASSIGN, _) \
             {} \
             template< typename Actual > \
             bool operator()( const Actual& actual ) const \
             { \
+                return test( actual, \
+                    BOOST_PP_ENUM(n, MOCK_CONSTRAINT_UNWRAP_REF, _) ); \
+            } \
+            template< typename Actual > \
+            bool test( const Actual& actual, \
+                BOOST_PP_ENUM(n, \
+                    MOCK_CONSTRAINT_CREF_PARAM, (n, Args)) ) const \
+            { \
                 return Expr; \
             } \
-            friend std::ostream& operator<<( std::ostream& s, const N& n ) \
+            friend std::ostream& operator<<( std::ostream& s, const Name& c ) \
             { \
-                return s << BOOST_STRINGIZE(N) \
-                    << "( " << mock::format( n.expected_ ) << " )"; \
+                return s << BOOST_STRINGIZE(Name) << "( " \
+                    << BOOST_PP_REPEAT(n, MOCK_CONSTRAINT_FORMAT, _) \
+                    << " )"; \
             } \
-            Expected expected_; \
+            BOOST_PP_REPEAT(n, MOCK_CONSTRAINT_MEMBER, _) \
         }; \
     } \
-    template< typename T > \
-    constraint< detail::N< T > > N( T t ) \
+    template< BOOST_PP_ENUM_PARAMS(n, typename T) > \
+    mock::constraint< \
+        detail::Name< BOOST_PP_ENUM_PARAMS(n, T) > \
+    > Name( BOOST_PP_ENUM(n, MOCK_CONSTRAINT_PARAM, (n, Args)) ) \
     { \
-        return detail::N< T >( t ); \
+        return detail::Name< BOOST_PP_ENUM_PARAMS(n, T) > Args; \
     }
+
+#define MOCK_CONSTRAINT_EXT(Name, n, Args, Expr) \
+    BOOST_PP_IF(n, \
+        MOCK_NARY_CONSTRAINT, \
+        MOCK_UNARY_CONSTRAINT)(Name, n, Args, Expr)
+
+#ifdef MOCK_VARIADIC_MACROS
+
+#if BOOST_MSVC
+#   define MOCK_VARIADIC_SIZE(...) \
+        BOOST_PP_CAT(MOCK_VARIADIC_SIZE_I(__VA_ARGS__, \
+            32, 31, 30, 29, 28, 27, 26, 25, 24, 23, \
+            22, 21, 20, 19, 18, 17, 16, 15, 14, 13, \
+            12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,),)
+#else // BOOST_MSVC
+#   define MOCK_VARIADIC_SIZE(...) \
+        MOCK_VARIADIC_SIZE_I(__VA_ARGS__, \
+            32, 31, 30, 29, 28, 27, 26, 25, 24, 23, \
+            22, 21, 20, 19, 18, 17, 16, 15, 14, 13, \
+            12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,)
+#endif // BOOST_MSVC
+#define MOCK_VARIADIC_SIZE_I( \
+    e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, \
+    e13, e14, e15, e16, e17, e18, e19, e20, e21, e22, e23, e24, \
+    e25, e26, e27, e28, e29, e30, e31, size, ...) size
+
+#define MOCK_CONSTRAINT_AUX_AUX(Name, n, Array) \
+    MOCK_CONSTRAINT_EXT( \
+        Name, n, \
+        BOOST_PP_ARRAY_TO_TUPLE(BOOST_PP_ARRAY_POP_BACK(Array)), \
+        BOOST_PP_ARRAY_ELEM(n, Array))
+
+#define MOCK_CONSTRAINT_AUX(Name, Size, Tuple) \
+    MOCK_CONSTRAINT_AUX_AUX(Name, BOOST_PP_DEC(Size), (Size,Tuple))
+
+#define MOCK_CONSTRAINT(Name, ...) \
+    MOCK_CONSTRAINT_AUX( \
+        Name, MOCK_VARIADIC_SIZE(__VA_ARGS__), (__VA_ARGS__))
+
+#endif // MOCK_VARIADIC_MACROS
 
 #endif // MOCK_CONSTRAINT_HPP_INCLUDED

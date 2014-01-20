@@ -9,6 +9,7 @@
 #ifndef MOCK_MATCHER_HPP_INCLUDED
 #define MOCK_MATCHER_HPP_INCLUDED
 
+#include "config.hpp"
 #include "log.hpp"
 #include "constraint.hpp"
 #include "detail/is_functor.hpp"
@@ -84,7 +85,7 @@ namespace mock
     template< typename Actual, typename Functor >
     class matcher< Actual, Functor,
         BOOST_DEDUCED_TYPENAME boost::enable_if<
-            detail::is_functor< Functor >
+            detail::is_functor< Functor, Actual >
         >::type
     > : public detail::matcher_base< Actual >
     {
