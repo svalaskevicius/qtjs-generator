@@ -170,11 +170,11 @@ public:
         {
             return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     int super_pageCount() const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     bool event(QEvent * __arg0)
@@ -213,11 +213,11 @@ public:
         {
             return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this, frame));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QRectF super_frameBoundingRect(QTextFrame * frame) const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     void documentChanged(int from, int charsRemoved, int charsAdded)
@@ -228,11 +228,11 @@ public:
             cpgf::invokeScriptFunction(func.get(), this, from, charsRemoved, charsAdded);
             return;
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     void super_documentChanged(int from, int charsRemoved, int charsAdded)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     QObject * sender() const
@@ -248,11 +248,11 @@ public:
             cpgf::invokeScriptFunction(func.get(), this, painter, context);
             return;
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     void super_draw(QPainter * painter, const QAbstractTextDocumentLayout::PaintContext& context)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     QSizeF documentSize() const
@@ -262,11 +262,11 @@ public:
         {
             return cpgf::fromVariant<QSizeF >(cpgf::invokeScriptFunction(func.get(), this));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QSizeF super_documentSize() const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     int hitTest(const QPointF & point, Qt::HitTestAccuracy accuracy) const
@@ -276,11 +276,11 @@ public:
         {
             return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, point, accuracy));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     int super_hitTest(const QPointF & point, Qt::HitTestAccuracy accuracy) const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     void drawInlineObject(QPainter * painter, const QRectF & rect, QTextInlineObject object, int posInDocument, const QTextFormat & format)
@@ -315,11 +315,11 @@ public:
         {
             return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this, block));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QRectF super_blockBoundingRect(const QTextBlock & block) const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     int senderSignalIndex() const
@@ -398,6 +398,47 @@ public:
     {
         QObject::disconnectNotify(signal);
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("format", (QTextCharFormat (D::ClassType::*) (int))&D::ClassType::format);
+        _d.CPGF_MD_TEMPLATE _method("resizeInlineObject", (void (D::ClassType::*) (QTextInlineObject, int, const QTextFormat &))&D::ClassType::resizeInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
+        _d.CPGF_MD_TEMPLATE _method("formatIndex", (int (D::ClassType::*) (int))&D::ClassType::formatIndex);
+        _d.CPGF_MD_TEMPLATE _method("positionInlineObject", (void (D::ClassType::*) (QTextInlineObject, int, const QTextFormat &))&D::ClassType::positionInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("documentChanged", (void (D::ClassType::*) (int, int, int))&D::ClassType::documentChanged);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("drawInlineObject", (void (D::ClassType::*) (QPainter *, const QRectF &, QTextInlineObject, int, const QTextFormat &))&D::ClassType::drawInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<4> >());
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_resizeInlineObject", (void (D::ClassType::*) (QTextInlineObject, int, const QTextFormat &))&D::ClassType::super_resizeInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
+        _d.CPGF_MD_TEMPLATE _method("super_positionInlineObject", (void (D::ClassType::*) (QTextInlineObject, int, const QTextFormat &))&D::ClassType::super_positionInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_pageCount", (int (D::ClassType::*) () const)&D::ClassType::super_pageCount);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_frameBoundingRect", (QRectF (D::ClassType::*) (QTextFrame *) const)&D::ClassType::super_frameBoundingRect);
+        _d.CPGF_MD_TEMPLATE _method("super_documentChanged", (void (D::ClassType::*) (int, int, int))&D::ClassType::super_documentChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *, const QAbstractTextDocumentLayout::PaintContext&))&D::ClassType::super_draw);
+        _d.CPGF_MD_TEMPLATE _method("super_documentSize", (QSizeF (D::ClassType::*) () const)&D::ClassType::super_documentSize);
+        _d.CPGF_MD_TEMPLATE _method("super_hitTest", (int (D::ClassType::*) (const QPointF &, Qt::HitTestAccuracy) const)&D::ClassType::super_hitTest, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_drawInlineObject", (void (D::ClassType::*) (QPainter *, const QRectF &, QTextInlineObject, int, const QTextFormat &))&D::ClassType::super_drawInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<4> >());
+        _d.CPGF_MD_TEMPLATE _method("super_blockBoundingRect", (QRectF (D::ClassType::*) (const QTextBlock &) const)&D::ClassType::super_blockBoundingRect);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+    }
 };
 
 
@@ -409,41 +450,7 @@ void buildMetaClass_QAbstractTextDocumentLayoutWrapper(const cpgf::GMetaDataConf
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QTextDocument *)>();
     
-    _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-    _d.CPGF_MD_TEMPLATE _method("format", (QTextCharFormat (D::ClassType::*) (int))&D::ClassType::format);
-    _d.CPGF_MD_TEMPLATE _method("resizeInlineObject", (void (D::ClassType::*) (QTextInlineObject, int, const QTextFormat &))&D::ClassType::resizeInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
-    _d.CPGF_MD_TEMPLATE _method("formatIndex", (int (D::ClassType::*) (int))&D::ClassType::formatIndex);
-    _d.CPGF_MD_TEMPLATE _method("positionInlineObject", (void (D::ClassType::*) (QTextInlineObject, int, const QTextFormat &))&D::ClassType::positionInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
-    _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("documentChanged", (void (D::ClassType::*) (int, int, int))&D::ClassType::documentChanged);
-    _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-    _d.CPGF_MD_TEMPLATE _method("drawInlineObject", (void (D::ClassType::*) (QPainter *, const QRectF &, QTextInlineObject, int, const QTextFormat &))&D::ClassType::drawInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<4> >());
-    _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-    _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-    _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-    _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-    _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_resizeInlineObject", (void (D::ClassType::*) (QTextInlineObject, int, const QTextFormat &))&D::ClassType::super_resizeInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
-    _d.CPGF_MD_TEMPLATE _method("super_positionInlineObject", (void (D::ClassType::*) (QTextInlineObject, int, const QTextFormat &))&D::ClassType::super_positionInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-    _d.CPGF_MD_TEMPLATE _method("super_pageCount", (int (D::ClassType::*) () const)&D::ClassType::super_pageCount);
-    _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-    _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_frameBoundingRect", (QRectF (D::ClassType::*) (QTextFrame *) const)&D::ClassType::super_frameBoundingRect);
-    _d.CPGF_MD_TEMPLATE _method("super_documentChanged", (void (D::ClassType::*) (int, int, int))&D::ClassType::super_documentChanged);
-    _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *, const QAbstractTextDocumentLayout::PaintContext&))&D::ClassType::super_draw);
-    _d.CPGF_MD_TEMPLATE _method("super_documentSize", (QSizeF (D::ClassType::*) () const)&D::ClassType::super_documentSize);
-    _d.CPGF_MD_TEMPLATE _method("super_hitTest", (int (D::ClassType::*) (const QPointF &, Qt::HitTestAccuracy) const)&D::ClassType::super_hitTest, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("super_drawInlineObject", (void (D::ClassType::*) (QPainter *, const QRectF &, QTextInlineObject, int, const QTextFormat &))&D::ClassType::super_drawInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<4> >());
-    _d.CPGF_MD_TEMPLATE _method("super_blockBoundingRect", (QRectF (D::ClassType::*) (const QTextBlock &) const)&D::ClassType::super_blockBoundingRect);
-    _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-    _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
-    _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+    QAbstractTextDocumentLayoutWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QAbstractTextDocumentLayout<D>(config, _d);
 }
@@ -471,11 +478,11 @@ public:
             cpgf::invokeScriptFunction(func.get(), this, painter, rect, doc, posInDocument, format);
             return;
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     void super_drawObject(QPainter * painter, const QRectF & rect, QTextDocument * doc, int posInDocument, const QTextFormat & format)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     QSizeF intrinsicSize(QTextDocument * doc, int posInDocument, const QTextFormat & format)
@@ -485,11 +492,19 @@ public:
         {
             return cpgf::fromVariant<QSizeF >(cpgf::invokeScriptFunction(func.get(), this, doc, posInDocument, format));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QSizeF super_intrinsicSize(QTextDocument * doc, int posInDocument, const QTextFormat & format)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
+    }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_drawObject", (void (D::ClassType::*) (QPainter *, const QRectF &, QTextDocument *, int, const QTextFormat &))&D::ClassType::super_drawObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<4> >());
+        _d.CPGF_MD_TEMPLATE _method("super_intrinsicSize", (QSizeF (D::ClassType::*) (QTextDocument *, int, const QTextFormat &))&D::ClassType::super_intrinsicSize, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
     }
 };
 
@@ -501,8 +516,7 @@ void buildMetaClass_QTextObjectInterfaceWrapper(const cpgf::GMetaDataConfigFlags
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("super_drawObject", (void (D::ClassType::*) (QPainter *, const QRectF &, QTextDocument *, int, const QTextFormat &))&D::ClassType::super_drawObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<4> >());
-    _d.CPGF_MD_TEMPLATE _method("super_intrinsicSize", (QSizeF (D::ClassType::*) (QTextDocument *, int, const QTextFormat &))&D::ClassType::super_intrinsicSize, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
+    QTextObjectInterfaceWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QTextObjectInterface<D>(config, _d);
 }

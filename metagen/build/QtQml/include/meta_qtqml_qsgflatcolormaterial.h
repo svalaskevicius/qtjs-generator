@@ -82,6 +82,15 @@ public:
     {
         return QSGFlatColorMaterial::createShader();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_compare", (int (D::ClassType::*) (const QSGMaterial *) const)&D::ClassType::super_compare);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_createShader", (QSGMaterialShader * (D::ClassType::*) () const)&D::ClassType::super_createShader);
+    }
 };
 
 
@@ -92,9 +101,7 @@ void buildMetaClass_QSGFlatColorMaterialWrapper(const cpgf::GMetaDataConfigFlags
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("super_compare", (int (D::ClassType::*) (const QSGMaterial *) const)&D::ClassType::super_compare);
-    _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
-    _d.CPGF_MD_TEMPLATE _method("super_createShader", (QSGMaterialShader * (D::ClassType::*) () const)&D::ClassType::super_createShader);
+    QSGFlatColorMaterialWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QSGFlatColorMaterial<D>(config, _d);
 }

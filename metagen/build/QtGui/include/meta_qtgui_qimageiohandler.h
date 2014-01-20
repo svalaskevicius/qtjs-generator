@@ -118,11 +118,11 @@ public:
         {
             return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, image));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     bool super_read(QImage * image)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     bool jumpToNextImage()
@@ -188,11 +188,11 @@ public:
         {
             return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     bool super_canRead() const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     int loopCount() const
@@ -279,6 +279,26 @@ public:
     {
         return QImageIOHandler::imageCount();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_supportsOption", (bool (D::ClassType::*) (QImageIOHandler::ImageOption) const)&D::ClassType::super_supportsOption);
+        _d.CPGF_MD_TEMPLATE _method("super_jumpToImage", (bool (D::ClassType::*) (int))&D::ClassType::super_jumpToImage);
+        _d.CPGF_MD_TEMPLATE _method("super_read", (bool (D::ClassType::*) (QImage *))&D::ClassType::super_read);
+        _d.CPGF_MD_TEMPLATE _method("super_jumpToNextImage", (bool (D::ClassType::*) ())&D::ClassType::super_jumpToNextImage);
+        _d.CPGF_MD_TEMPLATE _method("super_currentImageNumber", (int (D::ClassType::*) () const)&D::ClassType::super_currentImageNumber);
+        _d.CPGF_MD_TEMPLATE _method("super_nextImageDelay", (int (D::ClassType::*) () const)&D::ClassType::super_nextImageDelay);
+        _d.CPGF_MD_TEMPLATE _method("super_currentImageRect", (QRect (D::ClassType::*) () const)&D::ClassType::super_currentImageRect);
+        _d.CPGF_MD_TEMPLATE _method("super_canRead", (bool (D::ClassType::*) () const)&D::ClassType::super_canRead);
+        _d.CPGF_MD_TEMPLATE _method("super_loopCount", (int (D::ClassType::*) () const)&D::ClassType::super_loopCount);
+        _d.CPGF_MD_TEMPLATE _method("super_setOption", (void (D::ClassType::*) (QImageIOHandler::ImageOption, const QVariant &))&D::ClassType::super_setOption, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_write", (bool (D::ClassType::*) (const QImage &))&D::ClassType::super_write);
+        _d.CPGF_MD_TEMPLATE _method("super_name", (QByteArray (D::ClassType::*) () const)&D::ClassType::super_name);
+        _d.CPGF_MD_TEMPLATE _method("super_option", (QVariant (D::ClassType::*) (QImageIOHandler::ImageOption) const)&D::ClassType::super_option);
+        _d.CPGF_MD_TEMPLATE _method("super_imageCount", (int (D::ClassType::*) () const)&D::ClassType::super_imageCount);
+    }
 };
 
 
@@ -290,20 +310,7 @@ void buildMetaClass_QImageIOHandlerWrapper(const cpgf::GMetaDataConfigFlags & co
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    _d.CPGF_MD_TEMPLATE _method("super_supportsOption", (bool (D::ClassType::*) (QImageIOHandler::ImageOption) const)&D::ClassType::super_supportsOption);
-    _d.CPGF_MD_TEMPLATE _method("super_jumpToImage", (bool (D::ClassType::*) (int))&D::ClassType::super_jumpToImage);
-    _d.CPGF_MD_TEMPLATE _method("super_read", (bool (D::ClassType::*) (QImage *))&D::ClassType::super_read);
-    _d.CPGF_MD_TEMPLATE _method("super_jumpToNextImage", (bool (D::ClassType::*) ())&D::ClassType::super_jumpToNextImage);
-    _d.CPGF_MD_TEMPLATE _method("super_currentImageNumber", (int (D::ClassType::*) () const)&D::ClassType::super_currentImageNumber);
-    _d.CPGF_MD_TEMPLATE _method("super_nextImageDelay", (int (D::ClassType::*) () const)&D::ClassType::super_nextImageDelay);
-    _d.CPGF_MD_TEMPLATE _method("super_currentImageRect", (QRect (D::ClassType::*) () const)&D::ClassType::super_currentImageRect);
-    _d.CPGF_MD_TEMPLATE _method("super_canRead", (bool (D::ClassType::*) () const)&D::ClassType::super_canRead);
-    _d.CPGF_MD_TEMPLATE _method("super_loopCount", (int (D::ClassType::*) () const)&D::ClassType::super_loopCount);
-    _d.CPGF_MD_TEMPLATE _method("super_setOption", (void (D::ClassType::*) (QImageIOHandler::ImageOption, const QVariant &))&D::ClassType::super_setOption, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_write", (bool (D::ClassType::*) (const QImage &))&D::ClassType::super_write);
-    _d.CPGF_MD_TEMPLATE _method("super_name", (QByteArray (D::ClassType::*) () const)&D::ClassType::super_name);
-    _d.CPGF_MD_TEMPLATE _method("super_option", (QVariant (D::ClassType::*) (QImageIOHandler::ImageOption) const)&D::ClassType::super_option);
-    _d.CPGF_MD_TEMPLATE _method("super_imageCount", (int (D::ClassType::*) () const)&D::ClassType::super_imageCount);
+    QImageIOHandlerWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QImageIOHandler<D>(config, _d);
 }
@@ -421,11 +428,11 @@ public:
         {
             return cpgf::fromVariant<QImageIOPlugin::Capabilities >(cpgf::invokeScriptFunction(func.get(), this, device, format));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QImageIOPlugin::Capabilities super_capabilities(QIODevice * device, const QByteArray & format) const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     const QMetaObject * metaObject() const
@@ -449,11 +456,11 @@ public:
         {
             return cpgf::fromVariant<QImageIOHandler * >(cpgf::invokeScriptFunction(func.get(), this, device, format));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QImageIOHandler * super_create(QIODevice * device, const QByteArray & format = QByteArray()) const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     void customEvent(QEvent * __arg0)
@@ -533,6 +540,35 @@ public:
     {
         return QObject::sender();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_capabilities", (QImageIOPlugin::Capabilities (D::ClassType::*) (QIODevice *, const QByteArray &) const)&D::ClassType::super_capabilities, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_create", (QImageIOHandler * (D::ClassType::*) (QIODevice *, const QByteArray &) const)&D::ClassType::super_create, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >())
+            ._default(copyVariantFromCopyable(QByteArray()))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+    }
 };
 
 
@@ -546,29 +582,7 @@ void buildMetaClass_QImageIOPluginWrapper(const cpgf::GMetaDataConfigFlags & con
         ._default(copyVariantFromCopyable(0))
     ;
     
-    _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-    _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-    _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-    _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-    _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-    _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-    _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-    _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_capabilities", (QImageIOPlugin::Capabilities (D::ClassType::*) (QIODevice *, const QByteArray &) const)&D::ClassType::super_capabilities, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-    _d.CPGF_MD_TEMPLATE _method("super_create", (QImageIOHandler * (D::ClassType::*) (QIODevice *, const QByteArray &) const)&D::ClassType::super_create, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >())
-        ._default(copyVariantFromCopyable(QByteArray()))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
-    _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+    QImageIOPluginWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QImageIOPlugin<D>(config, _d);
 }

@@ -56,6 +56,14 @@ public:
     {
         QQmlIncubationController::incubatingObjectCountChanged(__arg0);
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("incubatingObjectCountChanged", (void (D::ClassType::*) (int))&D::ClassType::incubatingObjectCountChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_incubatingObjectCountChanged", (void (D::ClassType::*) (int))&D::ClassType::super_incubatingObjectCountChanged);
+    }
 };
 
 
@@ -66,8 +74,7 @@ void buildMetaClass_QQmlIncubationControllerWrapper(const cpgf::GMetaDataConfigF
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("incubatingObjectCountChanged", (void (D::ClassType::*) (int))&D::ClassType::incubatingObjectCountChanged);
-    _d.CPGF_MD_TEMPLATE _method("super_incubatingObjectCountChanged", (void (D::ClassType::*) (int))&D::ClassType::super_incubatingObjectCountChanged);
+    QQmlIncubationControllerWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QQmlIncubationController<D>(config, _d);
 }
@@ -141,6 +148,16 @@ public:
     {
         QQmlIncubator::setInitialState(__arg0);
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("statusChanged", (void (D::ClassType::*) (QQmlIncubator::Status))&D::ClassType::statusChanged);
+        _d.CPGF_MD_TEMPLATE _method("setInitialState", (void (D::ClassType::*) (QObject *))&D::ClassType::setInitialState);
+        _d.CPGF_MD_TEMPLATE _method("super_statusChanged", (void (D::ClassType::*) (QQmlIncubator::Status))&D::ClassType::super_statusChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_setInitialState", (void (D::ClassType::*) (QObject *))&D::ClassType::super_setInitialState);
+    }
 };
 
 
@@ -151,10 +168,7 @@ void buildMetaClass_QQmlIncubatorWrapper(const cpgf::GMetaDataConfigFlags & conf
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("statusChanged", (void (D::ClassType::*) (QQmlIncubator::Status))&D::ClassType::statusChanged);
-    _d.CPGF_MD_TEMPLATE _method("setInitialState", (void (D::ClassType::*) (QObject *))&D::ClassType::setInitialState);
-    _d.CPGF_MD_TEMPLATE _method("super_statusChanged", (void (D::ClassType::*) (QQmlIncubator::Status))&D::ClassType::super_statusChanged);
-    _d.CPGF_MD_TEMPLATE _method("super_setInitialState", (void (D::ClassType::*) (QObject *))&D::ClassType::super_setInitialState);
+    QQmlIncubatorWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QQmlIncubator<D>(config, _d);
 }

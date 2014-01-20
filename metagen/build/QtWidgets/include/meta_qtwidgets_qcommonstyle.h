@@ -588,6 +588,86 @@ public:
     {
         return QStyle::standardPalette();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_subElementRect", (QRect (D::ClassType::*) (QStyle::SubElement, const QStyleOption *, const QWidget *) const)&D::ClassType::super_subElementRect)
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_polish", (void (D::ClassType::*) (QApplication *))&D::ClassType::super_polish);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_drawPrimitive", (void (D::ClassType::*) (QStyle::PrimitiveElement, const QStyleOption *, QPainter *, const QWidget *) const)&D::ClassType::super_drawPrimitive)
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_generatedIconPixmap", (QPixmap (D::ClassType::*) (QIcon::Mode, const QPixmap &, const QStyleOption *) const)&D::ClassType::super_generatedIconPixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_drawItemText", (void (D::ClassType::*) (QPainter *, const QRect &, int, const QPalette &, bool, const QString &, QPalette::ColorRole) const)&D::ClassType::super_drawItemText, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<3>, cpgf::GMetaRuleCopyConstReference<5> >())
+            ._default(copyVariantFromCopyable(QPalette::NoRole))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_polish", (void (D::ClassType::*) (QWidget *))&D::ClassType::super_polish);
+        _d.CPGF_MD_TEMPLATE _method("super_drawComplexControl", (void (D::ClassType::*) (QStyle::ComplexControl, const QStyleOptionComplex *, QPainter *, const QWidget *) const)&D::ClassType::super_drawComplexControl)
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_standardIcon", (QIcon (D::ClassType::*) (QStyle::StandardPixmap, const QStyleOption *, const QWidget *) const)&D::ClassType::super_standardIcon)
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_hitTestComplexControl", (QStyle::SubControl (D::ClassType::*) (QStyle::ComplexControl, const QStyleOptionComplex *, const QPoint &, const QWidget *) const)&D::ClassType::super_hitTestComplexControl)
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_unpolish", (void (D::ClassType::*) (QApplication *))&D::ClassType::super_unpolish);
+        _d.CPGF_MD_TEMPLATE _method("super_polish", (void (D::ClassType::*) (QPalette &))&D::ClassType::super_polish);
+        _d.CPGF_MD_TEMPLATE _method("super_unpolish", (void (D::ClassType::*) (QWidget *))&D::ClassType::super_unpolish);
+        _d.CPGF_MD_TEMPLATE _method("super_pixelMetric", (int (D::ClassType::*) (QStyle::PixelMetric, const QStyleOption *, const QWidget *) const)&D::ClassType::super_pixelMetric)
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_styleHint", (int (D::ClassType::*) (QStyle::StyleHint, const QStyleOption *, const QWidget *, QStyleHintReturn *) const)&D::ClassType::super_styleHint)
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_drawItemPixmap", (void (D::ClassType::*) (QPainter *, const QRect &, int, const QPixmap &) const)&D::ClassType::super_drawItemPixmap);
+        _d.CPGF_MD_TEMPLATE _method("super_itemPixmapRect", (QRect (D::ClassType::*) (const QRect &, int, const QPixmap &) const)&D::ClassType::super_itemPixmapRect);
+        _d.CPGF_MD_TEMPLATE _method("super_drawControl", (void (D::ClassType::*) (QStyle::ControlElement, const QStyleOption *, QPainter *, const QWidget *) const)&D::ClassType::super_drawControl)
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_layoutSpacing", (int (D::ClassType::*) (QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, const QStyleOption *, const QWidget *) const)&D::ClassType::super_layoutSpacing)
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_standardPixmap", (QPixmap (D::ClassType::*) (QStyle::StandardPixmap, const QStyleOption *, const QWidget *) const)&D::ClassType::super_standardPixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_itemTextRect", (QRect (D::ClassType::*) (const QFontMetrics &, const QRect &, int, bool, const QString &) const)&D::ClassType::super_itemTextRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<4> >());
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_sizeFromContents", (QSize (D::ClassType::*) (QStyle::ContentsType, const QStyleOption *, const QSize &, const QWidget *) const)&D::ClassType::super_sizeFromContents)
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_subControlRect", (QRect (D::ClassType::*) (QStyle::ComplexControl, const QStyleOptionComplex *, QStyle::SubControl, const QWidget *) const)&D::ClassType::super_subControlRect)
+            ._default(copyVariantFromCopyable(0))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("super_standardPalette", (QPalette (D::ClassType::*) () const)&D::ClassType::super_standardPalette);
+    }
 };
 
 
@@ -598,80 +678,7 @@ void buildMetaClass_QCommonStyleWrapper(const cpgf::GMetaDataConfigFlags & confi
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-    _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-    _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-    _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-    _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-    _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-    _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_subElementRect", (QRect (D::ClassType::*) (QStyle::SubElement, const QStyleOption *, const QWidget *) const)&D::ClassType::super_subElementRect)
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_polish", (void (D::ClassType::*) (QApplication *))&D::ClassType::super_polish);
-    _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_drawPrimitive", (void (D::ClassType::*) (QStyle::PrimitiveElement, const QStyleOption *, QPainter *, const QWidget *) const)&D::ClassType::super_drawPrimitive)
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_generatedIconPixmap", (QPixmap (D::ClassType::*) (QIcon::Mode, const QPixmap &, const QStyleOption *) const)&D::ClassType::super_generatedIconPixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >());
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-    _d.CPGF_MD_TEMPLATE _method("super_drawItemText", (void (D::ClassType::*) (QPainter *, const QRect &, int, const QPalette &, bool, const QString &, QPalette::ColorRole) const)&D::ClassType::super_drawItemText, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<3>, cpgf::GMetaRuleCopyConstReference<5> >())
-        ._default(copyVariantFromCopyable(QPalette::NoRole))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_polish", (void (D::ClassType::*) (QWidget *))&D::ClassType::super_polish);
-    _d.CPGF_MD_TEMPLATE _method("super_drawComplexControl", (void (D::ClassType::*) (QStyle::ComplexControl, const QStyleOptionComplex *, QPainter *, const QWidget *) const)&D::ClassType::super_drawComplexControl)
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-    _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_standardIcon", (QIcon (D::ClassType::*) (QStyle::StandardPixmap, const QStyleOption *, const QWidget *) const)&D::ClassType::super_standardIcon)
-        ._default(copyVariantFromCopyable(0))
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_hitTestComplexControl", (QStyle::SubControl (D::ClassType::*) (QStyle::ComplexControl, const QStyleOptionComplex *, const QPoint &, const QWidget *) const)&D::ClassType::super_hitTestComplexControl)
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_unpolish", (void (D::ClassType::*) (QApplication *))&D::ClassType::super_unpolish);
-    _d.CPGF_MD_TEMPLATE _method("super_polish", (void (D::ClassType::*) (QPalette &))&D::ClassType::super_polish);
-    _d.CPGF_MD_TEMPLATE _method("super_unpolish", (void (D::ClassType::*) (QWidget *))&D::ClassType::super_unpolish);
-    _d.CPGF_MD_TEMPLATE _method("super_pixelMetric", (int (D::ClassType::*) (QStyle::PixelMetric, const QStyleOption *, const QWidget *) const)&D::ClassType::super_pixelMetric)
-        ._default(copyVariantFromCopyable(0))
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_styleHint", (int (D::ClassType::*) (QStyle::StyleHint, const QStyleOption *, const QWidget *, QStyleHintReturn *) const)&D::ClassType::super_styleHint)
-        ._default(copyVariantFromCopyable(0))
-        ._default(copyVariantFromCopyable(0))
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_drawItemPixmap", (void (D::ClassType::*) (QPainter *, const QRect &, int, const QPixmap &) const)&D::ClassType::super_drawItemPixmap);
-    _d.CPGF_MD_TEMPLATE _method("super_itemPixmapRect", (QRect (D::ClassType::*) (const QRect &, int, const QPixmap &) const)&D::ClassType::super_itemPixmapRect);
-    _d.CPGF_MD_TEMPLATE _method("super_drawControl", (void (D::ClassType::*) (QStyle::ControlElement, const QStyleOption *, QPainter *, const QWidget *) const)&D::ClassType::super_drawControl)
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_layoutSpacing", (int (D::ClassType::*) (QSizePolicy::ControlType, QSizePolicy::ControlType, Qt::Orientation, const QStyleOption *, const QWidget *) const)&D::ClassType::super_layoutSpacing)
-        ._default(copyVariantFromCopyable(0))
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-    _d.CPGF_MD_TEMPLATE _method("super_standardPixmap", (QPixmap (D::ClassType::*) (QStyle::StandardPixmap, const QStyleOption *, const QWidget *) const)&D::ClassType::super_standardPixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
-        ._default(copyVariantFromCopyable(0))
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_itemTextRect", (QRect (D::ClassType::*) (const QFontMetrics &, const QRect &, int, bool, const QString &) const)&D::ClassType::super_itemTextRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<4> >());
-    _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
-    _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_sizeFromContents", (QSize (D::ClassType::*) (QStyle::ContentsType, const QStyleOption *, const QSize &, const QWidget *) const)&D::ClassType::super_sizeFromContents)
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_subControlRect", (QRect (D::ClassType::*) (QStyle::ComplexControl, const QStyleOptionComplex *, QStyle::SubControl, const QWidget *) const)&D::ClassType::super_subControlRect)
-        ._default(copyVariantFromCopyable(0))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("super_standardPalette", (QPalette (D::ClassType::*) () const)&D::ClassType::super_standardPalette);
+    QCommonStyleWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QCommonStyle<D>(config, _d);
 }

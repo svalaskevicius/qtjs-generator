@@ -54,11 +54,11 @@ public:
             cpgf::invokeScriptFunction(func.get(), this, uri);
             return;
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     void super_registerTypes(const char * uri)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     void initializeEngine(QQmlEngine * engine, const char * uri)
@@ -69,11 +69,19 @@ public:
             cpgf::invokeScriptFunction(func.get(), this, engine, uri);
             return;
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     void super_initializeEngine(QQmlEngine * engine, const char * uri)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
+    }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_registerTypes", (void (D::ClassType::*) (const char *))&D::ClassType::super_registerTypes);
+        _d.CPGF_MD_TEMPLATE _method("super_initializeEngine", (void (D::ClassType::*) (QQmlEngine *, const char *))&D::ClassType::super_initializeEngine);
     }
 };
 
@@ -85,8 +93,7 @@ void buildMetaClass_QQmlExtensionInterfaceWrapper(const cpgf::GMetaDataConfigFla
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("super_registerTypes", (void (D::ClassType::*) (const char *))&D::ClassType::super_registerTypes);
-    _d.CPGF_MD_TEMPLATE _method("super_initializeEngine", (void (D::ClassType::*) (QQmlEngine *, const char *))&D::ClassType::super_initializeEngine);
+    QQmlExtensionInterfaceWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QQmlExtensionInterface<D>(config, _d);
 }
@@ -113,11 +120,18 @@ public:
             cpgf::invokeScriptFunction(func.get(), this, uri);
             return;
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     void super_registerTypes(const char * uri)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
+    }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_registerTypes", (void (D::ClassType::*) (const char *))&D::ClassType::super_registerTypes);
     }
 };
 
@@ -129,7 +143,7 @@ void buildMetaClass_QQmlTypesExtensionInterfaceWrapper(const cpgf::GMetaDataConf
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("super_registerTypes", (void (D::ClassType::*) (const char *))&D::ClassType::super_registerTypes);
+    QQmlTypesExtensionInterfaceWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QQmlTypesExtensionInterface<D>(config, _d);
 }

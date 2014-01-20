@@ -57,11 +57,11 @@ public:
             cpgf::invokeScriptFunction(func.get(), this);
             return;
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     void super_classBegin()
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     void componentComplete()
@@ -72,11 +72,19 @@ public:
             cpgf::invokeScriptFunction(func.get(), this);
             return;
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     void super_componentComplete()
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
+    }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_classBegin", (void (D::ClassType::*) ())&D::ClassType::super_classBegin);
+        _d.CPGF_MD_TEMPLATE _method("super_componentComplete", (void (D::ClassType::*) ())&D::ClassType::super_componentComplete);
     }
 };
 
@@ -89,8 +97,7 @@ void buildMetaClass_QQmlParserStatusWrapper(const cpgf::GMetaDataConfigFlags & c
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    _d.CPGF_MD_TEMPLATE _method("super_classBegin", (void (D::ClassType::*) ())&D::ClassType::super_classBegin);
-    _d.CPGF_MD_TEMPLATE _method("super_componentComplete", (void (D::ClassType::*) ())&D::ClassType::super_componentComplete);
+    QQmlParserStatusWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QQmlParserStatus<D>(config, _d);
 }

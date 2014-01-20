@@ -164,11 +164,11 @@ public:
         {
             return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     bool super_newPage()
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     int devType() const
@@ -207,11 +207,11 @@ public:
         {
             return cpgf::fromVariant<QPaintEngine * >(cpgf::invokeScriptFunction(func.get(), this));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QPaintEngine * super_paintEngine() const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     QPainter * sharedPainter() const
@@ -227,6 +227,26 @@ public:
     {
         return QPaintDevice::sharedPainter();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("metric", (int (D::ClassType::*) (QPaintDevice::PaintDeviceMetric) const)&D::ClassType::metric);
+        _d.CPGF_MD_TEMPLATE _method("redirected", (QPaintDevice * (D::ClassType::*) (QPoint *) const)&D::ClassType::redirected);
+        _d.CPGF_MD_TEMPLATE _method("initPainter", (void (D::ClassType::*) (QPainter *) const)&D::ClassType::initPainter);
+        _d.CPGF_MD_TEMPLATE _method("sharedPainter", (QPainter * (D::ClassType::*) () const)&D::ClassType::sharedPainter);
+        _d.CPGF_MD_TEMPLATE _method("super_setPageSizeMM", (void (D::ClassType::*) (const QSizeF &))&D::ClassType::super_setPageSizeMM);
+        _d.CPGF_MD_TEMPLATE _method("super_metric", (int (D::ClassType::*) (QPaintDevice::PaintDeviceMetric) const)&D::ClassType::super_metric);
+        _d.CPGF_MD_TEMPLATE _method("super_redirected", (QPaintDevice * (D::ClassType::*) (QPoint *) const)&D::ClassType::super_redirected);
+        _d.CPGF_MD_TEMPLATE _method("super_initPainter", (void (D::ClassType::*) (QPainter *) const)&D::ClassType::super_initPainter);
+        _d.CPGF_MD_TEMPLATE _method("super_setMargins", (void (D::ClassType::*) (const QPagedPaintDevice::Margins&))&D::ClassType::super_setMargins);
+        _d.CPGF_MD_TEMPLATE _method("super_newPage", (bool (D::ClassType::*) ())&D::ClassType::super_newPage);
+        _d.CPGF_MD_TEMPLATE _method("super_devType", (int (D::ClassType::*) () const)&D::ClassType::super_devType);
+        _d.CPGF_MD_TEMPLATE _method("super_setPageSize", (void (D::ClassType::*) (QPagedPaintDevice::PageSize))&D::ClassType::super_setPageSize);
+        _d.CPGF_MD_TEMPLATE _method("super_paintEngine", (QPaintEngine * (D::ClassType::*) () const)&D::ClassType::super_paintEngine);
+        _d.CPGF_MD_TEMPLATE _method("super_sharedPainter", (QPainter * (D::ClassType::*) () const)&D::ClassType::super_sharedPainter);
+    }
 };
 
 
@@ -238,20 +258,7 @@ void buildMetaClass_QPagedPaintDeviceWrapper(const cpgf::GMetaDataConfigFlags & 
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    _d.CPGF_MD_TEMPLATE _method("metric", (int (D::ClassType::*) (QPaintDevice::PaintDeviceMetric) const)&D::ClassType::metric);
-    _d.CPGF_MD_TEMPLATE _method("redirected", (QPaintDevice * (D::ClassType::*) (QPoint *) const)&D::ClassType::redirected);
-    _d.CPGF_MD_TEMPLATE _method("initPainter", (void (D::ClassType::*) (QPainter *) const)&D::ClassType::initPainter);
-    _d.CPGF_MD_TEMPLATE _method("sharedPainter", (QPainter * (D::ClassType::*) () const)&D::ClassType::sharedPainter);
-    _d.CPGF_MD_TEMPLATE _method("super_setPageSizeMM", (void (D::ClassType::*) (const QSizeF &))&D::ClassType::super_setPageSizeMM);
-    _d.CPGF_MD_TEMPLATE _method("super_metric", (int (D::ClassType::*) (QPaintDevice::PaintDeviceMetric) const)&D::ClassType::super_metric);
-    _d.CPGF_MD_TEMPLATE _method("super_redirected", (QPaintDevice * (D::ClassType::*) (QPoint *) const)&D::ClassType::super_redirected);
-    _d.CPGF_MD_TEMPLATE _method("super_initPainter", (void (D::ClassType::*) (QPainter *) const)&D::ClassType::super_initPainter);
-    _d.CPGF_MD_TEMPLATE _method("super_setMargins", (void (D::ClassType::*) (const QPagedPaintDevice::Margins&))&D::ClassType::super_setMargins);
-    _d.CPGF_MD_TEMPLATE _method("super_newPage", (bool (D::ClassType::*) ())&D::ClassType::super_newPage);
-    _d.CPGF_MD_TEMPLATE _method("super_devType", (int (D::ClassType::*) () const)&D::ClassType::super_devType);
-    _d.CPGF_MD_TEMPLATE _method("super_setPageSize", (void (D::ClassType::*) (QPagedPaintDevice::PageSize))&D::ClassType::super_setPageSize);
-    _d.CPGF_MD_TEMPLATE _method("super_paintEngine", (QPaintEngine * (D::ClassType::*) () const)&D::ClassType::super_paintEngine);
-    _d.CPGF_MD_TEMPLATE _method("super_sharedPainter", (QPainter * (D::ClassType::*) () const)&D::ClassType::super_sharedPainter);
+    QPagedPaintDeviceWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QPagedPaintDevice<D>(config, _d);
 }

@@ -53,11 +53,11 @@ public:
         {
             return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunction(func.get(), this, parent));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QWidget * super_createWidget(QWidget * parent) const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     QByteArray valuePropertyName() const
@@ -67,11 +67,19 @@ public:
         {
             return cpgf::fromVariant<QByteArray >(cpgf::invokeScriptFunction(func.get(), this));
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     QByteArray super_valuePropertyName() const
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
+    }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_createWidget", (QWidget * (D::ClassType::*) (QWidget *) const)&D::ClassType::super_createWidget);
+        _d.CPGF_MD_TEMPLATE _method("super_valuePropertyName", (QByteArray (D::ClassType::*) () const)&D::ClassType::super_valuePropertyName);
     }
 };
 
@@ -83,8 +91,7 @@ void buildMetaClass_QItemEditorCreatorBaseWrapper(const cpgf::GMetaDataConfigFla
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("super_createWidget", (QWidget * (D::ClassType::*) (QWidget *) const)&D::ClassType::super_createWidget);
-    _d.CPGF_MD_TEMPLATE _method("super_valuePropertyName", (QByteArray (D::ClassType::*) () const)&D::ClassType::super_valuePropertyName);
+    QItemEditorCreatorBaseWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QItemEditorCreatorBase<D>(config, _d);
 }
@@ -138,6 +145,14 @@ public:
     {
         return QItemEditorFactory::valuePropertyName(userType);
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_createEditor", (QWidget * (D::ClassType::*) (int, QWidget *) const)&D::ClassType::super_createEditor);
+        _d.CPGF_MD_TEMPLATE _method("super_valuePropertyName", (QByteArray (D::ClassType::*) (int) const)&D::ClassType::super_valuePropertyName);
+    }
 };
 
 
@@ -148,8 +163,7 @@ void buildMetaClass_QItemEditorFactoryWrapper(const cpgf::GMetaDataConfigFlags &
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("super_createEditor", (QWidget * (D::ClassType::*) (int, QWidget *) const)&D::ClassType::super_createEditor);
-    _d.CPGF_MD_TEMPLATE _method("super_valuePropertyName", (QByteArray (D::ClassType::*) (int) const)&D::ClassType::super_valuePropertyName);
+    QItemEditorFactoryWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QItemEditorFactory<D>(config, _d);
 }

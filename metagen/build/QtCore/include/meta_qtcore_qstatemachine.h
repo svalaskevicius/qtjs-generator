@@ -355,6 +355,44 @@ public:
     {
         return QObject::sender();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("beginMicrostep", (void (D::ClassType::*) (QEvent *))&D::ClassType::beginMicrostep);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("onExit", (void (D::ClassType::*) (QEvent *))&D::ClassType::onExit);
+        _d.CPGF_MD_TEMPLATE _method("endMicrostep", (void (D::ClassType::*) (QEvent *))&D::ClassType::endMicrostep);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("beginSelectTransitions", (void (D::ClassType::*) (QEvent *))&D::ClassType::beginSelectTransitions);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("endSelectTransitions", (void (D::ClassType::*) (QEvent *))&D::ClassType::endSelectTransitions);
+        _d.CPGF_MD_TEMPLATE _method("onEntry", (void (D::ClassType::*) (QEvent *))&D::ClassType::onEntry);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::event);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_beginMicrostep", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_beginMicrostep);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_onExit", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_onExit);
+        _d.CPGF_MD_TEMPLATE _method("super_endMicrostep", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_endMicrostep);
+        _d.CPGF_MD_TEMPLATE _method("super_beginSelectTransitions", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_beginSelectTransitions);
+        _d.CPGF_MD_TEMPLATE _method("super_endSelectTransitions", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_endSelectTransitions);
+        _d.CPGF_MD_TEMPLATE _method("super_onEntry", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_onEntry);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+    }
 };
 
 
@@ -365,38 +403,7 @@ void buildMetaClass_QStateMachineWrapper(const cpgf::GMetaDataConfigFlags & conf
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("beginMicrostep", (void (D::ClassType::*) (QEvent *))&D::ClassType::beginMicrostep);
-    _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-    _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-    _d.CPGF_MD_TEMPLATE _method("onExit", (void (D::ClassType::*) (QEvent *))&D::ClassType::onExit);
-    _d.CPGF_MD_TEMPLATE _method("endMicrostep", (void (D::ClassType::*) (QEvent *))&D::ClassType::endMicrostep);
-    _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-    _d.CPGF_MD_TEMPLATE _method("beginSelectTransitions", (void (D::ClassType::*) (QEvent *))&D::ClassType::beginSelectTransitions);
-    _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-    _d.CPGF_MD_TEMPLATE _method("endSelectTransitions", (void (D::ClassType::*) (QEvent *))&D::ClassType::endSelectTransitions);
-    _d.CPGF_MD_TEMPLATE _method("onEntry", (void (D::ClassType::*) (QEvent *))&D::ClassType::onEntry);
-    _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-    _d.CPGF_MD_TEMPLATE _method("event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::event);
-    _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-    _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_beginMicrostep", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_beginMicrostep);
-    _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_onExit", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_onExit);
-    _d.CPGF_MD_TEMPLATE _method("super_endMicrostep", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_endMicrostep);
-    _d.CPGF_MD_TEMPLATE _method("super_beginSelectTransitions", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_beginSelectTransitions);
-    _d.CPGF_MD_TEMPLATE _method("super_endSelectTransitions", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_endSelectTransitions);
-    _d.CPGF_MD_TEMPLATE _method("super_onEntry", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_onEntry);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-    _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-    _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
-    _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+    QStateMachineWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QStateMachine<D>(config, _d);
 }

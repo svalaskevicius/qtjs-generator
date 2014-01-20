@@ -291,6 +291,47 @@ public:
     {
         return QObject::sender();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
+        _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
+        _d.CPGF_MD_TEMPLATE _method("sourcePixmap", (QPixmap (D::ClassType::*) (Qt::CoordinateSystem, QPoint *, QGraphicsEffect::PixmapPadMode) const)&D::ClassType::sourcePixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
+            ._default(copyVariantFromCopyable(QGraphicsEffect::PadToEffectiveBoundingRect))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("sourceBoundingRect", (QRectF (D::ClassType::*) (Qt::CoordinateSystem) const)&D::ClassType::sourceBoundingRect)
+            ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor);
+    }
 };
 
 
@@ -301,41 +342,7 @@ void buildMetaClass_QGraphicsBlurEffectWrapper(const cpgf::GMetaDataConfigFlags 
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-    _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-    _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-    _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-    _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
-    _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
-    _d.CPGF_MD_TEMPLATE _method("sourcePixmap", (QPixmap (D::ClassType::*) (Qt::CoordinateSystem, QPoint *, QGraphicsEffect::PixmapPadMode) const)&D::ClassType::sourcePixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
-        ._default(copyVariantFromCopyable(QGraphicsEffect::PadToEffectiveBoundingRect))
-        ._default(copyVariantFromCopyable(0))
-        ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("sourceBoundingRect", (QRectF (D::ClassType::*) (Qt::CoordinateSystem) const)&D::ClassType::sourceBoundingRect)
-        ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-    _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
-    _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
-    _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
-    _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-    _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-    _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-    _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
-    _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
-    _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
-    _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor);
+    QGraphicsBlurEffectWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QGraphicsBlurEffect<D>(config, _d);
 }
@@ -606,6 +613,47 @@ public:
     {
         return QObject::sender();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
+        _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
+        _d.CPGF_MD_TEMPLATE _method("sourcePixmap", (QPixmap (D::ClassType::*) (Qt::CoordinateSystem, QPoint *, QGraphicsEffect::PixmapPadMode) const)&D::ClassType::sourcePixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
+            ._default(copyVariantFromCopyable(QGraphicsEffect::PadToEffectiveBoundingRect))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("sourceBoundingRect", (QRectF (D::ClassType::*) (Qt::CoordinateSystem) const)&D::ClassType::sourceBoundingRect)
+            ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor);
+    }
 };
 
 
@@ -616,41 +664,7 @@ void buildMetaClass_QGraphicsColorizeEffectWrapper(const cpgf::GMetaDataConfigFl
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-    _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-    _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-    _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-    _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
-    _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
-    _d.CPGF_MD_TEMPLATE _method("sourcePixmap", (QPixmap (D::ClassType::*) (Qt::CoordinateSystem, QPoint *, QGraphicsEffect::PixmapPadMode) const)&D::ClassType::sourcePixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
-        ._default(copyVariantFromCopyable(QGraphicsEffect::PadToEffectiveBoundingRect))
-        ._default(copyVariantFromCopyable(0))
-        ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("sourceBoundingRect", (QRectF (D::ClassType::*) (Qt::CoordinateSystem) const)&D::ClassType::sourceBoundingRect)
-        ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-    _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
-    _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
-    _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
-    _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-    _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-    _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-    _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
-    _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
-    _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
-    _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor);
+    QGraphicsColorizeEffectWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QGraphicsColorizeEffect<D>(config, _d);
 }
@@ -931,6 +945,47 @@ public:
     {
         return QObject::sender();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
+        _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
+        _d.CPGF_MD_TEMPLATE _method("sourcePixmap", (QPixmap (D::ClassType::*) (Qt::CoordinateSystem, QPoint *, QGraphicsEffect::PixmapPadMode) const)&D::ClassType::sourcePixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
+            ._default(copyVariantFromCopyable(QGraphicsEffect::PadToEffectiveBoundingRect))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("sourceBoundingRect", (QRectF (D::ClassType::*) (Qt::CoordinateSystem) const)&D::ClassType::sourceBoundingRect)
+            ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor);
+    }
 };
 
 
@@ -941,41 +996,7 @@ void buildMetaClass_QGraphicsDropShadowEffectWrapper(const cpgf::GMetaDataConfig
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-    _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-    _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-    _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-    _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
-    _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
-    _d.CPGF_MD_TEMPLATE _method("sourcePixmap", (QPixmap (D::ClassType::*) (Qt::CoordinateSystem, QPoint *, QGraphicsEffect::PixmapPadMode) const)&D::ClassType::sourcePixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
-        ._default(copyVariantFromCopyable(QGraphicsEffect::PadToEffectiveBoundingRect))
-        ._default(copyVariantFromCopyable(0))
-        ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("sourceBoundingRect", (QRectF (D::ClassType::*) (Qt::CoordinateSystem) const)&D::ClassType::sourceBoundingRect)
-        ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-    _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
-    _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
-    _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
-    _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-    _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-    _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-    _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
-    _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
-    _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
-    _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor);
+    QGraphicsDropShadowEffectWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QGraphicsDropShadowEffect<D>(config, _d);
 }
@@ -1229,11 +1250,11 @@ public:
             cpgf::invokeScriptFunction(func.get(), this, painter);
             return;
         }
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     void super_draw(QPainter * painter)
     {
-        throw "Abstract method";
+        throw std::runtime_error("Abstract method");
     }
     
     QRectF boundingRectFor(const QRectF & sourceRect) const
@@ -1254,6 +1275,47 @@ public:
     {
         return QObject::sender();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
+        _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
+        _d.CPGF_MD_TEMPLATE _method("sourcePixmap", (QPixmap (D::ClassType::*) (Qt::CoordinateSystem, QPoint *, QGraphicsEffect::PixmapPadMode) const)&D::ClassType::sourcePixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
+            ._default(copyVariantFromCopyable(QGraphicsEffect::PadToEffectiveBoundingRect))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("sourceBoundingRect", (QRectF (D::ClassType::*) (Qt::CoordinateSystem) const)&D::ClassType::sourceBoundingRect)
+            ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor);
+    }
 };
 
 
@@ -1267,41 +1329,7 @@ void buildMetaClass_QGraphicsEffectWrapper(const cpgf::GMetaDataConfigFlags & co
         ._default(copyVariantFromCopyable(0))
     ;
     
-    _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-    _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-    _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-    _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-    _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
-    _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
-    _d.CPGF_MD_TEMPLATE _method("sourcePixmap", (QPixmap (D::ClassType::*) (Qt::CoordinateSystem, QPoint *, QGraphicsEffect::PixmapPadMode) const)&D::ClassType::sourcePixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
-        ._default(copyVariantFromCopyable(QGraphicsEffect::PadToEffectiveBoundingRect))
-        ._default(copyVariantFromCopyable(0))
-        ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("sourceBoundingRect", (QRectF (D::ClassType::*) (Qt::CoordinateSystem) const)&D::ClassType::sourceBoundingRect)
-        ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-    _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
-    _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
-    _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
-    _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-    _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-    _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-    _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
-    _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
-    _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
-    _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor);
+    QGraphicsEffectWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QGraphicsEffect<D>(config, _d);
 }
@@ -1572,6 +1600,47 @@ public:
     {
         return QObject::sender();
     }
+    template <typename D>
+    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    {
+        (void)config; (void)_d; (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
+        _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
+        _d.CPGF_MD_TEMPLATE _method("sourcePixmap", (QPixmap (D::ClassType::*) (Qt::CoordinateSystem, QPoint *, QGraphicsEffect::PixmapPadMode) const)&D::ClassType::sourcePixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
+            ._default(copyVariantFromCopyable(QGraphicsEffect::PadToEffectiveBoundingRect))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("sourceBoundingRect", (QRectF (D::ClassType::*) (Qt::CoordinateSystem) const)&D::ClassType::sourceBoundingRect)
+            ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
+        ;
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor);
+    }
 };
 
 
@@ -1582,41 +1651,7 @@ void buildMetaClass_QGraphicsOpacityEffectWrapper(const cpgf::GMetaDataConfigFla
     using namespace cpgf;
     
     
-    _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-    _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-    _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-    _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-    _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
-    _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
-    _d.CPGF_MD_TEMPLATE _method("sourcePixmap", (QPixmap (D::ClassType::*) (Qt::CoordinateSystem, QPoint *, QGraphicsEffect::PixmapPadMode) const)&D::ClassType::sourcePixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
-        ._default(copyVariantFromCopyable(QGraphicsEffect::PadToEffectiveBoundingRect))
-        ._default(copyVariantFromCopyable(0))
-        ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("sourceBoundingRect", (QRectF (D::ClassType::*) (Qt::CoordinateSystem) const)&D::ClassType::sourceBoundingRect)
-        ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
-    ;
-    _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-    _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
-    _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
-    _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
-    _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-    _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-    _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-    _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-    _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-    _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
-    _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-    _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-    _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
-    _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
-    _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor);
+    QGraphicsOpacityEffectWrapper::cpgf__register(config, _d);
     
     buildMetaClass_QGraphicsOpacityEffect<D>(config, _d);
 }
