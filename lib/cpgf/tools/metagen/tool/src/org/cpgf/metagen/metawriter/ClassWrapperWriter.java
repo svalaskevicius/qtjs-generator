@@ -124,7 +124,7 @@ public class ClassWrapperWriter {
 			codeWriter.endBlock();
 			if(cppMethod.isPureVirtual()) {
 				if(cppMethod.isPureVirtual()) {
-					codeWriter.writeLine("throw \"Abstract method\";");
+					codeWriter.writeLine("throw std::runtime_error(\"Abstract method\");");
 				}
 			}
 			else {
@@ -144,7 +144,7 @@ public class ClassWrapperWriter {
 		codeWriter.beginBlock();
 			if(cppMethod.isPureVirtual()) {
 				if(cppMethod.isPureVirtual()) {
-					codeWriter.writeLine("throw \"Abstract method\";");
+					codeWriter.writeLine("throw std::runtime_error(\"Abstract method\");");
 				}
 			}
 			else {
@@ -173,7 +173,13 @@ public class ClassWrapperWriter {
 		codeWriter.endBlock("");
 	}
 
-	public void writeSuperMethodBind(CppWriter codeWriter) {
+	private void doWriteRegisterMethod(CppWriter codeWriter) {
+		codeWriter.writeLine("template <typename D>");
+		codeWriter.writeLine("static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)");
+		codeWriter.beginBlock();
+		codeWriter.writeLine("(void)config; (void)_d; (void)_d;");
+		codeWriter.writeLine("using namespace cpgf;");
+
 		for(CppMethod cppMethod : this.overrideMethods.values()) {
 			if (cppMethod.isProtected()) {
 				String name = cppMethod.getPrimaryName();
@@ -186,6 +192,12 @@ public class ClassWrapperWriter {
 				WriterUtil.reflectMethod(codeWriter, "_d", "D::ClassType::", cppMethod, name, name, true);
 			}
 		}
+
+		codeWriter.endBlock("");
+	}
+
+	public void writeSuperMethodBind(CppWriter codeWriter) {
+		codeWriter.writeLine(getWrapperName()+"::cpgf__register(config, _d);");
 	}
 
 	public void writeClassWrapper(CppWriter codeWriter) {
@@ -212,6 +224,8 @@ public class ClassWrapperWriter {
 				}
 			}
 		}
+
+	    doWriteRegisterMethod(codeWriter);
 
 		codeWriter.decIndent();
 		codeWriter.writeLine("};");
