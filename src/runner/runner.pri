@@ -35,7 +35,8 @@ HEADERS += \
 QMAKE_CXXFLAGS_RELEASE -= -Os
 QMAKE_CXXFLAGS_RELEASE += -O3
 
-QMAKE_CXXFLAGS += -pthread -fno-strict-aliasing -fno-tree-vrp
+QMAKE_CXXFLAGS += -pthread -fno-strict-aliasing
+linux-g++: QMAKE_CXXFLAGS += -fno-tree-vrp
 QMAKE_CXXFLAGS_RELEASE += -Wno-unused-parameter
 DEFINES += "ARCH=\"\\\"$$QMAKE_HOST.arch\\\"\"" HAVE_OPENSSL=1 NODE_WANT_INTERNALS=1 OPENSSL_NO_SSL2=1
 

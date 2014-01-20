@@ -5,8 +5,8 @@ TEMPLATE = lib
 
 TARGET=qtjs_qml
 
-PRECOMPILED_HEADER = precompiledIncludes.h
-CONFIG += precompile_header
+#PRECOMPILED_HEADER = precompiledIncludes.h
+#CONFIG += precompile_header
 
 
 QMAKE_CXXFLAGS += -DBUILDING_DLL 
