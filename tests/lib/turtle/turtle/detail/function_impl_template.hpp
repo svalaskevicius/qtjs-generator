@@ -12,14 +12,14 @@
 #   error no error policy has been set
 #endif
 
-#define MOCK_FORMAT(z, n, N) \
+#define MOCK_FUNCTION_FORMAT(z, n, N) \
     << ' ' << mock::format( t##n ) \
     << BOOST_PP_IF(BOOST_PP_EQUAL(N,n), ' ', ',')
 
-#define MOCK_CONTEXT \
+#define MOCK_FUNCTION_CONTEXT \
     boost::unit_test::lazy_ostream::instance() \
         << lazy_context( this ) \
-        << '(' BOOST_PP_REPEAT(MOCK_NUM_ARGS, MOCK_FORMAT, \
+        << '(' BOOST_PP_REPEAT(MOCK_NUM_ARGS, MOCK_FUNCTION_FORMAT, \
             BOOST_PP_DEC(MOCK_NUM_ARGS)) \
         << ')' \
         << lazy_expectations( this )
@@ -30,8 +30,8 @@ namespace detail
 {
     template< typename Signature > class function_impl;
 
-    template< typename R BOOST_PP_COMMA_IF(MOCK_NUM_ARGS)
-        BOOST_PP_ENUM_PARAMS(MOCK_NUM_ARGS, typename T) >
+    template< typename R
+        BOOST_PP_ENUM_TRAILING_PARAMS(MOCK_NUM_ARGS, typename T) >
     class function_impl< R ( BOOST_PP_ENUM_PARAMS(MOCK_NUM_ARGS, T) ) >
         : public verifiable, public boost::enable_shared_from_this<
             function_impl< R ( BOOST_PP_ENUM_PARAMS(MOCK_NUM_ARGS, T) )> >
@@ -39,8 +39,9 @@ namespace detail
     public:
         typedef MOCK_ERROR_POLICY< R > error_type;
 
-        typedef expectation< R ( BOOST_PP_ENUM_PARAMS(MOCK_NUM_ARGS, T) )
-            > expectation_type;
+        typedef expectation<
+                    R ( BOOST_PP_ENUM_PARAMS(MOCK_NUM_ARGS, T) )
+                > expectation_type;
 
     public:
         function_impl()
@@ -52,16 +53,10 @@ namespace detail
             if( valid_ && ! std::uncaught_exception() )
                 for( expectations_cit it = expectations_.begin();
                     it != expectations_.end(); ++it )
-                {
                     if( ! it->verify() )
                         error_type::fail( "untriggered expectation",
                             boost::unit_test::lazy_ostream::instance()
                                 << *this, it->file(), it->line() );
-                    else if( ! it->invoked() )
-                        error_type::call(
-                            boost::unit_test::lazy_ostream::instance()
-                                << *this, it->file(), it->line() );
-                }
             if( context_ )
                 context_->remove( *this );
         }
@@ -113,22 +108,22 @@ namespace detail
                     if( ! it->invoke() )
                     {
                         error_type::fail( "sequence failed",
-                            MOCK_CONTEXT, it->file(), it->line() );
+                            MOCK_FUNCTION_CONTEXT, it->file(), it->line() );
                         return error_type::abort();
                     }
                     if( ! it->functor() )
                     {
                         error_type::fail( "missing action",
-                            MOCK_CONTEXT, it->file(), it->line() );
+                            MOCK_FUNCTION_CONTEXT, it->file(), it->line() );
                         return error_type::abort();
                     }
                     valid_ = true;
                     error_type::call(
-                        MOCK_CONTEXT, it->file(), it->line() );
+                        MOCK_FUNCTION_CONTEXT, it->file(), it->line() );
                     return it->functor()(
                         BOOST_PP_ENUM_PARAMS(MOCK_NUM_ARGS, t) );
                 }
-            error_type::fail( "unexpected call", MOCK_CONTEXT );
+            error_type::fail( "unexpected call", MOCK_FUNCTION_CONTEXT );
             return error_type::abort();
         }
 
@@ -182,6 +177,5 @@ namespace detail
 }
 } // mock
 
-#undef MOCK_FORMAT
-#undef MOCK_OPERATOR
-#undef MOCK_CONTEXT
+#undef MOCK_FUNCTION_FORMAT
+#undef MOCK_FUNCTION_CONTEXT

@@ -9,8 +9,9 @@
 #ifndef MOCK_FORMATTER_HPP_INCLUDED
 #define MOCK_FORMATTER_HPP_INCLUDED
 
+#include "../config.hpp"
 #include "../stream.hpp"
-#include <boost/utility/addressof.hpp>
+#include "addressof.hpp"
 
 namespace mock
 {
@@ -20,7 +21,7 @@ namespace detail
     struct formatter
     {
         explicit formatter( const T& t )
-            : t_( boost::addressof( t ) )
+            : t_( detail::addressof( t ) )
         {}
         void serialize( stream& s ) const
         {

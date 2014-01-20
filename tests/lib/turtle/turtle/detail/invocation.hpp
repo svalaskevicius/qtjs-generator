@@ -9,6 +9,7 @@
 #ifndef MOCK_INVOCATION_HPP_INCLUDED
 #define MOCK_INVOCATION_HPP_INCLUDED
 
+#include "../config.hpp"
 #include <boost/noncopyable.hpp>
 #include <stdexcept>
 #include <ostream>
@@ -27,7 +28,6 @@ namespace detail
         virtual bool invoke() = 0;
         virtual bool verify() const = 0;
 
-        virtual bool invoked() const = 0;
         virtual bool exhausted() const = 0;
 
         friend std::ostream& operator<<( std::ostream& s, const invocation& i )
@@ -57,11 +57,6 @@ namespace detail
                 return false;
             ++count_;
             return true;
-        }
-
-        virtual bool invoked() const
-        {
-            return count_ > 0;
         }
 
         virtual bool exhausted() const

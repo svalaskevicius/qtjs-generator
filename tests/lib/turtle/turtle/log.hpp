@@ -9,6 +9,7 @@
 #ifndef MOCK_LOG_HPP_INCLUDED
 #define MOCK_LOG_HPP_INCLUDED
 
+#include "config.hpp"
 #include "stream.hpp"
 #include "format.hpp"
 #include <boost/utility/enable_if.hpp>
@@ -112,30 +113,57 @@ namespace detail
         return s;
     }
     template< typename T >
-    stream& operator<<( stream& s, boost::reference_wrapper< T > t )
+    stream& operator<<( stream& s, const boost::reference_wrapper< T >& t )
     {
         return s << mock::format( t.get() );
     }
     template< typename T >
-    stream& operator<<( stream& s, boost::shared_ptr< T > t )
+    stream& operator<<( stream& s, const boost::shared_ptr< T >& t )
     {
         return s << mock::format( t.get() );
     }
     template< typename T >
-    stream& operator<<( stream& s, boost::weak_ptr< T > t )
+    stream& operator<<( stream& s, const boost::weak_ptr< T >& t )
     {
         return s << mock::format( t.lock() );
     }
+
+#ifdef MOCK_SMART_PTR
     template< typename T >
-    stream& operator<<( stream& s, boost::lambda::lambda_functor< T > )
+    stream& operator<<( stream& s, const std::shared_ptr< T >& t )
+    {
+        return s << mock::format( t.get() );
+    }
+    template< typename T >
+    stream& operator<<( stream& s, const std::weak_ptr< T >& t )
+    {
+        return s << mock::format( t.lock() );
+    }
+    template< typename T, typename D >
+    inline stream& operator<<( stream& s, const std::unique_ptr< T, D >& p )
+    {
+        return s << mock::format( p.get() );
+    }
+#endif
+
+    template< typename T >
+    stream& operator<<( stream& s, const boost::lambda::lambda_functor< T >& )
     {
         return s << '?';
     }
     template< typename T >
-    stream& operator<<( stream& s, boost::phoenix::actor< T > )
+    stream& operator<<( stream& s, const boost::phoenix::actor< T >& )
     {
         return s << '?';
     }
+
+#ifdef MOCK_NULLPTR
+    inline stream& operator<<( stream& s, std::nullptr_t )
+    {
+        return s << "nullptr";
+    }
+#endif
+
     template< typename T >
     BOOST_DEDUCED_TYPENAME boost::enable_if<
         boost::function_types::is_callable_builtin< T >,

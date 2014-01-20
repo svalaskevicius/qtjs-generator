@@ -28,6 +28,7 @@
 #include <boost/test/utils/basic_cstring/basic_cstring.hpp>
 #include <boost/test/utils/lazy_ostream.hpp>
 #include <boost/enable_shared_from_this.hpp>
+#include <boost/call_traits.hpp>
 #include <boost/optional.hpp>
 #include <ostream>
 #include <vector>
@@ -39,7 +40,7 @@
 #undef MOCK_NUM_ARGS_0
 #undef MOCK_NUM_ARGS
 
-#define BOOST_PP_FILENAME_1 "turtle/detail/function_iterate.hpp"
+#define BOOST_PP_FILENAME_1 <turtle/detail/function_iterate.hpp>
 #define BOOST_PP_ITERATION_LIMITS (1, MOCK_MAX_ARGS)
 #include BOOST_PP_ITERATE()
 #undef BOOST_PP_FILENAME_1
