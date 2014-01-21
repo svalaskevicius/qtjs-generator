@@ -602,7 +602,7 @@ GGlueDataWrapperPool::GGlueDataWrapperPool()
 typedef vector<GGlueDataWrapper *> TempListType;
 GGlueDataWrapperPool::~GGlueDataWrapperPool()
 {
-    this->clear();
+	this->clear();
 	this->active = false;
 }
 
@@ -614,10 +614,20 @@ void GGlueDataWrapperPool::clear()
 	TempListType tempList(this->wrapperSet.begin(), this->wrapperSet.end());
 	this->wrapperSet.clear();
 
+	// delete objects first - as they depend on other bound data
 	for(TempListType::iterator it = tempList.begin(); it != tempList.end(); ++it) {
-		if((*it)->getData() && (*it)->getData()->getType() != gdtClass) {
+		if((*it)->getData() && (*it)->getData()->getType() == gdtObject) {
 			freeGlueDataWrapper(*it);
 			*it = NULL;
+		}
+	}
+
+	for(TempListType::iterator it = tempList.begin(); it != tempList.end(); ++it) {
+		if(*it != NULL) {
+			if((*it)->getData() && (*it)->getData()->getType() != gdtClass) {
+				freeGlueDataWrapper(*it);
+				*it = NULL;
+			}
 		}
 	}
 
