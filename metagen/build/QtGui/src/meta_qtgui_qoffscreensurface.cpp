@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QOffscreenSurface()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QOffscreenSurface, QObject, QSurface> _nd = GDefineMetaClass<QOffscreenSurface, QObject, QSurface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QOffscreenSurface");
-        buildMetaClass_QOffscreenSurface(0, _nd);
+        GDefineMetaClass<QOffscreenSurface, QObject, QSurface> _nd = GDefineMetaClass<QOffscreenSurface, QObject, QSurface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QOffscreenSurface", &buildMetaClass_QOffscreenSurface);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

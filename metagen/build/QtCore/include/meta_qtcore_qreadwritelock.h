@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_QReadLocker(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QReadLocker(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QReadWriteLock *)>();
@@ -31,9 +31,9 @@ void buildMetaClass_QReadLocker(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QReadWriteLock(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QReadWriteLock(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QReadWriteLock::RecursionMode)>()
@@ -54,9 +54,9 @@ void buildMetaClass_QReadWriteLock(const cpgf::GMetaDataConfigFlags & config, D 
 
 
 template <typename D>
-void buildMetaClass_QWriteLocker(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QWriteLocker(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QReadWriteLock *)>();

@@ -21,9 +21,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_QSGVertexColorMaterial(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGVertexColorMaterial(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -79,9 +79,9 @@ public:
         return QSGVertexColorMaterial::createShader();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::type);
         _d.CPGF_MD_TEMPLATE _method("createShader", (QSGMaterialShader * (D::ClassType::*) () const)&D::ClassType::createShader);
@@ -93,15 +93,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSGVertexColorMaterialWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGVertexColorMaterialWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSGVertexColorMaterialWrapper::cpgf__register(config, _d);
+    QSGVertexColorMaterialWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSGVertexColorMaterial<D>(config, _d);
+    buildMetaClass_QSGVertexColorMaterial<D>(_d);
 }
 
 

@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QSignalTransition()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSignalTransition, QAbstractTransition> _nd = GDefineMetaClass<QSignalTransition, QAbstractTransition>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSignalTransition");
-        buildMetaClass_QSignalTransition(0, _nd);
+        GDefineMetaClass<QSignalTransition, QAbstractTransition> _nd = GDefineMetaClass<QSignalTransition, QAbstractTransition>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSignalTransition", &buildMetaClass_QSignalTransition);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSignalTransitionWrapper, QSignalTransition> _nd = GDefineMetaClass<QSignalTransitionWrapper, QSignalTransition>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSignalTransitionWrapper");
-        buildMetaClass_QSignalTransitionWrapper(0, _nd);
+        GDefineMetaClass<QSignalTransitionWrapper, QSignalTransition> _nd = GDefineMetaClass<QSignalTransitionWrapper, QSignalTransition>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSignalTransitionWrapper", &buildMetaClass_QSignalTransitionWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -19,18 +19,18 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qarraydata(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qarraydata(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T, size_t N>
-void buildMetaClass_QStaticArrayData(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStaticArrayData(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("header", &D::ClassType::header);
@@ -39,9 +39,9 @@ void buildMetaClass_QStaticArrayData(const cpgf::GMetaDataConfigFlags & config, 
 
 
 template <typename D, class T>
-void buildMetaClass_QTypedArrayData(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTypedArrayData(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("data", (T * (D::ClassType::*) ())&D::ClassType::data);

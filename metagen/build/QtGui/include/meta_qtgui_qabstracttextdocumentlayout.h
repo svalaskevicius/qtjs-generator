@@ -21,9 +21,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_QAbstractTextDocumentLayout(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAbstractTextDocumentLayout(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -399,9 +399,9 @@ public:
         QObject::disconnectNotify(signal);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
@@ -443,23 +443,23 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAbstractTextDocumentLayoutWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAbstractTextDocumentLayoutWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QTextDocument *)>();
     
-    QAbstractTextDocumentLayoutWrapper::cpgf__register(config, _d);
+    QAbstractTextDocumentLayoutWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAbstractTextDocumentLayout<D>(config, _d);
+    buildMetaClass_QAbstractTextDocumentLayout<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QTextObjectInterface(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextObjectInterface(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("intrinsicSize", &D::ClassType::intrinsicSize, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
@@ -499,9 +499,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_drawObject", (void (D::ClassType::*) (QPainter *, const QRectF &, QTextDocument *, int, const QTextFormat &))&D::ClassType::super_drawObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<4> >());
         _d.CPGF_MD_TEMPLATE _method("super_intrinsicSize", (QSizeF (D::ClassType::*) (QTextDocument *, int, const QTextFormat &))&D::ClassType::super_intrinsicSize, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
@@ -510,15 +510,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QTextObjectInterfaceWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextObjectInterfaceWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QTextObjectInterfaceWrapper::cpgf__register(config, _d);
+    QTextObjectInterfaceWrapper::cpgf__register(_d);
     
-    buildMetaClass_QTextObjectInterface<D>(config, _d);
+    buildMetaClass_QTextObjectInterface<D>(_d);
 }
 
 

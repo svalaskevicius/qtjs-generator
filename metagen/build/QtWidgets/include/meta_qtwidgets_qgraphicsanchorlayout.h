@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QGraphicsAnchor(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsAnchor(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -210,9 +210,9 @@ public:
         return QGraphicsAnchor::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -238,22 +238,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsAnchorWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsAnchorWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsAnchorWrapper::cpgf__register(config, _d);
+    QGraphicsAnchorWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsAnchor<D>(config, _d);
+    buildMetaClass_QGraphicsAnchor<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsAnchorLayout(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsAnchorLayout(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QGraphicsLayoutItem *)>()
@@ -431,9 +431,9 @@ public:
         QGraphicsAnchorLayout::setGeometry(rect);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("sizeHint", (QSizeF (D::ClassType::*) (Qt::SizeHint, const QSizeF &) const)&D::ClassType::sizeHint)
             ._default(copyVariantFromCopyable(QSizeF()))
@@ -457,15 +457,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsAnchorLayoutWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsAnchorLayoutWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsAnchorLayoutWrapper::cpgf__register(config, _d);
+    QGraphicsAnchorLayoutWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsAnchorLayout<D>(config, _d);
+    buildMetaClass_QGraphicsAnchorLayout<D>(_d);
 }
 
 

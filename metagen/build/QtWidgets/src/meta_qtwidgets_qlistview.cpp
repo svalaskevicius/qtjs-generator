@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QListView()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QListView, QAbstractItemView> _nd = GDefineMetaClass<QListView, QAbstractItemView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QListView");
-        buildMetaClass_QListView(0, _nd);
+        GDefineMetaClass<QListView, QAbstractItemView> _nd = GDefineMetaClass<QListView, QAbstractItemView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QListView", &buildMetaClass_QListView);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QListViewWrapper, QListView> _nd = GDefineMetaClass<QListViewWrapper, QListView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QListViewWrapper");
-        buildMetaClass_QListViewWrapper(0, _nd);
+        GDefineMetaClass<QListViewWrapper, QListView> _nd = GDefineMetaClass<QListViewWrapper, QListView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QListViewWrapper", &buildMetaClass_QListViewWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

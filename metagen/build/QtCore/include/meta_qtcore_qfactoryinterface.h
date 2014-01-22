@@ -21,9 +21,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_QFactoryInterface(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFactoryInterface(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("keys", &D::ClassType::keys);
@@ -47,9 +47,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_keys", (QStringList (D::ClassType::*) () const)&D::ClassType::super_keys);
     }
@@ -57,15 +57,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QFactoryInterfaceWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFactoryInterfaceWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QFactoryInterfaceWrapper::cpgf__register(config, _d);
+    QFactoryInterfaceWrapper::cpgf__register(_d);
     
-    buildMetaClass_QFactoryInterface<D>(config, _d);
+    buildMetaClass_QFactoryInterface<D>(_d);
 }
 
 

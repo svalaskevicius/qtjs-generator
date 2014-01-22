@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QStyleHints()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleHints, QObject> _nd = GDefineMetaClass<QStyleHints, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QStyleHints");
-        buildMetaClass_QStyleHints(0, _nd);
+        GDefineMetaClass<QStyleHints, QObject> _nd = GDefineMetaClass<QStyleHints, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStyleHints", &buildMetaClass_QStyleHints);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QStyleHintsWrapper, QStyleHints> _nd = GDefineMetaClass<QStyleHintsWrapper, QStyleHints>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QStyleHintsWrapper");
-        buildMetaClass_QStyleHintsWrapper(0, _nd);
+        GDefineMetaClass<QStyleHintsWrapper, QStyleHints> _nd = GDefineMetaClass<QStyleHintsWrapper, QStyleHints>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStyleHintsWrapper", &buildMetaClass_QStyleHintsWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

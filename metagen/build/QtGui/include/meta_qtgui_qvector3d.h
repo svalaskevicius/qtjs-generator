@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qvector3d(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qvector3d(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qFuzzyCompare", (bool (*) (const QVector3D &, const QVector3D &))&qFuzzyCompare);
@@ -66,9 +66,9 @@ inline QVector3D & opErAToRWrapper_QVector3D__opDivAssign(QVector3D * self, floa
 
 
 template <typename D>
-void buildMetaClass_QVector3D(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QVector3D(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

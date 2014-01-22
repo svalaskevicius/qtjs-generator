@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qmetaobject()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qmetaobject(0, _d);
+    buildMetaClass_Global_qmetaobject(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QMetaClassInfo()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMetaClassInfo> _nd = GDefineMetaClass<QMetaClassInfo>::declare("QMetaClassInfo");
-        buildMetaClass_QMetaClassInfo(0, _nd);
+        GDefineMetaClass<QMetaClassInfo> _nd = GDefineMetaClass<QMetaClassInfo>::lazyDeclare("QMetaClassInfo", &buildMetaClass_QMetaClassInfo);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QMetaEnum()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMetaEnum> _nd = GDefineMetaClass<QMetaEnum>::declare("QMetaEnum");
-        buildMetaClass_QMetaEnum(0, _nd);
+        GDefineMetaClass<QMetaEnum> _nd = GDefineMetaClass<QMetaEnum>::lazyDeclare("QMetaEnum", &buildMetaClass_QMetaEnum);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -98,8 +96,7 @@ GDefineMetaInfo createMetaClass_QMetaMethod()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMetaMethod> _nd = GDefineMetaClass<QMetaMethod>::declare("QMetaMethod");
-        buildMetaClass_QMetaMethod(0, _nd);
+        GDefineMetaClass<QMetaMethod> _nd = GDefineMetaClass<QMetaMethod>::lazyDeclare("QMetaMethod", &buildMetaClass_QMetaMethod);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -113,8 +110,7 @@ GDefineMetaInfo createMetaClass_QMetaProperty()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMetaProperty> _nd = GDefineMetaClass<QMetaProperty>::declare("QMetaProperty");
-        buildMetaClass_QMetaProperty(0, _nd);
+        GDefineMetaClass<QMetaProperty> _nd = GDefineMetaClass<QMetaProperty>::lazyDeclare("QMetaProperty", &buildMetaClass_QMetaProperty);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

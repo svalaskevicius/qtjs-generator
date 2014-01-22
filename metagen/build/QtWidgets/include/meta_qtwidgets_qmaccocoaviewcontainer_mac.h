@@ -18,9 +18,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_Global_qmaccocoaviewcontainer_mac(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qmaccocoaviewcontainer_mac(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }

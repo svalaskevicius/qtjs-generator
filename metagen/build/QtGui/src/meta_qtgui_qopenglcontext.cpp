@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qopenglcontext()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qopenglcontext(0, _d);
+    buildMetaClass_Global_qopenglcontext(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,13 +33,11 @@ GDefineMetaInfo createMetaClass_QOpenGLContext()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QOpenGLContext, QObject> _nd = GDefineMetaClass<QOpenGLContext, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QOpenGLContext");
-        buildMetaClass_QOpenGLContext(0, _nd);
+        GDefineMetaClass<QOpenGLContext, QObject> _nd = GDefineMetaClass<QOpenGLContext, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QOpenGLContext", &buildMetaClass_QOpenGLContext);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QOpenGLContextWrapper, QOpenGLContext> _nd = GDefineMetaClass<QOpenGLContextWrapper, QOpenGLContext>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QOpenGLContextWrapper");
-        buildMetaClass_QOpenGLContextWrapper(0, _nd);
+        GDefineMetaClass<QOpenGLContextWrapper, QOpenGLContext> _nd = GDefineMetaClass<QOpenGLContextWrapper, QOpenGLContext>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QOpenGLContextWrapper", &buildMetaClass_QOpenGLContextWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -53,13 +51,11 @@ GDefineMetaInfo createMetaClass_QOpenGLContextGroup()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QOpenGLContextGroup, QObject> _nd = GDefineMetaClass<QOpenGLContextGroup, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QOpenGLContextGroup");
-        buildMetaClass_QOpenGLContextGroup(0, _nd);
+        GDefineMetaClass<QOpenGLContextGroup, QObject> _nd = GDefineMetaClass<QOpenGLContextGroup, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QOpenGLContextGroup", &buildMetaClass_QOpenGLContextGroup);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QOpenGLContextGroupWrapper, QOpenGLContextGroup> _nd = GDefineMetaClass<QOpenGLContextGroupWrapper, QOpenGLContextGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QOpenGLContextGroupWrapper");
-        buildMetaClass_QOpenGLContextGroupWrapper(0, _nd);
+        GDefineMetaClass<QOpenGLContextGroupWrapper, QOpenGLContextGroup> _nd = GDefineMetaClass<QOpenGLContextGroupWrapper, QOpenGLContextGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QOpenGLContextGroupWrapper", &buildMetaClass_QOpenGLContextGroupWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -73,8 +69,7 @@ GDefineMetaInfo createMetaClass_QOpenGLVersionProfile()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QOpenGLVersionProfile> _nd = GDefineMetaClass<QOpenGLVersionProfile>::declare("QOpenGLVersionProfile");
-        buildMetaClass_QOpenGLVersionProfile(0, _nd);
+        GDefineMetaClass<QOpenGLVersionProfile> _nd = GDefineMetaClass<QOpenGLVersionProfile>::lazyDeclare("QOpenGLVersionProfile", &buildMetaClass_QOpenGLVersionProfile);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QLoggingCategory()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QLoggingCategory> _nd = GDefineMetaClass<QLoggingCategory>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QLoggingCategory");
-        buildMetaClass_QLoggingCategory(0, _nd);
+        GDefineMetaClass<QLoggingCategory> _nd = GDefineMetaClass<QLoggingCategory>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QLoggingCategory", &buildMetaClass_QLoggingCategory);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

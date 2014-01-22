@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QTabBar(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTabBar(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>()
@@ -975,9 +975,9 @@ public:
         QWidget::closeEvent(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
         _d.CPGF_MD_TEMPLATE _method("minimumTabSizeHint", (QSize (D::ClassType::*) (int) const)&D::ClassType::minimumTabSizeHint);
@@ -1099,15 +1099,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QTabBarWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTabBarWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QTabBarWrapper::cpgf__register(config, _d);
+    QTabBarWrapper::cpgf__register(_d);
     
-    buildMetaClass_QTabBar<D>(config, _d);
+    buildMetaClass_QTabBar<D>(_d);
 }
 
 

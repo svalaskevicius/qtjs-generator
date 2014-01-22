@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QAbstractSlider()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAbstractSlider, QWidget> _nd = GDefineMetaClass<QAbstractSlider, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAbstractSlider");
-        buildMetaClass_QAbstractSlider(0, _nd);
+        GDefineMetaClass<QAbstractSlider, QWidget> _nd = GDefineMetaClass<QAbstractSlider, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAbstractSlider", &buildMetaClass_QAbstractSlider);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAbstractSliderWrapper, QAbstractSlider> _nd = GDefineMetaClass<QAbstractSliderWrapper, QAbstractSlider>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAbstractSliderWrapper");
-        buildMetaClass_QAbstractSliderWrapper(0, _nd);
+        GDefineMetaClass<QAbstractSliderWrapper, QAbstractSlider> _nd = GDefineMetaClass<QAbstractSliderWrapper, QAbstractSlider>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAbstractSliderWrapper", &buildMetaClass_QAbstractSliderWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

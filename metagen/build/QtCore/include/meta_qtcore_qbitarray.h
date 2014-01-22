@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qbitarray(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qbitarray(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QBitArray (*)(const QBitArray &, const QBitArray &)>(mopHolder & mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
@@ -68,9 +68,9 @@ inline bool opErAToRWrapper_QBitArray__opNotEqual(const QBitArray * self, const 
 
 
 template <typename D>
-void buildMetaClass_QBitArray(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QBitArray(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -137,9 +137,9 @@ inline QBitRef & opErAToRWrapper_QBitRef__opAssign(QBitRef * self, bool val) {
 
 
 template <typename D>
-void buildMetaClass_QBitRef(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QBitRef(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator< bool (cpgf::GMetaSelf)>(mopHolder());

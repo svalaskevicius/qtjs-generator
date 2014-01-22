@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QScrollBar()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QScrollBar, QAbstractSlider> _nd = GDefineMetaClass<QScrollBar, QAbstractSlider>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QScrollBar");
-        buildMetaClass_QScrollBar(0, _nd);
+        GDefineMetaClass<QScrollBar, QAbstractSlider> _nd = GDefineMetaClass<QScrollBar, QAbstractSlider>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QScrollBar", &buildMetaClass_QScrollBar);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QScrollBarWrapper, QScrollBar> _nd = GDefineMetaClass<QScrollBarWrapper, QScrollBar>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QScrollBarWrapper");
-        buildMetaClass_QScrollBarWrapper(0, _nd);
+        GDefineMetaClass<QScrollBarWrapper, QScrollBar> _nd = GDefineMetaClass<QScrollBarWrapper, QScrollBar>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QScrollBarWrapper", &buildMetaClass_QScrollBarWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QSGFlatColorMaterial()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSGFlatColorMaterial, QSGMaterial> _nd = GDefineMetaClass<QSGFlatColorMaterial, QSGMaterial>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSGFlatColorMaterial");
-        buildMetaClass_QSGFlatColorMaterial(0, _nd);
+        GDefineMetaClass<QSGFlatColorMaterial, QSGMaterial> _nd = GDefineMetaClass<QSGFlatColorMaterial, QSGMaterial>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSGFlatColorMaterial", &buildMetaClass_QSGFlatColorMaterial);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSGFlatColorMaterialWrapper, QSGFlatColorMaterial> _nd = GDefineMetaClass<QSGFlatColorMaterialWrapper, QSGFlatColorMaterial>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSGFlatColorMaterialWrapper");
-        buildMetaClass_QSGFlatColorMaterialWrapper(0, _nd);
+        GDefineMetaClass<QSGFlatColorMaterialWrapper, QSGFlatColorMaterial> _nd = GDefineMetaClass<QSGFlatColorMaterialWrapper, QSGFlatColorMaterial>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSGFlatColorMaterialWrapper", &buildMetaClass_QSGFlatColorMaterialWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

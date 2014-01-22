@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QTreeView()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTreeView, QAbstractItemView> _nd = GDefineMetaClass<QTreeView, QAbstractItemView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTreeView");
-        buildMetaClass_QTreeView(0, _nd);
+        GDefineMetaClass<QTreeView, QAbstractItemView> _nd = GDefineMetaClass<QTreeView, QAbstractItemView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTreeView", &buildMetaClass_QTreeView);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QTreeViewWrapper, QTreeView> _nd = GDefineMetaClass<QTreeViewWrapper, QTreeView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTreeViewWrapper");
-        buildMetaClass_QTreeViewWrapper(0, _nd);
+        GDefineMetaClass<QTreeViewWrapper, QTreeView> _nd = GDefineMetaClass<QTreeViewWrapper, QTreeView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTreeViewWrapper", &buildMetaClass_QTreeViewWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

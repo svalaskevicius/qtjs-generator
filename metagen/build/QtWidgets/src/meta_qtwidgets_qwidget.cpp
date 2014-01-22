@@ -76,7 +76,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qwidget()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qwidget(0, _d);
+    buildMetaClass_Global_qwidget(_d);
     return _d.getMetaInfo();
 }
 
@@ -88,13 +88,11 @@ GDefineMetaInfo createMetaClass_QWidget()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QWidget, QObject, QPaintDevice> _nd = GDefineMetaClass<QWidget, QObject, QPaintDevice>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QWidget");
-        buildMetaClass_QWidget(0, _nd);
+        GDefineMetaClass<QWidget, QObject, QPaintDevice> _nd = GDefineMetaClass<QWidget, QObject, QPaintDevice>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QWidget", &buildMetaClass_QWidget);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QWidgetWrapper, QWidget> _nd = GDefineMetaClass<QWidgetWrapper, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QWidgetWrapper");
-        buildMetaClass_QWidgetWrapper(0, _nd);
+        GDefineMetaClass<QWidgetWrapper, QWidget> _nd = GDefineMetaClass<QWidgetWrapper, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QWidgetWrapper", &buildMetaClass_QWidgetWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -108,8 +106,7 @@ GDefineMetaInfo createMetaClass_QWidgetData()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QWidgetData> _nd = GDefineMetaClass<QWidgetData>::declare("QWidgetData");
-        buildMetaClass_QWidgetData(0, _nd);
+        GDefineMetaClass<QWidgetData> _nd = GDefineMetaClass<QWidgetData>::lazyDeclare("QWidgetData", &buildMetaClass_QWidgetData);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

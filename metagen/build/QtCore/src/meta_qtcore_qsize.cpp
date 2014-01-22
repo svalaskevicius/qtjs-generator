@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qsize()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qsize(0, _d);
+    buildMetaClass_Global_qsize(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QSize()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSize> _nd = GDefineMetaClass<QSize>::declare("QSize");
-        buildMetaClass_QSize(0, _nd);
+        GDefineMetaClass<QSize> _nd = GDefineMetaClass<QSize>::lazyDeclare("QSize", &buildMetaClass_QSize);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QSizeF()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSizeF> _nd = GDefineMetaClass<QSizeF>::declare("QSizeF");
-        buildMetaClass_QSizeF(0, _nd);
+        GDefineMetaClass<QSizeF> _nd = GDefineMetaClass<QSizeF>::lazyDeclare("QSizeF", &buildMetaClass_QSizeF);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

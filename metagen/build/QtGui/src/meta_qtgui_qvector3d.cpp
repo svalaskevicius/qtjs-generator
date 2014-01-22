@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qvector3d()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qvector3d(0, _d);
+    buildMetaClass_Global_qvector3d(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QVector3D()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QVector3D> _nd = GDefineMetaClass<QVector3D>::declare("QVector3D");
-        buildMetaClass_QVector3D(0, _nd);
+        GDefineMetaClass<QVector3D> _nd = GDefineMetaClass<QVector3D>::lazyDeclare("QVector3D", &buildMetaClass_QVector3D);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

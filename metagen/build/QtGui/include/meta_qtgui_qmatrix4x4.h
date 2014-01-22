@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qmatrix4x4(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qmatrix4x4(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qFuzzyCompare", (bool (*) (const QMatrix4x4 &, const QMatrix4x4 &))&qFuzzyCompare, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
@@ -75,9 +75,9 @@ inline bool opErAToRWrapper_QMatrix4x4__opNotEqual(const QMatrix4x4 * self, cons
 
 
 template <typename D>
-void buildMetaClass_QMatrix4x4(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QMatrix4x4(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

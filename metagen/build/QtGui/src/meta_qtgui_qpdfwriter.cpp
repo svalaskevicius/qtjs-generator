@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QPdfWriter()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPdfWriter, QObject, QPagedPaintDevice> _nd = GDefineMetaClass<QPdfWriter, QObject, QPagedPaintDevice>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPdfWriter");
-        buildMetaClass_QPdfWriter(0, _nd);
+        GDefineMetaClass<QPdfWriter, QObject, QPagedPaintDevice> _nd = GDefineMetaClass<QPdfWriter, QObject, QPagedPaintDevice>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPdfWriter", &buildMetaClass_QPdfWriter);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

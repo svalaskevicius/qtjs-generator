@@ -19,27 +19,27 @@ namespace meta_qtcore {
 
 
 template <typename D, class T>
-void buildMetaClass_Add_reference(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Add_reference(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, typename A, typename B>
-void buildMetaClass_And_(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_And_(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D>
-void buildMetaClass_Big_(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Big_(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("dummy", &D::ClassType::dummy);
@@ -47,63 +47,63 @@ void buildMetaClass_Big_(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D, class T>
-void buildMetaClass_Has_trivial_assign(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Has_trivial_assign(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T>
-void buildMetaClass_Has_trivial_constructor(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Has_trivial_constructor(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T>
-void buildMetaClass_Has_trivial_copy(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Has_trivial_copy(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T>
-void buildMetaClass_Has_trivial_destructor(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Has_trivial_destructor(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T>
-void buildMetaClass_Identity_(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Identity_(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, bool cond, typename A, typename B>
-void buildMetaClass_If_(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_If_(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T, T v>
-void buildMetaClass_Integral_constant(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Integral_constant(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("value", &D::ClassType::value);
@@ -111,153 +111,153 @@ void buildMetaClass_Integral_constant(const cpgf::GMetaDataConfigFlags & config,
 
 
 template <typename D, class T>
-void buildMetaClass_Is_floating_point(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Is_floating_point(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T>
-void buildMetaClass_Is_integral(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Is_integral(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T>
-void buildMetaClass_Is_pod(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Is_pod(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T>
-void buildMetaClass_Is_pointer(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Is_pointer(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T>
-void buildMetaClass_Is_reference(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Is_reference(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T, class U>
-void buildMetaClass_Is_same(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Is_same(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, typename T>
-void buildMetaClass_Is_signed(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Is_signed(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, typename T>
-void buildMetaClass_Is_unsigned(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Is_unsigned(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, typename T>
-void buildMetaClass_Not_(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Not_(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, bool B>
-void buildMetaClass_Not_c(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Not_c(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, typename A, typename B>
-void buildMetaClass_Or_(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Or_(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T>
-void buildMetaClass_Remove_const(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Remove_const(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T>
-void buildMetaClass_Remove_cv(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Remove_cv(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T>
-void buildMetaClass_Remove_pointer(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Remove_pointer(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T>
-void buildMetaClass_Remove_reference(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Remove_reference(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T>
-void buildMetaClass_Remove_volatile(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Remove_volatile(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, typename A, typename B>
-void buildMetaClass_Type_equals_(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Type_equals_(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }

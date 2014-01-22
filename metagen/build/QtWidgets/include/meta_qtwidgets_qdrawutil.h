@@ -19,9 +19,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_Global_qdrawutil(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qdrawutil(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qDrawShadeLine", (void (*) (QPainter *, int, int, int, int, const QPalette &, bool, int, int))&qDrawShadeLine, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<5> >())
@@ -104,9 +104,9 @@ void buildMetaClass_Global_qdrawutil(const cpgf::GMetaDataConfigFlags & config, 
 
 
 template <typename D>
-void buildMetaClass_QTileRules(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTileRules(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (Qt::TileRule, Qt::TileRule)>();

@@ -21,9 +21,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_QSGTextureProvider(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGTextureProvider(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -221,9 +221,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -250,15 +250,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSGTextureProviderWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGTextureProviderWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSGTextureProviderWrapper::cpgf__register(config, _d);
+    QSGTextureProviderWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSGTextureProvider<D>(config, _d);
+    buildMetaClass_QSGTextureProvider<D>(_d);
 }
 
 

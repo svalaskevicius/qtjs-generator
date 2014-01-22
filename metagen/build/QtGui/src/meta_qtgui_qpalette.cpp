@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qpalette()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qpalette(0, _d);
+    buildMetaClass_Global_qpalette(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QPalette()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPalette> _nd = GDefineMetaClass<QPalette>::declare("QPalette");
-        buildMetaClass_QPalette(0, _nd);
+        GDefineMetaClass<QPalette> _nd = GDefineMetaClass<QPalette>::lazyDeclare("QPalette", &buildMetaClass_QPalette);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

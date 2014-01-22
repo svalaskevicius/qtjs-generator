@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QOpenGLVertexArrayObject()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QOpenGLVertexArrayObject, QObject> _nd = GDefineMetaClass<QOpenGLVertexArrayObject, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QOpenGLVertexArrayObject");
-        buildMetaClass_QOpenGLVertexArrayObject(0, _nd);
+        GDefineMetaClass<QOpenGLVertexArrayObject, QObject> _nd = GDefineMetaClass<QOpenGLVertexArrayObject, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QOpenGLVertexArrayObject", &buildMetaClass_QOpenGLVertexArrayObject);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QOpenGLVertexArrayObjectWrapper, QOpenGLVertexArrayObject> _nd = GDefineMetaClass<QOpenGLVertexArrayObjectWrapper, QOpenGLVertexArrayObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QOpenGLVertexArrayObjectWrapper");
-        buildMetaClass_QOpenGLVertexArrayObjectWrapper(0, _nd);
+        GDefineMetaClass<QOpenGLVertexArrayObjectWrapper, QOpenGLVertexArrayObject> _nd = GDefineMetaClass<QOpenGLVertexArrayObjectWrapper, QOpenGLVertexArrayObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QOpenGLVertexArrayObjectWrapper", &buildMetaClass_QOpenGLVertexArrayObjectWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

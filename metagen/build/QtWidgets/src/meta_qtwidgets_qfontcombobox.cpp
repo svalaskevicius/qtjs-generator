@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QFontComboBox()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFontComboBox, QComboBox> _nd = GDefineMetaClass<QFontComboBox, QComboBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFontComboBox");
-        buildMetaClass_QFontComboBox(0, _nd);
+        GDefineMetaClass<QFontComboBox, QComboBox> _nd = GDefineMetaClass<QFontComboBox, QComboBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFontComboBox", &buildMetaClass_QFontComboBox);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QFontComboBoxWrapper, QFontComboBox> _nd = GDefineMetaClass<QFontComboBoxWrapper, QFontComboBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFontComboBoxWrapper");
-        buildMetaClass_QFontComboBoxWrapper(0, _nd);
+        GDefineMetaClass<QFontComboBoxWrapper, QFontComboBox> _nd = GDefineMetaClass<QFontComboBoxWrapper, QFontComboBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFontComboBoxWrapper", &buildMetaClass_QFontComboBoxWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

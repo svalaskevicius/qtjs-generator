@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QDoubleSpinBox()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDoubleSpinBox, QAbstractSpinBox> _nd = GDefineMetaClass<QDoubleSpinBox, QAbstractSpinBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDoubleSpinBox");
-        buildMetaClass_QDoubleSpinBox(0, _nd);
+        GDefineMetaClass<QDoubleSpinBox, QAbstractSpinBox> _nd = GDefineMetaClass<QDoubleSpinBox, QAbstractSpinBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDoubleSpinBox", &buildMetaClass_QDoubleSpinBox);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QDoubleSpinBoxWrapper, QDoubleSpinBox> _nd = GDefineMetaClass<QDoubleSpinBoxWrapper, QDoubleSpinBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDoubleSpinBoxWrapper");
-        buildMetaClass_QDoubleSpinBoxWrapper(0, _nd);
+        GDefineMetaClass<QDoubleSpinBoxWrapper, QDoubleSpinBox> _nd = GDefineMetaClass<QDoubleSpinBoxWrapper, QDoubleSpinBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDoubleSpinBoxWrapper", &buildMetaClass_QDoubleSpinBoxWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -97,13 +95,11 @@ GDefineMetaInfo createMetaClass_QSpinBox()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSpinBox, QAbstractSpinBox> _nd = GDefineMetaClass<QSpinBox, QAbstractSpinBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSpinBox");
-        buildMetaClass_QSpinBox(0, _nd);
+        GDefineMetaClass<QSpinBox, QAbstractSpinBox> _nd = GDefineMetaClass<QSpinBox, QAbstractSpinBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSpinBox", &buildMetaClass_QSpinBox);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSpinBoxWrapper, QSpinBox> _nd = GDefineMetaClass<QSpinBoxWrapper, QSpinBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSpinBoxWrapper");
-        buildMetaClass_QSpinBoxWrapper(0, _nd);
+        GDefineMetaClass<QSpinBoxWrapper, QSpinBox> _nd = GDefineMetaClass<QSpinBoxWrapper, QSpinBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSpinBoxWrapper", &buildMetaClass_QSpinBoxWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

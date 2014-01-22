@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QWizard(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QWizard(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *, Qt::WindowFlags)>()
@@ -1056,9 +1056,9 @@ public:
         QDialog::closeEvent(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
         _d.CPGF_MD_TEMPLATE _method("done", (void (D::ClassType::*) (int))&D::ClassType::done);
@@ -1183,22 +1183,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QWizardWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QWizardWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QWizardWrapper::cpgf__register(config, _d);
+    QWizardWrapper::cpgf__register(_d);
     
-    buildMetaClass_QWizard<D>(config, _d);
+    buildMetaClass_QWizard<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QWizardPage(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QWizardPage(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>()
@@ -2109,9 +2109,9 @@ public:
         QWidget::closeEvent(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
         _d.CPGF_MD_TEMPLATE _method("registerField", (void (D::ClassType::*) (const QString &, QWidget *, const char *, const char *))&D::ClassType::registerField, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
@@ -2234,15 +2234,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QWizardPageWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QWizardPageWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QWizardPageWrapper::cpgf__register(config, _d);
+    QWizardPageWrapper::cpgf__register(_d);
     
-    buildMetaClass_QWizardPage<D>(config, _d);
+    buildMetaClass_QWizardPage<D>(_d);
 }
 
 

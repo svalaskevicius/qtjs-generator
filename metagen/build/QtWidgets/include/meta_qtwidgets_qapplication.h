@@ -18,9 +18,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_Global_qapplication(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qapplication(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtWidgets_9")
@@ -30,9 +30,9 @@ void buildMetaClass_Global_qapplication(const cpgf::GMetaDataConfigFlags & confi
 
 
 template <typename D>
-void buildMetaClass_QApplication(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QApplication(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (int &, char **, int)>()

@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qqmlinfo()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qqmlinfo(0, _d);
+    buildMetaClass_Global_qqmlinfo(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QQmlInfo()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlInfo, QDebug> _nd = GDefineMetaClass<QQmlInfo, QDebug>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QQmlInfo");
-        buildMetaClass_QQmlInfo(0, _nd);
+        GDefineMetaClass<QQmlInfo, QDebug> _nd = GDefineMetaClass<QQmlInfo, QDebug>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QQmlInfo", &buildMetaClass_QQmlInfo);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

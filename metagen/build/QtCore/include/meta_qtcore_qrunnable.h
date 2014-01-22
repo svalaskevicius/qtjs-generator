@@ -21,9 +21,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_QRunnable(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QRunnable(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("run", &D::ClassType::run);
@@ -53,9 +53,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_run", (void (D::ClassType::*) ())&D::ClassType::super_run);
     }
@@ -63,16 +63,16 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QRunnableWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QRunnableWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    QRunnableWrapper::cpgf__register(config, _d);
+    QRunnableWrapper::cpgf__register(_d);
     
-    buildMetaClass_QRunnable<D>(config, _d);
+    buildMetaClass_QRunnable<D>(_d);
 }
 
 

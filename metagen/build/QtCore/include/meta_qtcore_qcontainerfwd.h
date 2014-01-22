@@ -18,27 +18,27 @@ namespace meta_qtcore {
 
 
 template <typename D, class T>
-void buildMetaClass_QLinkedList(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QLinkedList(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class Key, class T>
-void buildMetaClass_QMultiMap(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QMultiMap(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T1, class T2>
-void buildMetaClass_QPair(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPair(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -49,9 +49,9 @@ void buildMetaClass_QPair(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D, class T>
-void buildMetaClass_QQueue(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQueue(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -238,9 +238,9 @@ inline typename QSet<T >::iterator& opErAToRWrapper_QSet_iterator__opSubAssign(t
 
 
 template <typename D, class T>
-void buildMetaClass_QSet(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSet(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -384,9 +384,9 @@ void buildMetaClass_QSet(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D, class T>
-void buildMetaClass_QStack(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStack(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -425,9 +425,9 @@ inline QVarLengthArray< T, Prealloc > & opErAToRWrapper_QVarLengthArray__opAddAs
 
 
 template <typename D, class T, int Prealloc>
-void buildMetaClass_QVarLengthArray(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QVarLengthArray(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (int)>()
@@ -545,9 +545,9 @@ inline QVector< T > & opErAToRWrapper_QVector__opLeftShift(QVector<T > * self, c
 
 
 template <typename D, class T>
-void buildMetaClass_QVector(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QVector(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

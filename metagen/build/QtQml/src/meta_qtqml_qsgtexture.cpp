@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QSGDynamicTexture()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSGDynamicTexture, QSGTexture> _nd = GDefineMetaClass<QSGDynamicTexture, QSGTexture>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSGDynamicTexture");
-        buildMetaClass_QSGDynamicTexture(0, _nd);
+        GDefineMetaClass<QSGDynamicTexture, QSGTexture> _nd = GDefineMetaClass<QSGDynamicTexture, QSGTexture>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSGDynamicTexture", &buildMetaClass_QSGDynamicTexture);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSGDynamicTextureWrapper, QSGDynamicTexture> _nd = GDefineMetaClass<QSGDynamicTextureWrapper, QSGDynamicTexture>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QSGDynamicTextureWrapper");
-        buildMetaClass_QSGDynamicTextureWrapper(0, _nd);
+        GDefineMetaClass<QSGDynamicTextureWrapper, QSGDynamicTexture> _nd = GDefineMetaClass<QSGDynamicTextureWrapper, QSGDynamicTexture>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSGDynamicTextureWrapper", &buildMetaClass_QSGDynamicTextureWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -42,13 +40,11 @@ GDefineMetaInfo createMetaClass_QSGTexture()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSGTexture, QObject> _nd = GDefineMetaClass<QSGTexture, QObject>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSGTexture");
-        buildMetaClass_QSGTexture(0, _nd);
+        GDefineMetaClass<QSGTexture, QObject> _nd = GDefineMetaClass<QSGTexture, QObject>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSGTexture", &buildMetaClass_QSGTexture);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSGTextureWrapper, QSGTexture> _nd = GDefineMetaClass<QSGTextureWrapper, QSGTexture>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QSGTextureWrapper");
-        buildMetaClass_QSGTextureWrapper(0, _nd);
+        GDefineMetaClass<QSGTextureWrapper, QSGTexture> _nd = GDefineMetaClass<QSGTextureWrapper, QSGTexture>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSGTextureWrapper", &buildMetaClass_QSGTextureWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

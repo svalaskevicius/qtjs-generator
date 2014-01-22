@@ -19,9 +19,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qjsonvalue(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qjsonvalue(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QJsonValue &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
@@ -40,9 +40,9 @@ inline bool opErAToRWrapper_QJsonValue__opNotEqual(const QJsonValue * self, cons
 
 
 template <typename D>
-void buildMetaClass_QJsonValue(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QJsonValue(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QJsonValue::Type)>()
@@ -116,9 +116,9 @@ inline bool opErAToRWrapper_QJsonValueRef__opNotEqual(const QJsonValueRef * self
 
 
 template <typename D>
-void buildMetaClass_QJsonValueRef(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QJsonValueRef(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QJsonArray *, int)>();

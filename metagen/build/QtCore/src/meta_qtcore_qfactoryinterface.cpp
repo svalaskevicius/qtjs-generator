@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QFactoryInterface()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFactoryInterface> _nd = GDefineMetaClass<QFactoryInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFactoryInterface");
-        buildMetaClass_QFactoryInterface(0, _nd);
+        GDefineMetaClass<QFactoryInterface> _nd = GDefineMetaClass<QFactoryInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFactoryInterface", &buildMetaClass_QFactoryInterface);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QFactoryInterfaceWrapper, QFactoryInterface> _nd = GDefineMetaClass<QFactoryInterfaceWrapper, QFactoryInterface>::declare("QFactoryInterfaceWrapper");
-        buildMetaClass_QFactoryInterfaceWrapper(0, _nd);
+        GDefineMetaClass<QFactoryInterfaceWrapper, QFactoryInterface> _nd = GDefineMetaClass<QFactoryInterfaceWrapper, QFactoryInterface>::lazyDeclare("QFactoryInterfaceWrapper", &buildMetaClass_QFactoryInterfaceWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qvariantanimation()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qvariantanimation(0, _d);
+    buildMetaClass_Global_qvariantanimation(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,13 +68,11 @@ GDefineMetaInfo createMetaClass_QVariantAnimation()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QVariantAnimation, QAbstractAnimation> _nd = GDefineMetaClass<QVariantAnimation, QAbstractAnimation>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QVariantAnimation");
-        buildMetaClass_QVariantAnimation(0, _nd);
+        GDefineMetaClass<QVariantAnimation, QAbstractAnimation> _nd = GDefineMetaClass<QVariantAnimation, QAbstractAnimation>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QVariantAnimation", &buildMetaClass_QVariantAnimation);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QVariantAnimationWrapper, QVariantAnimation> _nd = GDefineMetaClass<QVariantAnimationWrapper, QVariantAnimation>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QVariantAnimationWrapper");
-        buildMetaClass_QVariantAnimationWrapper(0, _nd);
+        GDefineMetaClass<QVariantAnimationWrapper, QVariantAnimation> _nd = GDefineMetaClass<QVariantAnimationWrapper, QVariantAnimation>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QVariantAnimationWrapper", &buildMetaClass_QVariantAnimationWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

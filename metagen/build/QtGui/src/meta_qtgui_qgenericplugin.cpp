@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qgenericplugin()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qgenericplugin(0, _d);
+    buildMetaClass_Global_qgenericplugin(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,13 +33,11 @@ GDefineMetaInfo createMetaClass_QGenericPlugin()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGenericPlugin, QObject> _nd = GDefineMetaClass<QGenericPlugin, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGenericPlugin");
-        buildMetaClass_QGenericPlugin(0, _nd);
+        GDefineMetaClass<QGenericPlugin, QObject> _nd = GDefineMetaClass<QGenericPlugin, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGenericPlugin", &buildMetaClass_QGenericPlugin);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGenericPluginWrapper, QGenericPlugin> _nd = GDefineMetaClass<QGenericPluginWrapper, QGenericPlugin>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGenericPluginWrapper");
-        buildMetaClass_QGenericPluginWrapper(0, _nd);
+        GDefineMetaClass<QGenericPluginWrapper, QGenericPlugin> _nd = GDefineMetaClass<QGenericPluginWrapper, QGenericPlugin>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGenericPluginWrapper", &buildMetaClass_QGenericPluginWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

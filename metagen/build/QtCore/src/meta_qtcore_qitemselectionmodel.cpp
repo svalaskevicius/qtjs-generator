@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qitemselectionmodel()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qitemselectionmodel(0, _d);
+    buildMetaClass_Global_qitemselectionmodel(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QItemSelection()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QItemSelection, QList< QItemSelectionRange >> _nd = GDefineMetaClass<QItemSelection, QList< QItemSelectionRange >>::declare("QItemSelection");
-        buildMetaClass_QItemSelection(0, _nd);
+        GDefineMetaClass<QItemSelection, QList< QItemSelectionRange >> _nd = GDefineMetaClass<QItemSelection, QList< QItemSelectionRange >>::lazyDeclare("QItemSelection", &buildMetaClass_QItemSelection);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,13 +82,11 @@ GDefineMetaInfo createMetaClass_QItemSelectionModel()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QItemSelectionModel, QObject> _nd = GDefineMetaClass<QItemSelectionModel, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QItemSelectionModel");
-        buildMetaClass_QItemSelectionModel(0, _nd);
+        GDefineMetaClass<QItemSelectionModel, QObject> _nd = GDefineMetaClass<QItemSelectionModel, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QItemSelectionModel", &buildMetaClass_QItemSelectionModel);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QItemSelectionModelWrapper, QItemSelectionModel> _nd = GDefineMetaClass<QItemSelectionModelWrapper, QItemSelectionModel>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QItemSelectionModelWrapper");
-        buildMetaClass_QItemSelectionModelWrapper(0, _nd);
+        GDefineMetaClass<QItemSelectionModelWrapper, QItemSelectionModel> _nd = GDefineMetaClass<QItemSelectionModelWrapper, QItemSelectionModel>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QItemSelectionModelWrapper", &buildMetaClass_QItemSelectionModelWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -103,8 +100,7 @@ GDefineMetaInfo createMetaClass_QItemSelectionRange()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QItemSelectionRange> _nd = GDefineMetaClass<QItemSelectionRange>::declare("QItemSelectionRange");
-        buildMetaClass_QItemSelectionRange(0, _nd);
+        GDefineMetaClass<QItemSelectionRange> _nd = GDefineMetaClass<QItemSelectionRange>::lazyDeclare("QItemSelectionRange", &buildMetaClass_QItemSelectionRange);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

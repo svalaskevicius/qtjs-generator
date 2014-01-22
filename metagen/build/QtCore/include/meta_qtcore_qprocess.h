@@ -21,18 +21,18 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qprocess(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qprocess(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D>
-void buildMetaClass_QProcess(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QProcess(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -588,9 +588,9 @@ public:
         return QProcess::writeData(data, len);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
@@ -646,15 +646,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QProcessWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QProcessWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QProcessWrapper::cpgf__register(config, _d);
+    QProcessWrapper::cpgf__register(_d);
     
-    buildMetaClass_QProcess<D>(config, _d);
+    buildMetaClass_QProcess<D>(_d);
 }
 
 
@@ -670,9 +670,9 @@ inline bool opErAToRWrapper_QProcessEnvironment__opNotEqual(const QProcessEnviro
 
 
 template <typename D>
-void buildMetaClass_QProcessEnvironment(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QProcessEnvironment(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

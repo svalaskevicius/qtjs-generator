@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QActionGroup()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QActionGroup, QObject> _nd = GDefineMetaClass<QActionGroup, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QActionGroup");
-        buildMetaClass_QActionGroup(0, _nd);
+        GDefineMetaClass<QActionGroup, QObject> _nd = GDefineMetaClass<QActionGroup, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QActionGroup", &buildMetaClass_QActionGroup);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QActionGroupWrapper, QActionGroup> _nd = GDefineMetaClass<QActionGroupWrapper, QActionGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QActionGroupWrapper");
-        buildMetaClass_QActionGroupWrapper(0, _nd);
+        GDefineMetaClass<QActionGroupWrapper, QActionGroup> _nd = GDefineMetaClass<QActionGroupWrapper, QActionGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QActionGroupWrapper", &buildMetaClass_QActionGroupWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

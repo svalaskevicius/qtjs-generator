@@ -21,9 +21,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_QTextTable(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextTable(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QTextDocument *)>();
@@ -233,9 +233,9 @@ public:
         return QTextTable::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("setFormat", (void (D::ClassType::*) (const QTextFormat &))&D::ClassType::setFormat, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
@@ -262,15 +262,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QTextTableWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextTableWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QTextTableWrapper::cpgf__register(config, _d);
+    QTextTableWrapper::cpgf__register(_d);
     
-    buildMetaClass_QTextTable<D>(config, _d);
+    buildMetaClass_QTextTable<D>(_d);
 }
 
 
@@ -286,9 +286,9 @@ inline bool opErAToRWrapper_QTextTableCell__opNotEqual(const QTextTableCell * se
 
 
 template <typename D>
-void buildMetaClass_QTextTableCell(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextTableCell(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

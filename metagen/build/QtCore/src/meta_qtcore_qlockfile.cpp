@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QLockFile()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QLockFile> _nd = GDefineMetaClass<QLockFile>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QLockFile");
-        buildMetaClass_QLockFile(0, _nd);
+        GDefineMetaClass<QLockFile> _nd = GDefineMetaClass<QLockFile>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QLockFile", &buildMetaClass_QLockFile);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

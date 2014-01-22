@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QDial()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDial, QAbstractSlider> _nd = GDefineMetaClass<QDial, QAbstractSlider>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDial");
-        buildMetaClass_QDial(0, _nd);
+        GDefineMetaClass<QDial, QAbstractSlider> _nd = GDefineMetaClass<QDial, QAbstractSlider>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDial", &buildMetaClass_QDial);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QDialWrapper, QDial> _nd = GDefineMetaClass<QDialWrapper, QDial>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDialWrapper");
-        buildMetaClass_QDialWrapper(0, _nd);
+        GDefineMetaClass<QDialWrapper, QDial> _nd = GDefineMetaClass<QDialWrapper, QDial>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDialWrapper", &buildMetaClass_QDialWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

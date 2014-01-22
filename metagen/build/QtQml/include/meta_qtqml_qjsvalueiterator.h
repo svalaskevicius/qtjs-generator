@@ -23,9 +23,9 @@ inline QJSValueIterator & opErAToRWrapper_QJSValueIterator__opAssign(QJSValueIte
 
 
 template <typename D>
-void buildMetaClass_QJSValueIterator(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QJSValueIterator(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QJSValue &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());

@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QMessageBox()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMessageBox, QDialog> _nd = GDefineMetaClass<QMessageBox, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QMessageBox");
-        buildMetaClass_QMessageBox(0, _nd);
+        GDefineMetaClass<QMessageBox, QDialog> _nd = GDefineMetaClass<QMessageBox, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QMessageBox", &buildMetaClass_QMessageBox);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QMessageBoxWrapper, QMessageBox> _nd = GDefineMetaClass<QMessageBoxWrapper, QMessageBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QMessageBoxWrapper");
-        buildMetaClass_QMessageBoxWrapper(0, _nd);
+        GDefineMetaClass<QMessageBoxWrapper, QMessageBox> _nd = GDefineMetaClass<QMessageBoxWrapper, QMessageBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QMessageBoxWrapper", &buildMetaClass_QMessageBoxWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

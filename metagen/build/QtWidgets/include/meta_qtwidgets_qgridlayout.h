@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QGridLayout(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGridLayout(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>();
@@ -573,9 +573,9 @@ public:
         return QGridLayout::heightForWidth(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
@@ -627,15 +627,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGridLayoutWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGridLayoutWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGridLayoutWrapper::cpgf__register(config, _d);
+    QGridLayoutWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGridLayout<D>(config, _d);
+    buildMetaClass_QGridLayout<D>(_d);
 }
 
 

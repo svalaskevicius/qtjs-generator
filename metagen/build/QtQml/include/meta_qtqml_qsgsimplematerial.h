@@ -18,9 +18,9 @@ namespace meta_qtqml {
 
 
 template <typename D, typename State>
-void buildMetaClass_QSGSimpleMaterial(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGSimpleMaterial(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const State &, PtrShaderCreateFunc)>();
@@ -33,9 +33,9 @@ void buildMetaClass_QSGSimpleMaterial(const cpgf::GMetaDataConfigFlags & config,
 
 
 template <typename D, typename State>
-void buildMetaClass_QSGSimpleMaterialComparableMaterial(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGSimpleMaterialComparableMaterial(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const State &, PtrShaderCreateFunc)>();
@@ -45,9 +45,9 @@ void buildMetaClass_QSGSimpleMaterialComparableMaterial(const cpgf::GMetaDataCon
 
 
 template <typename D, typename State>
-void buildMetaClass_QSGSimpleMaterialShader(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGSimpleMaterialShader(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("initialize", &D::ClassType::initialize);

@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QFocusFrame(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFocusFrame(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>()
@@ -831,9 +831,9 @@ public:
         QWidget::closeEvent(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
         _d.CPGF_MD_TEMPLATE _method("initStyleOption", (void (D::ClassType::*) (QStyleOption *) const)&D::ClassType::initStyleOption);
@@ -946,15 +946,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QFocusFrameWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFocusFrameWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QFocusFrameWrapper::cpgf__register(config, _d);
+    QFocusFrameWrapper::cpgf__register(_d);
     
-    buildMetaClass_QFocusFrame<D>(config, _d);
+    buildMetaClass_QFocusFrame<D>(_d);
 }
 
 

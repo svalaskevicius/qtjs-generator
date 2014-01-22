@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QParallelAnimationGroup()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QParallelAnimationGroup, QAnimationGroup> _nd = GDefineMetaClass<QParallelAnimationGroup, QAnimationGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QParallelAnimationGroup");
-        buildMetaClass_QParallelAnimationGroup(0, _nd);
+        GDefineMetaClass<QParallelAnimationGroup, QAnimationGroup> _nd = GDefineMetaClass<QParallelAnimationGroup, QAnimationGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QParallelAnimationGroup", &buildMetaClass_QParallelAnimationGroup);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QParallelAnimationGroupWrapper, QParallelAnimationGroup> _nd = GDefineMetaClass<QParallelAnimationGroupWrapper, QParallelAnimationGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QParallelAnimationGroupWrapper");
-        buildMetaClass_QParallelAnimationGroupWrapper(0, _nd);
+        GDefineMetaClass<QParallelAnimationGroupWrapper, QParallelAnimationGroup> _nd = GDefineMetaClass<QParallelAnimationGroupWrapper, QParallelAnimationGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QParallelAnimationGroupWrapper", &buildMetaClass_QParallelAnimationGroupWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

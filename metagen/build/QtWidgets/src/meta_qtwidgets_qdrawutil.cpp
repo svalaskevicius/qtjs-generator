@@ -76,7 +76,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qdrawutil()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qdrawutil(0, _d);
+    buildMetaClass_Global_qdrawutil(_d);
     return _d.getMetaInfo();
 }
 
@@ -88,8 +88,7 @@ GDefineMetaInfo createMetaClass_QTileRules()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTileRules> _nd = GDefineMetaClass<QTileRules>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QTileRules");
-        buildMetaClass_QTileRules(0, _nd);
+        GDefineMetaClass<QTileRules> _nd = GDefineMetaClass<QTileRules>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QTileRules", &buildMetaClass_QTileRules);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_quuid()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_quuid(0, _d);
+    buildMetaClass_Global_quuid(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QUuid()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QUuid> _nd = GDefineMetaClass<QUuid>::declare("QUuid");
-        buildMetaClass_QUuid(0, _nd);
+        GDefineMetaClass<QUuid> _nd = GDefineMetaClass<QUuid>::lazyDeclare("QUuid", &buildMetaClass_QUuid);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

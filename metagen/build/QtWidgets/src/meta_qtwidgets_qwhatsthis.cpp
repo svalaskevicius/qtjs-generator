@@ -77,8 +77,7 @@ GDefineMetaInfo createMetaClass_QWhatsThis()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QWhatsThis> _nd = GDefineMetaClass<QWhatsThis>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QWhatsThis");
-        buildMetaClass_QWhatsThis(0, _nd);
+        GDefineMetaClass<QWhatsThis> _nd = GDefineMetaClass<QWhatsThis>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QWhatsThis", &buildMetaClass_QWhatsThis);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

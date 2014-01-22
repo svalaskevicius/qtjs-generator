@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qdebug(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qdebug(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
@@ -95,9 +95,9 @@ inline QDebug & opErAToRWrapper_QDebug__opLeftShift(QDebug * self, QTextStreamMa
 
 
 template <typename D>
-void buildMetaClass_QDebug(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDebug(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QIODevice *)>();
@@ -158,9 +158,9 @@ void buildMetaClass_QDebug(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QDebugStateSaver(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDebugStateSaver(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QDebug &)>();

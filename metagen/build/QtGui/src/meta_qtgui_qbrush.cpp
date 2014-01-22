@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qbrush()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qbrush(0, _d);
+    buildMetaClass_Global_qbrush(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QBrush()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QBrush> _nd = GDefineMetaClass<QBrush>::declare("QBrush");
-        buildMetaClass_QBrush(0, _nd);
+        GDefineMetaClass<QBrush> _nd = GDefineMetaClass<QBrush>::lazyDeclare("QBrush", &buildMetaClass_QBrush);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -48,8 +47,7 @@ GDefineMetaInfo createMetaClass_QBrushData()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QBrushData> _nd = GDefineMetaClass<QBrushData>::declare("QBrushData");
-        buildMetaClass_QBrushData(0, _nd);
+        GDefineMetaClass<QBrushData> _nd = GDefineMetaClass<QBrushData>::lazyDeclare("QBrushData", &buildMetaClass_QBrushData);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -63,8 +61,7 @@ GDefineMetaInfo createMetaClass_QConicalGradient()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QConicalGradient, QGradient> _nd = GDefineMetaClass<QConicalGradient, QGradient>::declare("QConicalGradient");
-        buildMetaClass_QConicalGradient(0, _nd);
+        GDefineMetaClass<QConicalGradient, QGradient> _nd = GDefineMetaClass<QConicalGradient, QGradient>::lazyDeclare("QConicalGradient", &buildMetaClass_QConicalGradient);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -78,8 +75,7 @@ GDefineMetaInfo createMetaClass_QGradient()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGradient> _nd = GDefineMetaClass<QGradient>::declare("QGradient");
-        buildMetaClass_QGradient(0, _nd);
+        GDefineMetaClass<QGradient> _nd = GDefineMetaClass<QGradient>::lazyDeclare("QGradient", &buildMetaClass_QGradient);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -93,8 +89,7 @@ GDefineMetaInfo createMetaClass_QLinearGradient()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QLinearGradient, QGradient> _nd = GDefineMetaClass<QLinearGradient, QGradient>::declare("QLinearGradient");
-        buildMetaClass_QLinearGradient(0, _nd);
+        GDefineMetaClass<QLinearGradient, QGradient> _nd = GDefineMetaClass<QLinearGradient, QGradient>::lazyDeclare("QLinearGradient", &buildMetaClass_QLinearGradient);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -108,8 +103,7 @@ GDefineMetaInfo createMetaClass_QRadialGradient()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QRadialGradient, QGradient> _nd = GDefineMetaClass<QRadialGradient, QGradient>::declare("QRadialGradient");
-        buildMetaClass_QRadialGradient(0, _nd);
+        GDefineMetaClass<QRadialGradient, QGradient> _nd = GDefineMetaClass<QRadialGradient, QGradient>::lazyDeclare("QRadialGradient", &buildMetaClass_QRadialGradient);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qbytearray(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qbytearray(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qstrdup", (QT_BEGIN_NAMESPACE char* (*) (const char *))&qstrdup);
@@ -123,9 +123,9 @@ inline bool opErAToRWrapper_QByteArray__opGreaterEqual(const QByteArray * self, 
 
 
 template <typename D>
-void buildMetaClass_QByteArray(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QByteArray(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -398,9 +398,9 @@ void buildMetaClass_QByteArray(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QByteArrayDataPtr(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QByteArrayDataPtr(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("ptr", &D::ClassType::ptr);
@@ -434,9 +434,9 @@ inline bool opErAToRWrapper_QByteRef__opLessEqual(const QByteRef * self, char c)
 
 
 template <typename D>
-void buildMetaClass_QByteRef(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QByteRef(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator< char (cpgf::GMetaSelf)>(mopHolder());
@@ -674,9 +674,9 @@ inline int opErAToRWrapper_QList_iterator__opSub(const typename QList<T >::itera
 
 
 template <typename D, typename T>
-void buildMetaClass_QList(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QList(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -877,9 +877,9 @@ void buildMetaClass_QList(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D, int N>
-void buildMetaClass_QStaticByteArrayData(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStaticByteArrayData(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("ba", &D::ClassType::ba);

@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qpixmap(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qpixmap(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QPixmap &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
@@ -38,9 +38,9 @@ inline bool opErAToRWrapper_QPixmap__opNot(const QPixmap * self) {
 
 
 template <typename D>
-void buildMetaClass_QPixmap(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPixmap(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

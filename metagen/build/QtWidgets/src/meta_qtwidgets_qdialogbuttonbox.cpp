@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QDialogButtonBox()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDialogButtonBox, QWidget> _nd = GDefineMetaClass<QDialogButtonBox, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDialogButtonBox");
-        buildMetaClass_QDialogButtonBox(0, _nd);
+        GDefineMetaClass<QDialogButtonBox, QWidget> _nd = GDefineMetaClass<QDialogButtonBox, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDialogButtonBox", &buildMetaClass_QDialogButtonBox);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QDialogButtonBoxWrapper, QDialogButtonBox> _nd = GDefineMetaClass<QDialogButtonBoxWrapper, QDialogButtonBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDialogButtonBoxWrapper");
-        buildMetaClass_QDialogButtonBoxWrapper(0, _nd);
+        GDefineMetaClass<QDialogButtonBoxWrapper, QDialogButtonBox> _nd = GDefineMetaClass<QDialogButtonBoxWrapper, QDialogButtonBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDialogButtonBoxWrapper", &buildMetaClass_QDialogButtonBoxWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

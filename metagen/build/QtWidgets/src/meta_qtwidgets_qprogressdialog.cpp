@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QProgressDialog()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QProgressDialog, QDialog> _nd = GDefineMetaClass<QProgressDialog, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QProgressDialog");
-        buildMetaClass_QProgressDialog(0, _nd);
+        GDefineMetaClass<QProgressDialog, QDialog> _nd = GDefineMetaClass<QProgressDialog, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QProgressDialog", &buildMetaClass_QProgressDialog);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QProgressDialogWrapper, QProgressDialog> _nd = GDefineMetaClass<QProgressDialogWrapper, QProgressDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QProgressDialogWrapper");
-        buildMetaClass_QProgressDialogWrapper(0, _nd);
+        GDefineMetaClass<QProgressDialogWrapper, QProgressDialog> _nd = GDefineMetaClass<QProgressDialogWrapper, QProgressDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QProgressDialogWrapper", &buildMetaClass_QProgressDialogWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

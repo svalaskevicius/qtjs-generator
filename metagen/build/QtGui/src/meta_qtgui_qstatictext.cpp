@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QStaticText()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStaticText> _nd = GDefineMetaClass<QStaticText>::declare("QStaticText");
-        buildMetaClass_QStaticText(0, _nd);
+        GDefineMetaClass<QStaticText> _nd = GDefineMetaClass<QStaticText>::lazyDeclare("QStaticText", &buildMetaClass_QStaticText);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qimage()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qimage(0, _d);
+    buildMetaClass_Global_qimage(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QImage()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QImage, QPaintDevice> _nd = GDefineMetaClass<QImage, QPaintDevice>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QImage");
-        buildMetaClass_QImage(0, _nd);
+        GDefineMetaClass<QImage, QPaintDevice> _nd = GDefineMetaClass<QImage, QPaintDevice>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QImage", &buildMetaClass_QImage);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

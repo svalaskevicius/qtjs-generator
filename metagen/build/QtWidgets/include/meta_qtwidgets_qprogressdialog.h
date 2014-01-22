@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QProgressDialog(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QProgressDialog(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *, Qt::WindowFlags)>()
@@ -942,9 +942,9 @@ public:
         QProgressDialog::closeEvent(event);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
         _d.CPGF_MD_TEMPLATE _method("showEvent", (void (D::ClassType::*) (QShowEvent *))&D::ClassType::showEvent);
@@ -1063,15 +1063,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QProgressDialogWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QProgressDialogWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QProgressDialogWrapper::cpgf__register(config, _d);
+    QProgressDialogWrapper::cpgf__register(_d);
     
-    buildMetaClass_QProgressDialog<D>(config, _d);
+    buildMetaClass_QProgressDialog<D>(_d);
 }
 
 

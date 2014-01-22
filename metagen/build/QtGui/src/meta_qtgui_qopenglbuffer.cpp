@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QOpenGLBuffer()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QOpenGLBuffer> _nd = GDefineMetaClass<QOpenGLBuffer>::declare("QOpenGLBuffer");
-        buildMetaClass_QOpenGLBuffer(0, _nd);
+        GDefineMetaClass<QOpenGLBuffer> _nd = GDefineMetaClass<QOpenGLBuffer>::lazyDeclare("QOpenGLBuffer", &buildMetaClass_QOpenGLBuffer);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

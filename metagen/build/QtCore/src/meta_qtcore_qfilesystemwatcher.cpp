@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QFileSystemWatcher()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFileSystemWatcher, QObject> _nd = GDefineMetaClass<QFileSystemWatcher, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFileSystemWatcher");
-        buildMetaClass_QFileSystemWatcher(0, _nd);
+        GDefineMetaClass<QFileSystemWatcher, QObject> _nd = GDefineMetaClass<QFileSystemWatcher, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFileSystemWatcher", &buildMetaClass_QFileSystemWatcher);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QFileSystemWatcherWrapper, QFileSystemWatcher> _nd = GDefineMetaClass<QFileSystemWatcherWrapper, QFileSystemWatcher>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFileSystemWatcherWrapper");
-        buildMetaClass_QFileSystemWatcherWrapper(0, _nd);
+        GDefineMetaClass<QFileSystemWatcherWrapper, QFileSystemWatcher> _nd = GDefineMetaClass<QFileSystemWatcherWrapper, QFileSystemWatcher>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFileSystemWatcherWrapper", &buildMetaClass_QFileSystemWatcherWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

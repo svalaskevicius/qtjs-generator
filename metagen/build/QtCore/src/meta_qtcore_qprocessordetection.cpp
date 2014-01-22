@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qprocessordetection()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qprocessordetection(0, _d);
+    buildMetaClass_Global_qprocessordetection(_d);
     return _d.getMetaInfo();
 }
 

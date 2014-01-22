@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qaccessible()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qaccessible(0, _d);
+    buildMetaClass_Global_qaccessible(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QAccessible()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessible> _nd = GDefineMetaClass<QAccessible>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QAccessible");
-        buildMetaClass_QAccessible(0, _nd);
+        GDefineMetaClass<QAccessible> _nd = GDefineMetaClass<QAccessible>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QAccessible", &buildMetaClass_QAccessible);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -48,13 +47,11 @@ GDefineMetaInfo createMetaClass_QAccessibleActionInterface()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleActionInterface> _nd = GDefineMetaClass<QAccessibleActionInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleActionInterface");
-        buildMetaClass_QAccessibleActionInterface(0, _nd);
+        GDefineMetaClass<QAccessibleActionInterface> _nd = GDefineMetaClass<QAccessibleActionInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleActionInterface", &buildMetaClass_QAccessibleActionInterface);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleActionInterfaceWrapper, QAccessibleActionInterface> _nd = GDefineMetaClass<QAccessibleActionInterfaceWrapper, QAccessibleActionInterface>::declare("QAccessibleActionInterfaceWrapper");
-        buildMetaClass_QAccessibleActionInterfaceWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleActionInterfaceWrapper, QAccessibleActionInterface> _nd = GDefineMetaClass<QAccessibleActionInterfaceWrapper, QAccessibleActionInterface>::lazyDeclare("QAccessibleActionInterfaceWrapper", &buildMetaClass_QAccessibleActionInterfaceWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -68,13 +65,11 @@ GDefineMetaInfo createMetaClass_QAccessibleEditableTextInterface()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleEditableTextInterface> _nd = GDefineMetaClass<QAccessibleEditableTextInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleEditableTextInterface");
-        buildMetaClass_QAccessibleEditableTextInterface(0, _nd);
+        GDefineMetaClass<QAccessibleEditableTextInterface> _nd = GDefineMetaClass<QAccessibleEditableTextInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleEditableTextInterface", &buildMetaClass_QAccessibleEditableTextInterface);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleEditableTextInterfaceWrapper, QAccessibleEditableTextInterface> _nd = GDefineMetaClass<QAccessibleEditableTextInterfaceWrapper, QAccessibleEditableTextInterface>::declare("QAccessibleEditableTextInterfaceWrapper");
-        buildMetaClass_QAccessibleEditableTextInterfaceWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleEditableTextInterfaceWrapper, QAccessibleEditableTextInterface> _nd = GDefineMetaClass<QAccessibleEditableTextInterfaceWrapper, QAccessibleEditableTextInterface>::lazyDeclare("QAccessibleEditableTextInterfaceWrapper", &buildMetaClass_QAccessibleEditableTextInterfaceWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -88,13 +83,11 @@ GDefineMetaInfo createMetaClass_QAccessibleEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleEvent> _nd = GDefineMetaClass<QAccessibleEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleEvent");
-        buildMetaClass_QAccessibleEvent(0, _nd);
+        GDefineMetaClass<QAccessibleEvent> _nd = GDefineMetaClass<QAccessibleEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleEvent", &buildMetaClass_QAccessibleEvent);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleEventWrapper, QAccessibleEvent> _nd = GDefineMetaClass<QAccessibleEventWrapper, QAccessibleEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleEventWrapper");
-        buildMetaClass_QAccessibleEventWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleEventWrapper, QAccessibleEvent> _nd = GDefineMetaClass<QAccessibleEventWrapper, QAccessibleEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleEventWrapper", &buildMetaClass_QAccessibleEventWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -108,13 +101,11 @@ GDefineMetaInfo createMetaClass_QAccessibleImageInterface()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleImageInterface> _nd = GDefineMetaClass<QAccessibleImageInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleImageInterface");
-        buildMetaClass_QAccessibleImageInterface(0, _nd);
+        GDefineMetaClass<QAccessibleImageInterface> _nd = GDefineMetaClass<QAccessibleImageInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleImageInterface", &buildMetaClass_QAccessibleImageInterface);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleImageInterfaceWrapper, QAccessibleImageInterface> _nd = GDefineMetaClass<QAccessibleImageInterfaceWrapper, QAccessibleImageInterface>::declare("QAccessibleImageInterfaceWrapper");
-        buildMetaClass_QAccessibleImageInterfaceWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleImageInterfaceWrapper, QAccessibleImageInterface> _nd = GDefineMetaClass<QAccessibleImageInterfaceWrapper, QAccessibleImageInterface>::lazyDeclare("QAccessibleImageInterfaceWrapper", &buildMetaClass_QAccessibleImageInterfaceWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -128,13 +119,11 @@ GDefineMetaInfo createMetaClass_QAccessibleStateChangeEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleStateChangeEvent, QAccessibleEvent> _nd = GDefineMetaClass<QAccessibleStateChangeEvent, QAccessibleEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleStateChangeEvent");
-        buildMetaClass_QAccessibleStateChangeEvent(0, _nd);
+        GDefineMetaClass<QAccessibleStateChangeEvent, QAccessibleEvent> _nd = GDefineMetaClass<QAccessibleStateChangeEvent, QAccessibleEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleStateChangeEvent", &buildMetaClass_QAccessibleStateChangeEvent);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleStateChangeEventWrapper, QAccessibleStateChangeEvent> _nd = GDefineMetaClass<QAccessibleStateChangeEventWrapper, QAccessibleStateChangeEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleStateChangeEventWrapper");
-        buildMetaClass_QAccessibleStateChangeEventWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleStateChangeEventWrapper, QAccessibleStateChangeEvent> _nd = GDefineMetaClass<QAccessibleStateChangeEventWrapper, QAccessibleStateChangeEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleStateChangeEventWrapper", &buildMetaClass_QAccessibleStateChangeEventWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -148,13 +137,11 @@ GDefineMetaInfo createMetaClass_QAccessibleTableCellInterface()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleTableCellInterface> _nd = GDefineMetaClass<QAccessibleTableCellInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleTableCellInterface");
-        buildMetaClass_QAccessibleTableCellInterface(0, _nd);
+        GDefineMetaClass<QAccessibleTableCellInterface> _nd = GDefineMetaClass<QAccessibleTableCellInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleTableCellInterface", &buildMetaClass_QAccessibleTableCellInterface);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleTableCellInterfaceWrapper, QAccessibleTableCellInterface> _nd = GDefineMetaClass<QAccessibleTableCellInterfaceWrapper, QAccessibleTableCellInterface>::declare("QAccessibleTableCellInterfaceWrapper");
-        buildMetaClass_QAccessibleTableCellInterfaceWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleTableCellInterfaceWrapper, QAccessibleTableCellInterface> _nd = GDefineMetaClass<QAccessibleTableCellInterfaceWrapper, QAccessibleTableCellInterface>::lazyDeclare("QAccessibleTableCellInterfaceWrapper", &buildMetaClass_QAccessibleTableCellInterfaceWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -168,13 +155,11 @@ GDefineMetaInfo createMetaClass_QAccessibleTableInterface()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleTableInterface> _nd = GDefineMetaClass<QAccessibleTableInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleTableInterface");
-        buildMetaClass_QAccessibleTableInterface(0, _nd);
+        GDefineMetaClass<QAccessibleTableInterface> _nd = GDefineMetaClass<QAccessibleTableInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleTableInterface", &buildMetaClass_QAccessibleTableInterface);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleTableInterfaceWrapper, QAccessibleTableInterface> _nd = GDefineMetaClass<QAccessibleTableInterfaceWrapper, QAccessibleTableInterface>::declare("QAccessibleTableInterfaceWrapper");
-        buildMetaClass_QAccessibleTableInterfaceWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleTableInterfaceWrapper, QAccessibleTableInterface> _nd = GDefineMetaClass<QAccessibleTableInterfaceWrapper, QAccessibleTableInterface>::lazyDeclare("QAccessibleTableInterfaceWrapper", &buildMetaClass_QAccessibleTableInterfaceWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -188,13 +173,11 @@ GDefineMetaInfo createMetaClass_QAccessibleTableModelChangeEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleTableModelChangeEvent, QAccessibleEvent> _nd = GDefineMetaClass<QAccessibleTableModelChangeEvent, QAccessibleEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleTableModelChangeEvent");
-        buildMetaClass_QAccessibleTableModelChangeEvent(0, _nd);
+        GDefineMetaClass<QAccessibleTableModelChangeEvent, QAccessibleEvent> _nd = GDefineMetaClass<QAccessibleTableModelChangeEvent, QAccessibleEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleTableModelChangeEvent", &buildMetaClass_QAccessibleTableModelChangeEvent);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleTableModelChangeEventWrapper, QAccessibleTableModelChangeEvent> _nd = GDefineMetaClass<QAccessibleTableModelChangeEventWrapper, QAccessibleTableModelChangeEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleTableModelChangeEventWrapper");
-        buildMetaClass_QAccessibleTableModelChangeEventWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleTableModelChangeEventWrapper, QAccessibleTableModelChangeEvent> _nd = GDefineMetaClass<QAccessibleTableModelChangeEventWrapper, QAccessibleTableModelChangeEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleTableModelChangeEventWrapper", &buildMetaClass_QAccessibleTableModelChangeEventWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -208,13 +191,11 @@ GDefineMetaInfo createMetaClass_QAccessibleTextCursorEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleTextCursorEvent, QAccessibleEvent> _nd = GDefineMetaClass<QAccessibleTextCursorEvent, QAccessibleEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleTextCursorEvent");
-        buildMetaClass_QAccessibleTextCursorEvent(0, _nd);
+        GDefineMetaClass<QAccessibleTextCursorEvent, QAccessibleEvent> _nd = GDefineMetaClass<QAccessibleTextCursorEvent, QAccessibleEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleTextCursorEvent", &buildMetaClass_QAccessibleTextCursorEvent);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleTextCursorEventWrapper, QAccessibleTextCursorEvent> _nd = GDefineMetaClass<QAccessibleTextCursorEventWrapper, QAccessibleTextCursorEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleTextCursorEventWrapper");
-        buildMetaClass_QAccessibleTextCursorEventWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleTextCursorEventWrapper, QAccessibleTextCursorEvent> _nd = GDefineMetaClass<QAccessibleTextCursorEventWrapper, QAccessibleTextCursorEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleTextCursorEventWrapper", &buildMetaClass_QAccessibleTextCursorEventWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -228,13 +209,11 @@ GDefineMetaInfo createMetaClass_QAccessibleTextInsertEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleTextInsertEvent, QAccessibleTextCursorEvent> _nd = GDefineMetaClass<QAccessibleTextInsertEvent, QAccessibleTextCursorEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleTextInsertEvent");
-        buildMetaClass_QAccessibleTextInsertEvent(0, _nd);
+        GDefineMetaClass<QAccessibleTextInsertEvent, QAccessibleTextCursorEvent> _nd = GDefineMetaClass<QAccessibleTextInsertEvent, QAccessibleTextCursorEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleTextInsertEvent", &buildMetaClass_QAccessibleTextInsertEvent);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleTextInsertEventWrapper, QAccessibleTextInsertEvent> _nd = GDefineMetaClass<QAccessibleTextInsertEventWrapper, QAccessibleTextInsertEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleTextInsertEventWrapper");
-        buildMetaClass_QAccessibleTextInsertEventWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleTextInsertEventWrapper, QAccessibleTextInsertEvent> _nd = GDefineMetaClass<QAccessibleTextInsertEventWrapper, QAccessibleTextInsertEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleTextInsertEventWrapper", &buildMetaClass_QAccessibleTextInsertEventWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -248,13 +227,11 @@ GDefineMetaInfo createMetaClass_QAccessibleTextInterface()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleTextInterface> _nd = GDefineMetaClass<QAccessibleTextInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleTextInterface");
-        buildMetaClass_QAccessibleTextInterface(0, _nd);
+        GDefineMetaClass<QAccessibleTextInterface> _nd = GDefineMetaClass<QAccessibleTextInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleTextInterface", &buildMetaClass_QAccessibleTextInterface);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleTextInterfaceWrapper, QAccessibleTextInterface> _nd = GDefineMetaClass<QAccessibleTextInterfaceWrapper, QAccessibleTextInterface>::declare("QAccessibleTextInterfaceWrapper");
-        buildMetaClass_QAccessibleTextInterfaceWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleTextInterfaceWrapper, QAccessibleTextInterface> _nd = GDefineMetaClass<QAccessibleTextInterfaceWrapper, QAccessibleTextInterface>::lazyDeclare("QAccessibleTextInterfaceWrapper", &buildMetaClass_QAccessibleTextInterfaceWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -268,13 +245,11 @@ GDefineMetaInfo createMetaClass_QAccessibleTextRemoveEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleTextRemoveEvent, QAccessibleTextCursorEvent> _nd = GDefineMetaClass<QAccessibleTextRemoveEvent, QAccessibleTextCursorEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleTextRemoveEvent");
-        buildMetaClass_QAccessibleTextRemoveEvent(0, _nd);
+        GDefineMetaClass<QAccessibleTextRemoveEvent, QAccessibleTextCursorEvent> _nd = GDefineMetaClass<QAccessibleTextRemoveEvent, QAccessibleTextCursorEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleTextRemoveEvent", &buildMetaClass_QAccessibleTextRemoveEvent);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleTextRemoveEventWrapper, QAccessibleTextRemoveEvent> _nd = GDefineMetaClass<QAccessibleTextRemoveEventWrapper, QAccessibleTextRemoveEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleTextRemoveEventWrapper");
-        buildMetaClass_QAccessibleTextRemoveEventWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleTextRemoveEventWrapper, QAccessibleTextRemoveEvent> _nd = GDefineMetaClass<QAccessibleTextRemoveEventWrapper, QAccessibleTextRemoveEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleTextRemoveEventWrapper", &buildMetaClass_QAccessibleTextRemoveEventWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -288,13 +263,11 @@ GDefineMetaInfo createMetaClass_QAccessibleTextSelectionEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleTextSelectionEvent, QAccessibleTextCursorEvent> _nd = GDefineMetaClass<QAccessibleTextSelectionEvent, QAccessibleTextCursorEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleTextSelectionEvent");
-        buildMetaClass_QAccessibleTextSelectionEvent(0, _nd);
+        GDefineMetaClass<QAccessibleTextSelectionEvent, QAccessibleTextCursorEvent> _nd = GDefineMetaClass<QAccessibleTextSelectionEvent, QAccessibleTextCursorEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleTextSelectionEvent", &buildMetaClass_QAccessibleTextSelectionEvent);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleTextSelectionEventWrapper, QAccessibleTextSelectionEvent> _nd = GDefineMetaClass<QAccessibleTextSelectionEventWrapper, QAccessibleTextSelectionEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleTextSelectionEventWrapper");
-        buildMetaClass_QAccessibleTextSelectionEventWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleTextSelectionEventWrapper, QAccessibleTextSelectionEvent> _nd = GDefineMetaClass<QAccessibleTextSelectionEventWrapper, QAccessibleTextSelectionEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleTextSelectionEventWrapper", &buildMetaClass_QAccessibleTextSelectionEventWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -308,13 +281,11 @@ GDefineMetaInfo createMetaClass_QAccessibleTextUpdateEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleTextUpdateEvent, QAccessibleTextCursorEvent> _nd = GDefineMetaClass<QAccessibleTextUpdateEvent, QAccessibleTextCursorEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleTextUpdateEvent");
-        buildMetaClass_QAccessibleTextUpdateEvent(0, _nd);
+        GDefineMetaClass<QAccessibleTextUpdateEvent, QAccessibleTextCursorEvent> _nd = GDefineMetaClass<QAccessibleTextUpdateEvent, QAccessibleTextCursorEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleTextUpdateEvent", &buildMetaClass_QAccessibleTextUpdateEvent);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleTextUpdateEventWrapper, QAccessibleTextUpdateEvent> _nd = GDefineMetaClass<QAccessibleTextUpdateEventWrapper, QAccessibleTextUpdateEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleTextUpdateEventWrapper");
-        buildMetaClass_QAccessibleTextUpdateEventWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleTextUpdateEventWrapper, QAccessibleTextUpdateEvent> _nd = GDefineMetaClass<QAccessibleTextUpdateEventWrapper, QAccessibleTextUpdateEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleTextUpdateEventWrapper", &buildMetaClass_QAccessibleTextUpdateEventWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -328,13 +299,11 @@ GDefineMetaInfo createMetaClass_QAccessibleValueChangeEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleValueChangeEvent, QAccessibleEvent> _nd = GDefineMetaClass<QAccessibleValueChangeEvent, QAccessibleEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleValueChangeEvent");
-        buildMetaClass_QAccessibleValueChangeEvent(0, _nd);
+        GDefineMetaClass<QAccessibleValueChangeEvent, QAccessibleEvent> _nd = GDefineMetaClass<QAccessibleValueChangeEvent, QAccessibleEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleValueChangeEvent", &buildMetaClass_QAccessibleValueChangeEvent);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleValueChangeEventWrapper, QAccessibleValueChangeEvent> _nd = GDefineMetaClass<QAccessibleValueChangeEventWrapper, QAccessibleValueChangeEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleValueChangeEventWrapper");
-        buildMetaClass_QAccessibleValueChangeEventWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleValueChangeEventWrapper, QAccessibleValueChangeEvent> _nd = GDefineMetaClass<QAccessibleValueChangeEventWrapper, QAccessibleValueChangeEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleValueChangeEventWrapper", &buildMetaClass_QAccessibleValueChangeEventWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -348,13 +317,11 @@ GDefineMetaInfo createMetaClass_QAccessibleValueInterface()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleValueInterface> _nd = GDefineMetaClass<QAccessibleValueInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleValueInterface");
-        buildMetaClass_QAccessibleValueInterface(0, _nd);
+        GDefineMetaClass<QAccessibleValueInterface> _nd = GDefineMetaClass<QAccessibleValueInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleValueInterface", &buildMetaClass_QAccessibleValueInterface);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleValueInterfaceWrapper, QAccessibleValueInterface> _nd = GDefineMetaClass<QAccessibleValueInterfaceWrapper, QAccessibleValueInterface>::declare("QAccessibleValueInterfaceWrapper");
-        buildMetaClass_QAccessibleValueInterfaceWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleValueInterfaceWrapper, QAccessibleValueInterface> _nd = GDefineMetaClass<QAccessibleValueInterfaceWrapper, QAccessibleValueInterface>::lazyDeclare("QAccessibleValueInterfaceWrapper", &buildMetaClass_QAccessibleValueInterfaceWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qregion()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qregion(0, _d);
+    buildMetaClass_Global_qregion(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QRegion()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QRegion> _nd = GDefineMetaClass<QRegion>::declare("QRegion");
-        buildMetaClass_QRegion(0, _nd);
+        GDefineMetaClass<QRegion> _nd = GDefineMetaClass<QRegion>::lazyDeclare("QRegion", &buildMetaClass_QRegion);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QComboBox()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QComboBox, QWidget> _nd = GDefineMetaClass<QComboBox, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QComboBox");
-        buildMetaClass_QComboBox(0, _nd);
+        GDefineMetaClass<QComboBox, QWidget> _nd = GDefineMetaClass<QComboBox, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QComboBox", &buildMetaClass_QComboBox);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QComboBoxWrapper, QComboBox> _nd = GDefineMetaClass<QComboBoxWrapper, QComboBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QComboBoxWrapper");
-        buildMetaClass_QComboBoxWrapper(0, _nd);
+        GDefineMetaClass<QComboBoxWrapper, QComboBox> _nd = GDefineMetaClass<QComboBoxWrapper, QComboBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QComboBoxWrapper", &buildMetaClass_QComboBoxWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qsize(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qsize(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QSize &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
@@ -61,9 +61,9 @@ inline QSize & opErAToRWrapper_QSize__opDivAssign(QSize * self, qreal c) {
 
 
 template <typename D>
-void buildMetaClass_QSize(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSize(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -111,9 +111,9 @@ inline QSizeF & opErAToRWrapper_QSizeF__opDivAssign(QSizeF * self, qreal c) {
 
 
 template <typename D>
-void buildMetaClass_QSizeF(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSizeF(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

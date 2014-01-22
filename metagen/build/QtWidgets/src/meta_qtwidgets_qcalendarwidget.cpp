@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QCalendarWidget()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QCalendarWidget, QWidget> _nd = GDefineMetaClass<QCalendarWidget, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QCalendarWidget");
-        buildMetaClass_QCalendarWidget(0, _nd);
+        GDefineMetaClass<QCalendarWidget, QWidget> _nd = GDefineMetaClass<QCalendarWidget, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QCalendarWidget", &buildMetaClass_QCalendarWidget);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QCalendarWidgetWrapper, QCalendarWidget> _nd = GDefineMetaClass<QCalendarWidgetWrapper, QCalendarWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QCalendarWidgetWrapper");
-        buildMetaClass_QCalendarWidgetWrapper(0, _nd);
+        GDefineMetaClass<QCalendarWidgetWrapper, QCalendarWidget> _nd = GDefineMetaClass<QCalendarWidgetWrapper, QCalendarWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QCalendarWidgetWrapper", &buildMetaClass_QCalendarWidgetWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

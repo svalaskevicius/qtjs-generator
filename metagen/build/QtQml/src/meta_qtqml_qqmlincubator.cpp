@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QQmlIncubationController()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlIncubationController> _nd = GDefineMetaClass<QQmlIncubationController>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QQmlIncubationController");
-        buildMetaClass_QQmlIncubationController(0, _nd);
+        GDefineMetaClass<QQmlIncubationController> _nd = GDefineMetaClass<QQmlIncubationController>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlIncubationController", &buildMetaClass_QQmlIncubationController);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQmlIncubationControllerWrapper, QQmlIncubationController> _nd = GDefineMetaClass<QQmlIncubationControllerWrapper, QQmlIncubationController>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QQmlIncubationControllerWrapper");
-        buildMetaClass_QQmlIncubationControllerWrapper(0, _nd);
+        GDefineMetaClass<QQmlIncubationControllerWrapper, QQmlIncubationController> _nd = GDefineMetaClass<QQmlIncubationControllerWrapper, QQmlIncubationController>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlIncubationControllerWrapper", &buildMetaClass_QQmlIncubationControllerWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -42,13 +40,11 @@ GDefineMetaInfo createMetaClass_QQmlIncubator()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlIncubator> _nd = GDefineMetaClass<QQmlIncubator>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlIncubator");
-        buildMetaClass_QQmlIncubator(0, _nd);
+        GDefineMetaClass<QQmlIncubator> _nd = GDefineMetaClass<QQmlIncubator>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlIncubator", &buildMetaClass_QQmlIncubator);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQmlIncubatorWrapper, QQmlIncubator> _nd = GDefineMetaClass<QQmlIncubatorWrapper, QQmlIncubator>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlIncubatorWrapper");
-        buildMetaClass_QQmlIncubatorWrapper(0, _nd);
+        GDefineMetaClass<QQmlIncubatorWrapper, QQmlIncubator> _nd = GDefineMetaClass<QQmlIncubatorWrapper, QQmlIncubator>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlIncubatorWrapper", &buildMetaClass_QQmlIncubatorWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

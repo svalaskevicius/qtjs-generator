@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QQuickView()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQuickView, QQuickWindow> _nd = GDefineMetaClass<QQuickView, QQuickWindow>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQuickView");
-        buildMetaClass_QQuickView(0, _nd);
+        GDefineMetaClass<QQuickView, QQuickWindow> _nd = GDefineMetaClass<QQuickView, QQuickWindow>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQuickView", &buildMetaClass_QQuickView);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

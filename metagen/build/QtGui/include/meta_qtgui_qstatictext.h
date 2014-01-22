@@ -29,9 +29,9 @@ inline bool opErAToRWrapper_QStaticText__opNotEqual(const QStaticText * self, co
 
 
 template <typename D>
-void buildMetaClass_QStaticText(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStaticText(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

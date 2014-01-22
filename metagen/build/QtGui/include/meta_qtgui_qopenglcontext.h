@@ -21,9 +21,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qopenglcontext(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qopenglcontext(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qHash", (uint (*) (const QOpenGLVersionProfile &, uint))&qHash, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
@@ -35,9 +35,9 @@ void buildMetaClass_Global_qopenglcontext(const cpgf::GMetaDataConfigFlags & con
 
 
 template <typename D>
-void buildMetaClass_QOpenGLContext(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QOpenGLContext(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -245,9 +245,9 @@ public:
         return QOpenGLContext::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -273,22 +273,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QOpenGLContextWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QOpenGLContextWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QOpenGLContextWrapper::cpgf__register(config, _d);
+    QOpenGLContextWrapper::cpgf__register(_d);
     
-    buildMetaClass_QOpenGLContext<D>(config, _d);
+    buildMetaClass_QOpenGLContext<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QOpenGLContextGroup(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QOpenGLContextGroup(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -472,9 +472,9 @@ public:
         return QOpenGLContextGroup::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -500,15 +500,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QOpenGLContextGroupWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QOpenGLContextGroupWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QOpenGLContextGroupWrapper::cpgf__register(config, _d);
+    QOpenGLContextGroupWrapper::cpgf__register(_d);
     
-    buildMetaClass_QOpenGLContextGroup<D>(config, _d);
+    buildMetaClass_QOpenGLContextGroup<D>(_d);
 }
 
 
@@ -518,9 +518,9 @@ inline QOpenGLVersionProfile & opErAToRWrapper_QOpenGLVersionProfile__opAssign(Q
 
 
 template <typename D>
-void buildMetaClass_QOpenGLVersionProfile(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QOpenGLVersionProfile(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

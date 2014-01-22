@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qprocess()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qprocess(0, _d);
+    buildMetaClass_Global_qprocess(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,13 +68,11 @@ GDefineMetaInfo createMetaClass_QProcess()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QProcess, QIODevice> _nd = GDefineMetaClass<QProcess, QIODevice>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QProcess");
-        buildMetaClass_QProcess(0, _nd);
+        GDefineMetaClass<QProcess, QIODevice> _nd = GDefineMetaClass<QProcess, QIODevice>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QProcess", &buildMetaClass_QProcess);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QProcessWrapper, QProcess> _nd = GDefineMetaClass<QProcessWrapper, QProcess>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QProcessWrapper");
-        buildMetaClass_QProcessWrapper(0, _nd);
+        GDefineMetaClass<QProcessWrapper, QProcess> _nd = GDefineMetaClass<QProcessWrapper, QProcess>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QProcessWrapper", &buildMetaClass_QProcessWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -88,8 +86,7 @@ GDefineMetaInfo createMetaClass_QProcessEnvironment()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QProcessEnvironment> _nd = GDefineMetaClass<QProcessEnvironment>::declare("QProcessEnvironment");
-        buildMetaClass_QProcessEnvironment(0, _nd);
+        GDefineMetaClass<QProcessEnvironment> _nd = GDefineMetaClass<QProcessEnvironment>::lazyDeclare("QProcessEnvironment", &buildMetaClass_QProcessEnvironment);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

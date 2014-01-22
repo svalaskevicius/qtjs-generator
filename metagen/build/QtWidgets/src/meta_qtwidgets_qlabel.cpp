@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QLabel()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QLabel, QFrame> _nd = GDefineMetaClass<QLabel, QFrame>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QLabel");
-        buildMetaClass_QLabel(0, _nd);
+        GDefineMetaClass<QLabel, QFrame> _nd = GDefineMetaClass<QLabel, QFrame>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QLabel", &buildMetaClass_QLabel);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QLabelWrapper, QLabel> _nd = GDefineMetaClass<QLabelWrapper, QLabel>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QLabelWrapper");
-        buildMetaClass_QLabelWrapper(0, _nd);
+        GDefineMetaClass<QLabelWrapper, QLabel> _nd = GDefineMetaClass<QLabelWrapper, QLabel>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QLabelWrapper", &buildMetaClass_QLabelWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

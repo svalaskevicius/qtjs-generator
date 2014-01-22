@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QCommandLinkButton()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QCommandLinkButton, QPushButton> _nd = GDefineMetaClass<QCommandLinkButton, QPushButton>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QCommandLinkButton");
-        buildMetaClass_QCommandLinkButton(0, _nd);
+        GDefineMetaClass<QCommandLinkButton, QPushButton> _nd = GDefineMetaClass<QCommandLinkButton, QPushButton>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QCommandLinkButton", &buildMetaClass_QCommandLinkButton);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QCommandLinkButtonWrapper, QCommandLinkButton> _nd = GDefineMetaClass<QCommandLinkButtonWrapper, QCommandLinkButton>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QCommandLinkButtonWrapper");
-        buildMetaClass_QCommandLinkButtonWrapper(0, _nd);
+        GDefineMetaClass<QCommandLinkButtonWrapper, QCommandLinkButton> _nd = GDefineMetaClass<QCommandLinkButtonWrapper, QCommandLinkButton>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QCommandLinkButtonWrapper", &buildMetaClass_QCommandLinkButtonWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

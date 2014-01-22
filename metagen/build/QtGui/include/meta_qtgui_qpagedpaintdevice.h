@@ -21,9 +21,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_QPagedPaintDevice(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPagedPaintDevice(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("newPage", &D::ClassType::newPage);
@@ -228,9 +228,9 @@ public:
         return QPaintDevice::sharedPainter();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("metric", (int (D::ClassType::*) (QPaintDevice::PaintDeviceMetric) const)&D::ClassType::metric);
         _d.CPGF_MD_TEMPLATE _method("redirected", (QPaintDevice * (D::ClassType::*) (QPoint *) const)&D::ClassType::redirected);
@@ -251,16 +251,16 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QPagedPaintDeviceWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPagedPaintDeviceWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    QPagedPaintDeviceWrapper::cpgf__register(config, _d);
+    QPagedPaintDeviceWrapper::cpgf__register(_d);
     
-    buildMetaClass_QPagedPaintDevice<D>(config, _d);
+    buildMetaClass_QPagedPaintDevice<D>(_d);
 }
 
 

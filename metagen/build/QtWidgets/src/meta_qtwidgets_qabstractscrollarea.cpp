@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QAbstractScrollArea()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAbstractScrollArea, QFrame> _nd = GDefineMetaClass<QAbstractScrollArea, QFrame>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAbstractScrollArea");
-        buildMetaClass_QAbstractScrollArea(0, _nd);
+        GDefineMetaClass<QAbstractScrollArea, QFrame> _nd = GDefineMetaClass<QAbstractScrollArea, QFrame>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAbstractScrollArea", &buildMetaClass_QAbstractScrollArea);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAbstractScrollAreaWrapper, QAbstractScrollArea> _nd = GDefineMetaClass<QAbstractScrollAreaWrapper, QAbstractScrollArea>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAbstractScrollAreaWrapper");
-        buildMetaClass_QAbstractScrollAreaWrapper(0, _nd);
+        GDefineMetaClass<QAbstractScrollAreaWrapper, QAbstractScrollArea> _nd = GDefineMetaClass<QAbstractScrollAreaWrapper, QAbstractScrollArea>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAbstractScrollAreaWrapper", &buildMetaClass_QAbstractScrollAreaWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QButtonGroup()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QButtonGroup, QObject> _nd = GDefineMetaClass<QButtonGroup, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QButtonGroup");
-        buildMetaClass_QButtonGroup(0, _nd);
+        GDefineMetaClass<QButtonGroup, QObject> _nd = GDefineMetaClass<QButtonGroup, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QButtonGroup", &buildMetaClass_QButtonGroup);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QButtonGroupWrapper, QButtonGroup> _nd = GDefineMetaClass<QButtonGroupWrapper, QButtonGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QButtonGroupWrapper");
-        buildMetaClass_QButtonGroupWrapper(0, _nd);
+        GDefineMetaClass<QButtonGroupWrapper, QButtonGroup> _nd = GDefineMetaClass<QButtonGroupWrapper, QButtonGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QButtonGroupWrapper", &buildMetaClass_QButtonGroupWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

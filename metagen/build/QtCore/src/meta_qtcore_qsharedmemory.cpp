@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QSharedMemory()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSharedMemory, QObject> _nd = GDefineMetaClass<QSharedMemory, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSharedMemory");
-        buildMetaClass_QSharedMemory(0, _nd);
+        GDefineMetaClass<QSharedMemory, QObject> _nd = GDefineMetaClass<QSharedMemory, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSharedMemory", &buildMetaClass_QSharedMemory);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSharedMemoryWrapper, QSharedMemory> _nd = GDefineMetaClass<QSharedMemoryWrapper, QSharedMemory>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSharedMemoryWrapper");
-        buildMetaClass_QSharedMemoryWrapper(0, _nd);
+        GDefineMetaClass<QSharedMemoryWrapper, QSharedMemory> _nd = GDefineMetaClass<QSharedMemoryWrapper, QSharedMemory>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSharedMemoryWrapper", &buildMetaClass_QSharedMemoryWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

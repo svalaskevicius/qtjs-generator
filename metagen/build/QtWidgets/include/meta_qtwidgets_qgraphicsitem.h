@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_Global_qgraphicsitem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qgraphicsitem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, QGraphicsItem *)>(mopHolder << mopHolder);
@@ -35,9 +35,9 @@ void buildMetaClass_Global_qgraphicsitem(const cpgf::GMetaDataConfigFlags & conf
 
 
 template <typename D>
-void buildMetaClass_QAbstractGraphicsShapeItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAbstractGraphicsShapeItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("pen", &D::ClassType::pen);
@@ -586,9 +586,9 @@ public:
         return QGraphicsItem::shape();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
         _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
@@ -665,22 +665,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAbstractGraphicsShapeItemWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAbstractGraphicsShapeItemWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAbstractGraphicsShapeItemWrapper::cpgf__register(config, _d);
+    QAbstractGraphicsShapeItemWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAbstractGraphicsShapeItem<D>(config, _d);
+    buildMetaClass_QAbstractGraphicsShapeItem<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsEllipseItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsEllipseItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QGraphicsItem *)>()
@@ -1257,9 +1257,9 @@ public:
         return QGraphicsEllipseItem::shape();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
         _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
@@ -1336,22 +1336,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsEllipseItemWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsEllipseItemWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsEllipseItemWrapper::cpgf__register(config, _d);
+    QGraphicsEllipseItemWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsEllipseItem<D>(config, _d);
+    buildMetaClass_QGraphicsEllipseItem<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("scene", &D::ClassType::scene);
@@ -2183,9 +2183,9 @@ public:
         return QGraphicsItem::shape();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
         _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
@@ -2262,25 +2262,25 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsItemWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsItemWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QGraphicsItem *)>()
         ._default(copyVariantFromCopyable(0))
     ;
     
-    QGraphicsItemWrapper::cpgf__register(config, _d);
+    QGraphicsItemWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsItem<D>(config, _d);
+    buildMetaClass_QGraphicsItem<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsItemGroup(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsItemGroup(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QGraphicsItem *)>()
@@ -2838,9 +2838,9 @@ public:
         return QGraphicsItem::shape();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
         _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
@@ -2917,22 +2917,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsItemGroupWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsItemGroupWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsItemGroupWrapper::cpgf__register(config, _d);
+    QGraphicsItemGroupWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsItemGroup<D>(config, _d);
+    buildMetaClass_QGraphicsItemGroup<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsLineItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsLineItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QGraphicsItem *)>()
@@ -3507,9 +3507,9 @@ public:
         return QGraphicsLineItem::shape();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
         _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
@@ -3586,22 +3586,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsLineItemWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsLineItemWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsLineItemWrapper::cpgf__register(config, _d);
+    QGraphicsLineItemWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsLineItem<D>(config, _d);
+    buildMetaClass_QGraphicsLineItem<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsObject(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsObject(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -4382,9 +4382,9 @@ public:
         QGraphicsObject::opacityChanged();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
         _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
@@ -4493,22 +4493,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsObjectWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsObjectWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsObjectWrapper::cpgf__register(config, _d);
+    QGraphicsObjectWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsObject<D>(config, _d);
+    buildMetaClass_QGraphicsObject<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsPathItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsPathItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QGraphicsItem *)>()
@@ -5074,9 +5074,9 @@ public:
         return QGraphicsPathItem::shape();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
         _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
@@ -5153,22 +5153,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsPathItemWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsPathItemWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsPathItemWrapper::cpgf__register(config, _d);
+    QGraphicsPathItemWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsPathItem<D>(config, _d);
+    buildMetaClass_QGraphicsPathItem<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsPixmapItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsPixmapItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QGraphicsItem *)>()
@@ -5744,9 +5744,9 @@ public:
         return QGraphicsPixmapItem::shape();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
         _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
@@ -5821,22 +5821,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsPixmapItemWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsPixmapItemWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsPixmapItemWrapper::cpgf__register(config, _d);
+    QGraphicsPixmapItemWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsPixmapItem<D>(config, _d);
+    buildMetaClass_QGraphicsPixmapItem<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsPolygonItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsPolygonItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QGraphicsItem *)>()
@@ -6404,9 +6404,9 @@ public:
         return QGraphicsPolygonItem::shape();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
         _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
@@ -6483,22 +6483,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsPolygonItemWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsPolygonItemWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsPolygonItemWrapper::cpgf__register(config, _d);
+    QGraphicsPolygonItemWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsPolygonItem<D>(config, _d);
+    buildMetaClass_QGraphicsPolygonItem<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsRectItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsRectItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QGraphicsItem *)>()
@@ -7071,9 +7071,9 @@ public:
         return QGraphicsRectItem::shape();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
         _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
@@ -7150,22 +7150,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsRectItemWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsRectItemWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsRectItemWrapper::cpgf__register(config, _d);
+    QGraphicsRectItemWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsRectItem<D>(config, _d);
+    buildMetaClass_QGraphicsRectItem<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsSimpleTextItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsSimpleTextItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QGraphicsItem *)>()
@@ -7731,9 +7731,9 @@ public:
         return QGraphicsSimpleTextItem::shape();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
         _d.CPGF_MD_TEMPLATE _method("supportsExtension", (bool (D::ClassType::*) (QGraphicsItem::Extension) const)&D::ClassType::supportsExtension);
@@ -7808,22 +7808,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsSimpleTextItemWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsSimpleTextItemWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsSimpleTextItemWrapper::cpgf__register(config, _d);
+    QGraphicsSimpleTextItemWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsSimpleTextItem<D>(config, _d);
+    buildMetaClass_QGraphicsSimpleTextItem<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsTextItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsTextItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QGraphicsItem *)>()
@@ -8641,9 +8641,9 @@ public:
         QGraphicsObject::opacityChanged();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
         _d.CPGF_MD_TEMPLATE _method("removeFromIndex", (void (D::ClassType::*) ())&D::ClassType::removeFromIndex);
@@ -8750,15 +8750,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsTextItemWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsTextItemWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsTextItemWrapper::cpgf__register(config, _d);
+    QGraphicsTextItemWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsTextItem<D>(config, _d);
+    buildMetaClass_QGraphicsTextItem<D>(_d);
 }
 
 

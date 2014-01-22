@@ -21,18 +21,18 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qpaintengine(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qpaintengine(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D>
-void buildMetaClass_QPaintEngine(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPaintEngine(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("isActive", &D::ClassType::isActive);
@@ -443,9 +443,9 @@ public:
         QPaintEngine::drawLines(lines, lineCount);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_drawTextItem", (void (D::ClassType::*) (const QPointF &, const QTextItem &))&D::ClassType::super_drawTextItem, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("super_drawLines", (void (D::ClassType::*) (const QLine *, int))&D::ClassType::super_drawLines);
@@ -474,25 +474,25 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QPaintEngineWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPaintEngineWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QPaintEngine::PaintEngineFeatures)>()
         ._default(copyVariantFromCopyable(0))
     ;
     
-    QPaintEngineWrapper::cpgf__register(config, _d);
+    QPaintEngineWrapper::cpgf__register(_d);
     
-    buildMetaClass_QPaintEngine<D>(config, _d);
+    buildMetaClass_QPaintEngine<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QPaintEngineState(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPaintEngineState(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("state", &D::ClassType::state);
@@ -518,9 +518,9 @@ void buildMetaClass_QPaintEngineState(const cpgf::GMetaDataConfigFlags & config,
 
 
 template <typename D>
-void buildMetaClass_QTextItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("descent", &D::ClassType::descent);

@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QQmlEngine()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlEngine, QJSEngine> _nd = GDefineMetaClass<QQmlEngine, QJSEngine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlEngine");
-        buildMetaClass_QQmlEngine(0, _nd);
+        GDefineMetaClass<QQmlEngine, QJSEngine> _nd = GDefineMetaClass<QQmlEngine, QJSEngine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlEngine", &buildMetaClass_QQmlEngine);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQmlEngineWrapper, QQmlEngine> _nd = GDefineMetaClass<QQmlEngineWrapper, QQmlEngine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlEngineWrapper");
-        buildMetaClass_QQmlEngineWrapper(0, _nd);
+        GDefineMetaClass<QQmlEngineWrapper, QQmlEngine> _nd = GDefineMetaClass<QQmlEngineWrapper, QQmlEngine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlEngineWrapper", &buildMetaClass_QQmlEngineWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -42,13 +40,11 @@ GDefineMetaInfo createMetaClass_QQmlImageProviderBase()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlImageProviderBase> _nd = GDefineMetaClass<QQmlImageProviderBase>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlImageProviderBase");
-        buildMetaClass_QQmlImageProviderBase(0, _nd);
+        GDefineMetaClass<QQmlImageProviderBase> _nd = GDefineMetaClass<QQmlImageProviderBase>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlImageProviderBase", &buildMetaClass_QQmlImageProviderBase);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQmlImageProviderBaseWrapper, QQmlImageProviderBase> _nd = GDefineMetaClass<QQmlImageProviderBaseWrapper, QQmlImageProviderBase>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QQmlImageProviderBaseWrapper");
-        buildMetaClass_QQmlImageProviderBaseWrapper(0, _nd);
+        GDefineMetaClass<QQmlImageProviderBaseWrapper, QQmlImageProviderBase> _nd = GDefineMetaClass<QQmlImageProviderBaseWrapper, QQmlImageProviderBase>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QQmlImageProviderBaseWrapper", &buildMetaClass_QQmlImageProviderBaseWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

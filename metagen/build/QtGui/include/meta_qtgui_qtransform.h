@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qtransform(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qtransform(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qFuzzyCompare", (bool (*) (const QTransform &, const QTransform &))&qFuzzyCompare, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
@@ -72,9 +72,9 @@ inline QTransform & opErAToRWrapper_QTransform__opSubAssign(QTransform * self, q
 
 
 template <typename D>
-void buildMetaClass_QTransform(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTransform(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (Qt::Initialization)>();

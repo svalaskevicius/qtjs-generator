@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qkeysequence(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qkeysequence(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QKeySequence &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleCopyConstReference<1> >());
@@ -56,9 +56,9 @@ inline bool opErAToRWrapper_QKeySequence__opGreaterEqual(const QKeySequence * se
 
 
 template <typename D>
-void buildMetaClass_QKeySequence(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QKeySequence(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qdir()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qdir(0, _d);
+    buildMetaClass_Global_qdir(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QDir()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDir> _nd = GDefineMetaClass<QDir>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QDir");
-        buildMetaClass_QDir(0, _nd);
+        GDefineMetaClass<QDir> _nd = GDefineMetaClass<QDir>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QDir", &buildMetaClass_QDir);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

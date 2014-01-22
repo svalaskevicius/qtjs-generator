@@ -19,9 +19,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qstringlist(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qstringlist(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, QStringList &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
@@ -41,9 +41,9 @@ inline QStringList & opErAToRWrapper_QStringList__opLeftShift(QStringList * self
 
 
 template <typename D>
-void buildMetaClass_QStringList(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStringList(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

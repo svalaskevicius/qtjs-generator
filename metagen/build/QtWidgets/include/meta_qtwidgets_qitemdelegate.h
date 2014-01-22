@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QItemDelegate(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QItemDelegate(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -466,9 +466,9 @@ public:
         QItemDelegate::updateEditorGeometry(editor, option, index);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
@@ -522,15 +522,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QItemDelegateWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QItemDelegateWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QItemDelegateWrapper::cpgf__register(config, _d);
+    QItemDelegateWrapper::cpgf__register(_d);
     
-    buildMetaClass_QItemDelegate<D>(config, _d);
+    buildMetaClass_QItemDelegate<D>(_d);
 }
 
 

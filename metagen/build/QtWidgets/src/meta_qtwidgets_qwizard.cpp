@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QWizard()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QWizard, QDialog> _nd = GDefineMetaClass<QWizard, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QWizard");
-        buildMetaClass_QWizard(0, _nd);
+        GDefineMetaClass<QWizard, QDialog> _nd = GDefineMetaClass<QWizard, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QWizard", &buildMetaClass_QWizard);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QWizardWrapper, QWizard> _nd = GDefineMetaClass<QWizardWrapper, QWizard>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QWizardWrapper");
-        buildMetaClass_QWizardWrapper(0, _nd);
+        GDefineMetaClass<QWizardWrapper, QWizard> _nd = GDefineMetaClass<QWizardWrapper, QWizard>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QWizardWrapper", &buildMetaClass_QWizardWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -97,13 +95,11 @@ GDefineMetaInfo createMetaClass_QWizardPage()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QWizardPage, QWidget> _nd = GDefineMetaClass<QWizardPage, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QWizardPage");
-        buildMetaClass_QWizardPage(0, _nd);
+        GDefineMetaClass<QWizardPage, QWidget> _nd = GDefineMetaClass<QWizardPage, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QWizardPage", &buildMetaClass_QWizardPage);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QWizardPageWrapper, QWizardPage> _nd = GDefineMetaClass<QWizardPageWrapper, QWizardPage>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QWizardPageWrapper");
-        buildMetaClass_QWizardPageWrapper(0, _nd);
+        GDefineMetaClass<QWizardPageWrapper, QWizardPage> _nd = GDefineMetaClass<QWizardPageWrapper, QWizardPage>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QWizardPageWrapper", &buildMetaClass_QWizardPageWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

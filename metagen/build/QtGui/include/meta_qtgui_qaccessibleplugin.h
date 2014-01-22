@@ -21,9 +21,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qaccessibleplugin(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qaccessibleplugin(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_22")
@@ -33,9 +33,9 @@ void buildMetaClass_Global_qaccessibleplugin(const cpgf::GMetaDataConfigFlags & 
 
 
 template <typename D>
-void buildMetaClass_QAccessiblePlugin(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessiblePlugin(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -235,9 +235,9 @@ public:
         return QAccessiblePlugin::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -264,18 +264,18 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessiblePluginWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessiblePluginWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
         ._default(copyVariantFromCopyable(0))
     ;
     
-    QAccessiblePluginWrapper::cpgf__register(config, _d);
+    QAccessiblePluginWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessiblePlugin<D>(config, _d);
+    buildMetaClass_QAccessiblePlugin<D>(_d);
 }
 
 

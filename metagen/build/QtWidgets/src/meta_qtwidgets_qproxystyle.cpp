@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QProxyStyle()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QProxyStyle, QCommonStyle> _nd = GDefineMetaClass<QProxyStyle, QCommonStyle>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QProxyStyle");
-        buildMetaClass_QProxyStyle(0, _nd);
+        GDefineMetaClass<QProxyStyle, QCommonStyle> _nd = GDefineMetaClass<QProxyStyle, QCommonStyle>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QProxyStyle", &buildMetaClass_QProxyStyle);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QProxyStyleWrapper, QProxyStyle> _nd = GDefineMetaClass<QProxyStyleWrapper, QProxyStyle>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QProxyStyleWrapper");
-        buildMetaClass_QProxyStyleWrapper(0, _nd);
+        GDefineMetaClass<QProxyStyleWrapper, QProxyStyle> _nd = GDefineMetaClass<QProxyStyleWrapper, QProxyStyle>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QProxyStyleWrapper", &buildMetaClass_QProxyStyleWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QOpenGLFramebufferObject()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QOpenGLFramebufferObject> _nd = GDefineMetaClass<QOpenGLFramebufferObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QOpenGLFramebufferObject");
-        buildMetaClass_QOpenGLFramebufferObject(0, _nd);
+        GDefineMetaClass<QOpenGLFramebufferObject> _nd = GDefineMetaClass<QOpenGLFramebufferObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QOpenGLFramebufferObject", &buildMetaClass_QOpenGLFramebufferObject);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -37,8 +36,7 @@ GDefineMetaInfo createMetaClass_QOpenGLFramebufferObjectFormat()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QOpenGLFramebufferObjectFormat> _nd = GDefineMetaClass<QOpenGLFramebufferObjectFormat>::declare("QOpenGLFramebufferObjectFormat");
-        buildMetaClass_QOpenGLFramebufferObjectFormat(0, _nd);
+        GDefineMetaClass<QOpenGLFramebufferObjectFormat> _nd = GDefineMetaClass<QOpenGLFramebufferObjectFormat>::lazyDeclare("QOpenGLFramebufferObjectFormat", &buildMetaClass_QOpenGLFramebufferObjectFormat);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

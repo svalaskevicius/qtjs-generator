@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qrect(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qrect(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const QRect &, const QRect &)>(mopHolder == mopHolder);
@@ -57,9 +57,9 @@ inline QRect & opErAToRWrapper_QRect__opSubAssign(QRect * self, const QMargins &
 
 
 template <typename D>
-void buildMetaClass_QRect(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QRect(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -161,9 +161,9 @@ inline QRectF & opErAToRWrapper_QRectF__opBitAndAssign(QRectF * self, const QRec
 
 
 template <typename D>
-void buildMetaClass_QRectF(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QRectF(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

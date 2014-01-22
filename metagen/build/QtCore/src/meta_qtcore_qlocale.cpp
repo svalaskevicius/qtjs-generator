@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qlocale()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qlocale(0, _d);
+    buildMetaClass_Global_qlocale(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QLocale()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QLocale> _nd = GDefineMetaClass<QLocale>::declare("QLocale");
-        buildMetaClass_QLocale(0, _nd);
+        GDefineMetaClass<QLocale> _nd = GDefineMetaClass<QLocale>::lazyDeclare("QLocale", &buildMetaClass_QLocale);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qhash()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qhash(0, _d);
+    buildMetaClass_Global_qhash(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QHashDummyValue()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QHashDummyValue> _nd = GDefineMetaClass<QHashDummyValue>::declare("QHashDummyValue");
-        buildMetaClass_QHashDummyValue(0, _nd);
+        GDefineMetaClass<QHashDummyValue> _nd = GDefineMetaClass<QHashDummyValue>::lazyDeclare("QHashDummyValue", &buildMetaClass_QHashDummyValue);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

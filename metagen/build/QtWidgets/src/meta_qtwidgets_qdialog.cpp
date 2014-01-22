@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QDialog()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDialog, QWidget> _nd = GDefineMetaClass<QDialog, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDialog");
-        buildMetaClass_QDialog(0, _nd);
+        GDefineMetaClass<QDialog, QWidget> _nd = GDefineMetaClass<QDialog, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDialog", &buildMetaClass_QDialog);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QDialogWrapper, QDialog> _nd = GDefineMetaClass<QDialogWrapper, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDialogWrapper");
-        buildMetaClass_QDialogWrapper(0, _nd);
+        GDefineMetaClass<QDialogWrapper, QDialog> _nd = GDefineMetaClass<QDialogWrapper, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDialogWrapper", &buildMetaClass_QDialogWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

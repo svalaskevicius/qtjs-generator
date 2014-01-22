@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QBoxLayout(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QBoxLayout(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QBoxLayout::Direction, QWidget *)>()
@@ -574,9 +574,9 @@ public:
         return QBoxLayout::heightForWidth(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
@@ -627,22 +627,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QBoxLayoutWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QBoxLayoutWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QBoxLayoutWrapper::cpgf__register(config, _d);
+    QBoxLayoutWrapper::cpgf__register(_d);
     
-    buildMetaClass_QBoxLayout<D>(config, _d);
+    buildMetaClass_QBoxLayout<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QHBoxLayout(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QHBoxLayout(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -1140,9 +1140,9 @@ public:
         return QBoxLayout::heightForWidth(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
@@ -1193,22 +1193,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QHBoxLayoutWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QHBoxLayoutWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QHBoxLayoutWrapper::cpgf__register(config, _d);
+    QHBoxLayoutWrapper::cpgf__register(_d);
     
-    buildMetaClass_QHBoxLayout<D>(config, _d);
+    buildMetaClass_QHBoxLayout<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QVBoxLayout(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QVBoxLayout(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -1706,9 +1706,9 @@ public:
         return QBoxLayout::heightForWidth(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
@@ -1759,15 +1759,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QVBoxLayoutWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QVBoxLayoutWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QVBoxLayoutWrapper::cpgf__register(config, _d);
+    QVBoxLayoutWrapper::cpgf__register(_d);
     
-    buildMetaClass_QVBoxLayout<D>(config, _d);
+    buildMetaClass_QVBoxLayout<D>(_d);
 }
 
 

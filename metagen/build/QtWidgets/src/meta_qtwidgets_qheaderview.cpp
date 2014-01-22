@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QHeaderView()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QHeaderView, QAbstractItemView> _nd = GDefineMetaClass<QHeaderView, QAbstractItemView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QHeaderView");
-        buildMetaClass_QHeaderView(0, _nd);
+        GDefineMetaClass<QHeaderView, QAbstractItemView> _nd = GDefineMetaClass<QHeaderView, QAbstractItemView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QHeaderView", &buildMetaClass_QHeaderView);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QHeaderViewWrapper, QHeaderView> _nd = GDefineMetaClass<QHeaderViewWrapper, QHeaderView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QHeaderViewWrapper");
-        buildMetaClass_QHeaderViewWrapper(0, _nd);
+        GDefineMetaClass<QHeaderViewWrapper, QHeaderView> _nd = GDefineMetaClass<QHeaderViewWrapper, QHeaderView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QHeaderViewWrapper", &buildMetaClass_QHeaderViewWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

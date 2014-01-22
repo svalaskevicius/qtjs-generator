@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QStackedLayout()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStackedLayout, QLayout> _nd = GDefineMetaClass<QStackedLayout, QLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QStackedLayout");
-        buildMetaClass_QStackedLayout(0, _nd);
+        GDefineMetaClass<QStackedLayout, QLayout> _nd = GDefineMetaClass<QStackedLayout, QLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStackedLayout", &buildMetaClass_QStackedLayout);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QStackedLayoutWrapper, QStackedLayout> _nd = GDefineMetaClass<QStackedLayoutWrapper, QStackedLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QStackedLayoutWrapper");
-        buildMetaClass_QStackedLayoutWrapper(0, _nd);
+        GDefineMetaClass<QStackedLayoutWrapper, QStackedLayout> _nd = GDefineMetaClass<QStackedLayoutWrapper, QStackedLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStackedLayoutWrapper", &buildMetaClass_QStackedLayoutWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

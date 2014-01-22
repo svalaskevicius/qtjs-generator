@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qdatetime()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qdatetime(0, _d);
+    buildMetaClass_Global_qdatetime(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QDate()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDate> _nd = GDefineMetaClass<QDate>::declare("QDate");
-        buildMetaClass_QDate(0, _nd);
+        GDefineMetaClass<QDate> _nd = GDefineMetaClass<QDate>::lazyDeclare("QDate", &buildMetaClass_QDate);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QDateTime()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDateTime> _nd = GDefineMetaClass<QDateTime>::declare("QDateTime");
-        buildMetaClass_QDateTime(0, _nd);
+        GDefineMetaClass<QDateTime> _nd = GDefineMetaClass<QDateTime>::lazyDeclare("QDateTime", &buildMetaClass_QDateTime);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -98,8 +96,7 @@ GDefineMetaInfo createMetaClass_QTime()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTime> _nd = GDefineMetaClass<QTime>::declare("QTime");
-        buildMetaClass_QTime(0, _nd);
+        GDefineMetaClass<QTime> _nd = GDefineMetaClass<QTime>::lazyDeclare("QTime", &buildMetaClass_QTime);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

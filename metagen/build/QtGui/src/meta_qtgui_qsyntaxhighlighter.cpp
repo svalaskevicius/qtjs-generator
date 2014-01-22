@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QSyntaxHighlighter()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSyntaxHighlighter, QObject> _nd = GDefineMetaClass<QSyntaxHighlighter, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSyntaxHighlighter");
-        buildMetaClass_QSyntaxHighlighter(0, _nd);
+        GDefineMetaClass<QSyntaxHighlighter, QObject> _nd = GDefineMetaClass<QSyntaxHighlighter, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSyntaxHighlighter", &buildMetaClass_QSyntaxHighlighter);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSyntaxHighlighterWrapper, QSyntaxHighlighter> _nd = GDefineMetaClass<QSyntaxHighlighterWrapper, QSyntaxHighlighter>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSyntaxHighlighterWrapper");
-        buildMetaClass_QSyntaxHighlighterWrapper(0, _nd);
+        GDefineMetaClass<QSyntaxHighlighterWrapper, QSyntaxHighlighter> _nd = GDefineMetaClass<QSyntaxHighlighterWrapper, QSyntaxHighlighter>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSyntaxHighlighterWrapper", &buildMetaClass_QSyntaxHighlighterWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

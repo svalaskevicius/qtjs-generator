@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QFileSelector()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFileSelector, QObject> _nd = GDefineMetaClass<QFileSelector, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFileSelector");
-        buildMetaClass_QFileSelector(0, _nd);
+        GDefineMetaClass<QFileSelector, QObject> _nd = GDefineMetaClass<QFileSelector, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFileSelector", &buildMetaClass_QFileSelector);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QFileSelectorWrapper, QFileSelector> _nd = GDefineMetaClass<QFileSelectorWrapper, QFileSelector>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFileSelectorWrapper");
-        buildMetaClass_QFileSelectorWrapper(0, _nd);
+        GDefineMetaClass<QFileSelectorWrapper, QFileSelector> _nd = GDefineMetaClass<QFileSelectorWrapper, QFileSelector>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFileSelectorWrapper", &buildMetaClass_QFileSelectorWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

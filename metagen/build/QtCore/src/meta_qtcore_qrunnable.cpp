@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QRunnable()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QRunnable> _nd = GDefineMetaClass<QRunnable>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QRunnable");
-        buildMetaClass_QRunnable(0, _nd);
+        GDefineMetaClass<QRunnable> _nd = GDefineMetaClass<QRunnable>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QRunnable", &buildMetaClass_QRunnable);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QRunnableWrapper, QRunnable> _nd = GDefineMetaClass<QRunnableWrapper, QRunnable>::declare("QRunnableWrapper");
-        buildMetaClass_QRunnableWrapper(0, _nd);
+        GDefineMetaClass<QRunnableWrapper, QRunnable> _nd = GDefineMetaClass<QRunnableWrapper, QRunnable>::lazyDeclare("QRunnableWrapper", &buildMetaClass_QRunnableWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

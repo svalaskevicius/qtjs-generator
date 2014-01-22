@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qquaternion()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qquaternion(0, _d);
+    buildMetaClass_Global_qquaternion(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QQuaternion()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQuaternion> _nd = GDefineMetaClass<QQuaternion>::declare("QQuaternion");
-        buildMetaClass_QQuaternion(0, _nd);
+        GDefineMetaClass<QQuaternion> _nd = GDefineMetaClass<QQuaternion>::lazyDeclare("QQuaternion", &buildMetaClass_QQuaternion);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

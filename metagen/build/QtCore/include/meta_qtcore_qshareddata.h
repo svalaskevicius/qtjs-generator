@@ -19,9 +19,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qshareddata(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qshareddata(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
@@ -62,9 +62,9 @@ inline bool opErAToRWrapper_QExplicitlySharedDataPointer__opNot(const QExplicitl
 
 
 template <typename D, class T>
-void buildMetaClass_QExplicitlySharedDataPointer(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QExplicitlySharedDataPointer(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -98,9 +98,9 @@ void buildMetaClass_QExplicitlySharedDataPointer(const cpgf::GMetaDataConfigFlag
 
 
 template <typename D>
-void buildMetaClass_QSharedData(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSharedData(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -140,9 +140,9 @@ inline bool opErAToRWrapper_QSharedDataPointer__opNot(const QSharedDataPointer<T
 
 
 template <typename D, class T>
-void buildMetaClass_QSharedDataPointer(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSharedDataPointer(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

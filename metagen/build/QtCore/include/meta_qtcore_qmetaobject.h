@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qmetaobject(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qmetaobject(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_32")
@@ -32,9 +32,9 @@ void buildMetaClass_Global_qmetaobject(const cpgf::GMetaDataConfigFlags & config
 
 
 template <typename D>
-void buildMetaClass_QMetaClassInfo(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QMetaClassInfo(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -45,9 +45,9 @@ void buildMetaClass_QMetaClassInfo(const cpgf::GMetaDataConfigFlags & config, D 
 
 
 template <typename D>
-void buildMetaClass_QMetaEnum(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QMetaEnum(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -71,9 +71,9 @@ void buildMetaClass_QMetaEnum(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QMetaMethod(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QMetaMethod(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -162,9 +162,9 @@ void buildMetaClass_QMetaMethod(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QMetaProperty(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QMetaProperty(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

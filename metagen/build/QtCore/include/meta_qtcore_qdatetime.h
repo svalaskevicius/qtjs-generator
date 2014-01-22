@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qdatetime(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qdatetime(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qHash", (uint (*) (const QDateTime &, uint))&qHash, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
@@ -65,9 +65,9 @@ inline bool opErAToRWrapper_QDate__opGreaterEqual(const QDate * self, const QDat
 
 
 template <typename D>
-void buildMetaClass_QDate(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDate(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -158,9 +158,9 @@ inline bool opErAToRWrapper_QDateTime__opGreaterEqual(const QDateTime * self, co
 
 
 template <typename D>
-void buildMetaClass_QDateTime(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDateTime(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -262,9 +262,9 @@ inline bool opErAToRWrapper_QTime__opGreaterEqual(const QTime * self, const QTim
 
 
 template <typename D>
-void buildMetaClass_QTime(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTime(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

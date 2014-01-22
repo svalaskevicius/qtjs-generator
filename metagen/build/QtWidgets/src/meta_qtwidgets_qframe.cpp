@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QFrame()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFrame, QWidget> _nd = GDefineMetaClass<QFrame, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFrame");
-        buildMetaClass_QFrame(0, _nd);
+        GDefineMetaClass<QFrame, QWidget> _nd = GDefineMetaClass<QFrame, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFrame", &buildMetaClass_QFrame);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QFrameWrapper, QFrame> _nd = GDefineMetaClass<QFrameWrapper, QFrame>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFrameWrapper");
-        buildMetaClass_QFrameWrapper(0, _nd);
+        GDefineMetaClass<QFrameWrapper, QFrame> _nd = GDefineMetaClass<QFrameWrapper, QFrame>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFrameWrapper", &buildMetaClass_QFrameWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

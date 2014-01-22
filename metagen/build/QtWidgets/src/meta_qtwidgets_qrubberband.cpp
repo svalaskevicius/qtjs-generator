@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QRubberBand()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QRubberBand, QWidget> _nd = GDefineMetaClass<QRubberBand, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QRubberBand");
-        buildMetaClass_QRubberBand(0, _nd);
+        GDefineMetaClass<QRubberBand, QWidget> _nd = GDefineMetaClass<QRubberBand, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QRubberBand", &buildMetaClass_QRubberBand);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QRubberBandWrapper, QRubberBand> _nd = GDefineMetaClass<QRubberBandWrapper, QRubberBand>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QRubberBandWrapper");
-        buildMetaClass_QRubberBandWrapper(0, _nd);
+        GDefineMetaClass<QRubberBandWrapper, QRubberBand> _nd = GDefineMetaClass<QRubberBandWrapper, QRubberBand>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QRubberBandWrapper", &buildMetaClass_QRubberBandWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qbasictimer()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qbasictimer(0, _d);
+    buildMetaClass_Global_qbasictimer(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QBasicTimer()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QBasicTimer> _nd = GDefineMetaClass<QBasicTimer>::declare("QBasicTimer");
-        buildMetaClass_QBasicTimer(0, _nd);
+        GDefineMetaClass<QBasicTimer> _nd = GDefineMetaClass<QBasicTimer>::lazyDeclare("QBasicTimer", &buildMetaClass_QBasicTimer);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qatomic()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qatomic(0, _d);
+    buildMetaClass_Global_qatomic(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QAtomicInt()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAtomicInt, QBasicAtomicInt> _nd = GDefineMetaClass<QAtomicInt, QBasicAtomicInt>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QAtomicInt");
-        buildMetaClass_QAtomicInt(0, _nd);
+        GDefineMetaClass<QAtomicInt, QBasicAtomicInt> _nd = GDefineMetaClass<QAtomicInt, QBasicAtomicInt>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QAtomicInt", &buildMetaClass_QAtomicInt);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

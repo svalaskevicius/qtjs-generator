@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QGestureRecognizer()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGestureRecognizer> _nd = GDefineMetaClass<QGestureRecognizer>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGestureRecognizer");
-        buildMetaClass_QGestureRecognizer(0, _nd);
+        GDefineMetaClass<QGestureRecognizer> _nd = GDefineMetaClass<QGestureRecognizer>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGestureRecognizer", &buildMetaClass_QGestureRecognizer);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGestureRecognizerWrapper, QGestureRecognizer> _nd = GDefineMetaClass<QGestureRecognizerWrapper, QGestureRecognizer>::declare("QGestureRecognizerWrapper");
-        buildMetaClass_QGestureRecognizerWrapper(0, _nd);
+        GDefineMetaClass<QGestureRecognizerWrapper, QGestureRecognizer> _nd = GDefineMetaClass<QGestureRecognizerWrapper, QGestureRecognizer>::lazyDeclare("QGestureRecognizerWrapper", &buildMetaClass_QGestureRecognizerWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qbrush(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qbrush(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QBrush &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleCopyConstReference<1> >());
@@ -41,9 +41,9 @@ inline bool opErAToRWrapper_QBrush__opNotEqual(const QBrush * self, const QBrush
 
 
 template <typename D>
-void buildMetaClass_QBrush(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QBrush(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -88,9 +88,9 @@ void buildMetaClass_QBrush(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QBrushData(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QBrushData(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("ref", &D::ClassType::ref);
@@ -101,9 +101,9 @@ void buildMetaClass_QBrushData(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QConicalGradient(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QConicalGradient(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -126,9 +126,9 @@ inline bool opErAToRWrapper_QGradient__opNotEqual(const QGradient * self, const 
 
 
 template <typename D>
-void buildMetaClass_QGradient(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGradient(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -170,9 +170,9 @@ void buildMetaClass_QGradient(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QLinearGradient(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QLinearGradient(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -188,9 +188,9 @@ void buildMetaClass_QLinearGradient(const cpgf::GMetaDataConfigFlags & config, D
 
 
 template <typename D>
-void buildMetaClass_QRadialGradient(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QRadialGradient(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

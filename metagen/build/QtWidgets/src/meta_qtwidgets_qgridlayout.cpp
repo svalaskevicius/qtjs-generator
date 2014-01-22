@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QGridLayout()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGridLayout, QLayout> _nd = GDefineMetaClass<QGridLayout, QLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QGridLayout");
-        buildMetaClass_QGridLayout(0, _nd);
+        GDefineMetaClass<QGridLayout, QLayout> _nd = GDefineMetaClass<QGridLayout, QLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGridLayout", &buildMetaClass_QGridLayout);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGridLayoutWrapper, QGridLayout> _nd = GDefineMetaClass<QGridLayoutWrapper, QGridLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QGridLayoutWrapper");
-        buildMetaClass_QGridLayoutWrapper(0, _nd);
+        GDefineMetaClass<QGridLayoutWrapper, QGridLayout> _nd = GDefineMetaClass<QGridLayoutWrapper, QGridLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGridLayoutWrapper", &buildMetaClass_QGridLayoutWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

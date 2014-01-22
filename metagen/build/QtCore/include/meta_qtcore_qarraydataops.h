@@ -19,18 +19,18 @@ namespace meta_qtcore {
 
 
 template <typename D, class T, class >
-void buildMetaClass_QArrayOpsSelector(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QArrayOpsSelector(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T>
-void buildMetaClass_QGenericArrayOps(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGenericArrayOps(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("appendInitialize", &D::ClassType::appendInitialize);
@@ -44,9 +44,9 @@ void buildMetaClass_QGenericArrayOps(const cpgf::GMetaDataConfigFlags & config, 
 
 
 template <typename D, class T>
-void buildMetaClass_QMovableArrayOps(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QMovableArrayOps(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("insert", &D::ClassType::insert);
@@ -55,9 +55,9 @@ void buildMetaClass_QMovableArrayOps(const cpgf::GMetaDataConfigFlags & config, 
 
 
 template <typename D, class T>
-void buildMetaClass_QPodArrayOps(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPodArrayOps(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("appendInitialize", &D::ClassType::appendInitialize);

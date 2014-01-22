@@ -77,8 +77,7 @@ GDefineMetaInfo createMetaClass_QToolTip()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QToolTip> _nd = GDefineMetaClass<QToolTip>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QToolTip");
-        buildMetaClass_QToolTip(0, _nd);
+        GDefineMetaClass<QToolTip> _nd = GDefineMetaClass<QToolTip>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QToolTip", &buildMetaClass_QToolTip);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

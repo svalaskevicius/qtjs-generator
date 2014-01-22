@@ -18,9 +18,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_Global_qqmllist(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qqmllist(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_17")
@@ -29,9 +29,9 @@ void buildMetaClass_Global_qqmllist(const cpgf::GMetaDataConfigFlags & config, D
 
 
 template <typename D, typename T>
-void buildMetaClass_QQmlListProperty(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlListProperty(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -55,9 +55,9 @@ inline QQmlListReference & opErAToRWrapper_QQmlListReference__opAssign(QQmlListR
 
 
 template <typename D>
-void buildMetaClass_QQmlListReference(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlListReference(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

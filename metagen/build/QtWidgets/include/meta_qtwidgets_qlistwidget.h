@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_Global_qlistwidget(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qlistwidget(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, const QListWidgetItem &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleCopyConstReference<1> >());
@@ -32,9 +32,9 @@ void buildMetaClass_Global_qlistwidget(const cpgf::GMetaDataConfigFlags & config
 
 
 template <typename D>
-void buildMetaClass_QListWidget(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QListWidget(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>()
@@ -1697,9 +1697,9 @@ public:
         QAbstractItemView::verticalScrollbarValueChanged(value);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("visualRegionForSelection", (QRegion (D::ClassType::*) (const QItemSelection &) const)&D::ClassType::visualRegionForSelection);
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
@@ -1929,15 +1929,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QListWidgetWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QListWidgetWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QListWidgetWrapper::cpgf__register(config, _d);
+    QListWidgetWrapper::cpgf__register(_d);
     
-    buildMetaClass_QListWidget<D>(config, _d);
+    buildMetaClass_QListWidget<D>(_d);
 }
 
 
@@ -1950,9 +1950,9 @@ inline QListWidgetItem & opErAToRWrapper_QListWidgetItem__opAssign(QListWidgetIt
 
 
 template <typename D>
-void buildMetaClass_QListWidgetItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QListWidgetItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QListWidget *, int)>()

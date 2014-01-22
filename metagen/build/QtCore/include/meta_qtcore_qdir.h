@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qdir(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qdir(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, QDir::Filters)>(mopHolder << mopHolder);
@@ -46,9 +46,9 @@ inline bool opErAToRWrapper_QDir__opNotEqual(const QDir * self, const QDir & dir
 
 
 template <typename D>
-void buildMetaClass_QDir(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDir(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QDir &)>();

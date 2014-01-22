@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qflags()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qflags(0, _d);
+    buildMetaClass_Global_qflags(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QFlag()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFlag> _nd = GDefineMetaClass<QFlag>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QFlag");
-        buildMetaClass_QFlag(0, _nd);
+        GDefineMetaClass<QFlag> _nd = GDefineMetaClass<QFlag>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QFlag", &buildMetaClass_QFlag);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QIncompatibleFlag()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QIncompatibleFlag> _nd = GDefineMetaClass<QIncompatibleFlag>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QIncompatibleFlag");
-        buildMetaClass_QIncompatibleFlag(0, _nd);
+        GDefineMetaClass<QIncompatibleFlag> _nd = GDefineMetaClass<QIncompatibleFlag>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QIncompatibleFlag", &buildMetaClass_QIncompatibleFlag);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

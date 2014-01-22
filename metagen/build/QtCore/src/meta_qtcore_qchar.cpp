@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qchar()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qchar(0, _d);
+    buildMetaClass_Global_qchar(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QChar()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QChar> _nd = GDefineMetaClass<QChar>::declare("QChar");
-        buildMetaClass_QChar(0, _nd);
+        GDefineMetaClass<QChar> _nd = GDefineMetaClass<QChar>::lazyDeclare("QChar", &buildMetaClass_QChar);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QLatin1Char()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QLatin1Char> _nd = GDefineMetaClass<QLatin1Char>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QLatin1Char");
-        buildMetaClass_QLatin1Char(0, _nd);
+        GDefineMetaClass<QLatin1Char> _nd = GDefineMetaClass<QLatin1Char>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QLatin1Char", &buildMetaClass_QLatin1Char);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

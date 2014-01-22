@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qpicture(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qpicture(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QPicture &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
@@ -34,9 +34,9 @@ inline QPicture & opErAToRWrapper_QPicture__opAssign(QPicture * self, const QPic
 
 
 template <typename D>
-void buildMetaClass_QPicture(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPicture(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (int)>()
@@ -78,9 +78,9 @@ void buildMetaClass_QPicture(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QPictureIO(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPictureIO(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

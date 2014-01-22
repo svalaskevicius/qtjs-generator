@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qgenericmatrix(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qgenericmatrix(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
@@ -61,9 +61,9 @@ inline bool opErAToRWrapper_QGenericMatrix__opNotEqual(const QGenericMatrix<N, M
 
 
 template <typename D, int N, int M, typename T>
-void buildMetaClass_QGenericMatrix(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGenericMatrix(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

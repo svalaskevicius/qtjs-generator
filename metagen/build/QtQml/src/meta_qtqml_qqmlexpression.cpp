@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QQmlExpression()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlExpression, QObject> _nd = GDefineMetaClass<QQmlExpression, QObject>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QQmlExpression");
-        buildMetaClass_QQmlExpression(0, _nd);
+        GDefineMetaClass<QQmlExpression, QObject> _nd = GDefineMetaClass<QQmlExpression, QObject>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlExpression", &buildMetaClass_QQmlExpression);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQmlExpressionWrapper, QQmlExpression> _nd = GDefineMetaClass<QQmlExpressionWrapper, QQmlExpression>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QQmlExpressionWrapper");
-        buildMetaClass_QQmlExpressionWrapper(0, _nd);
+        GDefineMetaClass<QQmlExpressionWrapper, QQmlExpression> _nd = GDefineMetaClass<QQmlExpressionWrapper, QQmlExpression>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlExpressionWrapper", &buildMetaClass_QQmlExpressionWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

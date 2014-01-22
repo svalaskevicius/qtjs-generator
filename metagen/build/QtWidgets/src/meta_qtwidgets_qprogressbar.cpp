@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QProgressBar()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QProgressBar, QWidget> _nd = GDefineMetaClass<QProgressBar, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QProgressBar");
-        buildMetaClass_QProgressBar(0, _nd);
+        GDefineMetaClass<QProgressBar, QWidget> _nd = GDefineMetaClass<QProgressBar, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QProgressBar", &buildMetaClass_QProgressBar);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QProgressBarWrapper, QProgressBar> _nd = GDefineMetaClass<QProgressBarWrapper, QProgressBar>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QProgressBarWrapper");
-        buildMetaClass_QProgressBarWrapper(0, _nd);
+        GDefineMetaClass<QProgressBarWrapper, QProgressBar> _nd = GDefineMetaClass<QProgressBarWrapper, QProgressBar>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QProgressBarWrapper", &buildMetaClass_QProgressBarWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

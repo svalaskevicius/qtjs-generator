@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QFontDialog(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFontDialog(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>()
@@ -939,9 +939,9 @@ public:
         QDialog::closeEvent(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
         _d.CPGF_MD_TEMPLATE _method("done", (void (D::ClassType::*) (int))&D::ClassType::done);
@@ -1060,15 +1060,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QFontDialogWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFontDialogWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QFontDialogWrapper::cpgf__register(config, _d);
+    QFontDialogWrapper::cpgf__register(_d);
     
-    buildMetaClass_QFontDialog<D>(config, _d);
+    buildMetaClass_QFontDialog<D>(_d);
 }
 
 

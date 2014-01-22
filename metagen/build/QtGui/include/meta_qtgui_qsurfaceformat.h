@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qsurfaceformat(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qsurfaceformat(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const QSurfaceFormat &, const QSurfaceFormat &)>(mopHolder == mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
@@ -35,9 +35,9 @@ inline QSurfaceFormat & opErAToRWrapper_QSurfaceFormat__opAssign(QSurfaceFormat 
 
 
 template <typename D>
-void buildMetaClass_QSurfaceFormat(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSurfaceFormat(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

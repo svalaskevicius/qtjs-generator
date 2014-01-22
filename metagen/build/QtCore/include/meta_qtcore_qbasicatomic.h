@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D, typename T>
-void buildMetaClass_QBasicAtomicInteger(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QBasicAtomicInteger(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("_q_value", &D::ClassType::_q_value);
@@ -54,9 +54,9 @@ void buildMetaClass_QBasicAtomicInteger(const cpgf::GMetaDataConfigFlags & confi
 
 
 template <typename D, typename X>
-void buildMetaClass_QBasicAtomicPointer(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QBasicAtomicPointer(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("_q_value", &D::ClassType::_q_value);

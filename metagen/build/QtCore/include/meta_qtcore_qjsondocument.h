@@ -19,9 +19,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qjsondocument(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qjsondocument(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QJsonDocument &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
@@ -40,9 +40,9 @@ inline bool opErAToRWrapper_QJsonDocument__opNotEqual(const QJsonDocument * self
 
 
 template <typename D>
-void buildMetaClass_QJsonDocument(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QJsonDocument(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -90,9 +90,9 @@ void buildMetaClass_QJsonDocument(const cpgf::GMetaDataConfigFlags & config, D _
 
 
 template <typename D>
-void buildMetaClass_QJsonParseError(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QJsonParseError(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("offset", &D::ClassType::offset);

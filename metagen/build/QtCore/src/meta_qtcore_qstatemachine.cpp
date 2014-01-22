@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QStateMachine()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStateMachine, QState> _nd = GDefineMetaClass<QStateMachine, QState>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QStateMachine");
-        buildMetaClass_QStateMachine(0, _nd);
+        GDefineMetaClass<QStateMachine, QState> _nd = GDefineMetaClass<QStateMachine, QState>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStateMachine", &buildMetaClass_QStateMachine);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QStateMachineWrapper, QStateMachine> _nd = GDefineMetaClass<QStateMachineWrapper, QStateMachine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QStateMachineWrapper");
-        buildMetaClass_QStateMachineWrapper(0, _nd);
+        GDefineMetaClass<QStateMachineWrapper, QStateMachine> _nd = GDefineMetaClass<QStateMachineWrapper, QStateMachine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStateMachineWrapper", &buildMetaClass_QStateMachineWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

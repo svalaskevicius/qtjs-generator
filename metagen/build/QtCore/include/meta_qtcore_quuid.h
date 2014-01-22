@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_quuid(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_quuid(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qHash", (uint (*) (const QUuid &, uint))&qHash, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
@@ -47,9 +47,9 @@ inline bool opErAToRWrapper_QUuid__opGreater(const QUuid * self, const QUuid & o
 
 
 template <typename D>
-void buildMetaClass_QUuid(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QUuid(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

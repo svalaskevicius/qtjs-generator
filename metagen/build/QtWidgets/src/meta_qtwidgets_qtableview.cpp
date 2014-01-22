@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QTableView()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTableView, QAbstractItemView> _nd = GDefineMetaClass<QTableView, QAbstractItemView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTableView");
-        buildMetaClass_QTableView(0, _nd);
+        GDefineMetaClass<QTableView, QAbstractItemView> _nd = GDefineMetaClass<QTableView, QAbstractItemView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTableView", &buildMetaClass_QTableView);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QTableViewWrapper, QTableView> _nd = GDefineMetaClass<QTableViewWrapper, QTableView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTableViewWrapper");
-        buildMetaClass_QTableViewWrapper(0, _nd);
+        GDefineMetaClass<QTableViewWrapper, QTableView> _nd = GDefineMetaClass<QTableViewWrapper, QTableView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTableViewWrapper", &buildMetaClass_QTableViewWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

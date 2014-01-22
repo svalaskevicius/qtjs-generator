@@ -21,9 +21,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_QSGSimpleTextureNode(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGSimpleTextureNode(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -79,9 +79,9 @@ public:
         return QSGNode::isSubtreeBlocked();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
         _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
@@ -90,15 +90,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSGSimpleTextureNodeWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGSimpleTextureNodeWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSGSimpleTextureNodeWrapper::cpgf__register(config, _d);
+    QSGSimpleTextureNodeWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSGSimpleTextureNode<D>(config, _d);
+    buildMetaClass_QSGSimpleTextureNode<D>(_d);
 }
 
 

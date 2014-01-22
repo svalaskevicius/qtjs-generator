@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QDockWidget(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDockWidget(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QString &, QWidget *, Qt::WindowFlags)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
@@ -864,9 +864,9 @@ public:
         QDockWidget::closeEvent(event);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
         _d.CPGF_MD_TEMPLATE _method("initStyleOption", (void (D::ClassType::*) (QStyleOptionDockWidget *) const)&D::ClassType::initStyleOption);
@@ -978,15 +978,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QDockWidgetWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDockWidgetWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QDockWidgetWrapper::cpgf__register(config, _d);
+    QDockWidgetWrapper::cpgf__register(_d);
     
-    buildMetaClass_QDockWidget<D>(config, _d);
+    buildMetaClass_QDockWidget<D>(_d);
 }
 
 

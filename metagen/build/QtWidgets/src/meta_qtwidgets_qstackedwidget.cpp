@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QStackedWidget()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStackedWidget, QFrame> _nd = GDefineMetaClass<QStackedWidget, QFrame>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QStackedWidget");
-        buildMetaClass_QStackedWidget(0, _nd);
+        GDefineMetaClass<QStackedWidget, QFrame> _nd = GDefineMetaClass<QStackedWidget, QFrame>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStackedWidget", &buildMetaClass_QStackedWidget);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QStackedWidgetWrapper, QStackedWidget> _nd = GDefineMetaClass<QStackedWidgetWrapper, QStackedWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QStackedWidgetWrapper");
-        buildMetaClass_QStackedWidgetWrapper(0, _nd);
+        GDefineMetaClass<QStackedWidgetWrapper, QStackedWidget> _nd = GDefineMetaClass<QStackedWidgetWrapper, QStackedWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStackedWidgetWrapper", &buildMetaClass_QStackedWidgetWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

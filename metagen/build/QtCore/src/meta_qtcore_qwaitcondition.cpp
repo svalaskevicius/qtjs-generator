@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QWaitCondition()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QWaitCondition> _nd = GDefineMetaClass<QWaitCondition>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QWaitCondition");
-        buildMetaClass_QWaitCondition(0, _nd);
+        GDefineMetaClass<QWaitCondition> _nd = GDefineMetaClass<QWaitCondition>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QWaitCondition", &buildMetaClass_QWaitCondition);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qregexp()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qregexp(0, _d);
+    buildMetaClass_Global_qregexp(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QRegExp()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QRegExp> _nd = GDefineMetaClass<QRegExp>::declare("QRegExp");
-        buildMetaClass_QRegExp(0, _nd);
+        GDefineMetaClass<QRegExp> _nd = GDefineMetaClass<QRegExp>::lazyDeclare("QRegExp", &buildMetaClass_QRegExp);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

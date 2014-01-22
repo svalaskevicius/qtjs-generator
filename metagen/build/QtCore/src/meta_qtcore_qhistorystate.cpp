@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QHistoryState()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QHistoryState, QAbstractState> _nd = GDefineMetaClass<QHistoryState, QAbstractState>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QHistoryState");
-        buildMetaClass_QHistoryState(0, _nd);
+        GDefineMetaClass<QHistoryState, QAbstractState> _nd = GDefineMetaClass<QHistoryState, QAbstractState>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QHistoryState", &buildMetaClass_QHistoryState);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QHistoryStateWrapper, QHistoryState> _nd = GDefineMetaClass<QHistoryStateWrapper, QHistoryState>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QHistoryStateWrapper");
-        buildMetaClass_QHistoryStateWrapper(0, _nd);
+        GDefineMetaClass<QHistoryStateWrapper, QHistoryState> _nd = GDefineMetaClass<QHistoryStateWrapper, QHistoryState>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QHistoryStateWrapper", &buildMetaClass_QHistoryStateWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

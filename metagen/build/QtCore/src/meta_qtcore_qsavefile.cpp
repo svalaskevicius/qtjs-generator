@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QSaveFile()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSaveFile, QFileDevice> _nd = GDefineMetaClass<QSaveFile, QFileDevice>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSaveFile");
-        buildMetaClass_QSaveFile(0, _nd);
+        GDefineMetaClass<QSaveFile, QFileDevice> _nd = GDefineMetaClass<QSaveFile, QFileDevice>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSaveFile", &buildMetaClass_QSaveFile);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSaveFileWrapper, QSaveFile> _nd = GDefineMetaClass<QSaveFileWrapper, QSaveFile>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSaveFileWrapper");
-        buildMetaClass_QSaveFileWrapper(0, _nd);
+        GDefineMetaClass<QSaveFileWrapper, QSaveFile> _nd = GDefineMetaClass<QSaveFileWrapper, QSaveFile>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSaveFileWrapper", &buildMetaClass_QSaveFileWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

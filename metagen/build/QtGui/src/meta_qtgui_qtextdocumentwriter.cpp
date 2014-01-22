@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QTextDocumentWriter()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTextDocumentWriter> _nd = GDefineMetaClass<QTextDocumentWriter>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QTextDocumentWriter");
-        buildMetaClass_QTextDocumentWriter(0, _nd);
+        GDefineMetaClass<QTextDocumentWriter> _nd = GDefineMetaClass<QTextDocumentWriter>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTextDocumentWriter", &buildMetaClass_QTextDocumentWriter);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

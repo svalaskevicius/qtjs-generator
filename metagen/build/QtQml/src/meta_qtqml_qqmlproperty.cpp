@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qqmlproperty()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qqmlproperty(0, _d);
+    buildMetaClass_Global_qqmlproperty(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QQmlProperty()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlProperty> _nd = GDefineMetaClass<QQmlProperty>::declare("QQmlProperty");
-        buildMetaClass_QQmlProperty(0, _nd);
+        GDefineMetaClass<QQmlProperty> _nd = GDefineMetaClass<QQmlProperty>::lazyDeclare("QQmlProperty", &buildMetaClass_QQmlProperty);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

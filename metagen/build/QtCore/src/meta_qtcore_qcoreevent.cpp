@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QChildEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QChildEvent, QEvent> _nd = GDefineMetaClass<QChildEvent, QEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QChildEvent");
-        buildMetaClass_QChildEvent(0, _nd);
+        GDefineMetaClass<QChildEvent, QEvent> _nd = GDefineMetaClass<QChildEvent, QEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QChildEvent", &buildMetaClass_QChildEvent);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -72,8 +71,7 @@ GDefineMetaInfo createMetaClass_QDeferredDeleteEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDeferredDeleteEvent, QEvent> _nd = GDefineMetaClass<QDeferredDeleteEvent, QEvent>::declare("QDeferredDeleteEvent");
-        buildMetaClass_QDeferredDeleteEvent(0, _nd);
+        GDefineMetaClass<QDeferredDeleteEvent, QEvent> _nd = GDefineMetaClass<QDeferredDeleteEvent, QEvent>::lazyDeclare("QDeferredDeleteEvent", &buildMetaClass_QDeferredDeleteEvent);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -87,8 +85,7 @@ GDefineMetaInfo createMetaClass_QDynamicPropertyChangeEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDynamicPropertyChangeEvent, QEvent> _nd = GDefineMetaClass<QDynamicPropertyChangeEvent, QEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QDynamicPropertyChangeEvent");
-        buildMetaClass_QDynamicPropertyChangeEvent(0, _nd);
+        GDefineMetaClass<QDynamicPropertyChangeEvent, QEvent> _nd = GDefineMetaClass<QDynamicPropertyChangeEvent, QEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QDynamicPropertyChangeEvent", &buildMetaClass_QDynamicPropertyChangeEvent);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -102,8 +99,7 @@ GDefineMetaInfo createMetaClass_QEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QEvent> _nd = GDefineMetaClass<QEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QEvent");
-        buildMetaClass_QEvent(0, _nd);
+        GDefineMetaClass<QEvent> _nd = GDefineMetaClass<QEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QEvent", &buildMetaClass_QEvent);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -117,8 +113,7 @@ GDefineMetaInfo createMetaClass_QTimerEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTimerEvent, QEvent> _nd = GDefineMetaClass<QTimerEvent, QEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QTimerEvent");
-        buildMetaClass_QTimerEvent(0, _nd);
+        GDefineMetaClass<QTimerEvent, QEvent> _nd = GDefineMetaClass<QTimerEvent, QEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QTimerEvent", &buildMetaClass_QTimerEvent);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QScreen()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QScreen, QObject> _nd = GDefineMetaClass<QScreen, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QScreen");
-        buildMetaClass_QScreen(0, _nd);
+        GDefineMetaClass<QScreen, QObject> _nd = GDefineMetaClass<QScreen, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QScreen", &buildMetaClass_QScreen);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QScreenWrapper, QScreen> _nd = GDefineMetaClass<QScreenWrapper, QScreen>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QScreenWrapper");
-        buildMetaClass_QScreenWrapper(0, _nd);
+        GDefineMetaClass<QScreenWrapper, QScreen> _nd = GDefineMetaClass<QScreenWrapper, QScreen>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QScreenWrapper", &buildMetaClass_QScreenWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

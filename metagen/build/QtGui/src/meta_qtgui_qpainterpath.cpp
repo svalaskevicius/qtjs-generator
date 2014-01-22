@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qpainterpath()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qpainterpath(0, _d);
+    buildMetaClass_Global_qpainterpath(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QPainterPath()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPainterPath> _nd = GDefineMetaClass<QPainterPath>::declare("QPainterPath");
-        buildMetaClass_QPainterPath(0, _nd);
+        GDefineMetaClass<QPainterPath> _nd = GDefineMetaClass<QPainterPath>::lazyDeclare("QPainterPath", &buildMetaClass_QPainterPath);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -48,8 +47,7 @@ GDefineMetaInfo createMetaClass_QPainterPathStroker()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPainterPathStroker> _nd = GDefineMetaClass<QPainterPathStroker>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QPainterPathStroker");
-        buildMetaClass_QPainterPathStroker(0, _nd);
+        GDefineMetaClass<QPainterPathStroker> _nd = GDefineMetaClass<QPainterPathStroker>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPainterPathStroker", &buildMetaClass_QPainterPathStroker);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

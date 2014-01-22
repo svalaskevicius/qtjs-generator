@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QFileIconProvider()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFileIconProvider> _nd = GDefineMetaClass<QFileIconProvider>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QFileIconProvider");
-        buildMetaClass_QFileIconProvider(0, _nd);
+        GDefineMetaClass<QFileIconProvider> _nd = GDefineMetaClass<QFileIconProvider>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFileIconProvider", &buildMetaClass_QFileIconProvider);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QFileIconProviderWrapper, QFileIconProvider> _nd = GDefineMetaClass<QFileIconProviderWrapper, QFileIconProvider>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QFileIconProviderWrapper");
-        buildMetaClass_QFileIconProviderWrapper(0, _nd);
+        GDefineMetaClass<QFileIconProviderWrapper, QFileIconProvider> _nd = GDefineMetaClass<QFileIconProviderWrapper, QFileIconProvider>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFileIconProviderWrapper", &buildMetaClass_QFileIconProviderWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

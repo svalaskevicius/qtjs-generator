@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qtextformat(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qtextformat(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QTextLength &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
@@ -33,9 +33,9 @@ void buildMetaClass_Global_qtextformat(const cpgf::GMetaDataConfigFlags & config
 
 
 template <typename D>
-void buildMetaClass_QTextBlockFormat(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextBlockFormat(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -75,9 +75,9 @@ void buildMetaClass_QTextBlockFormat(const cpgf::GMetaDataConfigFlags & config, 
 
 
 template <typename D>
-void buildMetaClass_QTextCharFormat(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextCharFormat(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -176,9 +176,9 @@ inline bool opErAToRWrapper_QTextFormat__opNotEqual(const QTextFormat * self, co
 
 
 template <typename D>
-void buildMetaClass_QTextFormat(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextFormat(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -346,9 +346,9 @@ void buildMetaClass_QTextFormat(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QTextFrameFormat(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextFrameFormat(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -403,9 +403,9 @@ void buildMetaClass_QTextFrameFormat(const cpgf::GMetaDataConfigFlags & config, 
 
 
 template <typename D>
-void buildMetaClass_QTextImageFormat(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextImageFormat(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -428,9 +428,9 @@ inline bool opErAToRWrapper_QTextLength__opNotEqual(const QTextLength * self, co
 
 
 template <typename D>
-void buildMetaClass_QTextLength(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextLength(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -452,9 +452,9 @@ void buildMetaClass_QTextLength(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QTextListFormat(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextListFormat(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -482,9 +482,9 @@ void buildMetaClass_QTextListFormat(const cpgf::GMetaDataConfigFlags & config, D
 
 
 template <typename D>
-void buildMetaClass_QTextTableCellFormat(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextTableCellFormat(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -502,9 +502,9 @@ void buildMetaClass_QTextTableCellFormat(const cpgf::GMetaDataConfigFlags & conf
 
 
 template <typename D>
-void buildMetaClass_QTextTableFormat(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextTableFormat(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

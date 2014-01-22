@@ -21,9 +21,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_QTextList(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextList(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QTextDocument *)>();
@@ -274,9 +274,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("blockList", (QList< QTextBlock > (D::ClassType::*) () const)&D::ClassType::blockList);
         _d.CPGF_MD_TEMPLATE _method("setFormat", (void (D::ClassType::*) (const QTextFormat &))&D::ClassType::setFormat, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -310,15 +310,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QTextListWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextListWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QTextListWrapper::cpgf__register(config, _d);
+    QTextListWrapper::cpgf__register(_d);
     
-    buildMetaClass_QTextList<D>(config, _d);
+    buildMetaClass_QTextList<D>(_d);
 }
 
 

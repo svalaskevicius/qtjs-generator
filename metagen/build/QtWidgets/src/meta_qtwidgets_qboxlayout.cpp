@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QBoxLayout()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QBoxLayout, QLayout> _nd = GDefineMetaClass<QBoxLayout, QLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QBoxLayout");
-        buildMetaClass_QBoxLayout(0, _nd);
+        GDefineMetaClass<QBoxLayout, QLayout> _nd = GDefineMetaClass<QBoxLayout, QLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QBoxLayout", &buildMetaClass_QBoxLayout);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QBoxLayoutWrapper, QBoxLayout> _nd = GDefineMetaClass<QBoxLayoutWrapper, QBoxLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QBoxLayoutWrapper");
-        buildMetaClass_QBoxLayoutWrapper(0, _nd);
+        GDefineMetaClass<QBoxLayoutWrapper, QBoxLayout> _nd = GDefineMetaClass<QBoxLayoutWrapper, QBoxLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QBoxLayoutWrapper", &buildMetaClass_QBoxLayoutWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -97,13 +95,11 @@ GDefineMetaInfo createMetaClass_QHBoxLayout()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QHBoxLayout, QBoxLayout> _nd = GDefineMetaClass<QHBoxLayout, QBoxLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QHBoxLayout");
-        buildMetaClass_QHBoxLayout(0, _nd);
+        GDefineMetaClass<QHBoxLayout, QBoxLayout> _nd = GDefineMetaClass<QHBoxLayout, QBoxLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QHBoxLayout", &buildMetaClass_QHBoxLayout);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QHBoxLayoutWrapper, QHBoxLayout> _nd = GDefineMetaClass<QHBoxLayoutWrapper, QHBoxLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QHBoxLayoutWrapper");
-        buildMetaClass_QHBoxLayoutWrapper(0, _nd);
+        GDefineMetaClass<QHBoxLayoutWrapper, QHBoxLayout> _nd = GDefineMetaClass<QHBoxLayoutWrapper, QHBoxLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QHBoxLayoutWrapper", &buildMetaClass_QHBoxLayoutWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -117,13 +113,11 @@ GDefineMetaInfo createMetaClass_QVBoxLayout()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QVBoxLayout, QBoxLayout> _nd = GDefineMetaClass<QVBoxLayout, QBoxLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QVBoxLayout");
-        buildMetaClass_QVBoxLayout(0, _nd);
+        GDefineMetaClass<QVBoxLayout, QBoxLayout> _nd = GDefineMetaClass<QVBoxLayout, QBoxLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QVBoxLayout", &buildMetaClass_QVBoxLayout);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QVBoxLayoutWrapper, QVBoxLayout> _nd = GDefineMetaClass<QVBoxLayoutWrapper, QVBoxLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QVBoxLayoutWrapper");
-        buildMetaClass_QVBoxLayoutWrapper(0, _nd);
+        GDefineMetaClass<QVBoxLayoutWrapper, QVBoxLayout> _nd = GDefineMetaClass<QVBoxLayoutWrapper, QVBoxLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QVBoxLayoutWrapper", &buildMetaClass_QVBoxLayoutWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

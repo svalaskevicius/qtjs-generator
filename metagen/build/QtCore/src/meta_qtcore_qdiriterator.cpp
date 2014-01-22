@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QDirIterator()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDirIterator> _nd = GDefineMetaClass<QDirIterator>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDirIterator");
-        buildMetaClass_QDirIterator(0, _nd);
+        GDefineMetaClass<QDirIterator> _nd = GDefineMetaClass<QDirIterator>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDirIterator", &buildMetaClass_QDirIterator);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

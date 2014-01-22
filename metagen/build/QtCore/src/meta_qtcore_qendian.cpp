@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qendian()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qendian(0, _d);
+    buildMetaClass_Global_qendian(_d);
     return _d.getMetaInfo();
 }
 

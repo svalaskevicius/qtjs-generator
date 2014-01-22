@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QTextBoundaryFinder()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTextBoundaryFinder> _nd = GDefineMetaClass<QTextBoundaryFinder>::declare("QTextBoundaryFinder");
-        buildMetaClass_QTextBoundaryFinder(0, _nd);
+        GDefineMetaClass<QTextBoundaryFinder> _nd = GDefineMetaClass<QTextBoundaryFinder>::lazyDeclare("QTextBoundaryFinder", &buildMetaClass_QTextBoundaryFinder);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

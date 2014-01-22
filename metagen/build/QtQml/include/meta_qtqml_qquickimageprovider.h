@@ -21,9 +21,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_QQuickImageProvider(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQuickImageProvider(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QQmlImageProviderBase::ImageType, QQmlImageProviderBase::Flags)>()
@@ -113,9 +113,9 @@ public:
         return QQuickImageProvider::requestTexture(id, size, requestedSize);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_requestImage", (QImage (D::ClassType::*) (const QString &, QSize *, const QSize &))&D::ClassType::super_requestImage, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("super_imageType", (QQmlImageProviderBase::ImageType (D::ClassType::*) () const)&D::ClassType::super_imageType);
@@ -127,22 +127,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QQuickImageProviderWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQuickImageProviderWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QQuickImageProviderWrapper::cpgf__register(config, _d);
+    QQuickImageProviderWrapper::cpgf__register(_d);
     
-    buildMetaClass_QQuickImageProvider<D>(config, _d);
+    buildMetaClass_QQuickImageProvider<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QQuickTextureFactory(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQuickTextureFactory(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("createTexture", &D::ClassType::createTexture);
@@ -379,9 +379,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -411,16 +411,16 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QQuickTextureFactoryWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQuickTextureFactoryWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    QQuickTextureFactoryWrapper::cpgf__register(config, _d);
+    QQuickTextureFactoryWrapper::cpgf__register(_d);
     
-    buildMetaClass_QQuickTextureFactory<D>(config, _d);
+    buildMetaClass_QQuickTextureFactory<D>(_d);
 }
 
 

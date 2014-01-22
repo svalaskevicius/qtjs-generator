@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QSlider(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSlider(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>()
@@ -875,9 +875,9 @@ public:
         QWidget::closeEvent(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("repeatAction", (QAbstractSlider::SliderAction (D::ClassType::*) () const)&D::ClassType::repeatAction);
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
@@ -995,15 +995,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSliderWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSliderWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSliderWrapper::cpgf__register(config, _d);
+    QSliderWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSlider<D>(config, _d);
+    buildMetaClass_QSlider<D>(_d);
 }
 
 

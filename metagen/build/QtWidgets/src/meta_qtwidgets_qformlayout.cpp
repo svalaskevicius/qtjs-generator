@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QFormLayout()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFormLayout, QLayout> _nd = GDefineMetaClass<QFormLayout, QLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFormLayout");
-        buildMetaClass_QFormLayout(0, _nd);
+        GDefineMetaClass<QFormLayout, QLayout> _nd = GDefineMetaClass<QFormLayout, QLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFormLayout", &buildMetaClass_QFormLayout);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QFormLayoutWrapper, QFormLayout> _nd = GDefineMetaClass<QFormLayoutWrapper, QFormLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFormLayoutWrapper");
-        buildMetaClass_QFormLayoutWrapper(0, _nd);
+        GDefineMetaClass<QFormLayoutWrapper, QFormLayout> _nd = GDefineMetaClass<QFormLayoutWrapper, QFormLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFormLayoutWrapper", &buildMetaClass_QFormLayoutWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

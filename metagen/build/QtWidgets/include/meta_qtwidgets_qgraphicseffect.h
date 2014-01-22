@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QGraphicsBlurEffect(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsBlurEffect(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -292,9 +292,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -336,22 +336,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsBlurEffectWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsBlurEffectWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsBlurEffectWrapper::cpgf__register(config, _d);
+    QGraphicsBlurEffectWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsBlurEffect<D>(config, _d);
+    buildMetaClass_QGraphicsBlurEffect<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsColorizeEffect(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsColorizeEffect(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -614,9 +614,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -658,22 +658,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsColorizeEffectWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsColorizeEffectWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsColorizeEffectWrapper::cpgf__register(config, _d);
+    QGraphicsColorizeEffectWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsColorizeEffect<D>(config, _d);
+    buildMetaClass_QGraphicsColorizeEffect<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsDropShadowEffect(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsDropShadowEffect(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -946,9 +946,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -990,22 +990,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsDropShadowEffectWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsDropShadowEffectWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsDropShadowEffectWrapper::cpgf__register(config, _d);
+    QGraphicsDropShadowEffectWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsDropShadowEffect<D>(config, _d);
+    buildMetaClass_QGraphicsDropShadowEffect<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsEffect(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsEffect(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -1276,9 +1276,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -1320,25 +1320,25 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsEffectWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsEffectWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
         ._default(copyVariantFromCopyable(0))
     ;
     
-    QGraphicsEffectWrapper::cpgf__register(config, _d);
+    QGraphicsEffectWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsEffect<D>(config, _d);
+    buildMetaClass_QGraphicsEffect<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsOpacityEffect(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsOpacityEffect(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -1601,9 +1601,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -1645,15 +1645,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsOpacityEffectWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsOpacityEffectWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsOpacityEffectWrapper::cpgf__register(config, _d);
+    QGraphicsOpacityEffectWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsOpacityEffect<D>(config, _d);
+    buildMetaClass_QGraphicsOpacityEffect<D>(_d);
 }
 
 

@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QGesture()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGesture, QObject> _nd = GDefineMetaClass<QGesture, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGesture");
-        buildMetaClass_QGesture(0, _nd);
+        GDefineMetaClass<QGesture, QObject> _nd = GDefineMetaClass<QGesture, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGesture", &buildMetaClass_QGesture);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGestureWrapper, QGesture> _nd = GDefineMetaClass<QGestureWrapper, QGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGestureWrapper");
-        buildMetaClass_QGestureWrapper(0, _nd);
+        GDefineMetaClass<QGestureWrapper, QGesture> _nd = GDefineMetaClass<QGestureWrapper, QGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGestureWrapper", &buildMetaClass_QGestureWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -97,8 +95,7 @@ GDefineMetaInfo createMetaClass_QGestureEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGestureEvent, QEvent> _nd = GDefineMetaClass<QGestureEvent, QEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QGestureEvent");
-        buildMetaClass_QGestureEvent(0, _nd);
+        GDefineMetaClass<QGestureEvent, QEvent> _nd = GDefineMetaClass<QGestureEvent, QEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QGestureEvent", &buildMetaClass_QGestureEvent);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -112,13 +109,11 @@ GDefineMetaInfo createMetaClass_QPanGesture()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPanGesture, QGesture> _nd = GDefineMetaClass<QPanGesture, QGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPanGesture");
-        buildMetaClass_QPanGesture(0, _nd);
+        GDefineMetaClass<QPanGesture, QGesture> _nd = GDefineMetaClass<QPanGesture, QGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPanGesture", &buildMetaClass_QPanGesture);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QPanGestureWrapper, QPanGesture> _nd = GDefineMetaClass<QPanGestureWrapper, QPanGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPanGestureWrapper");
-        buildMetaClass_QPanGestureWrapper(0, _nd);
+        GDefineMetaClass<QPanGestureWrapper, QPanGesture> _nd = GDefineMetaClass<QPanGestureWrapper, QPanGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPanGestureWrapper", &buildMetaClass_QPanGestureWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -132,13 +127,11 @@ GDefineMetaInfo createMetaClass_QPinchGesture()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPinchGesture, QGesture> _nd = GDefineMetaClass<QPinchGesture, QGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPinchGesture");
-        buildMetaClass_QPinchGesture(0, _nd);
+        GDefineMetaClass<QPinchGesture, QGesture> _nd = GDefineMetaClass<QPinchGesture, QGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPinchGesture", &buildMetaClass_QPinchGesture);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QPinchGestureWrapper, QPinchGesture> _nd = GDefineMetaClass<QPinchGestureWrapper, QPinchGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPinchGestureWrapper");
-        buildMetaClass_QPinchGestureWrapper(0, _nd);
+        GDefineMetaClass<QPinchGestureWrapper, QPinchGesture> _nd = GDefineMetaClass<QPinchGestureWrapper, QPinchGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPinchGestureWrapper", &buildMetaClass_QPinchGestureWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -152,13 +145,11 @@ GDefineMetaInfo createMetaClass_QSwipeGesture()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSwipeGesture, QGesture> _nd = GDefineMetaClass<QSwipeGesture, QGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSwipeGesture");
-        buildMetaClass_QSwipeGesture(0, _nd);
+        GDefineMetaClass<QSwipeGesture, QGesture> _nd = GDefineMetaClass<QSwipeGesture, QGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSwipeGesture", &buildMetaClass_QSwipeGesture);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSwipeGestureWrapper, QSwipeGesture> _nd = GDefineMetaClass<QSwipeGestureWrapper, QSwipeGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSwipeGestureWrapper");
-        buildMetaClass_QSwipeGestureWrapper(0, _nd);
+        GDefineMetaClass<QSwipeGestureWrapper, QSwipeGesture> _nd = GDefineMetaClass<QSwipeGestureWrapper, QSwipeGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSwipeGestureWrapper", &buildMetaClass_QSwipeGestureWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -172,13 +163,11 @@ GDefineMetaInfo createMetaClass_QTapAndHoldGesture()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTapAndHoldGesture, QGesture> _nd = GDefineMetaClass<QTapAndHoldGesture, QGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTapAndHoldGesture");
-        buildMetaClass_QTapAndHoldGesture(0, _nd);
+        GDefineMetaClass<QTapAndHoldGesture, QGesture> _nd = GDefineMetaClass<QTapAndHoldGesture, QGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTapAndHoldGesture", &buildMetaClass_QTapAndHoldGesture);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QTapAndHoldGestureWrapper, QTapAndHoldGesture> _nd = GDefineMetaClass<QTapAndHoldGestureWrapper, QTapAndHoldGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTapAndHoldGestureWrapper");
-        buildMetaClass_QTapAndHoldGestureWrapper(0, _nd);
+        GDefineMetaClass<QTapAndHoldGestureWrapper, QTapAndHoldGesture> _nd = GDefineMetaClass<QTapAndHoldGestureWrapper, QTapAndHoldGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTapAndHoldGestureWrapper", &buildMetaClass_QTapAndHoldGestureWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -192,13 +181,11 @@ GDefineMetaInfo createMetaClass_QTapGesture()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTapGesture, QGesture> _nd = GDefineMetaClass<QTapGesture, QGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTapGesture");
-        buildMetaClass_QTapGesture(0, _nd);
+        GDefineMetaClass<QTapGesture, QGesture> _nd = GDefineMetaClass<QTapGesture, QGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTapGesture", &buildMetaClass_QTapGesture);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QTapGestureWrapper, QTapGesture> _nd = GDefineMetaClass<QTapGestureWrapper, QTapGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTapGestureWrapper");
-        buildMetaClass_QTapGestureWrapper(0, _nd);
+        GDefineMetaClass<QTapGestureWrapper, QTapGesture> _nd = GDefineMetaClass<QTapGestureWrapper, QTapGesture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTapGestureWrapper", &buildMetaClass_QTapGestureWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QGraphicsItemAnimation()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsItemAnimation, QObject> _nd = GDefineMetaClass<QGraphicsItemAnimation, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsItemAnimation");
-        buildMetaClass_QGraphicsItemAnimation(0, _nd);
+        GDefineMetaClass<QGraphicsItemAnimation, QObject> _nd = GDefineMetaClass<QGraphicsItemAnimation, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsItemAnimation", &buildMetaClass_QGraphicsItemAnimation);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGraphicsItemAnimationWrapper, QGraphicsItemAnimation> _nd = GDefineMetaClass<QGraphicsItemAnimationWrapper, QGraphicsItemAnimation>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsItemAnimationWrapper");
-        buildMetaClass_QGraphicsItemAnimationWrapper(0, _nd);
+        GDefineMetaClass<QGraphicsItemAnimationWrapper, QGraphicsItemAnimation> _nd = GDefineMetaClass<QGraphicsItemAnimationWrapper, QGraphicsItemAnimation>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsItemAnimationWrapper", &buildMetaClass_QGraphicsItemAnimationWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

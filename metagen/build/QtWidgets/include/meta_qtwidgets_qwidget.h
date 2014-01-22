@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_Global_qwidget(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qwidget(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtWidgets_5")
@@ -33,9 +33,9 @@ void buildMetaClass_Global_qwidget(const cpgf::GMetaDataConfigFlags & config, D 
 
 
 template <typename D>
-void buildMetaClass_QWidget(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QWidget(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *, Qt::WindowFlags)>()
@@ -1110,9 +1110,9 @@ public:
         QWidget::closeEvent(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
         _d.CPGF_MD_TEMPLATE _method("showEvent", (void (D::ClassType::*) (QShowEvent *))&D::ClassType::showEvent);
@@ -1223,15 +1223,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QWidgetWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QWidgetWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QWidgetWrapper::cpgf__register(config, _d);
+    QWidgetWrapper::cpgf__register(_d);
     
-    buildMetaClass_QWidget<D>(config, _d);
+    buildMetaClass_QWidget<D>(_d);
 }
 
 
@@ -1315,9 +1315,9 @@ inline void bItFiEldWrapper_QWidgetData_unused_setter(QWidgetData * self, uint v
 
 
 template <typename D>
-void buildMetaClass_QWidgetData(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QWidgetData(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("winid", &D::ClassType::winid);

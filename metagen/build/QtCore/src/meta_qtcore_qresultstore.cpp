@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_ResultItem()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QtPrivate::ResultItem> _nd = GDefineMetaClass<QtPrivate::ResultItem>::declare("ResultItem");
-        buildMetaClass_ResultItem(0, _nd);
+        GDefineMetaClass<QtPrivate::ResultItem> _nd = GDefineMetaClass<QtPrivate::ResultItem>::lazyDeclare("ResultItem", &buildMetaClass_ResultItem);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -72,8 +71,7 @@ GDefineMetaInfo createMetaClass_ResultIteratorBase()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QtPrivate::ResultIteratorBase> _nd = GDefineMetaClass<QtPrivate::ResultIteratorBase>::declare("ResultIteratorBase");
-        buildMetaClass_ResultIteratorBase(0, _nd);
+        GDefineMetaClass<QtPrivate::ResultIteratorBase> _nd = GDefineMetaClass<QtPrivate::ResultIteratorBase>::lazyDeclare("ResultIteratorBase", &buildMetaClass_ResultIteratorBase);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -87,8 +85,7 @@ GDefineMetaInfo createMetaClass_ResultStoreBase()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QtPrivate::ResultStoreBase> _nd = GDefineMetaClass<QtPrivate::ResultStoreBase>::declare("ResultStoreBase");
-        buildMetaClass_ResultStoreBase(0, _nd);
+        GDefineMetaClass<QtPrivate::ResultStoreBase> _nd = GDefineMetaClass<QtPrivate::ResultStoreBase>::lazyDeclare("ResultStoreBase", &buildMetaClass_ResultStoreBase);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

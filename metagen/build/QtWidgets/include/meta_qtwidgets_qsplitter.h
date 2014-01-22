@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_Global_qsplitter(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qsplitter(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QTextStream & (*)(QTextStream &, const QSplitter &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
@@ -32,9 +32,9 @@ void buildMetaClass_Global_qsplitter(const cpgf::GMetaDataConfigFlags & config, 
 
 
 template <typename D>
-void buildMetaClass_QSplitter(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSplitter(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>()
@@ -903,9 +903,9 @@ public:
         QWidget::closeEvent(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
         _d.CPGF_MD_TEMPLATE _method("showEvent", (void (D::ClassType::*) (QShowEvent *))&D::ClassType::showEvent);
@@ -1022,22 +1022,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSplitterWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSplitterWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSplitterWrapper::cpgf__register(config, _d);
+    QSplitterWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSplitter<D>(config, _d);
+    buildMetaClass_QSplitter<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QSplitterHandle(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSplitterHandle(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (Qt::Orientation, QSplitter *)>();
@@ -1851,9 +1851,9 @@ public:
         QWidget::closeEvent(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
         _d.CPGF_MD_TEMPLATE _method("showEvent", (void (D::ClassType::*) (QShowEvent *))&D::ClassType::showEvent);
@@ -1966,15 +1966,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSplitterHandleWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSplitterHandleWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSplitterHandleWrapper::cpgf__register(config, _d);
+    QSplitterHandleWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSplitterHandle<D>(config, _d);
+    buildMetaClass_QSplitterHandle<D>(_d);
 }
 
 

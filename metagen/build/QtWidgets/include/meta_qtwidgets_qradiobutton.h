@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QRadioButton(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QRadioButton(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>()
@@ -881,9 +881,9 @@ public:
         QWidget::closeEvent(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("nextCheckState", (void (D::ClassType::*) ())&D::ClassType::nextCheckState);
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
@@ -1001,15 +1001,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QRadioButtonWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QRadioButtonWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QRadioButtonWrapper::cpgf__register(config, _d);
+    QRadioButtonWrapper::cpgf__register(_d);
     
-    buildMetaClass_QRadioButton<D>(config, _d);
+    buildMetaClass_QRadioButton<D>(_d);
 }
 
 

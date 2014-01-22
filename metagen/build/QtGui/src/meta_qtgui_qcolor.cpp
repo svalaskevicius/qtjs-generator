@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qcolor()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qcolor(0, _d);
+    buildMetaClass_Global_qcolor(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QColor()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QColor> _nd = GDefineMetaClass<QColor>::declare("QColor");
-        buildMetaClass_QColor(0, _nd);
+        GDefineMetaClass<QColor> _nd = GDefineMetaClass<QColor>::lazyDeclare("QColor", &buildMetaClass_QColor);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

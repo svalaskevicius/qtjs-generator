@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_Global_qlayoutitem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qlayoutitem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("QLAYOUTSIZE_MAX", &QLAYOUTSIZE_MAX);
@@ -31,9 +31,9 @@ void buildMetaClass_Global_qlayoutitem(const cpgf::GMetaDataConfigFlags & config
 
 
 template <typename D>
-void buildMetaClass_QLayoutItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QLayoutItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("sizeHint", &D::ClassType::sizeHint);
@@ -274,9 +274,9 @@ public:
         return QLayoutItem::heightForWidth(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
         _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
@@ -298,25 +298,25 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QLayoutItemWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QLayoutItemWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (Qt::Alignment)>()
         ._default(copyVariantFromCopyable(0))
     ;
     
-    QLayoutItemWrapper::cpgf__register(config, _d);
+    QLayoutItemWrapper::cpgf__register(_d);
     
-    buildMetaClass_QLayoutItem<D>(config, _d);
+    buildMetaClass_QLayoutItem<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QSpacerItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSpacerItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (int, int, QSizePolicy::Policy, QSizePolicy::Policy)>()
@@ -556,9 +556,9 @@ public:
         return QLayoutItem::heightForWidth(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
         _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
@@ -580,22 +580,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSpacerItemWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSpacerItemWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSpacerItemWrapper::cpgf__register(config, _d);
+    QSpacerItemWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSpacerItem<D>(config, _d);
+    buildMetaClass_QSpacerItem<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QWidgetItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QWidgetItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>();
@@ -831,9 +831,9 @@ public:
         return QWidgetItem::heightForWidth(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
         _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
@@ -855,22 +855,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QWidgetItemWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QWidgetItemWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QWidgetItemWrapper::cpgf__register(config, _d);
+    QWidgetItemWrapper::cpgf__register(_d);
     
-    buildMetaClass_QWidgetItem<D>(config, _d);
+    buildMetaClass_QWidgetItem<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QWidgetItemV2(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QWidgetItemV2(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>();
@@ -1099,9 +1099,9 @@ public:
         return QWidgetItemV2::heightForWidth(width);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
         _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
@@ -1123,15 +1123,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QWidgetItemV2Wrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QWidgetItemV2Wrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QWidgetItemV2Wrapper::cpgf__register(config, _d);
+    QWidgetItemV2Wrapper::cpgf__register(_d);
     
-    buildMetaClass_QWidgetItemV2<D>(config, _d);
+    buildMetaClass_QWidgetItemV2<D>(_d);
 }
 
 

@@ -19,9 +19,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_Global_qqmlinfo(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qqmlinfo(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qmlInfo", (QQmlInfo (*) (const QObject *))&qmlInfo);
@@ -99,9 +99,9 @@ inline QQmlInfo & opErAToRWrapper_QQmlInfo__opLeftShift(QQmlInfo * self, const Q
 
 
 template <typename D>
-void buildMetaClass_QQmlInfo(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlInfo(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QQmlInfo &)>();

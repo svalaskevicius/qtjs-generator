@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QMovie()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMovie, QObject> _nd = GDefineMetaClass<QMovie, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QMovie");
-        buildMetaClass_QMovie(0, _nd);
+        GDefineMetaClass<QMovie, QObject> _nd = GDefineMetaClass<QMovie, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QMovie", &buildMetaClass_QMovie);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QMovieWrapper, QMovie> _nd = GDefineMetaClass<QMovieWrapper, QMovie>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QMovieWrapper");
-        buildMetaClass_QMovieWrapper(0, _nd);
+        GDefineMetaClass<QMovieWrapper, QMovie> _nd = GDefineMetaClass<QMovieWrapper, QMovie>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QMovieWrapper", &buildMetaClass_QMovieWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

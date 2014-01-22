@@ -29,9 +29,9 @@ inline bool opErAToRWrapper_QFontMetrics__opNotEqual(const QFontMetrics * self, 
 
 
 template <typename D>
-void buildMetaClass_QFontMetrics(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFontMetrics(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QFont &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -104,9 +104,9 @@ inline bool opErAToRWrapper_QFontMetricsF__opNotEqual(const QFontMetricsF * self
 
 
 template <typename D>
-void buildMetaClass_QFontMetricsF(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFontMetricsF(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QFont &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());

@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QGraphicsProxyWidget(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsProxyWidget(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QGraphicsItem *, Qt::WindowFlags)>()
@@ -1138,9 +1138,9 @@ public:
         QGraphicsObject::opacityChanged();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("hoverLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneHoverEvent *))&D::ClassType::hoverLeaveEvent);
         _d.CPGF_MD_TEMPLATE _method("initStyleOption", (void (D::ClassType::*) (QStyleOption *) const)&D::ClassType::initStyleOption);
@@ -1296,15 +1296,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsProxyWidgetWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsProxyWidgetWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsProxyWidgetWrapper::cpgf__register(config, _d);
+    QGraphicsProxyWidgetWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsProxyWidget<D>(config, _d);
+    buildMetaClass_QGraphicsProxyWidget<D>(_d);
 }
 
 

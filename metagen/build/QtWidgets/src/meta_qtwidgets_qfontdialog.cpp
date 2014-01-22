@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QFontDialog()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFontDialog, QDialog> _nd = GDefineMetaClass<QFontDialog, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFontDialog");
-        buildMetaClass_QFontDialog(0, _nd);
+        GDefineMetaClass<QFontDialog, QDialog> _nd = GDefineMetaClass<QFontDialog, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFontDialog", &buildMetaClass_QFontDialog);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QFontDialogWrapper, QFontDialog> _nd = GDefineMetaClass<QFontDialogWrapper, QFontDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFontDialogWrapper");
-        buildMetaClass_QFontDialogWrapper(0, _nd);
+        GDefineMetaClass<QFontDialogWrapper, QFontDialog> _nd = GDefineMetaClass<QFontDialogWrapper, QFontDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFontDialogWrapper", &buildMetaClass_QFontDialogWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

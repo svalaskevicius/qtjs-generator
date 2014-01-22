@@ -18,9 +18,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QGraphicsLayout(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsLayout(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("setContentsMargins", &D::ClassType::setContentsMargins);

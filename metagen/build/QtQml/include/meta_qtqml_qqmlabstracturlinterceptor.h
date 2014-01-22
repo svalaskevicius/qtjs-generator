@@ -21,9 +21,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_QQmlAbstractUrlInterceptor(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlAbstractUrlInterceptor(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("intercept", &D::ClassType::intercept, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -56,9 +56,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_intercept", (QUrl (D::ClassType::*) (const QUrl &, QQmlAbstractUrlInterceptor::DataType))&D::ClassType::super_intercept, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
@@ -66,16 +66,16 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QQmlAbstractUrlInterceptorWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlAbstractUrlInterceptorWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    QQmlAbstractUrlInterceptorWrapper::cpgf__register(config, _d);
+    QQmlAbstractUrlInterceptorWrapper::cpgf__register(_d);
     
-    buildMetaClass_QQmlAbstractUrlInterceptor<D>(config, _d);
+    buildMetaClass_QQmlAbstractUrlInterceptor<D>(_d);
 }
 
 

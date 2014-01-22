@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QPaintDevice()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPaintDevice> _nd = GDefineMetaClass<QPaintDevice>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPaintDevice");
-        buildMetaClass_QPaintDevice(0, _nd);
+        GDefineMetaClass<QPaintDevice> _nd = GDefineMetaClass<QPaintDevice>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPaintDevice", &buildMetaClass_QPaintDevice);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QPaintDeviceWrapper, QPaintDevice> _nd = GDefineMetaClass<QPaintDeviceWrapper, QPaintDevice>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPaintDeviceWrapper");
-        buildMetaClass_QPaintDeviceWrapper(0, _nd);
+        GDefineMetaClass<QPaintDeviceWrapper, QPaintDevice> _nd = GDefineMetaClass<QPaintDeviceWrapper, QPaintDevice>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPaintDeviceWrapper", &buildMetaClass_QPaintDeviceWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

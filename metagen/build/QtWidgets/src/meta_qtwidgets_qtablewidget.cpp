@@ -76,7 +76,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qtablewidget()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qtablewidget(0, _d);
+    buildMetaClass_Global_qtablewidget(_d);
     return _d.getMetaInfo();
 }
 
@@ -88,13 +88,11 @@ GDefineMetaInfo createMetaClass_QTableWidget()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTableWidget, QTableView> _nd = GDefineMetaClass<QTableWidget, QTableView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTableWidget");
-        buildMetaClass_QTableWidget(0, _nd);
+        GDefineMetaClass<QTableWidget, QTableView> _nd = GDefineMetaClass<QTableWidget, QTableView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTableWidget", &buildMetaClass_QTableWidget);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QTableWidgetWrapper, QTableWidget> _nd = GDefineMetaClass<QTableWidgetWrapper, QTableWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTableWidgetWrapper");
-        buildMetaClass_QTableWidgetWrapper(0, _nd);
+        GDefineMetaClass<QTableWidgetWrapper, QTableWidget> _nd = GDefineMetaClass<QTableWidgetWrapper, QTableWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTableWidgetWrapper", &buildMetaClass_QTableWidgetWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -108,8 +106,7 @@ GDefineMetaInfo createMetaClass_QTableWidgetItem()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTableWidgetItem> _nd = GDefineMetaClass<QTableWidgetItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QTableWidgetItem");
-        buildMetaClass_QTableWidgetItem(0, _nd);
+        GDefineMetaClass<QTableWidgetItem> _nd = GDefineMetaClass<QTableWidgetItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QTableWidgetItem", &buildMetaClass_QTableWidgetItem);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -123,8 +120,7 @@ GDefineMetaInfo createMetaClass_QTableWidgetSelectionRange()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTableWidgetSelectionRange> _nd = GDefineMetaClass<QTableWidgetSelectionRange>::declare("QTableWidgetSelectionRange");
-        buildMetaClass_QTableWidgetSelectionRange(0, _nd);
+        GDefineMetaClass<QTableWidgetSelectionRange> _nd = GDefineMetaClass<QTableWidgetSelectionRange>::lazyDeclare("QTableWidgetSelectionRange", &buildMetaClass_QTableWidgetSelectionRange);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

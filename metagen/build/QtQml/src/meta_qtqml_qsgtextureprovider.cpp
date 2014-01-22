@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QSGTextureProvider()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSGTextureProvider, QObject> _nd = GDefineMetaClass<QSGTextureProvider, QObject>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSGTextureProvider");
-        buildMetaClass_QSGTextureProvider(0, _nd);
+        GDefineMetaClass<QSGTextureProvider, QObject> _nd = GDefineMetaClass<QSGTextureProvider, QObject>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSGTextureProvider", &buildMetaClass_QSGTextureProvider);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSGTextureProviderWrapper, QSGTextureProvider> _nd = GDefineMetaClass<QSGTextureProviderWrapper, QSGTextureProvider>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QSGTextureProviderWrapper");
-        buildMetaClass_QSGTextureProviderWrapper(0, _nd);
+        GDefineMetaClass<QSGTextureProviderWrapper, QSGTextureProvider> _nd = GDefineMetaClass<QSGTextureProviderWrapper, QSGTextureProvider>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSGTextureProviderWrapper", &buildMetaClass_QSGTextureProviderWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

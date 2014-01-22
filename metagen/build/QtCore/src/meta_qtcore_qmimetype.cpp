@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QMimeType()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMimeType> _nd = GDefineMetaClass<QMimeType>::declare("QMimeType");
-        buildMetaClass_QMimeType(0, _nd);
+        GDefineMetaClass<QMimeType> _nd = GDefineMetaClass<QMimeType>::lazyDeclare("QMimeType", &buildMetaClass_QMimeType);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

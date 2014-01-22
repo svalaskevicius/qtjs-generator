@@ -21,9 +21,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qiodevice(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qiodevice(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, QIODevice::OpenMode)>(mopHolder << mopHolder);
@@ -31,9 +31,9 @@ void buildMetaClass_Global_qiodevice(const cpgf::GMetaDataConfigFlags & config, 
 
 
 template <typename D>
-void buildMetaClass_QIODevice(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QIODevice(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -505,9 +505,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
@@ -554,17 +554,17 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QIODeviceWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QIODeviceWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>();
     
-    QIODeviceWrapper::cpgf__register(config, _d);
+    QIODeviceWrapper::cpgf__register(_d);
     
-    buildMetaClass_QIODevice<D>(config, _d);
+    buildMetaClass_QIODevice<D>(_d);
 }
 
 

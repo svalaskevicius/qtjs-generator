@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QFileInfo()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFileInfo> _nd = GDefineMetaClass<QFileInfo>::declare("QFileInfo");
-        buildMetaClass_QFileInfo(0, _nd);
+        GDefineMetaClass<QFileInfo> _nd = GDefineMetaClass<QFileInfo>::lazyDeclare("QFileInfo", &buildMetaClass_QFileInfo);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

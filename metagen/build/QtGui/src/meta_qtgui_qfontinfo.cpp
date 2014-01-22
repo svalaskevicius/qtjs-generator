@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QFontInfo()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFontInfo> _nd = GDefineMetaClass<QFontInfo>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QFontInfo");
-        buildMetaClass_QFontInfo(0, _nd);
+        GDefineMetaClass<QFontInfo> _nd = GDefineMetaClass<QFontInfo>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QFontInfo", &buildMetaClass_QFontInfo);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QTextDocumentFragment()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTextDocumentFragment> _nd = GDefineMetaClass<QTextDocumentFragment>::declare("QTextDocumentFragment");
-        buildMetaClass_QTextDocumentFragment(0, _nd);
+        GDefineMetaClass<QTextDocumentFragment> _nd = GDefineMetaClass<QTextDocumentFragment>::lazyDeclare("QTextDocumentFragment", &buildMetaClass_QTextDocumentFragment);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

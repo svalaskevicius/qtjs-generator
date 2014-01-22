@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qqmlpropertyvaluesource()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qqmlpropertyvaluesource(0, _d);
+    buildMetaClass_Global_qqmlpropertyvaluesource(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,13 +33,11 @@ GDefineMetaInfo createMetaClass_QQmlPropertyValueSource()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlPropertyValueSource> _nd = GDefineMetaClass<QQmlPropertyValueSource>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlPropertyValueSource");
-        buildMetaClass_QQmlPropertyValueSource(0, _nd);
+        GDefineMetaClass<QQmlPropertyValueSource> _nd = GDefineMetaClass<QQmlPropertyValueSource>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlPropertyValueSource", &buildMetaClass_QQmlPropertyValueSource);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQmlPropertyValueSourceWrapper, QQmlPropertyValueSource> _nd = GDefineMetaClass<QQmlPropertyValueSourceWrapper, QQmlPropertyValueSource>::declare("QQmlPropertyValueSourceWrapper");
-        buildMetaClass_QQmlPropertyValueSourceWrapper(0, _nd);
+        GDefineMetaClass<QQmlPropertyValueSourceWrapper, QQmlPropertyValueSource> _nd = GDefineMetaClass<QQmlPropertyValueSourceWrapper, QQmlPropertyValueSource>::lazyDeclare("QQmlPropertyValueSourceWrapper", &buildMetaClass_QQmlPropertyValueSourceWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

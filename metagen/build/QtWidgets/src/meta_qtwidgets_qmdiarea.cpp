@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QMdiArea()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMdiArea, QAbstractScrollArea> _nd = GDefineMetaClass<QMdiArea, QAbstractScrollArea>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QMdiArea");
-        buildMetaClass_QMdiArea(0, _nd);
+        GDefineMetaClass<QMdiArea, QAbstractScrollArea> _nd = GDefineMetaClass<QMdiArea, QAbstractScrollArea>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QMdiArea", &buildMetaClass_QMdiArea);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QMdiAreaWrapper, QMdiArea> _nd = GDefineMetaClass<QMdiAreaWrapper, QMdiArea>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QMdiAreaWrapper");
-        buildMetaClass_QMdiAreaWrapper(0, _nd);
+        GDefineMetaClass<QMdiAreaWrapper, QMdiArea> _nd = GDefineMetaClass<QMdiAreaWrapper, QMdiArea>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QMdiAreaWrapper", &buildMetaClass_QMdiAreaWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

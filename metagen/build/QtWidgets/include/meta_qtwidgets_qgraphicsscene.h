@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QGraphicsScene(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsScene(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -689,9 +689,9 @@ public:
         QGraphicsScene::helpEvent(event);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("selectionChanged", (void (D::ClassType::*) ())&D::ClassType::selectionChanged);
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
@@ -767,15 +767,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsSceneWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsSceneWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsSceneWrapper::cpgf__register(config, _d);
+    QGraphicsSceneWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsScene<D>(config, _d);
+    buildMetaClass_QGraphicsScene<D>(_d);
 }
 
 

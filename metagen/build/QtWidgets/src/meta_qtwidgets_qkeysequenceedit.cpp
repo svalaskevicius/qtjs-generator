@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QKeySequenceEdit()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QKeySequenceEdit, QWidget> _nd = GDefineMetaClass<QKeySequenceEdit, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QKeySequenceEdit");
-        buildMetaClass_QKeySequenceEdit(0, _nd);
+        GDefineMetaClass<QKeySequenceEdit, QWidget> _nd = GDefineMetaClass<QKeySequenceEdit, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QKeySequenceEdit", &buildMetaClass_QKeySequenceEdit);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QKeySequenceEditWrapper, QKeySequenceEdit> _nd = GDefineMetaClass<QKeySequenceEditWrapper, QKeySequenceEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QKeySequenceEditWrapper");
-        buildMetaClass_QKeySequenceEditWrapper(0, _nd);
+        GDefineMetaClass<QKeySequenceEditWrapper, QKeySequenceEdit> _nd = GDefineMetaClass<QKeySequenceEditWrapper, QKeySequenceEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QKeySequenceEditWrapper", &buildMetaClass_QKeySequenceEditWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

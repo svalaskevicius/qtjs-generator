@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QStackedLayout(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStackedLayout(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -548,9 +548,9 @@ public:
         return QStackedLayout::heightForWidth(width);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
@@ -601,15 +601,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QStackedLayoutWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStackedLayoutWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QStackedLayoutWrapper::cpgf__register(config, _d);
+    QStackedLayoutWrapper::cpgf__register(_d);
     
-    buildMetaClass_QStackedLayout<D>(config, _d);
+    buildMetaClass_QStackedLayout<D>(_d);
 }
 
 

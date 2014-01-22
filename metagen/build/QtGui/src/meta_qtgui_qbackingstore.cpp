@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QBackingStore()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QBackingStore> _nd = GDefineMetaClass<QBackingStore>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QBackingStore");
-        buildMetaClass_QBackingStore(0, _nd);
+        GDefineMetaClass<QBackingStore> _nd = GDefineMetaClass<QBackingStore>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QBackingStore", &buildMetaClass_QBackingStore);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

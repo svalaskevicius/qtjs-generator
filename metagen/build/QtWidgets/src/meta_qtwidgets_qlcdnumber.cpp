@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QLCDNumber()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QLCDNumber, QFrame> _nd = GDefineMetaClass<QLCDNumber, QFrame>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QLCDNumber");
-        buildMetaClass_QLCDNumber(0, _nd);
+        GDefineMetaClass<QLCDNumber, QFrame> _nd = GDefineMetaClass<QLCDNumber, QFrame>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QLCDNumber", &buildMetaClass_QLCDNumber);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QLCDNumberWrapper, QLCDNumber> _nd = GDefineMetaClass<QLCDNumberWrapper, QLCDNumber>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QLCDNumberWrapper");
-        buildMetaClass_QLCDNumberWrapper(0, _nd);
+        GDefineMetaClass<QLCDNumberWrapper, QLCDNumber> _nd = GDefineMetaClass<QLCDNumberWrapper, QLCDNumber>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QLCDNumberWrapper", &buildMetaClass_QLCDNumberWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

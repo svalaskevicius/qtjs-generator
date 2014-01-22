@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QSocketNotifier()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSocketNotifier, QObject> _nd = GDefineMetaClass<QSocketNotifier, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSocketNotifier");
-        buildMetaClass_QSocketNotifier(0, _nd);
+        GDefineMetaClass<QSocketNotifier, QObject> _nd = GDefineMetaClass<QSocketNotifier, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSocketNotifier", &buildMetaClass_QSocketNotifier);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSocketNotifierWrapper, QSocketNotifier> _nd = GDefineMetaClass<QSocketNotifierWrapper, QSocketNotifier>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSocketNotifierWrapper");
-        buildMetaClass_QSocketNotifierWrapper(0, _nd);
+        GDefineMetaClass<QSocketNotifierWrapper, QSocketNotifier> _nd = GDefineMetaClass<QSocketNotifierWrapper, QSocketNotifier>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSocketNotifierWrapper", &buildMetaClass_QSocketNotifierWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

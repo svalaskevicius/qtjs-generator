@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QMdiSubWindow()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMdiSubWindow, QWidget> _nd = GDefineMetaClass<QMdiSubWindow, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QMdiSubWindow");
-        buildMetaClass_QMdiSubWindow(0, _nd);
+        GDefineMetaClass<QMdiSubWindow, QWidget> _nd = GDefineMetaClass<QMdiSubWindow, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QMdiSubWindow", &buildMetaClass_QMdiSubWindow);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QMdiSubWindowWrapper, QMdiSubWindow> _nd = GDefineMetaClass<QMdiSubWindowWrapper, QMdiSubWindow>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QMdiSubWindowWrapper");
-        buildMetaClass_QMdiSubWindowWrapper(0, _nd);
+        GDefineMetaClass<QMdiSubWindowWrapper, QMdiSubWindow> _nd = GDefineMetaClass<QMdiSubWindowWrapper, QMdiSubWindow>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QMdiSubWindowWrapper", &buildMetaClass_QMdiSubWindowWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

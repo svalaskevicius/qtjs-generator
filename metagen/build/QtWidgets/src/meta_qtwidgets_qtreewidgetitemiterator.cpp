@@ -77,8 +77,7 @@ GDefineMetaInfo createMetaClass_QTreeWidgetItemIterator()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTreeWidgetItemIterator> _nd = GDefineMetaClass<QTreeWidgetItemIterator>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QTreeWidgetItemIterator");
-        buildMetaClass_QTreeWidgetItemIterator(0, _nd);
+        GDefineMetaClass<QTreeWidgetItemIterator> _nd = GDefineMetaClass<QTreeWidgetItemIterator>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QTreeWidgetItemIterator", &buildMetaClass_QTreeWidgetItemIterator);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QThreadPool()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QThreadPool, QObject> _nd = GDefineMetaClass<QThreadPool, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QThreadPool");
-        buildMetaClass_QThreadPool(0, _nd);
+        GDefineMetaClass<QThreadPool, QObject> _nd = GDefineMetaClass<QThreadPool, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QThreadPool", &buildMetaClass_QThreadPool);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QThreadPoolWrapper, QThreadPool> _nd = GDefineMetaClass<QThreadPoolWrapper, QThreadPool>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QThreadPoolWrapper");
-        buildMetaClass_QThreadPoolWrapper(0, _nd);
+        GDefineMetaClass<QThreadPoolWrapper, QThreadPool> _nd = GDefineMetaClass<QThreadPoolWrapper, QThreadPool>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QThreadPoolWrapper", &buildMetaClass_QThreadPoolWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

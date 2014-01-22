@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QTimer()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTimer, QObject> _nd = GDefineMetaClass<QTimer, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTimer");
-        buildMetaClass_QTimer(0, _nd);
+        GDefineMetaClass<QTimer, QObject> _nd = GDefineMetaClass<QTimer, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTimer", &buildMetaClass_QTimer);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QTimerWrapper, QTimer> _nd = GDefineMetaClass<QTimerWrapper, QTimer>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTimerWrapper");
-        buildMetaClass_QTimerWrapper(0, _nd);
+        GDefineMetaClass<QTimerWrapper, QTimer> _nd = GDefineMetaClass<QTimerWrapper, QTimer>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTimerWrapper", &buildMetaClass_QTimerWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

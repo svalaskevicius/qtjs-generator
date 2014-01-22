@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qfont(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qfont(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QFont &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleCopyConstReference<1> >());
@@ -44,9 +44,9 @@ inline bool opErAToRWrapper_QFont__opLess(const QFont * self, const QFont & __ar
 
 
 template <typename D>
-void buildMetaClass_QFont(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFont(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

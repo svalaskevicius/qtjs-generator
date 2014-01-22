@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QAbstractItemView()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAbstractItemView, QAbstractScrollArea> _nd = GDefineMetaClass<QAbstractItemView, QAbstractScrollArea>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAbstractItemView");
-        buildMetaClass_QAbstractItemView(0, _nd);
+        GDefineMetaClass<QAbstractItemView, QAbstractScrollArea> _nd = GDefineMetaClass<QAbstractItemView, QAbstractScrollArea>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAbstractItemView", &buildMetaClass_QAbstractItemView);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAbstractItemViewWrapper, QAbstractItemView> _nd = GDefineMetaClass<QAbstractItemViewWrapper, QAbstractItemView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAbstractItemViewWrapper");
-        buildMetaClass_QAbstractItemViewWrapper(0, _nd);
+        GDefineMetaClass<QAbstractItemViewWrapper, QAbstractItemView> _nd = GDefineMetaClass<QAbstractItemViewWrapper, QAbstractItemView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAbstractItemViewWrapper", &buildMetaClass_QAbstractItemViewWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

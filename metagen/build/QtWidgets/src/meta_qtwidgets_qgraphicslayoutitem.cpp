@@ -77,8 +77,7 @@ GDefineMetaInfo createMetaClass_QGraphicsLayoutItem()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsLayoutItem> _nd = GDefineMetaClass<QGraphicsLayoutItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsLayoutItem");
-        buildMetaClass_QGraphicsLayoutItem(0, _nd);
+        GDefineMetaClass<QGraphicsLayoutItem> _nd = GDefineMetaClass<QGraphicsLayoutItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsLayoutItem", &buildMetaClass_QGraphicsLayoutItem);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

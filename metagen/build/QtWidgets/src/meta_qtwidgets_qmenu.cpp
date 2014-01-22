@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QMenu()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMenu, QWidget> _nd = GDefineMetaClass<QMenu, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QMenu");
-        buildMetaClass_QMenu(0, _nd);
+        GDefineMetaClass<QMenu, QWidget> _nd = GDefineMetaClass<QMenu, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QMenu", &buildMetaClass_QMenu);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QMenuWrapper, QMenu> _nd = GDefineMetaClass<QMenuWrapper, QMenu>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QMenuWrapper");
-        buildMetaClass_QMenuWrapper(0, _nd);
+        GDefineMetaClass<QMenuWrapper, QMenu> _nd = GDefineMetaClass<QMenuWrapper, QMenu>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QMenuWrapper", &buildMetaClass_QMenuWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

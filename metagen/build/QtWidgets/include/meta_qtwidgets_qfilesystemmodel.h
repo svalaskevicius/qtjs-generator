@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QFileSystemModel(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFileSystemModel(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -874,9 +874,9 @@ public:
         return QAbstractItemModel::insertRows(row, count, parent);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("beginResetModel", (void (D::ClassType::*) ())&D::ClassType::beginResetModel);
         _d.CPGF_MD_TEMPLATE _method("beginInsertRows", (void (D::ClassType::*) (const QModelIndex &, int, int))&D::ClassType::beginInsertRows);
@@ -990,15 +990,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QFileSystemModelWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFileSystemModelWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QFileSystemModelWrapper::cpgf__register(config, _d);
+    QFileSystemModelWrapper::cpgf__register(_d);
     
-    buildMetaClass_QFileSystemModel<D>(config, _d);
+    buildMetaClass_QFileSystemModel<D>(_d);
 }
 
 

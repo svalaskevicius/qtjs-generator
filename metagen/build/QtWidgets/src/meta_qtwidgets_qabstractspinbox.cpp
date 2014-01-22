@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QAbstractSpinBox()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAbstractSpinBox, QWidget> _nd = GDefineMetaClass<QAbstractSpinBox, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAbstractSpinBox");
-        buildMetaClass_QAbstractSpinBox(0, _nd);
+        GDefineMetaClass<QAbstractSpinBox, QWidget> _nd = GDefineMetaClass<QAbstractSpinBox, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAbstractSpinBox", &buildMetaClass_QAbstractSpinBox);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAbstractSpinBoxWrapper, QAbstractSpinBox> _nd = GDefineMetaClass<QAbstractSpinBoxWrapper, QAbstractSpinBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAbstractSpinBoxWrapper");
-        buildMetaClass_QAbstractSpinBoxWrapper(0, _nd);
+        GDefineMetaClass<QAbstractSpinBoxWrapper, QAbstractSpinBox> _nd = GDefineMetaClass<QAbstractSpinBoxWrapper, QAbstractSpinBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAbstractSpinBoxWrapper", &buildMetaClass_QAbstractSpinBoxWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qpen()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qpen(0, _d);
+    buildMetaClass_Global_qpen(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QPen()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPen> _nd = GDefineMetaClass<QPen>::declare("QPen");
-        buildMetaClass_QPen(0, _nd);
+        GDefineMetaClass<QPen> _nd = GDefineMetaClass<QPen>::lazyDeclare("QPen", &buildMetaClass_QPen);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

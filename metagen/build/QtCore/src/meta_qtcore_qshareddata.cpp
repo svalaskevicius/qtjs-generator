@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qshareddata()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qshareddata(0, _d);
+    buildMetaClass_Global_qshareddata(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QSharedData()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSharedData> _nd = GDefineMetaClass<QSharedData>::declare("QSharedData");
-        buildMetaClass_QSharedData(0, _nd);
+        GDefineMetaClass<QSharedData> _nd = GDefineMetaClass<QSharedData>::lazyDeclare("QSharedData", &buildMetaClass_QSharedData);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

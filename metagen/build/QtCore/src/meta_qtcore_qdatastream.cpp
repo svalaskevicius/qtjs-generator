@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qdatastream()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qdatastream(0, _d);
+    buildMetaClass_Global_qdatastream(_d);
     return _d.getMetaInfo();
 }
 

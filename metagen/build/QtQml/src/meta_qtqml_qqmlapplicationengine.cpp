@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QQmlApplicationEngine()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlApplicationEngine, QQmlEngine> _nd = GDefineMetaClass<QQmlApplicationEngine, QQmlEngine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlApplicationEngine");
-        buildMetaClass_QQmlApplicationEngine(0, _nd);
+        GDefineMetaClass<QQmlApplicationEngine, QQmlEngine> _nd = GDefineMetaClass<QQmlApplicationEngine, QQmlEngine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlApplicationEngine", &buildMetaClass_QQmlApplicationEngine);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQmlApplicationEngineWrapper, QQmlApplicationEngine> _nd = GDefineMetaClass<QQmlApplicationEngineWrapper, QQmlApplicationEngine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlApplicationEngineWrapper");
-        buildMetaClass_QQmlApplicationEngineWrapper(0, _nd);
+        GDefineMetaClass<QQmlApplicationEngineWrapper, QQmlApplicationEngine> _nd = GDefineMetaClass<QQmlApplicationEngineWrapper, QQmlApplicationEngine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlApplicationEngineWrapper", &buildMetaClass_QQmlApplicationEngineWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

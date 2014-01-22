@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qpaintengine()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qpaintengine(0, _d);
+    buildMetaClass_Global_qpaintengine(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,13 +33,11 @@ GDefineMetaInfo createMetaClass_QPaintEngine()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPaintEngine> _nd = GDefineMetaClass<QPaintEngine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPaintEngine");
-        buildMetaClass_QPaintEngine(0, _nd);
+        GDefineMetaClass<QPaintEngine> _nd = GDefineMetaClass<QPaintEngine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPaintEngine", &buildMetaClass_QPaintEngine);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QPaintEngineWrapper, QPaintEngine> _nd = GDefineMetaClass<QPaintEngineWrapper, QPaintEngine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPaintEngineWrapper");
-        buildMetaClass_QPaintEngineWrapper(0, _nd);
+        GDefineMetaClass<QPaintEngineWrapper, QPaintEngine> _nd = GDefineMetaClass<QPaintEngineWrapper, QPaintEngine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPaintEngineWrapper", &buildMetaClass_QPaintEngineWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -53,8 +51,7 @@ GDefineMetaInfo createMetaClass_QPaintEngineState()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPaintEngineState> _nd = GDefineMetaClass<QPaintEngineState>::declare("QPaintEngineState");
-        buildMetaClass_QPaintEngineState(0, _nd);
+        GDefineMetaClass<QPaintEngineState> _nd = GDefineMetaClass<QPaintEngineState>::lazyDeclare("QPaintEngineState", &buildMetaClass_QPaintEngineState);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -68,8 +65,7 @@ GDefineMetaInfo createMetaClass_QTextItem()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTextItem> _nd = GDefineMetaClass<QTextItem>::declare("QTextItem");
-        buildMetaClass_QTextItem(0, _nd);
+        GDefineMetaClass<QTextItem> _nd = GDefineMetaClass<QTextItem>::lazyDeclare("QTextItem", &buildMetaClass_QTextItem);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

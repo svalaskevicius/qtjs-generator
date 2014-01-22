@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QFocusFrame()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFocusFrame, QWidget> _nd = GDefineMetaClass<QFocusFrame, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFocusFrame");
-        buildMetaClass_QFocusFrame(0, _nd);
+        GDefineMetaClass<QFocusFrame, QWidget> _nd = GDefineMetaClass<QFocusFrame, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFocusFrame", &buildMetaClass_QFocusFrame);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QFocusFrameWrapper, QFocusFrame> _nd = GDefineMetaClass<QFocusFrameWrapper, QFocusFrame>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFocusFrameWrapper");
-        buildMetaClass_QFocusFrameWrapper(0, _nd);
+        GDefineMetaClass<QFocusFrameWrapper, QFocusFrame> _nd = GDefineMetaClass<QFocusFrameWrapper, QFocusFrame>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFocusFrameWrapper", &buildMetaClass_QFocusFrameWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

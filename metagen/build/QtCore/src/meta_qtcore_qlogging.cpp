@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qlogging()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qlogging(0, _d);
+    buildMetaClass_Global_qlogging(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QMessageLogger()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMessageLogger> _nd = GDefineMetaClass<QMessageLogger>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QMessageLogger");
-        buildMetaClass_QMessageLogger(0, _nd);
+        GDefineMetaClass<QMessageLogger> _nd = GDefineMetaClass<QMessageLogger>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QMessageLogger", &buildMetaClass_QMessageLogger);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

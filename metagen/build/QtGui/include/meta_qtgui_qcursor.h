@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qcursor(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qcursor(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QCursor &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleCopyConstReference<1> >());
@@ -35,9 +35,9 @@ inline QCursor & opErAToRWrapper_QCursor__opAssign(QCursor * self, const QCursor
 
 
 template <typename D>
-void buildMetaClass_QCursor(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QCursor(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

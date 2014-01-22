@@ -21,9 +21,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_QQuickPaintedItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQuickPaintedItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -802,9 +802,9 @@ public:
         QQuickItem::releaseResources();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("mouseUngrabEvent", (void (D::ClassType::*) ())&D::ClassType::mouseUngrabEvent);
         _d.CPGF_MD_TEMPLATE _method("widthValid", (bool (D::ClassType::*) () const)&D::ClassType::widthValid);
@@ -903,18 +903,18 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QQuickPaintedItemWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQuickPaintedItemWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QQuickItem *)>()
         ._default(copyVariantFromCopyable(0))
     ;
     
-    QQuickPaintedItemWrapper::cpgf__register(config, _d);
+    QQuickPaintedItemWrapper::cpgf__register(_d);
     
-    buildMetaClass_QQuickPaintedItem<D>(config, _d);
+    buildMetaClass_QQuickPaintedItem<D>(_d);
 }
 
 

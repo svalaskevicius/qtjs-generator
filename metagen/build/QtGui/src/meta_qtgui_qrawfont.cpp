@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QRawFont()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QRawFont> _nd = GDefineMetaClass<QRawFont>::declare("QRawFont");
-        buildMetaClass_QRawFont(0, _nd);
+        GDefineMetaClass<QRawFont> _nd = GDefineMetaClass<QRawFont>::lazyDeclare("QRawFont", &buildMetaClass_QRawFont);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

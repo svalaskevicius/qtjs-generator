@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QDateEdit()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDateEdit, QDateTimeEdit> _nd = GDefineMetaClass<QDateEdit, QDateTimeEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDateEdit");
-        buildMetaClass_QDateEdit(0, _nd);
+        GDefineMetaClass<QDateEdit, QDateTimeEdit> _nd = GDefineMetaClass<QDateEdit, QDateTimeEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDateEdit", &buildMetaClass_QDateEdit);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QDateEditWrapper, QDateEdit> _nd = GDefineMetaClass<QDateEditWrapper, QDateEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDateEditWrapper");
-        buildMetaClass_QDateEditWrapper(0, _nd);
+        GDefineMetaClass<QDateEditWrapper, QDateEdit> _nd = GDefineMetaClass<QDateEditWrapper, QDateEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDateEditWrapper", &buildMetaClass_QDateEditWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -97,13 +95,11 @@ GDefineMetaInfo createMetaClass_QDateTimeEdit()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDateTimeEdit, QAbstractSpinBox> _nd = GDefineMetaClass<QDateTimeEdit, QAbstractSpinBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDateTimeEdit");
-        buildMetaClass_QDateTimeEdit(0, _nd);
+        GDefineMetaClass<QDateTimeEdit, QAbstractSpinBox> _nd = GDefineMetaClass<QDateTimeEdit, QAbstractSpinBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDateTimeEdit", &buildMetaClass_QDateTimeEdit);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QDateTimeEditWrapper, QDateTimeEdit> _nd = GDefineMetaClass<QDateTimeEditWrapper, QDateTimeEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDateTimeEditWrapper");
-        buildMetaClass_QDateTimeEditWrapper(0, _nd);
+        GDefineMetaClass<QDateTimeEditWrapper, QDateTimeEdit> _nd = GDefineMetaClass<QDateTimeEditWrapper, QDateTimeEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDateTimeEditWrapper", &buildMetaClass_QDateTimeEditWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -117,13 +113,11 @@ GDefineMetaInfo createMetaClass_QTimeEdit()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTimeEdit, QDateTimeEdit> _nd = GDefineMetaClass<QTimeEdit, QDateTimeEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTimeEdit");
-        buildMetaClass_QTimeEdit(0, _nd);
+        GDefineMetaClass<QTimeEdit, QDateTimeEdit> _nd = GDefineMetaClass<QTimeEdit, QDateTimeEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTimeEdit", &buildMetaClass_QTimeEdit);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QTimeEditWrapper, QTimeEdit> _nd = GDefineMetaClass<QTimeEditWrapper, QTimeEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTimeEditWrapper");
-        buildMetaClass_QTimeEditWrapper(0, _nd);
+        GDefineMetaClass<QTimeEditWrapper, QTimeEdit> _nd = GDefineMetaClass<QTimeEditWrapper, QTimeEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTimeEditWrapper", &buildMetaClass_QTimeEditWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

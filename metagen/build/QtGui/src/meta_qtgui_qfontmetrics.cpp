@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QFontMetrics()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFontMetrics> _nd = GDefineMetaClass<QFontMetrics>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QFontMetrics");
-        buildMetaClass_QFontMetrics(0, _nd);
+        GDefineMetaClass<QFontMetrics> _nd = GDefineMetaClass<QFontMetrics>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QFontMetrics", &buildMetaClass_QFontMetrics);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -37,8 +36,7 @@ GDefineMetaInfo createMetaClass_QFontMetricsF()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFontMetricsF> _nd = GDefineMetaClass<QFontMetricsF>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QFontMetricsF");
-        buildMetaClass_QFontMetricsF(0, _nd);
+        GDefineMetaClass<QFontMetricsF> _nd = GDefineMetaClass<QFontMetricsF>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QFontMetricsF", &buildMetaClass_QFontMetricsF);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

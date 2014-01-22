@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QGraphicsAnchor()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsAnchor, QObject> _nd = GDefineMetaClass<QGraphicsAnchor, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsAnchor");
-        buildMetaClass_QGraphicsAnchor(0, _nd);
+        GDefineMetaClass<QGraphicsAnchor, QObject> _nd = GDefineMetaClass<QGraphicsAnchor, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsAnchor", &buildMetaClass_QGraphicsAnchor);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGraphicsAnchorWrapper, QGraphicsAnchor> _nd = GDefineMetaClass<QGraphicsAnchorWrapper, QGraphicsAnchor>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsAnchorWrapper");
-        buildMetaClass_QGraphicsAnchorWrapper(0, _nd);
+        GDefineMetaClass<QGraphicsAnchorWrapper, QGraphicsAnchor> _nd = GDefineMetaClass<QGraphicsAnchorWrapper, QGraphicsAnchor>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsAnchorWrapper", &buildMetaClass_QGraphicsAnchorWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -97,13 +95,11 @@ GDefineMetaInfo createMetaClass_QGraphicsAnchorLayout()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsAnchorLayout, QGraphicsLayout> _nd = GDefineMetaClass<QGraphicsAnchorLayout, QGraphicsLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsAnchorLayout");
-        buildMetaClass_QGraphicsAnchorLayout(0, _nd);
+        GDefineMetaClass<QGraphicsAnchorLayout, QGraphicsLayout> _nd = GDefineMetaClass<QGraphicsAnchorLayout, QGraphicsLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsAnchorLayout", &buildMetaClass_QGraphicsAnchorLayout);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGraphicsAnchorLayoutWrapper, QGraphicsAnchorLayout> _nd = GDefineMetaClass<QGraphicsAnchorLayoutWrapper, QGraphicsAnchorLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsAnchorLayoutWrapper");
-        buildMetaClass_QGraphicsAnchorLayoutWrapper(0, _nd);
+        GDefineMetaClass<QGraphicsAnchorLayoutWrapper, QGraphicsAnchorLayout> _nd = GDefineMetaClass<QGraphicsAnchorLayoutWrapper, QGraphicsAnchorLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsAnchorLayoutWrapper", &buildMetaClass_QGraphicsAnchorLayoutWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

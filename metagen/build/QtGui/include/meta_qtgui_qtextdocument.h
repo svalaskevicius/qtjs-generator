@@ -22,9 +22,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qtextdocument(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qtextdocument(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("mightBeRichText", (bool (*) (const QString &))&mightBeRichText, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -36,9 +36,9 @@ void buildMetaClass_Global_qtextdocument(const cpgf::GMetaDataConfigFlags & conf
 
 
 template <typename D>
-void buildMetaClass_QAbstractUndoItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAbstractUndoItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("undo", &D::ClassType::undo);
@@ -79,9 +79,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_undo", (void (D::ClassType::*) ())&D::ClassType::super_undo);
         _d.CPGF_MD_TEMPLATE _method("super_redo", (void (D::ClassType::*) ())&D::ClassType::super_redo);
@@ -90,22 +90,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAbstractUndoItemWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAbstractUndoItemWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAbstractUndoItemWrapper::cpgf__register(config, _d);
+    QAbstractUndoItemWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAbstractUndoItem<D>(config, _d);
+    buildMetaClass_QAbstractUndoItem<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QTextDocument(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextDocument(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -465,9 +465,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -498,15 +498,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QTextDocumentWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextDocumentWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QTextDocumentWrapper::cpgf__register(config, _d);
+    QTextDocumentWrapper::cpgf__register(_d);
     
-    buildMetaClass_QTextDocument<D>(config, _d);
+    buildMetaClass_QTextDocument<D>(_d);
 }
 
 

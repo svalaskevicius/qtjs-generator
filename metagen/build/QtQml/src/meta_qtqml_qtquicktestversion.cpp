@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qtquicktestversion()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qtquicktestversion(0, _d);
+    buildMetaClass_Global_qtquicktestversion(_d);
     return _d.getMetaInfo();
 }
 

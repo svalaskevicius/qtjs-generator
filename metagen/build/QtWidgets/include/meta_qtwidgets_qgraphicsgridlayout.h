@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QGraphicsGridLayout(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsGridLayout(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QGraphicsLayoutItem *)>()
@@ -236,9 +236,9 @@ public:
         QGraphicsGridLayout::setGeometry(rect);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("setGraphicsItem", (void (D::ClassType::*) (QGraphicsItem *))&D::ClassType::setGraphicsItem);
         _d.CPGF_MD_TEMPLATE _method("setOwnedByLayout", (void (D::ClassType::*) (bool))&D::ClassType::setOwnedByLayout);
@@ -259,15 +259,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsGridLayoutWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsGridLayoutWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsGridLayoutWrapper::cpgf__register(config, _d);
+    QGraphicsGridLayoutWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsGridLayout<D>(config, _d);
+    buildMetaClass_QGraphicsGridLayout<D>(_d);
 }
 
 

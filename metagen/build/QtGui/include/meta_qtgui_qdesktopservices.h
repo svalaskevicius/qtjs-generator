@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_QDesktopServices(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDesktopServices(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("openUrl", &D::ClassType::openUrl, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());

@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QStatusBar()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStatusBar, QWidget> _nd = GDefineMetaClass<QStatusBar, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QStatusBar");
-        buildMetaClass_QStatusBar(0, _nd);
+        GDefineMetaClass<QStatusBar, QWidget> _nd = GDefineMetaClass<QStatusBar, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStatusBar", &buildMetaClass_QStatusBar);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QStatusBarWrapper, QStatusBar> _nd = GDefineMetaClass<QStatusBarWrapper, QStatusBar>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QStatusBarWrapper");
-        buildMetaClass_QStatusBarWrapper(0, _nd);
+        GDefineMetaClass<QStatusBarWrapper, QStatusBar> _nd = GDefineMetaClass<QStatusBarWrapper, QStatusBar>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStatusBarWrapper", &buildMetaClass_QStatusBarWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

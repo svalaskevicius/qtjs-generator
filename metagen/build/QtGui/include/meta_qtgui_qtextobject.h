@@ -21,9 +21,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qtextobject(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qtextobject(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
@@ -64,9 +64,9 @@ inline QTextBlock::iterator opErAToRWrapper_QTextBlock_iterator__opDecSuffix(QTe
 
 
 template <typename D>
-void buildMetaClass_QTextBlock(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextBlock(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -134,9 +134,9 @@ void buildMetaClass_QTextBlock(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QTextBlockGroup(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextBlockGroup(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -373,9 +373,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("blockList", (QList< QTextBlock > (D::ClassType::*) () const)&D::ClassType::blockList);
         _d.CPGF_MD_TEMPLATE _method("setFormat", (void (D::ClassType::*) (const QTextFormat &))&D::ClassType::setFormat, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -409,22 +409,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QTextBlockGroupWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextBlockGroupWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QTextBlockGroupWrapper::cpgf__register(config, _d);
+    QTextBlockGroupWrapper::cpgf__register(_d);
     
-    buildMetaClass_QTextBlockGroup<D>(config, _d);
+    buildMetaClass_QTextBlockGroup<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QTextBlockUserData(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextBlockUserData(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
@@ -445,9 +445,9 @@ inline bool opErAToRWrapper_QTextFragment__opLess(const QTextFragment * self, co
 
 
 template <typename D>
-void buildMetaClass_QTextFragment(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextFragment(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -498,9 +498,9 @@ inline QTextFrame::iterator opErAToRWrapper_QTextFrame_iterator__opDecSuffix(QTe
 
 
 template <typename D>
-void buildMetaClass_QTextFrame(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextFrame(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QTextDocument *)>();
@@ -727,9 +727,9 @@ public:
         return QTextFrame::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("setFormat", (void (D::ClassType::*) (const QTextFormat &))&D::ClassType::setFormat, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
@@ -756,31 +756,31 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QTextFrameWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextFrameWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QTextFrameWrapper::cpgf__register(config, _d);
+    QTextFrameWrapper::cpgf__register(_d);
     
-    buildMetaClass_QTextFrame<D>(config, _d);
+    buildMetaClass_QTextFrame<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QTextFrameLayoutData(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextFrameLayoutData(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D>
-void buildMetaClass_QTextObject(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextObject(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -971,9 +971,9 @@ public:
         return QTextObject::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("setFormat", (void (D::ClassType::*) (const QTextFormat &))&D::ClassType::setFormat, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
@@ -1000,15 +1000,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QTextObjectWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextObjectWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QTextObjectWrapper::cpgf__register(config, _d);
+    QTextObjectWrapper::cpgf__register(_d);
     
-    buildMetaClass_QTextObject<D>(config, _d);
+    buildMetaClass_QTextObject<D>(_d);
 }
 
 

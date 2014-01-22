@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_Global_qtablewidget(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qtablewidget(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, QTableWidgetItem &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
@@ -32,9 +32,9 @@ void buildMetaClass_Global_qtablewidget(const cpgf::GMetaDataConfigFlags & confi
 
 
 template <typename D>
-void buildMetaClass_QTableWidget(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTableWidget(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>()
@@ -1734,9 +1734,9 @@ public:
         QAbstractItemView::verticalScrollbarValueChanged(value);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("visualRegionForSelection", (QRegion (D::ClassType::*) (const QItemSelection &) const)&D::ClassType::visualRegionForSelection);
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
@@ -1971,15 +1971,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QTableWidgetWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTableWidgetWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QTableWidgetWrapper::cpgf__register(config, _d);
+    QTableWidgetWrapper::cpgf__register(_d);
     
-    buildMetaClass_QTableWidget<D>(config, _d);
+    buildMetaClass_QTableWidget<D>(_d);
 }
 
 
@@ -1992,9 +1992,9 @@ inline QTableWidgetItem & opErAToRWrapper_QTableWidgetItem__opAssign(QTableWidge
 
 
 template <typename D>
-void buildMetaClass_QTableWidgetItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTableWidgetItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (int)>()
@@ -2058,9 +2058,9 @@ void buildMetaClass_QTableWidgetItem(const cpgf::GMetaDataConfigFlags & config, 
 
 
 template <typename D>
-void buildMetaClass_QTableWidgetSelectionRange(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTableWidgetSelectionRange(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

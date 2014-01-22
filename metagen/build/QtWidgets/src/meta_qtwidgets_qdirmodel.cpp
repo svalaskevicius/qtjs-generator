@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QDirModel()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDirModel, QAbstractItemModel> _nd = GDefineMetaClass<QDirModel, QAbstractItemModel>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDirModel");
-        buildMetaClass_QDirModel(0, _nd);
+        GDefineMetaClass<QDirModel, QAbstractItemModel> _nd = GDefineMetaClass<QDirModel, QAbstractItemModel>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDirModel", &buildMetaClass_QDirModel);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QDirModelWrapper, QDirModel> _nd = GDefineMetaClass<QDirModelWrapper, QDirModel>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDirModelWrapper");
-        buildMetaClass_QDirModelWrapper(0, _nd);
+        GDefineMetaClass<QDirModelWrapper, QDirModel> _nd = GDefineMetaClass<QDirModelWrapper, QDirModel>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDirModelWrapper", &buildMetaClass_QDirModelWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

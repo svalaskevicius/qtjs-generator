@@ -18,9 +18,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_Global_qstyleoption(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qstyleoption(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QStyleOption::OptionType &)>(mopHolder << mopHolder);
@@ -29,9 +29,9 @@ void buildMetaClass_Global_qstyleoption(const cpgf::GMetaDataConfigFlags & confi
 
 
 template <typename D>
-void buildMetaClass_QStyleHintReturn(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleHintReturn(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (int, int)>()
@@ -55,9 +55,9 @@ void buildMetaClass_QStyleHintReturn(const cpgf::GMetaDataConfigFlags & config, 
 
 
 template <typename D>
-void buildMetaClass_QStyleHintReturnMask(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleHintReturnMask(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -72,9 +72,9 @@ void buildMetaClass_QStyleHintReturnMask(const cpgf::GMetaDataConfigFlags & conf
 
 
 template <typename D>
-void buildMetaClass_QStyleHintReturnVariant(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleHintReturnVariant(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -94,9 +94,9 @@ inline QStyleOption & opErAToRWrapper_QStyleOption__opAssign(QStyleOption * self
 
 
 template <typename D>
-void buildMetaClass_QStyleOption(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOption(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (int, int)>()
@@ -154,9 +154,9 @@ void buildMetaClass_QStyleOption(const cpgf::GMetaDataConfigFlags & config, D _d
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionButton(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionButton(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -183,9 +183,9 @@ void buildMetaClass_QStyleOptionButton(const cpgf::GMetaDataConfigFlags & config
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionComboBox(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionComboBox(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -206,9 +206,9 @@ void buildMetaClass_QStyleOptionComboBox(const cpgf::GMetaDataConfigFlags & conf
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionComplex(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionComplex(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (int, int)>()
@@ -228,9 +228,9 @@ void buildMetaClass_QStyleOptionComplex(const cpgf::GMetaDataConfigFlags & confi
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionDockWidget(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionDockWidget(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -250,9 +250,9 @@ void buildMetaClass_QStyleOptionDockWidget(const cpgf::GMetaDataConfigFlags & co
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionFocusRect(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionFocusRect(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -268,9 +268,9 @@ void buildMetaClass_QStyleOptionFocusRect(const cpgf::GMetaDataConfigFlags & con
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionFrame(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionFrame(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -294,9 +294,9 @@ void buildMetaClass_QStyleOptionFrame(const cpgf::GMetaDataConfigFlags & config,
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionGraphicsItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionGraphicsItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -315,9 +315,9 @@ void buildMetaClass_QStyleOptionGraphicsItem(const cpgf::GMetaDataConfigFlags & 
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionGroupBox(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionGroupBox(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -338,9 +338,9 @@ void buildMetaClass_QStyleOptionGroupBox(const cpgf::GMetaDataConfigFlags & conf
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionHeader(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionHeader(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -381,9 +381,9 @@ void buildMetaClass_QStyleOptionHeader(const cpgf::GMetaDataConfigFlags & config
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionMenuItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionMenuItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -423,9 +423,9 @@ void buildMetaClass_QStyleOptionMenuItem(const cpgf::GMetaDataConfigFlags & conf
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionProgressBar(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionProgressBar(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -449,9 +449,9 @@ void buildMetaClass_QStyleOptionProgressBar(const cpgf::GMetaDataConfigFlags & c
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionRubberBand(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionRubberBand(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -468,9 +468,9 @@ void buildMetaClass_QStyleOptionRubberBand(const cpgf::GMetaDataConfigFlags & co
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionSizeGrip(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionSizeGrip(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -486,9 +486,9 @@ void buildMetaClass_QStyleOptionSizeGrip(const cpgf::GMetaDataConfigFlags & conf
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionSlider(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionSlider(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -515,9 +515,9 @@ void buildMetaClass_QStyleOptionSlider(const cpgf::GMetaDataConfigFlags & config
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionSpinBox(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionSpinBox(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -535,9 +535,9 @@ void buildMetaClass_QStyleOptionSpinBox(const cpgf::GMetaDataConfigFlags & confi
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionTab(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionTab(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -584,9 +584,9 @@ void buildMetaClass_QStyleOptionTab(const cpgf::GMetaDataConfigFlags & config, D
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionTabBarBase(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionTabBarBase(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -605,9 +605,9 @@ void buildMetaClass_QStyleOptionTabBarBase(const cpgf::GMetaDataConfigFlags & co
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionTabWidgetFrame(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionTabWidgetFrame(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -630,9 +630,9 @@ void buildMetaClass_QStyleOptionTabWidgetFrame(const cpgf::GMetaDataConfigFlags 
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionTitleBar(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionTitleBar(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -651,9 +651,9 @@ void buildMetaClass_QStyleOptionTitleBar(const cpgf::GMetaDataConfigFlags & conf
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionToolBar(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionToolBar(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -684,9 +684,9 @@ void buildMetaClass_QStyleOptionToolBar(const cpgf::GMetaDataConfigFlags & confi
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionToolBox(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionToolBox(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -716,9 +716,9 @@ void buildMetaClass_QStyleOptionToolBox(const cpgf::GMetaDataConfigFlags & confi
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionToolButton(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionToolButton(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -749,9 +749,9 @@ void buildMetaClass_QStyleOptionToolButton(const cpgf::GMetaDataConfigFlags & co
 
 
 template <typename D>
-void buildMetaClass_QStyleOptionViewItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleOptionViewItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

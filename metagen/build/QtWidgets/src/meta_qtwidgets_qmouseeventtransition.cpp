@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QMouseEventTransition()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMouseEventTransition, QEventTransition> _nd = GDefineMetaClass<QMouseEventTransition, QEventTransition>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QMouseEventTransition");
-        buildMetaClass_QMouseEventTransition(0, _nd);
+        GDefineMetaClass<QMouseEventTransition, QEventTransition> _nd = GDefineMetaClass<QMouseEventTransition, QEventTransition>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QMouseEventTransition", &buildMetaClass_QMouseEventTransition);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QMouseEventTransitionWrapper, QMouseEventTransition> _nd = GDefineMetaClass<QMouseEventTransitionWrapper, QMouseEventTransition>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QMouseEventTransitionWrapper");
-        buildMetaClass_QMouseEventTransitionWrapper(0, _nd);
+        GDefineMetaClass<QMouseEventTransitionWrapper, QMouseEventTransition> _nd = GDefineMetaClass<QMouseEventTransitionWrapper, QMouseEventTransition>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QMouseEventTransitionWrapper", &buildMetaClass_QMouseEventTransitionWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

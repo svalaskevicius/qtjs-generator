@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QGraphicsItemAnimation(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsItemAnimation(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -267,9 +267,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("afterAnimationStep", (void (D::ClassType::*) (qreal))&D::ClassType::afterAnimationStep);
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
@@ -299,15 +299,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsItemAnimationWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsItemAnimationWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsItemAnimationWrapper::cpgf__register(config, _d);
+    QGraphicsItemAnimationWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsItemAnimation<D>(config, _d);
+    buildMetaClass_QGraphicsItemAnimation<D>(_d);
 }
 
 

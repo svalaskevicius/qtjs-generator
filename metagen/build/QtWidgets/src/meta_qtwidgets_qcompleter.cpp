@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QCompleter()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QCompleter, QObject> _nd = GDefineMetaClass<QCompleter, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QCompleter");
-        buildMetaClass_QCompleter(0, _nd);
+        GDefineMetaClass<QCompleter, QObject> _nd = GDefineMetaClass<QCompleter, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QCompleter", &buildMetaClass_QCompleter);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QCompleterWrapper, QCompleter> _nd = GDefineMetaClass<QCompleterWrapper, QCompleter>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QCompleterWrapper");
-        buildMetaClass_QCompleterWrapper(0, _nd);
+        GDefineMetaClass<QCompleterWrapper, QCompleter> _nd = GDefineMetaClass<QCompleterWrapper, QCompleter>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QCompleterWrapper", &buildMetaClass_QCompleterWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

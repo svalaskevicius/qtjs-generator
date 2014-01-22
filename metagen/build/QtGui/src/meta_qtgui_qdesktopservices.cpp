@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QDesktopServices()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDesktopServices> _nd = GDefineMetaClass<QDesktopServices>::declare("QDesktopServices");
-        buildMetaClass_QDesktopServices(0, _nd);
+        GDefineMetaClass<QDesktopServices> _nd = GDefineMetaClass<QDesktopServices>::lazyDeclare("QDesktopServices", &buildMetaClass_QDesktopServices);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

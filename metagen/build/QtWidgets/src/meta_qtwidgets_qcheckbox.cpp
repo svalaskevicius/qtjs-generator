@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QCheckBox()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QCheckBox, QAbstractButton> _nd = GDefineMetaClass<QCheckBox, QAbstractButton>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QCheckBox");
-        buildMetaClass_QCheckBox(0, _nd);
+        GDefineMetaClass<QCheckBox, QAbstractButton> _nd = GDefineMetaClass<QCheckBox, QAbstractButton>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QCheckBox", &buildMetaClass_QCheckBox);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QCheckBoxWrapper, QCheckBox> _nd = GDefineMetaClass<QCheckBoxWrapper, QCheckBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QCheckBoxWrapper");
-        buildMetaClass_QCheckBoxWrapper(0, _nd);
+        GDefineMetaClass<QCheckBoxWrapper, QCheckBox> _nd = GDefineMetaClass<QCheckBoxWrapper, QCheckBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QCheckBoxWrapper", &buildMetaClass_QCheckBoxWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qtimezone(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qtimezone(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QTimeZone &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleCopyConstReference<1> >());
@@ -41,9 +41,9 @@ inline bool opErAToRWrapper_QTimeZone__opNotEqual(const QTimeZone * self, const 
 
 
 template <typename D>
-void buildMetaClass_QTimeZone(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTimeZone(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

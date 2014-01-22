@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QThread()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QThread, QObject> _nd = GDefineMetaClass<QThread, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QThread");
-        buildMetaClass_QThread(0, _nd);
+        GDefineMetaClass<QThread, QObject> _nd = GDefineMetaClass<QThread, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QThread", &buildMetaClass_QThread);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QThreadWrapper, QThread> _nd = GDefineMetaClass<QThreadWrapper, QThread>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QThreadWrapper");
-        buildMetaClass_QThreadWrapper(0, _nd);
+        GDefineMetaClass<QThreadWrapper, QThread> _nd = GDefineMetaClass<QThreadWrapper, QThread>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QThreadWrapper", &buildMetaClass_QThreadWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

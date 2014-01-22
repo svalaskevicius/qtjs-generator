@@ -21,9 +21,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_QOpenGLShader(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QOpenGLShader(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QOpenGLShader::ShaderType, QObject *)>()
@@ -231,9 +231,9 @@ public:
         return QOpenGLShader::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -259,22 +259,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QOpenGLShaderWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QOpenGLShaderWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QOpenGLShaderWrapper::cpgf__register(config, _d);
+    QOpenGLShaderWrapper::cpgf__register(_d);
     
-    buildMetaClass_QOpenGLShader<D>(config, _d);
+    buildMetaClass_QOpenGLShader<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QOpenGLShaderProgram(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QOpenGLShaderProgram(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()

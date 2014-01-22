@@ -29,9 +29,9 @@ inline QPixmapCache::Key& opErAToRWrapper_QPixmapCache_Key__opAssign(QPixmapCach
 
 
 template <typename D>
-void buildMetaClass_QPixmapCache(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPixmapCache(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("cacheLimit", &D::ClassType::cacheLimit);

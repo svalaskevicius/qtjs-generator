@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qjsonobject(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qjsonobject(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QJsonObject &)>(mopHolder << mopHolder);
@@ -127,9 +127,9 @@ inline bool opErAToRWrapper_QJsonObject_iterator__opNotEqual(const QJsonObject::
 
 
 template <typename D>
-void buildMetaClass_QJsonObject(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QJsonObject(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

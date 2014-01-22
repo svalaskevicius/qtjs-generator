@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QAbstractTextDocumentLayout()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAbstractTextDocumentLayout, QObject> _nd = GDefineMetaClass<QAbstractTextDocumentLayout, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAbstractTextDocumentLayout");
-        buildMetaClass_QAbstractTextDocumentLayout(0, _nd);
+        GDefineMetaClass<QAbstractTextDocumentLayout, QObject> _nd = GDefineMetaClass<QAbstractTextDocumentLayout, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAbstractTextDocumentLayout", &buildMetaClass_QAbstractTextDocumentLayout);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAbstractTextDocumentLayoutWrapper, QAbstractTextDocumentLayout> _nd = GDefineMetaClass<QAbstractTextDocumentLayoutWrapper, QAbstractTextDocumentLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAbstractTextDocumentLayoutWrapper");
-        buildMetaClass_QAbstractTextDocumentLayoutWrapper(0, _nd);
+        GDefineMetaClass<QAbstractTextDocumentLayoutWrapper, QAbstractTextDocumentLayout> _nd = GDefineMetaClass<QAbstractTextDocumentLayoutWrapper, QAbstractTextDocumentLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAbstractTextDocumentLayoutWrapper", &buildMetaClass_QAbstractTextDocumentLayoutWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -42,13 +40,11 @@ GDefineMetaInfo createMetaClass_QTextObjectInterface()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTextObjectInterface> _nd = GDefineMetaClass<QTextObjectInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTextObjectInterface");
-        buildMetaClass_QTextObjectInterface(0, _nd);
+        GDefineMetaClass<QTextObjectInterface> _nd = GDefineMetaClass<QTextObjectInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTextObjectInterface", &buildMetaClass_QTextObjectInterface);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QTextObjectInterfaceWrapper, QTextObjectInterface> _nd = GDefineMetaClass<QTextObjectInterfaceWrapper, QTextObjectInterface>::declare("QTextObjectInterfaceWrapper");
-        buildMetaClass_QTextObjectInterfaceWrapper(0, _nd);
+        GDefineMetaClass<QTextObjectInterfaceWrapper, QTextObjectInterface> _nd = GDefineMetaClass<QTextObjectInterfaceWrapper, QTextObjectInterface>::lazyDeclare("QTextObjectInterfaceWrapper", &buildMetaClass_QTextObjectInterfaceWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

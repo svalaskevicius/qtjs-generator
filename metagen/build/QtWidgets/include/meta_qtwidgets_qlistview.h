@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QListView(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QListView(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>()
@@ -1638,9 +1638,9 @@ public:
         QAbstractItemView::verticalScrollbarValueChanged(value);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("visualRegionForSelection", (QRegion (D::ClassType::*) (const QItemSelection &) const)&D::ClassType::visualRegionForSelection);
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
@@ -1861,15 +1861,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QListViewWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QListViewWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QListViewWrapper::cpgf__register(config, _d);
+    QListViewWrapper::cpgf__register(_d);
     
-    buildMetaClass_QListView<D>(config, _d);
+    buildMetaClass_QListView<D>(_d);
 }
 
 

@@ -18,9 +18,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_Global_qsizepolicy(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qsizepolicy(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, const QSizePolicy &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
@@ -38,9 +38,9 @@ inline bool opErAToRWrapper_QSizePolicy__opNotEqual(const QSizePolicy * self, co
 
 
 template <typename D>
-void buildMetaClass_QSizePolicy(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSizePolicy(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

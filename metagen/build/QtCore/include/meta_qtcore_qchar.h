@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qchar(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qchar(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(QChar, QChar)>(mopHolder == mopHolder);
@@ -35,9 +35,9 @@ void buildMetaClass_Global_qchar(const cpgf::GMetaDataConfigFlags & config, D _d
 
 
 template <typename D>
-void buildMetaClass_QChar(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QChar(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -370,9 +370,9 @@ void buildMetaClass_QChar(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QLatin1Char(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QLatin1Char(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (char)>();

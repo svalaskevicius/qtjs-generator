@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_DesignerSupport()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<DesignerSupport> _nd = GDefineMetaClass<DesignerSupport>::declare("DesignerSupport");
-        buildMetaClass_DesignerSupport(0, _nd);
+        GDefineMetaClass<DesignerSupport> _nd = GDefineMetaClass<DesignerSupport>::lazyDeclare("DesignerSupport", &buildMetaClass_DesignerSupport);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

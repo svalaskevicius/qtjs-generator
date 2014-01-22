@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QItemEditorCreatorBase()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QItemEditorCreatorBase> _nd = GDefineMetaClass<QItemEditorCreatorBase>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QItemEditorCreatorBase");
-        buildMetaClass_QItemEditorCreatorBase(0, _nd);
+        GDefineMetaClass<QItemEditorCreatorBase> _nd = GDefineMetaClass<QItemEditorCreatorBase>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QItemEditorCreatorBase", &buildMetaClass_QItemEditorCreatorBase);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QItemEditorCreatorBaseWrapper, QItemEditorCreatorBase> _nd = GDefineMetaClass<QItemEditorCreatorBaseWrapper, QItemEditorCreatorBase>::declare("QItemEditorCreatorBaseWrapper");
-        buildMetaClass_QItemEditorCreatorBaseWrapper(0, _nd);
+        GDefineMetaClass<QItemEditorCreatorBaseWrapper, QItemEditorCreatorBase> _nd = GDefineMetaClass<QItemEditorCreatorBaseWrapper, QItemEditorCreatorBase>::lazyDeclare("QItemEditorCreatorBaseWrapper", &buildMetaClass_QItemEditorCreatorBaseWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -97,13 +95,11 @@ GDefineMetaInfo createMetaClass_QItemEditorFactory()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QItemEditorFactory> _nd = GDefineMetaClass<QItemEditorFactory>::declare("QItemEditorFactory");
-        buildMetaClass_QItemEditorFactory(0, _nd);
+        GDefineMetaClass<QItemEditorFactory> _nd = GDefineMetaClass<QItemEditorFactory>::lazyDeclare("QItemEditorFactory", &buildMetaClass_QItemEditorFactory);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QItemEditorFactoryWrapper, QItemEditorFactory> _nd = GDefineMetaClass<QItemEditorFactoryWrapper, QItemEditorFactory>::declare("QItemEditorFactoryWrapper");
-        buildMetaClass_QItemEditorFactoryWrapper(0, _nd);
+        GDefineMetaClass<QItemEditorFactoryWrapper, QItemEditorFactory> _nd = GDefineMetaClass<QItemEditorFactoryWrapper, QItemEditorFactory>::lazyDeclare("QItemEditorFactoryWrapper", &buildMetaClass_QItemEditorFactoryWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

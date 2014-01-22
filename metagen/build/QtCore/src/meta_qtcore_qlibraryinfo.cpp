@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QLibraryInfo()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QLibraryInfo> _nd = GDefineMetaClass<QLibraryInfo>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QLibraryInfo");
-        buildMetaClass_QLibraryInfo(0, _nd);
+        GDefineMetaClass<QLibraryInfo> _nd = GDefineMetaClass<QLibraryInfo>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QLibraryInfo", &buildMetaClass_QLibraryInfo);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

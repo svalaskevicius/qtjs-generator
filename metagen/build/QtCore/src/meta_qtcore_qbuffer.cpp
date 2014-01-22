@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QBuffer()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QBuffer, QIODevice> _nd = GDefineMetaClass<QBuffer, QIODevice>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QBuffer");
-        buildMetaClass_QBuffer(0, _nd);
+        GDefineMetaClass<QBuffer, QIODevice> _nd = GDefineMetaClass<QBuffer, QIODevice>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QBuffer", &buildMetaClass_QBuffer);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QBufferWrapper, QBuffer> _nd = GDefineMetaClass<QBufferWrapper, QBuffer>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QBufferWrapper");
-        buildMetaClass_QBufferWrapper(0, _nd);
+        GDefineMetaClass<QBufferWrapper, QBuffer> _nd = GDefineMetaClass<QBufferWrapper, QBuffer>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QBufferWrapper", &buildMetaClass_QBufferWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

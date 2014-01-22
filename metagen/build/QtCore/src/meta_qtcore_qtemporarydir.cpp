@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QTemporaryDir()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTemporaryDir> _nd = GDefineMetaClass<QTemporaryDir>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QTemporaryDir");
-        buildMetaClass_QTemporaryDir(0, _nd);
+        GDefineMetaClass<QTemporaryDir> _nd = GDefineMetaClass<QTemporaryDir>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTemporaryDir", &buildMetaClass_QTemporaryDir);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

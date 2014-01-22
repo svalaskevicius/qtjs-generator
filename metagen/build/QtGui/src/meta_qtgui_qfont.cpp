@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qfont()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qfont(0, _d);
+    buildMetaClass_Global_qfont(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QFont()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFont> _nd = GDefineMetaClass<QFont>::declare("QFont");
-        buildMetaClass_QFont(0, _nd);
+        GDefineMetaClass<QFont> _nd = GDefineMetaClass<QFont>::lazyDeclare("QFont", &buildMetaClass_QFont);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

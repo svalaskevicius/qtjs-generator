@@ -76,7 +76,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qlistwidget()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qlistwidget(0, _d);
+    buildMetaClass_Global_qlistwidget(_d);
     return _d.getMetaInfo();
 }
 
@@ -88,13 +88,11 @@ GDefineMetaInfo createMetaClass_QListWidget()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QListWidget, QListView> _nd = GDefineMetaClass<QListWidget, QListView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QListWidget");
-        buildMetaClass_QListWidget(0, _nd);
+        GDefineMetaClass<QListWidget, QListView> _nd = GDefineMetaClass<QListWidget, QListView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QListWidget", &buildMetaClass_QListWidget);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QListWidgetWrapper, QListWidget> _nd = GDefineMetaClass<QListWidgetWrapper, QListWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QListWidgetWrapper");
-        buildMetaClass_QListWidgetWrapper(0, _nd);
+        GDefineMetaClass<QListWidgetWrapper, QListWidget> _nd = GDefineMetaClass<QListWidgetWrapper, QListWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QListWidgetWrapper", &buildMetaClass_QListWidgetWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -108,8 +106,7 @@ GDefineMetaInfo createMetaClass_QListWidgetItem()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QListWidgetItem> _nd = GDefineMetaClass<QListWidgetItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QListWidgetItem");
-        buildMetaClass_QListWidgetItem(0, _nd);
+        GDefineMetaClass<QListWidgetItem> _nd = GDefineMetaClass<QListWidgetItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QListWidgetItem", &buildMetaClass_QListWidgetItem);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

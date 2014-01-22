@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QGraphicsProxyWidget()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsProxyWidget, QGraphicsWidget> _nd = GDefineMetaClass<QGraphicsProxyWidget, QGraphicsWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsProxyWidget");
-        buildMetaClass_QGraphicsProxyWidget(0, _nd);
+        GDefineMetaClass<QGraphicsProxyWidget, QGraphicsWidget> _nd = GDefineMetaClass<QGraphicsProxyWidget, QGraphicsWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsProxyWidget", &buildMetaClass_QGraphicsProxyWidget);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGraphicsProxyWidgetWrapper, QGraphicsProxyWidget> _nd = GDefineMetaClass<QGraphicsProxyWidgetWrapper, QGraphicsProxyWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsProxyWidgetWrapper");
-        buildMetaClass_QGraphicsProxyWidgetWrapper(0, _nd);
+        GDefineMetaClass<QGraphicsProxyWidgetWrapper, QGraphicsProxyWidget> _nd = GDefineMetaClass<QGraphicsProxyWidgetWrapper, QGraphicsProxyWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsProxyWidgetWrapper", &buildMetaClass_QGraphicsProxyWidgetWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

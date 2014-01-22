@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qtextstream()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qtextstream(0, _d);
+    buildMetaClass_Global_qtextstream(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QTextStream()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTextStream> _nd = GDefineMetaClass<QTextStream>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QTextStream");
-        buildMetaClass_QTextStream(0, _nd);
+        GDefineMetaClass<QTextStream> _nd = GDefineMetaClass<QTextStream>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTextStream", &buildMetaClass_QTextStream);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QTextStreamManipulator()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTextStreamManipulator> _nd = GDefineMetaClass<QTextStreamManipulator>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QTextStreamManipulator");
-        buildMetaClass_QTextStreamManipulator(0, _nd);
+        GDefineMetaClass<QTextStreamManipulator> _nd = GDefineMetaClass<QTextStreamManipulator>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QTextStreamManipulator", &buildMetaClass_QTextStreamManipulator);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QPauseAnimation()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPauseAnimation, QAbstractAnimation> _nd = GDefineMetaClass<QPauseAnimation, QAbstractAnimation>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPauseAnimation");
-        buildMetaClass_QPauseAnimation(0, _nd);
+        GDefineMetaClass<QPauseAnimation, QAbstractAnimation> _nd = GDefineMetaClass<QPauseAnimation, QAbstractAnimation>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPauseAnimation", &buildMetaClass_QPauseAnimation);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QPauseAnimationWrapper, QPauseAnimation> _nd = GDefineMetaClass<QPauseAnimationWrapper, QPauseAnimation>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPauseAnimationWrapper");
-        buildMetaClass_QPauseAnimationWrapper(0, _nd);
+        GDefineMetaClass<QPauseAnimationWrapper, QPauseAnimation> _nd = GDefineMetaClass<QPauseAnimationWrapper, QPauseAnimation>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPauseAnimationWrapper", &buildMetaClass_QPauseAnimationWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

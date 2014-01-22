@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QQuickImageProvider()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQuickImageProvider, QQmlImageProviderBase> _nd = GDefineMetaClass<QQuickImageProvider, QQmlImageProviderBase>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QQuickImageProvider");
-        buildMetaClass_QQuickImageProvider(0, _nd);
+        GDefineMetaClass<QQuickImageProvider, QQmlImageProviderBase> _nd = GDefineMetaClass<QQuickImageProvider, QQmlImageProviderBase>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QQuickImageProvider", &buildMetaClass_QQuickImageProvider);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQuickImageProviderWrapper, QQuickImageProvider> _nd = GDefineMetaClass<QQuickImageProviderWrapper, QQuickImageProvider>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QQuickImageProviderWrapper");
-        buildMetaClass_QQuickImageProviderWrapper(0, _nd);
+        GDefineMetaClass<QQuickImageProviderWrapper, QQuickImageProvider> _nd = GDefineMetaClass<QQuickImageProviderWrapper, QQuickImageProvider>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QQuickImageProviderWrapper", &buildMetaClass_QQuickImageProviderWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -42,13 +40,11 @@ GDefineMetaInfo createMetaClass_QQuickTextureFactory()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQuickTextureFactory, QObject> _nd = GDefineMetaClass<QQuickTextureFactory, QObject>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQuickTextureFactory");
-        buildMetaClass_QQuickTextureFactory(0, _nd);
+        GDefineMetaClass<QQuickTextureFactory, QObject> _nd = GDefineMetaClass<QQuickTextureFactory, QObject>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQuickTextureFactory", &buildMetaClass_QQuickTextureFactory);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQuickTextureFactoryWrapper, QQuickTextureFactory> _nd = GDefineMetaClass<QQuickTextureFactoryWrapper, QQuickTextureFactory>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QQuickTextureFactoryWrapper");
-        buildMetaClass_QQuickTextureFactoryWrapper(0, _nd);
+        GDefineMetaClass<QQuickTextureFactoryWrapper, QQuickTextureFactory> _nd = GDefineMetaClass<QQuickTextureFactoryWrapper, QQuickTextureFactory>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQuickTextureFactoryWrapper", &buildMetaClass_QQuickTextureFactoryWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
