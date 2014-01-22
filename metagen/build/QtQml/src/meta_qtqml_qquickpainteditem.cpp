@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QQuickPaintedItem()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQuickPaintedItem, QQuickItem> _nd = GDefineMetaClass<QQuickPaintedItem, QQuickItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQuickPaintedItem");
-        buildMetaClass_QQuickPaintedItem(0, _nd);
+        GDefineMetaClass<QQuickPaintedItem, QQuickItem> _nd = GDefineMetaClass<QQuickPaintedItem, QQuickItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQuickPaintedItem", &buildMetaClass_QQuickPaintedItem);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQuickPaintedItemWrapper, QQuickPaintedItem> _nd = GDefineMetaClass<QQuickPaintedItemWrapper, QQuickPaintedItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQuickPaintedItemWrapper");
-        buildMetaClass_QQuickPaintedItemWrapper(0, _nd);
+        GDefineMetaClass<QQuickPaintedItemWrapper, QQuickPaintedItem> _nd = GDefineMetaClass<QQuickPaintedItemWrapper, QQuickPaintedItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQuickPaintedItemWrapper", &buildMetaClass_QQuickPaintedItemWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QBitmap()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QBitmap, QPixmap> _nd = GDefineMetaClass<QBitmap, QPixmap>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QBitmap");
-        buildMetaClass_QBitmap(0, _nd);
+        GDefineMetaClass<QBitmap, QPixmap> _nd = GDefineMetaClass<QBitmap, QPixmap>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QBitmap", &buildMetaClass_QBitmap);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

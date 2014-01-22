@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qeasingcurve(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qeasingcurve(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QEasingCurve &)>(mopHolder << mopHolder);
@@ -41,9 +41,9 @@ inline bool opErAToRWrapper_QEasingCurve__opNotEqual(const QEasingCurve * self, 
 
 
 template <typename D>
-void buildMetaClass_QEasingCurve(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QEasingCurve(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEasingCurve::Type)>()

@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QAbstractButton()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAbstractButton, QWidget> _nd = GDefineMetaClass<QAbstractButton, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAbstractButton");
-        buildMetaClass_QAbstractButton(0, _nd);
+        GDefineMetaClass<QAbstractButton, QWidget> _nd = GDefineMetaClass<QAbstractButton, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAbstractButton", &buildMetaClass_QAbstractButton);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAbstractButtonWrapper, QAbstractButton> _nd = GDefineMetaClass<QAbstractButtonWrapper, QAbstractButton>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAbstractButtonWrapper");
-        buildMetaClass_QAbstractButtonWrapper(0, _nd);
+        GDefineMetaClass<QAbstractButtonWrapper, QAbstractButton> _nd = GDefineMetaClass<QAbstractButtonWrapper, QAbstractButton>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAbstractButtonWrapper", &buildMetaClass_QAbstractButtonWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -21,9 +21,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_QDoubleValidator(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDoubleValidator(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -281,9 +281,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -314,22 +314,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QDoubleValidatorWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDoubleValidatorWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QDoubleValidatorWrapper::cpgf__register(config, _d);
+    QDoubleValidatorWrapper::cpgf__register(_d);
     
-    buildMetaClass_QDoubleValidator<D>(config, _d);
+    buildMetaClass_QDoubleValidator<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QIntValidator(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QIntValidator(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -576,9 +576,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -607,22 +607,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QIntValidatorWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QIntValidatorWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QIntValidatorWrapper::cpgf__register(config, _d);
+    QIntValidatorWrapper::cpgf__register(_d);
     
-    buildMetaClass_QIntValidator<D>(config, _d);
+    buildMetaClass_QIntValidator<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QRegExpValidator(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QRegExpValidator(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -849,9 +849,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -879,22 +879,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QRegExpValidatorWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QRegExpValidatorWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QRegExpValidatorWrapper::cpgf__register(config, _d);
+    QRegExpValidatorWrapper::cpgf__register(_d);
     
-    buildMetaClass_QRegExpValidator<D>(config, _d);
+    buildMetaClass_QRegExpValidator<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QRegularExpressionValidator(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QRegularExpressionValidator(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -1121,9 +1121,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -1151,22 +1151,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QRegularExpressionValidatorWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QRegularExpressionValidatorWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QRegularExpressionValidatorWrapper::cpgf__register(config, _d);
+    QRegularExpressionValidatorWrapper::cpgf__register(_d);
     
-    buildMetaClass_QRegularExpressionValidator<D>(config, _d);
+    buildMetaClass_QRegularExpressionValidator<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QValidator(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QValidator(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -1390,9 +1390,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -1420,18 +1420,18 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QValidatorWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QValidatorWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
         ._default(copyVariantFromCopyable(0))
     ;
     
-    QValidatorWrapper::cpgf__register(config, _d);
+    QValidatorWrapper::cpgf__register(_d);
     
-    buildMetaClass_QValidator<D>(config, _d);
+    buildMetaClass_QValidator<D>(_d);
 }
 
 

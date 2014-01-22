@@ -21,9 +21,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_QSGDynamicTexture(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGDynamicTexture(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -333,9 +333,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -370,22 +370,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSGDynamicTextureWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGDynamicTextureWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSGDynamicTextureWrapper::cpgf__register(config, _d);
+    QSGDynamicTextureWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSGDynamicTexture<D>(config, _d);
+    buildMetaClass_QSGDynamicTexture<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QSGTexture(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGTexture(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -712,9 +712,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -748,16 +748,16 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSGTextureWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGTextureWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    QSGTextureWrapper::cpgf__register(config, _d);
+    QSGTextureWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSGTexture<D>(config, _d);
+    buildMetaClass_QSGTexture<D>(_d);
 }
 
 

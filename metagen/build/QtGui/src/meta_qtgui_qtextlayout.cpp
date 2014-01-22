@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QTextInlineObject()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTextInlineObject> _nd = GDefineMetaClass<QTextInlineObject>::declare("QTextInlineObject");
-        buildMetaClass_QTextInlineObject(0, _nd);
+        GDefineMetaClass<QTextInlineObject> _nd = GDefineMetaClass<QTextInlineObject>::lazyDeclare("QTextInlineObject", &buildMetaClass_QTextInlineObject);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -37,8 +36,7 @@ GDefineMetaInfo createMetaClass_QTextLayout()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTextLayout> _nd = GDefineMetaClass<QTextLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QTextLayout");
-        buildMetaClass_QTextLayout(0, _nd);
+        GDefineMetaClass<QTextLayout> _nd = GDefineMetaClass<QTextLayout>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTextLayout", &buildMetaClass_QTextLayout);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -52,8 +50,7 @@ GDefineMetaInfo createMetaClass_QTextLine()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTextLine> _nd = GDefineMetaClass<QTextLine>::declare("QTextLine");
-        buildMetaClass_QTextLine(0, _nd);
+        GDefineMetaClass<QTextLine> _nd = GDefineMetaClass<QTextLine>::lazyDeclare("QTextLine", &buildMetaClass_QTextLine);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

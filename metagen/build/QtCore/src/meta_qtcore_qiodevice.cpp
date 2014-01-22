@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qiodevice()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qiodevice(0, _d);
+    buildMetaClass_Global_qiodevice(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,13 +68,11 @@ GDefineMetaInfo createMetaClass_QIODevice()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QIODevice, QObject> _nd = GDefineMetaClass<QIODevice, QObject>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QIODevice");
-        buildMetaClass_QIODevice(0, _nd);
+        GDefineMetaClass<QIODevice, QObject> _nd = GDefineMetaClass<QIODevice, QObject>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QIODevice", &buildMetaClass_QIODevice);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QIODeviceWrapper, QIODevice> _nd = GDefineMetaClass<QIODeviceWrapper, QIODevice>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QIODeviceWrapper");
-        buildMetaClass_QIODeviceWrapper(0, _nd);
+        GDefineMetaClass<QIODeviceWrapper, QIODevice> _nd = GDefineMetaClass<QIODeviceWrapper, QIODevice>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QIODeviceWrapper", &buildMetaClass_QIODeviceWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

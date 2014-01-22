@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qhash(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qhash(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qHash", (uint (*) (char, uint))&qHash)
@@ -81,9 +81,9 @@ void buildMetaClass_Global_qhash(const cpgf::GMetaDataConfigFlags & config, D _d
 
 
 template <typename D, class Key, class T>
-void buildMetaClass_QHashDummyNode(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QHashDummyNode(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const Key &, uint, QHashNode< Key, T > *)>();
@@ -94,9 +94,9 @@ void buildMetaClass_QHashDummyNode(const cpgf::GMetaDataConfigFlags & config, D 
 
 
 template <typename D>
-void buildMetaClass_QHashDummyValue(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QHashDummyValue(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }

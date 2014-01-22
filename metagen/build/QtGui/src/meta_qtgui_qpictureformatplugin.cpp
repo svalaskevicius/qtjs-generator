@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qpictureformatplugin()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qpictureformatplugin(0, _d);
+    buildMetaClass_Global_qpictureformatplugin(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,13 +33,11 @@ GDefineMetaInfo createMetaClass_QPictureFormatPlugin()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPictureFormatPlugin, QObject> _nd = GDefineMetaClass<QPictureFormatPlugin, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPictureFormatPlugin");
-        buildMetaClass_QPictureFormatPlugin(0, _nd);
+        GDefineMetaClass<QPictureFormatPlugin, QObject> _nd = GDefineMetaClass<QPictureFormatPlugin, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPictureFormatPlugin", &buildMetaClass_QPictureFormatPlugin);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QPictureFormatPluginWrapper, QPictureFormatPlugin> _nd = GDefineMetaClass<QPictureFormatPluginWrapper, QPictureFormatPlugin>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPictureFormatPluginWrapper");
-        buildMetaClass_QPictureFormatPluginWrapper(0, _nd);
+        GDefineMetaClass<QPictureFormatPluginWrapper, QPictureFormatPlugin> _nd = GDefineMetaClass<QPictureFormatPluginWrapper, QPictureFormatPlugin>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPictureFormatPluginWrapper", &buildMetaClass_QPictureFormatPluginWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

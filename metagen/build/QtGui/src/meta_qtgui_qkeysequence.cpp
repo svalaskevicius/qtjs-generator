@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qkeysequence()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qkeysequence(0, _d);
+    buildMetaClass_Global_qkeysequence(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QKeySequence()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QKeySequence> _nd = GDefineMetaClass<QKeySequence>::declare("QKeySequence");
-        buildMetaClass_QKeySequence(0, _nd);
+        GDefineMetaClass<QKeySequence> _nd = GDefineMetaClass<QKeySequence>::lazyDeclare("QKeySequence", &buildMetaClass_QKeySequence);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

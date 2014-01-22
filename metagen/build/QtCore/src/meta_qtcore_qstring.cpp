@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qstring()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qstring(0, _d);
+    buildMetaClass_Global_qstring(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QCharRef()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QCharRef> _nd = GDefineMetaClass<QCharRef>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QCharRef");
-        buildMetaClass_QCharRef(0, _nd);
+        GDefineMetaClass<QCharRef> _nd = GDefineMetaClass<QCharRef>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QCharRef", &buildMetaClass_QCharRef);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QLatin1String()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QLatin1String> _nd = GDefineMetaClass<QLatin1String>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QLatin1String");
-        buildMetaClass_QLatin1String(0, _nd);
+        GDefineMetaClass<QLatin1String> _nd = GDefineMetaClass<QLatin1String>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QLatin1String", &buildMetaClass_QLatin1String);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -98,8 +96,7 @@ GDefineMetaInfo createMetaClass_QString()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QString> _nd = GDefineMetaClass<QString>::declare("QString");
-        buildMetaClass_QString(0, _nd);
+        GDefineMetaClass<QString> _nd = GDefineMetaClass<QString>::lazyDeclare("QString", &buildMetaClass_QString);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -113,8 +110,7 @@ GDefineMetaInfo createMetaClass_QStringDataPtr()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStringDataPtr> _nd = GDefineMetaClass<QStringDataPtr>::declare("QStringDataPtr");
-        buildMetaClass_QStringDataPtr(0, _nd);
+        GDefineMetaClass<QStringDataPtr> _nd = GDefineMetaClass<QStringDataPtr>::lazyDeclare("QStringDataPtr", &buildMetaClass_QStringDataPtr);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -128,8 +124,7 @@ GDefineMetaInfo createMetaClass_QStringRef()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStringRef> _nd = GDefineMetaClass<QStringRef>::declare("QStringRef");
-        buildMetaClass_QStringRef(0, _nd);
+        GDefineMetaClass<QStringRef> _nd = GDefineMetaClass<QStringRef>::lazyDeclare("QStringRef", &buildMetaClass_QStringRef);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

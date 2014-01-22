@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QAccessibleWidget(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleWidget(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *, QAccessible::Role, const QString &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >())
@@ -413,9 +413,9 @@ public:
         return QAccessibleWidget::parentObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("addControllingSignal", (void (D::ClassType::*) (const QString &))&D::ClassType::addControllingSignal, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("widget", (QWidget * (D::ClassType::*) () const)&D::ClassType::widget);
@@ -451,15 +451,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleWidgetWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleWidgetWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleWidgetWrapper::cpgf__register(config, _d);
+    QAccessibleWidgetWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleWidget<D>(config, _d);
+    buildMetaClass_QAccessibleWidget<D>(_d);
 }
 
 

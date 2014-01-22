@@ -77,8 +77,7 @@ GDefineMetaInfo createMetaClass_QScroller()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QScroller, QObject> _nd = GDefineMetaClass<QScroller, QObject>::Policy<MakePolicy<GMetaRuleDestructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QScroller");
-        buildMetaClass_QScroller(0, _nd);
+        GDefineMetaClass<QScroller, QObject> _nd = GDefineMetaClass<QScroller, QObject>::Policy<MakePolicy<GMetaRuleDestructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QScroller", &buildMetaClass_QScroller);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

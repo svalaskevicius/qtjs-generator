@@ -77,8 +77,7 @@ GDefineMetaInfo createMetaClass_QStyleFactory()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleFactory> _nd = GDefineMetaClass<QStyleFactory>::declare("QStyleFactory");
-        buildMetaClass_QStyleFactory(0, _nd);
+        GDefineMetaClass<QStyleFactory> _nd = GDefineMetaClass<QStyleFactory>::lazyDeclare("QStyleFactory", &buildMetaClass_QStyleFactory);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QLineEdit()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QLineEdit, QWidget> _nd = GDefineMetaClass<QLineEdit, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QLineEdit");
-        buildMetaClass_QLineEdit(0, _nd);
+        GDefineMetaClass<QLineEdit, QWidget> _nd = GDefineMetaClass<QLineEdit, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QLineEdit", &buildMetaClass_QLineEdit);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QLineEditWrapper, QLineEdit> _nd = GDefineMetaClass<QLineEditWrapper, QLineEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QLineEditWrapper");
-        buildMetaClass_QLineEditWrapper(0, _nd);
+        GDefineMetaClass<QLineEditWrapper, QLineEdit> _nd = GDefineMetaClass<QLineEditWrapper, QLineEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QLineEditWrapper", &buildMetaClass_QLineEditWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

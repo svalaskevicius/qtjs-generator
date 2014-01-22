@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QGroupBox()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGroupBox, QWidget> _nd = GDefineMetaClass<QGroupBox, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGroupBox");
-        buildMetaClass_QGroupBox(0, _nd);
+        GDefineMetaClass<QGroupBox, QWidget> _nd = GDefineMetaClass<QGroupBox, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGroupBox", &buildMetaClass_QGroupBox);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGroupBoxWrapper, QGroupBox> _nd = GDefineMetaClass<QGroupBoxWrapper, QGroupBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGroupBoxWrapper");
-        buildMetaClass_QGroupBoxWrapper(0, _nd);
+        GDefineMetaClass<QGroupBoxWrapper, QGroupBox> _nd = GDefineMetaClass<QGroupBoxWrapper, QGroupBox>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGroupBoxWrapper", &buildMetaClass_QGroupBoxWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

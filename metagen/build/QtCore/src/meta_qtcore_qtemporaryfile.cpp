@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QTemporaryFile()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTemporaryFile, QFile> _nd = GDefineMetaClass<QTemporaryFile, QFile>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QTemporaryFile");
-        buildMetaClass_QTemporaryFile(0, _nd);
+        GDefineMetaClass<QTemporaryFile, QFile> _nd = GDefineMetaClass<QTemporaryFile, QFile>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTemporaryFile", &buildMetaClass_QTemporaryFile);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QTemporaryFileWrapper, QTemporaryFile> _nd = GDefineMetaClass<QTemporaryFileWrapper, QTemporaryFile>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QTemporaryFileWrapper");
-        buildMetaClass_QTemporaryFileWrapper(0, _nd);
+        GDefineMetaClass<QTemporaryFileWrapper, QTemporaryFile> _nd = GDefineMetaClass<QTemporaryFileWrapper, QTemporaryFile>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTemporaryFileWrapper", &buildMetaClass_QTemporaryFileWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

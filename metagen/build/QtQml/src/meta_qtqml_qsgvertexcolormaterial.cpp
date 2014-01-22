@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QSGVertexColorMaterial()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSGVertexColorMaterial, QSGMaterial> _nd = GDefineMetaClass<QSGVertexColorMaterial, QSGMaterial>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QSGVertexColorMaterial");
-        buildMetaClass_QSGVertexColorMaterial(0, _nd);
+        GDefineMetaClass<QSGVertexColorMaterial, QSGMaterial> _nd = GDefineMetaClass<QSGVertexColorMaterial, QSGMaterial>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSGVertexColorMaterial", &buildMetaClass_QSGVertexColorMaterial);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSGVertexColorMaterialWrapper, QSGVertexColorMaterial> _nd = GDefineMetaClass<QSGVertexColorMaterialWrapper, QSGVertexColorMaterial>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QSGVertexColorMaterialWrapper");
-        buildMetaClass_QSGVertexColorMaterialWrapper(0, _nd);
+        GDefineMetaClass<QSGVertexColorMaterialWrapper, QSGVertexColorMaterial> _nd = GDefineMetaClass<QSGVertexColorMaterialWrapper, QSGVertexColorMaterial>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSGVertexColorMaterialWrapper", &buildMetaClass_QSGVertexColorMaterialWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

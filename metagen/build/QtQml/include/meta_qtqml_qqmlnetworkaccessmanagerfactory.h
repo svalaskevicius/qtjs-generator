@@ -21,9 +21,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_QQmlNetworkAccessManagerFactory(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlNetworkAccessManagerFactory(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("create", &D::ClassType::create);
@@ -47,9 +47,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_create", (QNetworkAccessManager * (D::ClassType::*) (QObject *))&D::ClassType::super_create);
     }
@@ -57,15 +57,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QQmlNetworkAccessManagerFactoryWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlNetworkAccessManagerFactoryWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QQmlNetworkAccessManagerFactoryWrapper::cpgf__register(config, _d);
+    QQmlNetworkAccessManagerFactoryWrapper::cpgf__register(_d);
     
-    buildMetaClass_QQmlNetworkAccessManagerFactory<D>(config, _d);
+    buildMetaClass_QQmlNetworkAccessManagerFactory<D>(_d);
 }
 
 

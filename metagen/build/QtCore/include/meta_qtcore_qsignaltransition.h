@@ -21,9 +21,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_QSignalTransition(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSignalTransition(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QState *)>()
@@ -250,9 +250,9 @@ public:
         return QSignalTransition::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("eventTest", (bool (D::ClassType::*) (QEvent *))&D::ClassType::eventTest);
         _d.CPGF_MD_TEMPLATE _method("onTransition", (void (D::ClassType::*) (QEvent *))&D::ClassType::onTransition);
@@ -283,15 +283,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSignalTransitionWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSignalTransitionWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSignalTransitionWrapper::cpgf__register(config, _d);
+    QSignalTransitionWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSignalTransition<D>(config, _d);
+    buildMetaClass_QSignalTransition<D>(_d);
 }
 
 

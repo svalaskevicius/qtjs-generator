@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QAccessibleWidget()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleWidget, QAccessibleObject, QAccessibleActionInterface> _nd = GDefineMetaClass<QAccessibleWidget, QAccessibleObject, QAccessibleActionInterface>::Policy<MakePolicy<GMetaRuleDestructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleWidget");
-        buildMetaClass_QAccessibleWidget(0, _nd);
+        GDefineMetaClass<QAccessibleWidget, QAccessibleObject, QAccessibleActionInterface> _nd = GDefineMetaClass<QAccessibleWidget, QAccessibleObject, QAccessibleActionInterface>::Policy<MakePolicy<GMetaRuleDestructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleWidget", &buildMetaClass_QAccessibleWidget);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleWidgetWrapper, QAccessibleWidget> _nd = GDefineMetaClass<QAccessibleWidgetWrapper, QAccessibleWidget>::Policy<MakePolicy<GMetaRuleDestructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleWidgetWrapper");
-        buildMetaClass_QAccessibleWidgetWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleWidgetWrapper, QAccessibleWidget> _nd = GDefineMetaClass<QAccessibleWidgetWrapper, QAccessibleWidget>::Policy<MakePolicy<GMetaRuleDestructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleWidgetWrapper", &buildMetaClass_QAccessibleWidgetWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

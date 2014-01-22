@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qvariant()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qvariant(0, _d);
+    buildMetaClass_Global_qvariant(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QAssociativeIterable()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAssociativeIterable> _nd = GDefineMetaClass<QAssociativeIterable>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QAssociativeIterable");
-        buildMetaClass_QAssociativeIterable(0, _nd);
+        GDefineMetaClass<QAssociativeIterable> _nd = GDefineMetaClass<QAssociativeIterable>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QAssociativeIterable", &buildMetaClass_QAssociativeIterable);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QSequentialIterable()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSequentialIterable> _nd = GDefineMetaClass<QSequentialIterable>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QSequentialIterable");
-        buildMetaClass_QSequentialIterable(0, _nd);
+        GDefineMetaClass<QSequentialIterable> _nd = GDefineMetaClass<QSequentialIterable>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QSequentialIterable", &buildMetaClass_QSequentialIterable);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -98,8 +96,7 @@ GDefineMetaInfo createMetaClass_QVariant()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QVariant> _nd = GDefineMetaClass<QVariant>::declare("QVariant");
-        buildMetaClass_QVariant(0, _nd);
+        GDefineMetaClass<QVariant> _nd = GDefineMetaClass<QVariant>::lazyDeclare("QVariant", &buildMetaClass_QVariant);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -113,8 +110,7 @@ GDefineMetaInfo createMetaClass_QVariantComparisonHelper()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QVariantComparisonHelper> _nd = GDefineMetaClass<QVariantComparisonHelper>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QVariantComparisonHelper");
-        buildMetaClass_QVariantComparisonHelper(0, _nd);
+        GDefineMetaClass<QVariantComparisonHelper> _nd = GDefineMetaClass<QVariantComparisonHelper>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QVariantComparisonHelper", &buildMetaClass_QVariantComparisonHelper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

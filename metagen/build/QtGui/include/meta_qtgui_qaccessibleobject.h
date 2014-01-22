@@ -21,9 +21,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_QAccessibleApplication(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleApplication(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -313,9 +313,9 @@ public:
         return QAccessibleObject::isValid();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_interface_cast", (void * (D::ClassType::*) (QAccessible::InterfaceType))&D::ClassType::super_interface_cast);
         _d.CPGF_MD_TEMPLATE _method("super_childCount", (int (D::ClassType::*) () const)&D::ClassType::super_childCount);
@@ -343,15 +343,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleApplicationWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleApplicationWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleApplicationWrapper::cpgf__register(config, _d);
+    QAccessibleApplicationWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleApplication<D>(config, _d);
+    buildMetaClass_QAccessibleApplication<D>(_d);
 }
 
 

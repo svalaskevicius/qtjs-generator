@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QSGGeometry()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSGGeometry> _nd = GDefineMetaClass<QSGGeometry>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QSGGeometry");
-        buildMetaClass_QSGGeometry(0, _nd);
+        GDefineMetaClass<QSGGeometry> _nd = GDefineMetaClass<QSGGeometry>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QSGGeometry", &buildMetaClass_QSGGeometry);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

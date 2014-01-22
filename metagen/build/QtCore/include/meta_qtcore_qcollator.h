@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qcollator(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qcollator(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const QCollatorSortKey &, const QCollatorSortKey &)>(mopHolder < mopHolder);
@@ -36,9 +36,9 @@ inline bool opErAToRWrapper_QCollator__opFunction(const QCollator * self, const 
 
 
 template <typename D>
-void buildMetaClass_QCollator(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QCollator(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QLocale &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
@@ -71,9 +71,9 @@ inline QCollatorSortKey & opErAToRWrapper_QCollatorSortKey__opAssign(QCollatorSo
 
 
 template <typename D>
-void buildMetaClass_QCollatorSortKey(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QCollatorSortKey(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QCollatorSortKey &)>();

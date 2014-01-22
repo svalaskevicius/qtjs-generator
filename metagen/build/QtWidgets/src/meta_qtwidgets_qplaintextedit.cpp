@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QPlainTextDocumentLayout()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPlainTextDocumentLayout, QAbstractTextDocumentLayout> _nd = GDefineMetaClass<QPlainTextDocumentLayout, QAbstractTextDocumentLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPlainTextDocumentLayout");
-        buildMetaClass_QPlainTextDocumentLayout(0, _nd);
+        GDefineMetaClass<QPlainTextDocumentLayout, QAbstractTextDocumentLayout> _nd = GDefineMetaClass<QPlainTextDocumentLayout, QAbstractTextDocumentLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPlainTextDocumentLayout", &buildMetaClass_QPlainTextDocumentLayout);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QPlainTextDocumentLayoutWrapper, QPlainTextDocumentLayout> _nd = GDefineMetaClass<QPlainTextDocumentLayoutWrapper, QPlainTextDocumentLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPlainTextDocumentLayoutWrapper");
-        buildMetaClass_QPlainTextDocumentLayoutWrapper(0, _nd);
+        GDefineMetaClass<QPlainTextDocumentLayoutWrapper, QPlainTextDocumentLayout> _nd = GDefineMetaClass<QPlainTextDocumentLayoutWrapper, QPlainTextDocumentLayout>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPlainTextDocumentLayoutWrapper", &buildMetaClass_QPlainTextDocumentLayoutWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -97,13 +95,11 @@ GDefineMetaInfo createMetaClass_QPlainTextEdit()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPlainTextEdit, QAbstractScrollArea> _nd = GDefineMetaClass<QPlainTextEdit, QAbstractScrollArea>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPlainTextEdit");
-        buildMetaClass_QPlainTextEdit(0, _nd);
+        GDefineMetaClass<QPlainTextEdit, QAbstractScrollArea> _nd = GDefineMetaClass<QPlainTextEdit, QAbstractScrollArea>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPlainTextEdit", &buildMetaClass_QPlainTextEdit);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QPlainTextEditWrapper, QPlainTextEdit> _nd = GDefineMetaClass<QPlainTextEditWrapper, QPlainTextEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPlainTextEditWrapper");
-        buildMetaClass_QPlainTextEditWrapper(0, _nd);
+        GDefineMetaClass<QPlainTextEditWrapper, QPlainTextEdit> _nd = GDefineMetaClass<QPlainTextEditWrapper, QPlainTextEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPlainTextEditWrapper", &buildMetaClass_QPlainTextEditWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -18,9 +18,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_Global_qqmlproperty(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qqmlproperty(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qHash", (uint (*) (const QQmlProperty &))&qHash, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -36,9 +36,9 @@ inline bool opErAToRWrapper_QQmlProperty__opEqual(const QQmlProperty * self, con
 
 
 template <typename D>
-void buildMetaClass_QQmlProperty(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlProperty(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

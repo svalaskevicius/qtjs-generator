@@ -21,9 +21,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_QQuickTextDocument(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQuickTextDocument(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QQuickItem *)>();
@@ -210,9 +210,9 @@ public:
         return QQuickTextDocument::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -238,15 +238,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QQuickTextDocumentWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQuickTextDocumentWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QQuickTextDocumentWrapper::cpgf__register(config, _d);
+    QQuickTextDocumentWrapper::cpgf__register(_d);
     
-    buildMetaClass_QQuickTextDocument<D>(config, _d);
+    buildMetaClass_QQuickTextDocument<D>(_d);
 }
 
 

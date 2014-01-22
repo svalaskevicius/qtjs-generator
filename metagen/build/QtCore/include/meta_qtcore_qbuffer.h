@@ -21,9 +21,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_QBuffer(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QBuffer(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -465,9 +465,9 @@ public:
         return QBuffer::writeData(data, len);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
@@ -514,15 +514,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QBufferWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QBufferWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QBufferWrapper::cpgf__register(config, _d);
+    QBufferWrapper::cpgf__register(_d);
     
-    buildMetaClass_QBuffer<D>(config, _d);
+    buildMetaClass_QBuffer<D>(_d);
 }
 
 

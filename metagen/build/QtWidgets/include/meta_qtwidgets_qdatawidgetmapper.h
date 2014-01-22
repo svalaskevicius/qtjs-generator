@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QDataWidgetMapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDataWidgetMapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -257,9 +257,9 @@ public:
         return QDataWidgetMapper::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -286,15 +286,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QDataWidgetMapperWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDataWidgetMapperWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QDataWidgetMapperWrapper::cpgf__register(config, _d);
+    QDataWidgetMapperWrapper::cpgf__register(_d);
     
-    buildMetaClass_QDataWidgetMapper<D>(config, _d);
+    buildMetaClass_QDataWidgetMapper<D>(_d);
 }
 
 

@@ -77,8 +77,7 @@ GDefineMetaInfo createMetaClass_QColormap()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QColormap> _nd = GDefineMetaClass<QColormap>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QColormap");
-        buildMetaClass_QColormap(0, _nd);
+        GDefineMetaClass<QColormap> _nd = GDefineMetaClass<QColormap>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QColormap", &buildMetaClass_QColormap);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

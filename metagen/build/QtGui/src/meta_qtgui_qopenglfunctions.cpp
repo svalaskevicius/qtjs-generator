@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qopenglfunctions()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qopenglfunctions(0, _d);
+    buildMetaClass_Global_qopenglfunctions(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QOpenGLFunctions()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QOpenGLFunctions> _nd = GDefineMetaClass<QOpenGLFunctions>::declare("QOpenGLFunctions");
-        buildMetaClass_QOpenGLFunctions(0, _nd);
+        GDefineMetaClass<QOpenGLFunctions> _nd = GDefineMetaClass<QOpenGLFunctions>::lazyDeclare("QOpenGLFunctions", &buildMetaClass_QOpenGLFunctions);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

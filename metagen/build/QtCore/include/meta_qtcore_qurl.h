@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qurl(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qurl(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qHash", (uint (*) (const QUrl &, uint))&qHash, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
@@ -61,9 +61,9 @@ inline bool opErAToRWrapper_QUrl__opNotEqual(const QUrl * self, const QUrl & url
 
 
 template <typename D>
-void buildMetaClass_QUrl(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QUrl(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

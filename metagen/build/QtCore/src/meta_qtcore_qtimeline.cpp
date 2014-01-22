@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QTimeLine()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTimeLine, QObject> _nd = GDefineMetaClass<QTimeLine, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTimeLine");
-        buildMetaClass_QTimeLine(0, _nd);
+        GDefineMetaClass<QTimeLine, QObject> _nd = GDefineMetaClass<QTimeLine, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTimeLine", &buildMetaClass_QTimeLine);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QTimeLineWrapper, QTimeLine> _nd = GDefineMetaClass<QTimeLineWrapper, QTimeLine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTimeLineWrapper");
-        buildMetaClass_QTimeLineWrapper(0, _nd);
+        GDefineMetaClass<QTimeLineWrapper, QTimeLine> _nd = GDefineMetaClass<QTimeLineWrapper, QTimeLine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTimeLineWrapper", &buildMetaClass_QTimeLineWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

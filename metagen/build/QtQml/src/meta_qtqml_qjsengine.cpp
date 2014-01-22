@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qjsengine()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qjsengine(0, _d);
+    buildMetaClass_Global_qjsengine(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,13 +33,11 @@ GDefineMetaInfo createMetaClass_QJSEngine()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QJSEngine, QObject> _nd = GDefineMetaClass<QJSEngine, QObject>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QJSEngine");
-        buildMetaClass_QJSEngine(0, _nd);
+        GDefineMetaClass<QJSEngine, QObject> _nd = GDefineMetaClass<QJSEngine, QObject>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QJSEngine", &buildMetaClass_QJSEngine);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QJSEngineWrapper, QJSEngine> _nd = GDefineMetaClass<QJSEngineWrapper, QJSEngine>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QJSEngineWrapper");
-        buildMetaClass_QJSEngineWrapper(0, _nd);
+        GDefineMetaClass<QJSEngineWrapper, QJSEngine> _nd = GDefineMetaClass<QJSEngineWrapper, QJSEngine>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QJSEngineWrapper", &buildMetaClass_QJSEngineWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

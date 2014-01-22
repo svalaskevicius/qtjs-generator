@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qpen(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qpen(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QPen &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleCopyConstReference<1> >());
@@ -41,9 +41,9 @@ inline bool opErAToRWrapper_QPen__opNotEqual(const QPen * self, const QPen & p) 
 
 
 template <typename D>
-void buildMetaClass_QPen(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPen(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

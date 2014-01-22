@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qaccessibleplugin()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qaccessibleplugin(0, _d);
+    buildMetaClass_Global_qaccessibleplugin(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,13 +33,11 @@ GDefineMetaInfo createMetaClass_QAccessiblePlugin()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessiblePlugin, QObject> _nd = GDefineMetaClass<QAccessiblePlugin, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessiblePlugin");
-        buildMetaClass_QAccessiblePlugin(0, _nd);
+        GDefineMetaClass<QAccessiblePlugin, QObject> _nd = GDefineMetaClass<QAccessiblePlugin, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessiblePlugin", &buildMetaClass_QAccessiblePlugin);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessiblePluginWrapper, QAccessiblePlugin> _nd = GDefineMetaClass<QAccessiblePluginWrapper, QAccessiblePlugin>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessiblePluginWrapper");
-        buildMetaClass_QAccessiblePluginWrapper(0, _nd);
+        GDefineMetaClass<QAccessiblePluginWrapper, QAccessiblePlugin> _nd = GDefineMetaClass<QAccessiblePluginWrapper, QAccessiblePlugin>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessiblePluginWrapper", &buildMetaClass_QAccessiblePluginWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

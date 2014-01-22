@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qtimezone()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qtimezone(0, _d);
+    buildMetaClass_Global_qtimezone(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QTimeZone()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTimeZone> _nd = GDefineMetaClass<QTimeZone>::declare("QTimeZone");
-        buildMetaClass_QTimeZone(0, _nd);
+        GDefineMetaClass<QTimeZone> _nd = GDefineMetaClass<QTimeZone>::lazyDeclare("QTimeZone", &buildMetaClass_QTimeZone);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

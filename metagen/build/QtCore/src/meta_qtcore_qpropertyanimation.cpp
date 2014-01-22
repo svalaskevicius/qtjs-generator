@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QPropertyAnimation()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPropertyAnimation, QVariantAnimation> _nd = GDefineMetaClass<QPropertyAnimation, QVariantAnimation>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPropertyAnimation");
-        buildMetaClass_QPropertyAnimation(0, _nd);
+        GDefineMetaClass<QPropertyAnimation, QVariantAnimation> _nd = GDefineMetaClass<QPropertyAnimation, QVariantAnimation>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPropertyAnimation", &buildMetaClass_QPropertyAnimation);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QPropertyAnimationWrapper, QPropertyAnimation> _nd = GDefineMetaClass<QPropertyAnimationWrapper, QPropertyAnimation>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPropertyAnimationWrapper");
-        buildMetaClass_QPropertyAnimationWrapper(0, _nd);
+        GDefineMetaClass<QPropertyAnimationWrapper, QPropertyAnimation> _nd = GDefineMetaClass<QPropertyAnimationWrapper, QPropertyAnimation>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPropertyAnimationWrapper", &buildMetaClass_QPropertyAnimationWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QPluginLoader()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPluginLoader, QObject> _nd = GDefineMetaClass<QPluginLoader, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPluginLoader");
-        buildMetaClass_QPluginLoader(0, _nd);
+        GDefineMetaClass<QPluginLoader, QObject> _nd = GDefineMetaClass<QPluginLoader, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPluginLoader", &buildMetaClass_QPluginLoader);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QPluginLoaderWrapper, QPluginLoader> _nd = GDefineMetaClass<QPluginLoaderWrapper, QPluginLoader>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPluginLoaderWrapper");
-        buildMetaClass_QPluginLoaderWrapper(0, _nd);
+        GDefineMetaClass<QPluginLoaderWrapper, QPluginLoader> _nd = GDefineMetaClass<QPluginLoaderWrapper, QPluginLoader>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPluginLoaderWrapper", &buildMetaClass_QPluginLoaderWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

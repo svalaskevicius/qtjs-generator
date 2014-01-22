@@ -23,9 +23,9 @@ inline QCommandLineOption & opErAToRWrapper_QCommandLineOption__opAssign(QComman
 
 
 template <typename D>
-void buildMetaClass_QCommandLineOption(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QCommandLineOption(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QString &, const QString &, const QString &, const QString &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<2>, cpgf::GMetaRuleCopyConstReference<3> >())

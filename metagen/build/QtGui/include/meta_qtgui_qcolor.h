@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qcolor(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qcolor(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QColor &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
@@ -44,9 +44,9 @@ inline bool opErAToRWrapper_QColor__opNotEqual(const QColor * self, const QColor
 
 
 template <typename D>
-void buildMetaClass_QColor(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QColor(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

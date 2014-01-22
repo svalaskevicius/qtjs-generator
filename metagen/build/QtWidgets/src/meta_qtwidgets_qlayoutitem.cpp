@@ -76,7 +76,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qlayoutitem()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qlayoutitem(0, _d);
+    buildMetaClass_Global_qlayoutitem(_d);
     return _d.getMetaInfo();
 }
 
@@ -88,13 +88,11 @@ GDefineMetaInfo createMetaClass_QLayoutItem()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QLayoutItem> _nd = GDefineMetaClass<QLayoutItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QLayoutItem");
-        buildMetaClass_QLayoutItem(0, _nd);
+        GDefineMetaClass<QLayoutItem> _nd = GDefineMetaClass<QLayoutItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QLayoutItem", &buildMetaClass_QLayoutItem);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QLayoutItemWrapper, QLayoutItem> _nd = GDefineMetaClass<QLayoutItemWrapper, QLayoutItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QLayoutItemWrapper");
-        buildMetaClass_QLayoutItemWrapper(0, _nd);
+        GDefineMetaClass<QLayoutItemWrapper, QLayoutItem> _nd = GDefineMetaClass<QLayoutItemWrapper, QLayoutItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QLayoutItemWrapper", &buildMetaClass_QLayoutItemWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -108,13 +106,11 @@ GDefineMetaInfo createMetaClass_QSpacerItem()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSpacerItem, QLayoutItem> _nd = GDefineMetaClass<QSpacerItem, QLayoutItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QSpacerItem");
-        buildMetaClass_QSpacerItem(0, _nd);
+        GDefineMetaClass<QSpacerItem, QLayoutItem> _nd = GDefineMetaClass<QSpacerItem, QLayoutItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QSpacerItem", &buildMetaClass_QSpacerItem);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSpacerItemWrapper, QSpacerItem> _nd = GDefineMetaClass<QSpacerItemWrapper, QSpacerItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QSpacerItemWrapper");
-        buildMetaClass_QSpacerItemWrapper(0, _nd);
+        GDefineMetaClass<QSpacerItemWrapper, QSpacerItem> _nd = GDefineMetaClass<QSpacerItemWrapper, QSpacerItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QSpacerItemWrapper", &buildMetaClass_QSpacerItemWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -128,13 +124,11 @@ GDefineMetaInfo createMetaClass_QWidgetItem()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QWidgetItem, QLayoutItem> _nd = GDefineMetaClass<QWidgetItem, QLayoutItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QWidgetItem");
-        buildMetaClass_QWidgetItem(0, _nd);
+        GDefineMetaClass<QWidgetItem, QLayoutItem> _nd = GDefineMetaClass<QWidgetItem, QLayoutItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QWidgetItem", &buildMetaClass_QWidgetItem);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QWidgetItemWrapper, QWidgetItem> _nd = GDefineMetaClass<QWidgetItemWrapper, QWidgetItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QWidgetItemWrapper");
-        buildMetaClass_QWidgetItemWrapper(0, _nd);
+        GDefineMetaClass<QWidgetItemWrapper, QWidgetItem> _nd = GDefineMetaClass<QWidgetItemWrapper, QWidgetItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QWidgetItemWrapper", &buildMetaClass_QWidgetItemWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -148,13 +142,11 @@ GDefineMetaInfo createMetaClass_QWidgetItemV2()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QWidgetItemV2, QWidgetItem> _nd = GDefineMetaClass<QWidgetItemV2, QWidgetItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QWidgetItemV2");
-        buildMetaClass_QWidgetItemV2(0, _nd);
+        GDefineMetaClass<QWidgetItemV2, QWidgetItem> _nd = GDefineMetaClass<QWidgetItemV2, QWidgetItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QWidgetItemV2", &buildMetaClass_QWidgetItemV2);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QWidgetItemV2Wrapper, QWidgetItemV2> _nd = GDefineMetaClass<QWidgetItemV2Wrapper, QWidgetItemV2>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QWidgetItemV2Wrapper");
-        buildMetaClass_QWidgetItemV2Wrapper(0, _nd);
+        GDefineMetaClass<QWidgetItemV2Wrapper, QWidgetItemV2> _nd = GDefineMetaClass<QWidgetItemV2Wrapper, QWidgetItemV2>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QWidgetItemV2Wrapper", &buildMetaClass_QWidgetItemV2Wrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_Big_()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QtPrivate::big_> _nd = GDefineMetaClass<QtPrivate::big_>::declare("big_");
-        buildMetaClass_Big_(0, _nd);
+        GDefineMetaClass<QtPrivate::big_> _nd = GDefineMetaClass<QtPrivate::big_>::lazyDeclare("big_", &buildMetaClass_Big_);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

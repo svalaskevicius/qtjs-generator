@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QEventTransition()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QEventTransition, QAbstractTransition> _nd = GDefineMetaClass<QEventTransition, QAbstractTransition>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QEventTransition");
-        buildMetaClass_QEventTransition(0, _nd);
+        GDefineMetaClass<QEventTransition, QAbstractTransition> _nd = GDefineMetaClass<QEventTransition, QAbstractTransition>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QEventTransition", &buildMetaClass_QEventTransition);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QEventTransitionWrapper, QEventTransition> _nd = GDefineMetaClass<QEventTransitionWrapper, QEventTransition>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QEventTransitionWrapper");
-        buildMetaClass_QEventTransitionWrapper(0, _nd);
+        GDefineMetaClass<QEventTransitionWrapper, QEventTransition> _nd = GDefineMetaClass<QEventTransitionWrapper, QEventTransition>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QEventTransitionWrapper", &buildMetaClass_QEventTransitionWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QImageReader()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QImageReader> _nd = GDefineMetaClass<QImageReader>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QImageReader");
-        buildMetaClass_QImageReader(0, _nd);
+        GDefineMetaClass<QImageReader> _nd = GDefineMetaClass<QImageReader>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QImageReader", &buildMetaClass_QImageReader);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

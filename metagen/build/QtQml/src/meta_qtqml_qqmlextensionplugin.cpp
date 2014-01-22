@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QQmlExtensionPlugin()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlExtensionPlugin, QObject, QQmlExtensionInterface> _nd = GDefineMetaClass<QQmlExtensionPlugin, QObject, QQmlExtensionInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlExtensionPlugin");
-        buildMetaClass_QQmlExtensionPlugin(0, _nd);
+        GDefineMetaClass<QQmlExtensionPlugin, QObject, QQmlExtensionInterface> _nd = GDefineMetaClass<QQmlExtensionPlugin, QObject, QQmlExtensionInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlExtensionPlugin", &buildMetaClass_QQmlExtensionPlugin);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQmlExtensionPluginWrapper, QQmlExtensionPlugin> _nd = GDefineMetaClass<QQmlExtensionPluginWrapper, QQmlExtensionPlugin>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlExtensionPluginWrapper");
-        buildMetaClass_QQmlExtensionPluginWrapper(0, _nd);
+        GDefineMetaClass<QQmlExtensionPluginWrapper, QQmlExtensionPlugin> _nd = GDefineMetaClass<QQmlExtensionPluginWrapper, QQmlExtensionPlugin>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlExtensionPluginWrapper", &buildMetaClass_QQmlExtensionPluginWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

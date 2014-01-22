@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QStringMatcher()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStringMatcher> _nd = GDefineMetaClass<QStringMatcher>::declare("QStringMatcher");
-        buildMetaClass_QStringMatcher(0, _nd);
+        GDefineMetaClass<QStringMatcher> _nd = GDefineMetaClass<QStringMatcher>::lazyDeclare("QStringMatcher", &buildMetaClass_QStringMatcher);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

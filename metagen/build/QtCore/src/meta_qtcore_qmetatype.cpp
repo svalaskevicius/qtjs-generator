@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qmetatype()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qmetatype(0, _d);
+    buildMetaClass_Global_qmetatype(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QAssociativeIterableImpl()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QtMetaTypePrivate::QAssociativeIterableImpl> _nd = GDefineMetaClass<QtMetaTypePrivate::QAssociativeIterableImpl>::declare("QAssociativeIterableImpl");
-        buildMetaClass_QAssociativeIterableImpl(0, _nd);
+        GDefineMetaClass<QtMetaTypePrivate::QAssociativeIterableImpl> _nd = GDefineMetaClass<QtMetaTypePrivate::QAssociativeIterableImpl>::lazyDeclare("QAssociativeIterableImpl", &buildMetaClass_QAssociativeIterableImpl);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QPairVariantInterfaceImpl()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QtMetaTypePrivate::QPairVariantInterfaceImpl> _nd = GDefineMetaClass<QtMetaTypePrivate::QPairVariantInterfaceImpl>::declare("QPairVariantInterfaceImpl");
-        buildMetaClass_QPairVariantInterfaceImpl(0, _nd);
+        GDefineMetaClass<QtMetaTypePrivate::QPairVariantInterfaceImpl> _nd = GDefineMetaClass<QtMetaTypePrivate::QPairVariantInterfaceImpl>::lazyDeclare("QPairVariantInterfaceImpl", &buildMetaClass_QPairVariantInterfaceImpl);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -98,8 +96,7 @@ GDefineMetaInfo createMetaClass_QSequentialIterableImpl()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QtMetaTypePrivate::QSequentialIterableImpl> _nd = GDefineMetaClass<QtMetaTypePrivate::QSequentialIterableImpl>::declare("QSequentialIterableImpl");
-        buildMetaClass_QSequentialIterableImpl(0, _nd);
+        GDefineMetaClass<QtMetaTypePrivate::QSequentialIterableImpl> _nd = GDefineMetaClass<QtMetaTypePrivate::QSequentialIterableImpl>::lazyDeclare("QSequentialIterableImpl", &buildMetaClass_QSequentialIterableImpl);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -113,8 +110,7 @@ GDefineMetaInfo createMetaClass_VariantData()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QtMetaTypePrivate::VariantData> _nd = GDefineMetaClass<QtMetaTypePrivate::VariantData>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("VariantData");
-        buildMetaClass_VariantData(0, _nd);
+        GDefineMetaClass<QtMetaTypePrivate::VariantData> _nd = GDefineMetaClass<QtMetaTypePrivate::VariantData>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("VariantData", &buildMetaClass_VariantData);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

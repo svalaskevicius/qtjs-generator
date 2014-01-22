@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QQmlPropertyMap()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlPropertyMap, QObject> _nd = GDefineMetaClass<QQmlPropertyMap, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlPropertyMap");
-        buildMetaClass_QQmlPropertyMap(0, _nd);
+        GDefineMetaClass<QQmlPropertyMap, QObject> _nd = GDefineMetaClass<QQmlPropertyMap, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlPropertyMap", &buildMetaClass_QQmlPropertyMap);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQmlPropertyMapWrapper, QQmlPropertyMap> _nd = GDefineMetaClass<QQmlPropertyMapWrapper, QQmlPropertyMap>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlPropertyMapWrapper");
-        buildMetaClass_QQmlPropertyMapWrapper(0, _nd);
+        GDefineMetaClass<QQmlPropertyMapWrapper, QQmlPropertyMap> _nd = GDefineMetaClass<QQmlPropertyMapWrapper, QQmlPropertyMap>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlPropertyMapWrapper", &buildMetaClass_QQmlPropertyMapWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

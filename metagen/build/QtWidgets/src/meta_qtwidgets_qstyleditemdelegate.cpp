@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QStyledItemDelegate()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyledItemDelegate, QAbstractItemDelegate> _nd = GDefineMetaClass<QStyledItemDelegate, QAbstractItemDelegate>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QStyledItemDelegate");
-        buildMetaClass_QStyledItemDelegate(0, _nd);
+        GDefineMetaClass<QStyledItemDelegate, QAbstractItemDelegate> _nd = GDefineMetaClass<QStyledItemDelegate, QAbstractItemDelegate>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStyledItemDelegate", &buildMetaClass_QStyledItemDelegate);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QStyledItemDelegateWrapper, QStyledItemDelegate> _nd = GDefineMetaClass<QStyledItemDelegateWrapper, QStyledItemDelegate>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QStyledItemDelegateWrapper");
-        buildMetaClass_QStyledItemDelegateWrapper(0, _nd);
+        GDefineMetaClass<QStyledItemDelegateWrapper, QStyledItemDelegate> _nd = GDefineMetaClass<QStyledItemDelegateWrapper, QStyledItemDelegate>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStyledItemDelegateWrapper", &buildMetaClass_QStyledItemDelegateWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

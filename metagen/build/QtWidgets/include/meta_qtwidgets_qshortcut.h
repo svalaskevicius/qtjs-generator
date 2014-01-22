@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QShortcut(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QShortcut(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>();
@@ -231,9 +231,9 @@ public:
         return QShortcut::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -260,15 +260,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QShortcutWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QShortcutWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QShortcutWrapper::cpgf__register(config, _d);
+    QShortcutWrapper::cpgf__register(_d);
     
-    buildMetaClass_QShortcut<D>(config, _d);
+    buildMetaClass_QShortcut<D>(_d);
 }
 
 

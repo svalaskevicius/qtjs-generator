@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QCommandLineParser()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QCommandLineParser> _nd = GDefineMetaClass<QCommandLineParser>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QCommandLineParser");
-        buildMetaClass_QCommandLineParser(0, _nd);
+        GDefineMetaClass<QCommandLineParser> _nd = GDefineMetaClass<QCommandLineParser>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QCommandLineParser", &buildMetaClass_QCommandLineParser);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qregion(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qregion(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QRegion &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleCopyConstReference<1> >());
@@ -83,9 +83,9 @@ inline bool opErAToRWrapper_QRegion__opNotEqual(const QRegion * self, const QReg
 
 
 template <typename D>
-void buildMetaClass_QRegion(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QRegion(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

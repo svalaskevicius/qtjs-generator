@@ -22,9 +22,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qobject(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qobject(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qt_qFindChildren_helper", (void (*) (const QObject *, const QString &, const QMetaObject &, QList< void * > *, Qt::FindChildOptions))&qt_qFindChildren_helper, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
@@ -36,9 +36,9 @@ void buildMetaClass_Global_qobject(const cpgf::GMetaDataConfigFlags & config, D 
 
 
 template <typename D>
-void buildMetaClass_QObject(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QObject(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -279,9 +279,9 @@ public:
         return QObject::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -307,15 +307,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QObjectWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QObjectWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QObjectWrapper::cpgf__register(config, _d);
+    QObjectWrapper::cpgf__register(_d);
     
-    buildMetaClass_QObject<D>(config, _d);
+    buildMetaClass_QObject<D>(_d);
 }
 
 
@@ -378,9 +378,9 @@ inline void bItFiEldWrapper_QObjectData_unused_setter(QObjectData * self, uint v
 
 
 template <typename D>
-void buildMetaClass_QObjectData(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QObjectData(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("q_ptr", &D::ClassType::q_ptr);
@@ -399,9 +399,9 @@ void buildMetaClass_QObjectData(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QObjectUserData(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QObjectUserData(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }

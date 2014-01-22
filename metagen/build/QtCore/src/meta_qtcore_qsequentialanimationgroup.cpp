@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QSequentialAnimationGroup()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSequentialAnimationGroup, QAnimationGroup> _nd = GDefineMetaClass<QSequentialAnimationGroup, QAnimationGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSequentialAnimationGroup");
-        buildMetaClass_QSequentialAnimationGroup(0, _nd);
+        GDefineMetaClass<QSequentialAnimationGroup, QAnimationGroup> _nd = GDefineMetaClass<QSequentialAnimationGroup, QAnimationGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSequentialAnimationGroup", &buildMetaClass_QSequentialAnimationGroup);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSequentialAnimationGroupWrapper, QSequentialAnimationGroup> _nd = GDefineMetaClass<QSequentialAnimationGroupWrapper, QSequentialAnimationGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSequentialAnimationGroupWrapper");
-        buildMetaClass_QSequentialAnimationGroupWrapper(0, _nd);
+        GDefineMetaClass<QSequentialAnimationGroupWrapper, QSequentialAnimationGroup> _nd = GDefineMetaClass<QSequentialAnimationGroupWrapper, QSequentialAnimationGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSequentialAnimationGroupWrapper", &buildMetaClass_QSequentialAnimationGroupWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qicon(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qicon(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QIcon &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleCopyConstReference<1> >());
@@ -35,9 +35,9 @@ inline QIcon & opErAToRWrapper_QIcon__opAssign(QIcon * self, const QIcon & other
 
 
 template <typename D>
-void buildMetaClass_QIcon(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QIcon(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QOpenGLTimeMonitor()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QOpenGLTimeMonitor, QObject> _nd = GDefineMetaClass<QOpenGLTimeMonitor, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QOpenGLTimeMonitor");
-        buildMetaClass_QOpenGLTimeMonitor(0, _nd);
+        GDefineMetaClass<QOpenGLTimeMonitor, QObject> _nd = GDefineMetaClass<QOpenGLTimeMonitor, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QOpenGLTimeMonitor", &buildMetaClass_QOpenGLTimeMonitor);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QOpenGLTimeMonitorWrapper, QOpenGLTimeMonitor> _nd = GDefineMetaClass<QOpenGLTimeMonitorWrapper, QOpenGLTimeMonitor>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QOpenGLTimeMonitorWrapper");
-        buildMetaClass_QOpenGLTimeMonitorWrapper(0, _nd);
+        GDefineMetaClass<QOpenGLTimeMonitorWrapper, QOpenGLTimeMonitor> _nd = GDefineMetaClass<QOpenGLTimeMonitorWrapper, QOpenGLTimeMonitor>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QOpenGLTimeMonitorWrapper", &buildMetaClass_QOpenGLTimeMonitorWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -42,13 +40,11 @@ GDefineMetaInfo createMetaClass_QOpenGLTimerQuery()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QOpenGLTimerQuery, QObject> _nd = GDefineMetaClass<QOpenGLTimerQuery, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QOpenGLTimerQuery");
-        buildMetaClass_QOpenGLTimerQuery(0, _nd);
+        GDefineMetaClass<QOpenGLTimerQuery, QObject> _nd = GDefineMetaClass<QOpenGLTimerQuery, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QOpenGLTimerQuery", &buildMetaClass_QOpenGLTimerQuery);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QOpenGLTimerQueryWrapper, QOpenGLTimerQuery> _nd = GDefineMetaClass<QOpenGLTimerQueryWrapper, QOpenGLTimerQuery>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QOpenGLTimerQueryWrapper");
-        buildMetaClass_QOpenGLTimerQueryWrapper(0, _nd);
+        GDefineMetaClass<QOpenGLTimerQueryWrapper, QOpenGLTimerQuery> _nd = GDefineMetaClass<QOpenGLTimerQueryWrapper, QOpenGLTimerQuery>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QOpenGLTimerQueryWrapper", &buildMetaClass_QOpenGLTimerQueryWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

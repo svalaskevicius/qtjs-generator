@@ -21,9 +21,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_Global_qqmlextensioninterface(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qqmlextensioninterface(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_16")
@@ -34,9 +34,9 @@ void buildMetaClass_Global_qqmlextensioninterface(const cpgf::GMetaDataConfigFla
 
 
 template <typename D>
-void buildMetaClass_QQmlExtensionInterface(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlExtensionInterface(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("initializeEngine", &D::ClassType::initializeEngine);
@@ -76,9 +76,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_registerTypes", (void (D::ClassType::*) (const char *))&D::ClassType::super_registerTypes);
         _d.CPGF_MD_TEMPLATE _method("super_initializeEngine", (void (D::ClassType::*) (QQmlEngine *, const char *))&D::ClassType::super_initializeEngine);
@@ -87,22 +87,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QQmlExtensionInterfaceWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlExtensionInterfaceWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QQmlExtensionInterfaceWrapper::cpgf__register(config, _d);
+    QQmlExtensionInterfaceWrapper::cpgf__register(_d);
     
-    buildMetaClass_QQmlExtensionInterface<D>(config, _d);
+    buildMetaClass_QQmlExtensionInterface<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QQmlTypesExtensionInterface(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlTypesExtensionInterface(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("registerTypes", &D::ClassType::registerTypes);
@@ -127,9 +127,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_registerTypes", (void (D::ClassType::*) (const char *))&D::ClassType::super_registerTypes);
     }
@@ -137,15 +137,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QQmlTypesExtensionInterfaceWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlTypesExtensionInterfaceWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QQmlTypesExtensionInterfaceWrapper::cpgf__register(config, _d);
+    QQmlTypesExtensionInterfaceWrapper::cpgf__register(_d);
     
-    buildMetaClass_QQmlTypesExtensionInterface<D>(config, _d);
+    buildMetaClass_QQmlTypesExtensionInterface<D>(_d);
 }
 
 

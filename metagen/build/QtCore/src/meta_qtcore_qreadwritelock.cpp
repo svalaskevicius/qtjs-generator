@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QReadLocker()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QReadLocker> _nd = GDefineMetaClass<QReadLocker>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QReadLocker");
-        buildMetaClass_QReadLocker(0, _nd);
+        GDefineMetaClass<QReadLocker> _nd = GDefineMetaClass<QReadLocker>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QReadLocker", &buildMetaClass_QReadLocker);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -72,8 +71,7 @@ GDefineMetaInfo createMetaClass_QReadWriteLock()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QReadWriteLock> _nd = GDefineMetaClass<QReadWriteLock>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QReadWriteLock");
-        buildMetaClass_QReadWriteLock(0, _nd);
+        GDefineMetaClass<QReadWriteLock> _nd = GDefineMetaClass<QReadWriteLock>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QReadWriteLock", &buildMetaClass_QReadWriteLock);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -87,8 +85,7 @@ GDefineMetaInfo createMetaClass_QWriteLocker()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QWriteLocker> _nd = GDefineMetaClass<QWriteLocker>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QWriteLocker");
-        buildMetaClass_QWriteLocker(0, _nd);
+        GDefineMetaClass<QWriteLocker> _nd = GDefineMetaClass<QWriteLocker>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QWriteLocker", &buildMetaClass_QWriteLocker);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

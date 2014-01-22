@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QOpenGLPixelTransferOptions()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QOpenGLPixelTransferOptions> _nd = GDefineMetaClass<QOpenGLPixelTransferOptions>::declare("QOpenGLPixelTransferOptions");
-        buildMetaClass_QOpenGLPixelTransferOptions(0, _nd);
+        GDefineMetaClass<QOpenGLPixelTransferOptions> _nd = GDefineMetaClass<QOpenGLPixelTransferOptions>::lazyDeclare("QOpenGLPixelTransferOptions", &buildMetaClass_QOpenGLPixelTransferOptions);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

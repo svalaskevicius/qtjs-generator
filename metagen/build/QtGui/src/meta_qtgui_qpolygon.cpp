@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qpolygon()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qpolygon(0, _d);
+    buildMetaClass_Global_qpolygon(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QPolygon()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPolygon, QVector< QPoint >> _nd = GDefineMetaClass<QPolygon, QVector< QPoint >>::declare("QPolygon");
-        buildMetaClass_QPolygon(0, _nd);
+        GDefineMetaClass<QPolygon, QVector< QPoint >> _nd = GDefineMetaClass<QPolygon, QVector< QPoint >>::lazyDeclare("QPolygon", &buildMetaClass_QPolygon);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -48,8 +47,7 @@ GDefineMetaInfo createMetaClass_QPolygonF()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPolygonF, QVector< QPointF >> _nd = GDefineMetaClass<QPolygonF, QVector< QPointF >>::declare("QPolygonF");
-        buildMetaClass_QPolygonF(0, _nd);
+        GDefineMetaClass<QPolygonF, QVector< QPointF >> _nd = GDefineMetaClass<QPolygonF, QVector< QPointF >>::lazyDeclare("QPolygonF", &buildMetaClass_QPolygonF);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

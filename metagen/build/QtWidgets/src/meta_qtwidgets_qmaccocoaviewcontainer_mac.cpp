@@ -76,7 +76,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qmaccocoaviewcontainer_mac()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qmaccocoaviewcontainer_mac(0, _d);
+    buildMetaClass_Global_qmaccocoaviewcontainer_mac(_d);
     return _d.getMetaInfo();
 }
 

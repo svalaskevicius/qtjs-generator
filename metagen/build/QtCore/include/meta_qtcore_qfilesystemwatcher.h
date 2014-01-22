@@ -21,9 +21,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_QFileSystemWatcher(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFileSystemWatcher(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -225,9 +225,9 @@ public:
         return QFileSystemWatcher::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -253,15 +253,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QFileSystemWatcherWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFileSystemWatcherWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QFileSystemWatcherWrapper::cpgf__register(config, _d);
+    QFileSystemWatcherWrapper::cpgf__register(_d);
     
-    buildMetaClass_QFileSystemWatcher<D>(config, _d);
+    buildMetaClass_QFileSystemWatcher<D>(_d);
 }
 
 

@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QShortcut()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QShortcut, QObject> _nd = GDefineMetaClass<QShortcut, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QShortcut");
-        buildMetaClass_QShortcut(0, _nd);
+        GDefineMetaClass<QShortcut, QObject> _nd = GDefineMetaClass<QShortcut, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QShortcut", &buildMetaClass_QShortcut);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QShortcutWrapper, QShortcut> _nd = GDefineMetaClass<QShortcutWrapper, QShortcut>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QShortcutWrapper");
-        buildMetaClass_QShortcutWrapper(0, _nd);
+        GDefineMetaClass<QShortcutWrapper, QShortcut> _nd = GDefineMetaClass<QShortcutWrapper, QShortcut>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QShortcutWrapper", &buildMetaClass_QShortcutWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qjsonarray(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qjsonarray(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QJsonArray &)>(mopHolder << mopHolder);
@@ -169,9 +169,9 @@ inline int opErAToRWrapper_QJsonArray_iterator__opSub(const QJsonArray::iterator
 
 
 template <typename D>
-void buildMetaClass_QJsonArray(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QJsonArray(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

@@ -76,7 +76,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qstyleoption()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qstyleoption(0, _d);
+    buildMetaClass_Global_qstyleoption(_d);
     return _d.getMetaInfo();
 }
 
@@ -88,8 +88,7 @@ GDefineMetaInfo createMetaClass_QStyleHintReturn()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleHintReturn> _nd = GDefineMetaClass<QStyleHintReturn>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QStyleHintReturn");
-        buildMetaClass_QStyleHintReturn(0, _nd);
+        GDefineMetaClass<QStyleHintReturn> _nd = GDefineMetaClass<QStyleHintReturn>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QStyleHintReturn", &buildMetaClass_QStyleHintReturn);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -103,8 +102,7 @@ GDefineMetaInfo createMetaClass_QStyleHintReturnMask()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleHintReturnMask, QStyleHintReturn> _nd = GDefineMetaClass<QStyleHintReturnMask, QStyleHintReturn>::declare("QStyleHintReturnMask");
-        buildMetaClass_QStyleHintReturnMask(0, _nd);
+        GDefineMetaClass<QStyleHintReturnMask, QStyleHintReturn> _nd = GDefineMetaClass<QStyleHintReturnMask, QStyleHintReturn>::lazyDeclare("QStyleHintReturnMask", &buildMetaClass_QStyleHintReturnMask);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -118,8 +116,7 @@ GDefineMetaInfo createMetaClass_QStyleHintReturnVariant()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleHintReturnVariant, QStyleHintReturn> _nd = GDefineMetaClass<QStyleHintReturnVariant, QStyleHintReturn>::declare("QStyleHintReturnVariant");
-        buildMetaClass_QStyleHintReturnVariant(0, _nd);
+        GDefineMetaClass<QStyleHintReturnVariant, QStyleHintReturn> _nd = GDefineMetaClass<QStyleHintReturnVariant, QStyleHintReturn>::lazyDeclare("QStyleHintReturnVariant", &buildMetaClass_QStyleHintReturnVariant);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -133,8 +130,7 @@ GDefineMetaInfo createMetaClass_QStyleOption()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOption> _nd = GDefineMetaClass<QStyleOption>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QStyleOption");
-        buildMetaClass_QStyleOption(0, _nd);
+        GDefineMetaClass<QStyleOption> _nd = GDefineMetaClass<QStyleOption>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QStyleOption", &buildMetaClass_QStyleOption);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -148,8 +144,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionButton()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionButton, QStyleOption> _nd = GDefineMetaClass<QStyleOptionButton, QStyleOption>::declare("QStyleOptionButton");
-        buildMetaClass_QStyleOptionButton(0, _nd);
+        GDefineMetaClass<QStyleOptionButton, QStyleOption> _nd = GDefineMetaClass<QStyleOptionButton, QStyleOption>::lazyDeclare("QStyleOptionButton", &buildMetaClass_QStyleOptionButton);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -163,8 +158,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionComboBox()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionComboBox, QStyleOptionComplex> _nd = GDefineMetaClass<QStyleOptionComboBox, QStyleOptionComplex>::declare("QStyleOptionComboBox");
-        buildMetaClass_QStyleOptionComboBox(0, _nd);
+        GDefineMetaClass<QStyleOptionComboBox, QStyleOptionComplex> _nd = GDefineMetaClass<QStyleOptionComboBox, QStyleOptionComplex>::lazyDeclare("QStyleOptionComboBox", &buildMetaClass_QStyleOptionComboBox);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -178,8 +172,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionComplex()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionComplex, QStyleOption> _nd = GDefineMetaClass<QStyleOptionComplex, QStyleOption>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QStyleOptionComplex");
-        buildMetaClass_QStyleOptionComplex(0, _nd);
+        GDefineMetaClass<QStyleOptionComplex, QStyleOption> _nd = GDefineMetaClass<QStyleOptionComplex, QStyleOption>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QStyleOptionComplex", &buildMetaClass_QStyleOptionComplex);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -193,8 +186,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionDockWidget()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionDockWidget, QStyleOption> _nd = GDefineMetaClass<QStyleOptionDockWidget, QStyleOption>::declare("QStyleOptionDockWidget");
-        buildMetaClass_QStyleOptionDockWidget(0, _nd);
+        GDefineMetaClass<QStyleOptionDockWidget, QStyleOption> _nd = GDefineMetaClass<QStyleOptionDockWidget, QStyleOption>::lazyDeclare("QStyleOptionDockWidget", &buildMetaClass_QStyleOptionDockWidget);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -208,8 +200,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionFocusRect()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionFocusRect, QStyleOption> _nd = GDefineMetaClass<QStyleOptionFocusRect, QStyleOption>::declare("QStyleOptionFocusRect");
-        buildMetaClass_QStyleOptionFocusRect(0, _nd);
+        GDefineMetaClass<QStyleOptionFocusRect, QStyleOption> _nd = GDefineMetaClass<QStyleOptionFocusRect, QStyleOption>::lazyDeclare("QStyleOptionFocusRect", &buildMetaClass_QStyleOptionFocusRect);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -223,8 +214,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionFrame()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionFrame, QStyleOption> _nd = GDefineMetaClass<QStyleOptionFrame, QStyleOption>::declare("QStyleOptionFrame");
-        buildMetaClass_QStyleOptionFrame(0, _nd);
+        GDefineMetaClass<QStyleOptionFrame, QStyleOption> _nd = GDefineMetaClass<QStyleOptionFrame, QStyleOption>::lazyDeclare("QStyleOptionFrame", &buildMetaClass_QStyleOptionFrame);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -238,8 +228,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionGraphicsItem()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionGraphicsItem, QStyleOption> _nd = GDefineMetaClass<QStyleOptionGraphicsItem, QStyleOption>::declare("QStyleOptionGraphicsItem");
-        buildMetaClass_QStyleOptionGraphicsItem(0, _nd);
+        GDefineMetaClass<QStyleOptionGraphicsItem, QStyleOption> _nd = GDefineMetaClass<QStyleOptionGraphicsItem, QStyleOption>::lazyDeclare("QStyleOptionGraphicsItem", &buildMetaClass_QStyleOptionGraphicsItem);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -253,8 +242,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionGroupBox()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionGroupBox, QStyleOptionComplex> _nd = GDefineMetaClass<QStyleOptionGroupBox, QStyleOptionComplex>::declare("QStyleOptionGroupBox");
-        buildMetaClass_QStyleOptionGroupBox(0, _nd);
+        GDefineMetaClass<QStyleOptionGroupBox, QStyleOptionComplex> _nd = GDefineMetaClass<QStyleOptionGroupBox, QStyleOptionComplex>::lazyDeclare("QStyleOptionGroupBox", &buildMetaClass_QStyleOptionGroupBox);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -268,8 +256,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionHeader()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionHeader, QStyleOption> _nd = GDefineMetaClass<QStyleOptionHeader, QStyleOption>::declare("QStyleOptionHeader");
-        buildMetaClass_QStyleOptionHeader(0, _nd);
+        GDefineMetaClass<QStyleOptionHeader, QStyleOption> _nd = GDefineMetaClass<QStyleOptionHeader, QStyleOption>::lazyDeclare("QStyleOptionHeader", &buildMetaClass_QStyleOptionHeader);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -283,8 +270,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionMenuItem()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionMenuItem, QStyleOption> _nd = GDefineMetaClass<QStyleOptionMenuItem, QStyleOption>::declare("QStyleOptionMenuItem");
-        buildMetaClass_QStyleOptionMenuItem(0, _nd);
+        GDefineMetaClass<QStyleOptionMenuItem, QStyleOption> _nd = GDefineMetaClass<QStyleOptionMenuItem, QStyleOption>::lazyDeclare("QStyleOptionMenuItem", &buildMetaClass_QStyleOptionMenuItem);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -298,8 +284,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionProgressBar()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionProgressBar, QStyleOption> _nd = GDefineMetaClass<QStyleOptionProgressBar, QStyleOption>::declare("QStyleOptionProgressBar");
-        buildMetaClass_QStyleOptionProgressBar(0, _nd);
+        GDefineMetaClass<QStyleOptionProgressBar, QStyleOption> _nd = GDefineMetaClass<QStyleOptionProgressBar, QStyleOption>::lazyDeclare("QStyleOptionProgressBar", &buildMetaClass_QStyleOptionProgressBar);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -313,8 +298,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionRubberBand()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionRubberBand, QStyleOption> _nd = GDefineMetaClass<QStyleOptionRubberBand, QStyleOption>::declare("QStyleOptionRubberBand");
-        buildMetaClass_QStyleOptionRubberBand(0, _nd);
+        GDefineMetaClass<QStyleOptionRubberBand, QStyleOption> _nd = GDefineMetaClass<QStyleOptionRubberBand, QStyleOption>::lazyDeclare("QStyleOptionRubberBand", &buildMetaClass_QStyleOptionRubberBand);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -328,8 +312,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionSizeGrip()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionSizeGrip, QStyleOptionComplex> _nd = GDefineMetaClass<QStyleOptionSizeGrip, QStyleOptionComplex>::declare("QStyleOptionSizeGrip");
-        buildMetaClass_QStyleOptionSizeGrip(0, _nd);
+        GDefineMetaClass<QStyleOptionSizeGrip, QStyleOptionComplex> _nd = GDefineMetaClass<QStyleOptionSizeGrip, QStyleOptionComplex>::lazyDeclare("QStyleOptionSizeGrip", &buildMetaClass_QStyleOptionSizeGrip);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -343,8 +326,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionSlider()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionSlider, QStyleOptionComplex> _nd = GDefineMetaClass<QStyleOptionSlider, QStyleOptionComplex>::declare("QStyleOptionSlider");
-        buildMetaClass_QStyleOptionSlider(0, _nd);
+        GDefineMetaClass<QStyleOptionSlider, QStyleOptionComplex> _nd = GDefineMetaClass<QStyleOptionSlider, QStyleOptionComplex>::lazyDeclare("QStyleOptionSlider", &buildMetaClass_QStyleOptionSlider);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -358,8 +340,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionSpinBox()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionSpinBox, QStyleOptionComplex> _nd = GDefineMetaClass<QStyleOptionSpinBox, QStyleOptionComplex>::declare("QStyleOptionSpinBox");
-        buildMetaClass_QStyleOptionSpinBox(0, _nd);
+        GDefineMetaClass<QStyleOptionSpinBox, QStyleOptionComplex> _nd = GDefineMetaClass<QStyleOptionSpinBox, QStyleOptionComplex>::lazyDeclare("QStyleOptionSpinBox", &buildMetaClass_QStyleOptionSpinBox);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -373,8 +354,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionTab()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionTab, QStyleOption> _nd = GDefineMetaClass<QStyleOptionTab, QStyleOption>::declare("QStyleOptionTab");
-        buildMetaClass_QStyleOptionTab(0, _nd);
+        GDefineMetaClass<QStyleOptionTab, QStyleOption> _nd = GDefineMetaClass<QStyleOptionTab, QStyleOption>::lazyDeclare("QStyleOptionTab", &buildMetaClass_QStyleOptionTab);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -388,8 +368,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionTabBarBase()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionTabBarBase, QStyleOption> _nd = GDefineMetaClass<QStyleOptionTabBarBase, QStyleOption>::declare("QStyleOptionTabBarBase");
-        buildMetaClass_QStyleOptionTabBarBase(0, _nd);
+        GDefineMetaClass<QStyleOptionTabBarBase, QStyleOption> _nd = GDefineMetaClass<QStyleOptionTabBarBase, QStyleOption>::lazyDeclare("QStyleOptionTabBarBase", &buildMetaClass_QStyleOptionTabBarBase);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -403,8 +382,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionTabWidgetFrame()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionTabWidgetFrame, QStyleOption> _nd = GDefineMetaClass<QStyleOptionTabWidgetFrame, QStyleOption>::declare("QStyleOptionTabWidgetFrame");
-        buildMetaClass_QStyleOptionTabWidgetFrame(0, _nd);
+        GDefineMetaClass<QStyleOptionTabWidgetFrame, QStyleOption> _nd = GDefineMetaClass<QStyleOptionTabWidgetFrame, QStyleOption>::lazyDeclare("QStyleOptionTabWidgetFrame", &buildMetaClass_QStyleOptionTabWidgetFrame);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -418,8 +396,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionTitleBar()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionTitleBar, QStyleOptionComplex> _nd = GDefineMetaClass<QStyleOptionTitleBar, QStyleOptionComplex>::declare("QStyleOptionTitleBar");
-        buildMetaClass_QStyleOptionTitleBar(0, _nd);
+        GDefineMetaClass<QStyleOptionTitleBar, QStyleOptionComplex> _nd = GDefineMetaClass<QStyleOptionTitleBar, QStyleOptionComplex>::lazyDeclare("QStyleOptionTitleBar", &buildMetaClass_QStyleOptionTitleBar);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -433,8 +410,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionToolBar()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionToolBar, QStyleOption> _nd = GDefineMetaClass<QStyleOptionToolBar, QStyleOption>::declare("QStyleOptionToolBar");
-        buildMetaClass_QStyleOptionToolBar(0, _nd);
+        GDefineMetaClass<QStyleOptionToolBar, QStyleOption> _nd = GDefineMetaClass<QStyleOptionToolBar, QStyleOption>::lazyDeclare("QStyleOptionToolBar", &buildMetaClass_QStyleOptionToolBar);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -448,8 +424,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionToolBox()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionToolBox, QStyleOption> _nd = GDefineMetaClass<QStyleOptionToolBox, QStyleOption>::declare("QStyleOptionToolBox");
-        buildMetaClass_QStyleOptionToolBox(0, _nd);
+        GDefineMetaClass<QStyleOptionToolBox, QStyleOption> _nd = GDefineMetaClass<QStyleOptionToolBox, QStyleOption>::lazyDeclare("QStyleOptionToolBox", &buildMetaClass_QStyleOptionToolBox);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -463,8 +438,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionToolButton()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionToolButton, QStyleOptionComplex> _nd = GDefineMetaClass<QStyleOptionToolButton, QStyleOptionComplex>::declare("QStyleOptionToolButton");
-        buildMetaClass_QStyleOptionToolButton(0, _nd);
+        GDefineMetaClass<QStyleOptionToolButton, QStyleOptionComplex> _nd = GDefineMetaClass<QStyleOptionToolButton, QStyleOptionComplex>::lazyDeclare("QStyleOptionToolButton", &buildMetaClass_QStyleOptionToolButton);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -478,8 +452,7 @@ GDefineMetaInfo createMetaClass_QStyleOptionViewItem()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyleOptionViewItem, QStyleOption> _nd = GDefineMetaClass<QStyleOptionViewItem, QStyleOption>::declare("QStyleOptionViewItem");
-        buildMetaClass_QStyleOptionViewItem(0, _nd);
+        GDefineMetaClass<QStyleOptionViewItem, QStyleOption> _nd = GDefineMetaClass<QStyleOptionViewItem, QStyleOption>::lazyDeclare("QStyleOptionViewItem", &buildMetaClass_QStyleOptionViewItem);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

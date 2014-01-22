@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qcollator()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qcollator(0, _d);
+    buildMetaClass_Global_qcollator(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QCollator()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QCollator> _nd = GDefineMetaClass<QCollator>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QCollator");
-        buildMetaClass_QCollator(0, _nd);
+        GDefineMetaClass<QCollator> _nd = GDefineMetaClass<QCollator>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QCollator", &buildMetaClass_QCollator);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QCollatorSortKey()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QCollatorSortKey> _nd = GDefineMetaClass<QCollatorSortKey>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QCollatorSortKey");
-        buildMetaClass_QCollatorSortKey(0, _nd);
+        GDefineMetaClass<QCollatorSortKey> _nd = GDefineMetaClass<QCollatorSortKey>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QCollatorSortKey", &buildMetaClass_QCollatorSortKey);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

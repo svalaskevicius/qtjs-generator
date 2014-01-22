@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qtgui()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qtgui(0, _d);
+    buildMetaClass_Global_qtgui(_d);
     return _d.getMetaInfo();
 }
 

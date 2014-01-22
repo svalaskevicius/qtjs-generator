@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QColorDialog()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QColorDialog, QDialog> _nd = GDefineMetaClass<QColorDialog, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QColorDialog");
-        buildMetaClass_QColorDialog(0, _nd);
+        GDefineMetaClass<QColorDialog, QDialog> _nd = GDefineMetaClass<QColorDialog, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QColorDialog", &buildMetaClass_QColorDialog);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QColorDialogWrapper, QColorDialog> _nd = GDefineMetaClass<QColorDialogWrapper, QColorDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QColorDialogWrapper");
-        buildMetaClass_QColorDialogWrapper(0, _nd);
+        GDefineMetaClass<QColorDialogWrapper, QColorDialog> _nd = GDefineMetaClass<QColorDialogWrapper, QColorDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QColorDialogWrapper", &buildMetaClass_QColorDialogWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

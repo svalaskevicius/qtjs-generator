@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QDesktopWidget()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDesktopWidget, QWidget> _nd = GDefineMetaClass<QDesktopWidget, QWidget>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QDesktopWidget");
-        buildMetaClass_QDesktopWidget(0, _nd);
+        GDefineMetaClass<QDesktopWidget, QWidget> _nd = GDefineMetaClass<QDesktopWidget, QWidget>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDesktopWidget", &buildMetaClass_QDesktopWidget);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QDesktopWidgetWrapper, QDesktopWidget> _nd = GDefineMetaClass<QDesktopWidgetWrapper, QDesktopWidget>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QDesktopWidgetWrapper");
-        buildMetaClass_QDesktopWidgetWrapper(0, _nd);
+        GDefineMetaClass<QDesktopWidgetWrapper, QDesktopWidget> _nd = GDefineMetaClass<QDesktopWidgetWrapper, QDesktopWidget>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDesktopWidgetWrapper", &buildMetaClass_QDesktopWidgetWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

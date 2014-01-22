@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QQmlScriptString()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlScriptString> _nd = GDefineMetaClass<QQmlScriptString>::declare("QQmlScriptString");
-        buildMetaClass_QQmlScriptString(0, _nd);
+        GDefineMetaClass<QQmlScriptString> _nd = GDefineMetaClass<QQmlScriptString>::lazyDeclare("QQmlScriptString", &buildMetaClass_QQmlScriptString);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

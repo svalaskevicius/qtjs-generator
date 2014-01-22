@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qplugin()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qplugin(0, _d);
+    buildMetaClass_Global_qplugin(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QStaticPlugin()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStaticPlugin> _nd = GDefineMetaClass<QStaticPlugin>::declare("QStaticPlugin");
-        buildMetaClass_QStaticPlugin(0, _nd);
+        GDefineMetaClass<QStaticPlugin> _nd = GDefineMetaClass<QStaticPlugin>::lazyDeclare("QStaticPlugin", &buildMetaClass_QStaticPlugin);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

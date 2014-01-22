@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QOpenGLTexture()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QOpenGLTexture> _nd = GDefineMetaClass<QOpenGLTexture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QOpenGLTexture");
-        buildMetaClass_QOpenGLTexture(0, _nd);
+        GDefineMetaClass<QOpenGLTexture> _nd = GDefineMetaClass<QOpenGLTexture>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QOpenGLTexture", &buildMetaClass_QOpenGLTexture);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

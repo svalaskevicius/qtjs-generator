@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QAbstractButton(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAbstractButton(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -899,9 +899,9 @@ public:
         QWidget::closeEvent(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("nextCheckState", (void (D::ClassType::*) ())&D::ClassType::nextCheckState);
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
@@ -1018,18 +1018,18 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAbstractButtonWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAbstractButtonWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>()
         ._default(copyVariantFromCopyable(0))
     ;
     
-    QAbstractButtonWrapper::cpgf__register(config, _d);
+    QAbstractButtonWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAbstractButton<D>(config, _d);
+    buildMetaClass_QAbstractButton<D>(_d);
 }
 
 

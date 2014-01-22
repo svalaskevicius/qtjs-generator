@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QSysInfo()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSysInfo> _nd = GDefineMetaClass<QSysInfo>::declare("QSysInfo");
-        buildMetaClass_QSysInfo(0, _nd);
+        GDefineMetaClass<QSysInfo> _nd = GDefineMetaClass<QSysInfo>::lazyDeclare("QSysInfo", &buildMetaClass_QSysInfo);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

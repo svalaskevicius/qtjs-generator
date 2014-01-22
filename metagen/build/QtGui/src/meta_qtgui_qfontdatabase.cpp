@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QFontDatabase()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFontDatabase> _nd = GDefineMetaClass<QFontDatabase>::declare("QFontDatabase");
-        buildMetaClass_QFontDatabase(0, _nd);
+        GDefineMetaClass<QFontDatabase> _nd = GDefineMetaClass<QFontDatabase>::lazyDeclare("QFontDatabase", &buildMetaClass_QFontDatabase);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

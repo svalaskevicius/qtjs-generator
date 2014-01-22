@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QColumnView()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QColumnView, QAbstractItemView> _nd = GDefineMetaClass<QColumnView, QAbstractItemView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QColumnView");
-        buildMetaClass_QColumnView(0, _nd);
+        GDefineMetaClass<QColumnView, QAbstractItemView> _nd = GDefineMetaClass<QColumnView, QAbstractItemView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QColumnView", &buildMetaClass_QColumnView);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QColumnViewWrapper, QColumnView> _nd = GDefineMetaClass<QColumnViewWrapper, QColumnView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QColumnViewWrapper");
-        buildMetaClass_QColumnViewWrapper(0, _nd);
+        GDefineMetaClass<QColumnViewWrapper, QColumnView> _nd = GDefineMetaClass<QColumnViewWrapper, QColumnView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QColumnViewWrapper", &buildMetaClass_QColumnViewWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

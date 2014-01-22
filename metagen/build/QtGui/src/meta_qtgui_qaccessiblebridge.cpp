@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qaccessiblebridge()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qaccessiblebridge(0, _d);
+    buildMetaClass_Global_qaccessiblebridge(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,13 +33,11 @@ GDefineMetaInfo createMetaClass_QAccessibleBridgePlugin()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleBridgePlugin, QObject> _nd = GDefineMetaClass<QAccessibleBridgePlugin, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleBridgePlugin");
-        buildMetaClass_QAccessibleBridgePlugin(0, _nd);
+        GDefineMetaClass<QAccessibleBridgePlugin, QObject> _nd = GDefineMetaClass<QAccessibleBridgePlugin, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleBridgePlugin", &buildMetaClass_QAccessibleBridgePlugin);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleBridgePluginWrapper, QAccessibleBridgePlugin> _nd = GDefineMetaClass<QAccessibleBridgePluginWrapper, QAccessibleBridgePlugin>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleBridgePluginWrapper");
-        buildMetaClass_QAccessibleBridgePluginWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleBridgePluginWrapper, QAccessibleBridgePlugin> _nd = GDefineMetaClass<QAccessibleBridgePluginWrapper, QAccessibleBridgePlugin>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleBridgePluginWrapper", &buildMetaClass_QAccessibleBridgePluginWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

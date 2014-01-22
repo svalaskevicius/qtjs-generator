@@ -22,9 +22,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_Global_qsgnode(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qsgnode(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<Q_QUICK_EXPORT QDebug (*)(QDebug, const QSGNode *)>(mopHolder << mopHolder);
@@ -36,9 +36,9 @@ void buildMetaClass_Global_qsgnode(const cpgf::GMetaDataConfigFlags & config, D 
 
 
 template <typename D>
-void buildMetaClass_QSGBasicGeometryNode(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGBasicGeometryNode(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("setGeometry", &D::ClassType::setGeometry);
@@ -81,9 +81,9 @@ public:
         return QSGNode::isSubtreeBlocked();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
         _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
@@ -92,22 +92,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSGBasicGeometryNodeWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGBasicGeometryNodeWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSGBasicGeometryNodeWrapper::cpgf__register(config, _d);
+    QSGBasicGeometryNodeWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSGBasicGeometryNode<D>(config, _d);
+    buildMetaClass_QSGBasicGeometryNode<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QSGClipNode(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGClipNode(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -153,9 +153,9 @@ public:
         return QSGNode::isSubtreeBlocked();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
         _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
@@ -164,22 +164,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSGClipNodeWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGClipNodeWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSGClipNodeWrapper::cpgf__register(config, _d);
+    QSGClipNodeWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSGClipNode<D>(config, _d);
+    buildMetaClass_QSGClipNode<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QSGGeometryNode(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGGeometryNode(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -230,9 +230,9 @@ public:
         return QSGNode::isSubtreeBlocked();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
         _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
@@ -241,22 +241,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSGGeometryNodeWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGGeometryNodeWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSGGeometryNodeWrapper::cpgf__register(config, _d);
+    QSGGeometryNodeWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSGGeometryNode<D>(config, _d);
+    buildMetaClass_QSGGeometryNode<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QSGNode(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGNode(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -352,9 +352,9 @@ public:
         return QSGNode::isSubtreeBlocked();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
         _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
@@ -363,22 +363,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSGNodeWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGNodeWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSGNodeWrapper::cpgf__register(config, _d);
+    QSGNodeWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSGNode<D>(config, _d);
+    buildMetaClass_QSGNode<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QSGNodeVisitor(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGNodeVisitor(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
@@ -537,9 +537,9 @@ public:
         QSGNodeVisitor::enterTransformNode(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("leaveTransformNode", (void (D::ClassType::*) (QSGTransformNode *))&D::ClassType::leaveTransformNode);
         _d.CPGF_MD_TEMPLATE _method("visitNode", (void (D::ClassType::*) (QSGNode *))&D::ClassType::visitNode);
@@ -566,22 +566,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSGNodeVisitorWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGNodeVisitorWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSGNodeVisitorWrapper::cpgf__register(config, _d);
+    QSGNodeVisitorWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSGNodeVisitor<D>(config, _d);
+    buildMetaClass_QSGNodeVisitor<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QSGOpacityNode(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGOpacityNode(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -628,9 +628,9 @@ public:
         return QSGOpacityNode::isSubtreeBlocked();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
         _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
@@ -639,22 +639,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSGOpacityNodeWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGOpacityNodeWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSGOpacityNodeWrapper::cpgf__register(config, _d);
+    QSGOpacityNodeWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSGOpacityNode<D>(config, _d);
+    buildMetaClass_QSGOpacityNode<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QSGRootNode(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGRootNode(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -696,9 +696,9 @@ public:
         return QSGNode::isSubtreeBlocked();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
         _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
@@ -707,22 +707,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSGRootNodeWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGRootNodeWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSGRootNodeWrapper::cpgf__register(config, _d);
+    QSGRootNodeWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSGRootNode<D>(config, _d);
+    buildMetaClass_QSGRootNode<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QSGTransformNode(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGTransformNode(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -768,9 +768,9 @@ public:
         return QSGNode::isSubtreeBlocked();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
         _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
@@ -779,15 +779,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSGTransformNodeWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGTransformNodeWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSGTransformNodeWrapper::cpgf__register(config, _d);
+    QSGTransformNodeWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSGTransformNode<D>(config, _d);
+    buildMetaClass_QSGTransformNode<D>(_d);
 }
 
 

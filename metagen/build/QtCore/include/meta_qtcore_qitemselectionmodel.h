@@ -21,9 +21,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qitemselectionmodel(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qitemselectionmodel(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qHash", (uint (*) (const QItemSelectionRange &))&qHash, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -32,9 +32,9 @@ void buildMetaClass_Global_qitemselectionmodel(const cpgf::GMetaDataConfigFlags 
 
 
 template <typename D>
-void buildMetaClass_QItemSelection(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QItemSelection(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -48,9 +48,9 @@ void buildMetaClass_QItemSelection(const cpgf::GMetaDataConfigFlags & config, D 
 
 
 template <typename D>
-void buildMetaClass_QItemSelectionModel(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QItemSelectionModel(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QAbstractItemModel *)>();
@@ -375,9 +375,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -410,15 +410,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QItemSelectionModelWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QItemSelectionModelWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QItemSelectionModelWrapper::cpgf__register(config, _d);
+    QItemSelectionModelWrapper::cpgf__register(_d);
     
-    buildMetaClass_QItemSelectionModel<D>(config, _d);
+    buildMetaClass_QItemSelectionModel<D>(_d);
 }
 
 
@@ -434,9 +434,9 @@ inline bool opErAToRWrapper_QItemSelectionRange__opLess(const QItemSelectionRang
 
 
 template <typename D>
-void buildMetaClass_QItemSelectionRange(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QItemSelectionRange(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qatomic(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qatomic(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
@@ -32,9 +32,9 @@ inline QAtomicInt & opErAToRWrapper_QAtomicInt__opAssign(QAtomicInt * self, cons
 
 
 template <typename D>
-void buildMetaClass_QAtomicInt(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAtomicInt(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (int)>()

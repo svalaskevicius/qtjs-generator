@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QClipboard()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QClipboard, QObject> _nd = GDefineMetaClass<QClipboard, QObject>::Policy<MakePolicy<GMetaRuleDestructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QClipboard");
-        buildMetaClass_QClipboard(0, _nd);
+        GDefineMetaClass<QClipboard, QObject> _nd = GDefineMetaClass<QClipboard, QObject>::Policy<MakePolicy<GMetaRuleDestructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QClipboard", &buildMetaClass_QClipboard);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QEventLoop()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QEventLoop, QObject> _nd = GDefineMetaClass<QEventLoop, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QEventLoop");
-        buildMetaClass_QEventLoop(0, _nd);
+        GDefineMetaClass<QEventLoop, QObject> _nd = GDefineMetaClass<QEventLoop, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QEventLoop", &buildMetaClass_QEventLoop);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QEventLoopWrapper, QEventLoop> _nd = GDefineMetaClass<QEventLoopWrapper, QEventLoop>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QEventLoopWrapper");
-        buildMetaClass_QEventLoopWrapper(0, _nd);
+        GDefineMetaClass<QEventLoopWrapper, QEventLoop> _nd = GDefineMetaClass<QEventLoopWrapper, QEventLoop>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QEventLoopWrapper", &buildMetaClass_QEventLoopWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -77,8 +75,7 @@ GDefineMetaInfo createMetaClass_QEventLoopLocker()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QEventLoopLocker> _nd = GDefineMetaClass<QEventLoopLocker>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QEventLoopLocker");
-        buildMetaClass_QEventLoopLocker(0, _nd);
+        GDefineMetaClass<QEventLoopLocker> _nd = GDefineMetaClass<QEventLoopLocker>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QEventLoopLocker", &buildMetaClass_QEventLoopLocker);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

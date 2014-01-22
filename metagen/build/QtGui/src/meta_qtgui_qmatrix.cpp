@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qmatrix()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qmatrix(0, _d);
+    buildMetaClass_Global_qmatrix(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QMatrix()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMatrix> _nd = GDefineMetaClass<QMatrix>::declare("QMatrix");
-        buildMetaClass_QMatrix(0, _nd);
+        GDefineMetaClass<QMatrix> _nd = GDefineMetaClass<QMatrix>::lazyDeclare("QMatrix", &buildMetaClass_QMatrix);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

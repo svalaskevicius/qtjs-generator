@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QGenericPluginFactory()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGenericPluginFactory> _nd = GDefineMetaClass<QGenericPluginFactory>::declare("QGenericPluginFactory");
-        buildMetaClass_QGenericPluginFactory(0, _nd);
+        GDefineMetaClass<QGenericPluginFactory> _nd = GDefineMetaClass<QGenericPluginFactory>::lazyDeclare("QGenericPluginFactory", &buildMetaClass_QGenericPluginFactory);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

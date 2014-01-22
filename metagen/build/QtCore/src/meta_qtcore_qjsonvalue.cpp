@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qjsonvalue()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qjsonvalue(0, _d);
+    buildMetaClass_Global_qjsonvalue(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QJsonValue()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QJsonValue> _nd = GDefineMetaClass<QJsonValue>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QJsonValue");
-        buildMetaClass_QJsonValue(0, _nd);
+        GDefineMetaClass<QJsonValue> _nd = GDefineMetaClass<QJsonValue>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QJsonValue", &buildMetaClass_QJsonValue);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QJsonValueRef()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QJsonValueRef> _nd = GDefineMetaClass<QJsonValueRef>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QJsonValueRef");
-        buildMetaClass_QJsonValueRef(0, _nd);
+        GDefineMetaClass<QJsonValueRef> _nd = GDefineMetaClass<QJsonValueRef>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QJsonValueRef", &buildMetaClass_QJsonValueRef);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

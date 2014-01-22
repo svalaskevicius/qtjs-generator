@@ -77,8 +77,7 @@ GDefineMetaInfo createMetaClass_QScrollerProperties()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QScrollerProperties> _nd = GDefineMetaClass<QScrollerProperties>::declare("QScrollerProperties");
-        buildMetaClass_QScrollerProperties(0, _nd);
+        GDefineMetaClass<QScrollerProperties> _nd = GDefineMetaClass<QScrollerProperties>::lazyDeclare("QScrollerProperties", &buildMetaClass_QScrollerProperties);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

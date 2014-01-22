@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qstringlist()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qstringlist(0, _d);
+    buildMetaClass_Global_qstringlist(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QStringList()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStringList, QList< QString >> _nd = GDefineMetaClass<QStringList, QList< QString >>::declare("QStringList");
-        buildMetaClass_QStringList(0, _nd);
+        GDefineMetaClass<QStringList, QList< QString >> _nd = GDefineMetaClass<QStringList, QList< QString >>::lazyDeclare("QStringList", &buildMetaClass_QStringList);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

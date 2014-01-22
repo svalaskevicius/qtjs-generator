@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qsurfaceformat()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qsurfaceformat(0, _d);
+    buildMetaClass_Global_qsurfaceformat(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QSurfaceFormat()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSurfaceFormat> _nd = GDefineMetaClass<QSurfaceFormat>::declare("QSurfaceFormat");
-        buildMetaClass_QSurfaceFormat(0, _nd);
+        GDefineMetaClass<QSurfaceFormat> _nd = GDefineMetaClass<QSurfaceFormat>::lazyDeclare("QSurfaceFormat", &buildMetaClass_QSurfaceFormat);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

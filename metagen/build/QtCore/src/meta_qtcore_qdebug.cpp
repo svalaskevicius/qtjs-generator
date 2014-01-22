@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qdebug()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qdebug(0, _d);
+    buildMetaClass_Global_qdebug(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QDebug()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDebug> _nd = GDefineMetaClass<QDebug>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QDebug");
-        buildMetaClass_QDebug(0, _nd);
+        GDefineMetaClass<QDebug> _nd = GDefineMetaClass<QDebug>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QDebug", &buildMetaClass_QDebug);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QDebugStateSaver()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDebugStateSaver> _nd = GDefineMetaClass<QDebugStateSaver>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDebugStateSaver");
-        buildMetaClass_QDebugStateSaver(0, _nd);
+        GDefineMetaClass<QDebugStateSaver> _nd = GDefineMetaClass<QDebugStateSaver>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDebugStateSaver", &buildMetaClass_QDebugStateSaver);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QUndoGroup(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QUndoGroup(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -236,9 +236,9 @@ public:
         return QUndoGroup::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -264,15 +264,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QUndoGroupWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QUndoGroupWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QUndoGroupWrapper::cpgf__register(config, _d);
+    QUndoGroupWrapper::cpgf__register(_d);
     
-    buildMetaClass_QUndoGroup<D>(config, _d);
+    buildMetaClass_QUndoGroup<D>(_d);
 }
 
 

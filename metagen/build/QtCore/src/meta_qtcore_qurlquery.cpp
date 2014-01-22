@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QUrlQuery()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QUrlQuery> _nd = GDefineMetaClass<QUrlQuery>::declare("QUrlQuery");
-        buildMetaClass_QUrlQuery(0, _nd);
+        GDefineMetaClass<QUrlQuery> _nd = GDefineMetaClass<QUrlQuery>::lazyDeclare("QUrlQuery", &buildMetaClass_QUrlQuery);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

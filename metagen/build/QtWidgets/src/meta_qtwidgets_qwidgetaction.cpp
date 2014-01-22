@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QWidgetAction()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QWidgetAction, QAction> _nd = GDefineMetaClass<QWidgetAction, QAction>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QWidgetAction");
-        buildMetaClass_QWidgetAction(0, _nd);
+        GDefineMetaClass<QWidgetAction, QAction> _nd = GDefineMetaClass<QWidgetAction, QAction>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QWidgetAction", &buildMetaClass_QWidgetAction);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QWidgetActionWrapper, QWidgetAction> _nd = GDefineMetaClass<QWidgetActionWrapper, QWidgetAction>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QWidgetActionWrapper");
-        buildMetaClass_QWidgetActionWrapper(0, _nd);
+        GDefineMetaClass<QWidgetActionWrapper, QWidgetAction> _nd = GDefineMetaClass<QWidgetActionWrapper, QWidgetAction>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QWidgetActionWrapper", &buildMetaClass_QWidgetActionWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

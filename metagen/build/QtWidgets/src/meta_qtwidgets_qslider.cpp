@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QSlider()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSlider, QAbstractSlider> _nd = GDefineMetaClass<QSlider, QAbstractSlider>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSlider");
-        buildMetaClass_QSlider(0, _nd);
+        GDefineMetaClass<QSlider, QAbstractSlider> _nd = GDefineMetaClass<QSlider, QAbstractSlider>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSlider", &buildMetaClass_QSlider);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSliderWrapper, QSlider> _nd = GDefineMetaClass<QSliderWrapper, QSlider>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSliderWrapper");
-        buildMetaClass_QSliderWrapper(0, _nd);
+        GDefineMetaClass<QSliderWrapper, QSlider> _nd = GDefineMetaClass<QSliderWrapper, QSlider>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSliderWrapper", &buildMetaClass_QSliderWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

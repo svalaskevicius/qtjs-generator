@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qthreadstorage()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qthreadstorage(0, _d);
+    buildMetaClass_Global_qthreadstorage(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QThreadStorageData()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QThreadStorageData> _nd = GDefineMetaClass<QThreadStorageData>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QThreadStorageData");
-        buildMetaClass_QThreadStorageData(0, _nd);
+        GDefineMetaClass<QThreadStorageData> _nd = GDefineMetaClass<QThreadStorageData>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QThreadStorageData", &buildMetaClass_QThreadStorageData);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

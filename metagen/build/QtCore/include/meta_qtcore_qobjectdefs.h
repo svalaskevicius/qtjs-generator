@@ -19,9 +19,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qobjectdefs(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qobjectdefs(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qFlagLocation", (const char* (*) (const char *))&qFlagLocation);
@@ -32,9 +32,9 @@ void buildMetaClass_Global_qobjectdefs(const cpgf::GMetaDataConfigFlags & config
 
 
 template <typename D, typename Object>
-void buildMetaClass_HasQ_OBJECT_Macro(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_HasQ_OBJECT_Macro(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("test", (int (*) (int(Object::*)(QMetaObject::Call, int, void **)))&D::ClassType::test);
@@ -45,9 +45,9 @@ void buildMetaClass_HasQ_OBJECT_Macro(const cpgf::GMetaDataConfigFlags & config,
 
 
 template <typename D, class T>
-void buildMetaClass_QArgument(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QArgument(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const char *, const T &)>();
@@ -55,9 +55,9 @@ void buildMetaClass_QArgument(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QGenericArgument(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGenericArgument(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const char *, const void *)>()
@@ -70,9 +70,9 @@ void buildMetaClass_QGenericArgument(const cpgf::GMetaDataConfigFlags & config, 
 
 
 template <typename D>
-void buildMetaClass_QGenericReturnArgument(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGenericReturnArgument(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const char *, void *)>()
@@ -88,9 +88,9 @@ inline QMetaObject::Connection& opErAToRWrapper_QMetaObject_Connection__opAssign
 
 
 template <typename D>
-void buildMetaClass_QMetaObject(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QMetaObject(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("className", &D::ClassType::className);
@@ -216,9 +216,9 @@ void buildMetaClass_QMetaObject(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D, typename T>
-void buildMetaClass_QReturnArgument(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QReturnArgument(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const char *, T &)>();

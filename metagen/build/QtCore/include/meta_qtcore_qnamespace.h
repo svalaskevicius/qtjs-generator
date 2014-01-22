@@ -19,9 +19,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qnamespace(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qnamespace(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<GlobalColor>("GlobalColor")
@@ -1279,9 +1279,9 @@ void buildMetaClass_Global_qnamespace(const cpgf::GMetaDataConfigFlags & config,
 
 
 template <typename D>
-void buildMetaClass_QInternal(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QInternal(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("registerCallback", &D::ClassType::registerCallback);

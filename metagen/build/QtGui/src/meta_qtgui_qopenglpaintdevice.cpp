@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QOpenGLPaintDevice()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QOpenGLPaintDevice, QPaintDevice> _nd = GDefineMetaClass<QOpenGLPaintDevice, QPaintDevice>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QOpenGLPaintDevice");
-        buildMetaClass_QOpenGLPaintDevice(0, _nd);
+        GDefineMetaClass<QOpenGLPaintDevice, QPaintDevice> _nd = GDefineMetaClass<QOpenGLPaintDevice, QPaintDevice>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QOpenGLPaintDevice", &buildMetaClass_QOpenGLPaintDevice);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QOpenGLPaintDeviceWrapper, QOpenGLPaintDevice> _nd = GDefineMetaClass<QOpenGLPaintDeviceWrapper, QOpenGLPaintDevice>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QOpenGLPaintDeviceWrapper");
-        buildMetaClass_QOpenGLPaintDeviceWrapper(0, _nd);
+        GDefineMetaClass<QOpenGLPaintDeviceWrapper, QOpenGLPaintDevice> _nd = GDefineMetaClass<QOpenGLPaintDeviceWrapper, QOpenGLPaintDevice>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QOpenGLPaintDeviceWrapper", &buildMetaClass_QOpenGLPaintDeviceWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

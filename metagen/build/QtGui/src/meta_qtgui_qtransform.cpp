@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qtransform()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qtransform(0, _d);
+    buildMetaClass_Global_qtransform(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QTransform()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTransform> _nd = GDefineMetaClass<QTransform>::declare("QTransform");
-        buildMetaClass_QTransform(0, _nd);
+        GDefineMetaClass<QTransform> _nd = GDefineMetaClass<QTransform>::lazyDeclare("QTransform", &buildMetaClass_QTransform);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

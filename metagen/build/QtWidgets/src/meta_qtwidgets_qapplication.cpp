@@ -76,7 +76,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qapplication()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qapplication(0, _d);
+    buildMetaClass_Global_qapplication(_d);
     return _d.getMetaInfo();
 }
 
@@ -88,8 +88,7 @@ GDefineMetaInfo createMetaClass_QApplication()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QApplication, QGuiApplication> _nd = GDefineMetaClass<QApplication, QGuiApplication>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QApplication");
-        buildMetaClass_QApplication(0, _nd);
+        GDefineMetaClass<QApplication, QGuiApplication> _nd = GDefineMetaClass<QApplication, QGuiApplication>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QApplication", &buildMetaClass_QApplication);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

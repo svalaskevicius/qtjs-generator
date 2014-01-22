@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QGraphicsScene()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsScene, QObject> _nd = GDefineMetaClass<QGraphicsScene, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsScene");
-        buildMetaClass_QGraphicsScene(0, _nd);
+        GDefineMetaClass<QGraphicsScene, QObject> _nd = GDefineMetaClass<QGraphicsScene, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsScene", &buildMetaClass_QGraphicsScene);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGraphicsSceneWrapper, QGraphicsScene> _nd = GDefineMetaClass<QGraphicsSceneWrapper, QGraphicsScene>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsSceneWrapper");
-        buildMetaClass_QGraphicsSceneWrapper(0, _nd);
+        GDefineMetaClass<QGraphicsSceneWrapper, QGraphicsScene> _nd = GDefineMetaClass<QGraphicsSceneWrapper, QGraphicsScene>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsSceneWrapper", &buildMetaClass_QGraphicsSceneWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

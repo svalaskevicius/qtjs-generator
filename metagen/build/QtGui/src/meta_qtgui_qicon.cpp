@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qicon()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qicon(0, _d);
+    buildMetaClass_Global_qicon(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QIcon()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QIcon> _nd = GDefineMetaClass<QIcon>::declare("QIcon");
-        buildMetaClass_QIcon(0, _nd);
+        GDefineMetaClass<QIcon> _nd = GDefineMetaClass<QIcon>::lazyDeclare("QIcon", &buildMetaClass_QIcon);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

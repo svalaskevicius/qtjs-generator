@@ -19,9 +19,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_ResultItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_ResultItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const void *, int)>();
@@ -36,9 +36,9 @@ void buildMetaClass_ResultItem(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D, typename T>
-void buildMetaClass_ResultIterator(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_ResultIterator(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const ResultIteratorBase &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -59,9 +59,9 @@ inline bool opErAToRWrapper_ResultIteratorBase__opNotEqual(const ResultIteratorB
 
 
 template <typename D>
-void buildMetaClass_ResultIteratorBase(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_ResultIteratorBase(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -84,9 +84,9 @@ void buildMetaClass_ResultIteratorBase(const cpgf::GMetaDataConfigFlags & config
 
 
 template <typename D, typename T>
-void buildMetaClass_ResultStore(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_ResultStore(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -104,9 +104,9 @@ void buildMetaClass_ResultStore(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_ResultStoreBase(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_ResultStoreBase(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

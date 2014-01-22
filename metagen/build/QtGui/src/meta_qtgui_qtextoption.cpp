@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QTextOption()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTextOption> _nd = GDefineMetaClass<QTextOption>::declare("QTextOption");
-        buildMetaClass_QTextOption(0, _nd);
+        GDefineMetaClass<QTextOption> _nd = GDefineMetaClass<QTextOption>::lazyDeclare("QTextOption", &buildMetaClass_QTextOption);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

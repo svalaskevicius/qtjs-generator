@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QErrorMessage()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QErrorMessage, QDialog> _nd = GDefineMetaClass<QErrorMessage, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QErrorMessage");
-        buildMetaClass_QErrorMessage(0, _nd);
+        GDefineMetaClass<QErrorMessage, QDialog> _nd = GDefineMetaClass<QErrorMessage, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QErrorMessage", &buildMetaClass_QErrorMessage);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QErrorMessageWrapper, QErrorMessage> _nd = GDefineMetaClass<QErrorMessageWrapper, QErrorMessage>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QErrorMessageWrapper");
-        buildMetaClass_QErrorMessageWrapper(0, _nd);
+        GDefineMetaClass<QErrorMessageWrapper, QErrorMessage> _nd = GDefineMetaClass<QErrorMessageWrapper, QErrorMessage>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QErrorMessageWrapper", &buildMetaClass_QErrorMessageWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

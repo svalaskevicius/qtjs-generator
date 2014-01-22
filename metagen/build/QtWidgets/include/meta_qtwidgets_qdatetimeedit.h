@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QDateEdit(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDateEdit(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>()
@@ -952,9 +952,9 @@ public:
         QAbstractSpinBox::closeEvent(event);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("setLineEdit", (void (D::ClassType::*) (QLineEdit *))&D::ClassType::setLineEdit);
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
@@ -1080,22 +1080,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QDateEditWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDateEditWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QDateEditWrapper::cpgf__register(config, _d);
+    QDateEditWrapper::cpgf__register(_d);
     
-    buildMetaClass_QDateEdit<D>(config, _d);
+    buildMetaClass_QDateEdit<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QDateTimeEdit(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDateTimeEdit(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>()
@@ -2099,9 +2099,9 @@ public:
         QAbstractSpinBox::closeEvent(event);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("setLineEdit", (void (D::ClassType::*) (QLineEdit *))&D::ClassType::setLineEdit);
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
@@ -2227,22 +2227,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QDateTimeEditWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDateTimeEditWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QDateTimeEditWrapper::cpgf__register(config, _d);
+    QDateTimeEditWrapper::cpgf__register(_d);
     
-    buildMetaClass_QDateTimeEdit<D>(config, _d);
+    buildMetaClass_QDateTimeEdit<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QTimeEdit(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTimeEdit(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>()
@@ -3171,9 +3171,9 @@ public:
         QAbstractSpinBox::closeEvent(event);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("setLineEdit", (void (D::ClassType::*) (QLineEdit *))&D::ClassType::setLineEdit);
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
@@ -3299,15 +3299,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QTimeEditWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTimeEditWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QTimeEditWrapper::cpgf__register(config, _d);
+    QTimeEditWrapper::cpgf__register(_d);
     
-    buildMetaClass_QTimeEdit<D>(config, _d);
+    buildMetaClass_QTimeEdit<D>(_d);
 }
 
 

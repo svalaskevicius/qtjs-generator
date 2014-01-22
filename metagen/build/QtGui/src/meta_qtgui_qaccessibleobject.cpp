@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QAccessibleApplication()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAccessibleApplication, QAccessibleObject> _nd = GDefineMetaClass<QAccessibleApplication, QAccessibleObject>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleApplication");
-        buildMetaClass_QAccessibleApplication(0, _nd);
+        GDefineMetaClass<QAccessibleApplication, QAccessibleObject> _nd = GDefineMetaClass<QAccessibleApplication, QAccessibleObject>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleApplication", &buildMetaClass_QAccessibleApplication);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QAccessibleApplicationWrapper, QAccessibleApplication> _nd = GDefineMetaClass<QAccessibleApplicationWrapper, QAccessibleApplication>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QAccessibleApplicationWrapper");
-        buildMetaClass_QAccessibleApplicationWrapper(0, _nd);
+        GDefineMetaClass<QAccessibleApplicationWrapper, QAccessibleApplication> _nd = GDefineMetaClass<QAccessibleApplicationWrapper, QAccessibleApplication>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QAccessibleApplicationWrapper", &buildMetaClass_QAccessibleApplicationWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QKeyEventTransition(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QKeyEventTransition(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QState *)>()
@@ -250,9 +250,9 @@ public:
         return QKeyEventTransition::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("eventTest", (bool (D::ClassType::*) (QEvent *))&D::ClassType::eventTest);
         _d.CPGF_MD_TEMPLATE _method("onTransition", (void (D::ClassType::*) (QEvent *))&D::ClassType::onTransition);
@@ -283,15 +283,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QKeyEventTransitionWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QKeyEventTransitionWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QKeyEventTransitionWrapper::cpgf__register(config, _d);
+    QKeyEventTransitionWrapper::cpgf__register(_d);
     
-    buildMetaClass_QKeyEventTransition<D>(config, _d);
+    buildMetaClass_QKeyEventTransition<D>(_d);
 }
 
 

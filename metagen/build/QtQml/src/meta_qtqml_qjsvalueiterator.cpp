@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QJSValueIterator()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QJSValueIterator> _nd = GDefineMetaClass<QJSValueIterator>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QJSValueIterator");
-        buildMetaClass_QJSValueIterator(0, _nd);
+        GDefineMetaClass<QJSValueIterator> _nd = GDefineMetaClass<QJSValueIterator>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QJSValueIterator", &buildMetaClass_QJSValueIterator);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

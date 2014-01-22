@@ -21,9 +21,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qaccessible(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qaccessible(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qAccessibleRoleString", (const char* (*) (QAccessible::Role))&qAccessibleRoleString);
@@ -292,9 +292,9 @@ inline void bItFiEldWrapper_QAccessible_State_supportsAutoCompletion_setter(QAcc
 
 
 template <typename D>
-void buildMetaClass_QAccessible(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessible(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("installFactory", &D::ClassType::installFactory);
@@ -529,9 +529,9 @@ void buildMetaClass_QAccessible(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QAccessibleActionInterface(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleActionInterface(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("actionNames", &D::ClassType::actionNames);
@@ -622,9 +622,9 @@ public:
         return QAccessibleActionInterface::localizedActionName(name);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_localizedActionDescription", (QString (D::ClassType::*) (const QString &) const)&D::ClassType::super_localizedActionDescription, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("super_doAction", (void (D::ClassType::*) (const QString &))&D::ClassType::super_doAction, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -636,22 +636,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleActionInterfaceWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleActionInterfaceWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleActionInterfaceWrapper::cpgf__register(config, _d);
+    QAccessibleActionInterfaceWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleActionInterface<D>(config, _d);
+    buildMetaClass_QAccessibleActionInterface<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QAccessibleEditableTextInterface(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleEditableTextInterface(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("deleteText", &D::ClassType::deleteText);
@@ -708,9 +708,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_replaceText", (void (D::ClassType::*) (int, int, const QString &))&D::ClassType::super_replaceText, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
         _d.CPGF_MD_TEMPLATE _method("super_insertText", (void (D::ClassType::*) (int, const QString &))&D::ClassType::super_insertText, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
@@ -720,22 +720,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleEditableTextInterfaceWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleEditableTextInterfaceWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleEditableTextInterfaceWrapper::cpgf__register(config, _d);
+    QAccessibleEditableTextInterfaceWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleEditableTextInterface<D>(config, _d);
+    buildMetaClass_QAccessibleEditableTextInterface<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QAccessibleEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *, QAccessible::Event)>();
@@ -772,9 +772,9 @@ public:
         return QAccessibleEvent::accessibleInterface();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_accessibleInterface", (QAccessibleInterface * (D::ClassType::*) () const)&D::ClassType::super_accessibleInterface);
     }
@@ -782,22 +782,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleEventWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleEventWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleEventWrapper::cpgf__register(config, _d);
+    QAccessibleEventWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleEvent<D>(config, _d);
+    buildMetaClass_QAccessibleEvent<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QAccessibleImageInterface(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleImageInterface(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("imageDescription", &D::ClassType::imageDescription);
@@ -851,9 +851,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_imageDescription", (QString (D::ClassType::*) () const)&D::ClassType::super_imageDescription);
         _d.CPGF_MD_TEMPLATE _method("super_imagePosition", (QPoint (D::ClassType::*) () const)&D::ClassType::super_imagePosition);
@@ -863,22 +863,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleImageInterfaceWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleImageInterfaceWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleImageInterfaceWrapper::cpgf__register(config, _d);
+    QAccessibleImageInterfaceWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleImageInterface<D>(config, _d);
+    buildMetaClass_QAccessibleImageInterface<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QAccessibleStateChangeEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleStateChangeEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *, QAccessible::State)>();
@@ -910,9 +910,9 @@ public:
         return QAccessibleEvent::accessibleInterface();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_accessibleInterface", (QAccessibleInterface * (D::ClassType::*) () const)&D::ClassType::super_accessibleInterface);
     }
@@ -920,22 +920,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleStateChangeEventWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleStateChangeEventWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleStateChangeEventWrapper::cpgf__register(config, _d);
+    QAccessibleStateChangeEventWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleStateChangeEvent<D>(config, _d);
+    buildMetaClass_QAccessibleStateChangeEvent<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTableCellInterface(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTableCellInterface(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("isSelected", &D::ClassType::isSelected);
@@ -1064,9 +1064,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_rowHeaderCells", (QList< QAccessibleInterface * > (D::ClassType::*) () const)&D::ClassType::super_rowHeaderCells);
         _d.CPGF_MD_TEMPLATE _method("super_columnHeaderCells", (QList< QAccessibleInterface * > (D::ClassType::*) () const)&D::ClassType::super_columnHeaderCells);
@@ -1081,22 +1081,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTableCellInterfaceWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTableCellInterfaceWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleTableCellInterfaceWrapper::cpgf__register(config, _d);
+    QAccessibleTableCellInterfaceWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleTableCellInterface<D>(config, _d);
+    buildMetaClass_QAccessibleTableCellInterface<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTableInterface(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTableInterface(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("caption", &D::ClassType::caption);
@@ -1406,9 +1406,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_selectRow", (bool (D::ClassType::*) (int))&D::ClassType::super_selectRow);
         _d.CPGF_MD_TEMPLATE _method("super_caption", (QAccessibleInterface * (D::ClassType::*) () const)&D::ClassType::super_caption);
@@ -1435,22 +1435,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTableInterfaceWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTableInterfaceWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleTableInterfaceWrapper::cpgf__register(config, _d);
+    QAccessibleTableInterfaceWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleTableInterface<D>(config, _d);
+    buildMetaClass_QAccessibleTableInterface<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTableModelChangeEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTableModelChangeEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *, QAccessibleTableModelChangeEvent::ModelChangeType)>();
@@ -1499,9 +1499,9 @@ public:
         return QAccessibleEvent::accessibleInterface();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_accessibleInterface", (QAccessibleInterface * (D::ClassType::*) () const)&D::ClassType::super_accessibleInterface);
     }
@@ -1509,22 +1509,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTableModelChangeEventWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTableModelChangeEventWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleTableModelChangeEventWrapper::cpgf__register(config, _d);
+    QAccessibleTableModelChangeEventWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleTableModelChangeEvent<D>(config, _d);
+    buildMetaClass_QAccessibleTableModelChangeEvent<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTextCursorEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTextCursorEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *, int)>();
@@ -1557,9 +1557,9 @@ public:
         return QAccessibleEvent::accessibleInterface();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_accessibleInterface", (QAccessibleInterface * (D::ClassType::*) () const)&D::ClassType::super_accessibleInterface);
     }
@@ -1567,22 +1567,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTextCursorEventWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTextCursorEventWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleTextCursorEventWrapper::cpgf__register(config, _d);
+    QAccessibleTextCursorEventWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleTextCursorEvent<D>(config, _d);
+    buildMetaClass_QAccessibleTextCursorEvent<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTextInsertEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTextInsertEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *, int, const QString &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
@@ -1615,9 +1615,9 @@ public:
         return QAccessibleEvent::accessibleInterface();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_accessibleInterface", (QAccessibleInterface * (D::ClassType::*) () const)&D::ClassType::super_accessibleInterface);
     }
@@ -1625,22 +1625,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTextInsertEventWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTextInsertEventWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleTextInsertEventWrapper::cpgf__register(config, _d);
+    QAccessibleTextInsertEventWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleTextInsertEvent<D>(config, _d);
+    buildMetaClass_QAccessibleTextInsertEvent<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTextInterface(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTextInterface(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("selection", &D::ClassType::selection);
@@ -1895,9 +1895,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_selection", (void (D::ClassType::*) (int, int *, int *) const)&D::ClassType::super_selection);
         _d.CPGF_MD_TEMPLATE _method("super_addSelection", (void (D::ClassType::*) (int, int))&D::ClassType::super_addSelection);
@@ -1920,22 +1920,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTextInterfaceWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTextInterfaceWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleTextInterfaceWrapper::cpgf__register(config, _d);
+    QAccessibleTextInterfaceWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleTextInterface<D>(config, _d);
+    buildMetaClass_QAccessibleTextInterface<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTextRemoveEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTextRemoveEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *, int, const QString &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
@@ -1968,9 +1968,9 @@ public:
         return QAccessibleEvent::accessibleInterface();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_accessibleInterface", (QAccessibleInterface * (D::ClassType::*) () const)&D::ClassType::super_accessibleInterface);
     }
@@ -1978,22 +1978,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTextRemoveEventWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTextRemoveEventWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleTextRemoveEventWrapper::cpgf__register(config, _d);
+    QAccessibleTextRemoveEventWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleTextRemoveEvent<D>(config, _d);
+    buildMetaClass_QAccessibleTextRemoveEvent<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTextSelectionEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTextSelectionEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *, int, int)>();
@@ -2027,9 +2027,9 @@ public:
         return QAccessibleEvent::accessibleInterface();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_accessibleInterface", (QAccessibleInterface * (D::ClassType::*) () const)&D::ClassType::super_accessibleInterface);
     }
@@ -2037,22 +2037,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTextSelectionEventWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTextSelectionEventWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleTextSelectionEventWrapper::cpgf__register(config, _d);
+    QAccessibleTextSelectionEventWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleTextSelectionEvent<D>(config, _d);
+    buildMetaClass_QAccessibleTextSelectionEvent<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTextUpdateEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTextUpdateEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *, int, const QString &, const QString &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2>, cpgf::GMetaRuleCopyConstReference<3> >());
@@ -2086,9 +2086,9 @@ public:
         return QAccessibleEvent::accessibleInterface();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_accessibleInterface", (QAccessibleInterface * (D::ClassType::*) () const)&D::ClassType::super_accessibleInterface);
     }
@@ -2096,22 +2096,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleTextUpdateEventWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleTextUpdateEventWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleTextUpdateEventWrapper::cpgf__register(config, _d);
+    QAccessibleTextUpdateEventWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleTextUpdateEvent<D>(config, _d);
+    buildMetaClass_QAccessibleTextUpdateEvent<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QAccessibleValueChangeEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleValueChangeEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *, const QVariant &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
@@ -2144,9 +2144,9 @@ public:
         return QAccessibleEvent::accessibleInterface();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_accessibleInterface", (QAccessibleInterface * (D::ClassType::*) () const)&D::ClassType::super_accessibleInterface);
     }
@@ -2154,22 +2154,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleValueChangeEventWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleValueChangeEventWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleValueChangeEventWrapper::cpgf__register(config, _d);
+    QAccessibleValueChangeEventWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleValueChangeEvent<D>(config, _d);
+    buildMetaClass_QAccessibleValueChangeEvent<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QAccessibleValueInterface(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleValueInterface(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("currentValue", &D::ClassType::currentValue);
@@ -2254,9 +2254,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_minimumStepSize", (QVariant (D::ClassType::*) () const)&D::ClassType::super_minimumStepSize);
         _d.CPGF_MD_TEMPLATE _method("super_setCurrentValue", (void (D::ClassType::*) (const QVariant &))&D::ClassType::super_setCurrentValue, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -2268,15 +2268,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAccessibleValueInterfaceWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAccessibleValueInterfaceWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAccessibleValueInterfaceWrapper::cpgf__register(config, _d);
+    QAccessibleValueInterfaceWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAccessibleValueInterface<D>(config, _d);
+    buildMetaClass_QAccessibleValueInterface<D>(_d);
 }
 
 

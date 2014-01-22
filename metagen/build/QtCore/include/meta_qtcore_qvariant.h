@@ -19,9 +19,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qvariant(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qvariant(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, QVariant &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
@@ -36,9 +36,9 @@ void buildMetaClass_Global_qvariant(const cpgf::GMetaDataConfigFlags & config, D
 
 
 template <typename D, typename Derived, typename Argument, typename ReturnType>
-void buildMetaClass_MetaTypeInvoker(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_MetaTypeInvoker(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("invoke", &D::ClassType::invoke);
@@ -46,9 +46,9 @@ void buildMetaClass_MetaTypeInvoker(const cpgf::GMetaDataConfigFlags & config, D
 
 
 template <typename D, typename Derived, typename Argument, typename ReturnType>
-void buildMetaClass_ObjectInvoker(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_ObjectInvoker(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("invoke", &D::ClassType::invoke);
@@ -94,9 +94,9 @@ inline QAssociativeIterable::const_iterator opErAToRWrapper_QAssociativeIterable
 
 
 template <typename D>
-void buildMetaClass_QAssociativeIterable(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAssociativeIterable(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("begin", &D::ClassType::begin);
@@ -176,9 +176,9 @@ inline QSequentialIterable::const_iterator opErAToRWrapper_QSequentialIterable_c
 
 
 template <typename D>
-void buildMetaClass_QSequentialIterable(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSequentialIterable(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("begin", &D::ClassType::begin);
@@ -265,9 +265,9 @@ inline bool opErAToRWrapper_QVariant__opGreaterEqual(const QVariant * self, cons
 
 
 template <typename D>
-void buildMetaClass_QVariant(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QVariant(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -481,9 +481,9 @@ void buildMetaClass_QVariant(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QVariantComparisonHelper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QVariantComparisonHelper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QVariant &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -491,9 +491,9 @@ void buildMetaClass_QVariantComparisonHelper(const cpgf::GMetaDataConfigFlags & 
 
 
 template <typename D, typename T>
-void buildMetaClass_QVariantValueHelper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QVariantValueHelper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("metaType", &D::ClassType::metaType, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -502,9 +502,9 @@ void buildMetaClass_QVariantValueHelper(const cpgf::GMetaDataConfigFlags & confi
 
 
 template <typename D, typename T>
-void buildMetaClass_QVariantValueHelperInterface(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QVariantValueHelperInterface(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }

@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QGraphicsRotation()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsRotation, QGraphicsTransform> _nd = GDefineMetaClass<QGraphicsRotation, QGraphicsTransform>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsRotation");
-        buildMetaClass_QGraphicsRotation(0, _nd);
+        GDefineMetaClass<QGraphicsRotation, QGraphicsTransform> _nd = GDefineMetaClass<QGraphicsRotation, QGraphicsTransform>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsRotation", &buildMetaClass_QGraphicsRotation);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGraphicsRotationWrapper, QGraphicsRotation> _nd = GDefineMetaClass<QGraphicsRotationWrapper, QGraphicsRotation>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsRotationWrapper");
-        buildMetaClass_QGraphicsRotationWrapper(0, _nd);
+        GDefineMetaClass<QGraphicsRotationWrapper, QGraphicsRotation> _nd = GDefineMetaClass<QGraphicsRotationWrapper, QGraphicsRotation>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsRotationWrapper", &buildMetaClass_QGraphicsRotationWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -97,13 +95,11 @@ GDefineMetaInfo createMetaClass_QGraphicsScale()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsScale, QGraphicsTransform> _nd = GDefineMetaClass<QGraphicsScale, QGraphicsTransform>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsScale");
-        buildMetaClass_QGraphicsScale(0, _nd);
+        GDefineMetaClass<QGraphicsScale, QGraphicsTransform> _nd = GDefineMetaClass<QGraphicsScale, QGraphicsTransform>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsScale", &buildMetaClass_QGraphicsScale);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGraphicsScaleWrapper, QGraphicsScale> _nd = GDefineMetaClass<QGraphicsScaleWrapper, QGraphicsScale>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsScaleWrapper");
-        buildMetaClass_QGraphicsScaleWrapper(0, _nd);
+        GDefineMetaClass<QGraphicsScaleWrapper, QGraphicsScale> _nd = GDefineMetaClass<QGraphicsScaleWrapper, QGraphicsScale>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsScaleWrapper", &buildMetaClass_QGraphicsScaleWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -117,13 +113,11 @@ GDefineMetaInfo createMetaClass_QGraphicsTransform()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsTransform, QObject> _nd = GDefineMetaClass<QGraphicsTransform, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsTransform");
-        buildMetaClass_QGraphicsTransform(0, _nd);
+        GDefineMetaClass<QGraphicsTransform, QObject> _nd = GDefineMetaClass<QGraphicsTransform, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsTransform", &buildMetaClass_QGraphicsTransform);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGraphicsTransformWrapper, QGraphicsTransform> _nd = GDefineMetaClass<QGraphicsTransformWrapper, QGraphicsTransform>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsTransformWrapper");
-        buildMetaClass_QGraphicsTransformWrapper(0, _nd);
+        GDefineMetaClass<QGraphicsTransformWrapper, QGraphicsTransform> _nd = GDefineMetaClass<QGraphicsTransformWrapper, QGraphicsTransform>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsTransformWrapper", &buildMetaClass_QGraphicsTransformWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

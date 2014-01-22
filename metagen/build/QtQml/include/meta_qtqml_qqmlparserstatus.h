@@ -21,9 +21,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_Global_qqmlparserstatus(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qqmlparserstatus(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_15")
@@ -33,9 +33,9 @@ void buildMetaClass_Global_qqmlparserstatus(const cpgf::GMetaDataConfigFlags & c
 
 
 template <typename D>
-void buildMetaClass_QQmlParserStatus(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlParserStatus(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("classBegin", &D::ClassType::classBegin);
@@ -79,9 +79,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_classBegin", (void (D::ClassType::*) ())&D::ClassType::super_classBegin);
         _d.CPGF_MD_TEMPLATE _method("super_componentComplete", (void (D::ClassType::*) ())&D::ClassType::super_componentComplete);
@@ -90,16 +90,16 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QQmlParserStatusWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlParserStatusWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    QQmlParserStatusWrapper::cpgf__register(config, _d);
+    QQmlParserStatusWrapper::cpgf__register(_d);
     
-    buildMetaClass_QQmlParserStatus<D>(config, _d);
+    buildMetaClass_QQmlParserStatus<D>(_d);
 }
 
 

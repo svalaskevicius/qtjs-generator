@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QCompleter(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QCompleter(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -316,9 +316,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -352,15 +352,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QCompleterWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QCompleterWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QCompleterWrapper::cpgf__register(config, _d);
+    QCompleterWrapper::cpgf__register(_d);
     
-    buildMetaClass_QCompleter<D>(config, _d);
+    buildMetaClass_QCompleter<D>(_d);
 }
 
 

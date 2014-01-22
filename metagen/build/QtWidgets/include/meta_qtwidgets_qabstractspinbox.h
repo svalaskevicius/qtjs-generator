@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QAbstractSpinBox(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAbstractSpinBox(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>()
@@ -963,9 +963,9 @@ public:
         QAbstractSpinBox::closeEvent(event);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("setLineEdit", (void (D::ClassType::*) (QLineEdit *))&D::ClassType::setLineEdit);
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
@@ -1085,15 +1085,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QAbstractSpinBoxWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAbstractSpinBoxWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QAbstractSpinBoxWrapper::cpgf__register(config, _d);
+    QAbstractSpinBoxWrapper::cpgf__register(_d);
     
-    buildMetaClass_QAbstractSpinBox<D>(config, _d);
+    buildMetaClass_QAbstractSpinBox<D>(_d);
 }
 
 

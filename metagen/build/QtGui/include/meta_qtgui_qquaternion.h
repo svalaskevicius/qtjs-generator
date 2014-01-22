@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qquaternion(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qquaternion(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qFuzzyCompare", (bool (*) (const QQuaternion &, const QQuaternion &))&qFuzzyCompare, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
@@ -57,9 +57,9 @@ inline QQuaternion & opErAToRWrapper_QQuaternion__opDivAssign(QQuaternion * self
 
 
 template <typename D>
-void buildMetaClass_QQuaternion(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQuaternion(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

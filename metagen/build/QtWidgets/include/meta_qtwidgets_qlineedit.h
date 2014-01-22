@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QLineEdit(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QLineEdit(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>()
@@ -928,9 +928,9 @@ public:
         return QLineEdit::cursorRect();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
         _d.CPGF_MD_TEMPLATE _method("initStyleOption", (void (D::ClassType::*) (QStyleOptionFrame *) const)&D::ClassType::initStyleOption);
@@ -1042,15 +1042,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QLineEditWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QLineEditWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QLineEditWrapper::cpgf__register(config, _d);
+    QLineEditWrapper::cpgf__register(_d);
     
-    buildMetaClass_QLineEdit<D>(config, _d);
+    buildMetaClass_QLineEdit<D>(_d);
 }
 
 

@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QGraphicsRotation(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsRotation(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -242,9 +242,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -272,22 +272,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsRotationWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsRotationWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsRotationWrapper::cpgf__register(config, _d);
+    QGraphicsRotationWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsRotation<D>(config, _d);
+    buildMetaClass_QGraphicsRotation<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsScale(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsScale(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -509,9 +509,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -539,22 +539,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsScaleWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsScaleWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGraphicsScaleWrapper::cpgf__register(config, _d);
+    QGraphicsScaleWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsScale<D>(config, _d);
+    buildMetaClass_QGraphicsScale<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGraphicsTransform(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsTransform(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -760,9 +760,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -790,18 +790,18 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGraphicsTransformWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsTransformWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
         ._default(copyVariantFromCopyable(0))
     ;
     
-    QGraphicsTransformWrapper::cpgf__register(config, _d);
+    QGraphicsTransformWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGraphicsTransform<D>(config, _d);
+    buildMetaClass_QGraphicsTransform<D>(_d);
 }
 
 

@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QToolButton()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QToolButton, QAbstractButton> _nd = GDefineMetaClass<QToolButton, QAbstractButton>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QToolButton");
-        buildMetaClass_QToolButton(0, _nd);
+        GDefineMetaClass<QToolButton, QAbstractButton> _nd = GDefineMetaClass<QToolButton, QAbstractButton>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QToolButton", &buildMetaClass_QToolButton);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QToolButtonWrapper, QToolButton> _nd = GDefineMetaClass<QToolButtonWrapper, QToolButton>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QToolButtonWrapper");
-        buildMetaClass_QToolButtonWrapper(0, _nd);
+        GDefineMetaClass<QToolButtonWrapper, QToolButton> _nd = GDefineMetaClass<QToolButtonWrapper, QToolButton>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QToolButtonWrapper", &buildMetaClass_QToolButtonWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

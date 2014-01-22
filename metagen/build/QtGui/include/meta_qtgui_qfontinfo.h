@@ -23,9 +23,9 @@ inline QFontInfo & opErAToRWrapper_QFontInfo__opAssign(QFontInfo * self, const Q
 
 
 template <typename D>
-void buildMetaClass_QFontInfo(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFontInfo(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QFont &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());

@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QUndoView()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QUndoView, QListView> _nd = GDefineMetaClass<QUndoView, QListView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QUndoView");
-        buildMetaClass_QUndoView(0, _nd);
+        GDefineMetaClass<QUndoView, QListView> _nd = GDefineMetaClass<QUndoView, QListView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QUndoView", &buildMetaClass_QUndoView);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QUndoViewWrapper, QUndoView> _nd = GDefineMetaClass<QUndoViewWrapper, QUndoView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QUndoViewWrapper");
-        buildMetaClass_QUndoViewWrapper(0, _nd);
+        GDefineMetaClass<QUndoViewWrapper, QUndoView> _nd = GDefineMetaClass<QUndoViewWrapper, QUndoView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QUndoViewWrapper", &buildMetaClass_QUndoViewWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

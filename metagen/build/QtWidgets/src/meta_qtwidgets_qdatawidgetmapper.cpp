@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QDataWidgetMapper()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QDataWidgetMapper, QObject> _nd = GDefineMetaClass<QDataWidgetMapper, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDataWidgetMapper");
-        buildMetaClass_QDataWidgetMapper(0, _nd);
+        GDefineMetaClass<QDataWidgetMapper, QObject> _nd = GDefineMetaClass<QDataWidgetMapper, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDataWidgetMapper", &buildMetaClass_QDataWidgetMapper);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QDataWidgetMapperWrapper, QDataWidgetMapper> _nd = GDefineMetaClass<QDataWidgetMapperWrapper, QDataWidgetMapper>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QDataWidgetMapperWrapper");
-        buildMetaClass_QDataWidgetMapperWrapper(0, _nd);
+        GDefineMetaClass<QDataWidgetMapperWrapper, QDataWidgetMapper> _nd = GDefineMetaClass<QDataWidgetMapperWrapper, QDataWidgetMapper>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QDataWidgetMapperWrapper", &buildMetaClass_QDataWidgetMapperWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

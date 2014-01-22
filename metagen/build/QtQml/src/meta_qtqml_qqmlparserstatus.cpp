@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qqmlparserstatus()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qqmlparserstatus(0, _d);
+    buildMetaClass_Global_qqmlparserstatus(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,13 +33,11 @@ GDefineMetaInfo createMetaClass_QQmlParserStatus()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlParserStatus> _nd = GDefineMetaClass<QQmlParserStatus>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlParserStatus");
-        buildMetaClass_QQmlParserStatus(0, _nd);
+        GDefineMetaClass<QQmlParserStatus> _nd = GDefineMetaClass<QQmlParserStatus>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlParserStatus", &buildMetaClass_QQmlParserStatus);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQmlParserStatusWrapper, QQmlParserStatus> _nd = GDefineMetaClass<QQmlParserStatusWrapper, QQmlParserStatus>::declare("QQmlParserStatusWrapper");
-        buildMetaClass_QQmlParserStatusWrapper(0, _nd);
+        GDefineMetaClass<QQmlParserStatusWrapper, QQmlParserStatus> _nd = GDefineMetaClass<QQmlParserStatusWrapper, QQmlParserStatus>::lazyDeclare("QQmlParserStatusWrapper", &buildMetaClass_QQmlParserStatusWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

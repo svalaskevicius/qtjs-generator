@@ -76,7 +76,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qsplitter()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qsplitter(0, _d);
+    buildMetaClass_Global_qsplitter(_d);
     return _d.getMetaInfo();
 }
 
@@ -88,13 +88,11 @@ GDefineMetaInfo createMetaClass_QSplitter()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSplitter, QFrame> _nd = GDefineMetaClass<QSplitter, QFrame>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSplitter");
-        buildMetaClass_QSplitter(0, _nd);
+        GDefineMetaClass<QSplitter, QFrame> _nd = GDefineMetaClass<QSplitter, QFrame>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSplitter", &buildMetaClass_QSplitter);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSplitterWrapper, QSplitter> _nd = GDefineMetaClass<QSplitterWrapper, QSplitter>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSplitterWrapper");
-        buildMetaClass_QSplitterWrapper(0, _nd);
+        GDefineMetaClass<QSplitterWrapper, QSplitter> _nd = GDefineMetaClass<QSplitterWrapper, QSplitter>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSplitterWrapper", &buildMetaClass_QSplitterWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -108,13 +106,11 @@ GDefineMetaInfo createMetaClass_QSplitterHandle()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSplitterHandle, QWidget> _nd = GDefineMetaClass<QSplitterHandle, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSplitterHandle");
-        buildMetaClass_QSplitterHandle(0, _nd);
+        GDefineMetaClass<QSplitterHandle, QWidget> _nd = GDefineMetaClass<QSplitterHandle, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSplitterHandle", &buildMetaClass_QSplitterHandle);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSplitterHandleWrapper, QSplitterHandle> _nd = GDefineMetaClass<QSplitterHandleWrapper, QSplitterHandle>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSplitterHandleWrapper");
-        buildMetaClass_QSplitterHandleWrapper(0, _nd);
+        GDefineMetaClass<QSplitterHandleWrapper, QSplitterHandle> _nd = GDefineMetaClass<QSplitterHandleWrapper, QSplitterHandle>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSplitterHandleWrapper", &buildMetaClass_QSplitterHandleWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

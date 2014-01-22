@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qpoint()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qpoint(0, _d);
+    buildMetaClass_Global_qpoint(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QPoint()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPoint> _nd = GDefineMetaClass<QPoint>::declare("QPoint");
-        buildMetaClass_QPoint(0, _nd);
+        GDefineMetaClass<QPoint> _nd = GDefineMetaClass<QPoint>::lazyDeclare("QPoint", &buildMetaClass_QPoint);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QPointF()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPointF> _nd = GDefineMetaClass<QPointF>::declare("QPointF");
-        buildMetaClass_QPointF(0, _nd);
+        GDefineMetaClass<QPointF> _nd = GDefineMetaClass<QPointF>::lazyDeclare("QPointF", &buildMetaClass_QPointF);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QGraphicsBlurEffect()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsBlurEffect, QGraphicsEffect> _nd = GDefineMetaClass<QGraphicsBlurEffect, QGraphicsEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsBlurEffect");
-        buildMetaClass_QGraphicsBlurEffect(0, _nd);
+        GDefineMetaClass<QGraphicsBlurEffect, QGraphicsEffect> _nd = GDefineMetaClass<QGraphicsBlurEffect, QGraphicsEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsBlurEffect", &buildMetaClass_QGraphicsBlurEffect);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGraphicsBlurEffectWrapper, QGraphicsBlurEffect> _nd = GDefineMetaClass<QGraphicsBlurEffectWrapper, QGraphicsBlurEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsBlurEffectWrapper");
-        buildMetaClass_QGraphicsBlurEffectWrapper(0, _nd);
+        GDefineMetaClass<QGraphicsBlurEffectWrapper, QGraphicsBlurEffect> _nd = GDefineMetaClass<QGraphicsBlurEffectWrapper, QGraphicsBlurEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsBlurEffectWrapper", &buildMetaClass_QGraphicsBlurEffectWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -97,13 +95,11 @@ GDefineMetaInfo createMetaClass_QGraphicsColorizeEffect()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsColorizeEffect, QGraphicsEffect> _nd = GDefineMetaClass<QGraphicsColorizeEffect, QGraphicsEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsColorizeEffect");
-        buildMetaClass_QGraphicsColorizeEffect(0, _nd);
+        GDefineMetaClass<QGraphicsColorizeEffect, QGraphicsEffect> _nd = GDefineMetaClass<QGraphicsColorizeEffect, QGraphicsEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsColorizeEffect", &buildMetaClass_QGraphicsColorizeEffect);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGraphicsColorizeEffectWrapper, QGraphicsColorizeEffect> _nd = GDefineMetaClass<QGraphicsColorizeEffectWrapper, QGraphicsColorizeEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsColorizeEffectWrapper");
-        buildMetaClass_QGraphicsColorizeEffectWrapper(0, _nd);
+        GDefineMetaClass<QGraphicsColorizeEffectWrapper, QGraphicsColorizeEffect> _nd = GDefineMetaClass<QGraphicsColorizeEffectWrapper, QGraphicsColorizeEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsColorizeEffectWrapper", &buildMetaClass_QGraphicsColorizeEffectWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -117,13 +113,11 @@ GDefineMetaInfo createMetaClass_QGraphicsDropShadowEffect()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsDropShadowEffect, QGraphicsEffect> _nd = GDefineMetaClass<QGraphicsDropShadowEffect, QGraphicsEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsDropShadowEffect");
-        buildMetaClass_QGraphicsDropShadowEffect(0, _nd);
+        GDefineMetaClass<QGraphicsDropShadowEffect, QGraphicsEffect> _nd = GDefineMetaClass<QGraphicsDropShadowEffect, QGraphicsEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsDropShadowEffect", &buildMetaClass_QGraphicsDropShadowEffect);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGraphicsDropShadowEffectWrapper, QGraphicsDropShadowEffect> _nd = GDefineMetaClass<QGraphicsDropShadowEffectWrapper, QGraphicsDropShadowEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsDropShadowEffectWrapper");
-        buildMetaClass_QGraphicsDropShadowEffectWrapper(0, _nd);
+        GDefineMetaClass<QGraphicsDropShadowEffectWrapper, QGraphicsDropShadowEffect> _nd = GDefineMetaClass<QGraphicsDropShadowEffectWrapper, QGraphicsDropShadowEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsDropShadowEffectWrapper", &buildMetaClass_QGraphicsDropShadowEffectWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -137,13 +131,11 @@ GDefineMetaInfo createMetaClass_QGraphicsEffect()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsEffect, QObject> _nd = GDefineMetaClass<QGraphicsEffect, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsEffect");
-        buildMetaClass_QGraphicsEffect(0, _nd);
+        GDefineMetaClass<QGraphicsEffect, QObject> _nd = GDefineMetaClass<QGraphicsEffect, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsEffect", &buildMetaClass_QGraphicsEffect);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGraphicsEffectWrapper, QGraphicsEffect> _nd = GDefineMetaClass<QGraphicsEffectWrapper, QGraphicsEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsEffectWrapper");
-        buildMetaClass_QGraphicsEffectWrapper(0, _nd);
+        GDefineMetaClass<QGraphicsEffectWrapper, QGraphicsEffect> _nd = GDefineMetaClass<QGraphicsEffectWrapper, QGraphicsEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsEffectWrapper", &buildMetaClass_QGraphicsEffectWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -157,13 +149,11 @@ GDefineMetaInfo createMetaClass_QGraphicsOpacityEffect()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsOpacityEffect, QGraphicsEffect> _nd = GDefineMetaClass<QGraphicsOpacityEffect, QGraphicsEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsOpacityEffect");
-        buildMetaClass_QGraphicsOpacityEffect(0, _nd);
+        GDefineMetaClass<QGraphicsOpacityEffect, QGraphicsEffect> _nd = GDefineMetaClass<QGraphicsOpacityEffect, QGraphicsEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsOpacityEffect", &buildMetaClass_QGraphicsOpacityEffect);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGraphicsOpacityEffectWrapper, QGraphicsOpacityEffect> _nd = GDefineMetaClass<QGraphicsOpacityEffectWrapper, QGraphicsOpacityEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsOpacityEffectWrapper");
-        buildMetaClass_QGraphicsOpacityEffectWrapper(0, _nd);
+        GDefineMetaClass<QGraphicsOpacityEffectWrapper, QGraphicsOpacityEffect> _nd = GDefineMetaClass<QGraphicsOpacityEffectWrapper, QGraphicsOpacityEffect>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsOpacityEffectWrapper", &buildMetaClass_QGraphicsOpacityEffectWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

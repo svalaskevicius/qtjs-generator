@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qwindowdefs(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qwindowdefs(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }

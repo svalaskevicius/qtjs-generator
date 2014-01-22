@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QGestureRecognizer(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGestureRecognizer(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("create", &D::ClassType::create);
@@ -93,9 +93,9 @@ public:
         QGestureRecognizer::reset(state);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_recognize", (QGestureRecognizer::Result (D::ClassType::*) (QGesture *, QObject *, QEvent *))&D::ClassType::super_recognize);
         _d.CPGF_MD_TEMPLATE _method("super_create", (QGesture * (D::ClassType::*) (QObject *))&D::ClassType::super_create);
@@ -105,16 +105,16 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGestureRecognizerWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGestureRecognizerWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    QGestureRecognizerWrapper::cpgf__register(config, _d);
+    QGestureRecognizerWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGestureRecognizer<D>(config, _d);
+    buildMetaClass_QGestureRecognizer<D>(_d);
 }
 
 

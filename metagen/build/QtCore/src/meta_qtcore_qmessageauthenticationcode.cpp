@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QMessageAuthenticationCode()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMessageAuthenticationCode> _nd = GDefineMetaClass<QMessageAuthenticationCode>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QMessageAuthenticationCode");
-        buildMetaClass_QMessageAuthenticationCode(0, _nd);
+        GDefineMetaClass<QMessageAuthenticationCode> _nd = GDefineMetaClass<QMessageAuthenticationCode>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QMessageAuthenticationCode", &buildMetaClass_QMessageAuthenticationCode);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

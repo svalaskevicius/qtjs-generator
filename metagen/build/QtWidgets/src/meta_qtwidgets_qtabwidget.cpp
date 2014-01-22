@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QTabWidget()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTabWidget, QWidget> _nd = GDefineMetaClass<QTabWidget, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTabWidget");
-        buildMetaClass_QTabWidget(0, _nd);
+        GDefineMetaClass<QTabWidget, QWidget> _nd = GDefineMetaClass<QTabWidget, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTabWidget", &buildMetaClass_QTabWidget);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QTabWidgetWrapper, QTabWidget> _nd = GDefineMetaClass<QTabWidgetWrapper, QTabWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTabWidgetWrapper");
-        buildMetaClass_QTabWidgetWrapper(0, _nd);
+        GDefineMetaClass<QTabWidgetWrapper, QTabWidget> _nd = GDefineMetaClass<QTabWidgetWrapper, QTabWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTabWidgetWrapper", &buildMetaClass_QTabWidgetWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

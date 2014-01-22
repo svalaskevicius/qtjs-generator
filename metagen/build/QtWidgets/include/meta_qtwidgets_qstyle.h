@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_Global_qstyle(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qstyle(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, QStyle::State)>(mopHolder << mopHolder);
@@ -31,9 +31,9 @@ void buildMetaClass_Global_qstyle(const cpgf::GMetaDataConfigFlags & config, D _
 
 
 template <typename D>
-void buildMetaClass_QStyle(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyle(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -1176,9 +1176,9 @@ public:
         return QStyle::standardPalette();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
@@ -1259,16 +1259,16 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QStyleWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStyleWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    QStyleWrapper::cpgf__register(config, _d);
+    QStyleWrapper::cpgf__register(_d);
     
-    buildMetaClass_QStyle<D>(config, _d);
+    buildMetaClass_QStyle<D>(_d);
 }
 
 

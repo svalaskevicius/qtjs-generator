@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QSizeGrip()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSizeGrip, QWidget> _nd = GDefineMetaClass<QSizeGrip, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSizeGrip");
-        buildMetaClass_QSizeGrip(0, _nd);
+        GDefineMetaClass<QSizeGrip, QWidget> _nd = GDefineMetaClass<QSizeGrip, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSizeGrip", &buildMetaClass_QSizeGrip);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSizeGripWrapper, QSizeGrip> _nd = GDefineMetaClass<QSizeGripWrapper, QSizeGrip>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSizeGripWrapper");
-        buildMetaClass_QSizeGripWrapper(0, _nd);
+        GDefineMetaClass<QSizeGripWrapper, QSizeGrip> _nd = GDefineMetaClass<QSizeGripWrapper, QSizeGrip>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSizeGripWrapper", &buildMetaClass_QSizeGripWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

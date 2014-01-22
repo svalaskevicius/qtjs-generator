@@ -21,9 +21,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_QScreen(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QScreen(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -249,9 +249,9 @@ public:
         return QScreen::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -277,15 +277,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QScreenWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QScreenWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QScreenWrapper::cpgf__register(config, _d);
+    QScreenWrapper::cpgf__register(_d);
     
-    buildMetaClass_QScreen<D>(config, _d);
+    buildMetaClass_QScreen<D>(_d);
 }
 
 

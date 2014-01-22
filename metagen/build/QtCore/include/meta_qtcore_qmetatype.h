@@ -20,18 +20,18 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qmetatype(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qmetatype(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, typename T>
-void buildMetaClass_BuiltInComparatorFunction(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_BuiltInComparatorFunction(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -42,9 +42,9 @@ void buildMetaClass_BuiltInComparatorFunction(const cpgf::GMetaDataConfigFlags &
 
 
 template <typename D, typename T>
-void buildMetaClass_BuiltInDebugStreamFunction(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_BuiltInDebugStreamFunction(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -54,18 +54,18 @@ void buildMetaClass_BuiltInDebugStreamFunction(const cpgf::GMetaDataConfigFlags 
 
 
 template <typename D, typename T, typename Category>
-void buildMetaClass_CapabilitiesImpl(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_CapabilitiesImpl(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, typename T>
-void buildMetaClass_ContainerAPI(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_ContainerAPI(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("size", &D::ClassType::size);
@@ -73,9 +73,9 @@ void buildMetaClass_ContainerAPI(const cpgf::GMetaDataConfigFlags & config, D _d
 
 
 template <typename D, typename From, typename To, typename UnaryFunction>
-void buildMetaClass_ConverterFunctor(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_ConverterFunctor(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (UnaryFunction)>();
@@ -85,9 +85,9 @@ void buildMetaClass_ConverterFunctor(const cpgf::GMetaDataConfigFlags & config, 
 
 
 template <typename D, typename From, typename To>
-void buildMetaClass_ConverterMemberFunction(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_ConverterMemberFunction(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (To(From::*)() const)>();
@@ -97,9 +97,9 @@ void buildMetaClass_ConverterMemberFunction(const cpgf::GMetaDataConfigFlags & c
 
 
 template <typename D, typename From, typename To>
-void buildMetaClass_ConverterMemberFunctionOk(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_ConverterMemberFunctionOk(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (To(From::*)(bool *) const)>();
@@ -109,9 +109,9 @@ void buildMetaClass_ConverterMemberFunctionOk(const cpgf::GMetaDataConfigFlags &
 
 
 template <typename D, typename T>
-void buildMetaClass_IsAssociativeContainer(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_IsAssociativeContainer(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtCore_1")
@@ -121,9 +121,9 @@ void buildMetaClass_IsAssociativeContainer(const cpgf::GMetaDataConfigFlags & co
 
 
 template <typename D, typename T>
-void buildMetaClass_IsPair(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_IsPair(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("registerConverter", &D::ClassType::registerConverter);
@@ -131,9 +131,9 @@ void buildMetaClass_IsPair(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D, typename T>
-void buildMetaClass_IsPointerToTypeDerivedFromQObject(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_IsPointerToTypeDerivedFromQObject(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtCore_1")
@@ -143,9 +143,9 @@ void buildMetaClass_IsPointerToTypeDerivedFromQObject(const cpgf::GMetaDataConfi
 
 
 template <typename D, typename T>
-void buildMetaClass_IsSequentialContainer(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_IsSequentialContainer(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtCore_1")
@@ -155,9 +155,9 @@ void buildMetaClass_IsSequentialContainer(const cpgf::GMetaDataConfigFlags & con
 
 
 template <typename D, typename T>
-void buildMetaClass_IsSharedPointerToTypeDerivedFromQObject(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_IsSharedPointerToTypeDerivedFromQObject(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtCore_1")
@@ -167,9 +167,9 @@ void buildMetaClass_IsSharedPointerToTypeDerivedFromQObject(const cpgf::GMetaDat
 
 
 template <typename D, typename T>
-void buildMetaClass_IsTrackingPointerToTypeDerivedFromQObject(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_IsTrackingPointerToTypeDerivedFromQObject(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtCore_1")
@@ -179,9 +179,9 @@ void buildMetaClass_IsTrackingPointerToTypeDerivedFromQObject(const cpgf::GMetaD
 
 
 template <typename D, typename T>
-void buildMetaClass_IsWeakPointerToTypeDerivedFromQObject(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_IsWeakPointerToTypeDerivedFromQObject(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtCore_1")
@@ -191,9 +191,9 @@ void buildMetaClass_IsWeakPointerToTypeDerivedFromQObject(const cpgf::GMetaDataC
 
 
 template <typename D, typename const_iterator>
-void buildMetaClass_IteratorOwner(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_IteratorOwner(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("assign", &D::ClassType::assign);
@@ -205,9 +205,9 @@ void buildMetaClass_IteratorOwner(const cpgf::GMetaDataConfigFlags & config, D _
 
 
 template <typename D, typename T, bool defined>
-void buildMetaClass_MetaTypeDefinedHelper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_MetaTypeDefinedHelper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::DefinedType>("DefinedType")
@@ -217,18 +217,18 @@ void buildMetaClass_MetaTypeDefinedHelper(const cpgf::GMetaDataConfigFlags & con
 
 
 template <typename D, typename T>
-void buildMetaClass_MetaTypePairHelper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_MetaTypePairHelper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, typename , typename >
-void buildMetaClass_MetaTypeSmartPointerHelper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_MetaTypeSmartPointerHelper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("registerConverter", &D::ClassType::registerConverter);
@@ -242,9 +242,9 @@ inline QAssociativeIterableImpl opErAToRWrapper_QAssociativeIterableConvertFunct
 
 
 template <typename D, typename From>
-void buildMetaClass_QAssociativeIterableConvertFunctor(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAssociativeIterableConvertFunctor(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QAssociativeIterableImpl (*)(const From &)>(mopHolder(mopHolder));
@@ -253,9 +253,9 @@ void buildMetaClass_QAssociativeIterableConvertFunctor(const cpgf::GMetaDataConf
 
 
 template <typename D>
-void buildMetaClass_QAssociativeIterableImpl(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QAssociativeIterableImpl(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -287,9 +287,9 @@ void buildMetaClass_QAssociativeIterableImpl(const cpgf::GMetaDataConfigFlags & 
 
 
 template <typename D, typename T, bool Accepted>
-void buildMetaClass_QMetaTypeFunctionHelper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QMetaTypeFunctionHelper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("Delete", &D::ClassType::Delete);
@@ -302,18 +302,18 @@ void buildMetaClass_QMetaTypeFunctionHelper(const cpgf::GMetaDataConfigFlags & c
 
 
 template <typename D, typename T>
-void buildMetaClass_QMetaTypeId(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QMetaTypeId(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, typename T, bool Defined>
-void buildMetaClass_QMetaTypeIdHelper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QMetaTypeIdHelper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qt_metatype_id", &D::ClassType::qt_metatype_id);
@@ -321,9 +321,9 @@ void buildMetaClass_QMetaTypeIdHelper(const cpgf::GMetaDataConfigFlags & config,
 
 
 template <typename D, typename T>
-void buildMetaClass_QMetaTypeTypeFlags(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QMetaTypeTypeFlags(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtCore_1")
@@ -333,18 +333,18 @@ void buildMetaClass_QMetaTypeTypeFlags(const cpgf::GMetaDataConfigFlags & config
 
 
 template <typename D, typename From>
-void buildMetaClass_QPairVariantInterfaceConvertFunctor(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPairVariantInterfaceConvertFunctor(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D>
-void buildMetaClass_QPairVariantInterfaceImpl(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPairVariantInterfaceImpl(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -360,9 +360,9 @@ inline QSequentialIterableImpl opErAToRWrapper_QSequentialIterableConvertFunctor
 
 
 template <typename D, typename From>
-void buildMetaClass_QSequentialIterableConvertFunctor(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSequentialIterableConvertFunctor(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QSequentialIterableImpl (*)(const From &)>(mopHolder(mopHolder));
@@ -371,9 +371,9 @@ void buildMetaClass_QSequentialIterableConvertFunctor(const cpgf::GMetaDataConfi
 
 
 template <typename D>
-void buildMetaClass_QSequentialIterableImpl(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSequentialIterableImpl(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -408,9 +408,9 @@ inline QObject * opErAToRWrapper_QSmartPointerConvertFunctor__opFunction(const Q
 
 
 template <typename D, typename SmartPointer>
-void buildMetaClass_QSmartPointerConvertFunctor(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSmartPointerConvertFunctor(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QObject * (*)(const SmartPointer &)>(mopHolder(mopHolder));
@@ -419,9 +419,9 @@ void buildMetaClass_QSmartPointerConvertFunctor(const cpgf::GMetaDataConfigFlags
 
 
 template <typename D>
-void buildMetaClass_VariantData(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_VariantData(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const int, const void *, const uint)>();

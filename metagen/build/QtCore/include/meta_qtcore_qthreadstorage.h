@@ -18,18 +18,18 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qthreadstorage(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qthreadstorage(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D, class T>
-void buildMetaClass_QThreadStorage(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QThreadStorage(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -41,9 +41,9 @@ void buildMetaClass_QThreadStorage(const cpgf::GMetaDataConfigFlags & config, D 
 
 
 template <typename D>
-void buildMetaClass_QThreadStorageData(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QThreadStorageData(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (void(*)(void *))>();

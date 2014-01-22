@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qbitarray()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qbitarray(0, _d);
+    buildMetaClass_Global_qbitarray(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QBitArray()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QBitArray> _nd = GDefineMetaClass<QBitArray>::declare("QBitArray");
-        buildMetaClass_QBitArray(0, _nd);
+        GDefineMetaClass<QBitArray> _nd = GDefineMetaClass<QBitArray>::lazyDeclare("QBitArray", &buildMetaClass_QBitArray);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QBitRef()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QBitRef> _nd = GDefineMetaClass<QBitRef>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QBitRef");
-        buildMetaClass_QBitRef(0, _nd);
+        GDefineMetaClass<QBitRef> _nd = GDefineMetaClass<QBitRef>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QBitRef", &buildMetaClass_QBitRef);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -21,9 +21,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_QSGOpaqueTextureMaterial(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGOpaqueTextureMaterial(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -91,9 +91,9 @@ public:
         return QSGOpaqueTextureMaterial::createShader();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_compare", (int (D::ClassType::*) (const QSGMaterial *) const)&D::ClassType::super_compare);
         _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
@@ -103,22 +103,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSGOpaqueTextureMaterialWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGOpaqueTextureMaterialWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSGOpaqueTextureMaterialWrapper::cpgf__register(config, _d);
+    QSGOpaqueTextureMaterialWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSGOpaqueTextureMaterial<D>(config, _d);
+    buildMetaClass_QSGOpaqueTextureMaterial<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QSGTextureMaterial(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGTextureMaterial(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("type", &D::ClassType::type);
@@ -171,9 +171,9 @@ public:
         return QSGTextureMaterial::createShader();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_compare", (int (D::ClassType::*) (const QSGMaterial *) const)&D::ClassType::super_compare);
         _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
@@ -183,15 +183,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSGTextureMaterialWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSGTextureMaterialWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSGTextureMaterialWrapper::cpgf__register(config, _d);
+    QSGTextureMaterialWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSGTextureMaterial<D>(config, _d);
+    buildMetaClass_QSGTextureMaterial<D>(_d);
 }
 
 

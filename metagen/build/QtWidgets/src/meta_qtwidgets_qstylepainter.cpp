@@ -77,8 +77,7 @@ GDefineMetaInfo createMetaClass_QStylePainter()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStylePainter, QPainter> _nd = GDefineMetaClass<QStylePainter, QPainter>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QStylePainter");
-        buildMetaClass_QStylePainter(0, _nd);
+        GDefineMetaClass<QStylePainter, QPainter> _nd = GDefineMetaClass<QStylePainter, QPainter>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStylePainter", &buildMetaClass_QStylePainter);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

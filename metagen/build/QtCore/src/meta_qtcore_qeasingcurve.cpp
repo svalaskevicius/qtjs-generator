@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qeasingcurve()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qeasingcurve(0, _d);
+    buildMetaClass_Global_qeasingcurve(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QEasingCurve()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QEasingCurve> _nd = GDefineMetaClass<QEasingCurve>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QEasingCurve");
-        buildMetaClass_QEasingCurve(0, _nd);
+        GDefineMetaClass<QEasingCurve> _nd = GDefineMetaClass<QEasingCurve>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QEasingCurve", &buildMetaClass_QEasingCurve);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

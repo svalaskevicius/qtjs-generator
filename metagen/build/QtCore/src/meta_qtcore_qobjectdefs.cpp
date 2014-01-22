@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qobjectdefs()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qobjectdefs(0, _d);
+    buildMetaClass_Global_qobjectdefs(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QGenericArgument()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGenericArgument> _nd = GDefineMetaClass<QGenericArgument>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QGenericArgument");
-        buildMetaClass_QGenericArgument(0, _nd);
+        GDefineMetaClass<QGenericArgument> _nd = GDefineMetaClass<QGenericArgument>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QGenericArgument", &buildMetaClass_QGenericArgument);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QGenericReturnArgument()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGenericReturnArgument, QGenericArgument> _nd = GDefineMetaClass<QGenericReturnArgument, QGenericArgument>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QGenericReturnArgument");
-        buildMetaClass_QGenericReturnArgument(0, _nd);
+        GDefineMetaClass<QGenericReturnArgument, QGenericArgument> _nd = GDefineMetaClass<QGenericReturnArgument, QGenericArgument>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QGenericReturnArgument", &buildMetaClass_QGenericReturnArgument);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -98,8 +96,7 @@ GDefineMetaInfo createMetaClass_QMetaObject()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMetaObject> _nd = GDefineMetaClass<QMetaObject>::declare("QMetaObject");
-        buildMetaClass_QMetaObject(0, _nd);
+        GDefineMetaClass<QMetaObject> _nd = GDefineMetaClass<QMetaObject>::lazyDeclare("QMetaObject", &buildMetaClass_QMetaObject);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

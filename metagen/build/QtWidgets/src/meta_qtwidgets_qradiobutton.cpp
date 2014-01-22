@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QRadioButton()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QRadioButton, QAbstractButton> _nd = GDefineMetaClass<QRadioButton, QAbstractButton>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QRadioButton");
-        buildMetaClass_QRadioButton(0, _nd);
+        GDefineMetaClass<QRadioButton, QAbstractButton> _nd = GDefineMetaClass<QRadioButton, QAbstractButton>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QRadioButton", &buildMetaClass_QRadioButton);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QRadioButtonWrapper, QRadioButton> _nd = GDefineMetaClass<QRadioButtonWrapper, QRadioButton>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QRadioButtonWrapper");
-        buildMetaClass_QRadioButtonWrapper(0, _nd);
+        GDefineMetaClass<QRadioButtonWrapper, QRadioButton> _nd = GDefineMetaClass<QRadioButtonWrapper, QRadioButton>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QRadioButtonWrapper", &buildMetaClass_QRadioButtonWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

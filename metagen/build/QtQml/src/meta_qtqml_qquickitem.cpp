@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qquickitem()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qquickitem(0, _d);
+    buildMetaClass_Global_qquickitem(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,13 +33,11 @@ GDefineMetaInfo createMetaClass_QQuickItem()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQuickItem, QObject, QQmlParserStatus> _nd = GDefineMetaClass<QQuickItem, QObject, QQmlParserStatus>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQuickItem");
-        buildMetaClass_QQuickItem(0, _nd);
+        GDefineMetaClass<QQuickItem, QObject, QQmlParserStatus> _nd = GDefineMetaClass<QQuickItem, QObject, QQmlParserStatus>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQuickItem", &buildMetaClass_QQuickItem);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQuickItemWrapper, QQuickItem> _nd = GDefineMetaClass<QQuickItemWrapper, QQuickItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQuickItemWrapper");
-        buildMetaClass_QQuickItemWrapper(0, _nd);
+        GDefineMetaClass<QQuickItemWrapper, QQuickItem> _nd = GDefineMetaClass<QQuickItemWrapper, QQuickItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQuickItemWrapper", &buildMetaClass_QQuickItemWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

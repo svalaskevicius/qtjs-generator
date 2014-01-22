@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qtextstream(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qtextstream(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("bin", (QTextStream& (*) (QTextStream &))&bin, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
@@ -155,9 +155,9 @@ inline QTextStream & opErAToRWrapper_QTextStream__opLeftShift(QTextStream * self
 
 
 template <typename D>
-void buildMetaClass_QTextStream(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextStream(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -309,9 +309,9 @@ void buildMetaClass_QTextStream(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QTextStreamManipulator(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextStreamManipulator(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QTSMFI, int)>();

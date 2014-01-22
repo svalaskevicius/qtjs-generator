@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QSystemTrayIcon()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSystemTrayIcon, QObject> _nd = GDefineMetaClass<QSystemTrayIcon, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSystemTrayIcon");
-        buildMetaClass_QSystemTrayIcon(0, _nd);
+        GDefineMetaClass<QSystemTrayIcon, QObject> _nd = GDefineMetaClass<QSystemTrayIcon, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSystemTrayIcon", &buildMetaClass_QSystemTrayIcon);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSystemTrayIconWrapper, QSystemTrayIcon> _nd = GDefineMetaClass<QSystemTrayIconWrapper, QSystemTrayIcon>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSystemTrayIconWrapper");
-        buildMetaClass_QSystemTrayIconWrapper(0, _nd);
+        GDefineMetaClass<QSystemTrayIconWrapper, QSystemTrayIcon> _nd = GDefineMetaClass<QSystemTrayIconWrapper, QSystemTrayIcon>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSystemTrayIconWrapper", &buildMetaClass_QSystemTrayIconWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

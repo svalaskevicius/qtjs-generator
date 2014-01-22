@@ -21,9 +21,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_Global_qqmlpropertyvaluesource(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qqmlpropertyvaluesource(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_20")
@@ -33,9 +33,9 @@ void buildMetaClass_Global_qqmlpropertyvaluesource(const cpgf::GMetaDataConfigFl
 
 
 template <typename D>
-void buildMetaClass_QQmlPropertyValueSource(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlPropertyValueSource(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("setTarget", &D::ClassType::setTarget, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -63,9 +63,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_setTarget", (void (D::ClassType::*) (const QQmlProperty &))&D::ClassType::super_setTarget, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
@@ -73,16 +73,16 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QQmlPropertyValueSourceWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlPropertyValueSourceWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    QQmlPropertyValueSourceWrapper::cpgf__register(config, _d);
+    QQmlPropertyValueSourceWrapper::cpgf__register(_d);
     
-    buildMetaClass_QQmlPropertyValueSource<D>(config, _d);
+    buildMetaClass_QQmlPropertyValueSource<D>(_d);
 }
 
 

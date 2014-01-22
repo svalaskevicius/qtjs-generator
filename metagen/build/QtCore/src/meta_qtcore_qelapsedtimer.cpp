@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QElapsedTimer()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QElapsedTimer> _nd = GDefineMetaClass<QElapsedTimer>::declare("QElapsedTimer");
-        buildMetaClass_QElapsedTimer(0, _nd);
+        GDefineMetaClass<QElapsedTimer> _nd = GDefineMetaClass<QElapsedTimer>::lazyDeclare("QElapsedTimer", &buildMetaClass_QElapsedTimer);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

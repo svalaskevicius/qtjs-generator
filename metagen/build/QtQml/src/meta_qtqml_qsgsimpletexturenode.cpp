@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QSGSimpleTextureNode()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSGSimpleTextureNode, QSGGeometryNode> _nd = GDefineMetaClass<QSGSimpleTextureNode, QSGGeometryNode>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSGSimpleTextureNode");
-        buildMetaClass_QSGSimpleTextureNode(0, _nd);
+        GDefineMetaClass<QSGSimpleTextureNode, QSGGeometryNode> _nd = GDefineMetaClass<QSGSimpleTextureNode, QSGGeometryNode>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSGSimpleTextureNode", &buildMetaClass_QSGSimpleTextureNode);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSGSimpleTextureNodeWrapper, QSGSimpleTextureNode> _nd = GDefineMetaClass<QSGSimpleTextureNodeWrapper, QSGSimpleTextureNode>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSGSimpleTextureNodeWrapper");
-        buildMetaClass_QSGSimpleTextureNodeWrapper(0, _nd);
+        GDefineMetaClass<QSGSimpleTextureNodeWrapper, QSGSimpleTextureNode> _nd = GDefineMetaClass<QSGSimpleTextureNodeWrapper, QSGSimpleTextureNode>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSGSimpleTextureNodeWrapper", &buildMetaClass_QSGSimpleTextureNodeWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

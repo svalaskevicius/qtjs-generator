@@ -76,7 +76,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qstyle()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qstyle(0, _d);
+    buildMetaClass_Global_qstyle(_d);
     return _d.getMetaInfo();
 }
 
@@ -88,13 +88,11 @@ GDefineMetaInfo createMetaClass_QStyle()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStyle, QObject> _nd = GDefineMetaClass<QStyle, QObject>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QStyle");
-        buildMetaClass_QStyle(0, _nd);
+        GDefineMetaClass<QStyle, QObject> _nd = GDefineMetaClass<QStyle, QObject>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStyle", &buildMetaClass_QStyle);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QStyleWrapper, QStyle> _nd = GDefineMetaClass<QStyleWrapper, QStyle>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QStyleWrapper");
-        buildMetaClass_QStyleWrapper(0, _nd);
+        GDefineMetaClass<QStyleWrapper, QStyle> _nd = GDefineMetaClass<QStyleWrapper, QStyle>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStyleWrapper", &buildMetaClass_QStyleWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

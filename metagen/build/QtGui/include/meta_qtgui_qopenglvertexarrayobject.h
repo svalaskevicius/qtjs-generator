@@ -21,9 +21,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_QOpenGLVertexArrayObject(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QOpenGLVertexArrayObject(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -224,9 +224,9 @@ public:
         return QOpenGLVertexArrayObject::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -252,15 +252,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QOpenGLVertexArrayObjectWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QOpenGLVertexArrayObjectWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QOpenGLVertexArrayObjectWrapper::cpgf__register(config, _d);
+    QOpenGLVertexArrayObjectWrapper::cpgf__register(_d);
     
-    buildMetaClass_QOpenGLVertexArrayObject<D>(config, _d);
+    buildMetaClass_QOpenGLVertexArrayObject<D>(_d);
 }
 
 

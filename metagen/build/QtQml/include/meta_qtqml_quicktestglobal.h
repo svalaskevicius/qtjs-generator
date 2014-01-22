@@ -18,9 +18,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_Global_quicktestglobal(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_quicktestglobal(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }

@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qline(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qline(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QLine &)>(mopHolder << mopHolder);
@@ -41,9 +41,9 @@ inline bool opErAToRWrapper_QLine__opNotEqual(const QLine * self, const QLine & 
 
 
 template <typename D>
-void buildMetaClass_QLine(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QLine(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -82,9 +82,9 @@ inline bool opErAToRWrapper_QLineF__opNotEqual(const QLineF * self, const QLineF
 
 
 template <typename D>
-void buildMetaClass_QLineF(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QLineF(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qcoreapplication(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qcoreapplication(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qAddPreRoutine", (void (*) (QtStartUpFunction))&qAddPreRoutine);
@@ -34,9 +34,9 @@ void buildMetaClass_Global_qcoreapplication(const cpgf::GMetaDataConfigFlags & c
 
 
 template <typename D>
-void buildMetaClass_QCoreApplication(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QCoreApplication(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (int &, char **, int)>()

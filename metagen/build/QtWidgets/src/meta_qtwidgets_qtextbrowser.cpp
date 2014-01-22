@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QTextBrowser()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTextBrowser, QTextEdit> _nd = GDefineMetaClass<QTextBrowser, QTextEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTextBrowser");
-        buildMetaClass_QTextBrowser(0, _nd);
+        GDefineMetaClass<QTextBrowser, QTextEdit> _nd = GDefineMetaClass<QTextBrowser, QTextEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTextBrowser", &buildMetaClass_QTextBrowser);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QTextBrowserWrapper, QTextBrowser> _nd = GDefineMetaClass<QTextBrowserWrapper, QTextBrowser>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTextBrowserWrapper");
-        buildMetaClass_QTextBrowserWrapper(0, _nd);
+        GDefineMetaClass<QTextBrowserWrapper, QTextBrowser> _nd = GDefineMetaClass<QTextBrowserWrapper, QTextBrowser>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTextBrowserWrapper", &buildMetaClass_QTextBrowserWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

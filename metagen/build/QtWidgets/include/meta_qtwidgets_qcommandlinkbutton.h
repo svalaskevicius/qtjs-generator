@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QCommandLinkButton(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QCommandLinkButton(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QWidget *)>()
@@ -887,9 +887,9 @@ public:
         QWidget::closeEvent(__arg0);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("nextCheckState", (void (D::ClassType::*) ())&D::ClassType::nextCheckState);
         _d.CPGF_MD_TEMPLATE _method("wheelEvent", (void (D::ClassType::*) (QWheelEvent *))&D::ClassType::wheelEvent);
@@ -1010,15 +1010,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QCommandLinkButtonWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QCommandLinkButtonWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QCommandLinkButtonWrapper::cpgf__register(config, _d);
+    QCommandLinkButtonWrapper::cpgf__register(_d);
     
-    buildMetaClass_QCommandLinkButton<D>(config, _d);
+    buildMetaClass_QCommandLinkButton<D>(_d);
 }
 
 

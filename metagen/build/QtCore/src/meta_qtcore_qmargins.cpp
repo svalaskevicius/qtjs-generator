@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qmargins()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qmargins(0, _d);
+    buildMetaClass_Global_qmargins(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QMargins()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMargins> _nd = GDefineMetaClass<QMargins>::declare("QMargins");
-        buildMetaClass_QMargins(0, _nd);
+        GDefineMetaClass<QMargins> _nd = GDefineMetaClass<QMargins>::lazyDeclare("QMargins", &buildMetaClass_QMargins);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

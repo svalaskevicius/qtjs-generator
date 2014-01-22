@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QSessionManager()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSessionManager, QObject> _nd = GDefineMetaClass<QSessionManager, QObject>::Policy<MakePolicy<GMetaRuleDestructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSessionManager");
-        buildMetaClass_QSessionManager(0, _nd);
+        GDefineMetaClass<QSessionManager, QObject> _nd = GDefineMetaClass<QSessionManager, QObject>::Policy<MakePolicy<GMetaRuleDestructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSessionManager", &buildMetaClass_QSessionManager);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

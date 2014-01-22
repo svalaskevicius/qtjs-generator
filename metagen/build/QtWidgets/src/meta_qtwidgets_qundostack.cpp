@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QUndoCommand()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QUndoCommand> _nd = GDefineMetaClass<QUndoCommand>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QUndoCommand");
-        buildMetaClass_QUndoCommand(0, _nd);
+        GDefineMetaClass<QUndoCommand> _nd = GDefineMetaClass<QUndoCommand>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QUndoCommand", &buildMetaClass_QUndoCommand);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QUndoCommandWrapper, QUndoCommand> _nd = GDefineMetaClass<QUndoCommandWrapper, QUndoCommand>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QUndoCommandWrapper");
-        buildMetaClass_QUndoCommandWrapper(0, _nd);
+        GDefineMetaClass<QUndoCommandWrapper, QUndoCommand> _nd = GDefineMetaClass<QUndoCommandWrapper, QUndoCommand>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QUndoCommandWrapper", &buildMetaClass_QUndoCommandWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -97,13 +95,11 @@ GDefineMetaInfo createMetaClass_QUndoStack()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QUndoStack, QObject> _nd = GDefineMetaClass<QUndoStack, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QUndoStack");
-        buildMetaClass_QUndoStack(0, _nd);
+        GDefineMetaClass<QUndoStack, QObject> _nd = GDefineMetaClass<QUndoStack, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QUndoStack", &buildMetaClass_QUndoStack);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QUndoStackWrapper, QUndoStack> _nd = GDefineMetaClass<QUndoStackWrapper, QUndoStack>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QUndoStackWrapper");
-        buildMetaClass_QUndoStackWrapper(0, _nd);
+        GDefineMetaClass<QUndoStackWrapper, QUndoStack> _nd = GDefineMetaClass<QUndoStackWrapper, QUndoStack>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QUndoStackWrapper", &buildMetaClass_QUndoStackWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

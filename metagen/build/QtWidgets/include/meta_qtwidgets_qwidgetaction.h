@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QWidgetAction(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QWidgetAction(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>();
@@ -247,9 +247,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("createWidget", (QWidget * (D::ClassType::*) (QWidget *))&D::ClassType::createWidget);
@@ -282,15 +282,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QWidgetActionWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QWidgetActionWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QWidgetActionWrapper::cpgf__register(config, _d);
+    QWidgetActionWrapper::cpgf__register(_d);
     
-    buildMetaClass_QWidgetAction<D>(config, _d);
+    buildMetaClass_QWidgetAction<D>(_d);
 }
 
 

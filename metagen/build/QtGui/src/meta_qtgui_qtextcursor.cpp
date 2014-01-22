@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QTextCursor()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTextCursor> _nd = GDefineMetaClass<QTextCursor>::declare("QTextCursor");
-        buildMetaClass_QTextCursor(0, _nd);
+        GDefineMetaClass<QTextCursor> _nd = GDefineMetaClass<QTextCursor>::lazyDeclare("QTextCursor", &buildMetaClass_QTextCursor);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

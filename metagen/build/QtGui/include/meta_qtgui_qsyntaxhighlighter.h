@@ -21,9 +21,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_QSyntaxHighlighter(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSyntaxHighlighter(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -280,9 +280,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("setFormat", (void (D::ClassType::*) (int, int, const QColor &))&D::ClassType::setFormat, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
         _d.CPGF_MD_TEMPLATE _method("setCurrentBlockState", (void (D::ClassType::*) (int))&D::ClassType::setCurrentBlockState);
@@ -320,17 +320,17 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSyntaxHighlighterWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSyntaxHighlighterWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>();
     _d.CPGF_MD_TEMPLATE _constructor<void * (QTextDocument *)>();
     
-    QSyntaxHighlighterWrapper::cpgf__register(config, _d);
+    QSyntaxHighlighterWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSyntaxHighlighter<D>(config, _d);
+    buildMetaClass_QSyntaxHighlighter<D>(_d);
 }
 
 

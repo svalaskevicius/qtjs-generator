@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QPixmapCache()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPixmapCache> _nd = GDefineMetaClass<QPixmapCache>::declare("QPixmapCache");
-        buildMetaClass_QPixmapCache(0, _nd);
+        GDefineMetaClass<QPixmapCache> _nd = GDefineMetaClass<QPixmapCache>::lazyDeclare("QPixmapCache", &buildMetaClass_QPixmapCache);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

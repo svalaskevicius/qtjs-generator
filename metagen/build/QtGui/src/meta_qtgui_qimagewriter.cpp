@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QImageWriter()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QImageWriter> _nd = GDefineMetaClass<QImageWriter>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QImageWriter");
-        buildMetaClass_QImageWriter(0, _nd);
+        GDefineMetaClass<QImageWriter> _nd = GDefineMetaClass<QImageWriter>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QImageWriter", &buildMetaClass_QImageWriter);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

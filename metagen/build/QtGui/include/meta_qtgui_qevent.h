@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qevent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qevent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QEvent *)>(mopHolder << mopHolder);
@@ -30,9 +30,9 @@ void buildMetaClass_Global_qevent(const cpgf::GMetaDataConfigFlags & config, D _
 
 
 template <typename D>
-void buildMetaClass_QActionEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QActionEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (int, QAction *, QAction *)>()
@@ -44,9 +44,9 @@ void buildMetaClass_QActionEvent(const cpgf::GMetaDataConfigFlags & config, D _d
 
 
 template <typename D>
-void buildMetaClass_QApplicationStateChangeEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QApplicationStateChangeEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (Qt::ApplicationState)>();
@@ -55,9 +55,9 @@ void buildMetaClass_QApplicationStateChangeEvent(const cpgf::GMetaDataConfigFlag
 
 
 template <typename D>
-void buildMetaClass_QCloseEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QCloseEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -65,9 +65,9 @@ void buildMetaClass_QCloseEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QContextMenuEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QContextMenuEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QContextMenuEvent::Reason, const QPoint &, const QPoint &, Qt::KeyboardModifiers)>();
@@ -89,9 +89,9 @@ void buildMetaClass_QContextMenuEvent(const cpgf::GMetaDataConfigFlags & config,
 
 
 template <typename D>
-void buildMetaClass_QDragEnterEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDragEnterEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QPoint &, Qt::DropActions, const QMimeData *, Qt::MouseButtons, Qt::KeyboardModifiers)>();
@@ -99,9 +99,9 @@ void buildMetaClass_QDragEnterEvent(const cpgf::GMetaDataConfigFlags & config, D
 
 
 template <typename D>
-void buildMetaClass_QDragLeaveEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDragLeaveEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -109,9 +109,9 @@ void buildMetaClass_QDragLeaveEvent(const cpgf::GMetaDataConfigFlags & config, D
 
 
 template <typename D>
-void buildMetaClass_QDragMoveEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDragMoveEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QPoint &, Qt::DropActions, const QMimeData *, Qt::MouseButtons, Qt::KeyboardModifiers, QEvent::Type)>()
@@ -126,9 +126,9 @@ void buildMetaClass_QDragMoveEvent(const cpgf::GMetaDataConfigFlags & config, D 
 
 
 template <typename D>
-void buildMetaClass_QDropEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDropEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QPointF &, Qt::DropActions, const QMimeData *, Qt::MouseButtons, Qt::KeyboardModifiers, QEvent::Type)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
@@ -149,9 +149,9 @@ void buildMetaClass_QDropEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QEnterEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QEnterEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QPointF &, const QPointF &, const QPointF &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<2> >());
@@ -168,9 +168,9 @@ void buildMetaClass_QEnterEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QExposeEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QExposeEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QRegion &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -179,9 +179,9 @@ void buildMetaClass_QExposeEvent(const cpgf::GMetaDataConfigFlags & config, D _d
 
 
 template <typename D>
-void buildMetaClass_QFileOpenEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFileOpenEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QString &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -193,9 +193,9 @@ void buildMetaClass_QFileOpenEvent(const cpgf::GMetaDataConfigFlags & config, D 
 
 
 template <typename D>
-void buildMetaClass_QFocusEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFocusEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEvent::Type, Qt::FocusReason)>()
@@ -208,9 +208,9 @@ void buildMetaClass_QFocusEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QHelpEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QHelpEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEvent::Type, const QPoint &, const QPoint &)>();
@@ -224,9 +224,9 @@ void buildMetaClass_QHelpEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QHideEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QHideEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -234,9 +234,9 @@ void buildMetaClass_QHideEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QHoverEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QHoverEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEvent::Type, const QPointF &, const QPointF &, Qt::KeyboardModifiers)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<2> >())
@@ -250,9 +250,9 @@ void buildMetaClass_QHoverEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QIconDragEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QIconDragEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -260,9 +260,9 @@ void buildMetaClass_QIconDragEvent(const cpgf::GMetaDataConfigFlags & config, D 
 
 
 template <typename D>
-void buildMetaClass_QInputEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QInputEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEvent::Type, Qt::KeyboardModifiers)>()
@@ -276,9 +276,9 @@ void buildMetaClass_QInputEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QInputMethodEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QInputMethodEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -313,9 +313,9 @@ void buildMetaClass_QInputMethodEvent(const cpgf::GMetaDataConfigFlags & config,
 
 
 template <typename D>
-void buildMetaClass_QInputMethodQueryEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QInputMethodQueryEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (Qt::InputMethodQueries)>();
@@ -326,9 +326,9 @@ void buildMetaClass_QInputMethodQueryEvent(const cpgf::GMetaDataConfigFlags & co
 
 
 template <typename D>
-void buildMetaClass_QKeyEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QKeyEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEvent::Type, int, Qt::KeyboardModifiers, const QString &, bool, ushort)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<3> >())
@@ -354,9 +354,9 @@ void buildMetaClass_QKeyEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QMouseEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QMouseEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEvent::Type, const QPointF &, Qt::MouseButton, Qt::MouseButtons, Qt::KeyboardModifiers)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
@@ -377,9 +377,9 @@ void buildMetaClass_QMouseEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QMoveEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QMoveEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QPoint &, const QPoint &)>();
@@ -389,9 +389,9 @@ void buildMetaClass_QMoveEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QNativeGestureEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QNativeGestureEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (Qt::NativeGestureType, const QPointF &, const QPointF &, const QPointF &, qreal, ulong, quint64)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<2>, cpgf::GMetaRuleCopyConstReference<3> >());
@@ -406,9 +406,9 @@ void buildMetaClass_QNativeGestureEvent(const cpgf::GMetaDataConfigFlags & confi
 
 
 template <typename D>
-void buildMetaClass_QPaintEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPaintEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QRegion &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -419,9 +419,9 @@ void buildMetaClass_QPaintEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QResizeEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QResizeEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QSize &, const QSize &)>();
@@ -431,9 +431,9 @@ void buildMetaClass_QResizeEvent(const cpgf::GMetaDataConfigFlags & config, D _d
 
 
 template <typename D>
-void buildMetaClass_QScreenOrientationChangeEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QScreenOrientationChangeEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QScreen *, Qt::ScreenOrientation)>();
@@ -443,9 +443,9 @@ void buildMetaClass_QScreenOrientationChangeEvent(const cpgf::GMetaDataConfigFla
 
 
 template <typename D>
-void buildMetaClass_QScrollEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QScrollEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QPointF &, const QPointF &, QScrollEvent::ScrollState)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
@@ -461,9 +461,9 @@ void buildMetaClass_QScrollEvent(const cpgf::GMetaDataConfigFlags & config, D _d
 
 
 template <typename D>
-void buildMetaClass_QScrollPrepareEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QScrollPrepareEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QPointF &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -478,9 +478,9 @@ void buildMetaClass_QScrollPrepareEvent(const cpgf::GMetaDataConfigFlags & confi
 
 
 template <typename D>
-void buildMetaClass_QShortcutEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QShortcutEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QKeySequence &, int, bool)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
@@ -493,9 +493,9 @@ void buildMetaClass_QShortcutEvent(const cpgf::GMetaDataConfigFlags & config, D 
 
 
 template <typename D>
-void buildMetaClass_QShowEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QShowEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -503,9 +503,9 @@ void buildMetaClass_QShowEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QStatusTipEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStatusTipEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QString &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -514,9 +514,9 @@ void buildMetaClass_QStatusTipEvent(const cpgf::GMetaDataConfigFlags & config, D
 
 
 template <typename D>
-void buildMetaClass_QTabletEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTabletEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEvent::Type, const QPointF &, const QPointF &, int, int, qreal, int, int, qreal, qreal, int, Qt::KeyboardModifiers, qint64)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<2> >());
@@ -558,9 +558,9 @@ void buildMetaClass_QTabletEvent(const cpgf::GMetaDataConfigFlags & config, D _d
 
 
 template <typename D>
-void buildMetaClass_QToolBarChangeEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QToolBarChangeEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (bool)>();
@@ -574,9 +574,9 @@ inline QTouchEvent::TouchPoint& opErAToRWrapper_QTouchEvent_TouchPoint__opAssign
 
 
 template <typename D>
-void buildMetaClass_QTouchEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTouchEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEvent::Type, QTouchDevice *, Qt::KeyboardModifiers, Qt::TouchPointStates, const QList< QTouchEvent::TouchPoint > &)>()
@@ -655,9 +655,9 @@ void buildMetaClass_QTouchEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QWhatsThisClickedEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QWhatsThisClickedEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QString &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -666,9 +666,9 @@ void buildMetaClass_QWhatsThisClickedEvent(const cpgf::GMetaDataConfigFlags & co
 
 
 template <typename D>
-void buildMetaClass_QWheelEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QWheelEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QPointF &, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
@@ -697,9 +697,9 @@ void buildMetaClass_QWheelEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QWindowStateChangeEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QWindowStateChangeEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (Qt::WindowStates, bool)>()

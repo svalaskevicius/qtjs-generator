@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qcursor()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qcursor(0, _d);
+    buildMetaClass_Global_qcursor(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QCursor()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QCursor> _nd = GDefineMetaClass<QCursor>::declare("QCursor");
-        buildMetaClass_QCursor(0, _nd);
+        GDefineMetaClass<QCursor> _nd = GDefineMetaClass<QCursor>::lazyDeclare("QCursor", &buildMetaClass_QCursor);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

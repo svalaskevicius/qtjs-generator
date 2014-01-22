@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QGraphicsView()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsView, QAbstractScrollArea> _nd = GDefineMetaClass<QGraphicsView, QAbstractScrollArea>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsView");
-        buildMetaClass_QGraphicsView(0, _nd);
+        GDefineMetaClass<QGraphicsView, QAbstractScrollArea> _nd = GDefineMetaClass<QGraphicsView, QAbstractScrollArea>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsView", &buildMetaClass_QGraphicsView);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGraphicsViewWrapper, QGraphicsView> _nd = GDefineMetaClass<QGraphicsViewWrapper, QGraphicsView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsViewWrapper");
-        buildMetaClass_QGraphicsViewWrapper(0, _nd);
+        GDefineMetaClass<QGraphicsViewWrapper, QGraphicsView> _nd = GDefineMetaClass<QGraphicsViewWrapper, QGraphicsView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsViewWrapper", &buildMetaClass_QGraphicsViewWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

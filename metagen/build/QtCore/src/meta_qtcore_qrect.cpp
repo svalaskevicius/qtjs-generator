@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qrect()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qrect(0, _d);
+    buildMetaClass_Global_qrect(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QRect()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QRect> _nd = GDefineMetaClass<QRect>::declare("QRect");
-        buildMetaClass_QRect(0, _nd);
+        GDefineMetaClass<QRect> _nd = GDefineMetaClass<QRect>::lazyDeclare("QRect", &buildMetaClass_QRect);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QRectF()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QRectF> _nd = GDefineMetaClass<QRectF>::declare("QRectF");
-        buildMetaClass_QRectF(0, _nd);
+        GDefineMetaClass<QRectF> _nd = GDefineMetaClass<QRectF>::lazyDeclare("QRectF", &buildMetaClass_QRectF);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

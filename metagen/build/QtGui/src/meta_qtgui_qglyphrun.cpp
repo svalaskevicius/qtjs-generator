@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QGlyphRun()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGlyphRun> _nd = GDefineMetaClass<QGlyphRun>::declare("QGlyphRun");
-        buildMetaClass_QGlyphRun(0, _nd);
+        GDefineMetaClass<QGlyphRun> _nd = GDefineMetaClass<QGlyphRun>::lazyDeclare("QGlyphRun", &buildMetaClass_QGlyphRun);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qopenglfunctions(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qopenglfunctions(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_14")
@@ -29,9 +29,9 @@ void buildMetaClass_Global_qopenglfunctions(const cpgf::GMetaDataConfigFlags & c
 
 
 template <typename D>
-void buildMetaClass_QOpenGLFunctions(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QOpenGLFunctions(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

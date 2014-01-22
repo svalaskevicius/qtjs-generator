@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QTextEdit()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTextEdit, QAbstractScrollArea> _nd = GDefineMetaClass<QTextEdit, QAbstractScrollArea>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTextEdit");
-        buildMetaClass_QTextEdit(0, _nd);
+        GDefineMetaClass<QTextEdit, QAbstractScrollArea> _nd = GDefineMetaClass<QTextEdit, QAbstractScrollArea>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTextEdit", &buildMetaClass_QTextEdit);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QTextEditWrapper, QTextEdit> _nd = GDefineMetaClass<QTextEditWrapper, QTextEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTextEditWrapper");
-        buildMetaClass_QTextEditWrapper(0, _nd);
+        GDefineMetaClass<QTextEditWrapper, QTextEdit> _nd = GDefineMetaClass<QTextEditWrapper, QTextEdit>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTextEditWrapper", &buildMetaClass_QTextEditWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

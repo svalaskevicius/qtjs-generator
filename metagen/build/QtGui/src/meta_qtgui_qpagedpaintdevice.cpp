@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QPagedPaintDevice()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPagedPaintDevice, QPaintDevice> _nd = GDefineMetaClass<QPagedPaintDevice, QPaintDevice>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QPagedPaintDevice");
-        buildMetaClass_QPagedPaintDevice(0, _nd);
+        GDefineMetaClass<QPagedPaintDevice, QPaintDevice> _nd = GDefineMetaClass<QPagedPaintDevice, QPaintDevice>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPagedPaintDevice", &buildMetaClass_QPagedPaintDevice);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QPagedPaintDeviceWrapper, QPagedPaintDevice> _nd = GDefineMetaClass<QPagedPaintDeviceWrapper, QPagedPaintDevice>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QPagedPaintDeviceWrapper");
-        buildMetaClass_QPagedPaintDeviceWrapper(0, _nd);
+        GDefineMetaClass<QPagedPaintDeviceWrapper, QPagedPaintDevice> _nd = GDefineMetaClass<QPagedPaintDeviceWrapper, QPagedPaintDevice>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPagedPaintDeviceWrapper", &buildMetaClass_QPagedPaintDeviceWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

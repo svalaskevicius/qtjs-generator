@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QCommandLineOption()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QCommandLineOption> _nd = GDefineMetaClass<QCommandLineOption>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QCommandLineOption");
-        buildMetaClass_QCommandLineOption(0, _nd);
+        GDefineMetaClass<QCommandLineOption> _nd = GDefineMetaClass<QCommandLineOption>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QCommandLineOption", &buildMetaClass_QCommandLineOption);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

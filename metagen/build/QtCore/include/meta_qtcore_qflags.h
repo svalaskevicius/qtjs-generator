@@ -18,18 +18,18 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qflags(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qflags(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
 }
 
 
 template <typename D>
-void buildMetaClass_QFlag(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFlag(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (int)>();
@@ -104,9 +104,9 @@ inline bool opErAToRWrapper_QFlags__opNot(const QFlags<Enum > * self) {
 
 
 template <typename D, typename Enum>
-void buildMetaClass_QFlags(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QFlags(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (Enum)>();
@@ -151,9 +151,9 @@ void buildMetaClass_QFlags(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QIncompatibleFlag(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QIncompatibleFlag(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (int)>();

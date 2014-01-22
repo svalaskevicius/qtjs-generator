@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QCryptographicHash()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QCryptographicHash> _nd = GDefineMetaClass<QCryptographicHash>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QCryptographicHash");
-        buildMetaClass_QCryptographicHash(0, _nd);
+        GDefineMetaClass<QCryptographicHash> _nd = GDefineMetaClass<QCryptographicHash>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QCryptographicHash", &buildMetaClass_QCryptographicHash);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

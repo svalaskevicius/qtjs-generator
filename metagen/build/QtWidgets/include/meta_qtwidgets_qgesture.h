@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QGesture(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGesture(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -223,9 +223,9 @@ public:
         return QGesture::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -251,22 +251,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QGestureWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGestureWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QGestureWrapper::cpgf__register(config, _d);
+    QGestureWrapper::cpgf__register(_d);
     
-    buildMetaClass_QGesture<D>(config, _d);
+    buildMetaClass_QGesture<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QGestureEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGestureEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QList< QGesture * > &)>();
@@ -293,9 +293,9 @@ void buildMetaClass_QGestureEvent(const cpgf::GMetaDataConfigFlags & config, D _
 
 
 template <typename D>
-void buildMetaClass_QPanGesture(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPanGesture(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -490,9 +490,9 @@ public:
         return QPanGesture::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -518,22 +518,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QPanGestureWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPanGestureWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QPanGestureWrapper::cpgf__register(config, _d);
+    QPanGestureWrapper::cpgf__register(_d);
     
-    buildMetaClass_QPanGesture<D>(config, _d);
+    buildMetaClass_QPanGesture<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QPinchGesture(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPinchGesture(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -748,9 +748,9 @@ public:
         return QPinchGesture::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -776,22 +776,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QPinchGestureWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPinchGestureWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QPinchGestureWrapper::cpgf__register(config, _d);
+    QPinchGestureWrapper::cpgf__register(_d);
     
-    buildMetaClass_QPinchGesture<D>(config, _d);
+    buildMetaClass_QPinchGesture<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QSwipeGesture(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSwipeGesture(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -990,9 +990,9 @@ public:
         return QSwipeGesture::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -1018,22 +1018,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSwipeGestureWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSwipeGestureWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSwipeGestureWrapper::cpgf__register(config, _d);
+    QSwipeGestureWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSwipeGesture<D>(config, _d);
+    buildMetaClass_QSwipeGesture<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QTapAndHoldGesture(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTapAndHoldGesture(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -1225,9 +1225,9 @@ public:
         return QTapAndHoldGesture::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -1253,22 +1253,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QTapAndHoldGestureWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTapAndHoldGestureWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QTapAndHoldGestureWrapper::cpgf__register(config, _d);
+    QTapAndHoldGestureWrapper::cpgf__register(_d);
     
-    buildMetaClass_QTapAndHoldGesture<D>(config, _d);
+    buildMetaClass_QTapAndHoldGesture<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QTapGesture(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTapGesture(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -1458,9 +1458,9 @@ public:
         return QTapGesture::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -1486,15 +1486,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QTapGestureWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTapGestureWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QTapGestureWrapper::cpgf__register(config, _d);
+    QTapGestureWrapper::cpgf__register(_d);
     
-    buildMetaClass_QTapGesture<D>(config, _d);
+    buildMetaClass_QTapGesture<D>(_d);
 }
 
 

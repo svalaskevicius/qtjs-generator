@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QDirModel(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDirModel(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QStringList &, QDir::Filters, QDir::SortFlags, QObject *)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
@@ -870,9 +870,9 @@ public:
         return QAbstractItemModel::insertRows(row, count, parent);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("beginResetModel", (void (D::ClassType::*) ())&D::ClassType::beginResetModel);
         _d.CPGF_MD_TEMPLATE _method("beginInsertRows", (void (D::ClassType::*) (const QModelIndex &, int, int))&D::ClassType::beginInsertRows);
@@ -985,15 +985,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QDirModelWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDirModelWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QDirModelWrapper::cpgf__register(config, _d);
+    QDirModelWrapper::cpgf__register(_d);
     
-    buildMetaClass_QDirModel<D>(config, _d);
+    buildMetaClass_QDirModel<D>(_d);
 }
 
 

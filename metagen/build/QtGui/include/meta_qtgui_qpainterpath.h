@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qpainterpath(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qpainterpath(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QPainterPath &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleCopyConstReference<1> >());
@@ -73,9 +73,9 @@ inline bool opErAToRWrapper_QPainterPath_Element__opNotEqual(const QPainterPath:
 
 
 template <typename D>
-void buildMetaClass_QPainterPath(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPainterPath(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -204,9 +204,9 @@ void buildMetaClass_QPainterPath(const cpgf::GMetaDataConfigFlags & config, D _d
 
 
 template <typename D>
-void buildMetaClass_QPainterPathStroker(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPainterPathStroker(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

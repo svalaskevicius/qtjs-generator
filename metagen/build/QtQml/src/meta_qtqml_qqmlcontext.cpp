@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QQmlContext()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlContext, QObject> _nd = GDefineMetaClass<QQmlContext, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlContext");
-        buildMetaClass_QQmlContext(0, _nd);
+        GDefineMetaClass<QQmlContext, QObject> _nd = GDefineMetaClass<QQmlContext, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlContext", &buildMetaClass_QQmlContext);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQmlContextWrapper, QQmlContext> _nd = GDefineMetaClass<QQmlContextWrapper, QQmlContext>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlContextWrapper");
-        buildMetaClass_QQmlContextWrapper(0, _nd);
+        GDefineMetaClass<QQmlContextWrapper, QQmlContext> _nd = GDefineMetaClass<QQmlContextWrapper, QQmlContext>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlContextWrapper", &buildMetaClass_QQmlContextWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

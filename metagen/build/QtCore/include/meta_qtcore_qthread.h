@@ -21,9 +21,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_QThread(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QThread(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -277,9 +277,9 @@ public:
         return QThread::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("setTerminationEnabled", (void (D::ClassType::*) (bool))&D::ClassType::setTerminationEnabled)
             ._default(copyVariantFromCopyable(true))
@@ -311,15 +311,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QThreadWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QThreadWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QThreadWrapper::cpgf__register(config, _d);
+    QThreadWrapper::cpgf__register(_d);
     
-    buildMetaClass_QThread<D>(config, _d);
+    buildMetaClass_QThread<D>(_d);
 }
 
 

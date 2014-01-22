@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qjsonarray()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qjsonarray(0, _d);
+    buildMetaClass_Global_qjsonarray(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QJsonArray()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QJsonArray> _nd = GDefineMetaClass<QJsonArray>::declare("QJsonArray");
-        buildMetaClass_QJsonArray(0, _nd);
+        GDefineMetaClass<QJsonArray> _nd = GDefineMetaClass<QJsonArray>::lazyDeclare("QJsonArray", &buildMetaClass_QJsonArray);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

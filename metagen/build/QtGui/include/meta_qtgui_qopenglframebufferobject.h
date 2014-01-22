@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_QOpenGLFramebufferObject(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QOpenGLFramebufferObject(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QSize &, GLenum)>()
@@ -83,9 +83,9 @@ inline bool opErAToRWrapper_QOpenGLFramebufferObjectFormat__opNotEqual(const QOp
 
 
 template <typename D>
-void buildMetaClass_QOpenGLFramebufferObjectFormat(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QOpenGLFramebufferObjectFormat(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QInputDialog()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QInputDialog, QDialog> _nd = GDefineMetaClass<QInputDialog, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QInputDialog");
-        buildMetaClass_QInputDialog(0, _nd);
+        GDefineMetaClass<QInputDialog, QDialog> _nd = GDefineMetaClass<QInputDialog, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QInputDialog", &buildMetaClass_QInputDialog);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QInputDialogWrapper, QInputDialog> _nd = GDefineMetaClass<QInputDialogWrapper, QInputDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QInputDialogWrapper");
-        buildMetaClass_QInputDialogWrapper(0, _nd);
+        GDefineMetaClass<QInputDialogWrapper, QInputDialog> _nd = GDefineMetaClass<QInputDialogWrapper, QInputDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QInputDialogWrapper", &buildMetaClass_QInputDialogWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

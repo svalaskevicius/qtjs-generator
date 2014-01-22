@@ -21,9 +21,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_Global_qquickitem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qquickitem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDebug Q_QUICK_EXPORT (*)(QDebug, QQuickItem *)>(mopHolder << mopHolder);
@@ -31,9 +31,9 @@ void buildMetaClass_Global_qquickitem(const cpgf::GMetaDataConfigFlags & config,
 
 
 template <typename D>
-void buildMetaClass_QQuickItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQuickItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QQuickItem *)>()
@@ -937,9 +937,9 @@ public:
         QQuickItem::releaseResources();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("mouseUngrabEvent", (void (D::ClassType::*) ())&D::ClassType::mouseUngrabEvent);
         _d.CPGF_MD_TEMPLATE _method("widthValid", (bool (D::ClassType::*) () const)&D::ClassType::widthValid);
@@ -1037,15 +1037,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QQuickItemWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQuickItemWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QQuickItemWrapper::cpgf__register(config, _d);
+    QQuickItemWrapper::cpgf__register(_d);
     
-    buildMetaClass_QQuickItem<D>(config, _d);
+    buildMetaClass_QQuickItem<D>(_d);
 }
 
 

@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QSurface()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSurface> _nd = GDefineMetaClass<QSurface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSurface");
-        buildMetaClass_QSurface(0, _nd);
+        GDefineMetaClass<QSurface> _nd = GDefineMetaClass<QSurface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSurface", &buildMetaClass_QSurface);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

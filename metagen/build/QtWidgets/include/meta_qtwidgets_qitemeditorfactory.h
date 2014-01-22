@@ -21,9 +21,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D, class T>
-void buildMetaClass_QItemEditorCreator(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QItemEditorCreator(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QByteArray &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -33,9 +33,9 @@ void buildMetaClass_QItemEditorCreator(const cpgf::GMetaDataConfigFlags & config
 
 
 template <typename D>
-void buildMetaClass_QItemEditorCreatorBase(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QItemEditorCreatorBase(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("createWidget", &D::ClassType::createWidget);
@@ -74,9 +74,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_createWidget", (QWidget * (D::ClassType::*) (QWidget *) const)&D::ClassType::super_createWidget);
         _d.CPGF_MD_TEMPLATE _method("super_valuePropertyName", (QByteArray (D::ClassType::*) () const)&D::ClassType::super_valuePropertyName);
@@ -85,22 +85,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QItemEditorCreatorBaseWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QItemEditorCreatorBaseWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QItemEditorCreatorBaseWrapper::cpgf__register(config, _d);
+    QItemEditorCreatorBaseWrapper::cpgf__register(_d);
     
-    buildMetaClass_QItemEditorCreatorBase<D>(config, _d);
+    buildMetaClass_QItemEditorCreatorBase<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QItemEditorFactory(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QItemEditorFactory(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -146,9 +146,9 @@ public:
         return QItemEditorFactory::valuePropertyName(userType);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_createEditor", (QWidget * (D::ClassType::*) (int, QWidget *) const)&D::ClassType::super_createEditor);
         _d.CPGF_MD_TEMPLATE _method("super_valuePropertyName", (QByteArray (D::ClassType::*) (int) const)&D::ClassType::super_valuePropertyName);
@@ -157,22 +157,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QItemEditorFactoryWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QItemEditorFactoryWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QItemEditorFactoryWrapper::cpgf__register(config, _d);
+    QItemEditorFactoryWrapper::cpgf__register(_d);
     
-    buildMetaClass_QItemEditorFactory<D>(config, _d);
+    buildMetaClass_QItemEditorFactory<D>(_d);
 }
 
 
 template <typename D, class T>
-void buildMetaClass_QStandardItemEditorCreator(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStandardItemEditorCreator(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qpolygon(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qpolygon(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QPolygon &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
@@ -33,9 +33,9 @@ void buildMetaClass_Global_qpolygon(const cpgf::GMetaDataConfigFlags & config, D
 
 
 template <typename D>
-void buildMetaClass_QPolygon(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPolygon(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -70,9 +70,9 @@ void buildMetaClass_QPolygon(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QPolygonF(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPolygonF(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

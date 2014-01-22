@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qpoint(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qpoint(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QPoint &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
@@ -75,9 +75,9 @@ inline QPoint & opErAToRWrapper_QPoint__opDivAssign(QPoint * self, qreal divisor
 
 
 template <typename D>
-void buildMetaClass_QPoint(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPoint(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -121,9 +121,9 @@ inline QPointF & opErAToRWrapper_QPointF__opDivAssign(QPointF * self, qreal c) {
 
 
 template <typename D>
-void buildMetaClass_QPointF(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QPointF(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

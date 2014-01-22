@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QGraphicsWidget()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsWidget, QGraphicsObject, QGraphicsLayoutItem> _nd = GDefineMetaClass<QGraphicsWidget, QGraphicsObject, QGraphicsLayoutItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsWidget");
-        buildMetaClass_QGraphicsWidget(0, _nd);
+        GDefineMetaClass<QGraphicsWidget, QGraphicsObject, QGraphicsLayoutItem> _nd = GDefineMetaClass<QGraphicsWidget, QGraphicsObject, QGraphicsLayoutItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsWidget", &buildMetaClass_QGraphicsWidget);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QGraphicsWidgetWrapper, QGraphicsWidget> _nd = GDefineMetaClass<QGraphicsWidgetWrapper, QGraphicsWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsWidgetWrapper");
-        buildMetaClass_QGraphicsWidgetWrapper(0, _nd);
+        GDefineMetaClass<QGraphicsWidgetWrapper, QGraphicsWidget> _nd = GDefineMetaClass<QGraphicsWidgetWrapper, QGraphicsWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsWidgetWrapper", &buildMetaClass_QGraphicsWidgetWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

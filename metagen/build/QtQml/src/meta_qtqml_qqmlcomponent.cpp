@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QQmlComponent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlComponent, QObject> _nd = GDefineMetaClass<QQmlComponent, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlComponent");
-        buildMetaClass_QQmlComponent(0, _nd);
+        GDefineMetaClass<QQmlComponent, QObject> _nd = GDefineMetaClass<QQmlComponent, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlComponent", &buildMetaClass_QQmlComponent);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

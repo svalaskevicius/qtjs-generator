@@ -23,9 +23,9 @@ inline QJSValue & opErAToRWrapper_QJSValue__opAssign(QJSValue * self, const QJSV
 
 
 template <typename D>
-void buildMetaClass_QJSValue(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QJSValue(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QJSValue::SpecialValue)>()

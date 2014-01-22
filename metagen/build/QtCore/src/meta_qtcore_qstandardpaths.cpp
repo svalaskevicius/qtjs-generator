@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QStandardPaths()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStandardPaths> _nd = GDefineMetaClass<QStandardPaths>::Policy<MakePolicy<GMetaRuleDestructorAbsent, GMetaRuleDefaultConstructorAbsent> >::declare("QStandardPaths");
-        buildMetaClass_QStandardPaths(0, _nd);
+        GDefineMetaClass<QStandardPaths> _nd = GDefineMetaClass<QStandardPaths>::Policy<MakePolicy<GMetaRuleDestructorAbsent, GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QStandardPaths", &buildMetaClass_QStandardPaths);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

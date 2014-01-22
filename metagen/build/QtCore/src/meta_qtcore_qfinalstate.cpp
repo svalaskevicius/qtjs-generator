@@ -57,13 +57,11 @@ GDefineMetaInfo createMetaClass_QFinalState()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFinalState, QAbstractState> _nd = GDefineMetaClass<QFinalState, QAbstractState>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFinalState");
-        buildMetaClass_QFinalState(0, _nd);
+        GDefineMetaClass<QFinalState, QAbstractState> _nd = GDefineMetaClass<QFinalState, QAbstractState>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFinalState", &buildMetaClass_QFinalState);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QFinalStateWrapper, QFinalState> _nd = GDefineMetaClass<QFinalStateWrapper, QFinalState>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFinalStateWrapper");
-        buildMetaClass_QFinalStateWrapper(0, _nd);
+        GDefineMetaClass<QFinalStateWrapper, QFinalState> _nd = GDefineMetaClass<QFinalStateWrapper, QFinalState>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFinalStateWrapper", &buildMetaClass_QFinalStateWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

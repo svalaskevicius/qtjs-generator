@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QUndoGroup()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QUndoGroup, QObject> _nd = GDefineMetaClass<QUndoGroup, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QUndoGroup");
-        buildMetaClass_QUndoGroup(0, _nd);
+        GDefineMetaClass<QUndoGroup, QObject> _nd = GDefineMetaClass<QUndoGroup, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QUndoGroup", &buildMetaClass_QUndoGroup);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QUndoGroupWrapper, QUndoGroup> _nd = GDefineMetaClass<QUndoGroupWrapper, QUndoGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QUndoGroupWrapper");
-        buildMetaClass_QUndoGroupWrapper(0, _nd);
+        GDefineMetaClass<QUndoGroupWrapper, QUndoGroup> _nd = GDefineMetaClass<QUndoGroupWrapper, QUndoGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QUndoGroupWrapper", &buildMetaClass_QUndoGroupWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

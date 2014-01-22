@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QQmlDebuggingEnabler()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlDebuggingEnabler> _nd = GDefineMetaClass<QQmlDebuggingEnabler>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QQmlDebuggingEnabler");
-        buildMetaClass_QQmlDebuggingEnabler(0, _nd);
+        GDefineMetaClass<QQmlDebuggingEnabler> _nd = GDefineMetaClass<QQmlDebuggingEnabler>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QQmlDebuggingEnabler", &buildMetaClass_QQmlDebuggingEnabler);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

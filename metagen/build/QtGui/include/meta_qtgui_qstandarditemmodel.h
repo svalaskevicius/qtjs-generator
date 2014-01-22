@@ -21,9 +21,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qstandarditemmodel(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qstandarditemmodel(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, QStandardItem &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleParamNoncopyable<1> >());
@@ -37,9 +37,9 @@ inline bool opErAToRWrapper_QStandardItem__opLess(const QStandardItem * self, co
 
 
 template <typename D>
-void buildMetaClass_QStandardItem(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStandardItem(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -147,9 +147,9 @@ void buildMetaClass_QStandardItem(const cpgf::GMetaDataConfigFlags & config, D _
 
 
 template <typename D>
-void buildMetaClass_QStandardItemModel(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStandardItemModel(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -1025,9 +1025,9 @@ public:
         return QStandardItemModel::insertRows(row, count, parent);
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("beginResetModel", (void (D::ClassType::*) ())&D::ClassType::beginResetModel);
         _d.CPGF_MD_TEMPLATE _method("beginInsertRows", (void (D::ClassType::*) (const QModelIndex &, int, int))&D::ClassType::beginInsertRows);
@@ -1140,15 +1140,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QStandardItemModelWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStandardItemModelWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QStandardItemModelWrapper::cpgf__register(config, _d);
+    QStandardItemModelWrapper::cpgf__register(_d);
     
-    buildMetaClass_QStandardItemModel<D>(config, _d);
+    buildMetaClass_QStandardItemModel<D>(_d);
 }
 
 

@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_QChildEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QChildEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEvent::Type, QObject *)>();
@@ -32,9 +32,9 @@ void buildMetaClass_QChildEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QDeferredDeleteEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDeferredDeleteEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -43,9 +43,9 @@ void buildMetaClass_QDeferredDeleteEvent(const cpgf::GMetaDataConfigFlags & conf
 
 
 template <typename D>
-void buildMetaClass_QDynamicPropertyChangeEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QDynamicPropertyChangeEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QByteArray &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -59,9 +59,9 @@ inline QEvent & opErAToRWrapper_QEvent__opAssign(QEvent * self, const QEvent & o
 
 
 template <typename D>
-void buildMetaClass_QEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEvent::Type)>();
@@ -249,9 +249,9 @@ void buildMetaClass_QEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QTimerEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTimerEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (int)>();

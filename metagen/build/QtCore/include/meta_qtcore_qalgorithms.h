@@ -19,9 +19,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qalgorithms(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qalgorithms(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qPopulationCount", (uint (*) (quint32))&qPopulationCount);

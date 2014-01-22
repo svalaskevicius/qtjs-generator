@@ -18,9 +18,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qimage(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qimage(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QImage &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
@@ -41,9 +41,9 @@ inline bool opErAToRWrapper_QImage__opNotEqual(const QImage * self, const QImage
 
 
 template <typename D>
-void buildMetaClass_QImage(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QImage(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

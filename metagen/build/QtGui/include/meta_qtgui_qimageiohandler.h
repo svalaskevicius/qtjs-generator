@@ -21,9 +21,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_Global_qimageiohandler(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qimageiohandler(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_20")
@@ -33,9 +33,9 @@ void buildMetaClass_Global_qimageiohandler(const cpgf::GMetaDataConfigFlags & co
 
 
 template <typename D>
-void buildMetaClass_QImageIOHandler(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QImageIOHandler(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("setDevice", &D::ClassType::setDevice);
@@ -280,9 +280,9 @@ public:
         return QImageIOHandler::imageCount();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_supportsOption", (bool (D::ClassType::*) (QImageIOHandler::ImageOption) const)&D::ClassType::super_supportsOption);
         _d.CPGF_MD_TEMPLATE _method("super_jumpToImage", (bool (D::ClassType::*) (int))&D::ClassType::super_jumpToImage);
@@ -303,23 +303,23 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QImageIOHandlerWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QImageIOHandlerWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     
-    QImageIOHandlerWrapper::cpgf__register(config, _d);
+    QImageIOHandlerWrapper::cpgf__register(_d);
     
-    buildMetaClass_QImageIOHandler<D>(config, _d);
+    buildMetaClass_QImageIOHandler<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QImageIOPlugin(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QImageIOPlugin(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
@@ -541,9 +541,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -573,18 +573,18 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QImageIOPluginWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QImageIOPluginWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
         ._default(copyVariantFromCopyable(0))
     ;
     
-    QImageIOPluginWrapper::cpgf__register(config, _d);
+    QImageIOPluginWrapper::cpgf__register(_d);
     
-    buildMetaClass_QImageIOPlugin<D>(config, _d);
+    buildMetaClass_QImageIOPlugin<D>(_d);
 }
 
 

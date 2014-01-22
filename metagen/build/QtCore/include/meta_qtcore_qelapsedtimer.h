@@ -26,9 +26,9 @@ inline bool opErAToRWrapper_QElapsedTimer__opNotEqual(const QElapsedTimer * self
 
 
 template <typename D>
-void buildMetaClass_QElapsedTimer(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QElapsedTimer(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("clockType", &D::ClassType::clockType);

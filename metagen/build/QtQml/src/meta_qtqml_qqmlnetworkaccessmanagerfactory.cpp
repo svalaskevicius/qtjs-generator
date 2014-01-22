@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QQmlNetworkAccessManagerFactory()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlNetworkAccessManagerFactory> _nd = GDefineMetaClass<QQmlNetworkAccessManagerFactory>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlNetworkAccessManagerFactory");
-        buildMetaClass_QQmlNetworkAccessManagerFactory(0, _nd);
+        GDefineMetaClass<QQmlNetworkAccessManagerFactory> _nd = GDefineMetaClass<QQmlNetworkAccessManagerFactory>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlNetworkAccessManagerFactory", &buildMetaClass_QQmlNetworkAccessManagerFactory);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQmlNetworkAccessManagerFactoryWrapper, QQmlNetworkAccessManagerFactory> _nd = GDefineMetaClass<QQmlNetworkAccessManagerFactoryWrapper, QQmlNetworkAccessManagerFactory>::declare("QQmlNetworkAccessManagerFactoryWrapper");
-        buildMetaClass_QQmlNetworkAccessManagerFactoryWrapper(0, _nd);
+        GDefineMetaClass<QQmlNetworkAccessManagerFactoryWrapper, QQmlNetworkAccessManagerFactory> _nd = GDefineMetaClass<QQmlNetworkAccessManagerFactoryWrapper, QQmlNetworkAccessManagerFactory>::lazyDeclare("QQmlNetworkAccessManagerFactoryWrapper", &buildMetaClass_QQmlNetworkAccessManagerFactoryWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

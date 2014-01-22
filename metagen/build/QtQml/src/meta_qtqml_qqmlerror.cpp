@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qqmlerror()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qqmlerror(0, _d);
+    buildMetaClass_Global_qqmlerror(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QQmlError()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlError> _nd = GDefineMetaClass<QQmlError>::declare("QQmlError");
-        buildMetaClass_QQmlError(0, _nd);
+        GDefineMetaClass<QQmlError> _nd = GDefineMetaClass<QQmlError>::lazyDeclare("QQmlError", &buildMetaClass_QQmlError);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

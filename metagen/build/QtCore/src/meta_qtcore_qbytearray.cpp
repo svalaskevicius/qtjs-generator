@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qbytearray()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qbytearray(0, _d);
+    buildMetaClass_Global_qbytearray(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QByteArray()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QByteArray> _nd = GDefineMetaClass<QByteArray>::declare("QByteArray");
-        buildMetaClass_QByteArray(0, _nd);
+        GDefineMetaClass<QByteArray> _nd = GDefineMetaClass<QByteArray>::lazyDeclare("QByteArray", &buildMetaClass_QByteArray);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QByteArrayDataPtr()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QByteArrayDataPtr> _nd = GDefineMetaClass<QByteArrayDataPtr>::declare("QByteArrayDataPtr");
-        buildMetaClass_QByteArrayDataPtr(0, _nd);
+        GDefineMetaClass<QByteArrayDataPtr> _nd = GDefineMetaClass<QByteArrayDataPtr>::lazyDeclare("QByteArrayDataPtr", &buildMetaClass_QByteArrayDataPtr);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -98,8 +96,7 @@ GDefineMetaInfo createMetaClass_QByteRef()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QByteRef> _nd = GDefineMetaClass<QByteRef>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QByteRef");
-        buildMetaClass_QByteRef(0, _nd);
+        GDefineMetaClass<QByteRef> _nd = GDefineMetaClass<QByteRef>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QByteRef", &buildMetaClass_QByteRef);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

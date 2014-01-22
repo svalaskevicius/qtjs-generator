@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qmutex()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qmutex(0, _d);
+    buildMetaClass_Global_qmutex(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QBasicMutex()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QBasicMutex> _nd = GDefineMetaClass<QBasicMutex>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QBasicMutex");
-        buildMetaClass_QBasicMutex(0, _nd);
+        GDefineMetaClass<QBasicMutex> _nd = GDefineMetaClass<QBasicMutex>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QBasicMutex", &buildMetaClass_QBasicMutex);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -83,8 +82,7 @@ GDefineMetaInfo createMetaClass_QMutex()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMutex, QBasicMutex> _nd = GDefineMetaClass<QMutex, QBasicMutex>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QMutex");
-        buildMetaClass_QMutex(0, _nd);
+        GDefineMetaClass<QMutex, QBasicMutex> _nd = GDefineMetaClass<QMutex, QBasicMutex>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QMutex", &buildMetaClass_QMutex);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -98,8 +96,7 @@ GDefineMetaInfo createMetaClass_QMutexLocker()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QMutexLocker> _nd = GDefineMetaClass<QMutexLocker>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QMutexLocker");
-        buildMetaClass_QMutexLocker(0, _nd);
+        GDefineMetaClass<QMutexLocker> _nd = GDefineMetaClass<QMutexLocker>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QMutexLocker", &buildMetaClass_QMutexLocker);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

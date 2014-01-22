@@ -18,9 +18,9 @@ namespace meta_qtwidgets {
 
 
 template <typename D>
-void buildMetaClass_QGraphicsSceneContextMenuEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsSceneContextMenuEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEvent::Type)>()
@@ -45,9 +45,9 @@ void buildMetaClass_QGraphicsSceneContextMenuEvent(const cpgf::GMetaDataConfigFl
 
 
 template <typename D>
-void buildMetaClass_QGraphicsSceneDragDropEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsSceneDragDropEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEvent::Type)>()
@@ -78,9 +78,9 @@ void buildMetaClass_QGraphicsSceneDragDropEvent(const cpgf::GMetaDataConfigFlags
 
 
 template <typename D>
-void buildMetaClass_QGraphicsSceneEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsSceneEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEvent::Type)>();
@@ -90,9 +90,9 @@ void buildMetaClass_QGraphicsSceneEvent(const cpgf::GMetaDataConfigFlags & confi
 
 
 template <typename D>
-void buildMetaClass_QGraphicsSceneHelpEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsSceneHelpEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEvent::Type)>()
@@ -106,9 +106,9 @@ void buildMetaClass_QGraphicsSceneHelpEvent(const cpgf::GMetaDataConfigFlags & c
 
 
 template <typename D>
-void buildMetaClass_QGraphicsSceneHoverEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsSceneHoverEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEvent::Type)>()
@@ -132,9 +132,9 @@ void buildMetaClass_QGraphicsSceneHoverEvent(const cpgf::GMetaDataConfigFlags & 
 
 
 template <typename D>
-void buildMetaClass_QGraphicsSceneMouseEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsSceneMouseEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEvent::Type)>()
@@ -168,9 +168,9 @@ void buildMetaClass_QGraphicsSceneMouseEvent(const cpgf::GMetaDataConfigFlags & 
 
 
 template <typename D>
-void buildMetaClass_QGraphicsSceneMoveEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsSceneMoveEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -182,9 +182,9 @@ void buildMetaClass_QGraphicsSceneMoveEvent(const cpgf::GMetaDataConfigFlags & c
 
 
 template <typename D>
-void buildMetaClass_QGraphicsSceneResizeEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsSceneResizeEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -196,9 +196,9 @@ void buildMetaClass_QGraphicsSceneResizeEvent(const cpgf::GMetaDataConfigFlags &
 
 
 template <typename D>
-void buildMetaClass_QGraphicsSceneWheelEvent(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QGraphicsSceneWheelEvent(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QEvent::Type)>()

@@ -23,9 +23,9 @@ inline QTextDocumentFragment & opErAToRWrapper_QTextDocumentFragment__opAssign(Q
 
 
 template <typename D>
-void buildMetaClass_QTextDocumentFragment(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextDocumentFragment(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QTextList()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTextList, QTextBlockGroup> _nd = GDefineMetaClass<QTextList, QTextBlockGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTextList");
-        buildMetaClass_QTextList(0, _nd);
+        GDefineMetaClass<QTextList, QTextBlockGroup> _nd = GDefineMetaClass<QTextList, QTextBlockGroup>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTextList", &buildMetaClass_QTextList);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QTextListWrapper, QTextList> _nd = GDefineMetaClass<QTextListWrapper, QTextList>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTextListWrapper");
-        buildMetaClass_QTextListWrapper(0, _nd);
+        GDefineMetaClass<QTextListWrapper, QTextList> _nd = GDefineMetaClass<QTextListWrapper, QTextList>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTextListWrapper", &buildMetaClass_QTextListWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

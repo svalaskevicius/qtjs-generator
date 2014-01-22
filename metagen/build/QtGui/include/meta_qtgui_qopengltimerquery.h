@@ -21,9 +21,9 @@ namespace meta_qtgui {
 
 
 template <typename D>
-void buildMetaClass_QOpenGLTimeMonitor(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QOpenGLTimeMonitor(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -222,9 +222,9 @@ public:
         return QOpenGLTimeMonitor::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -250,22 +250,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QOpenGLTimeMonitorWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QOpenGLTimeMonitorWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QOpenGLTimeMonitorWrapper::cpgf__register(config, _d);
+    QOpenGLTimeMonitorWrapper::cpgf__register(_d);
     
-    buildMetaClass_QOpenGLTimeMonitor<D>(config, _d);
+    buildMetaClass_QOpenGLTimeMonitor<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QOpenGLTimerQuery(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QOpenGLTimerQuery(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -463,9 +463,9 @@ public:
         return QOpenGLTimerQuery::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -491,15 +491,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QOpenGLTimerQueryWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QOpenGLTimerQueryWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QOpenGLTimerQueryWrapper::cpgf__register(config, _d);
+    QOpenGLTimerQueryWrapper::cpgf__register(_d);
     
-    buildMetaClass_QOpenGLTimerQuery<D>(config, _d);
+    buildMetaClass_QOpenGLTimerQuery<D>(_d);
 }
 
 

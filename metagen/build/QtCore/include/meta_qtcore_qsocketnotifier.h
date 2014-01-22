@@ -21,9 +21,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_QSocketNotifier(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSocketNotifier(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (qintptr, QSocketNotifier::Type, QObject *)>()
@@ -221,9 +221,9 @@ public:
         return QSocketNotifier::metaObject();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -250,15 +250,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QSocketNotifierWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QSocketNotifierWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QSocketNotifierWrapper::cpgf__register(config, _d);
+    QSocketNotifierWrapper::cpgf__register(_d);
     
-    buildMetaClass_QSocketNotifier<D>(config, _d);
+    buildMetaClass_QSocketNotifier<D>(_d);
 }
 
 

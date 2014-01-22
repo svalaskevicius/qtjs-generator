@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QCommonStyle()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QCommonStyle, QStyle> _nd = GDefineMetaClass<QCommonStyle, QStyle>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QCommonStyle");
-        buildMetaClass_QCommonStyle(0, _nd);
+        GDefineMetaClass<QCommonStyle, QStyle> _nd = GDefineMetaClass<QCommonStyle, QStyle>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QCommonStyle", &buildMetaClass_QCommonStyle);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QCommonStyleWrapper, QCommonStyle> _nd = GDefineMetaClass<QCommonStyleWrapper, QCommonStyle>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QCommonStyleWrapper");
-        buildMetaClass_QCommonStyleWrapper(0, _nd);
+        GDefineMetaClass<QCommonStyleWrapper, QCommonStyle> _nd = GDefineMetaClass<QCommonStyleWrapper, QCommonStyle>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QCommonStyleWrapper", &buildMetaClass_QCommonStyleWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

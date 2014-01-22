@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QTouchDevice()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTouchDevice> _nd = GDefineMetaClass<QTouchDevice>::declare("QTouchDevice");
-        buildMetaClass_QTouchDevice(0, _nd);
+        GDefineMetaClass<QTouchDevice> _nd = GDefineMetaClass<QTouchDevice>::lazyDeclare("QTouchDevice", &buildMetaClass_QTouchDevice);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

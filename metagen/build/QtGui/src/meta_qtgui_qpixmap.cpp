@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qpixmap()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qpixmap(0, _d);
+    buildMetaClass_Global_qpixmap(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QPixmap()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QPixmap, QPaintDevice> _nd = GDefineMetaClass<QPixmap, QPaintDevice>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QPixmap");
-        buildMetaClass_QPixmap(0, _nd);
+        GDefineMetaClass<QPixmap, QPaintDevice> _nd = GDefineMetaClass<QPixmap, QPaintDevice>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPixmap", &buildMetaClass_QPixmap);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

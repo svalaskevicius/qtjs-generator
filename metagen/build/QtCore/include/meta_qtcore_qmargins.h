@@ -18,9 +18,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qmargins(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qmargins(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QMargins &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
@@ -63,9 +63,9 @@ inline QMargins & opErAToRWrapper_QMargins__opDivAssign(QMargins * self, qreal _
 
 
 template <typename D>
-void buildMetaClass_QMargins(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QMargins(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

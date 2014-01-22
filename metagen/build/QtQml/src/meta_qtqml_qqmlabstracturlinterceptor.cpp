@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QQmlAbstractUrlInterceptor()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlAbstractUrlInterceptor> _nd = GDefineMetaClass<QQmlAbstractUrlInterceptor>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlAbstractUrlInterceptor");
-        buildMetaClass_QQmlAbstractUrlInterceptor(0, _nd);
+        GDefineMetaClass<QQmlAbstractUrlInterceptor> _nd = GDefineMetaClass<QQmlAbstractUrlInterceptor>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlAbstractUrlInterceptor", &buildMetaClass_QQmlAbstractUrlInterceptor);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQmlAbstractUrlInterceptorWrapper, QQmlAbstractUrlInterceptor> _nd = GDefineMetaClass<QQmlAbstractUrlInterceptorWrapper, QQmlAbstractUrlInterceptor>::declare("QQmlAbstractUrlInterceptorWrapper");
-        buildMetaClass_QQmlAbstractUrlInterceptorWrapper(0, _nd);
+        GDefineMetaClass<QQmlAbstractUrlInterceptorWrapper, QQmlAbstractUrlInterceptor> _nd = GDefineMetaClass<QQmlAbstractUrlInterceptorWrapper, QQmlAbstractUrlInterceptor>::lazyDeclare("QQmlAbstractUrlInterceptorWrapper", &buildMetaClass_QQmlAbstractUrlInterceptorWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

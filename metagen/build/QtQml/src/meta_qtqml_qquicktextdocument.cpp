@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QQuickTextDocument()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQuickTextDocument, QObject> _nd = GDefineMetaClass<QQuickTextDocument, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQuickTextDocument");
-        buildMetaClass_QQuickTextDocument(0, _nd);
+        GDefineMetaClass<QQuickTextDocument, QObject> _nd = GDefineMetaClass<QQuickTextDocument, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQuickTextDocument", &buildMetaClass_QQuickTextDocument);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQuickTextDocumentWrapper, QQuickTextDocument> _nd = GDefineMetaClass<QQuickTextDocumentWrapper, QQuickTextDocument>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQuickTextDocumentWrapper");
-        buildMetaClass_QQuickTextDocumentWrapper(0, _nd);
+        GDefineMetaClass<QQuickTextDocumentWrapper, QQuickTextDocument> _nd = GDefineMetaClass<QQuickTextDocumentWrapper, QQuickTextDocument>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQuickTextDocumentWrapper", &buildMetaClass_QQuickTextDocumentWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

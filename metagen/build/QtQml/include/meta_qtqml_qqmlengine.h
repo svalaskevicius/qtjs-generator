@@ -21,9 +21,9 @@ namespace meta_qtqml {
 
 
 template <typename D>
-void buildMetaClass_QQmlEngine(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlEngine(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
@@ -254,9 +254,9 @@ public:
         return QObject::sender();
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -285,22 +285,22 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QQmlEngineWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlEngineWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QQmlEngineWrapper::cpgf__register(config, _d);
+    QQmlEngineWrapper::cpgf__register(_d);
     
-    buildMetaClass_QQmlEngine<D>(config, _d);
+    buildMetaClass_QQmlEngine<D>(_d);
 }
 
 
 template <typename D>
-void buildMetaClass_QQmlImageProviderBase(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlImageProviderBase(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("imageType", &D::ClassType::imageType);
@@ -348,9 +348,9 @@ public:
         throw std::runtime_error("Abstract method");
     }
     template <typename D>
-    static void cpgf__register(const cpgf::GMetaDataConfigFlags & config, D _d)
+    static void cpgf__register(D _d)
     {
-        (void)config; (void)_d; (void)_d;
+        (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_imageType", (QQmlImageProviderBase::ImageType (D::ClassType::*) () const)&D::ClassType::super_imageType);
         _d.CPGF_MD_TEMPLATE _method("super_flags", (QQmlImageProviderBase::Flags (D::ClassType::*) () const)&D::ClassType::super_flags);
@@ -359,15 +359,15 @@ public:
 
 
 template <typename D>
-void buildMetaClass_QQmlImageProviderBaseWrapper(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QQmlImageProviderBaseWrapper(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     
-    QQmlImageProviderBaseWrapper::cpgf__register(config, _d);
+    QQmlImageProviderBaseWrapper::cpgf__register(_d);
     
-    buildMetaClass_QQmlImageProviderBase<D>(config, _d);
+    buildMetaClass_QQmlImageProviderBase<D>(_d);
 }
 
 

@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QSplashScreen()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSplashScreen, QWidget> _nd = GDefineMetaClass<QSplashScreen, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSplashScreen");
-        buildMetaClass_QSplashScreen(0, _nd);
+        GDefineMetaClass<QSplashScreen, QWidget> _nd = GDefineMetaClass<QSplashScreen, QWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSplashScreen", &buildMetaClass_QSplashScreen);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QSplashScreenWrapper, QSplashScreen> _nd = GDefineMetaClass<QSplashScreenWrapper, QSplashScreen>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSplashScreenWrapper");
-        buildMetaClass_QSplashScreenWrapper(0, _nd);
+        GDefineMetaClass<QSplashScreenWrapper, QSplashScreen> _nd = GDefineMetaClass<QSplashScreenWrapper, QSplashScreen>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSplashScreenWrapper", &buildMetaClass_QSplashScreenWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

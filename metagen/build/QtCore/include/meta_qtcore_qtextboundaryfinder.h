@@ -23,9 +23,9 @@ inline QTextBoundaryFinder & opErAToRWrapper_QTextBoundaryFinder__opAssign(QText
 
 
 template <typename D>
-void buildMetaClass_QTextBoundaryFinder(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QTextBoundaryFinder(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

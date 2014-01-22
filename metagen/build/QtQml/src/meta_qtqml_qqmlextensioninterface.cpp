@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qqmlextensioninterface()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qqmlextensioninterface(0, _d);
+    buildMetaClass_Global_qqmlextensioninterface(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,13 +33,11 @@ GDefineMetaInfo createMetaClass_QQmlExtensionInterface()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlExtensionInterface, QQmlTypesExtensionInterface> _nd = GDefineMetaClass<QQmlExtensionInterface, QQmlTypesExtensionInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlExtensionInterface");
-        buildMetaClass_QQmlExtensionInterface(0, _nd);
+        GDefineMetaClass<QQmlExtensionInterface, QQmlTypesExtensionInterface> _nd = GDefineMetaClass<QQmlExtensionInterface, QQmlTypesExtensionInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlExtensionInterface", &buildMetaClass_QQmlExtensionInterface);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQmlExtensionInterfaceWrapper, QQmlExtensionInterface> _nd = GDefineMetaClass<QQmlExtensionInterfaceWrapper, QQmlExtensionInterface>::declare("QQmlExtensionInterfaceWrapper");
-        buildMetaClass_QQmlExtensionInterfaceWrapper(0, _nd);
+        GDefineMetaClass<QQmlExtensionInterfaceWrapper, QQmlExtensionInterface> _nd = GDefineMetaClass<QQmlExtensionInterfaceWrapper, QQmlExtensionInterface>::lazyDeclare("QQmlExtensionInterfaceWrapper", &buildMetaClass_QQmlExtensionInterfaceWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -53,13 +51,11 @@ GDefineMetaInfo createMetaClass_QQmlTypesExtensionInterface()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQmlTypesExtensionInterface> _nd = GDefineMetaClass<QQmlTypesExtensionInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQmlTypesExtensionInterface");
-        buildMetaClass_QQmlTypesExtensionInterface(0, _nd);
+        GDefineMetaClass<QQmlTypesExtensionInterface> _nd = GDefineMetaClass<QQmlTypesExtensionInterface>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQmlTypesExtensionInterface", &buildMetaClass_QQmlTypesExtensionInterface);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQmlTypesExtensionInterfaceWrapper, QQmlTypesExtensionInterface> _nd = GDefineMetaClass<QQmlTypesExtensionInterfaceWrapper, QQmlTypesExtensionInterface>::declare("QQmlTypesExtensionInterfaceWrapper");
-        buildMetaClass_QQmlTypesExtensionInterfaceWrapper(0, _nd);
+        GDefineMetaClass<QQmlTypesExtensionInterfaceWrapper, QQmlTypesExtensionInterface> _nd = GDefineMetaClass<QQmlTypesExtensionInterfaceWrapper, QQmlTypesExtensionInterface>::lazyDeclare("QQmlTypesExtensionInterfaceWrapper", &buildMetaClass_QQmlTypesExtensionInterfaceWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

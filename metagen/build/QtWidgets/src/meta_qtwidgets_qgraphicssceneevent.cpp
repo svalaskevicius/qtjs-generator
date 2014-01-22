@@ -77,8 +77,7 @@ GDefineMetaInfo createMetaClass_QGraphicsSceneContextMenuEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsSceneContextMenuEvent, QGraphicsSceneEvent> _nd = GDefineMetaClass<QGraphicsSceneContextMenuEvent, QGraphicsSceneEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsSceneContextMenuEvent");
-        buildMetaClass_QGraphicsSceneContextMenuEvent(0, _nd);
+        GDefineMetaClass<QGraphicsSceneContextMenuEvent, QGraphicsSceneEvent> _nd = GDefineMetaClass<QGraphicsSceneContextMenuEvent, QGraphicsSceneEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsSceneContextMenuEvent", &buildMetaClass_QGraphicsSceneContextMenuEvent);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -92,8 +91,7 @@ GDefineMetaInfo createMetaClass_QGraphicsSceneDragDropEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsSceneDragDropEvent, QGraphicsSceneEvent> _nd = GDefineMetaClass<QGraphicsSceneDragDropEvent, QGraphicsSceneEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsSceneDragDropEvent");
-        buildMetaClass_QGraphicsSceneDragDropEvent(0, _nd);
+        GDefineMetaClass<QGraphicsSceneDragDropEvent, QGraphicsSceneEvent> _nd = GDefineMetaClass<QGraphicsSceneDragDropEvent, QGraphicsSceneEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsSceneDragDropEvent", &buildMetaClass_QGraphicsSceneDragDropEvent);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -107,8 +105,7 @@ GDefineMetaInfo createMetaClass_QGraphicsSceneEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsSceneEvent, QEvent> _nd = GDefineMetaClass<QGraphicsSceneEvent, QEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsSceneEvent");
-        buildMetaClass_QGraphicsSceneEvent(0, _nd);
+        GDefineMetaClass<QGraphicsSceneEvent, QEvent> _nd = GDefineMetaClass<QGraphicsSceneEvent, QEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsSceneEvent", &buildMetaClass_QGraphicsSceneEvent);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -122,8 +119,7 @@ GDefineMetaInfo createMetaClass_QGraphicsSceneHelpEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsSceneHelpEvent, QGraphicsSceneEvent> _nd = GDefineMetaClass<QGraphicsSceneHelpEvent, QGraphicsSceneEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsSceneHelpEvent");
-        buildMetaClass_QGraphicsSceneHelpEvent(0, _nd);
+        GDefineMetaClass<QGraphicsSceneHelpEvent, QGraphicsSceneEvent> _nd = GDefineMetaClass<QGraphicsSceneHelpEvent, QGraphicsSceneEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsSceneHelpEvent", &buildMetaClass_QGraphicsSceneHelpEvent);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -137,8 +133,7 @@ GDefineMetaInfo createMetaClass_QGraphicsSceneHoverEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsSceneHoverEvent, QGraphicsSceneEvent> _nd = GDefineMetaClass<QGraphicsSceneHoverEvent, QGraphicsSceneEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsSceneHoverEvent");
-        buildMetaClass_QGraphicsSceneHoverEvent(0, _nd);
+        GDefineMetaClass<QGraphicsSceneHoverEvent, QGraphicsSceneEvent> _nd = GDefineMetaClass<QGraphicsSceneHoverEvent, QGraphicsSceneEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsSceneHoverEvent", &buildMetaClass_QGraphicsSceneHoverEvent);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -152,8 +147,7 @@ GDefineMetaInfo createMetaClass_QGraphicsSceneMouseEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsSceneMouseEvent, QGraphicsSceneEvent> _nd = GDefineMetaClass<QGraphicsSceneMouseEvent, QGraphicsSceneEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsSceneMouseEvent");
-        buildMetaClass_QGraphicsSceneMouseEvent(0, _nd);
+        GDefineMetaClass<QGraphicsSceneMouseEvent, QGraphicsSceneEvent> _nd = GDefineMetaClass<QGraphicsSceneMouseEvent, QGraphicsSceneEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsSceneMouseEvent", &buildMetaClass_QGraphicsSceneMouseEvent);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -167,8 +161,7 @@ GDefineMetaInfo createMetaClass_QGraphicsSceneMoveEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsSceneMoveEvent, QGraphicsSceneEvent> _nd = GDefineMetaClass<QGraphicsSceneMoveEvent, QGraphicsSceneEvent>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsSceneMoveEvent");
-        buildMetaClass_QGraphicsSceneMoveEvent(0, _nd);
+        GDefineMetaClass<QGraphicsSceneMoveEvent, QGraphicsSceneEvent> _nd = GDefineMetaClass<QGraphicsSceneMoveEvent, QGraphicsSceneEvent>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsSceneMoveEvent", &buildMetaClass_QGraphicsSceneMoveEvent);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -182,8 +175,7 @@ GDefineMetaInfo createMetaClass_QGraphicsSceneResizeEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsSceneResizeEvent, QGraphicsSceneEvent> _nd = GDefineMetaClass<QGraphicsSceneResizeEvent, QGraphicsSceneEvent>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsSceneResizeEvent");
-        buildMetaClass_QGraphicsSceneResizeEvent(0, _nd);
+        GDefineMetaClass<QGraphicsSceneResizeEvent, QGraphicsSceneEvent> _nd = GDefineMetaClass<QGraphicsSceneResizeEvent, QGraphicsSceneEvent>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsSceneResizeEvent", &buildMetaClass_QGraphicsSceneResizeEvent);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -197,8 +189,7 @@ GDefineMetaInfo createMetaClass_QGraphicsSceneWheelEvent()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QGraphicsSceneWheelEvent, QGraphicsSceneEvent> _nd = GDefineMetaClass<QGraphicsSceneWheelEvent, QGraphicsSceneEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QGraphicsSceneWheelEvent");
-        buildMetaClass_QGraphicsSceneWheelEvent(0, _nd);
+        GDefineMetaClass<QGraphicsSceneWheelEvent, QGraphicsSceneEvent> _nd = GDefineMetaClass<QGraphicsSceneWheelEvent, QGraphicsSceneEvent>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QGraphicsSceneWheelEvent", &buildMetaClass_QGraphicsSceneWheelEvent);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

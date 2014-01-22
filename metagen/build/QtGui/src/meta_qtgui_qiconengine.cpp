@@ -22,8 +22,7 @@ GDefineMetaInfo createMetaClass_QIconEngine()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QIconEngine> _nd = GDefineMetaClass<QIconEngine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QIconEngine");
-        buildMetaClass_QIconEngine(0, _nd);
+        GDefineMetaClass<QIconEngine> _nd = GDefineMetaClass<QIconEngine>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QIconEngine", &buildMetaClass_QIconEngine);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

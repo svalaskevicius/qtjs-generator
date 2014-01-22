@@ -22,13 +22,11 @@ GDefineMetaInfo createMetaClass_QQuickFramebufferObject()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QQuickFramebufferObject, QQuickItem> _nd = GDefineMetaClass<QQuickFramebufferObject, QQuickItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQuickFramebufferObject");
-        buildMetaClass_QQuickFramebufferObject(0, _nd);
+        GDefineMetaClass<QQuickFramebufferObject, QQuickItem> _nd = GDefineMetaClass<QQuickFramebufferObject, QQuickItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQuickFramebufferObject", &buildMetaClass_QQuickFramebufferObject);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QQuickFramebufferObjectWrapper, QQuickFramebufferObject> _nd = GDefineMetaClass<QQuickFramebufferObjectWrapper, QQuickFramebufferObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QQuickFramebufferObjectWrapper");
-        buildMetaClass_QQuickFramebufferObjectWrapper(0, _nd);
+        GDefineMetaClass<QQuickFramebufferObjectWrapper, QQuickFramebufferObject> _nd = GDefineMetaClass<QQuickFramebufferObjectWrapper, QQuickFramebufferObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQuickFramebufferObjectWrapper", &buildMetaClass_QQuickFramebufferObjectWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

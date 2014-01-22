@@ -57,8 +57,7 @@ GDefineMetaInfo createMetaClass_QSemaphore()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QSemaphore> _nd = GDefineMetaClass<QSemaphore>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QSemaphore");
-        buildMetaClass_QSemaphore(0, _nd);
+        GDefineMetaClass<QSemaphore> _nd = GDefineMetaClass<QSemaphore>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSemaphore", &buildMetaClass_QSemaphore);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

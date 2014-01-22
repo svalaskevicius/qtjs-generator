@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qobject()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qobject(0, _d);
+    buildMetaClass_Global_qobject(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,13 +68,11 @@ GDefineMetaInfo createMetaClass_QObject()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QObject> _nd = GDefineMetaClass<QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QObject");
-        buildMetaClass_QObject(0, _nd);
+        GDefineMetaClass<QObject> _nd = GDefineMetaClass<QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QObject", &buildMetaClass_QObject);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QObjectWrapper, QObject> _nd = GDefineMetaClass<QObjectWrapper, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QObjectWrapper");
-        buildMetaClass_QObjectWrapper(0, _nd);
+        GDefineMetaClass<QObjectWrapper, QObject> _nd = GDefineMetaClass<QObjectWrapper, QObject>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QObjectWrapper", &buildMetaClass_QObjectWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -88,8 +86,7 @@ GDefineMetaInfo createMetaClass_QObjectData()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QObjectData> _nd = GDefineMetaClass<QObjectData>::declare("QObjectData");
-        buildMetaClass_QObjectData(0, _nd);
+        GDefineMetaClass<QObjectData> _nd = GDefineMetaClass<QObjectData>::lazyDeclare("QObjectData", &buildMetaClass_QObjectData);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -103,8 +100,7 @@ GDefineMetaInfo createMetaClass_QObjectUserData()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QObjectUserData> _nd = GDefineMetaClass<QObjectUserData>::declare("QObjectUserData");
-        buildMetaClass_QObjectUserData(0, _nd);
+        GDefineMetaClass<QObjectUserData> _nd = GDefineMetaClass<QObjectUserData>::lazyDeclare("QObjectUserData", &buildMetaClass_QObjectUserData);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

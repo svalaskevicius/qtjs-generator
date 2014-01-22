@@ -77,13 +77,11 @@ GDefineMetaInfo createMetaClass_QFileDialog()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QFileDialog, QDialog> _nd = GDefineMetaClass<QFileDialog, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFileDialog");
-        buildMetaClass_QFileDialog(0, _nd);
+        GDefineMetaClass<QFileDialog, QDialog> _nd = GDefineMetaClass<QFileDialog, QDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFileDialog", &buildMetaClass_QFileDialog);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QFileDialogWrapper, QFileDialog> _nd = GDefineMetaClass<QFileDialogWrapper, QFileDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QFileDialogWrapper");
-        buildMetaClass_QFileDialogWrapper(0, _nd);
+        GDefineMetaClass<QFileDialogWrapper, QFileDialog> _nd = GDefineMetaClass<QFileDialogWrapper, QFileDialog>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QFileDialogWrapper", &buildMetaClass_QFileDialogWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

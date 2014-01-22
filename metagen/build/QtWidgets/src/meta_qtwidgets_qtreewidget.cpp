@@ -76,7 +76,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qtreewidget()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qtreewidget(0, _d);
+    buildMetaClass_Global_qtreewidget(_d);
     return _d.getMetaInfo();
 }
 
@@ -88,13 +88,11 @@ GDefineMetaInfo createMetaClass_QTreeWidget()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTreeWidget, QTreeView> _nd = GDefineMetaClass<QTreeWidget, QTreeView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTreeWidget");
-        buildMetaClass_QTreeWidget(0, _nd);
+        GDefineMetaClass<QTreeWidget, QTreeView> _nd = GDefineMetaClass<QTreeWidget, QTreeView>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTreeWidget", &buildMetaClass_QTreeWidget);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QTreeWidgetWrapper, QTreeWidget> _nd = GDefineMetaClass<QTreeWidgetWrapper, QTreeWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QTreeWidgetWrapper");
-        buildMetaClass_QTreeWidgetWrapper(0, _nd);
+        GDefineMetaClass<QTreeWidgetWrapper, QTreeWidget> _nd = GDefineMetaClass<QTreeWidgetWrapper, QTreeWidget>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QTreeWidgetWrapper", &buildMetaClass_QTreeWidgetWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -108,8 +106,7 @@ GDefineMetaInfo createMetaClass_QTreeWidgetItem()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QTreeWidgetItem> _nd = GDefineMetaClass<QTreeWidgetItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("QTreeWidgetItem");
-        buildMetaClass_QTreeWidgetItem(0, _nd);
+        GDefineMetaClass<QTreeWidgetItem> _nd = GDefineMetaClass<QTreeWidgetItem>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QTreeWidgetItem", &buildMetaClass_QTreeWidgetItem);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -19,9 +19,9 @@ namespace meta_qtcore {
 
 
 template <typename D>
-void buildMetaClass_Global_qstring(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_Global_qstring(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_20")
@@ -111,9 +111,9 @@ inline QCharRef & opErAToRWrapper_QCharRef__opAssign(QCharRef * self, int rc) {
 
 
 template <typename D>
-void buildMetaClass_QCharRef(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QCharRef(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("isNull", &D::ClassType::isNull);
@@ -226,9 +226,9 @@ inline bool opErAToRWrapper_QLatin1String__opGreaterEqual(const QLatin1String * 
 
 
 template <typename D>
-void buildMetaClass_QLatin1String(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QLatin1String(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const char *)>();
@@ -277,9 +277,9 @@ void buildMetaClass_QLatin1String(const cpgf::GMetaDataConfigFlags & config, D _
 
 
 template <typename D, int N>
-void buildMetaClass_QStaticStringData(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStaticStringData(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("str", &D::ClassType::str);
@@ -402,9 +402,9 @@ inline QString & opErAToRWrapper_QString__opAssign(QString * self, const QString
 
 
 template <typename D>
-void buildMetaClass_QString(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QString(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -985,9 +985,9 @@ void buildMetaClass_QString(const cpgf::GMetaDataConfigFlags & config, D _d)
 
 
 template <typename D>
-void buildMetaClass_QStringDataPtr(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStringDataPtr(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _field("ptr", &D::ClassType::ptr);
@@ -1021,9 +1021,9 @@ inline bool opErAToRWrapper_QStringRef__opGreaterEqual(const QStringRef * self, 
 
 
 template <typename D>
-void buildMetaClass_QStringRef(const cpgf::GMetaDataConfigFlags & config, D _d)
+void buildMetaClass_QStringRef(D _d)
 {
-    (void)config; (void)_d; (void)_d;
+    (void)_d;
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();

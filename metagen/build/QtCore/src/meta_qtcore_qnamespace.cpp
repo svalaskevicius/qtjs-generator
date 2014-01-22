@@ -56,7 +56,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qnamespace()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qnamespace(0, _d);
+    buildMetaClass_Global_qnamespace(_d);
     return _d.getMetaInfo();
 }
 
@@ -68,8 +68,7 @@ GDefineMetaInfo createMetaClass_QInternal()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QInternal> _nd = GDefineMetaClass<QInternal>::declare("QInternal");
-        buildMetaClass_QInternal(0, _nd);
+        GDefineMetaClass<QInternal> _nd = GDefineMetaClass<QInternal>::lazyDeclare("QInternal", &buildMetaClass_QInternal);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

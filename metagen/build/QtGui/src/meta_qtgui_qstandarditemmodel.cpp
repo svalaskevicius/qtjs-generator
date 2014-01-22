@@ -21,7 +21,7 @@ DLL_PUBLIC
 GDefineMetaInfo createMetaClass_Global_qstandarditemmodel()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qstandarditemmodel(0, _d);
+    buildMetaClass_Global_qstandarditemmodel(_d);
     return _d.getMetaInfo();
 }
 
@@ -33,8 +33,7 @@ GDefineMetaInfo createMetaClass_QStandardItem()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStandardItem> _nd = GDefineMetaClass<QStandardItem>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::declare("QStandardItem");
-        buildMetaClass_QStandardItem(0, _nd);
+        GDefineMetaClass<QStandardItem> _nd = GDefineMetaClass<QStandardItem>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStandardItem", &buildMetaClass_QStandardItem);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
@@ -48,13 +47,11 @@ GDefineMetaInfo createMetaClass_QStandardItemModel()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QStandardItemModel, QAbstractItemModel> _nd = GDefineMetaClass<QStandardItemModel, QAbstractItemModel>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QStandardItemModel");
-        buildMetaClass_QStandardItemModel(0, _nd);
+        GDefineMetaClass<QStandardItemModel, QAbstractItemModel> _nd = GDefineMetaClass<QStandardItemModel, QAbstractItemModel>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStandardItemModel", &buildMetaClass_QStandardItemModel);
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<QStandardItemModelWrapper, QStandardItemModel> _nd = GDefineMetaClass<QStandardItemModelWrapper, QStandardItemModel>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::declare("QStandardItemModelWrapper");
-        buildMetaClass_QStandardItemModelWrapper(0, _nd);
+        GDefineMetaClass<QStandardItemModelWrapper, QStandardItemModel> _nd = GDefineMetaClass<QStandardItemModelWrapper, QStandardItemModel>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QStandardItemModelWrapper", &buildMetaClass_QStandardItemModelWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
