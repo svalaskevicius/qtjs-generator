@@ -31,6 +31,8 @@ QMAKE_CXXFLAGS_RELEASE += -Os
 QMAKE_CXXFLAGS_RELEASE += -fvisibility=hidden -fvisibility-inlines-hidden -s
 QMAKE_LFLAGS_RELEASE += -fvisibility=hidden -fvisibility-inlines-hidden -s
 
+INCLUDEPATH += $${ROOT}/metagen/build/
+
 # mac + clang
 # QMAKE_CFLAGS += -mmacosx-version-min=10.7 -stdlib=libc++
 # QMAKE_LFLAGS += -mmacosx-version-min=10.7  -stdlib=libc++

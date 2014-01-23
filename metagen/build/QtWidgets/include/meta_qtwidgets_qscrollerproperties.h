@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QSCROLLERPROPERTIES_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 inline QScrollerProperties & opErAToRWrapper_QScrollerProperties__opAssign(QScrollerProperties * self, const QScrollerProperties & sp) {
@@ -83,7 +85,7 @@ void buildMetaClass_QScrollerProperties(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

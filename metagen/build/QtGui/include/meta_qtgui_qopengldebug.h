@@ -4,6 +4,8 @@
 #define __META_QTGUI_QOPENGLDEBUG_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -377,10 +379,22 @@ void buildMetaClass_QOpenGLDebugMessage(D _d)
     _d.CPGF_MD_TEMPLATE _method("_opEqual", (bool (*) (const QOpenGLDebugMessage *, const QOpenGLDebugMessage &))&opErAToRWrapper_QOpenGLDebugMessage__opEqual, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const cpgf::GMetaSelf &, const QOpenGLDebugMessage &)>(mopHolder != mopHolder);
     _d.CPGF_MD_TEMPLATE _method("_opNotEqual", (bool (*) (const QOpenGLDebugMessage *, const QOpenGLDebugMessage &))&opErAToRWrapper_QOpenGLDebugMessage__opNotEqual, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::Source > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Source > >::lazyDeclare("Sources", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Source > >, typename D::ClassType::Source >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::Type > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Type > >::lazyDeclare("Types", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Type > >, typename D::ClassType::Type >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::Severity > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Severity > >::lazyDeclare("Severities", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Severity > >, typename D::ClassType::Severity >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 
 

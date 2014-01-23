@@ -4,6 +4,8 @@
 #define __META_QTGUI_QOPENGLFUNCTIONS_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -153,10 +155,14 @@ void buildMetaClass_QOpenGLFunctions(D _d)
         ._element("NPOTTextureRepeat", D::ClassType::NPOTTextureRepeat)
         ._element("FixedFunctionPipeline", D::ClassType::FixedFunctionPipeline)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::OpenGLFeature > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::OpenGLFeature > >::lazyDeclare("OpenGLFeatures", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::OpenGLFeature > >, typename D::ClassType::OpenGLFeature >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 
 

@@ -47,7 +47,7 @@
 
 using namespace cpgf;
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 #ifdef DLL_PUBLIC
@@ -62,6 +62,6 @@ GDefineMetaInfo createMetaClass_QList_TemplateInstance_QList_QObject_ptr()
     }
     return _d.getMetaInfo();
 }
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 

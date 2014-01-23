@@ -4,6 +4,8 @@
 #define __META_QTGUI_QPAINTER_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -366,6 +368,14 @@ void buildMetaClass_QPainter(D _d)
         ._element("RasterOp_NotDestination", D::ClassType::RasterOp_NotDestination)
     ;
     {
+        GDefineMetaClass<QFlags<typename D::ClassType::RenderHint > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::RenderHint > >::lazyDeclare("RenderHints", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::RenderHint > >, typename D::ClassType::RenderHint >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::PixmapFragmentHint > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::PixmapFragmentHint > >::lazyDeclare("PixmapFragmentHints", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::PixmapFragmentHint > >, typename D::ClassType::PixmapFragmentHint >);
+        _d._class(_t_d);
+    }
+    {
         GDefineMetaClass<QPainter::PixmapFragment> _nd = GDefineMetaClass<QPainter::PixmapFragment>::declare("PixmapFragment");
         _nd.CPGF_MD_TEMPLATE _field("x", &QPainter::PixmapFragment::x);
         _nd.CPGF_MD_TEMPLATE _field("y", &QPainter::PixmapFragment::y);
@@ -388,7 +398,7 @@ void buildMetaClass_QPainter(D _d)
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 
 

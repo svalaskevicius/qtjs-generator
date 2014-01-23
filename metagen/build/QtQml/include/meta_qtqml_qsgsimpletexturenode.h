@@ -4,6 +4,8 @@
 #define __META_QTQML_QSGSIMPLETEXTURENODE_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtqml { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -41,6 +43,10 @@ void buildMetaClass_QSGSimpleTextureNode(D _d)
         ._element("MirrorHorizontally", D::ClassType::MirrorHorizontally)
         ._element("MirrorVertically", D::ClassType::MirrorVertically)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::TextureCoordinatesTransformFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::TextureCoordinatesTransformFlag > >::lazyDeclare("TextureCoordinatesTransformMode", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::TextureCoordinatesTransformFlag > >, typename D::ClassType::TextureCoordinatesTransformFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -102,7 +108,7 @@ void buildMetaClass_QSGSimpleTextureNodeWrapper(D _d)
 }
 
 
-} // namespace meta_qtqml
+} // namespace qt_metadata
 
 
 

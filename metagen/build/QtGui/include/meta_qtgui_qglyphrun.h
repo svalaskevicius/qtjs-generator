@@ -4,6 +4,8 @@
 #define __META_QTGUI_QGLYPHRUN_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 inline QGlyphRun & opErAToRWrapper_QGlyphRun__opAssign(QGlyphRun * self, const QGlyphRun & other) {
@@ -74,10 +76,14 @@ void buildMetaClass_QGlyphRun(D _d)
     _d.CPGF_MD_TEMPLATE _method("_opEqual", (bool (*) (const QGlyphRun *, const QGlyphRun &))&opErAToRWrapper_QGlyphRun__opEqual, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const cpgf::GMetaSelf &, const QGlyphRun &)>(mopHolder != mopHolder);
     _d.CPGF_MD_TEMPLATE _method("_opNotEqual", (bool (*) (const QGlyphRun *, const QGlyphRun &))&opErAToRWrapper_QGlyphRun__opNotEqual, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::GlyphRunFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::GlyphRunFlag > >::lazyDeclare("GlyphRunFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::GlyphRunFlag > >, typename D::ClassType::GlyphRunFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 
 

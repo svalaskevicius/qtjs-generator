@@ -9,7 +9,7 @@
 
 using namespace cpgf;
 
-namespace meta_qtqml { 
+namespace qt_metadata { 
 
 
 GDefineMetaInfo createMetaClass_DesignerSupport();
@@ -179,7 +179,7 @@ void registerMain_QtQml(Meta _d)
     _d._class(createMetaClass_QSGVertexColorMaterial());
 }
 
-} // namespace meta_qtqml
+} // namespace qt_metadata
 
 
 

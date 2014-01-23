@@ -4,6 +4,8 @@
 #define __META_QTGUI_QTOUCHDEVICE_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -45,10 +47,14 @@ void buildMetaClass_QTouchDevice(D _d)
         ._element("RawPositions", D::ClassType::RawPositions)
         ._element("NormalizedPosition", D::ClassType::NormalizedPosition)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::CapabilityFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::CapabilityFlag > >::lazyDeclare("Capabilities", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::CapabilityFlag > >, typename D::ClassType::CapabilityFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 
 

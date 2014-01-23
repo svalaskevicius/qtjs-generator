@@ -4,6 +4,8 @@
 #define __META_QTCORE_QITEMSELECTIONMODEL_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -103,6 +105,10 @@ void buildMetaClass_QItemSelectionModel(D _d)
         ._element("ToggleCurrent", D::ClassType::ToggleCurrent)
         ._element("ClearAndSelect", D::ClassType::ClearAndSelect)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::SelectionFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::SelectionFlag > >::lazyDeclare("SelectionFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::SelectionFlag > >, typename D::ClassType::SelectionFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -469,7 +475,7 @@ void buildMetaClass_QItemSelectionRange(D _d)
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

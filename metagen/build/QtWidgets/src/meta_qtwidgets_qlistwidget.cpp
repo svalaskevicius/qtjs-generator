@@ -67,7 +67,7 @@
 
 using namespace cpgf;
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 #ifdef DLL_PUBLIC
@@ -113,6 +113,6 @@ GDefineMetaInfo createMetaClass_QListWidgetItem()
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 

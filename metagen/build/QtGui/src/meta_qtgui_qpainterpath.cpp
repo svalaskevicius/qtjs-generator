@@ -12,7 +12,7 @@
 
 using namespace cpgf;
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 #ifdef DLL_PUBLIC
@@ -54,6 +54,6 @@ GDefineMetaInfo createMetaClass_QPainterPathStroker()
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 

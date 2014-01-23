@@ -12,7 +12,7 @@
 
 using namespace cpgf;
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 #ifdef DLL_PUBLIC
@@ -51,6 +51,6 @@ GDefineMetaInfo createMetaClass_QOpenGLTimerQuery()
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 

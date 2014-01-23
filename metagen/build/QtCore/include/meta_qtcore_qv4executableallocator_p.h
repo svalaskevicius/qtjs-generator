@@ -4,6 +4,8 @@
 #define __META_QTCORE_QV4EXECUTABLEALLOCATOR_P_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -16,10 +18,10 @@ using namespace WTF;
 using namespace QV4;
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

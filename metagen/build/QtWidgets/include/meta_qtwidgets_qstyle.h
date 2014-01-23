@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QSTYLE_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -670,6 +672,14 @@ void buildMetaClass_QStyle(D _d)
         ._element("SP_LineEditClearButton", D::ClassType::SP_LineEditClearButton)
         ._element("SP_CustomBase", D::ClassType::SP_CustomBase)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::StateFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::StateFlag > >::lazyDeclare("State", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::StateFlag > >, typename D::ClassType::StateFlag >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::SubControl > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::SubControl > >::lazyDeclare("SubControls", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::SubControl > >, typename D::ClassType::SubControl >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -1272,7 +1282,7 @@ void buildMetaClass_QStyleWrapper(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

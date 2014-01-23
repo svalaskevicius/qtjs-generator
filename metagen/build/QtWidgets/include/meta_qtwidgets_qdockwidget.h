@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QDOCKWIDGET_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -69,6 +71,10 @@ void buildMetaClass_QDockWidget(D _d)
         ._element("NoDockWidgetFeatures", D::ClassType::NoDockWidgetFeatures)
         ._element("Reserved", D::ClassType::Reserved)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::DockWidgetFeature > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::DockWidgetFeature > >::lazyDeclare("DockWidgetFeatures", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::DockWidgetFeature > >, typename D::ClassType::DockWidgetFeature >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -990,7 +996,7 @@ void buildMetaClass_QDockWidgetWrapper(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

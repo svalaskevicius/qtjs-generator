@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QFILEDIALOG_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -204,6 +206,10 @@ void buildMetaClass_QFileDialog(D _d)
         ._element("HideNameFilterDetails", D::ClassType::HideNameFilterDetails)
         ._element("DontUseCustomDirectoryIcons", D::ClassType::DontUseCustomDirectoryIcons)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::Option > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Option > >::lazyDeclare("Options", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Option > >, typename D::ClassType::Option >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -1207,7 +1213,7 @@ void buildMetaClass_QFileDialogWrapper(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

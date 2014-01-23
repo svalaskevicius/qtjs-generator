@@ -4,6 +4,8 @@
 #define __META_QTQML_QSGGEOMETRY_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtqml { 
+namespace qt_metadata { 
 
 
 inline uint bItFiEldWrapper_QSGGeometry_Attribute_isVertexCoordinate_getter(QSGGeometry::Attribute * self) {
@@ -137,7 +139,7 @@ void buildMetaClass_QSGGeometry(D _d)
 }
 
 
-} // namespace meta_qtqml
+} // namespace qt_metadata
 
 
 

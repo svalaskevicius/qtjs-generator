@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QGESTURE_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -574,6 +576,10 @@ void buildMetaClass_QPinchGesture(D _d)
         ._element("RotationAngleChanged", D::ClassType::RotationAngleChanged)
         ._element("CenterPointChanged", D::ClassType::CenterPointChanged)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::ChangeFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ChangeFlag > >::lazyDeclare("ChangeFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ChangeFlag > >, typename D::ClassType::ChangeFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -1498,7 +1504,7 @@ void buildMetaClass_QTapGestureWrapper(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

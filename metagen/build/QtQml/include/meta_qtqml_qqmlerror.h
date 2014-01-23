@@ -4,6 +4,8 @@
 #define __META_QTQML_QQMLERROR_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtqml { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -57,7 +59,7 @@ void buildMetaClass_QQmlError(D _d)
 }
 
 
-} // namespace meta_qtqml
+} // namespace qt_metadata
 
 
 

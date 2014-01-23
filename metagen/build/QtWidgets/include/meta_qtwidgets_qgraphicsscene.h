@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QGRAPHICSSCENE_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -185,6 +187,10 @@ void buildMetaClass_QGraphicsScene(D _d)
         ._element("ForegroundLayer", D::ClassType::ForegroundLayer)
         ._element("AllLayers", D::ClassType::AllLayers)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::SceneLayer > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::SceneLayer > >::lazyDeclare("SceneLayers", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::SceneLayer > >, typename D::ClassType::SceneLayer >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -779,7 +785,7 @@ void buildMetaClass_QGraphicsSceneWrapper(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

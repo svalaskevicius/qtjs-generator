@@ -47,7 +47,7 @@
 
 using namespace cpgf;
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 #ifdef DLL_PUBLIC
@@ -120,6 +120,6 @@ GDefineMetaInfo createMetaClass_QTimerEvent()
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 

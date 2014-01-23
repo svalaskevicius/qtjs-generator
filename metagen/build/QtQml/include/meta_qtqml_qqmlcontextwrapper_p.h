@@ -4,6 +4,8 @@
 #define __META_QTQML_QQMLCONTEXTWRAPPER_P_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -16,10 +18,10 @@ using namespace QV4;
 using namespace QV4::CompiledData;
 
 
-namespace meta_qtqml { 
+namespace qt_metadata { 
 
 
-} // namespace meta_qtqml
+} // namespace qt_metadata
 
 
 

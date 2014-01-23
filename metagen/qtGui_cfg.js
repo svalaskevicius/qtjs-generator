@@ -6,7 +6,7 @@ var config = {
 
   metaItemCallback : processCallback,
 
-  cppNamespace : "meta_qtgui",
+  cppNamespace : "qt_metadata",
 
   metaClassFunctionPrefix : "buildMetaClass_",
   metaClassCreatePrefix : "createMetaClass_",
@@ -22,7 +22,11 @@ var config = {
   autoRegisterToGlobal : false,
 
   metaNamespace : "qtgui",
-  headerHeaderCode : "#include <qtGui_cpgf_compat.h>\n",
+  headerHeaderCode : ""
+    +"#include <QtCore/include/meta_qtcore_qflags.h>\n"
+    +"#include <QtCore/include/meta_qtcore_qcontainerfwd.h>\n"
+    +"#include <qtGui_cpgf_compat.h>\n"
+  ,
   sourceHeaderCode :
      "#include <QtCore/qglobal.h>\n"
     +"#include <QtCore/QEvent>\n"

@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QFONTDIALOG_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -70,6 +72,10 @@ void buildMetaClass_QFontDialog(D _d)
         ._element("MonospacedFonts", D::ClassType::MonospacedFonts)
         ._element("ProportionalFonts", D::ClassType::ProportionalFonts)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::FontDialogOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::FontDialogOption > >::lazyDeclare("FontDialogOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::FontDialogOption > >, typename D::ClassType::FontDialogOption >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -1072,7 +1078,7 @@ void buildMetaClass_QFontDialogWrapper(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

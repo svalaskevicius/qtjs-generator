@@ -4,6 +4,8 @@
 #define __META_QTCORE_QMETATYPE_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -16,7 +18,7 @@ using namespace QtPrivate;
 using namespace QtMetaTypePrivate;
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -431,7 +433,7 @@ void buildMetaClass_VariantData(D _d)
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

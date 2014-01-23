@@ -4,6 +4,8 @@
 #define __META_QTCORE_QCOMMANDLINEOPTION_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 inline QCommandLineOption & opErAToRWrapper_QCommandLineOption__opAssign(QCommandLineOption * self, const QCommandLineOption & other) {
@@ -53,7 +55,7 @@ void buildMetaClass_QCommandLineOption(D _d)
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

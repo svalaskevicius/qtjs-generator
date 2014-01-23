@@ -4,6 +4,8 @@
 #define __META_QTCORE_QTEXTBOUNDARYFINDER_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 inline QTextBoundaryFinder & opErAToRWrapper_QTextBoundaryFinder__opAssign(QTextBoundaryFinder * self, const QTextBoundaryFinder & other) {
@@ -62,10 +64,14 @@ void buildMetaClass_QTextBoundaryFinder(D _d)
     ;
     _d.CPGF_MD_TEMPLATE _operator<QTextBoundaryFinder & (*)(cpgf::GMetaSelf, const QTextBoundaryFinder &)>(mopHolder = mopHolder);
     _d.CPGF_MD_TEMPLATE _method("_opAssign", (QTextBoundaryFinder & (*) (QTextBoundaryFinder *, const QTextBoundaryFinder &))&opErAToRWrapper_QTextBoundaryFinder__opAssign, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::BoundaryReason > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::BoundaryReason > >::lazyDeclare("BoundaryReasons", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::BoundaryReason > >, typename D::ClassType::BoundaryReason >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

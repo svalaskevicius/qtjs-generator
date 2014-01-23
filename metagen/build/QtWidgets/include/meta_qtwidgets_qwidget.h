@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QWIDGET_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -323,6 +325,10 @@ void buildMetaClass_QWidget(D _d)
         ._element("DrawChildren", D::ClassType::DrawChildren)
         ._element("IgnoreMask", D::ClassType::IgnoreMask)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::RenderFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::RenderFlag > >::lazyDeclare("RenderFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::RenderFlag > >, typename D::ClassType::RenderFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -1341,7 +1347,7 @@ void buildMetaClass_QWidgetData(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QWIZARD_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -132,6 +134,10 @@ void buildMetaClass_QWizard(D _d)
         ._element("HaveCustomButton2", D::ClassType::HaveCustomButton2)
         ._element("HaveCustomButton3", D::ClassType::HaveCustomButton3)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::WizardOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::WizardOption > >::lazyDeclare("WizardOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::WizardOption > >, typename D::ClassType::WizardOption >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -2246,7 +2252,7 @@ void buildMetaClass_QWizardPageWrapper(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

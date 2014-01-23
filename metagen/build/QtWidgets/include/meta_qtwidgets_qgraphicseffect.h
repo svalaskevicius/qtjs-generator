@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QGRAPHICSEFFECT_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -49,6 +51,10 @@ void buildMetaClass_QGraphicsBlurEffect(D _d)
         ._element("QualityHint", D::ClassType::QualityHint)
         ._element("AnimationHint", D::ClassType::AnimationHint)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::BlurHint > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::BlurHint > >::lazyDeclare("BlurHints", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::BlurHint > >, typename D::ClassType::BlurHint >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -1033,6 +1039,10 @@ void buildMetaClass_QGraphicsEffect(D _d)
         ._element("PadToTransparentBorder", D::ClassType::PadToTransparentBorder)
         ._element("PadToEffectiveBoundingRect", D::ClassType::PadToEffectiveBoundingRect)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::ChangeFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ChangeFlag > >::lazyDeclare("ChangeFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ChangeFlag > >, typename D::ClassType::ChangeFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -1657,7 +1667,7 @@ void buildMetaClass_QGraphicsOpacityEffectWrapper(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

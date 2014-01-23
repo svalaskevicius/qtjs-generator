@@ -4,6 +4,8 @@
 #define __META_QTCORE_QSTANDARDPATHS_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -60,10 +62,14 @@ void buildMetaClass_QStandardPaths(D _d)
         ._element("LocateFile", D::ClassType::LocateFile)
         ._element("LocateDirectory", D::ClassType::LocateDirectory)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::LocateOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::LocateOption > >::lazyDeclare("LocateOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::LocateOption > >, typename D::ClassType::LocateOption >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

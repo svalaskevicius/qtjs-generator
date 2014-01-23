@@ -9,7 +9,7 @@
 
 using namespace cpgf;
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 GDefineMetaInfo createMetaClass_Global_qaccessible();
@@ -471,7 +471,7 @@ void registerMain_QtGui(Meta _d)
     _d._class(createMetaClass_QWindowStateChangeEvent());
 }
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 
 

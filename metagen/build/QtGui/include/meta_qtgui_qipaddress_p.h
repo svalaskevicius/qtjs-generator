@@ -4,6 +4,8 @@
 #define __META_QTGUI_QIPADDRESS_P_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -15,10 +17,10 @@
 using namespace QIPAddressUtils;
 
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 
 
