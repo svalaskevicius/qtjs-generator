@@ -4,6 +4,8 @@
 #define __META_QTGUI_QTEXTDOCUMENTFRAGMENT_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 inline QTextDocumentFragment & opErAToRWrapper_QTextDocumentFragment__opAssign(QTextDocumentFragment * self, const QTextDocumentFragment & rhs) {
@@ -45,7 +47,7 @@ void buildMetaClass_QTextDocumentFragment(D _d)
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 
 

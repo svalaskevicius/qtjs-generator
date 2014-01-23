@@ -4,6 +4,8 @@
 #define __META_QTGUI_QSURFACEFORMAT_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -98,10 +100,14 @@ void buildMetaClass_QSurfaceFormat(D _d)
     ;
     _d.CPGF_MD_TEMPLATE _operator<QSurfaceFormat & (*)(cpgf::GMetaSelf, const QSurfaceFormat &)>(mopHolder = mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("_opAssign", (QSurfaceFormat & (*) (QSurfaceFormat *, const QSurfaceFormat &))&opErAToRWrapper_QSurfaceFormat__opAssign, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::FormatOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::FormatOption > >::lazyDeclare("FormatOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::FormatOption > >, typename D::ClassType::FormatOption >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 
 

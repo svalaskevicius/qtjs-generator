@@ -4,6 +4,8 @@
 #define __META_QTGUI_QOPENGLTEXTURE_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -381,10 +383,14 @@ void buildMetaClass_QOpenGLTexture(D _d)
         ._element("DirectionT", D::ClassType::DirectionT)
         ._element("DirectionR", D::ClassType::DirectionR)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::Feature > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Feature > >::lazyDeclare("Features", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Feature > >, typename D::ClassType::Feature >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 
 

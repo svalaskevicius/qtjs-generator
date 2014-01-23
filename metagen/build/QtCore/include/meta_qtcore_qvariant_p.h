@@ -4,6 +4,8 @@
 #define __META_QTCORE_QVARIANT_P_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -16,10 +18,10 @@ using namespace QT_BEGIN_NAMESPACE;
 using namespace QVariantPrivate;
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

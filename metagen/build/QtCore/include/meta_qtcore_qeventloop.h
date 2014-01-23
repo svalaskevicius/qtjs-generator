@@ -4,6 +4,8 @@
 #define __META_QTCORE_QEVENTLOOP_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -60,6 +62,10 @@ void buildMetaClass_QEventLoop(D _d)
         ._element("EventLoopExec", D::ClassType::EventLoopExec)
         ._element("DialogExec", D::ClassType::DialogExec)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::ProcessEventsFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ProcessEventsFlag > >::lazyDeclare("ProcessEventsFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ProcessEventsFlag > >, typename D::ClassType::ProcessEventsFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -286,7 +292,7 @@ void buildMetaClass_QEventLoopLocker(D _d)
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

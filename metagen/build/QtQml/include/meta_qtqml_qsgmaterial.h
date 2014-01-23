@@ -4,6 +4,8 @@
 #define __META_QTQML_QSGMATERIAL_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -18,7 +20,7 @@
 using namespace QSGBatchRenderer;
 
 
-namespace meta_qtqml { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -41,6 +43,10 @@ void buildMetaClass_QSGMaterial(D _d)
         ._element("RequiresFullMatrix", D::ClassType::RequiresFullMatrix)
         ._element("CustomCompileStep", D::ClassType::CustomCompileStep)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::Flag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Flag > >::lazyDeclare("Flags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Flag > >, typename D::ClassType::Flag >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -146,6 +152,10 @@ void buildMetaClass_QSGMaterialShader(D _d)
             ._element("DirtyMatrix", QSGMaterialShader::RenderState::DirtyMatrix)
             ._element("DirtyOpacity", QSGMaterialShader::RenderState::DirtyOpacity)
         ;
+        {
+            GDefineMetaClass<QFlags<typename QSGMaterialShader::RenderState::DirtyState > > _t_nd = GDefineMetaClass<QFlags<typename QSGMaterialShader::RenderState::DirtyState > >::lazyDeclare("DirtyStates", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QSGMaterialShader::RenderState::DirtyState > >, typename QSGMaterialShader::RenderState::DirtyState >);
+            _d._class(_t_nd);
+        }
         _d.CPGF_MD_TEMPLATE _class(_nd);
     }
 }
@@ -329,7 +339,7 @@ void buildMetaClass_QSGMaterialType(D _d)
 }
 
 
-} // namespace meta_qtqml
+} // namespace qt_metadata
 
 
 

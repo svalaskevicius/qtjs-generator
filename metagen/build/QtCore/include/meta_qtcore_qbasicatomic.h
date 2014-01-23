@@ -4,6 +4,8 @@
 #define __META_QTCORE_QBASICATOMIC_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D, typename T>
@@ -82,10 +84,14 @@ void buildMetaClass_QBasicAtomicPointer(D _d)
     _d.CPGF_MD_TEMPLATE _method("isFetchAndStoreWaitFree", (bool (*) ())&D::ClassType::isFetchAndStoreWaitFree);
     _d.CPGF_MD_TEMPLATE _method("isFetchAndAddNative", (bool (*) ())&D::ClassType::isFetchAndAddNative);
     _d.CPGF_MD_TEMPLATE _method("isFetchAndAddWaitFree", (bool (*) ())&D::ClassType::isFetchAndAddWaitFree);
+    {
+        GDefineMetaClass<QAtomicOps<typename D::ClassType::Type > > _t_d = GDefineMetaClass<QAtomicOps<typename D::ClassType::Type > >::lazyDeclare("Ops", &buildMetaClass_QAtomicOps<GDefineMetaClass<QAtomicOps<typename D::ClassType::Type > >, typename D::ClassType::Type >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

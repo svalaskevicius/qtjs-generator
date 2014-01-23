@@ -4,6 +4,8 @@
 #define __META_QTCORE_QCONTAINERFWD_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D, class T>
@@ -314,7 +316,6 @@ void buildMetaClass_QSet(D _d)
     {
         GDefineMetaClass<typename QSet<T >::const_iterator> _nd = GDefineMetaClass<typename QSet<T >::const_iterator>::declare("const_iterator");
         _nd.CPGF_MD_TEMPLATE _constructor<void * ()>();
-        _nd.CPGF_MD_TEMPLATE _constructor<void * (typename Hash::const_iterator)>();
         _nd.CPGF_MD_TEMPLATE _constructor<void * (const typename QSet<T >::const_iterator&)>();
         _nd.CPGF_MD_TEMPLATE _constructor<void * (const typename QSet<T >::iterator&)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _nd.CPGF_MD_TEMPLATE _operator<typename QSet<T >::const_iterator& (*)(cpgf::GMetaSelf, const typename QSet<T >::const_iterator&)>(mopHolder = mopHolder);
@@ -347,7 +348,6 @@ void buildMetaClass_QSet(D _d)
     {
         GDefineMetaClass<typename QSet<T >::iterator> _nd = GDefineMetaClass<typename QSet<T >::iterator>::declare("iterator");
         _nd.CPGF_MD_TEMPLATE _constructor<void * ()>();
-        _nd.CPGF_MD_TEMPLATE _constructor<void * (typename Hash::iterator)>();
         _nd.CPGF_MD_TEMPLATE _constructor<void * (const typename QSet<T >::iterator&)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _nd.CPGF_MD_TEMPLATE _operator<typename QSet<T >::iterator& (*)(cpgf::GMetaSelf, const typename QSet<T >::iterator&)>(mopHolder = mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
         _nd.CPGF_MD_TEMPLATE _method("_opAssign", (typename QSet<T >::iterator& (*) (typename QSet<T >::iterator *, const typename QSet<T >::iterator&))&opErAToRWrapper_QSet_iterator__opAssign<T>, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
@@ -656,7 +656,7 @@ void buildMetaClass_QVector(D _d)
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

@@ -4,6 +4,8 @@
 #define __META_QTCORE_QTEXTSTREAM_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -305,6 +307,10 @@ void buildMetaClass_QTextStream(D _d)
     _d.CPGF_MD_TEMPLATE _method("_opLeftShift", (QTextStream & (*) (QTextStream *, const char *))&opErAToRWrapper_QTextStream__opLeftShift, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleExplicitThis >());
     _d.CPGF_MD_TEMPLATE _operator<QTextStream & (*)(cpgf::GMetaSelf, const void *)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >());
     _d.CPGF_MD_TEMPLATE _method("_opLeftShift", (QTextStream & (*) (QTextStream *, const void *))&opErAToRWrapper_QTextStream__opLeftShift, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleExplicitThis >());
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::NumberFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::NumberFlag > >::lazyDeclare("NumberFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::NumberFlag > >, typename D::ClassType::NumberFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -320,7 +326,7 @@ void buildMetaClass_QTextStreamManipulator(D _d)
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

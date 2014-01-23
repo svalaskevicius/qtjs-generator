@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QGRAPHICSITEM_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -1643,6 +1645,10 @@ void buildMetaClass_QGraphicsItem(D _d)
         ._element("Type", D::ClassType::Type)
         ._element("UserType", D::ClassType::UserType)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::GraphicsItemFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::GraphicsItemFlag > >::lazyDeclare("GraphicsItemFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::GraphicsItemFlag > >, typename D::ClassType::GraphicsItemFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -8762,7 +8768,7 @@ void buildMetaClass_QGraphicsTextItemWrapper(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

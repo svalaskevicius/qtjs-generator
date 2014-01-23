@@ -4,6 +4,8 @@
 #define __META_QTCORE_QRAWFONT_P_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -15,10 +17,10 @@
 using namespace QT_BEGIN_NAMESPACE;
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

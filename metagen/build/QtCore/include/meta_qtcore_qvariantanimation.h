@@ -4,6 +4,8 @@
 #define __META_QTCORE_QVARIANTANIMATION_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -60,6 +62,10 @@ void buildMetaClass_QVariantAnimation(D _d)
         ._default(copyVariantFromCopyable(-1))
         ._default(copyVariantFromCopyable(0))
     ;
+    {
+        GDefineMetaClass<QVector<typename D::ClassType::KeyValue > > _t_d = GDefineMetaClass<QVector<typename D::ClassType::KeyValue > >::lazyDeclare("KeyValues", &buildMetaClass_QVector<GDefineMetaClass<QVector<typename D::ClassType::KeyValue > >, typename D::ClassType::KeyValue >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -374,7 +380,7 @@ void buildMetaClass_QVariantAnimationWrapper(D _d)
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

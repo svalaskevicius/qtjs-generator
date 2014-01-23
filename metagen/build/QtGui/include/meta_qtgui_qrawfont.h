@@ -4,6 +4,8 @@
 #define __META_QTGUI_QRAWFONT_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 inline QRawFont & opErAToRWrapper_QRawFont__opAssign(QRawFont * self, const QRawFont & other) {
@@ -96,10 +98,14 @@ void buildMetaClass_QRawFont(D _d)
     _d.CPGF_MD_TEMPLATE _method("_opEqual", (bool (*) (const QRawFont *, const QRawFont &))&opErAToRWrapper_QRawFont__opEqual, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const cpgf::GMetaSelf &, const QRawFont &)>(mopHolder != mopHolder);
     _d.CPGF_MD_TEMPLATE _method("_opNotEqual", (bool (*) (const QRawFont *, const QRawFont &))&opErAToRWrapper_QRawFont__opNotEqual, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::LayoutFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::LayoutFlag > >::lazyDeclare("LayoutFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::LayoutFlag > >, typename D::ClassType::LayoutFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 
 

@@ -4,6 +4,8 @@
 #define __META_QTCORE_QSTRING_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -15,7 +17,7 @@
 using namespace Qt;
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -978,6 +980,10 @@ void buildMetaClass_QString(D _d)
     _d.CPGF_MD_TEMPLATE _operator<QString & (*)(cpgf::GMetaSelf, const QString::Null&)>(mopHolder = mopHolder);
     _d.CPGF_MD_TEMPLATE _method("_opAssign", (QString & (*) (QString *, const QString::Null&))&opErAToRWrapper_QString__opAssign, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
     {
+        GDefineMetaClass<QFlags<typename D::ClassType::SectionFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::SectionFlag > >::lazyDeclare("SectionFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::SectionFlag > >, typename D::ClassType::SectionFlag >);
+        _d._class(_t_d);
+    }
+    {
         GDefineMetaClass<QString::Null> _nd = GDefineMetaClass<QString::Null>::declare("Null");
         _d.CPGF_MD_TEMPLATE _class(_nd);
     }
@@ -1210,7 +1216,7 @@ void buildMetaClass_QStringRef(D _d)
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

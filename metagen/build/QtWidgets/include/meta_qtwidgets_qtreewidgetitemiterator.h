@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QTREEWIDGETITEMITERATOR_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 inline QTreeWidgetItemIterator & opErAToRWrapper_QTreeWidgetItemIterator__opAssign(QTreeWidgetItemIterator * self, const QTreeWidgetItemIterator & it) {
@@ -94,10 +96,14 @@ void buildMetaClass_QTreeWidgetItemIterator(D _d)
     _d.CPGF_MD_TEMPLATE _method("_opSubAssign", (QTreeWidgetItemIterator & (*) (QTreeWidgetItemIterator *, int))&opErAToRWrapper_QTreeWidgetItemIterator__opSubAssign, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
     _d.CPGF_MD_TEMPLATE _operator<QTreeWidgetItem * (*)(const cpgf::GMetaSelf &)>(*mopHolder);
     _d.CPGF_MD_TEMPLATE _method("_opDerefer", (QTreeWidgetItem * (*) (const QTreeWidgetItemIterator *))&opErAToRWrapper_QTreeWidgetItemIterator__opDerefer, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::IteratorFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::IteratorFlag > >::lazyDeclare("IteratorFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::IteratorFlag > >, typename D::ClassType::IteratorFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

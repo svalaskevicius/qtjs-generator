@@ -4,6 +4,8 @@
 #define __META_QTGUI_QPAINTENGINE_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -138,6 +140,14 @@ void buildMetaClass_QPaintEngine(D _d)
         ._element("User", D::ClassType::User)
         ._element("MaxUser", D::ClassType::MaxUser)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::PaintEngineFeature > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::PaintEngineFeature > >::lazyDeclare("PaintEngineFeatures", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::PaintEngineFeature > >, typename D::ClassType::PaintEngineFeature >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::DirtyFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::DirtyFlag > >::lazyDeclare("DirtyFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::DirtyFlag > >, typename D::ClassType::DirtyFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -536,10 +546,14 @@ void buildMetaClass_QTextItem(D _d)
         ._element("StrikeOut", D::ClassType::StrikeOut)
         ._element("Dummy", D::ClassType::Dummy)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::RenderFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::RenderFlag > >::lazyDeclare("RenderFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::RenderFlag > >, typename D::ClassType::RenderFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 
 

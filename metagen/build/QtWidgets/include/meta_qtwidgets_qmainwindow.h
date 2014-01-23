@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QMAINWINDOW_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -104,6 +106,10 @@ void buildMetaClass_QMainWindow(D _d)
         ._element("ForceTabbedDocks", D::ClassType::ForceTabbedDocks)
         ._element("VerticalTabs", D::ClassType::VerticalTabs)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::DockOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::DockOption > >::lazyDeclare("DockOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::DockOption > >, typename D::ClassType::DockOption >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -1031,7 +1037,7 @@ void buildMetaClass_QMainWindowWrapper(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QDIALOGBUTTONBOX_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -107,6 +109,10 @@ void buildMetaClass_QDialogButtonBox(D _d)
         ._element("KdeLayout", D::ClassType::KdeLayout)
         ._element("GnomeLayout", D::ClassType::GnomeLayout)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::StandardButton > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::StandardButton > >::lazyDeclare("StandardButtons", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::StandardButton > >, typename D::ClassType::StandardButton >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -1028,7 +1034,7 @@ void buildMetaClass_QDialogButtonBoxWrapper(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

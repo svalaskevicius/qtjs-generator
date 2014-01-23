@@ -4,6 +4,8 @@
 #define __META_QTGUI_QTEXTOPTION_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 inline QTextOption & opErAToRWrapper_QTextOption__opAssign(QTextOption * self, const QTextOption & o) {
@@ -78,6 +80,10 @@ void buildMetaClass_QTextOption(D _d)
     _d.CPGF_MD_TEMPLATE _operator<QTextOption & (*)(cpgf::GMetaSelf, const QTextOption &)>(mopHolder = mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("_opAssign", (QTextOption & (*) (QTextOption *, const QTextOption &))&opErAToRWrapper_QTextOption__opAssign, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
     {
+        GDefineMetaClass<QFlags<typename D::ClassType::Flag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Flag > >::lazyDeclare("Flags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Flag > >, typename D::ClassType::Flag >);
+        _d._class(_t_d);
+    }
+    {
         GDefineMetaClass<QTextOption::Tab> _nd = GDefineMetaClass<QTextOption::Tab>::declare("Tab");
         _nd.CPGF_MD_TEMPLATE _constructor<void * ()>();
         _nd.CPGF_MD_TEMPLATE _constructor<void * (qreal, QTextOption::TabType, QChar)>()
@@ -95,7 +101,7 @@ void buildMetaClass_QTextOption(D _d)
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 
 

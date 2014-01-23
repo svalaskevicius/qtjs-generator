@@ -4,6 +4,8 @@
 #define __META_QTQML_QQUICKITEM_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtqml { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -204,6 +206,10 @@ void buildMetaClass_QQuickItem(D _d)
         ._element("Bottom", D::ClassType::Bottom)
         ._element("BottomRight", D::ClassType::BottomRight)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::Flag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Flag > >::lazyDeclare("Flags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Flag > >, typename D::ClassType::Flag >);
+        _d._class(_t_d);
+    }
     {
         GDefineMetaClass<QQuickItem::ItemChangeData> _nd = GDefineMetaClass<QQuickItem::ItemChangeData>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::declare("ItemChangeData");
         _nd.CPGF_MD_TEMPLATE _constructor<void * (QQuickItem *)>();
@@ -1049,7 +1055,7 @@ void buildMetaClass_QQuickItemWrapper(D _d)
 }
 
 
-} // namespace meta_qtqml
+} // namespace qt_metadata
 
 
 

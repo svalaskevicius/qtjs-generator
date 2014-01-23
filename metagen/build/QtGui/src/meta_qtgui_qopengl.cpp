@@ -12,7 +12,7 @@
 
 using namespace cpgf;
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 #ifdef DLL_PUBLIC
@@ -26,6 +26,6 @@ GDefineMetaInfo createMetaClass_Global_qopengl()
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 

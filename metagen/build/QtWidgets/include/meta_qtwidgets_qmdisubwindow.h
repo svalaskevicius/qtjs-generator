@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QMDISUBWINDOW_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -18,7 +20,7 @@
 using namespace QMdi;
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -67,6 +69,10 @@ void buildMetaClass_QMdiSubWindow(D _d)
         ._element("RubberBandResize", D::ClassType::RubberBandResize)
         ._element("RubberBandMove", D::ClassType::RubberBandMove)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::SubWindowOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::SubWindowOption > >::lazyDeclare("SubWindowOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::SubWindowOption > >, typename D::ClassType::SubWindowOption >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -980,7 +986,7 @@ void buildMetaClass_QMdiSubWindowWrapper(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

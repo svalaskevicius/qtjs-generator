@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QSIZEPOLICY_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -102,10 +104,14 @@ void buildMetaClass_QSizePolicy(D _d)
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const cpgf::GMetaSelf &, const QSizePolicy &)>(mopHolder != mopHolder);
     _d.CPGF_MD_TEMPLATE _method("_opNotEqual", (bool (*) (const QSizePolicy *, const QSizePolicy &))&opErAToRWrapper_QSizePolicy__opNotEqual, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
     _d.CPGF_MD_TEMPLATE _operator< QVariant (cpgf::GMetaSelf)>(mopHolder());
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::ControlType > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ControlType > >::lazyDeclare("ControlTypes", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ControlType > >, typename D::ClassType::ControlType >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

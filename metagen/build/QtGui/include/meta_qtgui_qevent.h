@@ -4,6 +4,8 @@
 #define __META_QTGUI_QEVENT_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -649,6 +651,10 @@ void buildMetaClass_QTouchEvent(D _d)
         ;
         _nd.CPGF_MD_TEMPLATE _operator<QTouchEvent::TouchPoint& (*)(cpgf::GMetaSelf, const QTouchEvent::TouchPoint&)>(mopHolder = mopHolder);
         _nd.CPGF_MD_TEMPLATE _method("_opAssign", (QTouchEvent::TouchPoint& (*) (QTouchEvent::TouchPoint *, const QTouchEvent::TouchPoint&))&opErAToRWrapper_QTouchEvent_TouchPoint__opAssign, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
+        {
+            GDefineMetaClass<QFlags<typename QTouchEvent::TouchPoint::InfoFlag > > _t_nd = GDefineMetaClass<QFlags<typename QTouchEvent::TouchPoint::InfoFlag > >::lazyDeclare("InfoFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QTouchEvent::TouchPoint::InfoFlag > >, typename QTouchEvent::TouchPoint::InfoFlag >);
+            _d._class(_t_nd);
+        }
         _d.CPGF_MD_TEMPLATE _class(_nd);
     }
 }
@@ -710,7 +716,7 @@ void buildMetaClass_QWindowStateChangeEvent(D _d)
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 
 

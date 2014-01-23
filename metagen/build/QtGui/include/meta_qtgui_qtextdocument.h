@@ -4,6 +4,8 @@
 #define __META_QTGUI_QTEXTDOCUMENT_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -18,7 +20,7 @@
 using namespace Qt;
 
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -245,6 +247,10 @@ void buildMetaClass_QTextDocument(D _d)
         ._element("RedoStack", D::ClassType::RedoStack)
         ._element("UndoAndRedoStacks", D::ClassType::UndoAndRedoStacks)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::FindFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::FindFlag > >::lazyDeclare("FindFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::FindFlag > >, typename D::ClassType::FindFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -510,7 +516,7 @@ void buildMetaClass_QTextDocumentWrapper(D _d)
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 
 

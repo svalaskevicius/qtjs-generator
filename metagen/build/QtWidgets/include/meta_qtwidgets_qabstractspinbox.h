@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QABSTRACTSPINBOX_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -83,6 +85,10 @@ void buildMetaClass_QAbstractSpinBox(D _d)
         ._element("CorrectToPreviousValue", D::ClassType::CorrectToPreviousValue)
         ._element("CorrectToNearestValue", D::ClassType::CorrectToNearestValue)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::StepEnabledFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::StepEnabledFlag > >::lazyDeclare("StepEnabled", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::StepEnabledFlag > >, typename D::ClassType::StepEnabledFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -1097,7 +1103,7 @@ void buildMetaClass_QAbstractSpinBoxWrapper(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

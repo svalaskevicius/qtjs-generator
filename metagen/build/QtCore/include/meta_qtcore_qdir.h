@@ -4,6 +4,8 @@
 #define __META_QTCORE_QDIR_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -177,10 +179,18 @@ void buildMetaClass_QDir(D _d)
     _d.CPGF_MD_TEMPLATE _method("_opEqual", (bool (*) (const QDir *, const QDir &))&opErAToRWrapper_QDir__opEqual, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const cpgf::GMetaSelf &, const QDir &)>(mopHolder != mopHolder);
     _d.CPGF_MD_TEMPLATE _method("_opNotEqual", (bool (*) (const QDir *, const QDir &))&opErAToRWrapper_QDir__opNotEqual, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::Filter > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Filter > >::lazyDeclare("Filters", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Filter > >, typename D::ClassType::Filter >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::SortFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::SortFlag > >::lazyDeclare("SortFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::SortFlag > >, typename D::ClassType::SortFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

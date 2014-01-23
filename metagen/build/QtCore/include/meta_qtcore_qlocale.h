@@ -4,6 +4,8 @@
 #define __META_QTCORE_QLOCALE_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -963,10 +965,14 @@ void buildMetaClass_QLocale(D _d)
     _d.CPGF_MD_TEMPLATE _method("_opEqual", (bool (*) (const QLocale *, const QLocale &))&opErAToRWrapper_QLocale__opEqual, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const cpgf::GMetaSelf &, const QLocale &)>(mopHolder != mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("_opNotEqual", (bool (*) (const QLocale *, const QLocale &))&opErAToRWrapper_QLocale__opNotEqual, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::NumberOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::NumberOption > >::lazyDeclare("NumberOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::NumberOption > >, typename D::ClassType::NumberOption >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

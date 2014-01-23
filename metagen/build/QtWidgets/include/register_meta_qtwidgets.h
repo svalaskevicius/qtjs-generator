@@ -9,7 +9,7 @@
 
 using namespace cpgf;
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 GDefineMetaInfo createMetaClass_Global_qapplication();
@@ -455,7 +455,7 @@ void registerMain_QtWidgets(Meta _d)
     _d._class(createMetaClass_QWizardPage());
 }
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

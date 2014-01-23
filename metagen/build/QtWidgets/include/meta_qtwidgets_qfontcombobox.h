@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QFONTCOMBOBOX_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -52,6 +54,10 @@ void buildMetaClass_QFontComboBox(D _d)
         ._element("MonospacedFonts", D::ClassType::MonospacedFonts)
         ._element("ProportionalFonts", D::ClassType::ProportionalFonts)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::FontFilter > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::FontFilter > >::lazyDeclare("FontFilters", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::FontFilter > >, typename D::ClassType::FontFilter >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -1002,7 +1008,7 @@ void buildMetaClass_QFontComboBoxWrapper(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

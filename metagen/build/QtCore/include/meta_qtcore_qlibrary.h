@@ -4,6 +4,8 @@
 #define __META_QTCORE_QLIBRARY_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -67,6 +69,10 @@ void buildMetaClass_QLibrary(D _d)
         ._element("LoadArchiveMemberHint", D::ClassType::LoadArchiveMemberHint)
         ._element("PreventUnloadHint", D::ClassType::PreventUnloadHint)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::LoadHint > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::LoadHint > >::lazyDeclare("LoadHints", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::LoadHint > >, typename D::ClassType::LoadHint >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -290,7 +296,7 @@ void buildMetaClass_QLibraryWrapper(D _d)
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

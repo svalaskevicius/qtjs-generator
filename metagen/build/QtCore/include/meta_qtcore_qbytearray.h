@@ -4,6 +4,8 @@
 #define __META_QTCORE_QBYTEARRAY_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -394,6 +396,10 @@ void buildMetaClass_QByteArray(D _d)
     _d.CPGF_MD_TEMPLATE _method("_opLessEqual", (bool (*) (const QByteArray *, const QString &))&opErAToRWrapper_QByteArray__opLessEqual, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const cpgf::GMetaSelf &, const QString &)>(mopHolder >= mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("_opGreaterEqual", (bool (*) (const QByteArray *, const QString &))&opErAToRWrapper_QByteArray__opGreaterEqual, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::Base64Option > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Base64Option > >::lazyDeclare("Base64Options", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Base64Option > >, typename D::ClassType::Base64Option >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -888,7 +894,7 @@ void buildMetaClass_QStaticByteArrayData(D _d)
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

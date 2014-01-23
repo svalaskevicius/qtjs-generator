@@ -12,7 +12,7 @@
 
 using namespace cpgf;
 
-namespace meta_qtqml { 
+namespace qt_metadata { 
 
 
 #ifdef DLL_PUBLIC
@@ -51,6 +51,6 @@ GDefineMetaInfo createMetaClass_QQmlImageProviderBase()
 }
 
 
-} // namespace meta_qtqml
+} // namespace qt_metadata
 
 

@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QSTYLEOPTION_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -179,6 +181,10 @@ void buildMetaClass_QStyleOptionButton(D _d)
         ._element("AutoDefaultButton", D::ClassType::AutoDefaultButton)
         ._element("CommandLinkButton", D::ClassType::CommandLinkButton)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::ButtonFeature > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ButtonFeature > >::lazyDeclare("ButtonFeatures", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ButtonFeature > >, typename D::ClassType::ButtonFeature >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -290,6 +296,10 @@ void buildMetaClass_QStyleOptionFrame(D _d)
         ._element("Flat", D::ClassType::Flat)
         ._element("Rounded", D::ClassType::Rounded)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::FrameFeature > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::FrameFeature > >::lazyDeclare("FrameFeatures", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::FrameFeature > >, typename D::ClassType::FrameFeature >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -580,6 +590,14 @@ void buildMetaClass_QStyleOptionTab(D _d)
         ._element("None", D::ClassType::None)
         ._element("HasFrame", D::ClassType::HasFrame)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::CornerWidget > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::CornerWidget > >::lazyDeclare("CornerWidgets", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::CornerWidget > >, typename D::ClassType::CornerWidget >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::TabFeature > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::TabFeature > >::lazyDeclare("TabFeatures", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::TabFeature > >, typename D::ClassType::TabFeature >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -680,6 +698,10 @@ void buildMetaClass_QStyleOptionToolBar(D _d)
         ._element("None", D::ClassType::None)
         ._element("Movable", D::ClassType::Movable)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::ToolBarFeature > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ToolBarFeature > >::lazyDeclare("ToolBarFeatures", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ToolBarFeature > >, typename D::ClassType::ToolBarFeature >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -745,6 +767,10 @@ void buildMetaClass_QStyleOptionToolButton(D _d)
         ._element("PopupDelay", D::ClassType::PopupDelay)
         ._element("HasMenu", D::ClassType::HasMenu)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::ToolButtonFeature > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ToolButtonFeature > >::lazyDeclare("ToolButtonFeatures", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ToolButtonFeature > >, typename D::ClassType::ToolButtonFeature >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -799,10 +825,14 @@ void buildMetaClass_QStyleOptionViewItem(D _d)
         ._element("End", D::ClassType::End)
         ._element("OnlyOne", D::ClassType::OnlyOne)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::ViewItemFeature > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ViewItemFeature > >::lazyDeclare("ViewItemFeatures", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ViewItemFeature > >, typename D::ClassType::ViewItemFeature >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

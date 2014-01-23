@@ -4,6 +4,8 @@
 #define __META_QTGUI_QOPENGLSHADERPROGRAM_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -57,6 +59,10 @@ void buildMetaClass_QOpenGLShader(D _d)
         ._element("TessellationEvaluation", D::ClassType::TessellationEvaluation)
         ._element("Compute", D::ClassType::Compute)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::ShaderTypeBit > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ShaderTypeBit > >::lazyDeclare("ShaderType", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ShaderTypeBit > >, typename D::ClassType::ShaderTypeBit >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -412,7 +418,7 @@ void buildMetaClass_QOpenGLShaderProgram(D _d)
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 
 

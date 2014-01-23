@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QV4JSIR_P_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,10 +19,10 @@ using namespace QQmlJS;
 using namespace QQmlJS::V4IR;
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

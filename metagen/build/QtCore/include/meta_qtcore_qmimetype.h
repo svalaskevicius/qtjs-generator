@@ -4,6 +4,8 @@
 #define __META_QTCORE_QMIMETYPE_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 inline QMimeType & opErAToRWrapper_QMimeType__opAssign(QMimeType * self, const QMimeType & other) {
@@ -60,7 +62,7 @@ void buildMetaClass_QMimeType(D _d)
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

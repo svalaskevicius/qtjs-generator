@@ -4,6 +4,8 @@
 #define __META_QTCORE_QDIRITERATOR_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -47,10 +49,14 @@ void buildMetaClass_QDirIterator(D _d)
         ._element("FollowSymlinks", D::ClassType::FollowSymlinks)
         ._element("Subdirectories", D::ClassType::Subdirectories)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::IteratorFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::IteratorFlag > >::lazyDeclare("IteratorFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::IteratorFlag > >, typename D::ClassType::IteratorFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

@@ -4,6 +4,8 @@
 #define __META_QTQML_QQUICKWINDOW_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtqml { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -80,10 +82,14 @@ void buildMetaClass_QQuickWindow(D _d)
         ._element("TextureOwnsGLTexture", D::ClassType::TextureOwnsGLTexture)
         ._element("TextureCanUseAtlas", D::ClassType::TextureCanUseAtlas)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::CreateTextureOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::CreateTextureOption > >::lazyDeclare("CreateTextureOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::CreateTextureOption > >, typename D::ClassType::CreateTextureOption >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtqml
+} // namespace qt_metadata
 
 
 

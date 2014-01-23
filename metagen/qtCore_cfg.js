@@ -6,7 +6,7 @@ var config = {
 
   metaItemCallback : processCallback,
 
-  cppNamespace : "meta_qtcore",
+  cppNamespace : "qt_metadata",
 
   metaClassFunctionPrefix : "buildMetaClass_",
   metaClassCreatePrefix : "createMetaClass_",
@@ -22,7 +22,11 @@ var config = {
   autoRegisterToGlobal : false,
 
   metaNamespace : "qtcore",
-  headerHeaderCode : "#include <qtCore_cpgf_compat.h>\n",
+  headerHeaderCode : ""
+    +"#include <QtCore/include/meta_qtcore_qflags.h>\n"
+    +"#include <QtCore/include/meta_qtcore_qcontainerfwd.h>\n"
+    +"#include <qtCore_cpgf_compat.h>\n"
+  ,
   sourceHeaderCode :
      "#include <QtCore/qglobal.h>\n"
     +"#include <QtCore/QString>\n"
@@ -298,6 +302,7 @@ function processCallback(item, data)
     case "QUrl::data_ptr":
     case "QUrlQuery::data_ptr":
     case "qt_sine_table":
+    case "QTimeZone::OffsetDataList":
       data.skipBind = true;
     print("skip directly: " + item.getQualifiedName()+ "\n");
       break;
@@ -371,6 +376,9 @@ function processCallback(item, data)
         case 'typename QList<T >::Node*':
         case 'const QSequentialIterableImpl &':
         case 'const QAssociativeIterableImpl &':
+        case 'typename QFlags<Enum >::Zero':
+        case 'typename Hash::const_iterator':
+        case 'typename Hash::iterator':
         data.skipBind = true;
         break;
         case 'Type':

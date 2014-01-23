@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QGRAPHICSVIEW_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -187,6 +189,14 @@ void buildMetaClass_QGraphicsView(D _d)
         ._element("DontAdjustForAntialiasing", D::ClassType::DontAdjustForAntialiasing)
         ._element("IndirectPainting", D::ClassType::IndirectPainting)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::CacheModeFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::CacheModeFlag > >::lazyDeclare("CacheMode", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::CacheModeFlag > >, typename D::ClassType::CacheModeFlag >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::OptimizationFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::OptimizationFlag > >::lazyDeclare("OptimizationFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::OptimizationFlag > >, typename D::ClassType::OptimizationFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -1238,7 +1248,7 @@ void buildMetaClass_QGraphicsViewWrapper(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

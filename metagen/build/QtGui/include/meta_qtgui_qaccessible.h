@@ -4,6 +4,8 @@
 #define __META_QTGUI_QACCESSIBLE_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtgui { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -484,6 +486,10 @@ void buildMetaClass_QAccessible(D _d)
         ._element("LineBoundary", D::ClassType::LineBoundary)
         ._element("NoBoundary", D::ClassType::NoBoundary)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::RelationFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::RelationFlag > >::lazyDeclare("Relation", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::RelationFlag > >, typename D::ClassType::RelationFlag >);
+        _d._class(_t_d);
+    }
     {
         GDefineMetaClass<QAccessible::State> _nd = GDefineMetaClass<QAccessible::State>::declare("State");
         _nd.CPGF_MD_TEMPLATE _constructor<void * ()>();
@@ -2280,7 +2286,7 @@ void buildMetaClass_QAccessibleValueInterfaceWrapper(D _d)
 }
 
 
-} // namespace meta_qtgui
+} // namespace qt_metadata
 
 
 

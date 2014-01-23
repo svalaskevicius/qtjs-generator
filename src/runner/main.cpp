@@ -136,10 +136,10 @@ void emitQObjectSignal(QObject *obj,
 
 void registerQt(GDefineMetaNamespace &define)
 {
-    meta_qtcore::registerMain_QtCore(define);
-    meta_qtgui::registerMain_QtGui(define);
-    meta_qtwidgets::registerMain_QtWidgets(define);
-    meta_qtqml::registerMain_QtQml(define);
+    qt_metadata::registerMain_QtCore(define);
+    qt_metadata::registerMain_QtGui(define);
+    qt_metadata::registerMain_QtWidgets(define);
+    qt_metadata::registerMain_QtQml(define);
 
     define._class(qtjs_binder::createDynamicObjectsMetaClasses());
     define._method("dynamicQObjectManager", &qtjs_binder::dynamicQObjectManager);

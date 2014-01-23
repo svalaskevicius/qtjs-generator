@@ -4,6 +4,8 @@
 #define __META_QTQML_QJSVALUE_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtqml { 
+namespace qt_metadata { 
 
 
 inline QJSValue & opErAToRWrapper_QJSValue__opAssign(QJSValue * self, const QJSValue & other) {
@@ -89,7 +91,7 @@ void buildMetaClass_QJSValue(D _d)
 }
 
 
-} // namespace meta_qtqml
+} // namespace qt_metadata
 
 
 

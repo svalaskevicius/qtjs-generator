@@ -4,6 +4,8 @@
 #define __META_QTQML_QSGNODE_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -18,7 +20,7 @@
 using namespace QSGBatchRenderer;
 
 
-namespace meta_qtqml { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -314,6 +316,14 @@ void buildMetaClass_QSGNode(D _d)
         ._element("DirtyUsePreprocess", D::ClassType::DirtyUsePreprocess)
         ._element("DirtyPropagationMask", D::ClassType::DirtyPropagationMask)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::Flag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Flag > >::lazyDeclare("Flags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Flag > >, typename D::ClassType::Flag >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::DirtyStateBit > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::DirtyStateBit > >::lazyDeclare("DirtyState", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::DirtyStateBit > >, typename D::ClassType::DirtyStateBit >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -791,7 +801,7 @@ void buildMetaClass_QSGTransformNodeWrapper(D _d)
 }
 
 
-} // namespace meta_qtqml
+} // namespace qt_metadata
 
 
 

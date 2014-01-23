@@ -4,6 +4,8 @@
 #define __META_QTWIDGETS_QGESTURERECOGNIZER_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtwidgets { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -41,6 +43,10 @@ void buildMetaClass_QGestureRecognizer(D _d)
         ._element("ConsumeEventHint", D::ClassType::ConsumeEventHint)
         ._element("ResultHint_Mask", D::ClassType::ResultHint_Mask)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::ResultFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ResultFlag > >::lazyDeclare("Result", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ResultFlag > >, typename D::ClassType::ResultFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -118,7 +124,7 @@ void buildMetaClass_QGestureRecognizerWrapper(D _d)
 }
 
 
-} // namespace meta_qtwidgets
+} // namespace qt_metadata
 
 
 

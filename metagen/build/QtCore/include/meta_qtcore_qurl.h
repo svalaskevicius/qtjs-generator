@@ -4,6 +4,8 @@
 #define __META_QTCORE_QURL_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -223,10 +225,14 @@ void buildMetaClass_QUrl(D _d)
     _d.CPGF_MD_TEMPLATE _method("_opEqual", (bool (*) (const QUrl *, const QUrl &))&opErAToRWrapper_QUrl__opEqual, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const cpgf::GMetaSelf &, const QUrl &)>(mopHolder != mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("_opNotEqual", (bool (*) (const QUrl *, const QUrl &))&opErAToRWrapper_QUrl__opNotEqual, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::ComponentFormattingOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ComponentFormattingOption > >::lazyDeclare("ComponentFormattingOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ComponentFormattingOption > >, typename D::ClassType::ComponentFormattingOption >);
+        _d._class(_t_d);
+    }
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

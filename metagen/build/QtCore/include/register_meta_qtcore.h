@@ -9,7 +9,7 @@
 
 using namespace cpgf;
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 GDefineMetaInfo createMetaClass_Big_();
@@ -443,7 +443,7 @@ void registerMain_QtCore(Meta _d)
     _d._class(createMetaClass_VariantData());
 }
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

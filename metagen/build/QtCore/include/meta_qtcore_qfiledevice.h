@@ -4,6 +4,8 @@
 #define __META_QTCORE_QFILEDEVICE_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -90,6 +92,14 @@ void buildMetaClass_QFileDevice(D _d)
     _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::MemoryMapFlags>("MemoryMapFlags")
         ._element("NoOptions", D::ClassType::NoOptions)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::Permission > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Permission > >::lazyDeclare("Permissions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Permission > >, typename D::ClassType::Permission >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::FileHandleFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::FileHandleFlag > >::lazyDeclare("FileHandleFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::FileHandleFlag > >, typename D::ClassType::FileHandleFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -617,7 +627,7 @@ void buildMetaClass_QFileDeviceWrapper(D _d)
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

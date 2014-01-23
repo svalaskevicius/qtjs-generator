@@ -4,6 +4,8 @@
 #define __META_QTCORE_QIODEVICE_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -17,7 +19,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -93,6 +95,10 @@ void buildMetaClass_QIODevice(D _d)
         ._element("Text", D::ClassType::Text)
         ._element("Unbuffered", D::ClassType::Unbuffered)
     ;
+    {
+        GDefineMetaClass<QFlags<typename D::ClassType::OpenModeFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::OpenModeFlag > >::lazyDeclare("OpenMode", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::OpenModeFlag > >, typename D::ClassType::OpenModeFlag >);
+        _d._class(_t_d);
+    }
 }
 
 
@@ -568,7 +574,7 @@ void buildMetaClass_QIODeviceWrapper(D _d)
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 

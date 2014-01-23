@@ -4,6 +4,8 @@
 #define __META_QTCORE_QFLAGS_H
 
 
+#include <QtCore/include/meta_qtcore_qflags.h>
+#include <QtCore/include/meta_qtcore_qcontainerfwd.h>
 #include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
@@ -14,7 +16,7 @@
 
 
 
-namespace meta_qtcore { 
+namespace qt_metadata { 
 
 
 template <typename D>
@@ -110,9 +112,6 @@ void buildMetaClass_QFlags(D _d)
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (Enum)>();
-    _d.CPGF_MD_TEMPLATE _constructor<void * (typename QFlags<Enum >::Zero)>()
-        ._default(copyVariantFromCopyable(0))
-    ;
     _d.CPGF_MD_TEMPLATE _constructor<void * (QFlag)>();
     _d.CPGF_MD_TEMPLATE _method("testFlag", &D::ClassType::testFlag);
     _d.CPGF_MD_TEMPLATE _operator<QFlags<Enum > & (*)(cpgf::GMetaSelf, int)>(mopHolder &= mopHolder);
@@ -161,7 +160,7 @@ void buildMetaClass_QIncompatibleFlag(D _d)
 }
 
 
-} // namespace meta_qtcore
+} // namespace qt_metadata
 
 
 
