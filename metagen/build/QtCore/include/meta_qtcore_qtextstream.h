@@ -308,7 +308,7 @@ void buildMetaClass_QTextStream(D _d)
     _d.CPGF_MD_TEMPLATE _operator<QTextStream & (*)(cpgf::GMetaSelf, const void *)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >());
     _d.CPGF_MD_TEMPLATE _method("_opLeftShift", (QTextStream & (*) (QTextStream *, const void *))&opErAToRWrapper_QTextStream__opLeftShift, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleExplicitThis >());
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::NumberFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::NumberFlag > >::lazyDeclare("NumberFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::NumberFlag > >, typename D::ClassType::NumberFlag >);
+        GDefineMetaClass<QFlags<typename QTextStream::NumberFlag > > _t_d = GDefineMetaClass<QFlags<typename QTextStream::NumberFlag > >::lazyDeclare("NumberFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QTextStream::NumberFlag > >, typename QTextStream::NumberFlag >);
         _d._class(_t_d);
     }
 }

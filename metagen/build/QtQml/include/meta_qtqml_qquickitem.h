@@ -207,7 +207,7 @@ void buildMetaClass_QQuickItem(D _d)
         ._element("BottomRight", D::ClassType::BottomRight)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::Flag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Flag > >::lazyDeclare("Flags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Flag > >, typename D::ClassType::Flag >);
+        GDefineMetaClass<QFlags<typename QQuickItem::Flag > > _t_d = GDefineMetaClass<QFlags<typename QQuickItem::Flag > >::lazyDeclare("Flags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QQuickItem::Flag > >, typename QQuickItem::Flag >);
         _d._class(_t_d);
     }
     {

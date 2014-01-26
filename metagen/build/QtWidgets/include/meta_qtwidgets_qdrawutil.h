@@ -102,6 +102,10 @@ void buildMetaClass_Global_qdrawutil(D _d)
         ._element("OpaqueFrame", QDrawBorderPixmap::OpaqueFrame)
         ._element("OpaqueAll", QDrawBorderPixmap::OpaqueAll)
     ;
+    {
+        GDefineMetaClass<QFlags<typename QDrawBorderPixmap::DrawingHint > > _t_d = GDefineMetaClass<QFlags<typename QDrawBorderPixmap::DrawingHint > >::lazyDeclare("DrawingHints", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QDrawBorderPixmap::DrawingHint > >, typename QDrawBorderPixmap::DrawingHint >);
+        _d._class(_t_d);
+    }
 }
 
 

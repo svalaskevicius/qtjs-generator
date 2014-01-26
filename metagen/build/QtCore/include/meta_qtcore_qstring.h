@@ -980,7 +980,7 @@ void buildMetaClass_QString(D _d)
     _d.CPGF_MD_TEMPLATE _operator<QString & (*)(cpgf::GMetaSelf, const QString::Null&)>(mopHolder = mopHolder);
     _d.CPGF_MD_TEMPLATE _method("_opAssign", (QString & (*) (QString *, const QString::Null&))&opErAToRWrapper_QString__opAssign, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::SectionFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::SectionFlag > >::lazyDeclare("SectionFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::SectionFlag > >, typename D::ClassType::SectionFlag >);
+        GDefineMetaClass<QFlags<typename QString::SectionFlag > > _t_d = GDefineMetaClass<QFlags<typename QString::SectionFlag > >::lazyDeclare("SectionFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QString::SectionFlag > >, typename QString::SectionFlag >);
         _d._class(_t_d);
     }
     {

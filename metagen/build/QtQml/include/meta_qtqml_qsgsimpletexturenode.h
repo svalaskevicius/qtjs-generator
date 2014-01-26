@@ -44,7 +44,7 @@ void buildMetaClass_QSGSimpleTextureNode(D _d)
         ._element("MirrorVertically", D::ClassType::MirrorVertically)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::TextureCoordinatesTransformFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::TextureCoordinatesTransformFlag > >::lazyDeclare("TextureCoordinatesTransformMode", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::TextureCoordinatesTransformFlag > >, typename D::ClassType::TextureCoordinatesTransformFlag >);
+        GDefineMetaClass<QFlags<typename QSGSimpleTextureNode::TextureCoordinatesTransformFlag > > _t_d = GDefineMetaClass<QFlags<typename QSGSimpleTextureNode::TextureCoordinatesTransformFlag > >::lazyDeclare("TextureCoordinatesTransformMode", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QSGSimpleTextureNode::TextureCoordinatesTransformFlag > >, typename QSGSimpleTextureNode::TextureCoordinatesTransformFlag >);
         _d._class(_t_d);
     }
 }

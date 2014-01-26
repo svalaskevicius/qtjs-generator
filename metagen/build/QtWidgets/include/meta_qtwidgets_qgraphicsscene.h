@@ -188,7 +188,7 @@ void buildMetaClass_QGraphicsScene(D _d)
         ._element("AllLayers", D::ClassType::AllLayers)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::SceneLayer > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::SceneLayer > >::lazyDeclare("SceneLayers", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::SceneLayer > >, typename D::ClassType::SceneLayer >);
+        GDefineMetaClass<QFlags<typename QGraphicsScene::SceneLayer > > _t_d = GDefineMetaClass<QFlags<typename QGraphicsScene::SceneLayer > >::lazyDeclare("SceneLayers", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QGraphicsScene::SceneLayer > >, typename QGraphicsScene::SceneLayer >);
         _d._class(_t_d);
     }
 }

@@ -77,7 +77,7 @@ void buildMetaClass_QGlyphRun(D _d)
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const cpgf::GMetaSelf &, const QGlyphRun &)>(mopHolder != mopHolder);
     _d.CPGF_MD_TEMPLATE _method("_opNotEqual", (bool (*) (const QGlyphRun *, const QGlyphRun &))&opErAToRWrapper_QGlyphRun__opNotEqual, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::GlyphRunFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::GlyphRunFlag > >::lazyDeclare("GlyphRunFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::GlyphRunFlag > >, typename D::ClassType::GlyphRunFlag >);
+        GDefineMetaClass<QFlags<typename QGlyphRun::GlyphRunFlag > > _t_d = GDefineMetaClass<QFlags<typename QGlyphRun::GlyphRunFlag > >::lazyDeclare("GlyphRunFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QGlyphRun::GlyphRunFlag > >, typename QGlyphRun::GlyphRunFlag >);
         _d._class(_t_d);
     }
 }

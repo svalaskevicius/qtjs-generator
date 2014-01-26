@@ -80,7 +80,7 @@ void buildMetaClass_QTextOption(D _d)
     _d.CPGF_MD_TEMPLATE _operator<QTextOption & (*)(cpgf::GMetaSelf, const QTextOption &)>(mopHolder = mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("_opAssign", (QTextOption & (*) (QTextOption *, const QTextOption &))&opErAToRWrapper_QTextOption__opAssign, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::Flag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Flag > >::lazyDeclare("Flags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Flag > >, typename D::ClassType::Flag >);
+        GDefineMetaClass<QFlags<typename QTextOption::Flag > > _t_d = GDefineMetaClass<QFlags<typename QTextOption::Flag > >::lazyDeclare("Flags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QTextOption::Flag > >, typename QTextOption::Flag >);
         _d._class(_t_d);
     }
     {

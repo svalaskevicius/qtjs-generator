@@ -78,7 +78,7 @@ void buildMetaClass_QColorDialog(D _d)
         ._element("DontUseNativeDialog", D::ClassType::DontUseNativeDialog)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::ColorDialogOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ColorDialogOption > >::lazyDeclare("ColorDialogOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ColorDialogOption > >, typename D::ClassType::ColorDialogOption >);
+        GDefineMetaClass<QFlags<typename QColorDialog::ColorDialogOption > > _t_d = GDefineMetaClass<QFlags<typename QColorDialog::ColorDialogOption > >::lazyDeclare("ColorDialogOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QColorDialog::ColorDialogOption > >, typename QColorDialog::ColorDialogOption >);
         _d._class(_t_d);
     }
 }

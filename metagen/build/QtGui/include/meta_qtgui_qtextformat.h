@@ -345,7 +345,7 @@ void buildMetaClass_QTextFormat(D _d)
     _d.CPGF_MD_TEMPLATE _method("_opNotEqual", (bool (*) (const QTextFormat *, const QTextFormat &))&opErAToRWrapper_QTextFormat__opNotEqual, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
     _d.CPGF_MD_TEMPLATE _operator< QVariant (cpgf::GMetaSelf)>(mopHolder());
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::PageBreakFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::PageBreakFlag > >::lazyDeclare("PageBreakFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::PageBreakFlag > >, typename D::ClassType::PageBreakFlag >);
+        GDefineMetaClass<QFlags<typename QTextFormat::PageBreakFlag > > _t_d = GDefineMetaClass<QFlags<typename QTextFormat::PageBreakFlag > >::lazyDeclare("PageBreakFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QTextFormat::PageBreakFlag > >, typename QTextFormat::PageBreakFlag >);
         _d._class(_t_d);
     }
 }

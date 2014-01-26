@@ -44,7 +44,7 @@ void buildMetaClass_QSGMaterial(D _d)
         ._element("CustomCompileStep", D::ClassType::CustomCompileStep)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::Flag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Flag > >::lazyDeclare("Flags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Flag > >, typename D::ClassType::Flag >);
+        GDefineMetaClass<QFlags<typename QSGMaterial::Flag > > _t_d = GDefineMetaClass<QFlags<typename QSGMaterial::Flag > >::lazyDeclare("Flags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QSGMaterial::Flag > >, typename QSGMaterial::Flag >);
         _d._class(_t_d);
     }
 }

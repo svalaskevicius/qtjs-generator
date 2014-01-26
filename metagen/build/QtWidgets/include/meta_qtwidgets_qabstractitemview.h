@@ -143,7 +143,7 @@ void buildMetaClass_QAbstractItemView(D _d)
         ._element("InternalMove", D::ClassType::InternalMove)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::EditTrigger > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::EditTrigger > >::lazyDeclare("EditTriggers", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::EditTrigger > >, typename D::ClassType::EditTrigger >);
+        GDefineMetaClass<QFlags<typename QAbstractItemView::EditTrigger > > _t_d = GDefineMetaClass<QFlags<typename QAbstractItemView::EditTrigger > >::lazyDeclare("EditTriggers", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QAbstractItemView::EditTrigger > >, typename QAbstractItemView::EditTrigger >);
         _d._class(_t_d);
     }
 }

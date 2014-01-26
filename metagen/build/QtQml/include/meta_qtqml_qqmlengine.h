@@ -317,7 +317,7 @@ void buildMetaClass_QQmlImageProviderBase(D _d)
         ._element("ForceAsynchronousImageLoading", D::ClassType::ForceAsynchronousImageLoading)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::Flag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Flag > >::lazyDeclare("Flags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Flag > >, typename D::ClassType::Flag >);
+        GDefineMetaClass<QFlags<typename QQmlImageProviderBase::Flag > > _t_d = GDefineMetaClass<QFlags<typename QQmlImageProviderBase::Flag > >::lazyDeclare("Flags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QQmlImageProviderBase::Flag > >, typename QQmlImageProviderBase::Flag >);
         _d._class(_t_d);
     }
 }

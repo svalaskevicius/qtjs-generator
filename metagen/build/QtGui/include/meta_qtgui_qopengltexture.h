@@ -384,7 +384,7 @@ void buildMetaClass_QOpenGLTexture(D _d)
         ._element("DirectionR", D::ClassType::DirectionR)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::Feature > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Feature > >::lazyDeclare("Features", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Feature > >, typename D::ClassType::Feature >);
+        GDefineMetaClass<QFlags<typename QOpenGLTexture::Feature > > _t_d = GDefineMetaClass<QFlags<typename QOpenGLTexture::Feature > >::lazyDeclare("Features", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QOpenGLTexture::Feature > >, typename QOpenGLTexture::Feature >);
         _d._class(_t_d);
     }
 }

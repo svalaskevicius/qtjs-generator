@@ -326,7 +326,7 @@ void buildMetaClass_QWidget(D _d)
         ._element("IgnoreMask", D::ClassType::IgnoreMask)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::RenderFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::RenderFlag > >::lazyDeclare("RenderFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::RenderFlag > >, typename D::ClassType::RenderFlag >);
+        GDefineMetaClass<QFlags<typename QWidget::RenderFlag > > _t_d = GDefineMetaClass<QFlags<typename QWidget::RenderFlag > >::lazyDeclare("RenderFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QWidget::RenderFlag > >, typename QWidget::RenderFlag >);
         _d._class(_t_d);
     }
 }

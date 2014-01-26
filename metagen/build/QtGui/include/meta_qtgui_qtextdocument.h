@@ -248,7 +248,7 @@ void buildMetaClass_QTextDocument(D _d)
         ._element("UndoAndRedoStacks", D::ClassType::UndoAndRedoStacks)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::FindFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::FindFlag > >::lazyDeclare("FindFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::FindFlag > >, typename D::ClassType::FindFlag >);
+        GDefineMetaClass<QFlags<typename QTextDocument::FindFlag > > _t_d = GDefineMetaClass<QFlags<typename QTextDocument::FindFlag > >::lazyDeclare("FindFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QTextDocument::FindFlag > >, typename QTextDocument::FindFlag >);
         _d._class(_t_d);
     }
 }

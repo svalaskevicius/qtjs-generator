@@ -47,7 +47,7 @@ void buildMetaClass_QFileIconProvider(D _d)
         ._element("DontUseCustomDirectoryIcons", D::ClassType::DontUseCustomDirectoryIcons)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::Option > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Option > >::lazyDeclare("Options", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Option > >, typename D::ClassType::Option >);
+        GDefineMetaClass<QFlags<typename QFileIconProvider::Option > > _t_d = GDefineMetaClass<QFlags<typename QFileIconProvider::Option > >::lazyDeclare("Options", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QFileIconProvider::Option > >, typename QFileIconProvider::Option >);
         _d._class(_t_d);
     }
 }

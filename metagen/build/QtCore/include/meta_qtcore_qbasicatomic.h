@@ -84,10 +84,6 @@ void buildMetaClass_QBasicAtomicPointer(D _d)
     _d.CPGF_MD_TEMPLATE _method("isFetchAndStoreWaitFree", (bool (*) ())&D::ClassType::isFetchAndStoreWaitFree);
     _d.CPGF_MD_TEMPLATE _method("isFetchAndAddNative", (bool (*) ())&D::ClassType::isFetchAndAddNative);
     _d.CPGF_MD_TEMPLATE _method("isFetchAndAddWaitFree", (bool (*) ())&D::ClassType::isFetchAndAddWaitFree);
-    {
-        GDefineMetaClass<QAtomicOps<typename D::ClassType::Type > > _t_d = GDefineMetaClass<QAtomicOps<typename D::ClassType::Type > >::lazyDeclare("Ops", &buildMetaClass_QAtomicOps<GDefineMetaClass<QAtomicOps<typename D::ClassType::Type > >, typename D::ClassType::Type >);
-        _d._class(_t_d);
-    }
 }
 
 

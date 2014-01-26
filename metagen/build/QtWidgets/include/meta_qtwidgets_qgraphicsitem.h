@@ -1646,7 +1646,7 @@ void buildMetaClass_QGraphicsItem(D _d)
         ._element("UserType", D::ClassType::UserType)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::GraphicsItemFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::GraphicsItemFlag > >::lazyDeclare("GraphicsItemFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::GraphicsItemFlag > >, typename D::ClassType::GraphicsItemFlag >);
+        GDefineMetaClass<QFlags<typename QGraphicsItem::GraphicsItemFlag > > _t_d = GDefineMetaClass<QFlags<typename QGraphicsItem::GraphicsItemFlag > >::lazyDeclare("GraphicsItemFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QGraphicsItem::GraphicsItemFlag > >, typename QGraphicsItem::GraphicsItemFlag >);
         _d._class(_t_d);
     }
 }

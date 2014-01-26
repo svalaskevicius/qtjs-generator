@@ -201,7 +201,7 @@ void buildMetaClass_QMessageBox(D _d)
         ._element("ButtonMask", D::ClassType::ButtonMask)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::StandardButton > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::StandardButton > >::lazyDeclare("StandardButtons", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::StandardButton > >, typename D::ClassType::StandardButton >);
+        GDefineMetaClass<QFlags<typename QMessageBox::StandardButton > > _t_d = GDefineMetaClass<QFlags<typename QMessageBox::StandardButton > >::lazyDeclare("StandardButtons", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QMessageBox::StandardButton > >, typename QMessageBox::StandardButton >);
         _d._class(_t_d);
     }
 }

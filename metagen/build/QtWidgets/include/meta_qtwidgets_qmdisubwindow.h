@@ -70,7 +70,7 @@ void buildMetaClass_QMdiSubWindow(D _d)
         ._element("RubberBandMove", D::ClassType::RubberBandMove)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::SubWindowOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::SubWindowOption > >::lazyDeclare("SubWindowOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::SubWindowOption > >, typename D::ClassType::SubWindowOption >);
+        GDefineMetaClass<QFlags<typename QMdiSubWindow::SubWindowOption > > _t_d = GDefineMetaClass<QFlags<typename QMdiSubWindow::SubWindowOption > >::lazyDeclare("SubWindowOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QMdiSubWindow::SubWindowOption > >, typename QMdiSubWindow::SubWindowOption >);
         _d._class(_t_d);
     }
 }

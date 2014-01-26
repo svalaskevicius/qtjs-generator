@@ -190,11 +190,11 @@ void buildMetaClass_QGraphicsView(D _d)
         ._element("IndirectPainting", D::ClassType::IndirectPainting)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::CacheModeFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::CacheModeFlag > >::lazyDeclare("CacheMode", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::CacheModeFlag > >, typename D::ClassType::CacheModeFlag >);
+        GDefineMetaClass<QFlags<typename QGraphicsView::CacheModeFlag > > _t_d = GDefineMetaClass<QFlags<typename QGraphicsView::CacheModeFlag > >::lazyDeclare("CacheMode", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QGraphicsView::CacheModeFlag > >, typename QGraphicsView::CacheModeFlag >);
         _d._class(_t_d);
     }
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::OptimizationFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::OptimizationFlag > >::lazyDeclare("OptimizationFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::OptimizationFlag > >, typename D::ClassType::OptimizationFlag >);
+        GDefineMetaClass<QFlags<typename QGraphicsView::OptimizationFlag > > _t_d = GDefineMetaClass<QFlags<typename QGraphicsView::OptimizationFlag > >::lazyDeclare("OptimizationFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QGraphicsView::OptimizationFlag > >, typename QGraphicsView::OptimizationFlag >);
         _d._class(_t_d);
     }
 }

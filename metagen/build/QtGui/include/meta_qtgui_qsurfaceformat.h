@@ -101,7 +101,7 @@ void buildMetaClass_QSurfaceFormat(D _d)
     _d.CPGF_MD_TEMPLATE _operator<QSurfaceFormat & (*)(cpgf::GMetaSelf, const QSurfaceFormat &)>(mopHolder = mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("_opAssign", (QSurfaceFormat & (*) (QSurfaceFormat *, const QSurfaceFormat &))&opErAToRWrapper_QSurfaceFormat__opAssign, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::FormatOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::FormatOption > >::lazyDeclare("FormatOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::FormatOption > >, typename D::ClassType::FormatOption >);
+        GDefineMetaClass<QFlags<typename QSurfaceFormat::FormatOption > > _t_d = GDefineMetaClass<QFlags<typename QSurfaceFormat::FormatOption > >::lazyDeclare("FormatOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QSurfaceFormat::FormatOption > >, typename QSurfaceFormat::FormatOption >);
         _d._class(_t_d);
     }
 }

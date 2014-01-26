@@ -207,7 +207,7 @@ void buildMetaClass_QFileDialog(D _d)
         ._element("DontUseCustomDirectoryIcons", D::ClassType::DontUseCustomDirectoryIcons)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::Option > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Option > >::lazyDeclare("Options", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Option > >, typename D::ClassType::Option >);
+        GDefineMetaClass<QFlags<typename QFileDialog::Option > > _t_d = GDefineMetaClass<QFlags<typename QFileDialog::Option > >::lazyDeclare("Options", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QFileDialog::Option > >, typename QFileDialog::Option >);
         _d._class(_t_d);
     }
 }

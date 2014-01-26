@@ -487,7 +487,7 @@ void buildMetaClass_QAccessible(D _d)
         ._element("NoBoundary", D::ClassType::NoBoundary)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::RelationFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::RelationFlag > >::lazyDeclare("Relation", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::RelationFlag > >, typename D::ClassType::RelationFlag >);
+        GDefineMetaClass<QFlags<typename QAccessible::RelationFlag > > _t_d = GDefineMetaClass<QFlags<typename QAccessible::RelationFlag > >::lazyDeclare("Relation", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QAccessible::RelationFlag > >, typename QAccessible::RelationFlag >);
         _d._class(_t_d);
     }
     {

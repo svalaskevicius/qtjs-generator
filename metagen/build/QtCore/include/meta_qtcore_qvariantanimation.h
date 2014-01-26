@@ -62,10 +62,6 @@ void buildMetaClass_QVariantAnimation(D _d)
         ._default(copyVariantFromCopyable(-1))
         ._default(copyVariantFromCopyable(0))
     ;
-    {
-        GDefineMetaClass<QVector<typename D::ClassType::KeyValue > > _t_d = GDefineMetaClass<QVector<typename D::ClassType::KeyValue > >::lazyDeclare("KeyValues", &buildMetaClass_QVector<GDefineMetaClass<QVector<typename D::ClassType::KeyValue > >, typename D::ClassType::KeyValue >);
-        _d._class(_t_d);
-    }
 }
 
 

@@ -99,7 +99,7 @@ void buildMetaClass_QRawFont(D _d)
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const cpgf::GMetaSelf &, const QRawFont &)>(mopHolder != mopHolder);
     _d.CPGF_MD_TEMPLATE _method("_opNotEqual", (bool (*) (const QRawFont *, const QRawFont &))&opErAToRWrapper_QRawFont__opNotEqual, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::LayoutFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::LayoutFlag > >::lazyDeclare("LayoutFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::LayoutFlag > >, typename D::ClassType::LayoutFlag >);
+        GDefineMetaClass<QFlags<typename QRawFont::LayoutFlag > > _t_d = GDefineMetaClass<QFlags<typename QRawFont::LayoutFlag > >::lazyDeclare("LayoutFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QRawFont::LayoutFlag > >, typename QRawFont::LayoutFlag >);
         _d._class(_t_d);
     }
 }

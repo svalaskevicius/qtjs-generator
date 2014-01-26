@@ -74,7 +74,7 @@ void buildMetaClass_QQuickPaintedItem(D _d)
         ._element("FastFBOResizing", D::ClassType::FastFBOResizing)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::PerformanceHint > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::PerformanceHint > >::lazyDeclare("PerformanceHints", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::PerformanceHint > >, typename D::ClassType::PerformanceHint >);
+        GDefineMetaClass<QFlags<typename QQuickPaintedItem::PerformanceHint > > _t_d = GDefineMetaClass<QFlags<typename QQuickPaintedItem::PerformanceHint > >::lazyDeclare("PerformanceHints", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QQuickPaintedItem::PerformanceHint > >, typename QQuickPaintedItem::PerformanceHint >);
         _d._class(_t_d);
     }
 }
