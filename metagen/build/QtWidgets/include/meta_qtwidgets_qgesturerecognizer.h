@@ -44,7 +44,7 @@ void buildMetaClass_QGestureRecognizer(D _d)
         ._element("ResultHint_Mask", D::ClassType::ResultHint_Mask)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::ResultFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ResultFlag > >::lazyDeclare("Result", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ResultFlag > >, typename D::ClassType::ResultFlag >);
+        GDefineMetaClass<QFlags<typename QGestureRecognizer::ResultFlag > > _t_d = GDefineMetaClass<QFlags<typename QGestureRecognizer::ResultFlag > >::lazyDeclare("Result", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QGestureRecognizer::ResultFlag > >, typename QGestureRecognizer::ResultFlag >);
         _d._class(_t_d);
     }
 }

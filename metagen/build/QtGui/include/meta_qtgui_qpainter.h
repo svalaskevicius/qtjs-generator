@@ -368,11 +368,11 @@ void buildMetaClass_QPainter(D _d)
         ._element("RasterOp_NotDestination", D::ClassType::RasterOp_NotDestination)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::RenderHint > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::RenderHint > >::lazyDeclare("RenderHints", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::RenderHint > >, typename D::ClassType::RenderHint >);
+        GDefineMetaClass<QFlags<typename QPainter::RenderHint > > _t_d = GDefineMetaClass<QFlags<typename QPainter::RenderHint > >::lazyDeclare("RenderHints", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QPainter::RenderHint > >, typename QPainter::RenderHint >);
         _d._class(_t_d);
     }
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::PixmapFragmentHint > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::PixmapFragmentHint > >::lazyDeclare("PixmapFragmentHints", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::PixmapFragmentHint > >, typename D::ClassType::PixmapFragmentHint >);
+        GDefineMetaClass<QFlags<typename QPainter::PixmapFragmentHint > > _t_d = GDefineMetaClass<QFlags<typename QPainter::PixmapFragmentHint > >::lazyDeclare("PixmapFragmentHints", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QPainter::PixmapFragmentHint > >, typename QPainter::PixmapFragmentHint >);
         _d._class(_t_d);
     }
     {

@@ -155,7 +155,7 @@ void buildMetaClass_QTextEdit(D _d)
         ._element("AutoAll", D::ClassType::AutoAll)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::AutoFormattingFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::AutoFormattingFlag > >::lazyDeclare("AutoFormatting", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::AutoFormattingFlag > >, typename D::ClassType::AutoFormattingFlag >);
+        GDefineMetaClass<QFlags<typename QTextEdit::AutoFormattingFlag > > _t_d = GDefineMetaClass<QFlags<typename QTextEdit::AutoFormattingFlag > >::lazyDeclare("AutoFormatting", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QTextEdit::AutoFormattingFlag > >, typename QTextEdit::AutoFormattingFlag >);
         _d._class(_t_d);
     }
     {

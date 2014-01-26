@@ -86,7 +86,7 @@ void buildMetaClass_QAbstractSpinBox(D _d)
         ._element("CorrectToNearestValue", D::ClassType::CorrectToNearestValue)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::StepEnabledFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::StepEnabledFlag > >::lazyDeclare("StepEnabled", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::StepEnabledFlag > >, typename D::ClassType::StepEnabledFlag >);
+        GDefineMetaClass<QFlags<typename QAbstractSpinBox::StepEnabledFlag > > _t_d = GDefineMetaClass<QFlags<typename QAbstractSpinBox::StepEnabledFlag > >::lazyDeclare("StepEnabled", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QAbstractSpinBox::StepEnabledFlag > >, typename QAbstractSpinBox::StepEnabledFlag >);
         _d._class(_t_d);
     }
 }

@@ -70,7 +70,7 @@ void buildMetaClass_QLibrary(D _d)
         ._element("PreventUnloadHint", D::ClassType::PreventUnloadHint)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::LoadHint > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::LoadHint > >::lazyDeclare("LoadHints", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::LoadHint > >, typename D::ClassType::LoadHint >);
+        GDefineMetaClass<QFlags<typename QLibrary::LoadHint > > _t_d = GDefineMetaClass<QFlags<typename QLibrary::LoadHint > >::lazyDeclare("LoadHints", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QLibrary::LoadHint > >, typename QLibrary::LoadHint >);
         _d._class(_t_d);
     }
 }

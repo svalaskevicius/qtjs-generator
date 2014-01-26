@@ -28,15 +28,6 @@ void buildMetaClass_QLinkedList(D _d)
 }
 
 
-template <typename D, class Key, class T>
-void buildMetaClass_QMultiMap(D _d)
-{
-    (void)_d;
-    using namespace cpgf;
-    
-}
-
-
 template <typename D, class T1, class T2>
 void buildMetaClass_QPair(D _d)
 {

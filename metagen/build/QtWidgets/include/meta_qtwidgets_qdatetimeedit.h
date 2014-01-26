@@ -1185,7 +1185,7 @@ void buildMetaClass_QDateTimeEdit(D _d)
         ._element("DateSections_Mask", D::ClassType::DateSections_Mask)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::Section > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Section > >::lazyDeclare("Sections", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Section > >, typename D::ClassType::Section >);
+        GDefineMetaClass<QFlags<typename QDateTimeEdit::Section > > _t_d = GDefineMetaClass<QFlags<typename QDateTimeEdit::Section > >::lazyDeclare("Sections", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QDateTimeEdit::Section > >, typename QDateTimeEdit::Section >);
         _d._class(_t_d);
     }
 }

@@ -577,7 +577,7 @@ void buildMetaClass_QPinchGesture(D _d)
         ._element("CenterPointChanged", D::ClassType::CenterPointChanged)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::ChangeFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ChangeFlag > >::lazyDeclare("ChangeFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ChangeFlag > >, typename D::ClassType::ChangeFlag >);
+        GDefineMetaClass<QFlags<typename QPinchGesture::ChangeFlag > > _t_d = GDefineMetaClass<QFlags<typename QPinchGesture::ChangeFlag > >::lazyDeclare("ChangeFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QPinchGesture::ChangeFlag > >, typename QPinchGesture::ChangeFlag >);
         _d._class(_t_d);
     }
 }

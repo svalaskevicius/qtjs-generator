@@ -156,7 +156,7 @@ void buildMetaClass_QOpenGLFunctions(D _d)
         ._element("FixedFunctionPipeline", D::ClassType::FixedFunctionPipeline)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::OpenGLFeature > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::OpenGLFeature > >::lazyDeclare("OpenGLFeatures", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::OpenGLFeature > >, typename D::ClassType::OpenGLFeature >);
+        GDefineMetaClass<QFlags<typename QOpenGLFunctions::OpenGLFeature > > _t_d = GDefineMetaClass<QFlags<typename QOpenGLFunctions::OpenGLFeature > >::lazyDeclare("OpenGLFeatures", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QOpenGLFunctions::OpenGLFeature > >, typename QOpenGLFunctions::OpenGLFeature >);
         _d._class(_t_d);
     }
 }

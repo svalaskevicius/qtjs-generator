@@ -105,7 +105,7 @@ void buildMetaClass_QSizePolicy(D _d)
     _d.CPGF_MD_TEMPLATE _method("_opNotEqual", (bool (*) (const QSizePolicy *, const QSizePolicy &))&opErAToRWrapper_QSizePolicy__opNotEqual, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
     _d.CPGF_MD_TEMPLATE _operator< QVariant (cpgf::GMetaSelf)>(mopHolder());
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::ControlType > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ControlType > >::lazyDeclare("ControlTypes", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ControlType > >, typename D::ClassType::ControlType >);
+        GDefineMetaClass<QFlags<typename QSizePolicy::ControlType > > _t_d = GDefineMetaClass<QFlags<typename QSizePolicy::ControlType > >::lazyDeclare("ControlTypes", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QSizePolicy::ControlType > >, typename QSizePolicy::ControlType >);
         _d._class(_t_d);
     }
 }

@@ -135,7 +135,7 @@ void buildMetaClass_QWizard(D _d)
         ._element("HaveCustomButton3", D::ClassType::HaveCustomButton3)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::WizardOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::WizardOption > >::lazyDeclare("WizardOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::WizardOption > >, typename D::ClassType::WizardOption >);
+        GDefineMetaClass<QFlags<typename QWizard::WizardOption > > _t_d = GDefineMetaClass<QFlags<typename QWizard::WizardOption > >::lazyDeclare("WizardOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QWizard::WizardOption > >, typename QWizard::WizardOption >);
         _d._class(_t_d);
     }
 }

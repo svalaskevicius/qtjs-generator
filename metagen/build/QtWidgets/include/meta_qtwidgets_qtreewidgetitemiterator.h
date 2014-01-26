@@ -97,7 +97,7 @@ void buildMetaClass_QTreeWidgetItemIterator(D _d)
     _d.CPGF_MD_TEMPLATE _operator<QTreeWidgetItem * (*)(const cpgf::GMetaSelf &)>(*mopHolder);
     _d.CPGF_MD_TEMPLATE _method("_opDerefer", (QTreeWidgetItem * (*) (const QTreeWidgetItemIterator *))&opErAToRWrapper_QTreeWidgetItemIterator__opDerefer, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::IteratorFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::IteratorFlag > >::lazyDeclare("IteratorFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::IteratorFlag > >, typename D::ClassType::IteratorFlag >);
+        GDefineMetaClass<QFlags<typename QTreeWidgetItemIterator::IteratorFlag > > _t_d = GDefineMetaClass<QFlags<typename QTreeWidgetItemIterator::IteratorFlag > >::lazyDeclare("IteratorFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QTreeWidgetItemIterator::IteratorFlag > >, typename QTreeWidgetItemIterator::IteratorFlag >);
         _d._class(_t_d);
     }
 }

@@ -139,7 +139,7 @@ void buildMetaClass_QInputDialog(D _d)
         ._element("DoubleInput", D::ClassType::DoubleInput)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::InputDialogOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::InputDialogOption > >::lazyDeclare("InputDialogOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::InputDialogOption > >, typename D::ClassType::InputDialogOption >);
+        GDefineMetaClass<QFlags<typename QInputDialog::InputDialogOption > > _t_d = GDefineMetaClass<QFlags<typename QInputDialog::InputDialogOption > >::lazyDeclare("InputDialogOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QInputDialog::InputDialogOption > >, typename QInputDialog::InputDialogOption >);
         _d._class(_t_d);
     }
 }

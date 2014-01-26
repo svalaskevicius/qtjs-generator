@@ -1277,6 +1277,86 @@ void buildMetaClass_Global_qnamespace(D _d)
         ._element("ScrollUpdate", Qt::ScrollUpdate)
         ._element("ScrollEnd", Qt::ScrollEnd)
     ;
+    {
+        GDefineMetaClass<QFlags<typename Qt::KeyboardModifier > > _t_d = GDefineMetaClass<QFlags<typename Qt::KeyboardModifier > >::lazyDeclare("KeyboardModifiers", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::KeyboardModifier > >, typename Qt::KeyboardModifier >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::MouseButton > > _t_d = GDefineMetaClass<QFlags<typename Qt::MouseButton > >::lazyDeclare("MouseButtons", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::MouseButton > >, typename Qt::MouseButton >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::Orientation > > _t_d = GDefineMetaClass<QFlags<typename Qt::Orientation > >::lazyDeclare("Orientations", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::Orientation > >, typename Qt::Orientation >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::AlignmentFlag > > _t_d = GDefineMetaClass<QFlags<typename Qt::AlignmentFlag > >::lazyDeclare("Alignment", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::AlignmentFlag > >, typename Qt::AlignmentFlag >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::WindowType > > _t_d = GDefineMetaClass<QFlags<typename Qt::WindowType > >::lazyDeclare("WindowFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::WindowType > >, typename Qt::WindowType >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::WindowState > > _t_d = GDefineMetaClass<QFlags<typename Qt::WindowState > >::lazyDeclare("WindowStates", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::WindowState > >, typename Qt::WindowState >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::ApplicationState > > _t_d = GDefineMetaClass<QFlags<typename Qt::ApplicationState > >::lazyDeclare("ApplicationStates", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::ApplicationState > >, typename Qt::ApplicationState >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::ScreenOrientation > > _t_d = GDefineMetaClass<QFlags<typename Qt::ScreenOrientation > >::lazyDeclare("ScreenOrientations", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::ScreenOrientation > >, typename Qt::ScreenOrientation >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::ImageConversionFlag > > _t_d = GDefineMetaClass<QFlags<typename Qt::ImageConversionFlag > >::lazyDeclare("ImageConversionFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::ImageConversionFlag > >, typename Qt::ImageConversionFlag >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::DockWidgetArea > > _t_d = GDefineMetaClass<QFlags<typename Qt::DockWidgetArea > >::lazyDeclare("DockWidgetAreas", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::DockWidgetArea > >, typename Qt::DockWidgetArea >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::ToolBarArea > > _t_d = GDefineMetaClass<QFlags<typename Qt::ToolBarArea > >::lazyDeclare("ToolBarAreas", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::ToolBarArea > >, typename Qt::ToolBarArea >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::InputMethodQuery > > _t_d = GDefineMetaClass<QFlags<typename Qt::InputMethodQuery > >::lazyDeclare("InputMethodQueries", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::InputMethodQuery > >, typename Qt::InputMethodQuery >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::InputMethodHint > > _t_d = GDefineMetaClass<QFlags<typename Qt::InputMethodHint > >::lazyDeclare("InputMethodHints", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::InputMethodHint > >, typename Qt::InputMethodHint >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::FindChildOption > > _t_d = GDefineMetaClass<QFlags<typename Qt::FindChildOption > >::lazyDeclare("FindChildOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::FindChildOption > >, typename Qt::FindChildOption >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::DropAction > > _t_d = GDefineMetaClass<QFlags<typename Qt::DropAction > >::lazyDeclare("DropActions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::DropAction > >, typename Qt::DropAction >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::ItemFlag > > _t_d = GDefineMetaClass<QFlags<typename Qt::ItemFlag > >::lazyDeclare("ItemFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::ItemFlag > >, typename Qt::ItemFlag >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::MatchFlag > > _t_d = GDefineMetaClass<QFlags<typename Qt::MatchFlag > >::lazyDeclare("MatchFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::MatchFlag > >, typename Qt::MatchFlag >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::TextInteractionFlag > > _t_d = GDefineMetaClass<QFlags<typename Qt::TextInteractionFlag > >::lazyDeclare("TextInteractionFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::TextInteractionFlag > >, typename Qt::TextInteractionFlag >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::TouchPointState > > _t_d = GDefineMetaClass<QFlags<typename Qt::TouchPointState > >::lazyDeclare("TouchPointStates", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::TouchPointState > >, typename Qt::TouchPointState >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::GestureFlag > > _t_d = GDefineMetaClass<QFlags<typename Qt::GestureFlag > >::lazyDeclare("GestureFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::GestureFlag > >, typename Qt::GestureFlag >);
+        _d._class(_t_d);
+    }
 }
 
 

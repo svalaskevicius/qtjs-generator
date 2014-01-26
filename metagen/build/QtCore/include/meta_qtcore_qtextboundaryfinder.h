@@ -65,7 +65,7 @@ void buildMetaClass_QTextBoundaryFinder(D _d)
     _d.CPGF_MD_TEMPLATE _operator<QTextBoundaryFinder & (*)(cpgf::GMetaSelf, const QTextBoundaryFinder &)>(mopHolder = mopHolder);
     _d.CPGF_MD_TEMPLATE _method("_opAssign", (QTextBoundaryFinder & (*) (QTextBoundaryFinder *, const QTextBoundaryFinder &))&opErAToRWrapper_QTextBoundaryFinder__opAssign, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::BoundaryReason > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::BoundaryReason > >::lazyDeclare("BoundaryReasons", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::BoundaryReason > >, typename D::ClassType::BoundaryReason >);
+        GDefineMetaClass<QFlags<typename QTextBoundaryFinder::BoundaryReason > > _t_d = GDefineMetaClass<QFlags<typename QTextBoundaryFinder::BoundaryReason > >::lazyDeclare("BoundaryReasons", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QTextBoundaryFinder::BoundaryReason > >, typename QTextBoundaryFinder::BoundaryReason >);
         _d._class(_t_d);
     }
 }

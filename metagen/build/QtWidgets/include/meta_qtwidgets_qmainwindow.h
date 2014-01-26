@@ -107,7 +107,7 @@ void buildMetaClass_QMainWindow(D _d)
         ._element("VerticalTabs", D::ClassType::VerticalTabs)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::DockOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::DockOption > >::lazyDeclare("DockOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::DockOption > >, typename D::ClassType::DockOption >);
+        GDefineMetaClass<QFlags<typename QMainWindow::DockOption > > _t_d = GDefineMetaClass<QFlags<typename QMainWindow::DockOption > >::lazyDeclare("DockOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QMainWindow::DockOption > >, typename QMainWindow::DockOption >);
         _d._class(_t_d);
     }
 }

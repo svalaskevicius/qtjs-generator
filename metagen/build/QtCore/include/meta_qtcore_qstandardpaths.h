@@ -63,7 +63,7 @@ void buildMetaClass_QStandardPaths(D _d)
         ._element("LocateDirectory", D::ClassType::LocateDirectory)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::LocateOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::LocateOption > >::lazyDeclare("LocateOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::LocateOption > >, typename D::ClassType::LocateOption >);
+        GDefineMetaClass<QFlags<typename QStandardPaths::LocateOption > > _t_d = GDefineMetaClass<QFlags<typename QStandardPaths::LocateOption > >::lazyDeclare("LocateOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QStandardPaths::LocateOption > >, typename QStandardPaths::LocateOption >);
         _d._class(_t_d);
     }
 }

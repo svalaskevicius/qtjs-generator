@@ -91,7 +91,7 @@ void buildMetaClass_QMdiArea(D _d)
         ._element("TabbedView", D::ClassType::TabbedView)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::AreaOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::AreaOption > >::lazyDeclare("AreaOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::AreaOption > >, typename D::ClassType::AreaOption >);
+        GDefineMetaClass<QFlags<typename QMdiArea::AreaOption > > _t_d = GDefineMetaClass<QFlags<typename QMdiArea::AreaOption > >::lazyDeclare("AreaOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QMdiArea::AreaOption > >, typename QMdiArea::AreaOption >);
         _d._class(_t_d);
     }
 }

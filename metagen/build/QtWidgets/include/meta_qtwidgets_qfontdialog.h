@@ -73,7 +73,7 @@ void buildMetaClass_QFontDialog(D _d)
         ._element("ProportionalFonts", D::ClassType::ProportionalFonts)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::FontDialogOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::FontDialogOption > >::lazyDeclare("FontDialogOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::FontDialogOption > >, typename D::ClassType::FontDialogOption >);
+        GDefineMetaClass<QFlags<typename QFontDialog::FontDialogOption > > _t_d = GDefineMetaClass<QFlags<typename QFontDialog::FontDialogOption > >::lazyDeclare("FontDialogOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QFontDialog::FontDialogOption > >, typename QFontDialog::FontDialogOption >);
         _d._class(_t_d);
     }
 }

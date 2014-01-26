@@ -55,7 +55,7 @@ void buildMetaClass_QFontComboBox(D _d)
         ._element("ProportionalFonts", D::ClassType::ProportionalFonts)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::FontFilter > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::FontFilter > >::lazyDeclare("FontFilters", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::FontFilter > >, typename D::ClassType::FontFilter >);
+        GDefineMetaClass<QFlags<typename QFontComboBox::FontFilter > > _t_d = GDefineMetaClass<QFlags<typename QFontComboBox::FontFilter > >::lazyDeclare("FontFilters", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QFontComboBox::FontFilter > >, typename QFontComboBox::FontFilter >);
         _d._class(_t_d);
     }
 }

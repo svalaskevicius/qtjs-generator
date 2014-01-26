@@ -63,7 +63,7 @@ void buildMetaClass_QEventLoop(D _d)
         ._element("DialogExec", D::ClassType::DialogExec)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::ProcessEventsFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ProcessEventsFlag > >::lazyDeclare("ProcessEventsFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ProcessEventsFlag > >, typename D::ClassType::ProcessEventsFlag >);
+        GDefineMetaClass<QFlags<typename QEventLoop::ProcessEventsFlag > > _t_d = GDefineMetaClass<QFlags<typename QEventLoop::ProcessEventsFlag > >::lazyDeclare("ProcessEventsFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QEventLoop::ProcessEventsFlag > >, typename QEventLoop::ProcessEventsFlag >);
         _d._class(_t_d);
     }
 }

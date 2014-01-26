@@ -226,7 +226,7 @@ void buildMetaClass_QUrl(D _d)
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const cpgf::GMetaSelf &, const QUrl &)>(mopHolder != mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("_opNotEqual", (bool (*) (const QUrl *, const QUrl &))&opErAToRWrapper_QUrl__opNotEqual, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::ComponentFormattingOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ComponentFormattingOption > >::lazyDeclare("ComponentFormattingOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ComponentFormattingOption > >, typename D::ClassType::ComponentFormattingOption >);
+        GDefineMetaClass<QFlags<typename QUrl::ComponentFormattingOption > > _t_d = GDefineMetaClass<QFlags<typename QUrl::ComponentFormattingOption > >::lazyDeclare("ComponentFormattingOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QUrl::ComponentFormattingOption > >, typename QUrl::ComponentFormattingOption >);
         _d._class(_t_d);
     }
 }

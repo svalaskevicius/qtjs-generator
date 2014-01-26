@@ -141,11 +141,11 @@ void buildMetaClass_QPaintEngine(D _d)
         ._element("MaxUser", D::ClassType::MaxUser)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::PaintEngineFeature > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::PaintEngineFeature > >::lazyDeclare("PaintEngineFeatures", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::PaintEngineFeature > >, typename D::ClassType::PaintEngineFeature >);
+        GDefineMetaClass<QFlags<typename QPaintEngine::PaintEngineFeature > > _t_d = GDefineMetaClass<QFlags<typename QPaintEngine::PaintEngineFeature > >::lazyDeclare("PaintEngineFeatures", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QPaintEngine::PaintEngineFeature > >, typename QPaintEngine::PaintEngineFeature >);
         _d._class(_t_d);
     }
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::DirtyFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::DirtyFlag > >::lazyDeclare("DirtyFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::DirtyFlag > >, typename D::ClassType::DirtyFlag >);
+        GDefineMetaClass<QFlags<typename QPaintEngine::DirtyFlag > > _t_d = GDefineMetaClass<QFlags<typename QPaintEngine::DirtyFlag > >::lazyDeclare("DirtyFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QPaintEngine::DirtyFlag > >, typename QPaintEngine::DirtyFlag >);
         _d._class(_t_d);
     }
 }
@@ -547,7 +547,7 @@ void buildMetaClass_QTextItem(D _d)
         ._element("Dummy", D::ClassType::Dummy)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::RenderFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::RenderFlag > >::lazyDeclare("RenderFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::RenderFlag > >, typename D::ClassType::RenderFlag >);
+        GDefineMetaClass<QFlags<typename QTextItem::RenderFlag > > _t_d = GDefineMetaClass<QFlags<typename QTextItem::RenderFlag > >::lazyDeclare("RenderFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QTextItem::RenderFlag > >, typename QTextItem::RenderFlag >);
         _d._class(_t_d);
     }
 }

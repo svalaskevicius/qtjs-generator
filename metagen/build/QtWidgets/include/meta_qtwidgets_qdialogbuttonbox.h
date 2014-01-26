@@ -110,7 +110,7 @@ void buildMetaClass_QDialogButtonBox(D _d)
         ._element("GnomeLayout", D::ClassType::GnomeLayout)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::StandardButton > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::StandardButton > >::lazyDeclare("StandardButtons", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::StandardButton > >, typename D::ClassType::StandardButton >);
+        GDefineMetaClass<QFlags<typename QDialogButtonBox::StandardButton > > _t_d = GDefineMetaClass<QFlags<typename QDialogButtonBox::StandardButton > >::lazyDeclare("StandardButtons", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QDialogButtonBox::StandardButton > >, typename QDialogButtonBox::StandardButton >);
         _d._class(_t_d);
     }
 }

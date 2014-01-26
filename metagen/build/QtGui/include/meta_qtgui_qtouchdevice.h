@@ -48,7 +48,7 @@ void buildMetaClass_QTouchDevice(D _d)
         ._element("NormalizedPosition", D::ClassType::NormalizedPosition)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::CapabilityFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::CapabilityFlag > >::lazyDeclare("Capabilities", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::CapabilityFlag > >, typename D::ClassType::CapabilityFlag >);
+        GDefineMetaClass<QFlags<typename QTouchDevice::CapabilityFlag > > _t_d = GDefineMetaClass<QFlags<typename QTouchDevice::CapabilityFlag > >::lazyDeclare("Capabilities", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QTouchDevice::CapabilityFlag > >, typename QTouchDevice::CapabilityFlag >);
         _d._class(_t_d);
     }
 }

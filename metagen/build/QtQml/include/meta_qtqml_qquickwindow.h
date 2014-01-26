@@ -83,7 +83,7 @@ void buildMetaClass_QQuickWindow(D _d)
         ._element("TextureCanUseAtlas", D::ClassType::TextureCanUseAtlas)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::CreateTextureOption > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::CreateTextureOption > >::lazyDeclare("CreateTextureOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::CreateTextureOption > >, typename D::ClassType::CreateTextureOption >);
+        GDefineMetaClass<QFlags<typename QQuickWindow::CreateTextureOption > > _t_d = GDefineMetaClass<QFlags<typename QQuickWindow::CreateTextureOption > >::lazyDeclare("CreateTextureOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QQuickWindow::CreateTextureOption > >, typename QQuickWindow::CreateTextureOption >);
         _d._class(_t_d);
     }
 }

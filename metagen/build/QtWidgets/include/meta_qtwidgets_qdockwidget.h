@@ -72,7 +72,7 @@ void buildMetaClass_QDockWidget(D _d)
         ._element("Reserved", D::ClassType::Reserved)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::DockWidgetFeature > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::DockWidgetFeature > >::lazyDeclare("DockWidgetFeatures", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::DockWidgetFeature > >, typename D::ClassType::DockWidgetFeature >);
+        GDefineMetaClass<QFlags<typename QDockWidget::DockWidgetFeature > > _t_d = GDefineMetaClass<QFlags<typename QDockWidget::DockWidgetFeature > >::lazyDeclare("DockWidgetFeatures", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QDockWidget::DockWidgetFeature > >, typename QDockWidget::DockWidgetFeature >);
         _d._class(_t_d);
     }
 }

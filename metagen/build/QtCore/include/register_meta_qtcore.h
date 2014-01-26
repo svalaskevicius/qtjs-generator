@@ -45,6 +45,7 @@ GDefineMetaInfo createMetaClass_Global_qjsonvalue();
 GDefineMetaInfo createMetaClass_Global_qline();
 GDefineMetaInfo createMetaClass_Global_qlocale();
 GDefineMetaInfo createMetaClass_Global_qlogging();
+GDefineMetaInfo createMetaClass_Global_qmap();
 GDefineMetaInfo createMetaClass_Global_qmargins();
 GDefineMetaInfo createMetaClass_Global_qmath();
 GDefineMetaInfo createMetaClass_Global_qmetaobject();
@@ -262,6 +263,7 @@ void registerMain_QtCore(Meta _d)
     _d._class(createMetaClass_Global_qline());
     _d._class(createMetaClass_Global_qlocale());
     _d._class(createMetaClass_Global_qlogging());
+    _d._class(createMetaClass_Global_qmap());
     _d._class(createMetaClass_Global_qmargins());
     _d._class(createMetaClass_Global_qmath());
     _d._class(createMetaClass_Global_qmetaobject());

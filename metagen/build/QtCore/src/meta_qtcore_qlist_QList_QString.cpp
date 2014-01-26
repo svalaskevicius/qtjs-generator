@@ -41,9 +41,9 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qbytearray.h>
+#include <QtCore/qlist.h>
 
-#include "meta_qtcore_qbytearray.h"
+#include "meta_qtcore_qlist.h"
 
 using namespace cpgf;
 
@@ -53,11 +53,11 @@ namespace qt_metadata {
 #ifdef DLL_PUBLIC
 DLL_PUBLIC
 #endif
-GDefineMetaInfo createMetaClass_QList_TemplateInstance_QList_QObject_ptr()
+GDefineMetaInfo createMetaClass_QList_TemplateInstance_QList_QString()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QList<QObject*> > _nd = GDefineMetaClass<QList<QObject*> >::lazyDeclare("QList_QObject_ptr", &buildMetaClass_QList<GDefineMetaClass<QList<QObject*> >, QObject* >);
+        GDefineMetaClass<QList<QString> > _nd = GDefineMetaClass<QList<QString> >::lazyDeclare("QList_QString", &buildMetaClass_QList<GDefineMetaClass<QList<QString> >, QString >);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

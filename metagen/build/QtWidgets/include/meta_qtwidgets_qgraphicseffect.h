@@ -52,7 +52,7 @@ void buildMetaClass_QGraphicsBlurEffect(D _d)
         ._element("AnimationHint", D::ClassType::AnimationHint)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::BlurHint > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::BlurHint > >::lazyDeclare("BlurHints", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::BlurHint > >, typename D::ClassType::BlurHint >);
+        GDefineMetaClass<QFlags<typename QGraphicsBlurEffect::BlurHint > > _t_d = GDefineMetaClass<QFlags<typename QGraphicsBlurEffect::BlurHint > >::lazyDeclare("BlurHints", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QGraphicsBlurEffect::BlurHint > >, typename QGraphicsBlurEffect::BlurHint >);
         _d._class(_t_d);
     }
 }
@@ -1040,7 +1040,7 @@ void buildMetaClass_QGraphicsEffect(D _d)
         ._element("PadToEffectiveBoundingRect", D::ClassType::PadToEffectiveBoundingRect)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::ChangeFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ChangeFlag > >::lazyDeclare("ChangeFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ChangeFlag > >, typename D::ClassType::ChangeFlag >);
+        GDefineMetaClass<QFlags<typename QGraphicsEffect::ChangeFlag > > _t_d = GDefineMetaClass<QFlags<typename QGraphicsEffect::ChangeFlag > >::lazyDeclare("ChangeFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QGraphicsEffect::ChangeFlag > >, typename QGraphicsEffect::ChangeFlag >);
         _d._class(_t_d);
     }
 }

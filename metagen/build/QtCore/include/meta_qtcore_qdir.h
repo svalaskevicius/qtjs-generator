@@ -180,11 +180,11 @@ void buildMetaClass_QDir(D _d)
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const cpgf::GMetaSelf &, const QDir &)>(mopHolder != mopHolder);
     _d.CPGF_MD_TEMPLATE _method("_opNotEqual", (bool (*) (const QDir *, const QDir &))&opErAToRWrapper_QDir__opNotEqual, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::Filter > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Filter > >::lazyDeclare("Filters", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Filter > >, typename D::ClassType::Filter >);
+        GDefineMetaClass<QFlags<typename QDir::Filter > > _t_d = GDefineMetaClass<QFlags<typename QDir::Filter > >::lazyDeclare("Filters", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QDir::Filter > >, typename QDir::Filter >);
         _d._class(_t_d);
     }
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::SortFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::SortFlag > >::lazyDeclare("SortFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::SortFlag > >, typename D::ClassType::SortFlag >);
+        GDefineMetaClass<QFlags<typename QDir::SortFlag > > _t_d = GDefineMetaClass<QFlags<typename QDir::SortFlag > >::lazyDeclare("SortFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QDir::SortFlag > >, typename QDir::SortFlag >);
         _d._class(_t_d);
     }
 }

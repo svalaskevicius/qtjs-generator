@@ -673,11 +673,11 @@ void buildMetaClass_QStyle(D _d)
         ._element("SP_CustomBase", D::ClassType::SP_CustomBase)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::StateFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::StateFlag > >::lazyDeclare("State", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::StateFlag > >, typename D::ClassType::StateFlag >);
+        GDefineMetaClass<QFlags<typename QStyle::StateFlag > > _t_d = GDefineMetaClass<QFlags<typename QStyle::StateFlag > >::lazyDeclare("State", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QStyle::StateFlag > >, typename QStyle::StateFlag >);
         _d._class(_t_d);
     }
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::SubControl > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::SubControl > >::lazyDeclare("SubControls", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::SubControl > >, typename D::ClassType::SubControl >);
+        GDefineMetaClass<QFlags<typename QStyle::SubControl > > _t_d = GDefineMetaClass<QFlags<typename QStyle::SubControl > >::lazyDeclare("SubControls", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QStyle::SubControl > >, typename QStyle::SubControl >);
         _d._class(_t_d);
     }
 }

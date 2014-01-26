@@ -317,11 +317,11 @@ void buildMetaClass_QSGNode(D _d)
         ._element("DirtyPropagationMask", D::ClassType::DirtyPropagationMask)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::Flag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Flag > >::lazyDeclare("Flags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Flag > >, typename D::ClassType::Flag >);
+        GDefineMetaClass<QFlags<typename QSGNode::Flag > > _t_d = GDefineMetaClass<QFlags<typename QSGNode::Flag > >::lazyDeclare("Flags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QSGNode::Flag > >, typename QSGNode::Flag >);
         _d._class(_t_d);
     }
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::DirtyStateBit > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::DirtyStateBit > >::lazyDeclare("DirtyState", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::DirtyStateBit > >, typename D::ClassType::DirtyStateBit >);
+        GDefineMetaClass<QFlags<typename QSGNode::DirtyStateBit > > _t_d = GDefineMetaClass<QFlags<typename QSGNode::DirtyStateBit > >::lazyDeclare("DirtyState", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QSGNode::DirtyStateBit > >, typename QSGNode::DirtyStateBit >);
         _d._class(_t_d);
     }
 }

@@ -342,7 +342,7 @@ void buildMetaClass_QImageIOPlugin(D _d)
         ._element("CanReadIncremental", D::ClassType::CanReadIncremental)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::Capability > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Capability > >::lazyDeclare("Capabilities", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Capability > >, typename D::ClassType::Capability >);
+        GDefineMetaClass<QFlags<typename QImageIOPlugin::Capability > > _t_d = GDefineMetaClass<QFlags<typename QImageIOPlugin::Capability > >::lazyDeclare("Capabilities", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QImageIOPlugin::Capability > >, typename QImageIOPlugin::Capability >);
         _d._class(_t_d);
     }
 }

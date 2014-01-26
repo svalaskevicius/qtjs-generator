@@ -93,11 +93,11 @@ void buildMetaClass_QFileDevice(D _d)
         ._element("NoOptions", D::ClassType::NoOptions)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::Permission > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::Permission > >::lazyDeclare("Permissions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::Permission > >, typename D::ClassType::Permission >);
+        GDefineMetaClass<QFlags<typename QFileDevice::Permission > > _t_d = GDefineMetaClass<QFlags<typename QFileDevice::Permission > >::lazyDeclare("Permissions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QFileDevice::Permission > >, typename QFileDevice::Permission >);
         _d._class(_t_d);
     }
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::FileHandleFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::FileHandleFlag > >::lazyDeclare("FileHandleFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::FileHandleFlag > >, typename D::ClassType::FileHandleFlag >);
+        GDefineMetaClass<QFlags<typename QFileDevice::FileHandleFlag > > _t_d = GDefineMetaClass<QFlags<typename QFileDevice::FileHandleFlag > >::lazyDeclare("FileHandleFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QFileDevice::FileHandleFlag > >, typename QFileDevice::FileHandleFlag >);
         _d._class(_t_d);
     }
 }

@@ -96,7 +96,7 @@ void buildMetaClass_QIODevice(D _d)
         ._element("Unbuffered", D::ClassType::Unbuffered)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::OpenModeFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::OpenModeFlag > >::lazyDeclare("OpenMode", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::OpenModeFlag > >, typename D::ClassType::OpenModeFlag >);
+        GDefineMetaClass<QFlags<typename QIODevice::OpenModeFlag > > _t_d = GDefineMetaClass<QFlags<typename QIODevice::OpenModeFlag > >::lazyDeclare("OpenMode", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QIODevice::OpenModeFlag > >, typename QIODevice::OpenModeFlag >);
         _d._class(_t_d);
     }
 }

@@ -60,7 +60,7 @@ void buildMetaClass_QOpenGLShader(D _d)
         ._element("Compute", D::ClassType::Compute)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::ShaderTypeBit > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::ShaderTypeBit > >::lazyDeclare("ShaderType", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::ShaderTypeBit > >, typename D::ClassType::ShaderTypeBit >);
+        GDefineMetaClass<QFlags<typename QOpenGLShader::ShaderTypeBit > > _t_d = GDefineMetaClass<QFlags<typename QOpenGLShader::ShaderTypeBit > >::lazyDeclare("ShaderType", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QOpenGLShader::ShaderTypeBit > >, typename QOpenGLShader::ShaderTypeBit >);
         _d._class(_t_d);
     }
 }

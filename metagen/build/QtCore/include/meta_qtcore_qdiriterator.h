@@ -50,7 +50,7 @@ void buildMetaClass_QDirIterator(D _d)
         ._element("Subdirectories", D::ClassType::Subdirectories)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::IteratorFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::IteratorFlag > >::lazyDeclare("IteratorFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::IteratorFlag > >, typename D::ClassType::IteratorFlag >);
+        GDefineMetaClass<QFlags<typename QDirIterator::IteratorFlag > > _t_d = GDefineMetaClass<QFlags<typename QDirIterator::IteratorFlag > >::lazyDeclare("IteratorFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QDirIterator::IteratorFlag > >, typename QDirIterator::IteratorFlag >);
         _d._class(_t_d);
     }
 }

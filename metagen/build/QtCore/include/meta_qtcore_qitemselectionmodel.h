@@ -106,7 +106,7 @@ void buildMetaClass_QItemSelectionModel(D _d)
         ._element("ClearAndSelect", D::ClassType::ClearAndSelect)
     ;
     {
-        GDefineMetaClass<QFlags<typename D::ClassType::SelectionFlag > > _t_d = GDefineMetaClass<QFlags<typename D::ClassType::SelectionFlag > >::lazyDeclare("SelectionFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename D::ClassType::SelectionFlag > >, typename D::ClassType::SelectionFlag >);
+        GDefineMetaClass<QFlags<typename QItemSelectionModel::SelectionFlag > > _t_d = GDefineMetaClass<QFlags<typename QItemSelectionModel::SelectionFlag > >::lazyDeclare("SelectionFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QItemSelectionModel::SelectionFlag > >, typename QItemSelectionModel::SelectionFlag >);
         _d._class(_t_d);
     }
 }
