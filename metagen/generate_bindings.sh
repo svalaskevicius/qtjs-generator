@@ -38,8 +38,8 @@ function prepare_files() {
         $s =~ s/(?<!define )(?<!Q_OBJECT_FAKE )\bQ_OBJECT\b/public: static const QMetaObject staticMetaObject; virtual const QMetaObject *metaObject() const; virtual void *qt_metacast(const char *); static inline QString tr(const char *s, const char *c = 0, int n = -1); virtual int qt_metacall(QMetaObject::Call, int, void **); private: /g;
 
         $s =~ s/class QByteArray;//g;
-        $s =~ s/template<(class|typename)\s*T>\s*class\s*QList;//g;
-        $s =~ s/template<(class|typename)\s*Key,\s*(class|typename)\s*Value> class QMap;//g;
+        $s =~ s/template\s*<(class|typename)\s*T>\s*class\s*QList;//g;
+        $s =~ s/template\s*<(class|typename)\s*Key,\s*(class|typename)\s*(T|Value)> class QMap;//g;
         $s =~ s/class QString;//g;
         $s =~ s/class QStringList;//g;
         $s =~ s/class QVariant;//g;
