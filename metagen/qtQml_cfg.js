@@ -209,6 +209,17 @@ function processCallback(item, data)
       }
     }
   }
+  if (item.isTypedef()) {
+    switch (""+item.getType().getQualifiedBaseType()) {
+      case "QFlags": break;
+      default:
+        data.skipBind = true;
+        print("skipping typedef name: " + item.getLiteralName()+"\n");
+        print("skipping typedef type: " + item.getType().getLiteralType()+"\n");
+        print("skipping typedef basetype: " + item.getType().getQualifiedBaseType()+"\n");
+        return;
+    }
+  }
 
   if (shouldAllowClassWrapper(item)) {
     data.getWrapperConfig().setWrapClass(true);

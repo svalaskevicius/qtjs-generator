@@ -67,7 +67,8 @@ var config = {
     +"#include <QtCore/QPauseAnimation>\n"
     +"#include <QtCore/qmetaobject.h>\n"
     +"#include <QtCore/QState>\n"
-    +"#include <QtCore/QTimeZone>\n", // required by qdatetime
+    +"#include <QtCore/QTimeZone>\n"
+  ,
   //	sourceHeaderReplacer : [ "!.*Box2D[^/]*/Box2D!i", "Box2D" ],
 //	metaHeaderPath : "cpgf/metadata/box2d/",
   parameterTypeReplacer : [
@@ -446,6 +447,17 @@ function processCallback(item, data)
           break;
       }
 
+    }
+  }
+  if (item.isTypedef()) {
+    switch (""+item.getType().getQualifiedBaseType()) {
+      case "QFlags": break;
+      default:
+        data.skipBind = true;
+        print("skipping typedef name: " + item.getLiteralName()+"\n");
+        print("skipping typedef type: " + item.getType().getLiteralType()+"\n");
+        print("skipping typedef basetype: " + item.getType().getQualifiedBaseType()+"\n");
+        return;
     }
   }
   if (shouldAllowClassWrapper(item)) {
