@@ -139,6 +139,7 @@ function processCallback(item, data)
     'qatomic_cxx11.h',
     'qatomic_x86.h',
     '_impl.h',
+    '_p\.h$',
     '/qatomic_',
     '/qoldbasicatomic',
     'windows.h',
@@ -154,7 +155,6 @@ function processCallback(item, data)
 
     'qarraydatapointer',
 
-    'qmap',
     'qidentityproxymodel',
     'qregularexpression',
     'qgenericatomic',
@@ -303,6 +303,11 @@ function processCallback(item, data)
     case "QUrlQuery::data_ptr":
     case "qt_sine_table":
     case "QTimeZone::OffsetDataList":
+    case "QMapDataBase":
+    case "QMapNodeBase":
+    case "QMultiMap":
+    case "QMapNode":
+    case "QMapData":
       data.skipBind = true;
     print("skip directly: " + item.getQualifiedName()+ "\n");
       break;
