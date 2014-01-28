@@ -14,7 +14,7 @@ struct GlobalInitialiser {
        QCoreApplication::setEventDispatcher(ev_dispatcher);
        int argc = 0;
        char *argv[1] = {0};
-       app = new QApplication(argc, argv, 0);
+       app = new QCoreApplication(argc, argv, 0);
     }
 
     ~GlobalInitialiser() {
