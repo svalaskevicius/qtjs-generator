@@ -22,6 +22,12 @@ while test "$#" -gt 0 ; do
         '--callgrind')
             PRECMD="valgrind --tool=callgrind"
             ;;
+        '--helgrind')
+            PRECMD="valgrind --tool=helgrind"
+            ;;
+        '--drd')
+            PRECMD="valgrind --tool=drd"
+            ;;
         '--massif')
             PRECMD="valgrind --tool=massif"
             ;;
