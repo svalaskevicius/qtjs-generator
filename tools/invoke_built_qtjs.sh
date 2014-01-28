@@ -2,6 +2,7 @@
 
 MYDIR=$(dirname "$(readlink -f "$0")")
 TOPDIR="$MYDIR/.."
+MYNAME=$(basename "$0")
 
 export LD_LIBRARY_PATH="$TOPDIR/lib/cpgf/lib:$TOPDIR/build/src/core:$TOPDIR/build/src/widgets:$TOPDIR/build/src/qml:$TOPDIR/build/src/gui:$TOPDIR/lib/node/deps/v8/out/native/lib.target/"
 
@@ -29,7 +30,18 @@ while test "$#" -gt 0 ; do
     esac
     shift
 done
-$PRECMD "$TOPDIR/build/src/runner/qtjs" ${ARGS[@]}
+
+CMD="$TOPDIR/build/src/runner/qtjs"
+case "$MYNAME" in
+    "spec")
+        CMD="$TOPDIR/build/tests/spec/spec"
+        ;;
+    "features")
+        CMD="$TOPDIR/build/tests/features/features"
+        ;;
+esac
+
+$PRECMD "$CMD" ${ARGS[@]}
 
 exit $?
 
