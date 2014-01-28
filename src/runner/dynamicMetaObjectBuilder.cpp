@@ -1,13 +1,60 @@
 
 #include <assert.h>
 #include <private/qmetaobjectbuilder_p.h>
-#include "llvmapi.h"
 
 #include "dynamicMetaObjectBuilder.h"
+#include "dynamicQObjectManager.h"
+#include "closureGenerator.h"
+
+#include <QDebug>
 
 namespace qtjs_binder {
 
+namespace {
 
+typedef void (*StaticMetaCallFuncPtr)(QObject *, QMetaObject::Call, int, void **);
+
+void static_metacall(ffi_cif *cif, void *ret, void* args[], void* classIdx)
+{
+    Q_UNUSED(ret) Q_UNUSED(cif)
+    dynamicQObjectManager().metacall((size_t)classIdx, *(DynamicQObject **)args[0], *(QMetaObject::Call*)args[1], *(int*)args[2], *(void***)args[3]);
+}
+
+
+struct StaticMetaCallFuncGenerator : ClosureGenerator {
+
+    StaticMetaCallFuncPtr generate(size_t classIdx) {
+        return (StaticMetaCallFuncPtr) generateClosure(static_metacall, (void *)classIdx);
+    }
+
+protected:
+
+    virtual void prepare_cif() override {
+        args[0] = &ffi_type_pointer;
+        args[1] = &ffi_type_uint;
+        args[2] = &ffi_type_sint;
+        args[3] = &ffi_type_pointer;
+
+        if (ffi_prep_cif(&cif, FFI_DEFAULT_ABI, 4, &ffi_type_void, args) != FFI_OK) {
+            throw new std::runtime_error("cannot create static metacall");
+        }
+    }
+
+private:
+    ffi_type *args[4];
+
+};
+
+
+
+StaticMetaCallFuncPtr generateDynamicObjectStaticMetaCall(int classIdx)
+{
+    static StaticMetaCallFuncGenerator generator;
+    return generator.generate(classIdx);
+}
+
+
+}
 
 
 struct DynamicMetaObjectBuilderPrivate
@@ -65,7 +112,7 @@ void DynamicMetaObjectBuilder::addProperty(const char * name, const char * type)
 QMetaObject *DynamicMetaObjectBuilder::toMetaObject(int classId)
 {
     _p->builder.setStaticMetacallFunction(
-        llvmApi.generateDynamicObjectStaticMetaCall(classId)
+        generateDynamicObjectStaticMetaCall(classId)
     );
     return _p->builder.toMetaObject();
 }

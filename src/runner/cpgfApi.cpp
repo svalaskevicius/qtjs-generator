@@ -4,7 +4,7 @@
 #include "dynamicMetaObjectBuilder.h"
 #include "dynamicQObjectManager.h"
 #include "dynamicQObject.h"
-#include "llvmapi.h"
+#include "closureGenerator.h"
 
 #include <qqmlprivate.h>
 #include <QQmlComponent>
@@ -13,6 +13,48 @@
 
 namespace qtjs_binder {
 
+namespace {
+
+typedef void (*CreateIntoFuncPtr)(void *);
+
+void create_into(ffi_cif *cif, void *ret, void* args[], void* classIdx)
+{
+    Q_UNUSED(ret) Q_UNUSED(cif)
+    void *target = *(void **)args[0];
+    size_t index = (size_t)classIdx;
+    QQmlPrivate::createInto<DynamicQObject>(target);
+    ((QQmlPrivate::QQmlElement<DynamicQObject> *)target)->__setClassIdx(index);
+}
+
+struct CreateIntoFuncGenerator : ClosureGenerator {
+
+    CreateIntoFuncPtr generate(size_t classIdx) {
+        return (CreateIntoFuncPtr) generateClosure(create_into, (void *)classIdx);
+    }
+
+protected:
+
+    virtual void prepare_cif() override {
+        args[0] = &ffi_type_pointer;
+
+        if (ffi_prep_cif(&cif, FFI_DEFAULT_ABI, 1, &ffi_type_void, args) != FFI_OK) {
+            throw new std::runtime_error("cannot create create_into");
+        }
+    }
+
+
+private:
+    ffi_type *args[1];
+};
+
+
+CreateIntoFuncPtr generateDynamicObjectCreateInto(int classIdx)
+{
+    static CreateIntoFuncGenerator generator;
+    return generator.generate(classIdx);
+}
+
+}
 
 #define X_QML_GETTYPENAMES \
     const char *className = metaObject->className(); \
@@ -39,7 +81,7 @@ int qmlRegisterDynamicType(int classIdx, const char *uri, int versionMajor, int 
 
         qRegisterNormalizedMetaType<DynamicQObject *>(pointerName.constData()),
         qRegisterNormalizedMetaType<QQmlListProperty<DynamicQObject> >(listName.constData()),
-        sizeof(DynamicQObject), llvmApi.generateDynamicObjectCreateInto(classIdx),
+        sizeof(DynamicQObject), generateDynamicObjectCreateInto(classIdx),
         QString(),
 
         uri, versionMajor, versionMinor, qmlName, metaObject,
