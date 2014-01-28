@@ -14,11 +14,11 @@ How to build
 
 * git
 * subversion (for V8 make dependencies)
-* C++11 supporting compiler, tested with gcc 4.7.2, 4.7.3
+* C++11 supporting compiler, tested with gcc 4.7.2, 4.7.3, clang 3.4
 * cmake (for building cpgf library)
 * Qt5.2
 * OpenGL development files
-* LLVM library (dev files) - tested with 3.2
+* libffi development files
 * Boost (required for tests) - tested with 1.52
 
 ### Building
