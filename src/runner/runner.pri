@@ -5,7 +5,6 @@ QT += core widgets qml quick gui core-private
 
 SOURCES += \
     $$PWD/cpgfApi.cpp \
-    $$PWD/llvmapi.cpp \
     $$ROOT/lib/qt-event-dispatcher-libuv/src/eventdispatcherlibuv.cpp \
     $$files($$ROOT/lib/qt-event-dispatcher-libuv/src/eventdispatcherlibuv/*.cpp) \
     $$PWD/dynamicQObject.cpp \
@@ -14,22 +13,20 @@ SOURCES += \
     $$PWD/dynamicMetaObjectBuilder.cpp \
     $$PWD/dynamicQObjectManager.cpp
 
-INCLUDEPATH += /usr/include/llvm-3.2/
-
-LIBPATH += $$BUILD/src/core $$BUILD/src/widgets $$BUILD/src/qml $$BUILD/src/gui /usr/lib/llvm-3.2/lib $${ROOT}/lib/node/out/Release/
-LIBS += -lqtjs_widgets -lqtjs_qml -lqtjs_gui -lqtjs_core -lLLVM-3.2 -luv -lcares -lhttp_parser -lopenssl -lchrome_zlib
+LIBPATH += $$BUILD/src/core $$BUILD/src/widgets $$BUILD/src/qml $$BUILD/src/gui $${ROOT}/lib/node/out/Release/
+LIBS += -lqtjs_widgets -lqtjs_qml -lqtjs_gui -lqtjs_core -lffi -luv -lcares -lhttp_parser -lopenssl -lchrome_zlib
 unix:LIBS += -ldl -lrt
 
 HEADERS += \
     $$PWD/cpgfApi.h \
-    $$PWD/llvmapi.h \
     $$files($$ROOT/lib/qt-event-dispatcher-libuv/src/*.h) \
     $$PWD/dynamicQObject.h \
     $$PWD/autoCallback.h \
     $$PWD/callInfo.h \
     $$PWD/signalConnector.h \
     $$PWD/dynamicMetaObjectBuilder.h \
-    $$PWD/dynamicQObjectManager.h
+    $$PWD/dynamicQObjectManager.h \
+    closureGenerator.h
 
 
 QMAKE_CXXFLAGS_RELEASE -= -Os
