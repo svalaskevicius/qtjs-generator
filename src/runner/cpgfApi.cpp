@@ -105,27 +105,55 @@ void emitQObjectSignal(QObject *obj,
     if (idx < 0) {
         throw std::runtime_error("cannot find signal to invoke");
     }
-    int paramCount = mobj->method(idx).parameterCount();
-    if (paramCount > 9) {
-        throw std::runtime_error("dynamic signals with more than 9 parameters are not supported");
-    }
-    void **argv = new void*[paramCount+1];
-    switch (paramCount) {
-        case 9: argv[9] = arg9.data();
-        case 8: argv[8] = arg8.data();
-        case 7: argv[7] = arg7.data();
-        case 6: argv[6] = arg6.data();
-        case 5: argv[5] = arg5.data();
-        case 4: argv[4] = arg4.data();
-        case 3: argv[3] = arg3.data();
-        case 2: argv[2] = arg2.data();
-        case 1: argv[1] = arg1.data();
-        case 0: argv[0] = 0;
-        break;
-        default: throw std::logic_error("unexpected paramCount");
-    }
+    QVariant ret;
+    void *argv[] = {
+        ret.data(),
+        arg1.data(),
+        arg2.data(),
+        arg3.data(),
+        arg4.data(),
+        arg5.data(),
+        arg6.data(),
+        arg7.data(),
+        arg8.data(),
+        arg9.data(),
+    };
     QMetaObject::activate(obj, idx, argv);
-    delete [] argv;
+}
+
+void invokeQObjectMethod(QObject *obj,
+                       char *signature,
+                      QVariant arg1,
+                      QVariant arg2,
+                      QVariant arg3,
+                      QVariant arg4,
+                      QVariant arg5,
+                      QVariant arg6,
+                      QVariant arg7,
+                      QVariant arg8,
+                      QVariant arg9
+                      )
+{
+    const QMetaObject *mobj = obj->metaObject();
+    int idx = mobj->indexOfSlot(signature);
+
+    if (idx < 0) {
+        throw std::runtime_error("cannot find signal to invoke");
+    }
+    QVariant ret;
+    void *argv[] = {
+        ret.data(),
+        arg1.data(),
+        arg2.data(),
+        arg3.data(),
+        arg4.data(),
+        arg5.data(),
+        arg6.data(),
+        arg7.data(),
+        arg8.data(),
+        arg9.data(),
+    };
+    QMetaObject::metacall(obj, QMetaObject::InvokeMetaMethod, idx, argv);
 }
 
 
@@ -150,6 +178,17 @@ void registerQt(cpgf::GDefineMetaNamespace &define)
     define._method("objectFromVariant", &objectFromVariant);
 
     define._method("emitSignal", &emitQObjectSignal)
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ;
+    define._method("invoke", &invokeQObjectMethod)
             ._default(copyVariantFromCopyable(0))
             ._default(copyVariantFromCopyable(0))
             ._default(copyVariantFromCopyable(0))
