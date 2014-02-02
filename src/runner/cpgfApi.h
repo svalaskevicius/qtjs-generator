@@ -10,4 +10,7 @@ int qmlRegisterDynamicType(int classIdx, const char *uri, int versionMajor, int 
 void finalizeAndRegisterMetaObjectBuilderToQml(DynamicMetaObjectBuilder *builder, const char *uri, int versionMajor, int versionMinor, const char *qmlName);
 cpgf::GDefineMetaInfo createDynamicObjectsMetaClasses();
 
+void registerQt(cpgf::GDefineMetaNamespace &define);
+void unregisterQt();
+
 }

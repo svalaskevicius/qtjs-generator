@@ -1,13 +1,36 @@
 
 #include "cpgfApi.h"
 
+#include "cpgf/gmetadefine.h"
+#include "cpgf/scriptbind/gscriptbindutil.h"
+#include "cpgf/gscopedinterface.h"
+#include "cpgf/scriptbind/gv8runner.h"
+#include "cpgf/scriptbind/gv8bind.h"
+#include "cpgf/glifecycle.h"
+
+#include "v8.h"
+
 #include "dynamicMetaObjectBuilder.h"
 #include "dynamicQObjectManager.h"
 #include "dynamicQObject.h"
 #include "closureGenerator.h"
+#include "signalConnector.h"
 
-#include <qqmlprivate.h>
-#include <QQmlComponent>
+#include "register_meta_qtcore.h"
+#include "register_meta_qtgui.h"
+#include "register_meta_qtwidgets.h"
+#include "register_meta_qtqml.h"
+
+// for QVariant - cpgf interop ->
+#include <qtCore_cpgf_compat.h>
+#include <qtGui_cpgf_compat.h>
+#include <qtQml_cpgf_compat.h>
+#include <qtWidgets_cpgf_compat.h>
+
+#include <QUuid>
+#include <QJsonArray>
+#include <QJsonDocument>
+// <- for QVariant - cpgf interop
 
 #include <qtCore_cpgf_compat.h>
 
@@ -54,6 +77,97 @@ CreateIntoFuncPtr generateDynamicObjectCreateInto(int classIdx)
     return generator.generate(classIdx);
 }
 
+
+QObject *objectFromVariant(QVariant *v) {
+    return v->value<QObject *>();
+}
+
+void invokeV8Gc()
+{
+    while (!v8::V8::IdleNotification());
+}
+
+void emitQObjectSignal(QObject *obj,
+                       char *signature,
+                      QVariant arg1,
+                      QVariant arg2,
+                      QVariant arg3,
+                      QVariant arg4,
+                      QVariant arg5,
+                      QVariant arg6,
+                      QVariant arg7,
+                      QVariant arg8,
+                      QVariant arg9
+                      )
+{
+    const QMetaObject *mobj = obj->metaObject();
+    int idx = mobj->indexOfSignal(signature);
+    if (idx < 0) {
+        throw std::runtime_error("cannot find signal to invoke");
+    }
+    int paramCount = mobj->method(idx).parameterCount();
+    if (paramCount > 9) {
+        throw std::runtime_error("dynamic signals with more than 9 parameters are not supported");
+    }
+    void **argv = new void*[paramCount+1];
+    switch (paramCount) {
+        case 9: argv[9] = arg9.data();
+        case 8: argv[8] = arg8.data();
+        case 7: argv[7] = arg7.data();
+        case 6: argv[6] = arg6.data();
+        case 5: argv[5] = arg5.data();
+        case 4: argv[4] = arg4.data();
+        case 3: argv[3] = arg3.data();
+        case 2: argv[2] = arg2.data();
+        case 1: argv[1] = arg1.data();
+        case 0: argv[0] = 0;
+        break;
+        default: throw std::logic_error("unexpected paramCount");
+    }
+    QMetaObject::activate(obj, idx, argv);
+    delete [] argv;
+}
+
+
+}
+
+
+void registerQt(cpgf::GDefineMetaNamespace &define)
+{
+    qt_metadata::registerMain_QtCore(define);
+    qt_metadata::registerMain_QtGui(define);
+    qt_metadata::registerMain_QtWidgets(define);
+    qt_metadata::registerMain_QtQml(define);
+
+    define._class(qtjs_binder::createDynamicObjectsMetaClasses());
+    define._method("dynamicQObjectManager", &qtjs_binder::dynamicQObjectManager);
+    define._method("qmlRegisterDynamicType", &qtjs_binder::qmlRegisterDynamicType);
+    define._method("finalizeAndRegisterMetaObjectBuilderToQml", &qtjs_binder::finalizeAndRegisterMetaObjectBuilderToQml);
+
+    qtjs_binder::SignalConnectorBinder::reset(new qtjs_binder::SignalConnector());
+    define._method("connect", &qtjs_binder::SignalConnectorBinder::connect);
+    define._method("invokeV8Gc", &invokeV8Gc);
+    define._method("objectFromVariant", &objectFromVariant);
+
+    define._method("emitSignal", &emitQObjectSignal)
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ._default(copyVariantFromCopyable(0))
+            ;
+}
+
+void unregisterQt()
+{
+    invokeV8Gc();
+    cpgf::clearV8DataPool();
+    SignalConnectorBinder::reset();
+    dynamicQObjectManager().dispose();
 }
 
 #define X_QML_GETTYPENAMES \
