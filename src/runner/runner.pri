@@ -26,7 +26,7 @@ HEADERS += \
     $$PWD/signalConnector.h \
     $$PWD/dynamicMetaObjectBuilder.h \
     $$PWD/dynamicQObjectManager.h \
-    closureGenerator.h
+    $$PWD/closureGenerator.h
 
 
 QMAKE_CXXFLAGS_RELEASE -= -Os
