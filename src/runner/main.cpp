@@ -20,6 +20,7 @@
 #include "../../lib/node/src/node_internals.h"
 
 #include "cpgfApi.h"
+
 using namespace std;
 
 namespace node {
@@ -32,7 +33,7 @@ void RunAtExit();
 
 namespace {
 
-int __exitCode = 1;
+int __exitCode = -1;
 
 
 using namespace cpgf;
@@ -93,6 +94,14 @@ static char **copy_argv(int argc, char **argv) {
     return argv_copy;
 }
 
+v8::Handle<v8::Value> Exit(const v8::Arguments& args) {
+    v8::HandleScope scope;
+    __exitCode = args[0]->IntegerValue();
+    qApp->exit(__exitCode);
+    return v8::Undefined();
+}
+
+
 
 } // namespace
 
@@ -128,6 +137,7 @@ int main(int argc, char * argv[])
         {
             // Use original argv, as we're just copying values out of it.
             v8::Handle<v8::Object> process_l = node::SetupProcessObject(argc, argv);
+            NODE_SET_METHOD(process_l, "reallyExit", Exit);
             v8_typed_array::AttachBindings(context->Global());
 
             CpgfBinder cpgfBinder(context);
@@ -145,16 +155,14 @@ int main(int argc, char * argv[])
             node::EmitExit(process_l);
             node::RunAtExit();
 
-
             context->Global().Clear();
         }
 
         delete app;
-
         context.Dispose();
-
     }
     v8::V8::Dispose();
+    cpgf::shutDownLibrary();
 
     // Clean up the copy:
     free(argv_copy);
