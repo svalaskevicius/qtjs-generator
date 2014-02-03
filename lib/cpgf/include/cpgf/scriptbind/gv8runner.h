@@ -25,9 +25,6 @@
 
 namespace cpgf {
 
-v8::Isolate *getV8Isolate();
-void setV8Isolate(v8::Isolate *isolate);
-
 class GScriptRunner;
 struct IMetaService;
 

@@ -30,20 +30,6 @@ using namespace v8;
 
 namespace cpgf {
 
-static v8::Isolate *cpgf_isolate = NULL;
-
-v8::Isolate *getV8Isolate()
-{
-    if (!cpgf_isolate) {
-        cpgf_isolate = v8::Isolate::GetCurrent();
-    }
-    return cpgf_isolate;
-}
-
-void setV8Isolate(v8::Isolate *isolate)
-{
-    cpgf_isolate = isolate;
-} 
 
 namespace {
 
@@ -72,22 +58,21 @@ private:
 
 
 GV8ScriptRunnerImplement::GV8ScriptRunnerImplement(IMetaService * service)
-	: super(service), handleScope(getV8Isolate()), context(getV8Isolate(), Context::New(getV8Isolate()))
+	: super(service), handleScope(), context(Context::New())
 {
     init();
 }
 
 GV8ScriptRunnerImplement::GV8ScriptRunnerImplement(IMetaService * service, Handle<Context> ctx)
-	: super(service), handleScope(getV8Isolate()), context(getV8Isolate(), ctx)
+	: super(service), handleScope(), context(ctx)
 {
     init();
 }
 
 void GV8ScriptRunnerImplement::init()
 {
-	contextScope = new Context::Scope(getV8Isolate(), context);
-	Local<Context> ctx = Local<Context>::New(getV8Isolate(), context);
-	Local<Object> global = ctx->Global();
+	contextScope = new Context::Scope(context);
+	Local<Object> global = context->Global();
 
 	GScopedInterface<IMetaService> metaService(getService());
 	GScopedInterface<IScriptObject> scriptObject(createV8ScriptInterface(metaService.get(), global, GScriptConfig()));
@@ -106,20 +91,19 @@ bool GV8ScriptRunnerImplement::executeJsString(const char * source)
 {
 	using namespace v8;
 
-	Local<Context> ctx = Local<Context>::New(getV8Isolate(), context);
-    ctx->Enter();
-	v8::HandleScope handle_scope(getV8Isolate());
+    context->Enter();
+	v8::HandleScope handle_scope;
 	v8::TryCatch try_catch;
 	v8::Handle<v8::Script> script = v8::Script::Compile(String::New(source), String::New("cpgf"));
 	if(script.IsEmpty()) {
 		v8::String::AsciiValue error(try_catch.Exception());
-	    ctx->Exit();
+	    context->Exit();
 		this->error(*error);
 		return false;
 	}
 	else {
 		v8::Handle<v8::Value> result = script->Run();
-	    ctx->Exit();
+	    context->Exit();
 		if(result.IsEmpty()) {
 			v8::String::AsciiValue error(try_catch.Exception());
 			this->error(*error);
