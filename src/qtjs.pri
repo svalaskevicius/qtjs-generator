@@ -19,7 +19,7 @@ linux-g++ {
     QMAKE_LFLAGS += -shared-libgcc
 }
 
-debug {
+contains(QT_CONFIG, debug) {
     linux-clang {
         QMAKE_CXXFLAGS += -fsanitize=address
         QMAKE_LFLAGS += -fsanitize=address
