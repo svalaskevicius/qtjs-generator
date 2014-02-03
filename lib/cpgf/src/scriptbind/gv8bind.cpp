@@ -706,8 +706,7 @@ Handle<Value> namedEnumGetter(Local<String> prop, const AccessorInfo & info)
 		return variantToV8(dataWrapper->getData()->getContext(), metaGetEnumValue(metaEnum, index), GBindValueFlags(), NULL);
     }
 
-    return Handle<Value>();
-	LEAVE_V8(return Handle<Value>())
+    LEAVE_V8(return Undefined())
 }
 
 Handle<Value> namedEnumSetter(Local<String> /*prop*/, Local<Value> /*value*/, const AccessorInfo & /*info*/)
