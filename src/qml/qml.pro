@@ -8,6 +8,9 @@ TARGET=qtjs_qml
 #PRECOMPILED_HEADER = precompiledIncludes.h
 #CONFIG += precompile_header
 
+contains(QT_CONFIG, debug) {
+    CONFIG += declarative_debug qml_debug
+}
 
 QMAKE_CXXFLAGS += -DBUILDING_DLL 
 
