@@ -47,6 +47,7 @@ case "$MYNAME" in
         ;;
 esac
 
+export ASAN_OPTIONS=alloc_dealloc_mismatch=0
 $PRECMD "$CMD" ${ARGS[@]}
 
 exit $?
