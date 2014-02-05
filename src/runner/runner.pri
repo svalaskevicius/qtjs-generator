@@ -28,11 +28,12 @@ HEADERS += \
     $$PWD/dynamicQObjectManager.h \
     $$PWD/closureGenerator.h
 
-
 QMAKE_CXXFLAGS_RELEASE -= -fvisibility=hidden -fvisibility-inlines-hidden -s
 QMAKE_LFLAGS_RELEASE -= -fvisibility=hidden -fvisibility-inlines-hidden -s
 QMAKE_CXXFLAGS_RELEASE -= -Os
 QMAKE_CXXFLAGS_RELEASE += -O3
+
+QMAKE_LFLAGS += -rdynamic
 
 QMAKE_CXXFLAGS += -pthread -fno-strict-aliasing
 linux-g++: QMAKE_CXXFLAGS += -fno-tree-vrp
