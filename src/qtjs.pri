@@ -19,11 +19,9 @@ linux-g++ {
     QMAKE_LFLAGS += -shared-libgcc
 }
 
-contains(QT_CONFIG, debug) {
-    linux-clang {
-        QMAKE_CXXFLAGS += -fsanitize=address
-        QMAKE_LFLAGS += -fsanitize=address
-    }
+linux-clang {
+    QMAKE_CXXFLAGS_DEBUG += -fsanitize=address
+    QMAKE_LFLAGS_DEBUG += -fsanitize=address
 }
 
 QMAKE_CXXFLAGS_RELEASE -= -O2

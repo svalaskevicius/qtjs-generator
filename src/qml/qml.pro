@@ -8,7 +8,7 @@ TARGET=qtjs_qml
 #PRECOMPILED_HEADER = precompiledIncludes.h
 #CONFIG += precompile_header
 
-contains(QT_CONFIG, debug) {
+CONFIG(debug, debug|release) {
     CONFIG += declarative_debug qml_debug
 }
 
