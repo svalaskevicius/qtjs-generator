@@ -1,5 +1,6 @@
 
-include (../qtjs.pri)
+include (../qtjs-plugin.pri)
+
 QT += core gui
 TEMPLATE = lib
 
