@@ -4,7 +4,7 @@ Qt API bindings generator for V8 JS engine
 WARNING
 -------
 
-The project is yet in a pre-alpha state and is not yet (fully) functional.
+The project is still in a pre-alpha state and is not yet fully functional.
 It is only recommended to use it, if you are prepared to debug and implement the missing features ;)
 
 How to build
