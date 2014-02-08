@@ -32,9 +32,11 @@ function prepare_files() {
         $s =~ s/Q_WIDGETS_EXPORT//g;
         $s =~ s/Q_SLOTS//g;
         $s =~ s/Q_INVOKABLE//g;
+        $s =~ s/Q_NORETURN//g;
         $s =~ s/Q_SIGNALS://g;
         $s =~ s/Q_REVISION\s*\(\s*[0-9]+\s*\)//g;
         $s =~ s/Q_DECLARE_FLAGS\s*\(([^,()]+),\s*([^,()]+)\)/typedef QFlags<\2> \1;/g;
+        $s =~ s/Q_ATTRIBUTE_FORMAT_PRINTF\(.*?\)//g;
         $s =~ s/(?<!define )(?<!Q_OBJECT_FAKE )\bQ_OBJECT\b/public: static const QMetaObject staticMetaObject; virtual const QMetaObject *metaObject() const; virtual void *qt_metacast(const char *); static inline QString tr(const char *s, const char *c = 0, int n = -1); virtual int qt_metacall(QMetaObject::Call, int, void **); private: /g;
 
         $s =~ s/class QByteArray;//g;
@@ -113,7 +115,7 @@ rm -Rf qtheaders xml
 cp -R "$QTINC" qtheaders
 
 pushd qtheaders
-rm -R QtCLucene QtConcurrent QtDBus QtDeclarative QtDesigner QtDesignerComponents \
+rm -Rf QtCLucene QtConcurrent QtDBus QtDeclarative QtDesigner QtDesignerComponents \
       QtHelp QtMultimedia QtMultimediaQuick_p QtMultimediaWidgets QtNetwork QtOpenGL \
       QtPlatformSupport QtPrintSupport \
       QtScript QtScriptTools QtSql QtSvg QtTest QtUiTools QtWebKit \
