@@ -291,7 +291,7 @@ cpgf::GDefineMetaInfo createDynamicObjectsMetaClasses()
         GDefineMetaClass<DynamicQObjects> _nd = GDefineMetaClass<DynamicQObjects>::declare("DynamicQObjectManager");
         _nd._method("finalizeBuild", &DynamicQObjects::addResult);
         _nd._method("getMetaObject", &DynamicQObjects::getMetaObject);
-        _nd._method("construct", &DynamicQObjects::construct, cpgf::MakePolicy<cpgf::GMetaRuleTransferOwnership<-1> >())
+        _nd._method("construct", &DynamicQObjects::createInstance, cpgf::MakePolicy<cpgf::GMetaRuleTransferOwnership<-1> >())
             ._default(copyVariantFromCopyable(0));
 
         _d._class(_nd);

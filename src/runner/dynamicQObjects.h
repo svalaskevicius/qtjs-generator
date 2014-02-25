@@ -27,7 +27,7 @@ public:
 
     unsigned int addResult(DynamicMetaObjectBuilder &builder);
     QMetaObject *getMetaObject(unsigned int id);
-    DynamicQObject *construct(unsigned int id, QObject *parent = nullptr);
+    DynamicQObject *createInstance(unsigned int id, QObject *parent = nullptr);
 
     void callInit(size_t classIdx, DynamicQObject *obj);
     void metacall(size_t classIdx, DynamicQObject *obj, QMetaObject::Call _c, int _id, void **_a);
