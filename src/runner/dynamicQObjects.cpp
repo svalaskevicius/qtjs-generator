@@ -2,7 +2,7 @@
 #include "callInfo.h"
 #include "autoCallback.h"
 
-#include "dynamicQObjectManager.h"
+#include "dynamicQObjects.h"
 #include "dynamicQObject.h"
 
 #include "autoCallback.h"
@@ -11,19 +11,19 @@
 namespace qtjs_binder {
 
 
-DynamicQObjectManager::DynamicQObjectManager()
+DynamicQObjects::DynamicQObjects()
 {
     nextId = 0;
     allocated = 10;
     metaObjects = (QMetaObject **) malloc(sizeof(QMetaObject *) * allocated);
 }
 
-DynamicQObjectManager::~DynamicQObjectManager()
+DynamicQObjects::~DynamicQObjects()
 {
     dispose();
 }
 
-void DynamicQObjectManager::dispose()
+void DynamicQObjects::dispose()
 {
     if (metaObjects) {
         for (unsigned int i = 0; i < nextId; i++) {
@@ -46,7 +46,7 @@ void DynamicQObjectManager::dispose()
     allocated = 0;
 }
 
-unsigned int DynamicQObjectManager::finalizeBuild(DynamicMetaObjectBuilder &builder)
+unsigned int DynamicQObjects::addResult(DynamicMetaObjectBuilder &builder)
 {
     if (nextId >= allocated) {
         allocated *= 2;
@@ -85,7 +85,7 @@ unsigned int DynamicQObjectManager::finalizeBuild(DynamicMetaObjectBuilder &buil
     return currentId;
 }
 
-QMetaObject *DynamicQObjectManager::getMetaObject(unsigned int id)
+QMetaObject *DynamicQObjects::getMetaObject(unsigned int id)
 {
     if (id >= nextId) {
         return nullptr;
@@ -93,14 +93,14 @@ QMetaObject *DynamicQObjectManager::getMetaObject(unsigned int id)
     return metaObjects[id];
 }
 
-DynamicQObject *DynamicQObjectManager::construct(unsigned int id, QObject *parent)
+DynamicQObject *DynamicQObjects::construct(unsigned int id, QObject *parent)
 {
     DynamicQObject *ret = new DynamicQObject(parent);
     ret->__setClassIdx(id);
     return ret;
 }
 
-void DynamicQObjectManager::callInit(size_t classIdx, DynamicQObject *obj)
+void DynamicQObjects::callInit(size_t classIdx, DynamicQObject *obj)
 {
     if (classesInfo[classIdx].initCallback) {
         void **data = new void*[2];
@@ -111,7 +111,7 @@ void DynamicQObjectManager::callInit(size_t classIdx, DynamicQObject *obj)
     }
 }
 
-void DynamicQObjectManager::metacall(size_t classIdx, DynamicQObject *obj, QMetaObject::Call _c, int _id, void **_a)
+void DynamicQObjects::metacall(size_t classIdx, DynamicQObject *obj, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         assert(classesInfo[classIdx].callbacks.find(_id) != classesInfo[classIdx].callbacks.end());
@@ -138,9 +138,9 @@ void DynamicQObjectManager::metacall(size_t classIdx, DynamicQObject *obj, QMeta
 }
 
 
-DynamicQObjectManager &dynamicQObjectManager()
+DynamicQObjects &dynamicQObjects()
 {
-    static DynamicQObjectManager _obj;
+    static DynamicQObjects _obj;
     return _obj;
 }
 

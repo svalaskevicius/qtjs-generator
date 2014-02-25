@@ -30,7 +30,7 @@
 
 
 #include "dynamicQObject.h"
-#include "dynamicQObjectManager.h"
+#include "dynamicQObjects.h"
 
 namespace qtjs_binder {
 
@@ -38,12 +38,12 @@ namespace qtjs_binder {
 void DynamicQObject::__setClassIdx(int classIdx)
 {
     this->classIdx = classIdx;
-    dynamicQObjectManager().callInit(classIdx, this);
+    dynamicQObjects().callInit(classIdx, this);
 }
 
 const QMetaObject * DynamicQObject::metaObject() const
 {
-    auto ret = dynamicQObjectManager().getMetaObject(classIdx);
+    auto ret = dynamicQObjects().getMetaObject(classIdx);
     assert(ret);
     return ret;
 }
@@ -57,7 +57,7 @@ int DynamicQObject::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     }
 
     if (_c == QMetaObject::InvokeMetaMethod) {
-        dynamicQObjectManager().metacall(classIdx, this, _c, _id, _a);
+        dynamicQObjects().metacall(classIdx, this, _c, _id, _a);
         return -1;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         *reinterpret_cast<int*>(_a[0]) = -1;

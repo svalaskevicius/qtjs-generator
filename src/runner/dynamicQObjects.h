@@ -7,7 +7,7 @@ namespace qtjs_binder {
 struct CallInfo;
 class DynamicQObject;
 
-class DynamicQObjectManager {
+class DynamicQObjects {
 private:
     QMetaObject **metaObjects;
     unsigned int nextId;
@@ -20,12 +20,12 @@ private:
     typedef std::map<size_t, ClassInfo> ClassesInfo;
     ClassesInfo classesInfo;
 public:
-    DynamicQObjectManager();
-    ~DynamicQObjectManager();
+    DynamicQObjects();
+    ~DynamicQObjects();
 
     void dispose();
 
-    unsigned int finalizeBuild(DynamicMetaObjectBuilder &builder);
+    unsigned int addResult(DynamicMetaObjectBuilder &builder);
     QMetaObject *getMetaObject(unsigned int id);
     DynamicQObject *construct(unsigned int id, QObject *parent = nullptr);
 
@@ -33,7 +33,7 @@ public:
     void metacall(size_t classIdx, DynamicQObject *obj, QMetaObject::Call _c, int _id, void **_a);
 };
 
-DynamicQObjectManager &dynamicQObjectManager();
+DynamicQObjects &dynamicQObjects();
 
 
 }

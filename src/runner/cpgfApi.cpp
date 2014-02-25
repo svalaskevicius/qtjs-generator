@@ -11,7 +11,7 @@
 #include "v8.h"
 
 #include "dynamicMetaObjectBuilder.h"
-#include "dynamicQObjectManager.h"
+#include "dynamicQObjects.h"
 #include "dynamicQObject.h"
 #include "closureGenerator.h"
 #include "signalConnector.h"
@@ -171,7 +171,7 @@ void registerQt(cpgf::GDefineMetaNamespace &define)
     qt_metadata::registerMain_QtQml(define);
 
     define._class(qtjs_binder::createDynamicObjectsMetaClasses());
-    define._method("dynamicQObjectManager", &qtjs_binder::dynamicQObjectManager);
+    define._method("dynamicQObjectManager", &qtjs_binder::dynamicQObjects);
     define._method("qmlRegisterDynamicType", &qtjs_binder::qmlRegisterDynamicType);
     define._method("finalizeAndRegisterMetaObjectBuilderToQml", &qtjs_binder::finalizeAndRegisterMetaObjectBuilderToQml);
 
@@ -209,7 +209,7 @@ void unregisterQt()
     invokeV8Gc();
     cpgf::clearV8DataPool();
     SignalConnectorBinder::reset();
-    dynamicQObjectManager().dispose();
+    dynamicQObjects().dispose();
 }
 
 #define X_QML_GETTYPENAMES \
@@ -228,7 +228,7 @@ void unregisterQt()
 
 int qmlRegisterDynamicType(int classIdx, const char *uri, int versionMajor, int versionMinor, const char *qmlName)
 {
-    const QMetaObject *metaObject = dynamicQObjectManager().getMetaObject(classIdx);
+    const QMetaObject *metaObject = dynamicQObjects().getMetaObject(classIdx);
 
     X_QML_GETTYPENAMES;
 
@@ -262,7 +262,7 @@ int qmlRegisterDynamicType(int classIdx, const char *uri, int versionMajor, int 
 
 void finalizeAndRegisterMetaObjectBuilderToQml(DynamicMetaObjectBuilder *builder, const char *uri, int versionMajor, int versionMinor, const char *qmlName)
 {
-    size_t id = dynamicQObjectManager().finalizeBuild(*builder);
+    size_t id = dynamicQObjects().addResult(*builder);
     qmlRegisterDynamicType(id, uri, versionMajor, versionMinor, qmlName);
 }
 
@@ -282,10 +282,10 @@ cpgf::GDefineMetaInfo createDynamicObjectsMetaClasses()
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<DynamicQObjectManager> _nd = GDefineMetaClass<DynamicQObjectManager>::declare("DynamicQObjectManager");
-        _nd._method("finalizeBuild", &DynamicQObjectManager::finalizeBuild);
-        _nd._method("getMetaObject", &DynamicQObjectManager::getMetaObject);
-        _nd._method("construct", &DynamicQObjectManager::construct, cpgf::MakePolicy<cpgf::GMetaRuleTransferOwnership<-1> >())
+        GDefineMetaClass<DynamicQObjects> _nd = GDefineMetaClass<DynamicQObjects>::declare("DynamicQObjectManager");
+        _nd._method("finalizeBuild", &DynamicQObjects::addResult);
+        _nd._method("getMetaObject", &DynamicQObjects::getMetaObject);
+        _nd._method("construct", &DynamicQObjects::construct, cpgf::MakePolicy<cpgf::GMetaRuleTransferOwnership<-1> >())
             ._default(copyVariantFromCopyable(0));
 
         _d._class(_nd);

@@ -38,4 +38,4 @@ public:
 
 }
 
-Q_DECLARE_METATYPE(qtjs_binder::DynamicQObject);
+Q_DECLARE_METATYPE(qtjs_binder::DynamicQObject)
