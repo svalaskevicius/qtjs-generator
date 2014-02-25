@@ -40,19 +40,21 @@ namespace {
 
 typedef void (*CreateIntoFuncPtr)(void *);
 
+template <typename C>
 void create_into(ffi_cif *cif, void *ret, void* args[], void* classIdx)
 {
     Q_UNUSED(ret) Q_UNUSED(cif)
     void *target = *(void **)args[0];
     size_t index = (size_t)classIdx;
-    QQmlPrivate::createInto<DynamicQObject>(target);
-    ((QQmlPrivate::QQmlElement<DynamicQObject> *)target)->__setClassIdx(index);
+    QQmlPrivate::createInto<C>(target);
+    ((QQmlPrivate::QQmlElement<C> *)target)->__setClassIdx(index);
 }
 
+template <typename C>
 struct CreateIntoFuncGenerator : ClosureGenerator {
 
     CreateIntoFuncPtr generate(size_t classIdx) {
-        return (CreateIntoFuncPtr) generateClosure(create_into, (void *)classIdx);
+        return (CreateIntoFuncPtr) generateClosure(create_into<C>, (void *)classIdx);
     }
 
 protected:
@@ -71,9 +73,10 @@ private:
 };
 
 
+template <typename C>
 CreateIntoFuncPtr generateDynamicObjectCreateInto(int classIdx)
 {
-    static CreateIntoFuncGenerator generator;
+    static CreateIntoFuncGenerator<C> generator;
     return generator.generate(classIdx);
 }
 
@@ -234,7 +237,7 @@ int qmlRegisterDynamicType(int classIdx, const char *uri, int versionMajor, int 
 
         qRegisterNormalizedMetaType<DynamicQObject *>(pointerName.constData()),
         qRegisterNormalizedMetaType<QQmlListProperty<DynamicQObject> >(listName.constData()),
-        sizeof(DynamicQObject), generateDynamicObjectCreateInto(classIdx),
+        sizeof(DynamicQObject), generateDynamicObjectCreateInto<DynamicQObject>(classIdx),
         QString(),
 
         uri, versionMajor, versionMinor, qmlName, metaObject,
