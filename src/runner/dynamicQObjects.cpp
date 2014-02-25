@@ -124,11 +124,9 @@ void DynamicQObjects::metacall(size_t classIdx, DynamicQObject *obj, QMetaObject
         for (int i = 0; i < paramCnt; i++) {
             data[i+2] = _a[i+1];
         }
-        AutoCallback paramDeleter(
-            [&](){
-                delete [] data;
-            }
-        );
+        AutoCallback paramDeleter([&]{
+            delete [] data;
+        });
         Q_UNUSED(paramDeleter);
 
         classesInfo[classIdx].callbacks[_id]->invoke(data);

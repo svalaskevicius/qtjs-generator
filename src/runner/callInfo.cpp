@@ -288,13 +288,11 @@ void CallInfo::invoke(void **data)
     for (int i = 0; i < maxCnt; i++) {
         convertQtDataToGVariantData(parameterTypeIds[i], data[i + 1], &params[i]);
     }
-    AutoCallback paramDeleter(
-        [&](){
-            for (int i = 0; i < maxCnt; i++) {
-                releaseVariantData(&params[i]);
-            }
+    AutoCallback paramDeleter([&]{
+        for (int i = 0; i < maxCnt; i++) {
+            releaseVariantData(&params[i]);
         }
-    );
+    });
     Q_UNUSED(paramDeleter);
 
     callback->invoke(&result.refData(), params, maxCnt);
