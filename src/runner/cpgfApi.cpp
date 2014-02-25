@@ -226,34 +226,40 @@ void unregisterQt()
     listName[listLen+nameLen] = '>'; \
     listName[listLen+nameLen+1] = '\0';
 
-int qmlRegisterDynamicType(int classIdx, const char *uri, int versionMajor, int versionMinor, const char *qmlName)
+template <typename C>
+inline QQmlPrivate::RegisterType createQmlRegisterType(int classIdx, const char *uri, int versionMajor, int versionMinor, const char *qmlName)
 {
     const QMetaObject *metaObject = dynamicQObjects().getMetaObject(classIdx);
 
     X_QML_GETTYPENAMES;
 
-    QQmlPrivate::RegisterType type = {
+    return {
         0,
 
-        qRegisterNormalizedMetaType<DynamicQObject *>(pointerName.constData()),
-        qRegisterNormalizedMetaType<QQmlListProperty<DynamicQObject> >(listName.constData()),
-        sizeof(DynamicQObject), generateDynamicObjectCreateInto<DynamicQObject>(classIdx),
+        qRegisterNormalizedMetaType<C *>(pointerName.constData()),
+        qRegisterNormalizedMetaType<QQmlListProperty<C> >(listName.constData()),
+        sizeof(C), generateDynamicObjectCreateInto<C>(classIdx),
         QString(),
 
         uri, versionMajor, versionMinor, qmlName, metaObject,
 
-        QQmlPrivate::attachedPropertiesFunc<DynamicQObject>(),
-        QQmlPrivate::attachedPropertiesMetaObject<DynamicQObject>(),
+        QQmlPrivate::attachedPropertiesFunc<C>(),
+        QQmlPrivate::attachedPropertiesMetaObject<C>(),
 
-        QQmlPrivate::StaticCastSelector<DynamicQObject, QQmlParserStatus>::cast(),
-        QQmlPrivate::StaticCastSelector<DynamicQObject, QQmlPropertyValueSource>::cast(),
-        QQmlPrivate::StaticCastSelector<DynamicQObject, QQmlPropertyValueInterceptor>::cast(),
+        QQmlPrivate::StaticCastSelector<C, QQmlParserStatus>::cast(),
+        QQmlPrivate::StaticCastSelector<C, QQmlPropertyValueSource>::cast(),
+        QQmlPrivate::StaticCastSelector<C, QQmlPropertyValueInterceptor>::cast(),
 
         0, 0,
 
         0,
         0
     };
+}
+
+int qmlRegisterDynamicType(int classIdx, const char *uri, int versionMajor, int versionMinor, const char *qmlName)
+{
+    QQmlPrivate::RegisterType type = createQmlRegisterType<DynamicQObject>(classIdx, uri, versionMajor, versionMinor, qmlName);
 
     return QQmlPrivate::qmlregister(QQmlPrivate::TypeRegistration, &type);
 }
