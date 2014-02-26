@@ -13,7 +13,6 @@
 #include "dynamicMetaObjectBuilder.h"
 #include "dynamicQObjects.h"
 #include "dynamicQObject.h"
-#include "closureGenerator.h"
 #include "signalConnector.h"
 
 #include "register_meta_qtcore.h"
@@ -37,48 +36,6 @@
 namespace qtjs_binder {
 
 namespace {
-
-typedef void (*CreateIntoFuncPtr)(void *);
-
-template <typename C>
-void create_into(ffi_cif *cif, void *ret, void* args[], void* classIdx)
-{
-    Q_UNUSED(ret) Q_UNUSED(cif)
-    void *target = *(void **)args[0];
-    size_t index = (size_t)classIdx;
-    QQmlPrivate::createInto<C>(target);
-    ((QQmlPrivate::QQmlElement<C> *)target)->__setClassIdx(index);
-}
-
-template <typename C>
-struct CreateIntoFuncGenerator : ClosureGenerator {
-
-    CreateIntoFuncPtr generate(size_t classIdx) {
-        return (CreateIntoFuncPtr) generateClosure(create_into<C>, (void *)classIdx);
-    }
-
-protected:
-
-    virtual void prepare_cif() override {
-        args[0] = &ffi_type_pointer;
-
-        if (ffi_prep_cif(&cif, FFI_DEFAULT_ABI, 1, &ffi_type_void, args) != FFI_OK) {
-            throw new std::runtime_error("cannot create create_into");
-        }
-    }
-
-
-private:
-    ffi_type *args[1];
-};
-
-
-template <typename C>
-CreateIntoFuncPtr generateDynamicObjectCreateInto(int classIdx)
-{
-    static CreateIntoFuncGenerator<C> generator;
-    return generator.generate(classIdx);
-}
 
 
 QObject *objectFromVariant(QVariant *v) {
@@ -212,55 +169,10 @@ void unregisterQt()
     dynamicQObjects().dispose();
 }
 
-#define X_QML_GETTYPENAMES \
-    const char *className = metaObject->className(); \
-    const int nameLen = int(strlen(className)); \
-    QVarLengthArray<char,48> pointerName(nameLen+2); \
-    memcpy(pointerName.data(), className, nameLen); \
-    pointerName[nameLen] = '*'; \
-    pointerName[nameLen+1] = '\0'; \
-    const int listLen = int(strlen("QQmlListProperty<")); \
-    QVarLengthArray<char,64> listName(listLen + nameLen + 2); \
-    memcpy(listName.data(), "QQmlListProperty<", listLen); \
-    memcpy(listName.data()+listLen, className, nameLen); \
-    listName[listLen+nameLen] = '>'; \
-    listName[listLen+nameLen+1] = '\0';
-
-template <typename C>
-inline QQmlPrivate::RegisterType createQmlRegisterType(int classIdx, const char *uri, int versionMajor, int versionMinor, const char *qmlName)
-{
-    const QMetaObject *metaObject = dynamicQObjects().getMetaObject(classIdx);
-
-    X_QML_GETTYPENAMES;
-
-    return {
-        0,
-
-        qRegisterNormalizedMetaType<C *>(pointerName.constData()),
-        qRegisterNormalizedMetaType<QQmlListProperty<C> >(listName.constData()),
-        sizeof(C), generateDynamicObjectCreateInto<C>(classIdx),
-        QString(),
-
-        uri, versionMajor, versionMinor, qmlName, metaObject,
-
-        QQmlPrivate::attachedPropertiesFunc<C>(),
-        QQmlPrivate::attachedPropertiesMetaObject<C>(),
-
-        QQmlPrivate::StaticCastSelector<C, QQmlParserStatus>::cast(),
-        QQmlPrivate::StaticCastSelector<C, QQmlPropertyValueSource>::cast(),
-        QQmlPrivate::StaticCastSelector<C, QQmlPropertyValueInterceptor>::cast(),
-
-        0, 0,
-
-        0,
-        0
-    };
-}
 
 int qmlRegisterDynamicType(int classIdx, const char *uri, int versionMajor, int versionMinor, const char *qmlName)
 {
-    QQmlPrivate::RegisterType type = createQmlRegisterType<DynamicQObjectImpl<QObject>>(classIdx, uri, versionMajor, versionMinor, qmlName);
-
+    QQmlPrivate::RegisterType type = dynamicClass->createQmlRegisterType(classIdx, uri, versionMajor, versionMinor, qmlName);
     return QQmlPrivate::qmlregister(QQmlPrivate::TypeRegistration, &type);
 }
 
@@ -296,10 +208,7 @@ cpgf::GDefineMetaInfo createDynamicObjectsMetaClasses()
 
         _d._class(_nd);
     }
-    {
-        auto _nd = GDefineMetaClass<DynamicQObjectImpl<QObject>, QObject>::declare("DynamicQObject");
-        _d._class(_nd);
-    }
+    dynamicClass->declareCpgfClass(_d);
 
     return _d.getMetaInfo();
 }

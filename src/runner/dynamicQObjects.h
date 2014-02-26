@@ -5,7 +5,6 @@
 namespace qtjs_binder {
 
 struct CallInfo;
-class DynamicQObject;
 
 class DynamicQObjects {
 private:

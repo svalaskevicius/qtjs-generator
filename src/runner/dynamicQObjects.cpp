@@ -61,7 +61,7 @@ unsigned int DynamicQObjects::addResult(DynamicMetaObjectBuilder &builder)
     if (initFnc) {
         classesInfo[currentId].initCallback =
                 new CallInfo({
-                                 {qMetaTypeId<qtjs_binder::DynamicQObjectImpl<QObject>>()},
+                                 { dynamicClass->typeId() },
                                  -1,
                                  initFnc
                              });
@@ -76,7 +76,7 @@ unsigned int DynamicQObjects::addResult(DynamicMetaObjectBuilder &builder)
 
         classesInfo[currentId].callbacks[it.first] =
                 new CallInfo({
-                                 QVector<int>({qMetaTypeId<qtjs_binder::DynamicQObjectImpl<QObject>>()}) << metaMethodParamTypeIds( metaObjects[currentId]->method(methodID) ),
+                                 QVector<int>({dynamicClass->typeId()}) << metaMethodParamTypeIds( metaObjects[currentId]->method(methodID) ),
                                  -1,
                                  it.second
                              });
@@ -95,9 +95,7 @@ QMetaObject *DynamicQObjects::getMetaObject(unsigned int id)
 
 QObject *DynamicQObjects::createInstance(unsigned int id, QObject *parent)
 {
-    auto ret = new DynamicQObjectImpl<QObject>(parent);
-    ret->__setClassIdx(id);
-    return ret;
+    return dynamicClass->instantiate(id, parent);
 }
 
 void DynamicQObjects::callInit(size_t classIdx, QObject *obj)
