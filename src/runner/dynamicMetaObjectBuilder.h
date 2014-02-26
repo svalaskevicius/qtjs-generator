@@ -24,7 +24,7 @@ public:
     void addSlot(const char * signature, cpgf::IScriptFunction *callback);
     void addProperty(const char * name, const char * type);
 
-    QMetaObject *toMetaObject(int classId);
+    QMetaObject *build(int classId);
     cpgf::IScriptFunction *getInitCallback();
     std::map<int, cpgf::IScriptFunction *> getCallbacks();
     QByteArray methodSignature(int id);

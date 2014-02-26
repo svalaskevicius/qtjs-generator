@@ -55,7 +55,7 @@ unsigned int DynamicQObjects::addResult(DynamicMetaObjectBuilder &builder)
     unsigned int currentId = nextId;
     nextId++;
 
-    metaObjects[currentId] = builder.toMetaObject(currentId);
+    metaObjects[currentId] = builder.build(currentId);
 
     auto initFnc = builder.getInitCallback();
     if (initFnc) {
@@ -85,17 +85,17 @@ unsigned int DynamicQObjects::addResult(DynamicMetaObjectBuilder &builder)
     return currentId;
 }
 
-QMetaObject *DynamicQObjects::getMetaObject(unsigned int id)
+QMetaObject *DynamicQObjects::getMetaObject(unsigned int classIdx)
 {
-    if (id >= nextId) {
+    if (classIdx >= nextId) {
         return nullptr;
     }
-    return metaObjects[id];
+    return metaObjects[classIdx];
 }
 
-QObject *DynamicQObjects::createInstance(unsigned int id, QObject *parent)
+QObject *DynamicQObjects::createInstance(unsigned int classIdx, QObject *parent)
 {
-    return dynamicClass->instantiate(id, parent);
+    return dynamicClass->instantiate(classIdx, parent);
 }
 
 void DynamicQObjects::callInit(size_t classIdx, QObject *obj)

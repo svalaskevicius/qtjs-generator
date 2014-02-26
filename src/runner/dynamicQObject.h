@@ -222,6 +222,9 @@ template <typename Target>
 struct DynamicClassSpecificationImpl : public DynamicClassSpecification {
     typedef DynamicQObject<Target> DynamicQObjectImpl;
 
+    std::string name;
+
+    DynamicClassSpecificationImpl(std::string name) : name(name) {}
     int typeId() override { return qMetaTypeId<DynamicQObjectImpl>(); }
     void convertQtDataToGVariantData(void *data, cpgf::GVariantData *dest) override {
         *dest = cpgf::createTypedVariant((DynamicQObjectImpl *)data).takeData();
@@ -230,7 +233,7 @@ struct DynamicClassSpecificationImpl : public DynamicClassSpecification {
         return createQmlRegisterTypeImpl<DynamicQObjectImpl >(classIdx, uri, versionMajor, versionMinor, qmlName);
     }
     virtual void declareCpgfClass(cpgf::GDefineMetaGlobalDangle &d) override {
-        auto _nd = cpgf::GDefineMetaClass<DynamicQObjectImpl, Target>::declare("DynamicQObject");
+        auto _nd = cpgf::GDefineMetaClass<DynamicQObjectImpl, Target>::declare((std::string("DynamicObject_")+name).c_str());
         d._class(_nd);
     }
     virtual QObject* instantiate(int classIdx, QObject *parent) override {

@@ -108,7 +108,7 @@ void DynamicMetaObjectBuilder::addProperty(const char * name, const char * type)
     _p->builder.addProperty(name, type, idx);
 }
 
-QMetaObject *DynamicMetaObjectBuilder::toMetaObject(int classId)
+QMetaObject *DynamicMetaObjectBuilder::build(int classId)
 {
     _p->builder.setStaticMetacallFunction(
         generateDynamicObjectStaticMetaCall(classId)

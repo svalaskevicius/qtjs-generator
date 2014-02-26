@@ -25,8 +25,8 @@ public:
     void dispose();
 
     unsigned int addResult(DynamicMetaObjectBuilder &builder);
-    QMetaObject *getMetaObject(unsigned int id);
-    QObject *createInstance(unsigned int id, QObject *parent = nullptr);
+    QMetaObject *getMetaObject(unsigned int classIdx);
+    QObject *createInstance(unsigned int classIdx, QObject *parent = nullptr);
 
     void callInit(size_t classIdx, QObject *obj);
     void metacall(size_t classIdx, QObject *obj, QMetaObject::Call _c, int _id, void **_a);
