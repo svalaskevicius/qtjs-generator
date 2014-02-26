@@ -4,6 +4,7 @@
 
 #include "dynamicMetaObjectBuilder.h"
 #include "dynamicQObjects.h"
+#include "dynamicQObject.h"
 #include "closureGenerator.h"
 
 namespace qtjs_binder {
@@ -15,7 +16,7 @@ typedef void (*StaticMetaCallFuncPtr)(QObject *, QMetaObject::Call, int, void **
 void static_metacall(ffi_cif *cif, void *ret, void* args[], void* classIdx)
 {
     Q_UNUSED(ret) Q_UNUSED(cif)
-    dynamicQObjects().metacall((size_t)classIdx, *(DynamicQObject **)args[0], *(QMetaObject::Call*)args[1], *(int*)args[2], *(void***)args[3]);
+    dynamicQObjects().metacall((size_t)classIdx, *(DynamicQObjectImpl<QObject> **)args[0], *(QMetaObject::Call*)args[1], *(int*)args[2], *(void***)args[3]);
 }
 
 

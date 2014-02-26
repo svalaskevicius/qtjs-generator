@@ -259,7 +259,7 @@ inline QQmlPrivate::RegisterType createQmlRegisterType(int classIdx, const char 
 
 int qmlRegisterDynamicType(int classIdx, const char *uri, int versionMajor, int versionMinor, const char *qmlName)
 {
-    QQmlPrivate::RegisterType type = createQmlRegisterType<DynamicQObject>(classIdx, uri, versionMajor, versionMinor, qmlName);
+    QQmlPrivate::RegisterType type = createQmlRegisterType<DynamicQObjectImpl<QObject>>(classIdx, uri, versionMajor, versionMinor, qmlName);
 
     return QQmlPrivate::qmlregister(QQmlPrivate::TypeRegistration, &type);
 }
@@ -278,7 +278,7 @@ cpgf::GDefineMetaInfo createDynamicObjectsMetaClasses()
 
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<DynamicMetaObjectBuilder> _nd = GDefineMetaClass<DynamicMetaObjectBuilder>::declare("DynamicMetaObjectBuilder");
+        auto _nd = GDefineMetaClass<DynamicMetaObjectBuilder>::declare("DynamicMetaObjectBuilder");
         _nd._method("setClassName", &DynamicMetaObjectBuilder::setClassName);
         _nd._method("setInit", &DynamicMetaObjectBuilder::setInit);
         _nd._method("addSignal", &DynamicMetaObjectBuilder::addSignal);
@@ -288,7 +288,7 @@ cpgf::GDefineMetaInfo createDynamicObjectsMetaClasses()
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<DynamicQObjects> _nd = GDefineMetaClass<DynamicQObjects>::declare("DynamicQObjectManager");
+        auto _nd = GDefineMetaClass<DynamicQObjects>::declare("DynamicQObjectManager");
         _nd._method("finalizeBuild", &DynamicQObjects::addResult);
         _nd._method("getMetaObject", &DynamicQObjects::getMetaObject);
         _nd._method("construct", &DynamicQObjects::createInstance, cpgf::MakePolicy<cpgf::GMetaRuleTransferOwnership<-1> >())
@@ -297,7 +297,7 @@ cpgf::GDefineMetaInfo createDynamicObjectsMetaClasses()
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<DynamicQObject, QObject> _nd = GDefineMetaClass<DynamicQObject, QObject>::declare("DynamicQObject");
+        auto _nd = GDefineMetaClass<DynamicQObjectImpl<QObject>, QObject>::declare("DynamicQObject");
         _d._class(_nd);
     }
 

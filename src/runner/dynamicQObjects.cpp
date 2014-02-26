@@ -61,7 +61,7 @@ unsigned int DynamicQObjects::addResult(DynamicMetaObjectBuilder &builder)
     if (initFnc) {
         classesInfo[currentId].initCallback =
                 new CallInfo({
-                                 {qMetaTypeId<DynamicQObject>()},
+                                 {qMetaTypeId<qtjs_binder::DynamicQObjectImpl<QObject>>()},
                                  -1,
                                  initFnc
                              });
@@ -76,7 +76,7 @@ unsigned int DynamicQObjects::addResult(DynamicMetaObjectBuilder &builder)
 
         classesInfo[currentId].callbacks[it.first] =
                 new CallInfo({
-                                 QVector<int>({qMetaTypeId<DynamicQObject>()}) << metaMethodParamTypeIds( metaObjects[currentId]->method(methodID) ),
+                                 QVector<int>({qMetaTypeId<qtjs_binder::DynamicQObjectImpl<QObject>>()}) << metaMethodParamTypeIds( metaObjects[currentId]->method(methodID) ),
                                  -1,
                                  it.second
                              });
@@ -93,14 +93,14 @@ QMetaObject *DynamicQObjects::getMetaObject(unsigned int id)
     return metaObjects[id];
 }
 
-DynamicQObject *DynamicQObjects::createInstance(unsigned int id, QObject *parent)
+QObject *DynamicQObjects::createInstance(unsigned int id, QObject *parent)
 {
-    DynamicQObject *ret = new DynamicQObject(parent);
+    auto ret = new DynamicQObjectImpl<QObject>(parent);
     ret->__setClassIdx(id);
     return ret;
 }
 
-void DynamicQObjects::callInit(size_t classIdx, DynamicQObject *obj)
+void DynamicQObjects::callInit(size_t classIdx, QObject *obj)
 {
     if (classesInfo[classIdx].initCallback) {
         void **data = new void*[2];
@@ -111,7 +111,7 @@ void DynamicQObjects::callInit(size_t classIdx, DynamicQObject *obj)
     }
 }
 
-void DynamicQObjects::metacall(size_t classIdx, DynamicQObject *obj, QMetaObject::Call _c, int _id, void **_a)
+void DynamicQObjects::metacall(size_t classIdx, QObject *obj, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         assert(classesInfo[classIdx].callbacks.find(_id) != classesInfo[classIdx].callbacks.end());
