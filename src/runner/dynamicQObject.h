@@ -33,23 +33,19 @@ public:
         dynamicQObjects().callInit(classIdx, this);
     }
 
-    DynamicQObject(QObject *parent = nullptr)
-        : ParentClass(parent), classIdx(-1)
+    DynamicQObject() : ParentClass(), classIdx(-1) { }
+
+    template <typename A>
+    DynamicQObject(A arg1) : ParentClass(arg1), classIdx(-1) { }
+
+    DynamicQObject(const DynamicQObject &)
     {
+        throw std::logic_error("DynamicQObject cannot be copied");
     }
 
-    DynamicQObject(const DynamicQObject &other)
-        : QObject()
+    DynamicQObject & operator=(const DynamicQObject &)
     {
-        classIdx = other.classIdx;
-        propertyStorage = other.propertyStorage;
-    }
-
-    DynamicQObject & operator=(const DynamicQObject &other)
-    {
-        classIdx = other.classIdx;
-        propertyStorage = other.propertyStorage;
-        return *this;
+        throw std::logic_error("DynamicQObject cannot be copied");
     }
 
     const QMetaObject *metaObject() const
@@ -215,7 +211,7 @@ struct DynamicClassSpecification {
     virtual void convertQtDataToGVariantData(void *data, cpgf::GVariantData *dest) = 0;
     virtual QQmlPrivate::RegisterType createQmlRegisterType(int classIdx, const char *uri, int versionMajor, int versionMinor, const char *qmlName) = 0;
     virtual void declareCpgfClass(cpgf::GDefineMetaGlobalDangle &d) = 0;
-    virtual QObject* instantiate(int classIdx, QObject *parent) = 0;
+    virtual QObject* instantiate(int classIdx) = 0;
 };
 
 template <typename Target>
@@ -236,8 +232,8 @@ struct DynamicClassSpecificationImpl : public DynamicClassSpecification {
         auto _nd = cpgf::GDefineMetaClass<DynamicQObjectImpl, Target>::declare((std::string("DynamicObject_")+name).c_str());
         d._class(_nd);
     }
-    virtual QObject* instantiate(int classIdx, QObject *parent) override {
-        auto ret = new DynamicQObjectImpl(parent);
+    virtual QObject* instantiate(int classIdx) override {
+        auto ret = new DynamicQObjectImpl();
         ret->__setClassIdx(classIdx);
         return ret;
     }

@@ -93,9 +93,9 @@ QMetaObject *DynamicQObjects::getMetaObject(unsigned int classIdx)
     return metaObjects[classIdx];
 }
 
-QObject *DynamicQObjects::createInstance(unsigned int classIdx, QObject *parent)
+QObject *DynamicQObjects::createInstance(unsigned int classIdx)
 {
-    return dynamicClass->instantiate(classIdx, parent);
+    return dynamicClass->instantiate(classIdx);
 }
 
 void DynamicQObjects::callInit(size_t classIdx, QObject *obj)
