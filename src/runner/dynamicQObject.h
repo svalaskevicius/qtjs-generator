@@ -212,6 +212,7 @@ struct DynamicClassSpecification {
     virtual QQmlPrivate::RegisterType createQmlRegisterType(int classIdx, const char *uri, int versionMajor, int versionMinor, const char *qmlName) = 0;
     virtual void declareCpgfClass(cpgf::GDefineMetaGlobalDangle &d) = 0;
     virtual QObject* instantiate(int classIdx) = 0;
+    virtual std::string getName() = 0;
 };
 
 template <typename Target>
@@ -237,8 +238,49 @@ struct DynamicClassSpecificationImpl : public DynamicClassSpecification {
         ret->__setClassIdx(classIdx);
         return ret;
     }
+    virtual std::string getName() override { return name; }
 };
 
-extern DynamicClassSpecification* dynamicClass;
+struct DynamicClassSpecifications
+{
+    std::map<int, std::unique_ptr<DynamicClassSpecification>> specifications;
+    std::map<std::string, int> classNameToSpecificationId;
+    std::map<int, int> classIdToTypeId;
+
+    DynamicClassSpecifications() {
+        addSpecification(new DynamicClassSpecificationImpl<QObject>("QObject"));
+        addSpecification(new DynamicClassSpecificationImpl<QQuickItem>("QQuickItem"));
+    }
+
+    void addSpecification(DynamicClassSpecification* spec) {
+        specifications[spec->typeId()] = std::unique_ptr<DynamicClassSpecification>(spec);
+        classNameToSpecificationId[spec->getName()] = spec->typeId();
+    }
+
+    void registerClassInstance(int classIdx, std::string className) {
+        auto itTypeId = classNameToSpecificationId.find(className);
+        if (itTypeId == classNameToSpecificationId.end()) {
+            throw std::logic_error("registered class is not supported");
+        }
+        classIdToTypeId[classIdx] = itTypeId->second;
+    }
+
+    DynamicClassSpecification* byTypeId(int typeId) {
+        auto spec = specifications.find(typeId);
+        if (spec != specifications.end()) {
+            return spec->second.get();
+        }
+        return nullptr;
+    }
+    DynamicClassSpecification* byClassIdx(int classIdx) {
+        auto itTypeId = classIdToTypeId.find(classIdx);
+        if (itTypeId != classIdToTypeId.end()) {
+            return byTypeId(itTypeId->second);
+        }
+        return nullptr;
+    }
+};
+
+extern DynamicClassSpecifications dynamicClassSpecifications;
 
 }

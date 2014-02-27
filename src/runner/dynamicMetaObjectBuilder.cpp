@@ -113,6 +113,7 @@ QMetaObject *DynamicMetaObjectBuilder::build(int classId)
     _p->builder.setStaticMetacallFunction(
         generateDynamicObjectStaticMetaCall(classId)
     );
+    dynamicClassSpecifications.registerClassInstance(classId, "QObject");
     return _p->builder.toMetaObject();
 }
 

@@ -57,6 +57,9 @@ unsigned int DynamicQObjects::addResult(DynamicMetaObjectBuilder &builder)
 
     metaObjects[currentId] = builder.build(currentId);
 
+    auto dynamicClass = dynamicClassSpecifications.byClassIdx(currentId);
+    assert(dynamicClass);
+
     auto initFnc = builder.getInitCallback();
     if (initFnc) {
         classesInfo[currentId].initCallback =
@@ -95,6 +98,8 @@ QMetaObject *DynamicQObjects::getMetaObject(unsigned int classIdx)
 
 QObject *DynamicQObjects::createInstance(unsigned int classIdx)
 {
+    auto dynamicClass = dynamicClassSpecifications.byClassIdx(classIdx);
+    assert(dynamicClass);
     return dynamicClass->instantiate(classIdx);
 }
 

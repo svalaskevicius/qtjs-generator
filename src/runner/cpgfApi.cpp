@@ -172,6 +172,8 @@ void unregisterQt()
 
 int qmlRegisterDynamicType(int classIdx, const char *uri, int versionMajor, int versionMinor, const char *qmlName)
 {
+    auto dynamicClass = dynamicClassSpecifications.byClassIdx(classIdx);
+    assert(dynamicClass);
     QQmlPrivate::RegisterType type = dynamicClass->createQmlRegisterType(classIdx, uri, versionMajor, versionMinor, qmlName);
     return QQmlPrivate::qmlregister(QQmlPrivate::TypeRegistration, &type);
 }
@@ -208,7 +210,10 @@ cpgf::GDefineMetaInfo createDynamicObjectsMetaClasses()
 
         _d._class(_nd);
     }
-    dynamicClass->declareCpgfClass(_d);
+
+    for (const auto & it : dynamicClassSpecifications.specifications) {
+        it.second->declareCpgfClass(_d);
+    }
 
     return _d.getMetaInfo();
 }

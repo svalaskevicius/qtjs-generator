@@ -43,8 +43,9 @@ namespace {
 void convertQtDataToGVariantData(int type, void *data, cpgf::GVariantData *dest)
 {
 #define CONV_TYPED_VARIANT_DATA(cl) *dest = cpgf::createTypedVariant(static_cast<const cl *>(data)).takeData()
-    if (type == dynamicClass->typeId()) {
-        dynamicClass->convertQtDataToGVariantData(data, dest);
+    auto dynClass = dynamicClassSpecifications.byTypeId(type);
+    if (dynClass) {
+        dynClass->convertQtDataToGVariantData(data, dest);
     } else {
         switch ((QMetaType::Type)type) {
         case QVariant::String:

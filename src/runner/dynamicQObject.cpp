@@ -33,7 +33,8 @@
 
 namespace qtjs_binder {
 
-DynamicClassSpecification* dynamicClass = new DynamicClassSpecificationImpl<QObject>("QObject");
+DynamicClassSpecifications dynamicClassSpecifications;
+
 
 void metaCallReadPropertyFromVariant(void *_v, QMetaType::Type type, const QVariant & data)
 {
