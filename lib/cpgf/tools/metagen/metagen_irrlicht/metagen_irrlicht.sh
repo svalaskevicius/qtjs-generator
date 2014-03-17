@@ -1,1 +1,0 @@
-java -cp "../tool/bin;../js.jar" metagen --config config.irrlicht.js --xml xml/index.xml
