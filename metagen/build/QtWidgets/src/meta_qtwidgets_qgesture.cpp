@@ -70,8 +70,8 @@ using namespace cpgf;
 namespace qt_metadata { 
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGesture()
 {
@@ -88,8 +88,8 @@ GDefineMetaInfo createMetaClass_QGesture()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGestureEvent()
 {
@@ -102,8 +102,8 @@ GDefineMetaInfo createMetaClass_QGestureEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QPanGesture()
 {
@@ -120,8 +120,8 @@ GDefineMetaInfo createMetaClass_QPanGesture()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QPinchGesture()
 {
@@ -138,8 +138,8 @@ GDefineMetaInfo createMetaClass_QPinchGesture()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QSwipeGesture()
 {
@@ -156,8 +156,8 @@ GDefineMetaInfo createMetaClass_QSwipeGesture()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QTapAndHoldGesture()
 {
@@ -174,8 +174,8 @@ GDefineMetaInfo createMetaClass_QTapAndHoldGesture()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QTapGesture()
 {

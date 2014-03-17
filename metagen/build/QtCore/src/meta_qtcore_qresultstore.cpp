@@ -50,8 +50,8 @@ using namespace cpgf;
 namespace qt_metadata { 
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_ResultItem()
 {
@@ -64,8 +64,8 @@ GDefineMetaInfo createMetaClass_ResultItem()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_ResultIteratorBase()
 {
@@ -78,8 +78,8 @@ GDefineMetaInfo createMetaClass_ResultIteratorBase()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_ResultStoreBase()
 {

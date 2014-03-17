@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTCORE_QLISTWIDGET_H
-#define __META_QTCORE_QLISTWIDGET_H
+#ifndef CPGF_META_QTCORE_QLISTWIDGET_H
+#define CPGF_META_QTCORE_QLISTWIDGET_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

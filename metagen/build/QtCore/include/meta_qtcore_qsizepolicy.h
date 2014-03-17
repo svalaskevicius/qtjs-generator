@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTCORE_QSIZEPOLICY_H
-#define __META_QTCORE_QSIZEPOLICY_H
+#ifndef CPGF_META_QTCORE_QSIZEPOLICY_H
+#define CPGF_META_QTCORE_QSIZEPOLICY_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

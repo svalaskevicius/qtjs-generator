@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTGUI_QLIGHTSENSOR_H
-#define __META_QTGUI_QLIGHTSENSOR_H
+#ifndef CPGF_META_QTGUI_QLIGHTSENSOR_H
+#define CPGF_META_QTGUI_QLIGHTSENSOR_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

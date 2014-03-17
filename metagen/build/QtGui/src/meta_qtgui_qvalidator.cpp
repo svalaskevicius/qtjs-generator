@@ -15,8 +15,8 @@ using namespace cpgf;
 namespace qt_metadata { 
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QDoubleValidator()
 {
@@ -33,8 +33,8 @@ GDefineMetaInfo createMetaClass_QDoubleValidator()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QIntValidator()
 {
@@ -51,8 +51,8 @@ GDefineMetaInfo createMetaClass_QIntValidator()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QRegExpValidator()
 {
@@ -69,8 +69,8 @@ GDefineMetaInfo createMetaClass_QRegExpValidator()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QRegularExpressionValidator()
 {
@@ -87,8 +87,8 @@ GDefineMetaInfo createMetaClass_QRegularExpressionValidator()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QValidator()
 {

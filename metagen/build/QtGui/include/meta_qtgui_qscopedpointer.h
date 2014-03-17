@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTGUI_QSCOPEDPOINTER_H
-#define __META_QTGUI_QSCOPEDPOINTER_H
+#ifndef CPGF_META_QTGUI_QSCOPEDPOINTER_H
+#define CPGF_META_QTGUI_QSCOPEDPOINTER_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

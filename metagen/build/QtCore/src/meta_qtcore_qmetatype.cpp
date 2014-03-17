@@ -50,8 +50,8 @@ using namespace cpgf;
 namespace qt_metadata { 
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_Global_qmetatype()
 {
@@ -61,8 +61,8 @@ GDefineMetaInfo createMetaClass_Global_qmetatype()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAssociativeIterableImpl()
 {
@@ -75,8 +75,8 @@ GDefineMetaInfo createMetaClass_QAssociativeIterableImpl()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QPairVariantInterfaceImpl()
 {
@@ -89,8 +89,8 @@ GDefineMetaInfo createMetaClass_QPairVariantInterfaceImpl()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QSequentialIterableImpl()
 {
@@ -103,8 +103,8 @@ GDefineMetaInfo createMetaClass_QSequentialIterableImpl()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_VariantData()
 {

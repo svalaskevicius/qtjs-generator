@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTCORE_QSTYLEFACTORY_H
-#define __META_QTCORE_QSTYLEFACTORY_H
+#ifndef CPGF_META_QTCORE_QSTYLEFACTORY_H
+#define CPGF_META_QTCORE_QSTYLEFACTORY_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

@@ -15,8 +15,8 @@ using namespace cpgf;
 namespace qt_metadata { 
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_Global_qsgnode()
 {
@@ -26,8 +26,8 @@ GDefineMetaInfo createMetaClass_Global_qsgnode()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QSGBasicGeometryNode()
 {
@@ -44,8 +44,8 @@ GDefineMetaInfo createMetaClass_QSGBasicGeometryNode()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QSGClipNode()
 {
@@ -62,8 +62,8 @@ GDefineMetaInfo createMetaClass_QSGClipNode()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QSGGeometryNode()
 {
@@ -80,8 +80,8 @@ GDefineMetaInfo createMetaClass_QSGGeometryNode()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QSGNode()
 {
@@ -98,8 +98,8 @@ GDefineMetaInfo createMetaClass_QSGNode()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QSGNodeVisitor()
 {
@@ -116,8 +116,8 @@ GDefineMetaInfo createMetaClass_QSGNodeVisitor()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QSGOpacityNode()
 {
@@ -134,8 +134,8 @@ GDefineMetaInfo createMetaClass_QSGOpacityNode()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QSGRootNode()
 {
@@ -152,8 +152,8 @@ GDefineMetaInfo createMetaClass_QSGRootNode()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QSGTransformNode()
 {

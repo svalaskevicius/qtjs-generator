@@ -15,8 +15,8 @@ using namespace cpgf;
 namespace qt_metadata { 
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_Global_qevent()
 {
@@ -26,8 +26,8 @@ GDefineMetaInfo createMetaClass_Global_qevent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QActionEvent()
 {
@@ -40,8 +40,8 @@ GDefineMetaInfo createMetaClass_QActionEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QApplicationStateChangeEvent()
 {
@@ -54,8 +54,8 @@ GDefineMetaInfo createMetaClass_QApplicationStateChangeEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QCloseEvent()
 {
@@ -68,8 +68,8 @@ GDefineMetaInfo createMetaClass_QCloseEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QContextMenuEvent()
 {
@@ -82,8 +82,8 @@ GDefineMetaInfo createMetaClass_QContextMenuEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QDragEnterEvent()
 {
@@ -96,8 +96,8 @@ GDefineMetaInfo createMetaClass_QDragEnterEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QDragLeaveEvent()
 {
@@ -110,8 +110,8 @@ GDefineMetaInfo createMetaClass_QDragLeaveEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QDragMoveEvent()
 {
@@ -124,8 +124,8 @@ GDefineMetaInfo createMetaClass_QDragMoveEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QDropEvent()
 {
@@ -138,8 +138,8 @@ GDefineMetaInfo createMetaClass_QDropEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QEnterEvent()
 {
@@ -152,8 +152,8 @@ GDefineMetaInfo createMetaClass_QEnterEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QExposeEvent()
 {
@@ -166,8 +166,8 @@ GDefineMetaInfo createMetaClass_QExposeEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QFileOpenEvent()
 {
@@ -180,8 +180,8 @@ GDefineMetaInfo createMetaClass_QFileOpenEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QFocusEvent()
 {
@@ -194,8 +194,8 @@ GDefineMetaInfo createMetaClass_QFocusEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QHelpEvent()
 {
@@ -208,8 +208,8 @@ GDefineMetaInfo createMetaClass_QHelpEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QHideEvent()
 {
@@ -222,8 +222,8 @@ GDefineMetaInfo createMetaClass_QHideEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QHoverEvent()
 {
@@ -236,8 +236,8 @@ GDefineMetaInfo createMetaClass_QHoverEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QIconDragEvent()
 {
@@ -250,8 +250,8 @@ GDefineMetaInfo createMetaClass_QIconDragEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QInputEvent()
 {
@@ -264,8 +264,8 @@ GDefineMetaInfo createMetaClass_QInputEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QInputMethodEvent()
 {
@@ -278,8 +278,8 @@ GDefineMetaInfo createMetaClass_QInputMethodEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QInputMethodQueryEvent()
 {
@@ -292,8 +292,8 @@ GDefineMetaInfo createMetaClass_QInputMethodQueryEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QKeyEvent()
 {
@@ -306,8 +306,8 @@ GDefineMetaInfo createMetaClass_QKeyEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QMouseEvent()
 {
@@ -320,8 +320,8 @@ GDefineMetaInfo createMetaClass_QMouseEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QMoveEvent()
 {
@@ -334,8 +334,8 @@ GDefineMetaInfo createMetaClass_QMoveEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QNativeGestureEvent()
 {
@@ -348,8 +348,8 @@ GDefineMetaInfo createMetaClass_QNativeGestureEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QPaintEvent()
 {
@@ -362,8 +362,8 @@ GDefineMetaInfo createMetaClass_QPaintEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QResizeEvent()
 {
@@ -376,8 +376,8 @@ GDefineMetaInfo createMetaClass_QResizeEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QScreenOrientationChangeEvent()
 {
@@ -390,8 +390,8 @@ GDefineMetaInfo createMetaClass_QScreenOrientationChangeEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QScrollEvent()
 {
@@ -404,8 +404,8 @@ GDefineMetaInfo createMetaClass_QScrollEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QScrollPrepareEvent()
 {
@@ -418,8 +418,8 @@ GDefineMetaInfo createMetaClass_QScrollPrepareEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QShortcutEvent()
 {
@@ -432,8 +432,8 @@ GDefineMetaInfo createMetaClass_QShortcutEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QShowEvent()
 {
@@ -446,8 +446,8 @@ GDefineMetaInfo createMetaClass_QShowEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStatusTipEvent()
 {
@@ -460,8 +460,8 @@ GDefineMetaInfo createMetaClass_QStatusTipEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QTabletEvent()
 {
@@ -474,8 +474,8 @@ GDefineMetaInfo createMetaClass_QTabletEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QToolBarChangeEvent()
 {
@@ -488,8 +488,8 @@ GDefineMetaInfo createMetaClass_QToolBarChangeEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QTouchEvent()
 {
@@ -502,8 +502,8 @@ GDefineMetaInfo createMetaClass_QTouchEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QWhatsThisClickedEvent()
 {
@@ -516,8 +516,8 @@ GDefineMetaInfo createMetaClass_QWhatsThisClickedEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QWheelEvent()
 {
@@ -530,8 +530,8 @@ GDefineMetaInfo createMetaClass_QWheelEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QWindowStateChangeEvent()
 {

@@ -15,8 +15,8 @@ using namespace cpgf;
 namespace qt_metadata { 
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_Global_qaccessible()
 {
@@ -26,8 +26,8 @@ GDefineMetaInfo createMetaClass_Global_qaccessible()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAccessible()
 {
@@ -40,8 +40,8 @@ GDefineMetaInfo createMetaClass_QAccessible()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAccessibleActionInterface()
 {
@@ -58,8 +58,8 @@ GDefineMetaInfo createMetaClass_QAccessibleActionInterface()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAccessibleEditableTextInterface()
 {
@@ -76,8 +76,8 @@ GDefineMetaInfo createMetaClass_QAccessibleEditableTextInterface()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAccessibleEvent()
 {
@@ -94,8 +94,8 @@ GDefineMetaInfo createMetaClass_QAccessibleEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAccessibleImageInterface()
 {
@@ -112,8 +112,8 @@ GDefineMetaInfo createMetaClass_QAccessibleImageInterface()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAccessibleStateChangeEvent()
 {
@@ -130,8 +130,8 @@ GDefineMetaInfo createMetaClass_QAccessibleStateChangeEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAccessibleTableCellInterface()
 {
@@ -148,8 +148,8 @@ GDefineMetaInfo createMetaClass_QAccessibleTableCellInterface()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAccessibleTableInterface()
 {
@@ -166,8 +166,8 @@ GDefineMetaInfo createMetaClass_QAccessibleTableInterface()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAccessibleTableModelChangeEvent()
 {
@@ -184,8 +184,8 @@ GDefineMetaInfo createMetaClass_QAccessibleTableModelChangeEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAccessibleTextCursorEvent()
 {
@@ -202,8 +202,8 @@ GDefineMetaInfo createMetaClass_QAccessibleTextCursorEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAccessibleTextInsertEvent()
 {
@@ -220,8 +220,8 @@ GDefineMetaInfo createMetaClass_QAccessibleTextInsertEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAccessibleTextInterface()
 {
@@ -238,8 +238,8 @@ GDefineMetaInfo createMetaClass_QAccessibleTextInterface()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAccessibleTextRemoveEvent()
 {
@@ -256,8 +256,8 @@ GDefineMetaInfo createMetaClass_QAccessibleTextRemoveEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAccessibleTextSelectionEvent()
 {
@@ -274,8 +274,8 @@ GDefineMetaInfo createMetaClass_QAccessibleTextSelectionEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAccessibleTextUpdateEvent()
 {
@@ -292,8 +292,8 @@ GDefineMetaInfo createMetaClass_QAccessibleTextUpdateEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAccessibleValueChangeEvent()
 {
@@ -310,8 +310,8 @@ GDefineMetaInfo createMetaClass_QAccessibleValueChangeEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAccessibleValueInterface()
 {

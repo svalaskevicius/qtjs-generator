@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTCORE_QPLATFORMSYSTEMTRAYICON_H
-#define __META_QTCORE_QPLATFORMSYSTEMTRAYICON_H
+#ifndef CPGF_META_QTCORE_QPLATFORMSYSTEMTRAYICON_H
+#define CPGF_META_QTCORE_QPLATFORMSYSTEMTRAYICON_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

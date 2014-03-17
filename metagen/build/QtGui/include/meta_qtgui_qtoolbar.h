@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTGUI_QTOOLBAR_H
-#define __META_QTGUI_QTOOLBAR_H
+#ifndef CPGF_META_QTGUI_QTOOLBAR_H
+#define CPGF_META_QTGUI_QTOOLBAR_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

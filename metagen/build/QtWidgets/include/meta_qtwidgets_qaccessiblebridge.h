@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTWIDGETS_QACCESSIBLEBRIDGE_H
-#define __META_QTWIDGETS_QACCESSIBLEBRIDGE_H
+#ifndef CPGF_META_QTWIDGETS_QACCESSIBLEBRIDGE_H
+#define CPGF_META_QTWIDGETS_QACCESSIBLEBRIDGE_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

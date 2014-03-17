@@ -70,8 +70,8 @@ using namespace cpgf;
 namespace qt_metadata { 
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsBlurEffect()
 {
@@ -88,8 +88,8 @@ GDefineMetaInfo createMetaClass_QGraphicsBlurEffect()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsColorizeEffect()
 {
@@ -106,8 +106,8 @@ GDefineMetaInfo createMetaClass_QGraphicsColorizeEffect()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsDropShadowEffect()
 {
@@ -124,8 +124,8 @@ GDefineMetaInfo createMetaClass_QGraphicsDropShadowEffect()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsEffect()
 {
@@ -142,8 +142,8 @@ GDefineMetaInfo createMetaClass_QGraphicsEffect()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsOpacityEffect()
 {
