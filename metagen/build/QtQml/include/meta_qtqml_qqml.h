@@ -26,7 +26,6 @@ void buildMetaClass_Global_qqml(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _field("CurrentSingletonTypeRegistrationVersion", &CurrentSingletonTypeRegistrationVersion);
     _d.CPGF_MD_TEMPLATE _method("qmlExecuteDeferred", (void (*) (QObject *))&qmlExecuteDeferred);
     _d.CPGF_MD_TEMPLATE _method("qmlContext", (QQmlContext* (*) (const QObject *))&qmlContext);
     _d.CPGF_MD_TEMPLATE _method("qmlEngine", (QQmlEngine* (*) (const QObject *))&qmlEngine);
@@ -44,7 +43,10 @@ void buildMetaClass_Global_qqml(D _d)
     _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtQml_25")
         ._element("QML_HAS_ATTACHED_PROPERTIES", QML_HAS_ATTACHED_PROPERTIES)
     ;
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_26")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtQml_26")
+        ._element("QmlCurrentSingletonTypeRegistrationVersion", QmlCurrentSingletonTypeRegistrationVersion)
+    ;
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_27")
         ._element("QML_VERSION", QML_VERSION)
         ._element("QML_VERSION_STR", QML_VERSION_STR)
     ;

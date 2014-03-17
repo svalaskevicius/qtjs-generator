@@ -28,7 +28,7 @@ void buildMetaClass_Global_qgenericplugin(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_13")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_18")
         ._element("QGenericPluginFactoryInterface_iid", QGenericPluginFactoryInterface_iid)
     ;
 }

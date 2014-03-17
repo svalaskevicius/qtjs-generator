@@ -25,7 +25,7 @@ void buildMetaClass_Global_qtwidgetsversion(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtWidgets_8")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtWidgets_7")
         ._element("QTWIDGETS_VERSION_STR", QTWIDGETS_VERSION_STR)
         ._element("QTWIDGETS_VERSION", QTWIDGETS_VERSION)
     ;

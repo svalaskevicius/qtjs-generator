@@ -198,11 +198,13 @@ void buildMetaClass_IteratorOwner(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _method("assign", &D::ClassType::assign);
+    _d.CPGF_MD_TEMPLATE _method("assign", (void (*) (void **, const_iterator))&D::ClassType::assign);
+    _d.CPGF_MD_TEMPLATE _method("assign", (void (*) (void **, void *const *))&D::ClassType::assign);
     _d.CPGF_MD_TEMPLATE _method("advance", &D::ClassType::advance);
     _d.CPGF_MD_TEMPLATE _method("destroy", &D::ClassType::destroy);
     _d.CPGF_MD_TEMPLATE _method("getData", (const void * (*) (void *const *))&D::ClassType::getData);
     _d.CPGF_MD_TEMPLATE _method("getData", (const void * (*) (const_iterator))&D::ClassType::getData);
+    _d.CPGF_MD_TEMPLATE _method("equal", &D::ClassType::equal);
 }
 
 

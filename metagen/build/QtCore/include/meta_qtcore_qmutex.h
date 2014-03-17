@@ -25,7 +25,7 @@ void buildMetaClass_Global_qmutex(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_25")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_33")
     ;
 }
 

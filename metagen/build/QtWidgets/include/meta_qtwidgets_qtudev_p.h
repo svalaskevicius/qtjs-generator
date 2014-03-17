@@ -1,12 +1,12 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTCORE_QPROCESSORDETECTION_H
-#define __META_QTCORE_QPROCESSORDETECTION_H
+#ifndef __META_QTWIDGETS_QTUDEV_P_H
+#define __META_QTWIDGETS_QTUDEV_P_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
+#include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -17,19 +17,6 @@
 
 
 namespace qt_metadata { 
-
-
-template <typename D>
-void buildMetaClass_Global_qprocessordetection(D _d)
-{
-    (void)_d;
-    using namespace cpgf;
-    
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_29")
-        ._element("Q_BIG_ENDIAN", Q_BIG_ENDIAN)
-        ._element("Q_LITTLE_ENDIAN", Q_LITTLE_ENDIAN)
-    ;
-}
 
 
 } // namespace qt_metadata

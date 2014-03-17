@@ -25,7 +25,7 @@ void buildMetaClass_Global_qconfig(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_26")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_36")
         ._element("QT_LARGEFILE_SUPPORT", QT_LARGEFILE_SUPPORT)
         ._element("QT_POINTER_SIZE", QT_POINTER_SIZE)
         ._element("QT_QPA_DEFAULT_PLATFORM_NAME", QT_QPA_DEFAULT_PLATFORM_NAME)

@@ -28,7 +28,7 @@ void buildMetaClass_Global_qstyleplugin(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtWidgets_7")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtWidgets_8")
         ._element("QStyleFactoryInterface_iid", QStyleFactoryInterface_iid)
     ;
 }

@@ -28,7 +28,7 @@ void buildMetaClass_Global_qqmlextensioninterface(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_16")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_21")
         ._element("QQmlTypesExtensionInterface_iid", QQmlTypesExtensionInterface_iid)
         ._element("QQmlExtensionInterface_iid", QQmlExtensionInterface_iid)
     ;

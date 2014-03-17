@@ -34,7 +34,7 @@ void buildMetaClass_Global_qnumeric(D _d)
     _d.CPGF_MD_TEMPLATE _method("qSNaN", (double (*) ())&qSNaN);
     _d.CPGF_MD_TEMPLATE _method("qQNaN", (double (*) ())&qQNaN);
     _d.CPGF_MD_TEMPLATE _method("qInf", (double (*) ())&qInf);
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_23")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_35")
         ._element("Q_INFINITY", Q_INFINITY)
         ._element("Q_SNAN", Q_SNAN)
         ._element("Q_QNAN", Q_QNAN)

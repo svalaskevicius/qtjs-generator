@@ -28,7 +28,7 @@ void buildMetaClass_Global_qpictureformatplugin(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_17")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_23")
         ._element("QPictureFormatInterface_iid", QPictureFormatInterface_iid)
     ;
 }

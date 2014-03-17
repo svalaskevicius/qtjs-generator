@@ -29,7 +29,7 @@ void buildMetaClass_Global_qcoreapplication(D _d)
     _d.CPGF_MD_TEMPLATE _method("qAddPostRoutine", (void (*) (QtCleanUpFunction))&qAddPostRoutine);
     _d.CPGF_MD_TEMPLATE _method("qRemovePostRoutine", (void (*) (QtCleanUpFunction))&qRemovePostRoutine);
     _d.CPGF_MD_TEMPLATE _method("qAppName", (QString (*) ())&qAppName);
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_22")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_37")
         ._element("qApp", qApp)
     ;
 }
