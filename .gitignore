@@ -1,5 +1,4 @@
 /build/
-/lib/cpgf/build/
-/lib/cpgf/lib/
+/lib/cpgf-build/build/
 /metagen/qtheaders/
 /metagen/xml/

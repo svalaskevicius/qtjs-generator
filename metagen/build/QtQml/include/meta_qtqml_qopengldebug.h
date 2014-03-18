@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTQML_QOPENGLDEBUG_H
-#define __META_QTQML_QOPENGLDEBUG_H
+#ifndef CPGF_META_QTQML_QOPENGLDEBUG_H
+#define CPGF_META_QTQML_QOPENGLDEBUG_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

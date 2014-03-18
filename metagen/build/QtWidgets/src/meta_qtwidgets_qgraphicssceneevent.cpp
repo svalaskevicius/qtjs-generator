@@ -70,8 +70,8 @@ using namespace cpgf;
 namespace qt_metadata { 
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsSceneContextMenuEvent()
 {
@@ -84,8 +84,8 @@ GDefineMetaInfo createMetaClass_QGraphicsSceneContextMenuEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsSceneDragDropEvent()
 {
@@ -98,8 +98,8 @@ GDefineMetaInfo createMetaClass_QGraphicsSceneDragDropEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsSceneEvent()
 {
@@ -112,8 +112,8 @@ GDefineMetaInfo createMetaClass_QGraphicsSceneEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsSceneHelpEvent()
 {
@@ -126,8 +126,8 @@ GDefineMetaInfo createMetaClass_QGraphicsSceneHelpEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsSceneHoverEvent()
 {
@@ -140,8 +140,8 @@ GDefineMetaInfo createMetaClass_QGraphicsSceneHoverEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsSceneMouseEvent()
 {
@@ -154,8 +154,8 @@ GDefineMetaInfo createMetaClass_QGraphicsSceneMouseEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsSceneMoveEvent()
 {
@@ -168,8 +168,8 @@ GDefineMetaInfo createMetaClass_QGraphicsSceneMoveEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsSceneResizeEvent()
 {
@@ -182,8 +182,8 @@ GDefineMetaInfo createMetaClass_QGraphicsSceneResizeEvent()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsSceneWheelEvent()
 {

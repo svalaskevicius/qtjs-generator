@@ -7,3 +7,6 @@
 [submodule "lib/qt-event-dispatcher-libuv"]
 	path = lib/qt-event-dispatcher-libuv
 	url = https://github.com/svalaskevicius/qt-event-dispatcher-libuv.git
+[submodule "lib/cpgf"]
+	path = lib/cpgf
+	url = https://github.com/cpgf/cpgf.git

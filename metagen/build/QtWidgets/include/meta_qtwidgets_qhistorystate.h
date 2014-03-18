@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTWIDGETS_QHISTORYSTATE_H
-#define __META_QTWIDGETS_QHISTORYSTATE_H
+#ifndef CPGF_META_QTWIDGETS_QHISTORYSTATE_H
+#define CPGF_META_QTWIDGETS_QHISTORYSTATE_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTQML_QUICKTEST_H
-#define __META_QTQML_QUICKTEST_H
+#ifndef CPGF_META_QTQML_QUICKTEST_H
+#define CPGF_META_QTQML_QUICKTEST_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

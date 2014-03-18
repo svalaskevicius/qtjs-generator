@@ -70,8 +70,8 @@ using namespace cpgf;
 namespace qt_metadata { 
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_Global_qgraphicsitem()
 {
@@ -81,8 +81,8 @@ GDefineMetaInfo createMetaClass_Global_qgraphicsitem()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QAbstractGraphicsShapeItem()
 {
@@ -99,8 +99,8 @@ GDefineMetaInfo createMetaClass_QAbstractGraphicsShapeItem()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsEllipseItem()
 {
@@ -117,8 +117,8 @@ GDefineMetaInfo createMetaClass_QGraphicsEllipseItem()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsItem()
 {
@@ -135,8 +135,8 @@ GDefineMetaInfo createMetaClass_QGraphicsItem()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsItemGroup()
 {
@@ -153,8 +153,8 @@ GDefineMetaInfo createMetaClass_QGraphicsItemGroup()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsLineItem()
 {
@@ -171,8 +171,8 @@ GDefineMetaInfo createMetaClass_QGraphicsLineItem()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsObject()
 {
@@ -189,8 +189,8 @@ GDefineMetaInfo createMetaClass_QGraphicsObject()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsPathItem()
 {
@@ -207,8 +207,8 @@ GDefineMetaInfo createMetaClass_QGraphicsPathItem()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsPixmapItem()
 {
@@ -225,8 +225,8 @@ GDefineMetaInfo createMetaClass_QGraphicsPixmapItem()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsPolygonItem()
 {
@@ -243,8 +243,8 @@ GDefineMetaInfo createMetaClass_QGraphicsPolygonItem()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsRectItem()
 {
@@ -261,8 +261,8 @@ GDefineMetaInfo createMetaClass_QGraphicsRectItem()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsSimpleTextItem()
 {
@@ -279,8 +279,8 @@ GDefineMetaInfo createMetaClass_QGraphicsSimpleTextItem()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QGraphicsTextItem()
 {

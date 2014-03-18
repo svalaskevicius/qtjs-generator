@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTWIDGETS_QITEMSELECTIONMODEL_H
-#define __META_QTWIDGETS_QITEMSELECTIONMODEL_H
+#ifndef CPGF_META_QTWIDGETS_QITEMSELECTIONMODEL_H
+#define CPGF_META_QTWIDGETS_QITEMSELECTIONMODEL_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

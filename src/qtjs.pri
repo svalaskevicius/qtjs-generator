@@ -35,7 +35,7 @@ INCLUDEPATH += $${ROOT}/metagen/build/
 # QMAKE_CXXFLAGS += -fexceptions -ftemplate-backtrace-limit=0 -g -O0
 
 
-LIBPATH += $${ROOT}/lib/cpgf/lib/ $${ROOT}/lib/node/deps/v8/out/native/lib.target/
+LIBPATH += $${ROOT}/lib/cpgf-build/build/ $${ROOT}/lib/node/deps/v8/out/native/lib.target/
 LIBS += -lcpgf -lv8 -licuuc -licui18n
 
 
@@ -50,7 +50,12 @@ dep_v8.target = $${ROOT}/lib/node/deps/v8/out/native/lib.target/libv8.so
 dep_v8.commands = cd $${ROOT}/lib/node/deps/v8/ && make native -j4 library=shared
 dep_v8.depends = $${ROOT}/lib/node/deps/v8/build/gyp/gyp
 
-QMAKE_EXTRA_TARGETS += v8_gyp dep_v8
+dep_cpgf.target = $${ROOT}/lib/cpgf-build/build/cpgf.so
+dep_cpgf.commands = cd $${ROOT}/lib/cpgf-build/ && mkdir -p build && cd build && \
+                    CXX="$${QMAKE_CXX}" CC="$${QMAKE_CC}" cmake .. -DCMAKE_BUILD_TYPE=Release && \
+                    make -j4 lib
 
-PRE_TARGETDEPS +=   $${ROOT}/lib/node/deps/v8/out/native/lib.target/libv8.so
+QMAKE_EXTRA_TARGETS += v8_gyp dep_v8 dep_cpgf
+
+PRE_TARGETDEPS +=   $${ROOT}/lib/node/deps/v8/out/native/lib.target/libv8.so $${ROOT}/lib/cpgf-build/build/cpgf.so
 

@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTCORE_QSCROLLER_H
-#define __META_QTCORE_QSCROLLER_H
+#ifndef CPGF_META_QTCORE_QSCROLLER_H
+#define CPGF_META_QTCORE_QSCROLLER_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTQML_QBUTTONGROUP_H
-#define __META_QTQML_QBUTTONGROUP_H
+#ifndef CPGF_META_QTQML_QBUTTONGROUP_H
+#define CPGF_META_QTQML_QBUTTONGROUP_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

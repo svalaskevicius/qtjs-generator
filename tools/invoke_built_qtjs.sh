@@ -4,7 +4,7 @@ MYDIR=$(dirname "$(readlink -f "$0")")
 TOPDIR="$MYDIR/.."
 MYNAME=$(basename "$0")
 
-export LD_LIBRARY_PATH="$TOPDIR/lib/cpgf/lib:$TOPDIR/build/src/core:$TOPDIR/build/src/widgets:$TOPDIR/build/src/qml:$TOPDIR/build/src/gui:$TOPDIR/lib/node/deps/v8/out/native/lib.target/"
+export LD_LIBRARY_PATH="$TOPDIR/lib/cpgf-build/build:$TOPDIR/build/src/core:$TOPDIR/build/src/widgets:$TOPDIR/build/src/qml:$TOPDIR/build/src/gui:$TOPDIR/lib/node/deps/v8/out/native/lib.target/"
 
 PRECMD=''
 ARGS=()

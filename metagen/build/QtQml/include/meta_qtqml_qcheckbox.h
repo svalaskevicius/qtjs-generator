@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTQML_QCHECKBOX_H
-#define __META_QTQML_QCHECKBOX_H
+#ifndef CPGF_META_QTQML_QCHECKBOX_H
+#define CPGF_META_QTQML_QCHECKBOX_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTCORE_QSIZE_H
-#define __META_QTCORE_QSIZE_H
+#ifndef CPGF_META_QTCORE_QSIZE_H
+#define CPGF_META_QTCORE_QSIZE_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

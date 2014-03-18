@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __REGISTER_META_QTQML_H
-#define __REGISTER_META_QTQML_H
+#ifndef CPGF_REGISTER_META_QTQML_H
+#define CPGF_REGISTER_META_QTQML_H
 
 
 #include "cpgf/gmetadefine.h"

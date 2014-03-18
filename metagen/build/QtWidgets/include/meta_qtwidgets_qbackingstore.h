@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTWIDGETS_QBACKINGSTORE_H
-#define __META_QTWIDGETS_QBACKINGSTORE_H
+#ifndef CPGF_META_QTWIDGETS_QBACKINGSTORE_H
+#define CPGF_META_QTWIDGETS_QBACKINGSTORE_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

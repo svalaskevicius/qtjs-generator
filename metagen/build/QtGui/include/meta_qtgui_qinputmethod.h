@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTGUI_QINPUTMETHOD_H
-#define __META_QTGUI_QINPUTMETHOD_H
+#ifndef CPGF_META_QTGUI_QINPUTMETHOD_H
+#define CPGF_META_QTGUI_QINPUTMETHOD_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

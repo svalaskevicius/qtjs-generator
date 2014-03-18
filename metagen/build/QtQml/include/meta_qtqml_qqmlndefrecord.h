@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTQML_QQMLNDEFRECORD_H
-#define __META_QTQML_QQMLNDEFRECORD_H
+#ifndef CPGF_META_QTQML_QQMLNDEFRECORD_H
+#define CPGF_META_QTQML_QQMLNDEFRECORD_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

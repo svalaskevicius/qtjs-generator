@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTWIDGETS_QFONTDATABASE_H
-#define __META_QTWIDGETS_QFONTDATABASE_H
+#ifndef CPGF_META_QTWIDGETS_QFONTDATABASE_H
+#define CPGF_META_QTWIDGETS_QFONTDATABASE_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

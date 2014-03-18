@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTGUI_QWINDOWDEFS_WIN_H
-#define __META_QTGUI_QWINDOWDEFS_WIN_H
+#ifndef CPGF_META_QTGUI_QWINDOWDEFS_WIN_H
+#define CPGF_META_QTGUI_QWINDOWDEFS_WIN_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

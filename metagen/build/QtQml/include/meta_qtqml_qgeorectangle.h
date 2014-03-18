@@ -1,7 +1,7 @@
 // Auto generated file, don't modify.
 
-#ifndef __META_QTQML_QGEORECTANGLE_H
-#define __META_QTQML_QGEORECTANGLE_H
+#ifndef CPGF_META_QTQML_QGEORECTANGLE_H
+#define CPGF_META_QTQML_QGEORECTANGLE_H
 
 
 #include <QtCore/include/meta_qtcore_qflags.h>

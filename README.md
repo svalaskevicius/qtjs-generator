@@ -16,6 +16,7 @@ How to build
 * subversion (for V8 make dependencies)
 * C++11 supporting compiler, tested with gcc 4.7.2, 4.7.3, clang 3.4
 * cmake (for building cpgf library)
+* make (some automation in qmake build files invokes it)
 * Qt5.2
 * OpenGL development files
 * libffi development files
@@ -29,18 +30,6 @@ How to build
 git clone https://github.com/svalaskevicius/qtjs-generator.git
 cd qtjs-generator/
 git submodule update --init --recursive
-
-# build V8
-pushd lib/node/deps/v8/
-make dependencies
-CXXFLAGS='-Wno-unused-local-typedefs -Wno-aggressive-loop-optimizations' make native library=shared -j4
-popd
-
-# build cpgf
-pushd lib/cpgf/build/
-# vim build.config.txt # adjust paths to the libraries used (usually no changes required)
-make linux TARGET=lib # or an alternative for your platform, see cpgf documentation
-popd
 
 # build it!
 mkdir -p build

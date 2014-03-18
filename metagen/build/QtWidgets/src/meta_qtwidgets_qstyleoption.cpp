@@ -70,8 +70,8 @@ using namespace cpgf;
 namespace qt_metadata { 
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_Global_qstyleoption()
 {
@@ -81,8 +81,8 @@ GDefineMetaInfo createMetaClass_Global_qstyleoption()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleHintReturn()
 {
@@ -95,8 +95,8 @@ GDefineMetaInfo createMetaClass_QStyleHintReturn()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleHintReturnMask()
 {
@@ -109,8 +109,8 @@ GDefineMetaInfo createMetaClass_QStyleHintReturnMask()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleHintReturnVariant()
 {
@@ -123,8 +123,8 @@ GDefineMetaInfo createMetaClass_QStyleHintReturnVariant()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOption()
 {
@@ -137,8 +137,8 @@ GDefineMetaInfo createMetaClass_QStyleOption()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionButton()
 {
@@ -151,8 +151,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionButton()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionComboBox()
 {
@@ -165,8 +165,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionComboBox()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionComplex()
 {
@@ -179,8 +179,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionComplex()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionDockWidget()
 {
@@ -193,8 +193,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionDockWidget()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionFocusRect()
 {
@@ -207,8 +207,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionFocusRect()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionFrame()
 {
@@ -221,8 +221,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionFrame()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionGraphicsItem()
 {
@@ -235,8 +235,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionGraphicsItem()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionGroupBox()
 {
@@ -249,8 +249,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionGroupBox()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionHeader()
 {
@@ -263,8 +263,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionHeader()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionMenuItem()
 {
@@ -277,8 +277,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionMenuItem()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionProgressBar()
 {
@@ -291,8 +291,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionProgressBar()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionRubberBand()
 {
@@ -305,8 +305,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionRubberBand()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionSizeGrip()
 {
@@ -319,8 +319,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionSizeGrip()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionSlider()
 {
@@ -333,8 +333,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionSlider()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionSpinBox()
 {
@@ -347,8 +347,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionSpinBox()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionTab()
 {
@@ -361,8 +361,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionTab()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionTabBarBase()
 {
@@ -375,8 +375,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionTabBarBase()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionTabWidgetFrame()
 {
@@ -389,8 +389,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionTabWidgetFrame()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionTitleBar()
 {
@@ -403,8 +403,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionTitleBar()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionToolBar()
 {
@@ -417,8 +417,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionToolBar()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionToolBox()
 {
@@ -431,8 +431,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionToolBox()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionToolButton()
 {
@@ -445,8 +445,8 @@ GDefineMetaInfo createMetaClass_QStyleOptionToolButton()
 }
 
 
-#ifdef DLL_PUBLIC
-DLL_PUBLIC
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
 #endif
 GDefineMetaInfo createMetaClass_QStyleOptionViewItem()
 {
