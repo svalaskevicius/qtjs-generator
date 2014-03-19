@@ -1,5 +1,6 @@
 cpgf.import("cpgf", "builtin.core");
 
+var globalData = [];
 
 function error(text)
 {
@@ -10,20 +11,14 @@ function error(text)
 
 var App = (function(App) {
     App.MovingRectItem = cpgf.cloneClass(qt.QGraphicsRectItemWrapper);
-    App.MovingRectItem.mouseMoveEvent = function($this /*, event */ ) {
+    App.MovingRectItem.mouseMoveEvent = function($this , event  ) {
         $this.setRotation(1 + $this.rotation());
     };
+
     App.MovingRectItem.prototype.getDirection = function() {
-        var r = this.rect();
-        if (r.right() > (r.left() + 100)) {
-            this.direction = -this.speed;
-        } else if (r.right() <= r.left()) {
-            this.direction = this.speed;
-        } else if (typeof this.direction === 'undefined') {
-            this.direction = this.speed;
-        }
-        return this.direction;
+        return Math.round(Math.random()*20-10);
     };
+
     App.MovingRectItem.paint = function($this, painter, option, widget) {
         var r = $this.rect();
         r.setRight(r.right() + $this.getDirection());
@@ -32,9 +27,7 @@ var App = (function(App) {
     };
 
     App.createMovingRectItem = function(rect) {
-        var item = new App.MovingRectItem(rect);
-        item.speed = 2;
-        return item;
+        return new App.MovingRectItem(rect);
     };
 
     return App;
@@ -57,8 +50,8 @@ function createGraphicsView() {
     view.setMouseTracking(true);
 
     // needed for GC not to free the variables while they're still required
-    scene.deps = [myItem];
-    view.deps = [scene];
+    globalData.push(myItem);
+    globalData.push(scene);
 
     return view;
 }
