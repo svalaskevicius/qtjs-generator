@@ -47,6 +47,8 @@ case "$MYNAME" in
         ;;
 esac
 
+export ASAN_OPTIONS="abort_on_error=1"
+
 $PRECMD "$CMD" ${ARGS[@]}
 
 exit $?
