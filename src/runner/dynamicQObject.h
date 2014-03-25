@@ -213,6 +213,7 @@ struct DynamicClassSpecification {
     virtual void declareCpgfClass(cpgf::GDefineMetaGlobalDangle &d) = 0;
     virtual QObject* instantiate(int classIdx) = 0;
     virtual std::string getName() = 0;
+    virtual const QMetaObject* getParentMetaObject() = 0;
 };
 
 template <typename Target>
@@ -239,6 +240,9 @@ struct DynamicClassSpecificationImpl : public DynamicClassSpecification {
         return ret;
     }
     virtual std::string getName() override { return name; }
+    virtual const QMetaObject* getParentMetaObject() {
+        return &Target::staticMetaObject;
+    }
 };
 
 struct DynamicClassSpecifications
@@ -246,6 +250,7 @@ struct DynamicClassSpecifications
     std::map<int, std::unique_ptr<DynamicClassSpecification>> specifications;
     std::map<std::string, int> classNameToSpecificationId;
     std::map<int, int> classIdToTypeId;
+    std::map<int, cpgf::IMetaClass *> classIdToParentClass;
 
     DynamicClassSpecifications() {
         addSpecification(new DynamicClassSpecificationImpl<QObject>("QObject"));
@@ -257,12 +262,20 @@ struct DynamicClassSpecifications
         classNameToSpecificationId[spec->getName()] = spec->typeId();
     }
 
-    void registerClassInstance(int classIdx, std::string className) {
-        auto itTypeId = classNameToSpecificationId.find(className);
+    void registerClassInstance(int classIdx, cpgf::IMetaClass *parentClass) {
+        std::string parentClassName;
+        if (parentClass) {
+            parentClass->addReference();
+            parentClassName = parentClass->getName();
+        } else {
+            parentClassName = "QObject";
+        }
+        auto itTypeId = classNameToSpecificationId.find(parentClassName);
         if (itTypeId == classNameToSpecificationId.end()) {
-            throw std::logic_error("registered class is not supported");
+            throw std::logic_error(std::string("registered class ")+parentClassName+" is not supported");
         }
         classIdToTypeId[classIdx] = itTypeId->second;
+        classIdToParentClass[classIdx] = parentClass;
     }
 
     DynamicClassSpecification* byTypeId(int typeId) {
@@ -279,8 +292,15 @@ struct DynamicClassSpecifications
         }
         return nullptr;
     }
+    cpgf::IMetaClass * getParentClass(int classIdx) {
+        return classIdToParentClass[classIdx];
+    }
 };
 
 extern DynamicClassSpecifications dynamicClassSpecifications;
+
+extern cpgf::IScriptObject * unsafeCpgfScriptObject;
+
+
 
 }

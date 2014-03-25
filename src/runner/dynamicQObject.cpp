@@ -34,6 +34,7 @@
 namespace qtjs_binder {
 
 DynamicClassSpecifications dynamicClassSpecifications;
+cpgf::IScriptObject * unsafeCpgfScriptObject = nullptr;
 
 
 void metaCallReadPropertyFromVariant(void *_v, QMetaType::Type type, const QVariant & data)

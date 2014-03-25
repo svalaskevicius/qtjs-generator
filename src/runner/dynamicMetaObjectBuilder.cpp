@@ -66,6 +66,7 @@ struct DynamicMetaObjectBuilderPrivate
 DynamicMetaObjectBuilder::DynamicMetaObjectBuilder()
 {
     _p = new DynamicMetaObjectBuilderPrivate();
+    parentClass = nullptr;
 }
 
 DynamicMetaObjectBuilder::~DynamicMetaObjectBuilder()
@@ -113,7 +114,8 @@ QMetaObject *DynamicMetaObjectBuilder::build(int classId)
     _p->builder.setStaticMetacallFunction(
         generateDynamicObjectStaticMetaCall(classId)
     );
-    dynamicClassSpecifications.registerClassInstance(classId, "QObject");
+    dynamicClassSpecifications.registerClassInstance(classId, parentClass);
+    _p->builder.setSuperClass(dynamicClassSpecifications.byClassIdx(classId)->getParentMetaObject());
     return _p->builder.toMetaObject();
 }
 
@@ -133,6 +135,10 @@ QByteArray DynamicMetaObjectBuilder::methodSignature(int id)
     return QMetaObject::normalizedSignature(_p->builder.method(id).signature() );
 }
 
+void DynamicMetaObjectBuilder::setParentClass(cpgf::IMetaClass *metaClass)
+{
+    parentClass = metaClass;
+}
 
 }
 

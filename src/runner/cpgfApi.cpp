@@ -198,6 +198,7 @@ cpgf::GDefineMetaInfo createDynamicObjectsMetaClasses()
         _nd._method("addSignal", &DynamicMetaObjectBuilder::addSignal);
         _nd._method("addSlot", &DynamicMetaObjectBuilder::addSlot);
         _nd._method("addProperty", &DynamicMetaObjectBuilder::addProperty);
+        _nd._method("setParentClass", &DynamicMetaObjectBuilder::setParentClass);
 
         _d._class(_nd);
     }
@@ -230,10 +231,12 @@ CpgfBinder::CpgfBinder(v8::Handle<v8::Context> ctx)
     qtjs_binder::registerQt(define);
     scriptObject->bindCoreService("cpgf", NULL);
     scriptSetValue(scriptObject.get(), "qt", GScriptValue::fromClass(metaClass.get()));
+    unsafeCpgfScriptObject = scriptObject.get();
 }
 
 CpgfBinder::~CpgfBinder()
 {
+    unsafeCpgfScriptObject = nullptr;
     unregisterQt();
 }
 }
