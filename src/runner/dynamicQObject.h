@@ -15,6 +15,8 @@
 
 #include "dynamicQObjects.h"
 
+#include "QtQml/include/meta_qtqml_qquickitem.h"
+
 namespace qtjs_binder {
 
 void metaCallReadPropertyFromVariant(void *_v, QMetaType::Type type, const QVariant & data);
@@ -109,10 +111,12 @@ public:
 }
 
 Q_DECLARE_METATYPE(qtjs_binder::DynamicQObject<QObject>)
+Q_DECLARE_METATYPE(qtjs_binder::DynamicQObject<qt_metadata::QQuickItemWrapper>)
 
 namespace qtjs_binder {
 
-
+template <typename C>
+void initialiseCreatedObject(QQmlPrivate::QQmlElement<DynamicQObject<C> > *, int);
 
 typedef void (*CreateIntoFuncPtr)(void *);
 
@@ -123,7 +127,7 @@ void create_into(ffi_cif *cif, void *ret, void* args[], void* classIdx)
     void *target = *(void **)args[0];
     size_t index = (size_t)classIdx;
     QQmlPrivate::createInto<C>(target);
-    ((QQmlPrivate::QQmlElement<C> *)target)->__setClassIdx(index);
+    initialiseCreatedObject((QQmlPrivate::QQmlElement<C>*)target, index);
 }
 
 template <typename C>
@@ -214,9 +218,10 @@ struct DynamicClassSpecification {
     virtual QObject* instantiate(int classIdx) = 0;
     virtual std::string getName() = 0;
     virtual const QMetaObject* getParentMetaObject() = 0;
+    virtual void *castToTargetAddress(void *) = 0;
 };
 
-template <typename Target>
+template <typename Target, typename CastTarget = Target>
 struct DynamicClassSpecificationImpl : public DynamicClassSpecification {
     typedef DynamicQObject<Target> DynamicQObjectImpl;
 
@@ -243,6 +248,9 @@ struct DynamicClassSpecificationImpl : public DynamicClassSpecification {
     virtual const QMetaObject* getParentMetaObject() {
         return &Target::staticMetaObject;
     }
+    virtual void *castToTargetAddress(void *address) {
+        return (CastTarget *)( (Target *) address );
+    }
 };
 
 struct DynamicClassSpecifications
@@ -254,7 +262,7 @@ struct DynamicClassSpecifications
 
     DynamicClassSpecifications() {
         addSpecification(new DynamicClassSpecificationImpl<QObject>("QObject"));
-        addSpecification(new DynamicClassSpecificationImpl<QQuickItem>("QQuickItem"));
+        addSpecification(new DynamicClassSpecificationImpl<qt_metadata::QQuickItemWrapper, QQuickItem>("QQuickItemWrapper"));
     }
 
     void addSpecification(DynamicClassSpecification* spec) {
@@ -300,6 +308,19 @@ struct DynamicClassSpecifications
 extern DynamicClassSpecifications dynamicClassSpecifications;
 
 extern cpgf::IScriptObject * unsafeCpgfScriptObject;
+
+template <typename C>
+void initialiseCreatedObject(QQmlPrivate::QQmlElement<DynamicQObject<C> > *target, int index)
+{
+    target->__setClassIdx(index);
+    auto parentClass = dynamicClassSpecifications.getParentClass(index);
+    if (parentClass && unsafeCpgfScriptObject) {
+        unsafeCpgfScriptObject->bindExternalObjectToClass(
+            dynamicClassSpecifications.byClassIdx(index)->castToTargetAddress((C *)target),
+            parentClass
+        );
+    }
+}
 
 
 
