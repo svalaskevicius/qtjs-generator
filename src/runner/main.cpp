@@ -2,12 +2,6 @@
 #include <QApplication>
 #include <QMainWindow>
 
-#include "cpgf/gmetadefine.h"
-#include "cpgf/scriptbind/gscriptbindutil.h"
-#include "cpgf/gscopedinterface.h"
-#include "cpgf/scriptbind/gv8runner.h"
-#include "cpgf/glifecycle.h"
-
 #include <iostream>
 
 #include "v8.h"
@@ -56,33 +50,6 @@ namespace {
 
 int __exitCode = -1;
 
-
-using namespace cpgf;
-
-struct CpgfBinder {
-    GDefineMetaNamespace define;
-    GScopedInterface<IMetaService> service;
-    GScopedPointer<GScriptRunner> runner;
-    GScopedInterface<IScriptObject> scriptObject;
-    GScopedInterface<IMetaClass> metaClass;
-
-    CpgfBinder(v8::Handle<v8::Context> ctx)
-        : define(GDefineMetaNamespace::declare("qt")),
-          service(createDefaultMetaService()),
-          runner(createV8ScriptRunner(service.get(), ctx)),
-          scriptObject(runner->getScripeObject()),
-          metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())))
-    {
-        qtjs_binder::registerQt(define);
-        scriptObject->bindCoreService("cpgf", NULL);
-        scriptSetValue(scriptObject.get(), "qt", GScriptValue::fromClass(metaClass.get()));
-    }
-
-    ~CpgfBinder()
-    {
-        qtjs_binder::unregisterQt();
-    }
-};
 
 
 void Exit(const v8::FunctionCallbackInfo<v8::Value>& args) {
@@ -209,7 +176,7 @@ int main(int argc, char * argv[])
     v8::HandleScope handle_scope(env->isolate());
 
     {
-        CpgfBinder cpgfBinder(env->context());
+        qtjs_binder::CpgfBinder cpgfBinder(env->context());
 
         node::Load(env);
 

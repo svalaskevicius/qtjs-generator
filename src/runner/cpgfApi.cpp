@@ -218,5 +218,23 @@ cpgf::GDefineMetaInfo createDynamicObjectsMetaClasses()
     return _d.getMetaInfo();
 }
 
+
+
+CpgfBinder::CpgfBinder(v8::Handle<v8::Context> ctx)
+    : define(GDefineMetaNamespace::declare("qt")),
+      service(createDefaultMetaService()),
+      runner(createV8ScriptRunner(service.get(), ctx)),
+      scriptObject(runner->getScripeObject()),
+      metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())))
+{
+    qtjs_binder::registerQt(define);
+    scriptObject->bindCoreService("cpgf", NULL);
+    scriptSetValue(scriptObject.get(), "qt", GScriptValue::fromClass(metaClass.get()));
+}
+
+CpgfBinder::~CpgfBinder()
+{
+    unregisterQt();
+}
 }
 
