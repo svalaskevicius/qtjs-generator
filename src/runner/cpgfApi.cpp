@@ -116,6 +116,12 @@ void invokeQObjectMethod(QObject *obj,
     QMetaObject::metacall(obj, QMetaObject::InvokeMetaMethod, idx, argv);
 }
 
+template <typename T>
+T *arrayValueForOffset(T *array, int offset)
+{
+    return &(array[offset]);
+}
+
 
 }
 
@@ -136,6 +142,10 @@ void registerQt(cpgf::GDefineMetaNamespace &define)
     define._method("connect", &qtjs_binder::SignalConnectorBinder::connect);
     define._method("invokeV8Gc", &invokeV8Gc);
     define._method("objectFromVariant", &objectFromVariant);
+
+    define._method("arrayValueForOffset_Point2D", &arrayValueForOffset<QSGGeometry::Point2D>);
+    define._method("arrayValueForOffset_ColoredPoint2D", &arrayValueForOffset<QSGGeometry::ColoredPoint2D>);
+    define._method("arrayValueForOffset_TexturedPoint2D", &arrayValueForOffset<QSGGeometry::TexturedPoint2D>);
 
     define._method("emitSignal", &emitQObjectSignal)
             ._default(copyVariantFromCopyable(0))

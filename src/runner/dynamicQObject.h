@@ -315,7 +315,7 @@ void initialiseCreatedObject(QQmlPrivate::QQmlElement<DynamicQObject<C> > *targe
     target->__setClassIdx(index);
     auto parentClass = dynamicClassSpecifications.getParentClass(index);
     if (parentClass && unsafeCpgfScriptObject) {
-        unsafeCpgfScriptObject->bindExternalObjectToClass(
+        unsafeCpgfScriptObject->getContext()->bindExternalObjectToClass(
             dynamicClassSpecifications.byClassIdx(index)->castToTargetAddress((C *)target),
             parentClass
         );

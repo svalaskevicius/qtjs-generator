@@ -85,9 +85,48 @@ MySyntaxHighlighter.highlightBlock = function($this , text ) {
                                                      "IntIncrementer")
     })();
 
+    (function(){
+
+        var WaveAngleClass = cpgf.cloneClass(qt.QQuickItemWrapper);
+        WaveAngleClass.updatePaintNode = function($this, node, data) {
+          if (!node) {
+             node = new qt.QSGGeometryNode();
+             var geometry = new qt.QSGGeometry(qt.QSGGeometry.defaultAttributes_Point2D(), 2);
+
+             geometry.setLineWidth(2);
+             geometry.setDrawingMode( /* GL_LINE_STRIP */ 3);
+             node.setGeometry(geometry);
+             cpgf.setAllowGC(geometry, false);
+             node.setFlag(qt.QSGNode.OwnsGeometry);
+             var material = new qt.QSGFlatColorMaterial();
+             material.setColor(new qt.QColor(155, 120, 100));
+             node.setMaterial(material);
+             cpgf.setAllowGC(material, false);
+             node.setFlag(qt.QSGNode.OwnsMaterial);
+          }
+          var rect = $this.boundingRect();
+          var vertices = geometry.vertexDataAsPoint2D();
+          qt.arrayValueForOffset_Point2D(vertices, 0).set(0, 0);
+          qt.arrayValueForOffset_Point2D(vertices, 1).set(
+              $this.property("width").toInt(),
+              $this.property("height").toInt()
+          );
+          return node;
+        }
+
+        var b = new qt.DynamicMetaObjectBuilder()
+        b.setClassName("Wavangle")
+        b.setParentClass(WaveAngleClass)
+        b.setInit(function ($this) {
+          $this.setFlag(qt.QQuickItem.Flag.ItemHasContents)
+        })
+        qt.finalizeAndRegisterMetaObjectBuilderToQml(b, "com.ics.demo",
+                                                     1, 0,
+                                                     "Waveangle")
+    })();
+
     try {
         var engine = new qt.QQmlEngine()
-        //    engine.rootContext().setContextProperty(new qt.QString('keygen'), qt.newKeyGenerator());
         var component = new qt.QQmlComponent(engine,
                                                  new qt.QString(path.resolve("qml/main.qml")))
         if (!component.isReady()) {
@@ -101,7 +140,6 @@ MySyntaxHighlighter.highlightBlock = function($this , text ) {
         var window = cpgf.cast(topLevel, qt.QQuickWindow);
         var surfaceFormat = window.requestedFormat();
         window.setFormat(surfaceFormat);
-
 
         var findChild = function (obj, name) {
             var begin = obj.children().cbegin();

@@ -139,11 +139,17 @@ ApplicationWindow {
                 id: textarea
                 objectName: "editor"
                 anchors.left: lineColumn.right
-                anchors.right: parent.right
+                anchors.right: waveangle.left
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 wrapMode: TextEdit.NoWrap
                 frameVisible: false
+            }
+            Waveangle {
+                id: waveangle
+                width: 100
+                height: 100
+                anchors.right: parent.right
             }
         }
     }

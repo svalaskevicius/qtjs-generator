@@ -285,7 +285,7 @@ void CallInfo::invoke(void **data)
 {
     int maxCnt = parameterTypeIds.size();
     cpgf::GVariantData params[REF_MAX_ARITY];
-    cpgf::GVariant result;
+    cpgf::GScriptValueData result;
     for (int i = 0; i < maxCnt; i++) {
         convertQtDataToGVariantData(parameterTypeIds[i], data[i + 1], &params[i]);
     }
@@ -296,7 +296,7 @@ void CallInfo::invoke(void **data)
     });
     Q_UNUSED(paramDeleter);
 
-    callback->invoke(&result.refData(), params, maxCnt);
+    callback->invoke(&result, params, maxCnt);
     cpgf::metaCheckError(callback);
 }
 
