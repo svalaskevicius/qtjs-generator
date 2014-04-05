@@ -77,7 +77,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("supportsExtension"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension).getValue());
         }
         return QGraphicsItem::supportsExtension(extension);
     }
@@ -96,7 +96,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithPath"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode).getValue());
         }
         return QGraphicsItem::collidesWithPath(path, mode);
     }
@@ -185,7 +185,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("extension"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant).getValue());
         }
         return QGraphicsItem::extension(variant);
     }
@@ -244,7 +244,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsItem::type();
     }
@@ -278,7 +278,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("inputMethodQuery"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query).getValue());
         }
         return QGraphicsItem::inputMethodQuery(query);
     }
@@ -372,7 +372,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("opaqueArea"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QAbstractGraphicsShapeItem::opaqueArea();
     }
@@ -386,7 +386,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemChange"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value).getValue());
         }
         return QGraphicsItem::itemChange(change, value);
     }
@@ -400,7 +400,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isObscuredBy"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item).getValue());
         }
         return QAbstractGraphicsShapeItem::isObscuredBy(item);
     }
@@ -414,7 +414,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithItem"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode).getValue());
         }
         return QGraphicsItem::collidesWithItem(other, mode);
     }
@@ -478,7 +478,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEvent"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event).getValue());
         }
         return QGraphicsItem::sceneEvent(event);
     }
@@ -507,7 +507,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("contains"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point).getValue());
         }
         return QGraphicsItem::contains(point);
     }
@@ -521,7 +521,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -565,7 +565,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event).getValue());
         }
         return QGraphicsItem::sceneEventFilter(watched, event);
     }
@@ -579,7 +579,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("shape"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsItem::shape();
     }
@@ -748,7 +748,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("supportsExtension"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension).getValue());
         }
         return QGraphicsEllipseItem::supportsExtension(extension);
     }
@@ -767,7 +767,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithPath"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode).getValue());
         }
         return QGraphicsItem::collidesWithPath(path, mode);
     }
@@ -856,7 +856,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("extension"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant).getValue());
         }
         return QGraphicsEllipseItem::extension(variant);
     }
@@ -915,7 +915,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsEllipseItem::type();
     }
@@ -949,7 +949,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("inputMethodQuery"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query).getValue());
         }
         return QGraphicsItem::inputMethodQuery(query);
     }
@@ -1043,7 +1043,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("opaqueArea"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsEllipseItem::opaqueArea();
     }
@@ -1057,7 +1057,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemChange"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value).getValue());
         }
         return QGraphicsItem::itemChange(change, value);
     }
@@ -1071,7 +1071,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isObscuredBy"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item).getValue());
         }
         return QGraphicsEllipseItem::isObscuredBy(item);
     }
@@ -1085,7 +1085,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithItem"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode).getValue());
         }
         return QGraphicsItem::collidesWithItem(other, mode);
     }
@@ -1149,7 +1149,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEvent"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event).getValue());
         }
         return QGraphicsItem::sceneEvent(event);
     }
@@ -1178,7 +1178,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("contains"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point).getValue());
         }
         return QGraphicsEllipseItem::contains(point);
     }
@@ -1192,7 +1192,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsEllipseItem::boundingRect();
     }
@@ -1236,7 +1236,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event).getValue());
         }
         return QGraphicsItem::sceneEventFilter(watched, event);
     }
@@ -1250,7 +1250,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("shape"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsEllipseItem::shape();
     }
@@ -1678,7 +1678,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("supportsExtension"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension).getValue());
         }
         return QGraphicsItem::supportsExtension(extension);
     }
@@ -1697,7 +1697,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithPath"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode).getValue());
         }
         return QGraphicsItem::collidesWithPath(path, mode);
     }
@@ -1786,7 +1786,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("extension"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant).getValue());
         }
         return QGraphicsItem::extension(variant);
     }
@@ -1845,7 +1845,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsItem::type();
     }
@@ -1879,7 +1879,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("inputMethodQuery"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query).getValue());
         }
         return QGraphicsItem::inputMethodQuery(query);
     }
@@ -1973,7 +1973,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("opaqueArea"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsItem::opaqueArea();
     }
@@ -1987,7 +1987,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemChange"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value).getValue());
         }
         return QGraphicsItem::itemChange(change, value);
     }
@@ -2001,7 +2001,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isObscuredBy"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item).getValue());
         }
         return QGraphicsItem::isObscuredBy(item);
     }
@@ -2015,7 +2015,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithItem"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode).getValue());
         }
         return QGraphicsItem::collidesWithItem(other, mode);
     }
@@ -2079,7 +2079,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEvent"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event).getValue());
         }
         return QGraphicsItem::sceneEvent(event);
     }
@@ -2108,7 +2108,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("contains"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point).getValue());
         }
         return QGraphicsItem::contains(point);
     }
@@ -2122,7 +2122,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -2166,7 +2166,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event).getValue());
         }
         return QGraphicsItem::sceneEventFilter(watched, event);
     }
@@ -2180,7 +2180,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("shape"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsItem::shape();
     }
@@ -2333,7 +2333,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("supportsExtension"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension).getValue());
         }
         return QGraphicsItem::supportsExtension(extension);
     }
@@ -2352,7 +2352,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithPath"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode).getValue());
         }
         return QGraphicsItem::collidesWithPath(path, mode);
     }
@@ -2441,7 +2441,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("extension"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant).getValue());
         }
         return QGraphicsItem::extension(variant);
     }
@@ -2500,7 +2500,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsItemGroup::type();
     }
@@ -2534,7 +2534,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("inputMethodQuery"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query).getValue());
         }
         return QGraphicsItem::inputMethodQuery(query);
     }
@@ -2628,7 +2628,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("opaqueArea"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsItemGroup::opaqueArea();
     }
@@ -2642,7 +2642,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemChange"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value).getValue());
         }
         return QGraphicsItem::itemChange(change, value);
     }
@@ -2656,7 +2656,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isObscuredBy"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item).getValue());
         }
         return QGraphicsItemGroup::isObscuredBy(item);
     }
@@ -2670,7 +2670,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithItem"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode).getValue());
         }
         return QGraphicsItem::collidesWithItem(other, mode);
     }
@@ -2734,7 +2734,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEvent"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event).getValue());
         }
         return QGraphicsItem::sceneEvent(event);
     }
@@ -2763,7 +2763,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("contains"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point).getValue());
         }
         return QGraphicsItem::contains(point);
     }
@@ -2777,7 +2777,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsItemGroup::boundingRect();
     }
@@ -2821,7 +2821,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event).getValue());
         }
         return QGraphicsItem::sceneEventFilter(watched, event);
     }
@@ -2835,7 +2835,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("shape"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsItem::shape();
     }
@@ -3002,7 +3002,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("supportsExtension"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension).getValue());
         }
         return QGraphicsLineItem::supportsExtension(extension);
     }
@@ -3021,7 +3021,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithPath"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode).getValue());
         }
         return QGraphicsItem::collidesWithPath(path, mode);
     }
@@ -3110,7 +3110,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("extension"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant).getValue());
         }
         return QGraphicsLineItem::extension(variant);
     }
@@ -3169,7 +3169,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsLineItem::type();
     }
@@ -3203,7 +3203,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("inputMethodQuery"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query).getValue());
         }
         return QGraphicsItem::inputMethodQuery(query);
     }
@@ -3297,7 +3297,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("opaqueArea"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsLineItem::opaqueArea();
     }
@@ -3311,7 +3311,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemChange"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value).getValue());
         }
         return QGraphicsItem::itemChange(change, value);
     }
@@ -3325,7 +3325,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isObscuredBy"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item).getValue());
         }
         return QGraphicsLineItem::isObscuredBy(item);
     }
@@ -3339,7 +3339,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithItem"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode).getValue());
         }
         return QGraphicsItem::collidesWithItem(other, mode);
     }
@@ -3403,7 +3403,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEvent"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event).getValue());
         }
         return QGraphicsItem::sceneEvent(event);
     }
@@ -3432,7 +3432,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("contains"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point).getValue());
         }
         return QGraphicsLineItem::contains(point);
     }
@@ -3446,7 +3446,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsLineItem::boundingRect();
     }
@@ -3490,7 +3490,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event).getValue());
         }
         return QGraphicsItem::sceneEventFilter(watched, event);
     }
@@ -3504,7 +3504,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("shape"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsLineItem::shape();
     }
@@ -3657,7 +3657,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
         if(func)
         {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0));
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
         }
         return QGraphicsObject::qt_metacast(__arg0);
     }
@@ -3691,7 +3691,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, ev));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, ev).getValue());
         }
         return QGraphicsObject::event(ev);
     }
@@ -3800,7 +3800,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("opaqueArea"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsItem::opaqueArea();
     }
@@ -3819,7 +3819,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1).getValue());
         }
         return QObject::eventFilter(__arg0, __arg1);
     }
@@ -3833,7 +3833,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isObscuredBy"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item).getValue());
         }
         return QGraphicsItem::isObscuredBy(item);
     }
@@ -3847,7 +3847,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemChange"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value).getValue());
         }
         return QGraphicsItem::itemChange(change, value);
     }
@@ -3881,7 +3881,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEvent"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event).getValue());
         }
         return QGraphicsItem::sceneEvent(event);
     }
@@ -3895,7 +3895,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("contains"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point).getValue());
         }
         return QGraphicsItem::contains(point);
     }
@@ -3909,7 +3909,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -3923,7 +3923,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1, __arg2));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
         return QGraphicsObject::qt_metacall(__arg0, __arg1, __arg2);
     }
@@ -3967,7 +3967,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("shape"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsItem::shape();
     }
@@ -3981,7 +3981,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event).getValue());
         }
         return QGraphicsItem::sceneEventFilter(watched, event);
     }
@@ -4010,7 +4010,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("supportsExtension"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension).getValue());
         }
         return QGraphicsItem::supportsExtension(extension);
     }
@@ -4044,7 +4044,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithPath"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode).getValue());
         }
         return QGraphicsItem::collidesWithPath(path, mode);
     }
@@ -4118,7 +4118,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("extension"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant).getValue());
         }
         return QGraphicsItem::extension(variant);
     }
@@ -4177,7 +4177,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsItem::type();
     }
@@ -4216,7 +4216,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("inputMethodQuery"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query).getValue());
         }
         return QGraphicsItem::inputMethodQuery(query);
     }
@@ -4285,7 +4285,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
         if(func)
         {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsObject::metaObject();
     }
@@ -4299,7 +4299,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithItem"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode).getValue());
         }
         return QGraphicsItem::collidesWithItem(other, mode);
     }
@@ -4569,7 +4569,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("supportsExtension"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension).getValue());
         }
         return QGraphicsPathItem::supportsExtension(extension);
     }
@@ -4588,7 +4588,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithPath"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode).getValue());
         }
         return QGraphicsItem::collidesWithPath(path, mode);
     }
@@ -4677,7 +4677,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("extension"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant).getValue());
         }
         return QGraphicsPathItem::extension(variant);
     }
@@ -4736,7 +4736,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsPathItem::type();
     }
@@ -4770,7 +4770,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("inputMethodQuery"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query).getValue());
         }
         return QGraphicsItem::inputMethodQuery(query);
     }
@@ -4864,7 +4864,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("opaqueArea"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsPathItem::opaqueArea();
     }
@@ -4878,7 +4878,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemChange"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value).getValue());
         }
         return QGraphicsItem::itemChange(change, value);
     }
@@ -4892,7 +4892,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isObscuredBy"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item).getValue());
         }
         return QGraphicsPathItem::isObscuredBy(item);
     }
@@ -4906,7 +4906,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithItem"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode).getValue());
         }
         return QGraphicsItem::collidesWithItem(other, mode);
     }
@@ -4970,7 +4970,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEvent"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event).getValue());
         }
         return QGraphicsItem::sceneEvent(event);
     }
@@ -4999,7 +4999,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("contains"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point).getValue());
         }
         return QGraphicsPathItem::contains(point);
     }
@@ -5013,7 +5013,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsPathItem::boundingRect();
     }
@@ -5057,7 +5057,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event).getValue());
         }
         return QGraphicsItem::sceneEventFilter(watched, event);
     }
@@ -5071,7 +5071,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("shape"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsPathItem::shape();
     }
@@ -5239,7 +5239,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("supportsExtension"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension).getValue());
         }
         return QGraphicsPixmapItem::supportsExtension(extension);
     }
@@ -5258,7 +5258,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithPath"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode).getValue());
         }
         return QGraphicsItem::collidesWithPath(path, mode);
     }
@@ -5347,7 +5347,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("extension"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant).getValue());
         }
         return QGraphicsPixmapItem::extension(variant);
     }
@@ -5406,7 +5406,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsPixmapItem::type();
     }
@@ -5440,7 +5440,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("inputMethodQuery"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query).getValue());
         }
         return QGraphicsItem::inputMethodQuery(query);
     }
@@ -5534,7 +5534,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("opaqueArea"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsPixmapItem::opaqueArea();
     }
@@ -5548,7 +5548,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemChange"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value).getValue());
         }
         return QGraphicsItem::itemChange(change, value);
     }
@@ -5562,7 +5562,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isObscuredBy"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item).getValue());
         }
         return QGraphicsPixmapItem::isObscuredBy(item);
     }
@@ -5576,7 +5576,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithItem"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode).getValue());
         }
         return QGraphicsItem::collidesWithItem(other, mode);
     }
@@ -5640,7 +5640,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEvent"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event).getValue());
         }
         return QGraphicsItem::sceneEvent(event);
     }
@@ -5669,7 +5669,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("contains"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point).getValue());
         }
         return QGraphicsPixmapItem::contains(point);
     }
@@ -5683,7 +5683,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsPixmapItem::boundingRect();
     }
@@ -5727,7 +5727,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event).getValue());
         }
         return QGraphicsItem::sceneEventFilter(watched, event);
     }
@@ -5741,7 +5741,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("shape"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsPixmapItem::shape();
     }
@@ -5899,7 +5899,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("supportsExtension"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension).getValue());
         }
         return QGraphicsPolygonItem::supportsExtension(extension);
     }
@@ -5918,7 +5918,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithPath"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode).getValue());
         }
         return QGraphicsItem::collidesWithPath(path, mode);
     }
@@ -6007,7 +6007,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("extension"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant).getValue());
         }
         return QGraphicsPolygonItem::extension(variant);
     }
@@ -6066,7 +6066,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsPolygonItem::type();
     }
@@ -6100,7 +6100,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("inputMethodQuery"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query).getValue());
         }
         return QGraphicsItem::inputMethodQuery(query);
     }
@@ -6194,7 +6194,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("opaqueArea"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsPolygonItem::opaqueArea();
     }
@@ -6208,7 +6208,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemChange"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value).getValue());
         }
         return QGraphicsItem::itemChange(change, value);
     }
@@ -6222,7 +6222,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isObscuredBy"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item).getValue());
         }
         return QGraphicsPolygonItem::isObscuredBy(item);
     }
@@ -6236,7 +6236,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithItem"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode).getValue());
         }
         return QGraphicsItem::collidesWithItem(other, mode);
     }
@@ -6300,7 +6300,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEvent"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event).getValue());
         }
         return QGraphicsItem::sceneEvent(event);
     }
@@ -6329,7 +6329,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("contains"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point).getValue());
         }
         return QGraphicsPolygonItem::contains(point);
     }
@@ -6343,7 +6343,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsPolygonItem::boundingRect();
     }
@@ -6387,7 +6387,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event).getValue());
         }
         return QGraphicsItem::sceneEventFilter(watched, event);
     }
@@ -6401,7 +6401,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("shape"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsPolygonItem::shape();
     }
@@ -6566,7 +6566,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("supportsExtension"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension).getValue());
         }
         return QGraphicsRectItem::supportsExtension(extension);
     }
@@ -6585,7 +6585,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithPath"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode).getValue());
         }
         return QGraphicsItem::collidesWithPath(path, mode);
     }
@@ -6674,7 +6674,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("extension"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant).getValue());
         }
         return QGraphicsRectItem::extension(variant);
     }
@@ -6733,7 +6733,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsRectItem::type();
     }
@@ -6767,7 +6767,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("inputMethodQuery"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query).getValue());
         }
         return QGraphicsItem::inputMethodQuery(query);
     }
@@ -6861,7 +6861,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("opaqueArea"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsRectItem::opaqueArea();
     }
@@ -6875,7 +6875,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemChange"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value).getValue());
         }
         return QGraphicsItem::itemChange(change, value);
     }
@@ -6889,7 +6889,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isObscuredBy"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item).getValue());
         }
         return QGraphicsRectItem::isObscuredBy(item);
     }
@@ -6903,7 +6903,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithItem"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode).getValue());
         }
         return QGraphicsItem::collidesWithItem(other, mode);
     }
@@ -6967,7 +6967,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEvent"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event).getValue());
         }
         return QGraphicsItem::sceneEvent(event);
     }
@@ -6996,7 +6996,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("contains"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point).getValue());
         }
         return QGraphicsRectItem::contains(point);
     }
@@ -7010,7 +7010,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsRectItem::boundingRect();
     }
@@ -7054,7 +7054,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event).getValue());
         }
         return QGraphicsItem::sceneEventFilter(watched, event);
     }
@@ -7068,7 +7068,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("shape"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsRectItem::shape();
     }
@@ -7226,7 +7226,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("supportsExtension"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension).getValue());
         }
         return QGraphicsSimpleTextItem::supportsExtension(extension);
     }
@@ -7245,7 +7245,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithPath"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode).getValue());
         }
         return QGraphicsItem::collidesWithPath(path, mode);
     }
@@ -7334,7 +7334,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("extension"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant).getValue());
         }
         return QGraphicsSimpleTextItem::extension(variant);
     }
@@ -7393,7 +7393,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsSimpleTextItem::type();
     }
@@ -7427,7 +7427,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("inputMethodQuery"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query).getValue());
         }
         return QGraphicsItem::inputMethodQuery(query);
     }
@@ -7521,7 +7521,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("opaqueArea"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsSimpleTextItem::opaqueArea();
     }
@@ -7535,7 +7535,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemChange"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value).getValue());
         }
         return QGraphicsItem::itemChange(change, value);
     }
@@ -7549,7 +7549,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isObscuredBy"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item).getValue());
         }
         return QGraphicsSimpleTextItem::isObscuredBy(item);
     }
@@ -7563,7 +7563,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithItem"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode).getValue());
         }
         return QGraphicsItem::collidesWithItem(other, mode);
     }
@@ -7627,7 +7627,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEvent"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event).getValue());
         }
         return QGraphicsItem::sceneEvent(event);
     }
@@ -7656,7 +7656,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("contains"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point).getValue());
         }
         return QGraphicsSimpleTextItem::contains(point);
     }
@@ -7670,7 +7670,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsSimpleTextItem::boundingRect();
     }
@@ -7714,7 +7714,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event).getValue());
         }
         return QGraphicsItem::sceneEventFilter(watched, event);
     }
@@ -7728,7 +7728,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("shape"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsSimpleTextItem::shape();
     }
@@ -7916,7 +7916,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
         if(func)
         {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0));
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
         }
         return QGraphicsTextItem::qt_metacast(__arg0);
     }
@@ -7950,7 +7950,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, ev));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, ev).getValue());
         }
         return QGraphicsObject::event(ev);
     }
@@ -8059,7 +8059,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("opaqueArea"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsTextItem::opaqueArea();
     }
@@ -8078,7 +8078,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1).getValue());
         }
         return QObject::eventFilter(__arg0, __arg1);
     }
@@ -8092,7 +8092,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isObscuredBy"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, item).getValue());
         }
         return QGraphicsTextItem::isObscuredBy(item);
     }
@@ -8106,7 +8106,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemChange"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, change, value).getValue());
         }
         return QGraphicsItem::itemChange(change, value);
     }
@@ -8140,7 +8140,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEvent"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event).getValue());
         }
         return QGraphicsTextItem::sceneEvent(event);
     }
@@ -8154,7 +8154,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("contains"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, point).getValue());
         }
         return QGraphicsTextItem::contains(point);
     }
@@ -8168,7 +8168,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsTextItem::boundingRect();
     }
@@ -8182,7 +8182,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1, __arg2));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
         return QGraphicsTextItem::qt_metacall(__arg0, __arg1, __arg2);
     }
@@ -8226,7 +8226,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("shape"));
         if(func)
         {
-            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainterPath >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsTextItem::shape();
     }
@@ -8240,7 +8240,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneEventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event).getValue());
         }
         return QGraphicsItem::sceneEventFilter(watched, event);
     }
@@ -8269,7 +8269,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("supportsExtension"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, extension).getValue());
         }
         return QGraphicsTextItem::supportsExtension(extension);
     }
@@ -8303,7 +8303,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithPath"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, path, mode).getValue());
         }
         return QGraphicsItem::collidesWithPath(path, mode);
     }
@@ -8377,7 +8377,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("extension"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, variant).getValue());
         }
         return QGraphicsTextItem::extension(variant);
     }
@@ -8436,7 +8436,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsTextItem::type();
     }
@@ -8475,7 +8475,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("inputMethodQuery"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query));
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query).getValue());
         }
         return QGraphicsTextItem::inputMethodQuery(query);
     }
@@ -8544,7 +8544,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
         if(func)
         {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsTextItem::metaObject();
     }
@@ -8558,7 +8558,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("collidesWithItem"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, other, mode).getValue());
         }
         return QGraphicsItem::collidesWithItem(other, mode);
     }

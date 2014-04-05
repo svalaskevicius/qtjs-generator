@@ -64,7 +64,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("icon"));
         if(func)
         {
-            return cpgf::fromVariant<QIcon >(cpgf::invokeScriptFunction(func.get(), this, info));
+            return cpgf::fromVariant<QIcon >(cpgf::invokeScriptFunction(func.get(), this, info).getValue());
         }
         return QFileIconProvider::icon(info);
     }
@@ -78,7 +78,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("icon"));
         if(func)
         {
-            return cpgf::fromVariant<QIcon >(cpgf::invokeScriptFunction(func.get(), this, type));
+            return cpgf::fromVariant<QIcon >(cpgf::invokeScriptFunction(func.get(), this, type).getValue());
         }
         return QFileIconProvider::icon(type);
     }
@@ -92,7 +92,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<QString >(cpgf::invokeScriptFunction(func.get(), this, info));
+            return cpgf::fromVariant<QString >(cpgf::invokeScriptFunction(func.get(), this, info).getValue());
         }
         return QFileIconProvider::type(info);
     }

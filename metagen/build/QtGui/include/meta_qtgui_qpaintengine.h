@@ -312,7 +312,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("coordinateOffset"));
         if(func)
         {
-            return cpgf::fromVariant<QPoint >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPoint >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QPaintEngine::coordinateOffset();
     }
@@ -326,7 +326,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("begin"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, pdev));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, pdev).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -340,7 +340,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("end"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -429,7 +429,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<QPaintEngine::Type >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPaintEngine::Type >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }

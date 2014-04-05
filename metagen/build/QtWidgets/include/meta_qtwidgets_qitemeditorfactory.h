@@ -53,7 +53,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createWidget"));
         if(func)
         {
-            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunction(func.get(), this, parent));
+            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunction(func.get(), this, parent).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -67,7 +67,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("valuePropertyName"));
         if(func)
         {
-            return cpgf::fromVariant<QByteArray >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QByteArray >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -125,7 +125,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createEditor"));
         if(func)
         {
-            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunction(func.get(), this, userType, parent));
+            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunction(func.get(), this, userType, parent).getValue());
         }
         return QItemEditorFactory::createEditor(userType, parent);
     }
@@ -139,7 +139,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("valuePropertyName"));
         if(func)
         {
-            return cpgf::fromVariant<QByteArray >(cpgf::invokeScriptFunction(func.get(), this, userType));
+            return cpgf::fromVariant<QByteArray >(cpgf::invokeScriptFunction(func.get(), this, userType).getValue());
         }
         return QItemEditorFactory::valuePropertyName(userType);
     }

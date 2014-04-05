@@ -40,7 +40,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("keys"));
         if(func)
         {
-            return cpgf::fromVariant<QStringList >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QStringList >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }

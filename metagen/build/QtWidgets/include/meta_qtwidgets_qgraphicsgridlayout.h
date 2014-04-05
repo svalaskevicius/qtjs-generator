@@ -111,7 +111,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
         if(func)
         {
-            return cpgf::fromVariant<QSizeF >(cpgf::invokeScriptFunction(func.get(), this, which, constraint));
+            return cpgf::fromVariant<QSizeF >(cpgf::invokeScriptFunction(func.get(), this, which, constraint).getValue());
         }
         return QGraphicsGridLayout::sizeHint(which, constraint);
     }
@@ -135,7 +135,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("count"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QGraphicsGridLayout::count();
     }
@@ -179,7 +179,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemAt"));
         if(func)
         {
-            return cpgf::fromVariant<QGraphicsLayoutItem * >(cpgf::invokeScriptFunction(func.get(), this, index));
+            return cpgf::fromVariant<QGraphicsLayoutItem * >(cpgf::invokeScriptFunction(func.get(), this, index).getValue());
         }
         return QGraphicsGridLayout::itemAt(index);
     }

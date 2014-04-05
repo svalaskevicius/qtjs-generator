@@ -31,8 +31,8 @@ void buildMetaClass_Global_qchar(D _d)
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(QChar, QChar)>(mopHolder >= mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(QChar, QChar)>(mopHolder < mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(QChar, QChar)>(mopHolder > mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, QChar)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
-    _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, QChar &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, QChar)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, QChar &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
 }
 
 

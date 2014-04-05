@@ -61,7 +61,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("compare"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, other));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, other).getValue());
         }
         return QSGMaterial::compare(other);
     }
@@ -75,7 +75,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<QSGMaterialType * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSGMaterialType * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -89,7 +89,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createShader"));
         if(func)
         {
-            return cpgf::fromVariant<QSGMaterialShader * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSGMaterialShader * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -207,7 +207,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("fragmentShader"));
         if(func)
         {
-            return cpgf::fromVariant<const char * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<const char * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QSGMaterialShader::fragmentShader();
     }
@@ -236,7 +236,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("vertexShader"));
         if(func)
         {
-            return cpgf::fromVariant<const char * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<const char * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QSGMaterialShader::vertexShader();
     }
@@ -280,7 +280,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("attributeNames"));
         if(func)
         {
-            return cpgf::fromVariant<char const *const * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<char const *const * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }

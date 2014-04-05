@@ -40,7 +40,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("create"));
         if(func)
         {
-            return cpgf::fromVariant<QNetworkAccessManager * >(cpgf::invokeScriptFunction(func.get(), this, parent));
+            return cpgf::fromVariant<QNetworkAccessManager * >(cpgf::invokeScriptFunction(func.get(), this, parent).getValue());
         }
         throw std::runtime_error("Abstract method");
     }

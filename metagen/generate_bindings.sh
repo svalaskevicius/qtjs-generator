@@ -34,6 +34,7 @@ function prepare_files() {
         $s =~ s/Q_INVOKABLE//g;
         $s =~ s/Q_NORETURN//g;
         $s =~ s/Q_SIGNALS://g;
+        $s =~ s/Q_[A-Z]+_EXPORT//g;
         $s =~ s/Q_REVISION\s*\(\s*[0-9]+\s*\)//g;
         $s =~ s/Q_DECLARE_FLAGS\s*\(([^,()]+),\s*([^,()]+)\)/typedef QFlags<\2> \1;/g;
         $s =~ s/Q_ATTRIBUTE_FORMAT_PRINTF\(.*?\)//g;

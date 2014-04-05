@@ -32,7 +32,7 @@ void buildMetaClass_Global_qobject(D _d)
     _d.CPGF_MD_TEMPLATE _method("qt_qFindChildren_helper", (void (*) (const QObject *, const QString &, const QMetaObject &, QList< void * > *, Qt::FindChildOptions))&qt_qFindChildren_helper, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("qt_qFindChildren_helper", (void (*) (const QObject *, const QRegExp &, const QMetaObject &, QList< void * > *, Qt::FindChildOptions))&qt_qFindChildren_helper, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("qt_qFindChildren_helper", (void (*) (const QObject *, const QRegularExpression &, const QMetaObject &, QList< void * > *, Qt::FindChildOptions))&qt_qFindChildren_helper, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("qt_qFindChild_helper", (QObject* (*) (const QObject *, const QString &, const QMetaObject &, Qt::FindChildOptions))&qt_qFindChild_helper, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("qt_qFindChild_helper", (QObject * (*) (const QObject *, const QString &, const QMetaObject &, Qt::FindChildOptions))&qt_qFindChild_helper, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QObject *)>(mopHolder << mopHolder);
 }
 
@@ -171,7 +171,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
         }
         return QObject::event(__arg0);
     }
@@ -190,7 +190,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1, __arg2));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
         return QObject::qt_metacall(__arg0, __arg1, __arg2);
     }
@@ -239,7 +239,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1).getValue());
         }
         return QObject::eventFilter(__arg0, __arg1);
     }
@@ -253,7 +253,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
         if(func)
         {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0));
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
         }
         return QObject::qt_metacast(__arg0);
     }
@@ -272,7 +272,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
         if(func)
         {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QObject::metaObject();
     }
