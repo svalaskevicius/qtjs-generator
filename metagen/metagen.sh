@@ -12,5 +12,5 @@ java -cp "../lib/cpgf/tools/metagen/tool/bin:../lib/cpgf/tools/metagen/js.jar" m
 java -cp "../lib/cpgf/tools/metagen/tool/bin:../lib/cpgf/tools/metagen/js.jar" metagen --config qtQml_cfg.js --xml xml/index.xml
 java -cp "../lib/cpgf/tools/metagen/tool/bin:../lib/cpgf/tools/metagen/js.jar" metagen --config qtGui_cfg.js --xml xml/index.xml
 
-find build -type f -name '*.cpp' -exec perl -p -i -e "s#\"$QTINC/?(.*?)\"#<\1>#g" '{}' \;
+find build/ -type f -name '*.cpp' -exec perl -p -i -e "s#\"$QTINC/?(.*?)\"#<\1>#g" '{}' \;
 

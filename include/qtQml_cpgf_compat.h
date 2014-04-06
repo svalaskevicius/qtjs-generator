@@ -1,6 +1,7 @@
 #pragma once
 
 #include "./qtCore_cpgf_compat.h"
+#include "./qtGui_cpgf_compat.h"
 
 #include <QQuickWindow>
 #include <QQuickView>
