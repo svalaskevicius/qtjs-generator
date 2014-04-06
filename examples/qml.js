@@ -116,6 +116,8 @@ MySyntaxHighlighter.highlightBlock = function($this, text) {
         b.setParentClass(WaveAngleClass)
         b.setInit(function($this) {
             $this.setFlag(qt.QQuickItem.Flag.ItemHasContents)
+            var label = new qt.QQuickText($this);
+            label.setText(new qt.QString("a text label"));
         })
         qt.finalizeAndRegisterMetaObjectBuilderToQml(b, "com.ics.demo", 1, 0, "Waveangle")
     })();
