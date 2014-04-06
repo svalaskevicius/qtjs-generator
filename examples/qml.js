@@ -6,7 +6,7 @@ var path = require('path')
 cpgf.import("cpgf", "builtin.core");
 
 var MySyntaxHighlighter = cpgf.cloneClass(qt.QSyntaxHighlighterWrapper);
-MySyntaxHighlighter.highlightBlock = function($this , text ) {
+MySyntaxHighlighter.highlightBlock = function($this, text) {
     var myClassFormat = new qt.QTextCharFormat();
     myClassFormat.setFontWeight(qt.QFont.Bold);
     myClassFormat.setForeground(new qt.QBrush(new qt.QColor(qt.darkMagenta)));
@@ -25,12 +25,12 @@ MySyntaxHighlighter.highlightBlock = function($this , text ) {
 (function() {
 
     var highlighter;
-    (function(){
+    (function() {
         var b = new qt.DynamicMetaObjectBuilder()
         b.setClassName("KeyGenerator")
-        b.setInit(function ($this) {
+        b.setInit(function($this) {
             $this.setProperty("type",
-                              new qt.QVariant(new qt.QString("rsa")))
+                new qt.QVariant(new qt.QString("rsa")))
             var aa = new qt.QStringList()
             aa._opLeftShift(new qt.QString("rsa"))
             aa._opLeftShift(new qt.QString("dsa"))
@@ -45,103 +45,96 @@ MySyntaxHighlighter.highlightBlock = function($this , text ) {
         b.addProperty("passphrase", "QString")
         b.addProperty("filename", "QString")
 
-        b.addSlot('generateKey()', function ($this) {
+        b.addSlot('generateKey()', function($this) {
             var log = new qt.QMessageLogger()
 
             log.debug()._opLeftShift(
-                        new qt.QString("invoking generate! "))._opLeftShift(
-                        $this.property("passphrase").toString())
+                new qt.QString("invoking generate! "))._opLeftShift(
+                $this.property("passphrase").toString())
 
             qt.emitSignal($this, "keyGenerated(bool)",
-                             new qt.QVariant(true))
+                new qt.QVariant(true))
         })
 
         qt.finalizeAndRegisterMetaObjectBuilderToQml(b,
-                                                     "com.ics.demo", 1,
-                                                     0, "KeyGenerator")
+            "com.ics.demo", 1,
+            0, "KeyGenerator")
     })();
 
-    (function(){
+    (function() {
         var b = new qt.DynamicMetaObjectBuilder()
         b.setClassName("IntIncrementer")
-        b.setInit(function ($this) {
+        b.setInit(function($this) {
             $this.setProperty("value", new qt.QVariant(0))
         })
         var aa = new qt.QStringList()
         aa._opLeftShift(new qt.QString("newValue"))
         b.addSignal("incremented(int)", aa)
         b.addProperty("value", "int")
-        b.addSlot('increment()', function ($this) {
+        b.addSlot('increment()', function($this) {
             $this.setProperty('value',
-                              new qt.QVariant($this.property(
-                                                  "value").toInt() + 1))
+                new qt.QVariant($this.property(
+                    "value").toInt() + 1))
             qt.emitSignal($this, "incremented(int)",
-                             new qt.QVariant($this.property(
-                                                 "value").toInt()))
+                new qt.QVariant($this.property(
+                    "value").toInt()))
         })
 
-        qt.finalizeAndRegisterMetaObjectBuilderToQml(b, "com.ics.demo",
-                                                     1, 0,
-                                                     "IntIncrementer")
+        qt.finalizeAndRegisterMetaObjectBuilderToQml(b, "com.ics.demo", 1, 0, "IntIncrementer")
     })();
 
-    (function(){
+    (function() {
 
         var WaveAngleClass = cpgf.cloneClass(qt.QQuickItemWrapper);
         WaveAngleClass.updatePaintNode = function($this, node, data) {
-          if (!node) {
-             node = new qt.QSGGeometryNode();
-             var geometry = new qt.QSGGeometry(qt.QSGGeometry.defaultAttributes_Point2D(), 2);
-
-             geometry.setLineWidth(2);
-             geometry.setDrawingMode( /* GL_LINE_STRIP */ 3);
-             node.setGeometry(geometry);
-             cpgf.setAllowGC(geometry, false);
-             node.setFlag(qt.QSGNode.OwnsGeometry);
-             var material = new qt.QSGFlatColorMaterial();
-             material.setColor(new qt.QColor(155, 120, 100));
-             node.setMaterial(material);
-             cpgf.setAllowGC(material, false);
-             node.setFlag(qt.QSGNode.OwnsMaterial);
-          }
-          var rect = $this.boundingRect();
-          var vertices = geometry.vertexDataAsPoint2D();
-          qt.arrayValueForOffset_Point2D(vertices, 0).set(0, 0);
-          qt.arrayValueForOffset_Point2D(vertices, 1).set(
-              $this.property("width").toInt(),
-              $this.property("height").toInt()
-          );
-          return node;
+            if (!node) {
+                node = new qt.QSGGeometryNode();
+                var geometry = new qt.QSGGeometry(qt.QSGGeometry.defaultAttributes_Point2D(), 2);
+                geometry.setLineWidth(2);
+                geometry.setDrawingMode( /* GL_LINE_STRIP */ 3);
+                node.setGeometry(geometry);
+                cpgf.setAllowGC(geometry, false);
+                node.setFlag(qt.QSGNode.OwnsGeometry);
+                var material = new qt.QSGFlatColorMaterial();
+                material.setColor(new qt.QColor(155, 120, 100));
+                node.setMaterial(material);
+                cpgf.setAllowGC(material, false);
+                node.setFlag(qt.QSGNode.OwnsMaterial);
+            }
+            var rect = $this.boundingRect();
+            var vertices = geometry.vertexDataAsPoint2D();
+            qt.arrayValueForOffset_Point2D(vertices, 0).set(0, 0);
+            qt.arrayValueForOffset_Point2D(vertices, 1).set(
+                $this.property("width").toInt(),
+                $this.property("height").toInt()
+            );
+            return node;
         }
 
         var b = new qt.DynamicMetaObjectBuilder()
         b.setClassName("Wavangle")
         b.setParentClass(WaveAngleClass)
-        b.setInit(function ($this) {
-          $this.setFlag(qt.QQuickItem.Flag.ItemHasContents)
+        b.setInit(function($this) {
+            $this.setFlag(qt.QQuickItem.Flag.ItemHasContents)
         })
-        qt.finalizeAndRegisterMetaObjectBuilderToQml(b, "com.ics.demo",
-                                                     1, 0,
-                                                     "Waveangle")
+        qt.finalizeAndRegisterMetaObjectBuilderToQml(b, "com.ics.demo", 1, 0, "Waveangle")
     })();
 
     try {
         var engine = new qt.QQmlEngine()
-        var component = new qt.QQmlComponent(engine,
-                                                 new qt.QString(path.resolve("qml/main.qml")))
+        var component = new qt.QQmlComponent(engine, new qt.QString(path.resolve("qml/main.qml")))
         if (!component.isReady()) {
             throw component.errorString()
         }
 
-        qt.QCoreApplication.instance().connect(engine, '2quit()',
-                                               '1quit()')
+        qt.QCoreApplication.instance().connect(engine, '2quit()', '1quit()')
 
         var topLevel = component.create();
         var window = cpgf.cast(topLevel, qt.QQuickWindow);
         var surfaceFormat = window.requestedFormat();
         window.setFormat(surfaceFormat);
 
-        var findChild = function (obj, name) {
+        var findChild = function(obj, name) {
             var begin = obj.children().cbegin();
             var end = obj.children().cend();
             for (var o = begin; o._opNotEqual(end); o._opIncSuffix()) {
@@ -159,8 +152,8 @@ MySyntaxHighlighter.highlightBlock = function($this , text ) {
         if (edit) {
             edit = qt.objectFromVariant(edit.property("textDocument"));
             if (edit) {
-              edit = cpgf.cast(edit, qt.QQuickTextDocument);
-              highlighter = new MySyntaxHighlighter(edit.textDocument());
+                edit = cpgf.cast(edit, qt.QQuickTextDocument);
+                highlighter = new MySyntaxHighlighter(edit.textDocument());
             }
         }
         window.show()
