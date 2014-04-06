@@ -19,6 +19,21 @@
 namespace qt_metadata { 
 
 
+template <typename D>
+void buildMetaClass_WanderData(D _d)
+{
+    (void)_d;
+    using namespace cpgf;
+    
+    _d.CPGF_MD_TEMPLATE _field("x_vel", &D::ClassType::x_vel);
+    _d.CPGF_MD_TEMPLATE _field("y_vel", &D::ClassType::y_vel);
+    _d.CPGF_MD_TEMPLATE _field("x_peak", &D::ClassType::x_peak);
+    _d.CPGF_MD_TEMPLATE _field("x_var", &D::ClassType::x_var);
+    _d.CPGF_MD_TEMPLATE _field("y_peak", &D::ClassType::y_peak);
+    _d.CPGF_MD_TEMPLATE _field("y_var", &D::ClassType::y_var);
+}
+
+
 } // namespace qt_metadata
 
 

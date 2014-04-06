@@ -19,6 +19,26 @@
 namespace qt_metadata { 
 
 
+template <typename D>
+void buildMetaClass_QQuickItemChangeListener(D _d)
+{
+    (void)_d;
+    using namespace cpgf;
+    
+    _d.CPGF_MD_TEMPLATE _method("itemGeometryChanged", &D::ClassType::itemGeometryChanged);
+    _d.CPGF_MD_TEMPLATE _method("itemSiblingOrderChanged", &D::ClassType::itemSiblingOrderChanged);
+    _d.CPGF_MD_TEMPLATE _method("itemVisibilityChanged", &D::ClassType::itemVisibilityChanged);
+    _d.CPGF_MD_TEMPLATE _method("itemOpacityChanged", &D::ClassType::itemOpacityChanged);
+    _d.CPGF_MD_TEMPLATE _method("itemDestroyed", &D::ClassType::itemDestroyed);
+    _d.CPGF_MD_TEMPLATE _method("itemChildAdded", &D::ClassType::itemChildAdded);
+    _d.CPGF_MD_TEMPLATE _method("itemChildRemoved", &D::ClassType::itemChildRemoved);
+    _d.CPGF_MD_TEMPLATE _method("itemParentChanged", &D::ClassType::itemParentChanged);
+    _d.CPGF_MD_TEMPLATE _method("itemRotationChanged", &D::ClassType::itemRotationChanged);
+    _d.CPGF_MD_TEMPLATE _method("itemImplicitWidthChanged", &D::ClassType::itemImplicitWidthChanged);
+    _d.CPGF_MD_TEMPLATE _method("itemImplicitHeightChanged", &D::ClassType::itemImplicitHeightChanged);
+}
+
+
 } // namespace qt_metadata
 
 

@@ -19,6 +19,20 @@
 namespace qt_metadata { 
 
 
+template <typename D>
+void buildMetaClass_QSGAreaAllocator(D _d)
+{
+    (void)_d;
+    using namespace cpgf;
+    
+    _d.CPGF_MD_TEMPLATE _constructor<void * (const QSize &)>();
+    _d.CPGF_MD_TEMPLATE _method("allocate", &D::ClassType::allocate);
+    _d.CPGF_MD_TEMPLATE _method("deallocate", &D::ClassType::deallocate);
+    _d.CPGF_MD_TEMPLATE _method("isEmpty", &D::ClassType::isEmpty);
+    _d.CPGF_MD_TEMPLATE _method("size", &D::ClassType::size);
+}
+
+
 } // namespace qt_metadata
 
 
