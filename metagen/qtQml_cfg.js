@@ -131,7 +131,9 @@ function shouldAllowClassWrapper(item) {
     case "QSGDistanceFieldGlyphNode":
     case "QSGOpaqueTextureMaterialShader":
     case "QSGTextureMaterialShader":
-    case "QV8ProfilerService":
+    case "QQuickFlickable":
+    case "QQuickItemChangeListener":
+    case "QQuickItemViewTransitionChangeListener":
       return false;
     default:
       ;
@@ -149,9 +151,22 @@ function processCallback(item, data)
   var skipByLocationPart = [
     'private.h',
     '_impl.h',
+    '_p_p.h',
     '/private/qqml',
     '/private/qv4',
     '/private/qquickanim',
+    '/private/qsgatlastexture_p',
+    '/private/qsgbatchrenderer_p',
+    '/private/qquickvaluetypes_p',
+    '/private/qquicksvgparser_p',
+    '/private/qtestoptions_p',
+    '/private/qabstractanimationjob_p',
+    '/private/qparallelanimationgroupjob_p',
+    '/private/qsequentialanimationgroupjob_p',
+    '/private/qquickpositioners_p',
+    '/private/qquickspriteengine_p',
+    '/private/qquickitemviewtransition_p',
+    '/private/qquickstateoperations_p',
   ];
 
   var skipByNamePart = [
@@ -252,8 +267,219 @@ function processCallback(item, data)
     case "QSGRenderContext":
     case "QSGNodeUpdater":
     case "ThresholdFunc":
+    case "QV8Engine":
     case "QSGRenderer::nodeUpdater":
     case "QSGRenderer::setNodeUpdater":
+
+
+    // not exported (link errors)
+
+    case "QQuickText::lineLaidOut":
+    case "QQuickTransition::prepare":
+    case "FxViewItem":
+    case "QAbstractAnimationJob":
+    case "QAnimationGroupJob":
+    case "QPauseAnimationJob":
+    case "QHashedString":
+    case "QHashedStringRef":
+    case "qHash":
+    case "qHash":
+    case "QQuickAbstractAnimationPrivate":
+    case "QQuickAgeAffector":
+    case "QQuickAnchorAnimation":
+    case "QQuickAnchorsPrivate":
+    case "QQuickAngleDirection":
+    case "QQuickApplication":
+    case "QQuickAttractorAffector":
+    case "QQuickBorderImage":
+    case "QQuickBulkValueAnimator":
+    case "QQuickCanvasContext":
+    case "QQuickCanvasItem":
+    case "QQuickCanvasPixmap":
+    case "QQuickColorValueType":
+    case "QQuickColumn":
+    case "QQuickContents":
+    case "QQuickContext2D":
+    case "QQuickContext2DCommandBuffer":
+    case "QQuickContext2DFBOTexture":
+    case "QQuickContext2DFBOTile":
+    case "QQuickContext2DImageTexture":
+    case "QQuickContext2DImageTile":
+    case "QQuickContext2DRenderThread":
+    case "QQuickContext2DTexture":
+    case "QQuickContext2DTile":
+    case "QQuickCumulativeDirection":
+    case "QQuickCurve":
+    case "QQuickCustomAffector":
+    case "QQuickCustomParticle":
+    case "QQuickDefaultTextureFactory":
+    case "QQuickDirection":
+    case "QQuickDoubleValidator":
+    case "QQuickDrag":
+    case "QQuickDragAttached":
+    case "QQuickDragMimeData":
+    case "QQuickDropArea":
+    case "QQuickDropAreaDrag":
+    case "QQuickDropEvent":
+    case "QQuickEllipseExtruder":
+    case "QQuickFlickablePrivate":
+    case "QQuickFlickableVisibleArea":
+    case "QQuickFlipable":
+    case "QQuickFlow":
+    case "QQuickFocusScope":
+    case "QQuickFontLoader":
+    case "QQuickFontValueType":
+    case "QQuickFrictionAffector":
+    case "QQuickGrabGestureEvent":
+    case "QQuickGradient":
+    case "QQuickGradientStop":
+    case "QQuickGravityAffector":
+    case "QQuickGrid":
+    case "QQuickGridMesh":
+    case "QQuickGridScaledImage":
+    case "QQuickGridView":
+    case "QQuickGridViewAttached":
+    case "QQuickGroupGoalAffector":
+    case "QQuickImage":
+    case "QQuickImageParticle":
+    case "QQuick_initializeProviders":
+    case "QQuickIntValidator":
+    case "QQuickItemKeyFilter":
+    case "QQuickItemLayer":
+    case "QQuickItemParticle":
+    case "QQuickItemParticleAttached":
+    case "QQuickItemsModule":
+    case "QQuickItemView":
+    case "QQuickItemViewAttached":
+    case "QQuickItemViewChangeSet":
+    case "QQuickItemViewTransitionableItem":
+    case "QQuickItemViewTransitioner":
+    case "QQuickKeyEvent":
+    case "QQuickKeyNavigationAttached":
+    case "QQuickKeysAttached":
+    case "QQuickLayoutMirroringAttached":
+    case "QQuickLineExtruder":
+    case "QQuickListView":
+    case "QQuickListViewAttached":
+    case "QQuickLoader":
+    case "QQuickMaskExtruder":
+    case "QQuickMatrix4x4ValueType":
+    case "QQuickMultiPointTouchArea":
+    case "QQuickPackage":
+    case "QQuickPackageAttached":
+    case "QQuickParentAnimation":
+    case "QQuickParticleAffector":
+    case "QQuickParticleData":
+    case "QQuickParticleDataHeap":
+    case "QQuickParticleEmitter":
+    case "QQuickParticleExtruder":
+    case "QQuickParticleGroup":
+    case "QQuickParticleGroupData":
+    case "QQuickParticlePainter":
+    case "QQuickParticleSystem":
+    case "QQuickParticleSystemAnimation":
+    case "QQuickPath":
+    case "QQuickPathAnimation":
+    case "QQuickPathAnimationAnimator":
+    case "QQuickPathAnimationUpdater":
+    case "QQuickPathArc":
+    case "QQuickPathAttribute":
+    case "QQuickPathCatmullRomCurve":
+    case "QQuickPathCubic":
+    case "QQuickPathElement":
+    case "QQuickPathInterpolator":
+    case "QQuickPathLine":
+    case "QQuickPathPercent":
+    case "QQuickPathQuad":
+    case "QQuickPathSvg":
+    case "QQuickPathView":
+    case "QQuickPathViewAttached":
+    case "QQuickPen":
+    case "QQuickPinch":
+    case "QQuickPinchArea":
+    case "QQuickPinchEvent":
+    case "QQuickPointDirection":
+    case "QQuickPositionerAttached":
+    case "QQuickPropertyChangesParser":
+    case "QQuickQuaternionValueType":
+    case "QQuickRectangle":
+    case "QQuickRectangleExtruder":
+    case "QQuickRepeater":
+    case "QQuickRootItem":
+    case "QQuickRotation":
+    case "QQuickRow":
+    case "QQuickScale":
+    case "QQuickScaleGrid":
+    case "QQuickScreen":
+    case "QQuickScreenAttached":
+    case "QQuickShaderEffectMaterialKey":
+    case "QQuickShaderEffectMesh":
+    case "QQuickShaderEffectSourceNode":
+    case "QQuickSmoothedAnimation":
+    case "QQuickSmoothedAnimationPrivate":
+    case "QQuickSpringAnimation":
+    case "QQuickSprite":
+    case "QQuickSpriteGoalAffector":
+    case "QQuickSpriteSequence":
+    case "QQuickStateActionEvent":
+    case "QQuickStyledText":
+    case "QQuickSvgParser":
+    case "QQuickSystemPalette":
+    case "QQuickTargetDirection":
+    case "QQuickTextControl":
+    case "QQuickTextDocumentWithImageResources":
+    case "QQuickTextEditMimeData":
+    case "QQuickTextLine":
+    case "QQuickTextNode":
+    case "QQuickTextNodeEngine":
+    case "QQuickTextUtil":
+    case "QQuickTimeLine":
+    case "QQuickTimeLineCallback":
+    case "QQuickTimeLineObject":
+    case "QQuickTimeLineValue":
+    case "QQuickTouchPoint":
+    case "QQuickTrailEmitter":
+    case "QQuickTransform":
+    case "QQuickTransitionManager":
+    case "QQuickTranslate":
+    case "QQuickTurbulenceAffector":
+    case "QQuickUtilModule":
+    case "QQuickValueTypes":
+    case "QQuickVector2DValueType":
+    case "QQuickVector3DValueType":
+    case "QQuickVector4DValueType":
+    case "QQuickViewSection":
+    case "QQuickWanderAffector":
+    case "QQuickWheelEvent":
+    case "QQuickWorkerScript":
+    case "QQuickWorkerScriptEngine":
+    case "QSGAtlasTexture":
+    case "QSGBatchRenderer":
+    case "QSGBindableFbo":
+    case "QSGBindableFboId":
+    case "QSGDefaultGlyphNode":
+    case "QSGDepthStencilBuffer":
+    case "QSGDepthStencilBufferManager":
+    case "QSGDistanceFieldGlyphNode":
+    case "QSGOutlinedTextMaterial":
+    case "QSGStyledTextMaterial":
+    case "QSGTextMaskMaterial":
+    case "QSGTextureMaterialShader":
+    case "QSGThreadedRenderLoop":
+    case "QSGWindowsRenderLoop":
+    case "QSmoothedAnimation":
+    case "QSmoothedAnimationTimer":
+    case "QTest":
+    case "qtPositionAttributeName":
+    case "qtTexCoordAttributeName":
+    case "QuickKeyNavigationAttached":
+    case "QuickKeysAttached":
+    case "QuickTestEvent":
+    case "QuickTestResult":
+    case "QV8ProfilerData":
+    case "QV8ProfilerService":
+    case "QQuickFlickable::visibleArea":
+
       data.skipBind = true;
       return;
     case "QSGMaterialShader":
@@ -306,6 +532,14 @@ function processCallback(item, data)
       var params = item.getParameterList();
       if (params.size() === 1) {
         if (""+params.get(0).getType().getLiteralType() === "const QQuickContext2D &"){
+          data.skipBind = true;
+        }
+      }
+    }
+    if (""+item.getQualifiedName() === "QQuickRevertAction::") {
+      var params = item.getParameterList();
+      if (params.size() === 1) {
+        if (""+params.get(0).getType().getLiteralType() === "QQuickStateActionEvent *"){
           data.skipBind = true;
         }
       }
