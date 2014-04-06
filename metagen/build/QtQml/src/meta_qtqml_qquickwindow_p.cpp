@@ -23,6 +23,8 @@
 #include <QtQuick/qquicktextdocument.h>
 #include <QtQuick/qsgsimplerectnode.h>
 #include <private/qqmlcontext_p.h>
+#include <private/qsgrenderer_p.h>
+#include <private/qsgrenderloop_p.h>
 
 #include <QtQuick/5.2.1/QtQuick/private/qquickwindow_p.h>
 
@@ -45,6 +47,20 @@ GDefineMetaInfo createMetaClass_QQuickCloseEvent()
     }
     {
         GDefineMetaClass<QQuickCloseEventWrapper, QQuickCloseEvent> _nd = GDefineMetaClass<QQuickCloseEventWrapper, QQuickCloseEvent>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQuickCloseEventWrapper", &buildMetaClass_QQuickCloseEventWrapper);
+        _d._class(_nd);
+    }
+    return _d.getMetaInfo();
+}
+
+
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
+#endif
+GDefineMetaInfo createMetaClass_QQuickWindowPrivate()
+{
+    GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
+    {
+        GDefineMetaClass<QQuickWindowPrivate, QWindowPrivate> _nd = GDefineMetaClass<QQuickWindowPrivate, QWindowPrivate>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QQuickWindowPrivate", &buildMetaClass_QQuickWindowPrivate);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

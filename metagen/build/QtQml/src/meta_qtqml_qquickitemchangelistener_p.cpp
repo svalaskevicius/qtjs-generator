@@ -23,6 +23,8 @@
 #include <QtQuick/qquicktextdocument.h>
 #include <QtQuick/qsgsimplerectnode.h>
 #include <private/qqmlcontext_p.h>
+#include <private/qsgrenderer_p.h>
+#include <private/qsgrenderloop_p.h>
 
 #include <QtQuick/5.2.1/QtQuick/private/qquickitemchangelistener_p.h>
 

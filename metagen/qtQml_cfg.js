@@ -51,6 +51,8 @@ var config = {
     +"#include <QtQuick/qquicktextdocument.h>\n"
     +"#include <QtQuick/qsgsimplerectnode.h>\n"
     +"#include <private/qqmlcontext_p.h>\n"
+    +"#include <private/qsgrenderer_p.h>\n"
+    +"#include <private/qsgrenderloop_p.h>\n"
   ,
   //	sourceHeaderReplacer : [ "!.*Box2D[^/]*/Box2D!i", "Box2D" ],
 //	metaHeaderPath : "cpgf/metadata/box2d/",
@@ -89,6 +91,10 @@ function shouldAllowClassWrapper(item) {
 
   if (!classHasInheritedVirtualMethods(item)) {
     print("skip wrapper as no virtual methods: "+item.getLiteralName()+"\n");
+    return false;
+  }
+
+  if (/Private$/.test(""+item.getLiteralName())) {
     return false;
   }
 
@@ -170,7 +176,6 @@ function processCallback(item, data)
   ];
 
   var skipByNamePart = [
-    'Private',
     'HashedForm',
     'QQuickPath::AttributePoint',
     'QQuickBasePositioner::PositionedItem',
@@ -189,6 +194,10 @@ function processCallback(item, data)
       data.skipBind = true;
       return;
     }
+  }
+  if (item.isClass() && /Private$/.test(""+item.getLiteralName())) {
+      item.getTraits().setDefaultConstructorHidden(true);
+      item.getTraits().setCopyConstructorHidden(true);
   }
   switch (""+item.getQualifiedName()) {
     case "QAbstractAnimationJob":
@@ -270,6 +279,15 @@ function processCallback(item, data)
     case "QV8Engine":
     case "QSGRenderer::nodeUpdater":
     case "QSGRenderer::setNodeUpdater":
+    case "QQuickItemPrivate::changeListeners":
+    case "QQuickItemPrivate::_stateGroup":
+    case "QQuickItemPrivate::_states":
+    case "QQuickItemPrivate::ExtraData::screenAttached":
+    case "QQuickItemPrivate::ExtraData::layoutDirectionAttached":
+    case "QQuickItemPrivate::ExtraData::contents":
+    case "QQuickItemPrivate::ExtraData::layer":
+    case "QQuickItemPrivate::ExtraData::keyHandler":
+    case "QQuickItemPrivate::layer":
 
 
     // not exported (link errors)
@@ -286,6 +304,10 @@ function processCallback(item, data)
     case "qHash":
     case "QQuickAbstractAnimationPrivate":
     case "QQuickAgeAffector":
+    case "QQuickKeyNavigationAttached":
+    case "QQuickKeyNavigationAttachedPrivate":
+    case "QQuickKeysAttached":
+    case "QQuickKeysAttachedPrivate":
     case "QQuickAnchorAnimation":
     case "QQuickAnchorsPrivate":
     case "QQuickAngleDirection":
@@ -480,6 +502,25 @@ function processCallback(item, data)
     case "QV8ProfilerService":
     case "QQuickFlickable::visibleArea":
 
+    case "QQuickViewPrivate":
+    case "QQuickTransformPrivate":
+    case "QSGTexturePrivate":
+    case "QQuickPaintedItemPrivate::":
+    case "QJSValueIteratorPrivate::":
+    case "QQuickItemPrivate::visibleChildren_append":
+    case "QQuickItemPrivate::transform_count":
+    case "QQuickItemPrivate::transform_append":
+    case "QQuickItemPrivate::transform_at":
+    case "QQuickItemPrivate::transform_clear":
+    case "QQuickItemPrivate::transforms":
+    case "QQuickWindowPrivate::updateEffectiveOpacity":
+    case "QQuickWindowPrivate::updateEffectiveOpacityRoot":
+    case "QQuickWindowPrivate::dragGrabber":
+    case "QQuickWindowPrivate::deliverDragEvent":
+    case "QQuickWindowPrivate::animationController":
+    case "QQuickWindowPrivate::incubationController":
+    case "QQuickWindowPrivate::contentItem":
+    case "QQuickItemChangeListener::anchorPrivate":
       data.skipBind = true;
       return;
     case "QSGMaterialShader":

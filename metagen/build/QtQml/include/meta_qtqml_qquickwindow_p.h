@@ -253,6 +253,142 @@ void buildMetaClass_QQuickCloseEventWrapper(D _d)
 }
 
 
+inline uint bItFiEldWrapper_QQuickWindowPrivate_clearBeforeRendering_getter(QQuickWindowPrivate * self) {
+    return self->clearBeforeRendering;
+}
+
+inline void bItFiEldWrapper_QQuickWindowPrivate_clearBeforeRendering_setter(QQuickWindowPrivate * self, uint value) {
+    self->clearBeforeRendering = value;
+}
+inline uint bItFiEldWrapper_QQuickWindowPrivate_persistentGLContext_getter(QQuickWindowPrivate * self) {
+    return self->persistentGLContext;
+}
+
+inline void bItFiEldWrapper_QQuickWindowPrivate_persistentGLContext_setter(QQuickWindowPrivate * self, uint value) {
+    self->persistentGLContext = value;
+}
+inline uint bItFiEldWrapper_QQuickWindowPrivate_persistentSceneGraph_getter(QQuickWindowPrivate * self) {
+    return self->persistentSceneGraph;
+}
+
+inline void bItFiEldWrapper_QQuickWindowPrivate_persistentSceneGraph_setter(QQuickWindowPrivate * self, uint value) {
+    self->persistentSceneGraph = value;
+}
+inline uint bItFiEldWrapper_QQuickWindowPrivate_lastWheelEventAccepted_getter(QQuickWindowPrivate * self) {
+    return self->lastWheelEventAccepted;
+}
+
+inline void bItFiEldWrapper_QQuickWindowPrivate_lastWheelEventAccepted_setter(QQuickWindowPrivate * self, uint value) {
+    self->lastWheelEventAccepted = value;
+}
+inline bool bItFiEldWrapper_QQuickWindowPrivate_componentCompleted_getter(QQuickWindowPrivate * self) {
+    return self->componentCompleted;
+}
+
+inline void bItFiEldWrapper_QQuickWindowPrivate_componentCompleted_setter(QQuickWindowPrivate * self, bool value) {
+    self->componentCompleted = value;
+}
+
+
+template <typename D>
+void buildMetaClass_QQuickWindowPrivate(D _d)
+{
+    (void)_d;
+    using namespace cpgf;
+    
+    _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
+    _d.CPGF_MD_TEMPLATE _field("parentlessItems", &D::ClassType::parentlessItems);
+    _d.CPGF_MD_TEMPLATE _field("activeFocusItem", &D::ClassType::activeFocusItem);
+    _d.CPGF_MD_TEMPLATE _field("mouseGrabberItem", &D::ClassType::mouseGrabberItem);
+    _d.CPGF_MD_TEMPLATE _field("cursorItem", &D::ClassType::cursorItem);
+    _d.CPGF_MD_TEMPLATE _field("touchMouseId", &D::ClassType::touchMouseId);
+    _d.CPGF_MD_TEMPLATE _field("touchMousePressTimestamp", &D::ClassType::touchMousePressTimestamp);
+    _d.CPGF_MD_TEMPLATE _field("lastMousePosition", &D::ClassType::lastMousePosition);
+    _d.CPGF_MD_TEMPLATE _field("hoverItems", &D::ClassType::hoverItems);
+    _d.CPGF_MD_TEMPLATE _field("updatePaintNodeData", &D::ClassType::updatePaintNodeData);
+    _d.CPGF_MD_TEMPLATE _field("dirtyItemList", &D::ClassType::dirtyItemList);
+    _d.CPGF_MD_TEMPLATE _field("cleanupNodeList", &D::ClassType::cleanupNodeList);
+    _d.CPGF_MD_TEMPLATE _field("itemsToPolish", &D::ClassType::itemsToPolish);
+    _d.CPGF_MD_TEMPLATE _field("context", &D::ClassType::context);
+    _d.CPGF_MD_TEMPLATE _field("renderer", &D::ClassType::renderer);
+    _d.CPGF_MD_TEMPLATE _field("windowManager", &D::ClassType::windowManager);
+    _d.CPGF_MD_TEMPLATE _field("clearColor", &D::ClassType::clearColor);
+    _d.CPGF_MD_TEMPLATE _property("clearBeforeRendering", &bItFiEldWrapper_QQuickWindowPrivate_clearBeforeRendering_getter, &bItFiEldWrapper_QQuickWindowPrivate_clearBeforeRendering_setter, cpgf::MakePolicy<cpgf::GMetaRuleGetterExplicitThis, cpgf::GMetaRuleSetterExplicitThis>());
+    _d.CPGF_MD_TEMPLATE _property("persistentGLContext", &bItFiEldWrapper_QQuickWindowPrivate_persistentGLContext_getter, &bItFiEldWrapper_QQuickWindowPrivate_persistentGLContext_setter, cpgf::MakePolicy<cpgf::GMetaRuleGetterExplicitThis, cpgf::GMetaRuleSetterExplicitThis>());
+    _d.CPGF_MD_TEMPLATE _property("persistentSceneGraph", &bItFiEldWrapper_QQuickWindowPrivate_persistentSceneGraph_getter, &bItFiEldWrapper_QQuickWindowPrivate_persistentSceneGraph_setter, cpgf::MakePolicy<cpgf::GMetaRuleGetterExplicitThis, cpgf::GMetaRuleSetterExplicitThis>());
+    _d.CPGF_MD_TEMPLATE _property("lastWheelEventAccepted", &bItFiEldWrapper_QQuickWindowPrivate_lastWheelEventAccepted_getter, &bItFiEldWrapper_QQuickWindowPrivate_lastWheelEventAccepted_setter, cpgf::MakePolicy<cpgf::GMetaRuleGetterExplicitThis, cpgf::GMetaRuleSetterExplicitThis>());
+    _d.CPGF_MD_TEMPLATE _property("componentCompleted", &bItFiEldWrapper_QQuickWindowPrivate_componentCompleted_getter, &bItFiEldWrapper_QQuickWindowPrivate_componentCompleted_setter, cpgf::MakePolicy<cpgf::GMetaRuleGetterExplicitThis, cpgf::GMetaRuleSetterExplicitThis>());
+    _d.CPGF_MD_TEMPLATE _field("renderTarget", &D::ClassType::renderTarget);
+    _d.CPGF_MD_TEMPLATE _field("renderTargetId", &D::ClassType::renderTargetId);
+    _d.CPGF_MD_TEMPLATE _field("renderTargetSize", &D::ClassType::renderTargetSize);
+    _d.CPGF_MD_TEMPLATE _field("itemForTouchPointId", &D::ClassType::itemForTouchPointId);
+    _d.CPGF_MD_TEMPLATE _field("defaultAlphaBuffer", &D::ClassType::defaultAlphaBuffer);
+    _d.CPGF_MD_TEMPLATE _method("get", &D::ClassType::get);
+    _d.CPGF_MD_TEMPLATE _method("transformTouchPoints", &D::ClassType::transformTouchPoints, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("cloneMouseEvent", &D::ClassType::cloneMouseEvent)
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("notifyFocusChangesRecur", &D::ClassType::notifyFocusChangesRecur);
+    _d.CPGF_MD_TEMPLATE _method("dragOverThreshold", &D::ClassType::dragOverThreshold)
+        ._default(copyVariantFromCopyable(-1))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("data_append", &D::ClassType::data_append);
+    _d.CPGF_MD_TEMPLATE _method("data_count", &D::ClassType::data_count);
+    _d.CPGF_MD_TEMPLATE _method("data_at", &D::ClassType::data_at);
+    _d.CPGF_MD_TEMPLATE _method("data_clear", &D::ClassType::data_clear);
+    _d.CPGF_MD_TEMPLATE _method("init", &D::ClassType::init);
+    _d.CPGF_MD_TEMPLATE _method("initContentItem", &D::ClassType::initContentItem);
+    _d.CPGF_MD_TEMPLATE _method("data", &D::ClassType::data);
+    _d.CPGF_MD_TEMPLATE _method("checkIfDoubleClicked", &D::ClassType::checkIfDoubleClicked);
+    _d.CPGF_MD_TEMPLATE _method("translateTouchToMouse", &D::ClassType::translateTouchToMouse);
+    _d.CPGF_MD_TEMPLATE _method("translateTouchEvent", &D::ClassType::translateTouchEvent);
+    _d.CPGF_MD_TEMPLATE _method("setMouseGrabber", &D::ClassType::setMouseGrabber);
+    _d.CPGF_MD_TEMPLATE _method("deliverInitialMousePressEvent", &D::ClassType::deliverInitialMousePressEvent);
+    _d.CPGF_MD_TEMPLATE _method("deliverMouseEvent", &D::ClassType::deliverMouseEvent);
+    _d.CPGF_MD_TEMPLATE _method("sendFilteredMouseEvent", &D::ClassType::sendFilteredMouseEvent);
+    _d.CPGF_MD_TEMPLATE _method("deliverWheelEvent", &D::ClassType::deliverWheelEvent);
+    _d.CPGF_MD_TEMPLATE _method("deliverTouchPoints", &D::ClassType::deliverTouchPoints);
+    _d.CPGF_MD_TEMPLATE _method("deliverTouchEvent", &D::ClassType::deliverTouchEvent);
+    _d.CPGF_MD_TEMPLATE _method("deliverTouchCancelEvent", &D::ClassType::deliverTouchCancelEvent);
+    _d.CPGF_MD_TEMPLATE _method("deliverHoverEvent", &D::ClassType::deliverHoverEvent, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<2> >());
+    _d.CPGF_MD_TEMPLATE _method("deliverMatchingPointsToItem", &D::ClassType::deliverMatchingPointsToItem);
+    _d.CPGF_MD_TEMPLATE _method("touchEventForItemBounds", &D::ClassType::touchEventForItemBounds, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("touchEventWithPoints", &D::ClassType::touchEventWithPoints, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("sendFilteredTouchEvent", &D::ClassType::sendFilteredTouchEvent);
+    _d.CPGF_MD_TEMPLATE _method("sendHoverEvent", &D::ClassType::sendHoverEvent, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2>, cpgf::GMetaRuleCopyConstReference<3> >());
+    _d.CPGF_MD_TEMPLATE _method("clearHover", &D::ClassType::clearHover);
+    _d.CPGF_MD_TEMPLATE _method("updateCursor", &D::ClassType::updateCursor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("findCursorItem", &D::ClassType::findCursorItem, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("setFocusInScope", &D::ClassType::setFocusInScope)
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("clearFocusInScope", &D::ClassType::clearFocusInScope)
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("clearFocusObject", &D::ClassType::clearFocusObject);
+    _d.CPGF_MD_TEMPLATE _method("updateFocusItemTransform", &D::ClassType::updateFocusItemTransform);
+    _d.CPGF_MD_TEMPLATE _method("dirtyItem", &D::ClassType::dirtyItem);
+    _d.CPGF_MD_TEMPLATE _method("cleanup", &D::ClassType::cleanup);
+    _d.CPGF_MD_TEMPLATE _method("polishItems", &D::ClassType::polishItems);
+    _d.CPGF_MD_TEMPLATE _method("syncSceneGraph", &D::ClassType::syncSceneGraph);
+    _d.CPGF_MD_TEMPLATE _method("renderSceneGraph", &D::ClassType::renderSceneGraph);
+    _d.CPGF_MD_TEMPLATE _method("isRenderable", &D::ClassType::isRenderable);
+    _d.CPGF_MD_TEMPLATE _method("updateDirtyNodes", &D::ClassType::updateDirtyNodes);
+    _d.CPGF_MD_TEMPLATE _method("cleanupNodes", &D::ClassType::cleanupNodes);
+    _d.CPGF_MD_TEMPLATE _method("cleanupNodesOnShutdown", (void (D::ClassType::*) ())&D::ClassType::cleanupNodesOnShutdown);
+    _d.CPGF_MD_TEMPLATE _method("updateDirtyNode", &D::ClassType::updateDirtyNode);
+    _d.CPGF_MD_TEMPLATE _method("fireFrameSwapped", &D::ClassType::fireFrameSwapped);
+    _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::FocusOption>("FocusOption")
+        ._element("DontChangeFocusProperty", D::ClassType::DontChangeFocusProperty)
+        ._element("DontChangeSubFocusItem", D::ClassType::DontChangeSubFocusItem)
+    ;
+    {
+        GDefineMetaClass<QFlags<typename QQuickWindowPrivate::FocusOption > > _t_d = GDefineMetaClass<QFlags<typename QQuickWindowPrivate::FocusOption > >::lazyDeclare("FocusOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QQuickWindowPrivate::FocusOption > >, typename QQuickWindowPrivate::FocusOption >);
+        _d._class(_t_d);
+    }
+}
+
+
 } // namespace qt_metadata
 
 

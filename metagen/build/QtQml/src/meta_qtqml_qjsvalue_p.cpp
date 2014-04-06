@@ -26,9 +26,9 @@
 #include <private/qsgrenderer_p.h>
 #include <private/qsgrenderloop_p.h>
 
-#include <QtQml/5.2.1/QtQml/private/qbitfield_p.h>
+#include <QtQml/5.2.1/QtQml/private/qjsvalue_p.h>
 
-#include "meta_qtqml_qbitfield_p.h"
+#include "meta_qtqml_qjsvalue_p.h"
 
 using namespace cpgf;
 
@@ -38,22 +38,11 @@ namespace qt_metadata {
 #ifdef CPGF_METAGEN_LINKAGE_SPEC
 CPGF_METAGEN_LINKAGE_SPEC
 #endif
-GDefineMetaInfo createMetaClass_Global_qbitfield_p()
-{
-    GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qbitfield_p(_d);
-    return _d.getMetaInfo();
-}
-
-
-#ifdef CPGF_METAGEN_LINKAGE_SPEC
-CPGF_METAGEN_LINKAGE_SPEC
-#endif
-GDefineMetaInfo createMetaClass_QBitField()
+GDefineMetaInfo createMetaClass_QJSValuePrivate()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QBitField> _nd = GDefineMetaClass<QBitField>::lazyDeclare("QBitField", &buildMetaClass_QBitField);
+        GDefineMetaClass<QJSValuePrivate, QV4::PersistentValuePrivate> _nd = GDefineMetaClass<QJSValuePrivate, QV4::PersistentValuePrivate>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QJSValuePrivate", &buildMetaClass_QJSValuePrivate);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

@@ -26,9 +26,9 @@
 #include <private/qsgrenderer_p.h>
 #include <private/qsgrenderloop_p.h>
 
-#include <QtQml/5.2.1/QtQml/private/qbitfield_p.h>
+#include <QtQuick/5.2.1/QtQuick/private/qsgnode_p.h>
 
-#include "meta_qtqml_qbitfield_p.h"
+#include "meta_qtqml_qsgnode_p.h"
 
 using namespace cpgf;
 
@@ -38,10 +38,13 @@ namespace qt_metadata {
 #ifdef CPGF_METAGEN_LINKAGE_SPEC
 CPGF_METAGEN_LINKAGE_SPEC
 #endif
-GDefineMetaInfo createMetaClass_Global_qbitfield_p()
+GDefineMetaInfo createMetaClass_QSGBasicGeometryNodePrivate()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    buildMetaClass_Global_qbitfield_p(_d);
+    {
+        GDefineMetaClass<QSGBasicGeometryNodePrivate, QSGNodePrivate> _nd = GDefineMetaClass<QSGBasicGeometryNodePrivate, QSGNodePrivate>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSGBasicGeometryNodePrivate", &buildMetaClass_QSGBasicGeometryNodePrivate);
+        _d._class(_nd);
+    }
     return _d.getMetaInfo();
 }
 
@@ -49,11 +52,25 @@ GDefineMetaInfo createMetaClass_Global_qbitfield_p()
 #ifdef CPGF_METAGEN_LINKAGE_SPEC
 CPGF_METAGEN_LINKAGE_SPEC
 #endif
-GDefineMetaInfo createMetaClass_QBitField()
+GDefineMetaInfo createMetaClass_QSGGeometryNodePrivate()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QBitField> _nd = GDefineMetaClass<QBitField>::lazyDeclare("QBitField", &buildMetaClass_QBitField);
+        GDefineMetaClass<QSGGeometryNodePrivate, QSGBasicGeometryNodePrivate> _nd = GDefineMetaClass<QSGGeometryNodePrivate, QSGBasicGeometryNodePrivate>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSGGeometryNodePrivate", &buildMetaClass_QSGGeometryNodePrivate);
+        _d._class(_nd);
+    }
+    return _d.getMetaInfo();
+}
+
+
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
+#endif
+GDefineMetaInfo createMetaClass_QSGNodePrivate()
+{
+    GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
+    {
+        GDefineMetaClass<QSGNodePrivate> _nd = GDefineMetaClass<QSGNodePrivate>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSGNodePrivate", &buildMetaClass_QSGNodePrivate);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
