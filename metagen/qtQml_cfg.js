@@ -33,6 +33,24 @@ var config = {
     +"#include <QtCore/QDebug>\n"
     +"#include <QtCore/QFileSelector>\n"
     +"#include <QtCore/QState>\n"
+    +"#include <QtGui/qpixmap.h>\n"
+    +"#include <private/qquickcontext2dcommandbuffer_p.h>\n"
+    +"#include <private/qquickcontext2dtexture_p.h>\n"
+    +"#include <private/qquickcanvasitem_p.h>\n"
+    +"#include <private/qquickanchors_p_p.h>\n"
+    +"#include <private/qquickcontext2dtile_p.h>\n"
+    +"#include <private/qquickanimation_p.h>\n"
+    +"#include <private/qquickscalegrid_p_p.h>\n"
+    +"#include <private/qquickcontext2d_p.h>\n"
+    +"#include <private/qquicktransition_p.h>\n"
+    +"#include <private/qquickflickable_p_p.h>\n"
+    +"#include <private/qqmlchangeset_p.h>\n"
+    +"#include <private/qquickpath_p.h>\n"
+    +"#include <private/qquickevents_p_p.h>\n"
+    +"#include <private/qquicksprite_p.h>\n"
+    +"#include <QtQuick/qquicktextdocument.h>\n"
+    +"#include <QtQuick/qsgsimplerectnode.h>\n"
+    +"#include <private/qqmlcontext_p.h>\n"
   ,
   //	sourceHeaderReplacer : [ "!.*Box2D[^/]*/Box2D!i", "Box2D" ],
 //	metaHeaderPath : "cpgf/metadata/box2d/",
@@ -79,6 +97,41 @@ function shouldAllowClassWrapper(item) {
     case "QQuickView":
     case "QQmlFileSelector":
     case "QQmlComponent":
+    case "QQuickContext2D":
+    case "QQuickCustomParticle":
+    case "QQuickItemParticle":
+    case "QQuickImageParticle":
+    case "QQuickCanvasContext":
+    case "QQuickAnchorAnimation":
+    case "QQuickParentAnimation":
+    case "QQuickPathAnimation":
+    case "QQuickLoaderIncubator":
+    case "QQuickMouseArea":
+    case "QQuickPinchArea":
+    case "QQuickParticlePainter":
+    case "QQuickBasePositioner":
+    case "QQuickPropertyChanges":
+    case "QQuickRepeater":
+    case "QQuickShaderEffect":
+    case "QQuickShaderEffectSource":
+    case "QQuickSmoothedAnimation":
+    case "QQuickSpringAnimation":
+    case "QQuickColumn":
+    case "QQuickFlow":
+    case "QQuickGrid":
+    case "QQuickRow":
+    case "QQuickStateChangeScript":
+    case "QQuickAnchorChanges":
+    case "QQuickAnchorSet":
+    case "QQuickParentChange":
+    case "QQuickTimeLine":
+    case "QQuickTransition":
+    case "QSGRenderContext":
+    case "QSGDefaultGlyphNode":
+    case "QSGDistanceFieldGlyphNode":
+    case "QSGOpaqueTextureMaterialShader":
+    case "QSGTextureMaterialShader":
+    case "QV8ProfilerService":
       return false;
     default:
       ;
@@ -94,13 +147,20 @@ function processCallback(item, data)
   }
 
   var skipByLocationPart = [
-    '/private/',
     'private.h',
     '_impl.h',
+    '/private/qqml',
+    '/private/qv4',
+    '/private/qquickanim',
   ];
 
   var skipByNamePart = [
     'Private',
+    'HashedForm',
+    'QQuickPath::AttributePoint',
+    'QQuickBasePositioner::PositionedItem',
+    'QSGSharedDistanceFieldGlyphCache::Owner',
+    'QSGThreadedRenderLoop::Window',
   ];
 
   for (var i in skipByLocationPart) {
@@ -110,12 +170,30 @@ function processCallback(item, data)
     }
   }
   for (var i in skipByNamePart) {
-    if(item.getPrimaryName().indexOf(skipByNamePart[i]) >= 0) {
+    if(item.getQualifiedName().indexOf(skipByNamePart[i]) >= 0) {
       data.skipBind = true;
       return;
     }
   }
   switch (""+item.getQualifiedName()) {
+    case "QAbstractAnimationJob":
+    case "DesignerWindowManager":
+    case "QDebugMessageService":
+    case "QQmlDebugService":
+    case "QDeleteWatchable":
+    case "QDeleteWatcher":
+    case "QHashedCStringRef":
+    case "QHashedString":
+    case "QHashedStringRef":
+    case "QStringHash":
+    case "QStringHashBase":
+    case "QStringHashData":
+    case "QStringHashNode":
+    case "QStringMultiHash":
+    case "QQmlBinding":
+    case "QQmlBoundSignalExpression":
+    case "QQmlBoundSignalExpressionPointer":
+
     case "QJSEngine::handle":
     case "QML_GETTYPENAMES":
     case "Q_DECLARE_TYPEINFO":
@@ -130,7 +208,52 @@ function processCallback(item, data)
     case "QQuickItem::mapToItem":
     case "QQuickWindow::closing":
     case "quick_test_main":
-    case "QQuickTransform": // fails to link
+    case "QQuickContext2D::=":
+    case "QQuickContext2D::m_mutex":
+    case "QQuickAccessibleAttached":
+    case "QQuickDropAreaDrag":
+    case "QQuickDropEvent":
+    case "QQuickLoaderIncubator":
+    case "QQuickItemViewTransitionableItem":
+    case "QQuickItemViewTransitioner":
+    case "QQuickViewTransitionAttached":
+    case "QQuickParticlesModule":
+    case "QQuickMouseArea":
+    case "QQuickParticleData::e":
+    case "QQuickParticleData::colorOwner":
+    case "QQuickParticleData::rotationOwner":
+    case "QQuickParticleData::deformationOwner":
+    case "QQuickParticleData::animationOwner":
+    case "QQuickParticleSystem::systemSync":
+    case "QQuickParticleSystem::registerParticleEmitter":
+    case "QQuickParticleSystem::registerParticleGroup":
+    case "QQuickParticleSystem::registerParticlePainter":
+    case "QQuickParticleSystem::registerParticleAffector":
+    case "QQuickParticleSystem::stateRedirect":
+    case "QQuickPath::sequentialPointAt":
+    case "QQuickState":
+    case "QQuickStateGroup":
+    case "QQuickStateChangeScript":
+    case "QQuickStateAction":
+    case "QQuickStateActionEvent":
+    case "QQuickStateOperation":
+    case "QQuickAnchorChanges":
+    case "QQuickAnchorSet":
+    case "QQuickParentChange":
+    case "QQuickTransitionInstance":
+    case "QQuickV4ParticleData":
+    case "QSGDistanceFieldGlyphCache":
+    case "QSGDefaultDepthStencilBuffer":
+    case "QSGDefaultDistanceFieldGlyphCache":
+    case "QSGSharedDistanceFieldGlyphCache":
+    case "QSGContextFactoryInterface":
+    case "QSGContext":
+    case "QSGContextPlugin":
+    case "QSGRenderContext":
+    case "QSGNodeUpdater":
+    case "ThresholdFunc":
+    case "QSGRenderer::nodeUpdater":
+    case "QSGRenderer::setNodeUpdater":
       data.skipBind = true;
       return;
     case "QSGMaterialShader":
@@ -145,12 +268,48 @@ function processCallback(item, data)
     case "QSGOpacityNode":
     case "QSGRootNode":
     case "QSGTransformNode":
+    case "QQuickContext2D":
+    case "QQuickDefaultClipNode":
+    case "QQuickContext2DFBOTile":
+    case "QQuickContext2DCommandBuffer":
+    case "QQuickContext2DTile":
+    case "QQuickDropEventEx":
+    case "QQuickContext2DImageTile":
+    case "QQuickTextNode":
+    case "QQuickColorValueType":
+    case "QQuickFontValueType":
+    case "QQuickMatrix4x4ValueType":
+    case "QQuickQuaternionValueType":
+    case "QQuickVector2DValueType":
+    case "QQuickVector3DValueType":
+    case "QQuickVector4DValueType":
+    case "QSGImageNode":
+    case "QSGGlyphNode":
+    case "QSGRectangleNode":
+    case "QSGDefaultRectangleNode":
+    case "QSGDefaultGlyphNode":
+    case "QSGDefaultImageNode":
+    case "QSGDistanceFieldGlyphNode":
+    case "QSGPainterNode":
+    case "QSGRenderNode":
+    case "QSGOpaqueTextureMaterialShader":
+    case "QSGTextureMaterialShader":
       item.getTraits().setDefaultConstructorHidden(true);
       item.getTraits().setCopyConstructorHidden(true);
       break;
     case "QQmlComponent::create":
       item.setTransferResultOwnership(true);
       break;
+  }
+  if (item.isConstructor()) {
+    if (""+item.getQualifiedName() === "QQuickContext2D::") {
+      var params = item.getParameterList();
+      if (params.size() === 1) {
+        if (""+params.get(0).getType().getLiteralType() === "const QQuickContext2D &"){
+          data.skipBind = true;
+        }
+      }
+    }
   }
   if (item.isMethod() || item.isConstructor() || item.isOperator()) {
     if (typeof item.getResultType !== 'undefined' && item.getResultType()) {
@@ -224,6 +383,9 @@ function processCallback(item, data)
   if (shouldAllowClassWrapper(item)) {
     data.getWrapperConfig().setWrapClass(true);
     print("setting wrapper: "+item.getLiteralName()+"\n");
+  }
+  if (!data.skipBind) {
+    print("binding: " + item.getQualifiedName() + "\n");
   }
 }
 
