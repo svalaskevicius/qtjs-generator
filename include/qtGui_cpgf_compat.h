@@ -48,3 +48,12 @@ struct IsConvertible <const QOpenGLContext &, const cpgf::IObject &> {
 
 
 }
+
+
+
+#include <QtCore/include/meta_qtcore_qlist.h>
+inline uint qHash(QGlyphRun, uint = 0) {
+    throw std::logic_error("Glyphs cannot be hashed");
+    return 0;
+}
+

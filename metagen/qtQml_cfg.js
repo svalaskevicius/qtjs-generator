@@ -271,7 +271,6 @@ function processCallback(item, data)
     case "QSGDefaultDistanceFieldGlyphCache":
     case "QSGSharedDistanceFieldGlyphCache":
     case "QSGContextFactoryInterface":
-    case "QSGContext":
     case "QSGContextPlugin":
     case "QSGRenderContext":
     case "QSGNodeUpdater":

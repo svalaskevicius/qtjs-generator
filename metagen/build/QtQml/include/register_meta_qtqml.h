@@ -134,6 +134,7 @@ GDefineMetaInfo createMetaClass_QSGBasicGeometryNode();
 GDefineMetaInfo createMetaClass_QSGBasicGeometryNodePrivate();
 GDefineMetaInfo createMetaClass_QSGBindable();
 GDefineMetaInfo createMetaClass_QSGClipNode();
+GDefineMetaInfo createMetaClass_QSGContext();
 GDefineMetaInfo createMetaClass_QSGDefaultImageNode();
 GDefineMetaInfo createMetaClass_QSGDefaultRectangleNode();
 GDefineMetaInfo createMetaClass_QSGDistanceFieldGlyphCacheManager();
@@ -305,6 +306,7 @@ void registerMain_QtQml(Meta _d)
     _d._class(createMetaClass_QSGBasicGeometryNodePrivate());
     _d._class(createMetaClass_QSGBindable());
     _d._class(createMetaClass_QSGClipNode());
+    _d._class(createMetaClass_QSGContext());
     _d._class(createMetaClass_QSGDefaultImageNode());
     _d._class(createMetaClass_QSGDefaultRectangleNode());
     _d._class(createMetaClass_QSGDistanceFieldGlyphCacheManager());

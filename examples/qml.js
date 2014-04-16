@@ -108,6 +108,30 @@ MySyntaxHighlighter.highlightBlock = function($this, text) {
                 $this.property("width").toInt(),
                 $this.property("height").toInt()
             );
+
+            var textLayout = new qt.QTextLayout(new qt.QString("test text!"));
+            textLayout.beginLayout();
+            while (1) {
+              var line = textLayout.createLine();
+              if (!line.isValid())
+                        break;
+
+            }
+            textLayout.endLayout();
+            var glyphList = textLayout.glyphRuns();
+            if (!glyphList.empty()) {
+              var privateApi = qt.QQuickItemPrivate.get($this);
+              var glyphNode = privateApi.sceneGraphContext().createGlyphNode(privateApi.sceneGraphRenderContext());
+              // var glyphNode = privateApi.sceneGraphContext().createNativeGlyphNode(privateApi.sceneGraphRenderContext());
+
+              glyphNode.setGlyphs(new qt.QPointF(0, 0), glyphList.front());
+              console.log(glyphNode)
+              glyphNode.update();
+              node.appendChildNode(glyphNode);
+            }
+
+
+
             return node;
         }
 

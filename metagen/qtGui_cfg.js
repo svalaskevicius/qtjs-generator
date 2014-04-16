@@ -41,6 +41,10 @@ var config = {
     "Q_CORE_EXPORT", "",
     "Q_GUI_EXPORT", "",
     "Q_DECLARE_TYPEINFO", "",
+  ],
+
+  predefinedTemplateInstances: [
+    'QList<QGlyphRun>', '',
   ]
 };
 
