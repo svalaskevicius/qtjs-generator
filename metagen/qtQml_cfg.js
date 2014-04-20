@@ -654,6 +654,10 @@ function processCallback(item, data)
     }
   }
 
+  if ((""+item.getQualifiedName()) === "QQuickItem::updatePaintNode") {
+    item.setDiscardResultOwnership(true);
+  }
+
   if (shouldAllowClassWrapper(item)) {
     data.getWrapperConfig().setWrapClass(true);
     print("setting wrapper: "+item.getLiteralName()+"\n");

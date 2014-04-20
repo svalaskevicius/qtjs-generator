@@ -566,7 +566,9 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updatePaintNode"));
         if(func)
         {
-            return cpgf::fromVariant<QSGNode * >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1).getValue());
+            cpgf::GScriptValue ret = cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1);
+            ret.discardOwnership();
+            return cpgf::fromVariant<QSGNode * >(ret.getValue());
         }
         return QQuickItem::updatePaintNode(__arg0, __arg1);
     }
