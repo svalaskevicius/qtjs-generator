@@ -174,15 +174,24 @@ int main(int argc, char * argv[])
     v8::Locker locker(node::node_isolate);
     v8::Context::Scope context_scope(env->context());
     v8::HandleScope handle_scope(env->isolate());
+    Q_UNUSED(locker);
+    Q_UNUSED(context_scope);
+    Q_UNUSED(handle_scope);
 
     {
         qtjs_binder::CpgfBinder cpgfBinder(env->context());
+        Q_UNUSED(cpgfBinder);
 
-        node::Load(env);
-
+        try {
+            node::Load(env);
+        } catch (std::runtime_error &e) {
+            std::cerr << "failed execution: "<<e.what()<<std::endl;
+        }
         if (__exitCode < 0) {
             try {
                 QCoreApplication::exec();
+            } catch (std::runtime_error &e) {
+                std::cerr << "failed execution: "<<e.what()<<std::endl;
             } catch (const char * &e) {
                 std::cerr << "failed execution: "<<e<<std::endl;
             }
