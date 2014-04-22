@@ -995,3 +995,25 @@
    fun:_ZN2v88internal25FunctionCallbackArguments4CallEPFvRKNS_20FunctionCallbackInfoINS_5ValueEEEE
    ...
 }
+{
+   qml
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znam
+   ...
+   fun:_ZN17QQmlPropertyCache4copyEv
+   fun:_ZN17QQmlEnginePrivate11createCacheEP8QQmlTypeiR9QQmlError
+   ...
+}
+{
+   qml
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:_Znwm
+   ...
+   fun:_ZN14QQuickTextEdit15updatePaintNodeEP7QSGNodePN10QQuickItem19UpdatePaintNodeDataE
+   fun:_ZN19QQuickWindowPrivate15updateDirtyNodeEP10QQuickItem
+   fun:_ZN19QQuickWindowPrivate16updateDirtyNodesEv
+   fun:_ZN19QQuickWindowPrivate14syncSceneGraphEv
+   ...
+}
