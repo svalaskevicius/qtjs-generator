@@ -30,7 +30,6 @@
 
 
 #include "dynamicQObject.h"
-#include "autoCallback.h"
 
 #include "callInfo.h"
 
@@ -279,43 +278,37 @@ CallInfo::~CallInfo()
     }
 }
 
+struct CallbackInvocationData {
+    int maxCnt;
+    cpgf::GVariantData params[REF_MAX_ARITY];
+
+    CallbackInvocationData(const QVector<int> &parameterTypeIds, void **data) {
+        maxCnt = parameterTypeIds.size();
+        for (int i = 0; i < maxCnt; i++) {
+            convertQtDataToGVariantData(parameterTypeIds[i], data[i + 1], &params[i]);
+        }
+    }
+    ~CallbackInvocationData() {
+        for (int i = 0; i < maxCnt; i++) {
+            releaseVariantData(&params[i]);
+        }
+    }
+};
 
 
 void CallInfo::invoke(void **data)
 {
-    int maxCnt = parameterTypeIds.size();
-    cpgf::GVariantData params[REF_MAX_ARITY];
+    CallbackInvocationData params(parameterTypeIds, data);
     cpgf::GScriptValueData result;
-    for (int i = 0; i < maxCnt; i++) {
-        convertQtDataToGVariantData(parameterTypeIds[i], data[i + 1], &params[i]);
-    }
-    AutoCallback paramDeleter([&]{
-        for (int i = 0; i < maxCnt; i++) {
-            releaseVariantData(&params[i]);
-        }
-    });
-    Q_UNUSED(paramDeleter);
-
-    callback->invoke(&result, params, maxCnt);
+    callback->invoke(&result, params.params, params.maxCnt);
     cpgf::metaCheckError(callback);
 }
 
 void CallInfo::invokeOnObject(void **data)
 {
-    int maxCnt = parameterTypeIds.size();
-    cpgf::GVariantData params[REF_MAX_ARITY];
+    CallbackInvocationData params(parameterTypeIds, data);
     cpgf::GScriptValueData result;
-    for (int i = 0; i < maxCnt; i++) {
-        convertQtDataToGVariantData(parameterTypeIds[i], data[i + 1], &params[i]);
-    }
-    AutoCallback paramDeleter([&]{
-        for (int i = 0; i < maxCnt; i++) {
-            releaseVariantData(&params[i]);
-        }
-    });
-    Q_UNUSED(paramDeleter);
-
-    callback->invokeOnObject(&result, params, maxCnt);
+    callback->invokeOnObject(&result, params.params, params.maxCnt);
     cpgf::metaCheckError(callback);
 }
 
