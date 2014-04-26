@@ -27,6 +27,7 @@ struct CpgfBinder {
     GScopedPointer<GScriptRunner> runner;
     GScopedInterface<IScriptObject> scriptObject;
     GScopedInterface<IMetaClass> metaClass;
+    GScopedInterface<IScriptUserConverter> userConverter;
 
     CpgfBinder(v8::Handle<v8::Context> ctx);
     ~CpgfBinder();

@@ -33,6 +33,8 @@
 
 #include <qtCore_cpgf_compat.h>
 
+#include "qttypesconverter.h"
+
 namespace qtjs_binder {
 
 namespace {
@@ -236,8 +238,11 @@ CpgfBinder::CpgfBinder(v8::Handle<v8::Context> ctx)
       service(createDefaultMetaService()),
       runner(createV8ScriptRunner(service.get(), ctx)),
       scriptObject(runner->getScripeObject()),
-      metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())))
+      metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass()))),
+      userConverter(new QtTypesConverter())
 {
+    scriptObject->getContext()->addScriptUserConverter(userConverter.get());
+
     qtjs_binder::registerQt(define);
     scriptObject->bindCoreService("cpgf", NULL);
     scriptSetValue(scriptObject.get(), "qt", GScriptValue::fromClass(metaClass.get()));
