@@ -20,6 +20,7 @@ struct CallInfo {
     int returnTypeId;
     cpgf::IScriptFunction * callback;
     void invoke(void **);
+    void invokeOnObject(void **);
     ~CallInfo();
 };
 

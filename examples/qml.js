@@ -28,13 +28,13 @@ MySyntaxHighlighter.highlightBlock = function(text) {
     (function() {
         var b = new qt.DynamicMetaObjectBuilder()
         b.setClassName("KeyGenerator")
-        b.setInit(function($this) {
-            $this.setProperty("type",
+        b.setInit(function() {
+            this.setProperty("type",
                 new qt.QVariant(new qt.QString("rsa")))
             var aa = new qt.QStringList()
             aa._opLeftShift(new qt.QString("rsa"))
             aa._opLeftShift(new qt.QString("dsa"))
-            $this.setProperty("types", new qt.QVariant(aa))
+            this.setProperty("types", new qt.QVariant(aa))
         })
         var aa = new qt.QStringList()
         aa._opLeftShift(new qt.QString("success"))
@@ -45,14 +45,14 @@ MySyntaxHighlighter.highlightBlock = function(text) {
         b.addProperty("passphrase", "QString")
         b.addProperty("filename", "QString")
 
-        b.addSlot('generateKey()', function($this) {
+        b.addSlot('generateKey()', function() {
             var log = new qt.QMessageLogger()
 
             log.debug()._opLeftShift(
                 new qt.QString("invoking generate! "))._opLeftShift(
-                $this.property("passphrase").toString())
+                this.property("passphrase").toString())
 
-            qt.emitSignal($this, "keyGenerated(bool)",
+            qt.emitSignal(this, "keyGenerated(bool)",
                 new qt.QVariant(true))
         })
 
@@ -64,19 +64,19 @@ MySyntaxHighlighter.highlightBlock = function(text) {
     (function() {
         var b = new qt.DynamicMetaObjectBuilder()
         b.setClassName("IntIncrementer")
-        b.setInit(function($this) {
-            $this.setProperty("value", new qt.QVariant(0))
+        b.setInit(function() {
+            this.setProperty("value", new qt.QVariant(0))
         })
         var aa = new qt.QStringList()
         aa._opLeftShift(new qt.QString("newValue"))
         b.addSignal("incremented(int)", aa)
         b.addProperty("value", "int")
-        b.addSlot('increment()', function($this) {
-            $this.setProperty('value',
-                new qt.QVariant($this.property(
+        b.addSlot('increment()', function() {
+            this.setProperty('value',
+                new qt.QVariant(this.property(
                     "value").toInt() + 1))
-            qt.emitSignal($this, "incremented(int)",
-                new qt.QVariant($this.property(
+            qt.emitSignal(this, "incremented(int)",
+                new qt.QVariant(this.property(
                     "value").toInt()))
         })
 
@@ -138,9 +138,9 @@ MySyntaxHighlighter.highlightBlock = function(text) {
         var b = new qt.DynamicMetaObjectBuilder()
         b.setClassName("Wavangle")
         b.setParentClass(WaveAngleClass)
-        b.setInit(function($this) {
-            $this.setFlag(qt.QQuickItem.Flag.ItemHasContents)
-            var label = new qt.QQuickText($this);
+        b.setInit(function() {
+            this.setFlag(qt.QQuickItem.Flag.ItemHasContents)
+            var label = new qt.QQuickText(this);
             label.setText(new qt.QString("a text label"));
         })
         qt.finalizeAndRegisterMetaObjectBuilderToQml(b, "com.ics.demo", 1, 0, "Waveangle")

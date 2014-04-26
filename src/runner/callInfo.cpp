@@ -300,6 +300,25 @@ void CallInfo::invoke(void **data)
     cpgf::metaCheckError(callback);
 }
 
+void CallInfo::invokeOnObject(void **data)
+{
+    int maxCnt = parameterTypeIds.size();
+    cpgf::GVariantData params[REF_MAX_ARITY];
+    cpgf::GScriptValueData result;
+    for (int i = 0; i < maxCnt; i++) {
+        convertQtDataToGVariantData(parameterTypeIds[i], data[i + 1], &params[i]);
+    }
+    AutoCallback paramDeleter([&]{
+        for (int i = 0; i < maxCnt; i++) {
+            releaseVariantData(&params[i]);
+        }
+    });
+    Q_UNUSED(paramDeleter);
+
+    callback->invokeOnObject(&result, params, maxCnt);
+    cpgf::metaCheckError(callback);
+}
+
 QVector<int> metaMethodParamTypeIds(QMetaMethod m) {
     QVector<int> ret;
     int maxCnt = m.parameterCount();

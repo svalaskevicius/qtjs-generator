@@ -109,7 +109,7 @@ void DynamicQObjects::callInit(size_t classIdx, QObject *obj)
         void **data = new void*[2];
         data[0] = 0;
         data[1] = obj;
-        classesInfo[classIdx].initCallback->invoke(data);
+        classesInfo[classIdx].initCallback->invokeOnObject(data);
         delete [] data;
     }
 }
@@ -132,7 +132,7 @@ void DynamicQObjects::metacall(size_t classIdx, QObject *obj, QMetaObject::Call 
         });
         Q_UNUSED(paramDeleter);
 
-        classesInfo[classIdx].callbacks[_id]->invoke(data);
+        classesInfo[classIdx].callbacks[_id]->invokeOnObject(data);
     } else if (_c == QMetaObject::IndexOfMethod) {
         throw std::runtime_error("IndexOfMethod support is not implemented for DynamicQObject");
     }
