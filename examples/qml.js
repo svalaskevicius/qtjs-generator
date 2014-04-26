@@ -10,9 +10,8 @@ MySyntaxHighlighter.highlightBlock = function(text) {
     var myClassFormat = new qt.QTextCharFormat();
     myClassFormat.setFontWeight(qt.QFont.Bold);
     myClassFormat.setForeground(new qt.QBrush(new qt.QColor(qt.darkMagenta)));
-    var pattern = new qt.QString("\\bMy[A-Za-z]+\\b");
 
-    var expression = new qt.QRegExp(pattern);
+    var expression = new qt.QRegExp("\\bMy[A-Za-z]+\\b");
     var index = expression.indexIn(text);
     while (index >= 0) {
         var length = expression.matchedLength();
@@ -30,14 +29,14 @@ MySyntaxHighlighter.highlightBlock = function(text) {
         b.setClassName("KeyGenerator")
         b.setInit(function() {
             this.setProperty("type",
-                new qt.QVariant(new qt.QString("rsa")))
+                new qt.QVariant("rsa"))
             var aa = new qt.QStringList()
-            aa._opLeftShift(new qt.QString("rsa"))
-            aa._opLeftShift(new qt.QString("dsa"))
+            aa._opLeftShift("rsa")
+            aa._opLeftShift("dsa")
             this.setProperty("types", new qt.QVariant(aa))
         })
         var aa = new qt.QStringList()
-        aa._opLeftShift(new qt.QString("success"))
+        aa._opLeftShift("success")
 
         b.addSignal("keyGenerated(bool)", aa)
         b.addProperty("type", "QString")
@@ -48,9 +47,9 @@ MySyntaxHighlighter.highlightBlock = function(text) {
         b.addSlot('generateKey()', function() {
             var log = new qt.QMessageLogger()
 
-            log.debug()._opLeftShift(
-                new qt.QString("invoking generate! "))._opLeftShift(
-                this.property("passphrase").toString())
+            log.debug()
+              ._opLeftShift("invoking generate! ")
+              ._opLeftShift(this.property("passphrase").toString())
 
             qt.emitSignal(this, "keyGenerated(bool)",
                 new qt.QVariant(true))
@@ -68,7 +67,7 @@ MySyntaxHighlighter.highlightBlock = function(text) {
             this.setProperty("value", new qt.QVariant(0))
         })
         var aa = new qt.QStringList()
-        aa._opLeftShift(new qt.QString("newValue"))
+        aa._opLeftShift("newValue")
         b.addSignal("incremented(int)", aa)
         b.addProperty("value", "int")
         b.addSlot('increment()', function() {
@@ -109,7 +108,7 @@ MySyntaxHighlighter.highlightBlock = function(text) {
                 this.property("height").toInt()
             );
 
-            var textLayout = new qt.QTextLayout(new qt.QString("test text!"));
+            var textLayout = new qt.QTextLayout("test text!");
             textLayout.beginLayout();
             while (1) {
               var line = textLayout.createLine();
@@ -141,14 +140,14 @@ MySyntaxHighlighter.highlightBlock = function(text) {
         b.setInit(function() {
             this.setFlag(qt.QQuickItem.Flag.ItemHasContents)
             var label = new qt.QQuickText(this);
-            label.setText(new qt.QString("a text label"));
+            label.setText("a text label");
         })
         qt.finalizeAndRegisterMetaObjectBuilderToQml(b, "com.ics.demo", 1, 0, "Waveangle")
     })();
 
     try {
         var engine = new qt.QQmlEngine()
-        var component = new qt.QQmlComponent(engine, new qt.QString(path.resolve("qml/main.qml")))
+        var component = new qt.QQmlComponent(engine, path.resolve("qml/main.qml"))
         if (!component.isReady()) {
             throw component.errorString()
         }

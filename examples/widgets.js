@@ -5,8 +5,7 @@ var globalData = [];
 function error(text)
 {
     var log = new qt.QMessageLogger();
-    log.critical()._opLeftShift(new qt.QString(text));
-    //log.critical()._opLeftShift(text);
+    log.critical()._opLeftShift(text);
 }
 
 var App = (function(App) {
@@ -61,13 +60,13 @@ function createMainWindow() {
     var centralView = new qt.QWidget();
     var layout = new qt.QVBoxLayout();
 
-    layout.addWidget(new qt.QLabel(new qt.QString("Label")));
+    layout.addWidget(new qt.QLabel("Label"));
     layout.addWidget((function() {
         var tabbed = new qt.QTabWidget();
 
-        tabbed.addTab(new qt.QLabel(new qt.QString("Label 1")), new qt.QString("Page 1"));
-        tabbed.addTab(new qt.QLabel(new qt.QString("Label 2")), new qt.QString("Page 2"));
-        tabbed.addTab(createGraphicsView(), new qt.QString("GraphicsView"));
+        tabbed.addTab(new qt.QLabel("Label 1"), "Page 1");
+        tabbed.addTab(new qt.QLabel("Label 2"), "Page 2");
+        tabbed.addTab(createGraphicsView(), "GraphicsView");
 
         return tabbed;
     })());
