@@ -6,7 +6,7 @@ var path = require('path')
 cpgf.import("cpgf", "builtin.core");
 
 var MySyntaxHighlighter = cpgf.cloneClass(qt.QSyntaxHighlighterWrapper);
-MySyntaxHighlighter.highlightBlock = function($this, text) {
+MySyntaxHighlighter.highlightBlock = function(text) {
     var myClassFormat = new qt.QTextCharFormat();
     myClassFormat.setFontWeight(qt.QFont.Bold);
     myClassFormat.setForeground(new qt.QBrush(new qt.QColor(qt.darkMagenta)));
@@ -16,7 +16,7 @@ MySyntaxHighlighter.highlightBlock = function($this, text) {
     var index = expression.indexIn(text);
     while (index >= 0) {
         var length = expression.matchedLength();
-        $this.setFormat(index, length, myClassFormat);
+        this.setFormat(index, length, myClassFormat);
         index = expression.indexIn(text, index + length);
     }
 };
@@ -86,7 +86,7 @@ MySyntaxHighlighter.highlightBlock = function($this, text) {
     (function() {
 
         var WaveAngleClass = cpgf.cloneClass(qt.QQuickItemWrapper);
-        WaveAngleClass.updatePaintNode = function($this, node, data) {
+        WaveAngleClass.updatePaintNode = function(node, data) {
             if (!node) {
                 node = new qt.QSGGeometryNode();
                 var geometry = new qt.QSGGeometry(qt.QSGGeometry.defaultAttributes_Point2D(), 2);
@@ -101,12 +101,12 @@ MySyntaxHighlighter.highlightBlock = function($this, text) {
                 cpgf.setAllowGC(material, false);
                 node.setFlag(qt.QSGNode.OwnsMaterial);
             }
-            var rect = $this.boundingRect();
+            var rect = this.boundingRect();
             var vertices = geometry.vertexDataAsPoint2D();
             qt.arrayValueForOffset_Point2D(vertices, 0).set(0, 0);
             qt.arrayValueForOffset_Point2D(vertices, 1).set(
-                $this.property("width").toInt(),
-                $this.property("height").toInt()
+                this.property("width").toInt(),
+                this.property("height").toInt()
             );
 
             var textLayout = new qt.QTextLayout(new qt.QString("test text!"));
@@ -120,7 +120,7 @@ MySyntaxHighlighter.highlightBlock = function($this, text) {
             textLayout.endLayout();
             var glyphList = textLayout.glyphRuns();
             if (!glyphList.empty()) {
-              var privateApi = qt.QQuickItemPrivate.get($this);
+              var privateApi = qt.QQuickItemPrivate.get(this);
               var glyphNode = privateApi.sceneGraphContext().createGlyphNode(privateApi.sceneGraphRenderContext());
               // var glyphNode = privateApi.sceneGraphContext().createNativeGlyphNode(privateApi.sceneGraphRenderContext());
 

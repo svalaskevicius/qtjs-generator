@@ -72,7 +72,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("waitForReadyRead"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, msecs).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, msecs).getValue());
         }
         return QIODevice::waitForReadyRead(msecs);
     }
@@ -86,7 +86,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("close"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QBuffer::close();
@@ -101,7 +101,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QBuffer::connectNotify(__arg0);
@@ -116,7 +116,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("canReadLine"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QBuffer::canReadLine();
     }
@@ -130,7 +130,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::childEvent(__arg0);
@@ -145,7 +145,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
         if(func)
         {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
         return QBuffer::qt_metacast(__arg0);
     }
@@ -159,7 +159,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("readData"));
         if(func)
         {
-            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunction(func.get(), this, data, maxlen).getValue());
+            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunctionOnObject(func.get(), this, data, maxlen).getValue());
         }
         return QBuffer::readData(data, maxlen);
     }
@@ -173,7 +173,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("waitForBytesWritten"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, msecs).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, msecs).getValue());
         }
         return QIODevice::waitForBytesWritten(msecs);
     }
@@ -187,7 +187,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("seek"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, off).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, off).getValue());
         }
         return QBuffer::seek(off);
     }
@@ -201,7 +201,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
         return QObject::event(__arg0);
     }
@@ -215,7 +215,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::timerEvent(__arg0);
@@ -230,7 +230,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("size"));
         if(func)
         {
-            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QBuffer::size();
     }
@@ -249,7 +249,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("readLineData"));
         if(func)
         {
-            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunction(func.get(), this, data, maxlen).getValue());
+            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunctionOnObject(func.get(), this, data, maxlen).getValue());
         }
         return QIODevice::readLineData(data, maxlen);
     }
@@ -278,7 +278,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSequential"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QIODevice::isSequential();
     }
@@ -292,7 +292,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("open"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, openMode).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, openMode).getValue());
         }
         return QBuffer::open(openMode);
     }
@@ -306,7 +306,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
         }
         return QObject::eventFilter(__arg0, __arg1);
     }
@@ -320,7 +320,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
         if(func)
         {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QBuffer::metaObject();
     }
@@ -334,7 +334,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("atEnd"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QBuffer::atEnd();
     }
@@ -348,7 +348,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("bytesAvailable"));
         if(func)
         {
-            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QIODevice::bytesAvailable();
     }
@@ -362,7 +362,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::customEvent(__arg0);
@@ -377,7 +377,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1, __arg2).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
         return QBuffer::qt_metacall(__arg0, __arg1, __arg2);
     }
@@ -391,7 +391,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("bytesToWrite"));
         if(func)
         {
-            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QIODevice::bytesToWrite();
     }
@@ -410,7 +410,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QBuffer::disconnectNotify(__arg0);
@@ -425,7 +425,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("reset"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QIODevice::reset();
     }
@@ -439,7 +439,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("pos"));
         if(func)
         {
-            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QBuffer::pos();
     }
@@ -458,7 +458,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("writeData"));
         if(func)
         {
-            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunction(func.get(), this, data, len).getValue());
+            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunctionOnObject(func.get(), this, data, len).getValue());
         }
         return QBuffer::writeData(data, len);
     }

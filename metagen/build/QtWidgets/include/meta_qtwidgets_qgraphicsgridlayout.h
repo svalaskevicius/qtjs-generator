@@ -96,7 +96,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidate"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QGraphicsGridLayout::invalidate();
@@ -111,7 +111,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
         if(func)
         {
-            return cpgf::fromVariant<QSizeF >(cpgf::invokeScriptFunction(func.get(), this, which, constraint).getValue());
+            return cpgf::fromVariant<QSizeF >(cpgf::invokeScriptFunctionOnObject(func.get(), this, which, constraint).getValue());
         }
         return QGraphicsGridLayout::sizeHint(which, constraint);
     }
@@ -135,7 +135,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("count"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QGraphicsGridLayout::count();
     }
@@ -149,7 +149,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updateGeometry"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QGraphicsLayout::updateGeometry();
@@ -164,7 +164,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widgetEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, e);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, e);
             return;
         }
         QGraphicsLayout::widgetEvent(e);
@@ -179,7 +179,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemAt"));
         if(func)
         {
-            return cpgf::fromVariant<QGraphicsLayoutItem * >(cpgf::invokeScriptFunction(func.get(), this, index).getValue());
+            return cpgf::fromVariant<QGraphicsLayoutItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, index).getValue());
         }
         return QGraphicsGridLayout::itemAt(index);
     }
@@ -193,7 +193,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("removeAt"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, index);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, index);
             return;
         }
         QGraphicsGridLayout::removeAt(index);
@@ -213,7 +213,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("getContentsMargins"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, left, top, right, bottom);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, left, top, right, bottom);
             return;
         }
         QGraphicsLayout::getContentsMargins(left, top, right, bottom);
@@ -228,7 +228,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setGeometry"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, rect);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
             return;
         }
         QGraphicsGridLayout::setGeometry(rect);

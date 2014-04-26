@@ -56,7 +56,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setTargetRect"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, rect);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
             return;
         }
         QSGDefaultImageNode::setTargetRect(rect);
@@ -71,7 +71,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setMirror"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, mirror);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, mirror);
             return;
         }
         QSGDefaultImageNode::setMirror(mirror);
@@ -86,7 +86,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setFiltering"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, filtering);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, filtering);
             return;
         }
         QSGDefaultImageNode::setFiltering(filtering);
@@ -101,7 +101,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setInnerTargetRect"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, rect);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
             return;
         }
         QSGDefaultImageNode::setInnerTargetRect(rect);
@@ -116,7 +116,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setHorizontalWrapMode"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, wrapMode);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, wrapMode);
             return;
         }
         QSGDefaultImageNode::setHorizontalWrapMode(wrapMode);
@@ -131,7 +131,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGDefaultImageNode::preprocess();
@@ -146,7 +146,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setMipmapFiltering"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, filtering);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, filtering);
             return;
         }
         QSGDefaultImageNode::setMipmapFiltering(filtering);
@@ -161,7 +161,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setTexture"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, t);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, t);
             return;
         }
         QSGDefaultImageNode::setTexture(t);
@@ -176,7 +176,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setAntialiasing"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, antialiasing);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, antialiasing);
             return;
         }
         QSGDefaultImageNode::setAntialiasing(antialiasing);
@@ -191,7 +191,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setInnerSourceRect"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, rect);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
             return;
         }
         QSGDefaultImageNode::setInnerSourceRect(rect);
@@ -206,7 +206,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setVerticalWrapMode"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, wrapMode);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, wrapMode);
             return;
         }
         QSGDefaultImageNode::setVerticalWrapMode(wrapMode);
@@ -221,7 +221,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }
@@ -235,7 +235,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("update"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGDefaultImageNode::update();
@@ -250,7 +250,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setSubSourceRect"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, rect);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
             return;
         }
         QSGDefaultImageNode::setSubSourceRect(rect);
@@ -317,7 +317,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("compare"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, other).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, other).getValue());
         }
         return QSGOpaqueTextureMaterial::compare(other);
     }
@@ -331,7 +331,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<QSGMaterialType * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QSGMaterialType * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGSmoothTextureMaterial::type();
     }
@@ -345,7 +345,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createShader"));
         if(func)
         {
-            return cpgf::fromVariant<QSGMaterialShader * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QSGMaterialShader * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGSmoothTextureMaterial::createShader();
     }

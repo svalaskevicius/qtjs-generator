@@ -50,7 +50,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("requestImage"));
         if(func)
         {
-            return cpgf::fromVariant<QImage >(cpgf::invokeScriptFunction(func.get(), this, id, size, requestedSize).getValue());
+            return cpgf::fromVariant<QImage >(cpgf::invokeScriptFunctionOnObject(func.get(), this, id, size, requestedSize).getValue());
         }
         return QQuickImageProvider::requestImage(id, size, requestedSize);
     }
@@ -64,7 +64,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("imageType"));
         if(func)
         {
-            return cpgf::fromVariant<QQmlImageProviderBase::ImageType >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QQmlImageProviderBase::ImageType >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QQuickImageProvider::imageType();
     }
@@ -78,7 +78,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("requestPixmap"));
         if(func)
         {
-            return cpgf::fromVariant<QPixmap >(cpgf::invokeScriptFunction(func.get(), this, id, size, requestedSize).getValue());
+            return cpgf::fromVariant<QPixmap >(cpgf::invokeScriptFunctionOnObject(func.get(), this, id, size, requestedSize).getValue());
         }
         return QQuickImageProvider::requestPixmap(id, size, requestedSize);
     }
@@ -92,7 +92,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("flags"));
         if(func)
         {
-            return cpgf::fromVariant<QQmlImageProviderBase::Flags >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QQmlImageProviderBase::Flags >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QQuickImageProvider::flags();
     }
@@ -106,7 +106,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("requestTexture"));
         if(func)
         {
-            return cpgf::fromVariant<QQuickTextureFactory * >(cpgf::invokeScriptFunction(func.get(), this, id, size, requestedSize).getValue());
+            return cpgf::fromVariant<QQuickTextureFactory * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, id, size, requestedSize).getValue());
         }
         return QQuickImageProvider::requestTexture(id, size, requestedSize);
     }
@@ -165,7 +165,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
         QObject::connectNotify(signal);
@@ -185,7 +185,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::childEvent(__arg0);
@@ -205,7 +205,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("textureSize"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -224,7 +224,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
         if(func)
         {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
         return QObject::qt_metacast(__arg0);
     }
@@ -238,7 +238,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
         }
         return QObject::eventFilter(__arg0, __arg1);
     }
@@ -252,7 +252,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createTexture"));
         if(func)
         {
-            return cpgf::fromVariant<QSGTexture * >(cpgf::invokeScriptFunction(func.get(), this, window).getValue());
+            return cpgf::fromVariant<QSGTexture * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, window).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -266,7 +266,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
         if(func)
         {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QObject::metaObject();
     }
@@ -280,7 +280,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::customEvent(__arg0);
@@ -295,7 +295,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
         return QObject::event(__arg0);
     }
@@ -309,7 +309,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("textureByteCount"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -323,7 +323,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1, __arg2).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
         return QObject::qt_metacall(__arg0, __arg1, __arg2);
     }
@@ -337,7 +337,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::timerEvent(__arg0);
@@ -352,7 +352,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
         QObject::disconnectNotify(signal);
@@ -367,7 +367,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("image"));
         if(func)
         {
-            return cpgf::fromVariant<QImage >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QImage >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QQuickTextureFactory::image();
     }

@@ -11,19 +11,19 @@ function error(text)
 
 var App = (function(App) {
     App.MovingRectItem = cpgf.cloneClass(qt.QGraphicsRectItemWrapper);
-    App.MovingRectItem.mouseMoveEvent = function($this , event  ) {
-        $this.setRotation(1 + $this.rotation());
+    App.MovingRectItem.mouseMoveEvent = function( event  ) {
+        this.setRotation(1 + this.rotation());
     };
 
     App.MovingRectItem.prototype.getDirection = function() {
         return Math.round(Math.random()*20-10);
     };
 
-    App.MovingRectItem.paint = function($this, painter, option, widget) {
-        var r = $this.rect();
-        r.setRight(r.right() + $this.getDirection());
-        $this.setRect(r);
-        $this.super_paint(painter, option, widget);
+    App.MovingRectItem.paint = function(painter, option, widget) {
+        var r = this.rect();
+        r.setRight(r.right() + this.getDirection());
+        this.setRect(r);
+        this.super_paint(painter, option, widget);
     };
 
     App.createMovingRectItem = function(rect) {

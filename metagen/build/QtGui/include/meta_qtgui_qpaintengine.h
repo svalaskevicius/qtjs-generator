@@ -162,7 +162,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawTextItem"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, p, textItem);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, p, textItem);
             return;
         }
         QPaintEngine::drawTextItem(p, textItem);
@@ -177,7 +177,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawLines"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, lines, lineCount);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, lines, lineCount);
             return;
         }
         QPaintEngine::drawLines(lines, lineCount);
@@ -192,7 +192,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawPoints"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, points, pointCount);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, points, pointCount);
             return;
         }
         QPaintEngine::drawPoints(points, pointCount);
@@ -207,7 +207,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawEllipse"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, r);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, r);
             return;
         }
         QPaintEngine::drawEllipse(r);
@@ -222,7 +222,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawImage"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, r, pm, sr, flags);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, r, pm, sr, flags);
             return;
         }
         QPaintEngine::drawImage(r, pm, sr, flags);
@@ -237,7 +237,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawEllipse"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, r);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, r);
             return;
         }
         QPaintEngine::drawEllipse(r);
@@ -252,7 +252,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawPolygon"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, points, pointCount, mode);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, points, pointCount, mode);
             return;
         }
         QPaintEngine::drawPolygon(points, pointCount, mode);
@@ -267,7 +267,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawRects"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, rects, rectCount);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rects, rectCount);
             return;
         }
         QPaintEngine::drawRects(rects, rectCount);
@@ -282,7 +282,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawPoints"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, points, pointCount);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, points, pointCount);
             return;
         }
         QPaintEngine::drawPoints(points, pointCount);
@@ -297,7 +297,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawRects"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, rects, rectCount);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rects, rectCount);
             return;
         }
         QPaintEngine::drawRects(rects, rectCount);
@@ -312,7 +312,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("coordinateOffset"));
         if(func)
         {
-            return cpgf::fromVariant<QPoint >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QPoint >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QPaintEngine::coordinateOffset();
     }
@@ -326,7 +326,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("begin"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, pdev).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, pdev).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -340,7 +340,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("end"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -354,7 +354,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawPath"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, path);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, path);
             return;
         }
         QPaintEngine::drawPath(path);
@@ -369,7 +369,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updateState"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, state);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, state);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -384,7 +384,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawTiledPixmap"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, r, pixmap, s);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, r, pixmap, s);
             return;
         }
         QPaintEngine::drawTiledPixmap(r, pixmap, s);
@@ -399,7 +399,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawPolygon"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, points, pointCount, mode);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, points, pointCount, mode);
             return;
         }
         QPaintEngine::drawPolygon(points, pointCount, mode);
@@ -414,7 +414,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawPixmap"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, r, pm, sr);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, r, pm, sr);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -429,7 +429,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<QPaintEngine::Type >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QPaintEngine::Type >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -443,7 +443,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawLines"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, lines, lineCount);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, lines, lineCount);
             return;
         }
         QPaintEngine::drawLines(lines, lineCount);

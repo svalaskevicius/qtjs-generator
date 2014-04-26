@@ -75,7 +75,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createRectangleNode"));
         if(func)
         {
-            return cpgf::fromVariant<QSGRectangleNode * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QSGRectangleNode * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGContext::createRectangleNode();
     }
@@ -89,7 +89,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("renderContextInitialized"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, renderContext);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, renderContext);
             return;
         }
         QSGContext::renderContextInitialized(renderContext);
@@ -104,7 +104,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
         QObject::connectNotify(signal);
@@ -124,7 +124,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::childEvent(__arg0);
@@ -149,7 +149,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createGlyphNode"));
         if(func)
         {
-            return cpgf::fromVariant<QSGGlyphNode * >(cpgf::invokeScriptFunction(func.get(), this, rc).getValue());
+            return cpgf::fromVariant<QSGGlyphNode * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, rc).getValue());
         }
         return QSGContext::createGlyphNode(rc);
     }
@@ -163,7 +163,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createAnimationDriver"));
         if(func)
         {
-            return cpgf::fromVariant<QAnimationDriver * >(cpgf::invokeScriptFunction(func.get(), this, parent).getValue());
+            return cpgf::fromVariant<QAnimationDriver * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, parent).getValue());
         }
         return QSGContext::createAnimationDriver(parent);
     }
@@ -177,7 +177,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("renderContextInvalidated"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, renderContext);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, renderContext);
             return;
         }
         QSGContext::renderContextInvalidated(renderContext);
@@ -192,7 +192,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
         if(func)
         {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
         return QSGContext::qt_metacast(__arg0);
     }
@@ -206,7 +206,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
         }
         return QObject::eventFilter(__arg0, __arg1);
     }
@@ -220,7 +220,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
         if(func)
         {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGContext::metaObject();
     }
@@ -234,7 +234,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createImageNode"));
         if(func)
         {
-            return cpgf::fromVariant<QSGImageNode * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QSGImageNode * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGContext::createImageNode();
     }
@@ -248,7 +248,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumFBOSize"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGContext::minimumFBOSize();
     }
@@ -262,7 +262,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::customEvent(__arg0);
@@ -277,7 +277,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createNativeGlyphNode"));
         if(func)
         {
-            return cpgf::fromVariant<QSGGlyphNode * >(cpgf::invokeScriptFunction(func.get(), this, rc).getValue());
+            return cpgf::fromVariant<QSGGlyphNode * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, rc).getValue());
         }
         return QSGContext::createNativeGlyphNode(rc);
     }
@@ -291,7 +291,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
         return QObject::event(__arg0);
     }
@@ -305,7 +305,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1, __arg2).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
         return QSGContext::qt_metacall(__arg0, __arg1, __arg2);
     }
@@ -319,7 +319,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("defaultSurfaceFormat"));
         if(func)
         {
-            return cpgf::fromVariant<QSurfaceFormat >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QSurfaceFormat >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGContext::defaultSurfaceFormat();
     }
@@ -333,7 +333,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::timerEvent(__arg0);
@@ -348,7 +348,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
         QObject::disconnectNotify(signal);

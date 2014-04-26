@@ -50,7 +50,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("resolveShaderPath"));
         if(func)
         {
-            return cpgf::fromVariant<QString >(cpgf::invokeScriptFunction(func.get(), this, path).getValue());
+            return cpgf::fromVariant<QString >(cpgf::invokeScriptFunctionOnObject(func.get(), this, path).getValue());
         }
         return QSGShaderSourceBuilder::resolveShaderPath(path);
     }
