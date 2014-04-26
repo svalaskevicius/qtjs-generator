@@ -76,7 +76,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }

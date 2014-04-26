@@ -19,6 +19,17 @@
 namespace qt_metadata { 
 
 
+template <typename D>
+void buildMetaClass_Global_qquicktextnodeengine_p(D _d)
+{
+    (void)_d;
+    using namespace cpgf;
+    
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_34")
+    ;
+}
+
+
 } // namespace qt_metadata
 
 

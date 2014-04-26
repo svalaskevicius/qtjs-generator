@@ -27,12 +27,12 @@ void buildMetaClass_Global_qqml(D _d)
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qmlExecuteDeferred", (void (*) (QObject *))&qmlExecuteDeferred);
-    _d.CPGF_MD_TEMPLATE _method("qmlContext", (QQmlContext* (*) (const QObject *))&qmlContext);
-    _d.CPGF_MD_TEMPLATE _method("qmlEngine", (QQmlEngine* (*) (const QObject *))&qmlEngine);
-    _d.CPGF_MD_TEMPLATE _method("qmlAttachedPropertiesObjectById", (QObject* (*) (int, const QObject *, bool))&qmlAttachedPropertiesObjectById)
+    _d.CPGF_MD_TEMPLATE _method("qmlContext", (QQmlContext * (*) (const QObject *))&qmlContext);
+    _d.CPGF_MD_TEMPLATE _method("qmlEngine", (QQmlEngine * (*) (const QObject *))&qmlEngine);
+    _d.CPGF_MD_TEMPLATE _method("qmlAttachedPropertiesObjectById", (QObject * (*) (int, const QObject *, bool))&qmlAttachedPropertiesObjectById)
         ._default(copyVariantFromCopyable(true))
     ;
-    _d.CPGF_MD_TEMPLATE _method("qmlAttachedPropertiesObject", (QObject* (*) (int *, const QObject *, const QMetaObject *, bool))&qmlAttachedPropertiesObject);
+    _d.CPGF_MD_TEMPLATE _method("qmlAttachedPropertiesObject", (QObject * (*) (int *, const QObject *, const QMetaObject *, bool))&qmlAttachedPropertiesObject);
     _d.CPGF_MD_TEMPLATE _method("qmlClearTypeRegistrations", (void (*) ())&qmlClearTypeRegistrations);
     _d.CPGF_MD_TEMPLATE _method("qmlRegisterTypeNotAvailable", (int (*) (const char *, int, int, const char *, const QString &))&qmlRegisterTypeNotAvailable, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<4> >());
     _d.CPGF_MD_TEMPLATE _method("qmlProtectModule", (bool (*) (const char *, int))&qmlProtectModule);
@@ -40,13 +40,13 @@ void buildMetaClass_Global_qqml(D _d)
     _d.CPGF_MD_TEMPLATE _method("qmlRegisterSingletonType", (int (*) (const char *, int, int, const char *, QJSValue(*)(QQmlEngine *, QJSEngine *)))&qmlRegisterSingletonType);
     _d.CPGF_MD_TEMPLATE _method("qmlRegisterSingletonType", (int (*) (const QUrl &, const char *, int, int, const char *))&qmlRegisterSingletonType, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("qmlRegisterType", (int (*) (const QUrl &, const char *, int, int, const char *))&qmlRegisterType, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtQml_25")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtQml_45")
         ._element("QML_HAS_ATTACHED_PROPERTIES", QML_HAS_ATTACHED_PROPERTIES)
     ;
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtQml_26")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtQml_46")
         ._element("QmlCurrentSingletonTypeRegistrationVersion", QmlCurrentSingletonTypeRegistrationVersion)
     ;
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_27")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_47")
         ._element("QML_VERSION", QML_VERSION)
         ._element("QML_VERSION_STR", QML_VERSION_STR)
     ;

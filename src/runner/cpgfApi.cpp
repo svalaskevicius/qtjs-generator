@@ -11,9 +11,8 @@
 #include "v8.h"
 
 #include "dynamicMetaObjectBuilder.h"
-#include "dynamicQObjectManager.h"
+#include "dynamicQObjects.h"
 #include "dynamicQObject.h"
-#include "closureGenerator.h"
 #include "signalConnector.h"
 
 #include "register_meta_qtcore.h"
@@ -37,45 +36,6 @@
 namespace qtjs_binder {
 
 namespace {
-
-typedef void (*CreateIntoFuncPtr)(void *);
-
-void create_into(ffi_cif *cif, void *ret, void* args[], void* classIdx)
-{
-    Q_UNUSED(ret) Q_UNUSED(cif)
-    void *target = *(void **)args[0];
-    size_t index = (size_t)classIdx;
-    QQmlPrivate::createInto<DynamicQObject>(target);
-    ((QQmlPrivate::QQmlElement<DynamicQObject> *)target)->__setClassIdx(index);
-}
-
-struct CreateIntoFuncGenerator : ClosureGenerator {
-
-    CreateIntoFuncPtr generate(size_t classIdx) {
-        return (CreateIntoFuncPtr) generateClosure(create_into, (void *)classIdx);
-    }
-
-protected:
-
-    virtual void prepare_cif() override {
-        args[0] = &ffi_type_pointer;
-
-        if (ffi_prep_cif(&cif, FFI_DEFAULT_ABI, 1, &ffi_type_void, args) != FFI_OK) {
-            throw new std::runtime_error("cannot create create_into");
-        }
-    }
-
-
-private:
-    ffi_type *args[1];
-};
-
-
-CreateIntoFuncPtr generateDynamicObjectCreateInto(int classIdx)
-{
-    static CreateIntoFuncGenerator generator;
-    return generator.generate(classIdx);
-}
 
 
 QObject *objectFromVariant(QVariant *v) {
@@ -156,6 +116,12 @@ void invokeQObjectMethod(QObject *obj,
     QMetaObject::metacall(obj, QMetaObject::InvokeMetaMethod, idx, argv);
 }
 
+template <typename T>
+T *arrayValueForOffset(T *array, int offset)
+{
+    return &(array[offset]);
+}
+
 
 }
 
@@ -168,7 +134,7 @@ void registerQt(cpgf::GDefineMetaNamespace &define)
     qt_metadata::registerMain_QtQml(define);
 
     define._class(qtjs_binder::createDynamicObjectsMetaClasses());
-    define._method("dynamicQObjectManager", &qtjs_binder::dynamicQObjectManager);
+    define._method("dynamicQObjectManager", &qtjs_binder::dynamicQObjects);
     define._method("qmlRegisterDynamicType", &qtjs_binder::qmlRegisterDynamicType);
     define._method("finalizeAndRegisterMetaObjectBuilderToQml", &qtjs_binder::finalizeAndRegisterMetaObjectBuilderToQml);
 
@@ -176,6 +142,10 @@ void registerQt(cpgf::GDefineMetaNamespace &define)
     define._method("connect", &qtjs_binder::SignalConnectorBinder::connect);
     define._method("invokeV8Gc", &invokeV8Gc);
     define._method("objectFromVariant", &objectFromVariant);
+
+    define._method("arrayValueForOffset_Point2D", &arrayValueForOffset<QSGGeometry::Point2D>);
+    define._method("arrayValueForOffset_ColoredPoint2D", &arrayValueForOffset<QSGGeometry::ColoredPoint2D>);
+    define._method("arrayValueForOffset_TexturedPoint2D", &arrayValueForOffset<QSGGeometry::TexturedPoint2D>);
 
     define._method("emitSignal", &emitQObjectSignal)
             ._default(copyVariantFromCopyable(0))
@@ -206,52 +176,15 @@ void unregisterQt()
     invokeV8Gc();
     cpgf::clearV8DataPool();
     SignalConnectorBinder::reset();
-    dynamicQObjectManager().dispose();
+    dynamicQObjects().dispose();
 }
 
-#define X_QML_GETTYPENAMES \
-    const char *className = metaObject->className(); \
-    const int nameLen = int(strlen(className)); \
-    QVarLengthArray<char,48> pointerName(nameLen+2); \
-    memcpy(pointerName.data(), className, nameLen); \
-    pointerName[nameLen] = '*'; \
-    pointerName[nameLen+1] = '\0'; \
-    const int listLen = int(strlen("QQmlListProperty<")); \
-    QVarLengthArray<char,64> listName(listLen + nameLen + 2); \
-    memcpy(listName.data(), "QQmlListProperty<", listLen); \
-    memcpy(listName.data()+listLen, className, nameLen); \
-    listName[listLen+nameLen] = '>'; \
-    listName[listLen+nameLen+1] = '\0';
 
 int qmlRegisterDynamicType(int classIdx, const char *uri, int versionMajor, int versionMinor, const char *qmlName)
 {
-    const QMetaObject *metaObject = dynamicQObjectManager().getMetaObject(classIdx);
-
-    X_QML_GETTYPENAMES;
-
-    QQmlPrivate::RegisterType type = {
-        0,
-
-        qRegisterNormalizedMetaType<DynamicQObject *>(pointerName.constData()),
-        qRegisterNormalizedMetaType<QQmlListProperty<DynamicQObject> >(listName.constData()),
-        sizeof(DynamicQObject), generateDynamicObjectCreateInto(classIdx),
-        QString(),
-
-        uri, versionMajor, versionMinor, qmlName, metaObject,
-
-        QQmlPrivate::attachedPropertiesFunc<DynamicQObject>(),
-        QQmlPrivate::attachedPropertiesMetaObject<DynamicQObject>(),
-
-        QQmlPrivate::StaticCastSelector<DynamicQObject, QQmlParserStatus>::cast(),
-        QQmlPrivate::StaticCastSelector<DynamicQObject, QQmlPropertyValueSource>::cast(),
-        QQmlPrivate::StaticCastSelector<DynamicQObject, QQmlPropertyValueInterceptor>::cast(),
-
-        0, 0,
-
-        0,
-        0
-    };
-
+    auto dynamicClass = dynamicClassSpecifications.byClassIdx(classIdx);
+    assert(dynamicClass);
+    QQmlPrivate::RegisterType type = dynamicClass->createQmlRegisterType(classIdx, uri, versionMajor, versionMinor, qmlName);
     return QQmlPrivate::qmlregister(QQmlPrivate::TypeRegistration, &type);
 }
 
@@ -259,7 +192,7 @@ int qmlRegisterDynamicType(int classIdx, const char *uri, int versionMajor, int 
 
 void finalizeAndRegisterMetaObjectBuilderToQml(DynamicMetaObjectBuilder *builder, const char *uri, int versionMajor, int versionMinor, const char *qmlName)
 {
-    size_t id = dynamicQObjectManager().finalizeBuild(*builder);
+    size_t id = dynamicQObjects().addResult(*builder);
     qmlRegisterDynamicType(id, uri, versionMajor, versionMinor, qmlName);
 }
 
@@ -269,31 +202,52 @@ cpgf::GDefineMetaInfo createDynamicObjectsMetaClasses()
 
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<DynamicMetaObjectBuilder> _nd = GDefineMetaClass<DynamicMetaObjectBuilder>::declare("DynamicMetaObjectBuilder");
+        auto _nd = GDefineMetaClass<DynamicMetaObjectBuilder>::declare("DynamicMetaObjectBuilder");
         _nd._method("setClassName", &DynamicMetaObjectBuilder::setClassName);
         _nd._method("setInit", &DynamicMetaObjectBuilder::setInit);
         _nd._method("addSignal", &DynamicMetaObjectBuilder::addSignal);
         _nd._method("addSlot", &DynamicMetaObjectBuilder::addSlot);
         _nd._method("addProperty", &DynamicMetaObjectBuilder::addProperty);
+        _nd._method("setParentClass", &DynamicMetaObjectBuilder::setParentClass);
 
         _d._class(_nd);
     }
     {
-        GDefineMetaClass<DynamicQObjectManager> _nd = GDefineMetaClass<DynamicQObjectManager>::declare("DynamicQObjectManager");
-        _nd._method("finalizeBuild", &DynamicQObjectManager::finalizeBuild);
-        _nd._method("getMetaObject", &DynamicQObjectManager::getMetaObject);
-        _nd._method("construct", &DynamicQObjectManager::construct, cpgf::MakePolicy<cpgf::GMetaRuleTransferOwnership<-1> >())
+        auto _nd = GDefineMetaClass<DynamicQObjects>::declare("DynamicQObjectManager");
+        _nd._method("finalizeBuild", &DynamicQObjects::addResult);
+        _nd._method("getMetaObject", &DynamicQObjects::getMetaObject);
+        _nd._method("construct", &DynamicQObjects::createInstance, cpgf::MakePolicy<cpgf::GMetaRuleTransferOwnership<-1> >())
             ._default(copyVariantFromCopyable(0));
 
         _d._class(_nd);
     }
-    {
-        GDefineMetaClass<DynamicQObject, QObject> _nd = GDefineMetaClass<DynamicQObject, QObject>::declare("DynamicQObject");
-        _d._class(_nd);
+
+    for (const auto & it : dynamicClassSpecifications.specifications) {
+        it.second->declareCpgfClass(_d);
     }
 
     return _d.getMetaInfo();
 }
 
+
+
+CpgfBinder::CpgfBinder(v8::Handle<v8::Context> ctx)
+    : define(GDefineMetaNamespace::declare("qt")),
+      service(createDefaultMetaService()),
+      runner(createV8ScriptRunner(service.get(), ctx)),
+      scriptObject(runner->getScripeObject()),
+      metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())))
+{
+    qtjs_binder::registerQt(define);
+    scriptObject->bindCoreService("cpgf", NULL);
+    scriptSetValue(scriptObject.get(), "qt", GScriptValue::fromClass(metaClass.get()));
+    unsafeCpgfScriptObject = scriptObject.get();
+}
+
+CpgfBinder::~CpgfBinder()
+{
+    unsafeCpgfScriptObject = nullptr;
+    unregisterQt();
+}
 }
 

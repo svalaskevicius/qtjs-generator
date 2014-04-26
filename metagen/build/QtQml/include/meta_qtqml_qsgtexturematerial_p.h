@@ -19,6 +19,19 @@
 namespace qt_metadata { 
 
 
+template <typename D>
+void buildMetaClass_QSGOpaqueTextureMaterialShader(D _d)
+{
+    (void)_d;
+    using namespace cpgf;
+    
+    _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
+    _d.CPGF_MD_TEMPLATE _field("type", &D::ClassType::type);
+    _d.CPGF_MD_TEMPLATE _method("updateState", &D::ClassType::updateState);
+    _d.CPGF_MD_TEMPLATE _method("attributeNames", &D::ClassType::attributeNames);
+}
+
+
 } // namespace qt_metadata
 
 

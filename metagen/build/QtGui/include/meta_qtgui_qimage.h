@@ -25,8 +25,8 @@ void buildMetaClass_Global_qimage(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QImage &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
-    _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, QImage &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleParamNoncopyable<1> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, const QImage &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, QImage &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleParamNoncopyable<1> >());
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QImage &)>(mopHolder << mopHolder);
 }
 

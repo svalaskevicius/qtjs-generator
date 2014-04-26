@@ -19,6 +19,21 @@
 namespace qt_metadata { 
 
 
+template <typename D>
+void buildMetaClass_QJSValuePrivate(D _d)
+{
+    (void)_d;
+    using namespace cpgf;
+    
+    _d.CPGF_MD_TEMPLATE _constructor<void * (QV4::ExecutionEngine *, const QV4::ValueRef)>();
+    _d.CPGF_MD_TEMPLATE _constructor<void * (QV4::ReturnedValue)>();
+    _d.CPGF_MD_TEMPLATE _constructor<void * (const QString &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _field("string", &D::ClassType::string);
+    _d.CPGF_MD_TEMPLATE _method("getValue", &D::ClassType::getValue);
+    _d.CPGF_MD_TEMPLATE _method("get", &D::ClassType::get, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+}
+
+
 } // namespace qt_metadata
 
 

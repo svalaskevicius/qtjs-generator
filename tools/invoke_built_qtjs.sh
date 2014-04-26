@@ -13,6 +13,9 @@ while test "$#" -gt 0 ; do
         '--gdb')
             PRECMD="gdb --args"
             ;;
+        '--lldb')
+            PRECMD="lldb-3.4"
+            ;;
         '--memcheck')
             PRECMD="valgrind --tool=memcheck --track-origins=yes --leak-check=full --show-reachable=yes --suppressions=$MYDIR/.valgrind.suppress --gen-suppressions=all --log-file=$TOPDIR/build/memcheck.log"
             ;;

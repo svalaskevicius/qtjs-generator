@@ -11,7 +11,7 @@ SOURCES += \
     $$PWD/callInfo.cpp \
     $$PWD/signalConnector.cpp \
     $$PWD/dynamicMetaObjectBuilder.cpp \
-    $$PWD/dynamicQObjectManager.cpp
+    $$PWD/dynamicQObjects.cpp
 
 LIBPATH += $$BUILD/src/core $$BUILD/src/widgets $$BUILD/src/qml $$BUILD/src/gui $${ROOT}/lib/node/out/Release/
 LIBS += -lqtjs_widgets -lqtjs_qml -lqtjs_gui -lqtjs_core -lffi -luv -lcares -lhttp_parser -lopenssl -lchrome_zlib
@@ -25,7 +25,7 @@ HEADERS += \
     $$PWD/callInfo.h \
     $$PWD/signalConnector.h \
     $$PWD/dynamicMetaObjectBuilder.h \
-    $$PWD/dynamicQObjectManager.h \
+    $$PWD/dynamicQObjects.h \
     $$PWD/closureGenerator.h
 
 QMAKE_LFLAGS += -rdynamic

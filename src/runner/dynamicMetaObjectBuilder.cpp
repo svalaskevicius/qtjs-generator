@@ -3,10 +3,9 @@
 #include <private/qmetaobjectbuilder_p.h>
 
 #include "dynamicMetaObjectBuilder.h"
-#include "dynamicQObjectManager.h"
+#include "dynamicQObjects.h"
+#include "dynamicQObject.h"
 #include "closureGenerator.h"
-
-#include <QDebug>
 
 namespace qtjs_binder {
 
@@ -17,7 +16,7 @@ typedef void (*StaticMetaCallFuncPtr)(QObject *, QMetaObject::Call, int, void **
 void static_metacall(ffi_cif *cif, void *ret, void* args[], void* classIdx)
 {
     Q_UNUSED(ret) Q_UNUSED(cif)
-    dynamicQObjectManager().metacall((size_t)classIdx, *(DynamicQObject **)args[0], *(QMetaObject::Call*)args[1], *(int*)args[2], *(void***)args[3]);
+    dynamicQObjects().metacall((size_t)classIdx, *(QObject **)args[0], *(QMetaObject::Call*)args[1], *(int*)args[2], *(void***)args[3]);
 }
 
 
@@ -67,6 +66,7 @@ struct DynamicMetaObjectBuilderPrivate
 DynamicMetaObjectBuilder::DynamicMetaObjectBuilder()
 {
     _p = new DynamicMetaObjectBuilderPrivate();
+    parentClass = nullptr;
 }
 
 DynamicMetaObjectBuilder::~DynamicMetaObjectBuilder()
@@ -109,11 +109,13 @@ void DynamicMetaObjectBuilder::addProperty(const char * name, const char * type)
     _p->builder.addProperty(name, type, idx);
 }
 
-QMetaObject *DynamicMetaObjectBuilder::toMetaObject(int classId)
+QMetaObject *DynamicMetaObjectBuilder::build(int classId)
 {
     _p->builder.setStaticMetacallFunction(
         generateDynamicObjectStaticMetaCall(classId)
     );
+    dynamicClassSpecifications.registerClassInstance(classId, parentClass);
+    _p->builder.setSuperClass(dynamicClassSpecifications.byClassIdx(classId)->getParentMetaObject());
     return _p->builder.toMetaObject();
 }
 
@@ -133,6 +135,10 @@ QByteArray DynamicMetaObjectBuilder::methodSignature(int id)
     return QMetaObject::normalizedSignature(_p->builder.method(id).signature() );
 }
 
+void DynamicMetaObjectBuilder::setParentClass(cpgf::IMetaClass *metaClass)
+{
+    parentClass = metaClass;
+}
 
 }
 

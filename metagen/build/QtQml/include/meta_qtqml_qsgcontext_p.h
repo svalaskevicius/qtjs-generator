@@ -12,12 +12,404 @@
 #include "cpgf/metadata/gmetadataconfig.h"
 #include "cpgf/metadata/private/gmetadata_header.h"
 #include "cpgf/gmetapolicy.h"
+#include "cpgf/scriptbind/gscriptbindutil.h"
+#include "cpgf/scriptbind/gscriptwrapper.h"
+#include "cpgf/gscopedinterface.h"
 
 
 using namespace QSGAtlasTexture;
 
 
 namespace qt_metadata { 
+
+
+template <typename D>
+void buildMetaClass_QSGContext(D _d)
+{
+    (void)_d;
+    using namespace cpgf;
+    
+    _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _field("staticMetaObject", &D::ClassType::staticMetaObject);
+    _d.CPGF_MD_TEMPLATE _method("metaObject", &D::ClassType::metaObject);
+    _d.CPGF_MD_TEMPLATE _method("qt_metacast", &D::ClassType::qt_metacast);
+    _d.CPGF_MD_TEMPLATE _method("qt_metacall", &D::ClassType::qt_metacall);
+    _d.CPGF_MD_TEMPLATE _method("renderContextInitialized", &D::ClassType::renderContextInitialized);
+    _d.CPGF_MD_TEMPLATE _method("renderContextInvalidated", &D::ClassType::renderContextInvalidated);
+    _d.CPGF_MD_TEMPLATE _method("createRectangleNode", &D::ClassType::createRectangleNode);
+    _d.CPGF_MD_TEMPLATE _method("createImageNode", &D::ClassType::createImageNode);
+    _d.CPGF_MD_TEMPLATE _method("createGlyphNode", &D::ClassType::createGlyphNode);
+    _d.CPGF_MD_TEMPLATE _method("createNativeGlyphNode", &D::ClassType::createNativeGlyphNode);
+    _d.CPGF_MD_TEMPLATE _method("createAnimationDriver", &D::ClassType::createAnimationDriver);
+    _d.CPGF_MD_TEMPLATE _method("minimumFBOSize", &D::ClassType::minimumFBOSize);
+    _d.CPGF_MD_TEMPLATE _method("defaultSurfaceFormat", &D::ClassType::defaultSurfaceFormat);
+    _d.CPGF_MD_TEMPLATE _method("setDistanceFieldEnabled", &D::ClassType::setDistanceFieldEnabled);
+    _d.CPGF_MD_TEMPLATE _method("isDistanceFieldEnabled", &D::ClassType::isDistanceFieldEnabled);
+    _d.CPGF_MD_TEMPLATE _method("tr", &D::ClassType::tr)
+        ._default(copyVariantFromCopyable(-1))
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("setSharedOpenGLContext", &D::ClassType::setSharedOpenGLContext);
+    _d.CPGF_MD_TEMPLATE _method("sharedOpenGLContext", &D::ClassType::sharedOpenGLContext);
+    _d.CPGF_MD_TEMPLATE _method("createDefaultContext", &D::ClassType::createDefaultContext);
+    _d.CPGF_MD_TEMPLATE _method("createTextureFactoryFromImage", &D::ClassType::createTextureFactoryFromImage);
+    _d.CPGF_MD_TEMPLATE _method("createWindowManager", &D::ClassType::createWindowManager);
+    _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::AntialiasingMethod>("AntialiasingMethod")
+        ._element("UndecidedAntialiasing", D::ClassType::UndecidedAntialiasing)
+        ._element("VertexAntialiasing", D::ClassType::VertexAntialiasing)
+        ._element("MsaaAntialiasing", D::ClassType::MsaaAntialiasing)
+    ;
+}
+
+
+class QSGContextWrapper : public QSGContext, public cpgf::GScriptWrapper {
+public:
+    
+    QSGContextWrapper(QObject * parent = 0)
+        : QSGContext(parent) {}
+    
+    QSGRectangleNode * createRectangleNode()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createRectangleNode"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSGRectangleNode * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+        }
+        return QSGContext::createRectangleNode();
+    }
+    QSGRectangleNode * super_createRectangleNode()
+    {
+        return QSGContext::createRectangleNode();
+    }
+    
+    void renderContextInitialized(QSGRenderContext * renderContext)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("renderContextInitialized"));
+        if(func)
+        {
+            cpgf::invokeScriptFunction(func.get(), this, renderContext);
+            return;
+        }
+        QSGContext::renderContextInitialized(renderContext);
+    }
+    void super_renderContextInitialized(QSGRenderContext * renderContext)
+    {
+        QSGContext::renderContextInitialized(renderContext);
+    }
+    
+    void connectNotify(const QMetaMethod & signal)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
+        if(func)
+        {
+            cpgf::invokeScriptFunction(func.get(), this, signal);
+            return;
+        }
+        QObject::connectNotify(signal);
+    }
+    void super_connectNotify(const QMetaMethod & signal)
+    {
+        QObject::connectNotify(signal);
+    }
+    
+    bool isSignalConnected(const QMetaMethod & signal) const
+    {
+        return QObject::isSignalConnected(signal);
+    }
+    
+    void childEvent(QChildEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            return;
+        }
+        QObject::childEvent(__arg0);
+    }
+    void super_childEvent(QChildEvent * __arg0)
+    {
+        QObject::childEvent(__arg0);
+    }
+    
+    int receivers(const char * signal) const
+    {
+        return QObject::receivers(signal);
+    }
+    
+    int senderSignalIndex() const
+    {
+        return QObject::senderSignalIndex();
+    }
+    
+    QSGGlyphNode * createGlyphNode(QSGRenderContext * rc)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createGlyphNode"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSGGlyphNode * >(cpgf::invokeScriptFunction(func.get(), this, rc).getValue());
+        }
+        return QSGContext::createGlyphNode(rc);
+    }
+    QSGGlyphNode * super_createGlyphNode(QSGRenderContext * rc)
+    {
+        return QSGContext::createGlyphNode(rc);
+    }
+    
+    QAnimationDriver * createAnimationDriver(QObject * parent)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createAnimationDriver"));
+        if(func)
+        {
+            return cpgf::fromVariant<QAnimationDriver * >(cpgf::invokeScriptFunction(func.get(), this, parent).getValue());
+        }
+        return QSGContext::createAnimationDriver(parent);
+    }
+    QAnimationDriver * super_createAnimationDriver(QObject * parent)
+    {
+        return QSGContext::createAnimationDriver(parent);
+    }
+    
+    void renderContextInvalidated(QSGRenderContext * renderContext)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("renderContextInvalidated"));
+        if(func)
+        {
+            cpgf::invokeScriptFunction(func.get(), this, renderContext);
+            return;
+        }
+        QSGContext::renderContextInvalidated(renderContext);
+    }
+    void super_renderContextInvalidated(QSGRenderContext * renderContext)
+    {
+        QSGContext::renderContextInvalidated(renderContext);
+    }
+    
+    void * qt_metacast(const char * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
+        if(func)
+        {
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+        }
+        return QSGContext::qt_metacast(__arg0);
+    }
+    void * super_qt_metacast(const char * __arg0)
+    {
+        return QSGContext::qt_metacast(__arg0);
+    }
+    
+    bool eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1).getValue());
+        }
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    
+    const QMetaObject * metaObject() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
+        if(func)
+        {
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+        }
+        return QSGContext::metaObject();
+    }
+    const QMetaObject * super_metaObject() const
+    {
+        return QSGContext::metaObject();
+    }
+    
+    QSGImageNode * createImageNode()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createImageNode"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSGImageNode * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+        }
+        return QSGContext::createImageNode();
+    }
+    QSGImageNode * super_createImageNode()
+    {
+        return QSGContext::createImageNode();
+    }
+    
+    QSize minimumFBOSize() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumFBOSize"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+        }
+        return QSGContext::minimumFBOSize();
+    }
+    QSize super_minimumFBOSize() const
+    {
+        return QSGContext::minimumFBOSize();
+    }
+    
+    void customEvent(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            return;
+        }
+        QObject::customEvent(__arg0);
+    }
+    void super_customEvent(QEvent * __arg0)
+    {
+        QObject::customEvent(__arg0);
+    }
+    
+    QSGGlyphNode * createNativeGlyphNode(QSGRenderContext * rc)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createNativeGlyphNode"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSGGlyphNode * >(cpgf::invokeScriptFunction(func.get(), this, rc).getValue());
+        }
+        return QSGContext::createNativeGlyphNode(rc);
+    }
+    QSGGlyphNode * super_createNativeGlyphNode(QSGRenderContext * rc)
+    {
+        return QSGContext::createNativeGlyphNode(rc);
+    }
+    
+    bool event(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+        }
+        return QObject::event(__arg0);
+    }
+    bool super_event(QEvent * __arg0)
+    {
+        return QObject::event(__arg0);
+    }
+    
+    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1, __arg2).getValue());
+        }
+        return QSGContext::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    {
+        return QSGContext::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    
+    QSurfaceFormat defaultSurfaceFormat() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("defaultSurfaceFormat"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSurfaceFormat >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+        }
+        return QSGContext::defaultSurfaceFormat();
+    }
+    QSurfaceFormat super_defaultSurfaceFormat() const
+    {
+        return QSGContext::defaultSurfaceFormat();
+    }
+    
+    void timerEvent(QTimerEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            return;
+        }
+        QObject::timerEvent(__arg0);
+    }
+    void super_timerEvent(QTimerEvent * __arg0)
+    {
+        QObject::timerEvent(__arg0);
+    }
+    
+    void disconnectNotify(const QMetaMethod & signal)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        if(func)
+        {
+            cpgf::invokeScriptFunction(func.get(), this, signal);
+            return;
+        }
+        QObject::disconnectNotify(signal);
+    }
+    void super_disconnectNotify(const QMetaMethod & signal)
+    {
+        QObject::disconnectNotify(signal);
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
+    }
+    template <typename D>
+    static void cpgf__register(D _d)
+    {
+        (void)_d;
+        using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("super_createRectangleNode", (QSGRectangleNode * (D::ClassType::*) ())&D::ClassType::super_createRectangleNode);
+        _d.CPGF_MD_TEMPLATE _method("super_renderContextInitialized", (void (D::ClassType::*) (QSGRenderContext *))&D::ClassType::super_renderContextInitialized);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_createGlyphNode", (QSGGlyphNode * (D::ClassType::*) (QSGRenderContext *))&D::ClassType::super_createGlyphNode);
+        _d.CPGF_MD_TEMPLATE _method("super_createAnimationDriver", (QAnimationDriver * (D::ClassType::*) (QObject *))&D::ClassType::super_createAnimationDriver);
+        _d.CPGF_MD_TEMPLATE _method("super_renderContextInvalidated", (void (D::ClassType::*) (QSGRenderContext *))&D::ClassType::super_renderContextInvalidated);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_createImageNode", (QSGImageNode * (D::ClassType::*) ())&D::ClassType::super_createImageNode);
+        _d.CPGF_MD_TEMPLATE _method("super_minimumFBOSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_minimumFBOSize);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_createNativeGlyphNode", (QSGGlyphNode * (D::ClassType::*) (QSGRenderContext *))&D::ClassType::super_createNativeGlyphNode);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_defaultSurfaceFormat", (QSurfaceFormat (D::ClassType::*) () const)&D::ClassType::super_defaultSurfaceFormat);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+    }
+};
+
+
+template <typename D>
+void buildMetaClass_QSGContextWrapper(D _d)
+{
+    (void)_d;
+    using namespace cpgf;
+    
+    
+    QSGContextWrapper::cpgf__register(_d);
+    
+    buildMetaClass_QSGContext<D>(_d);
+}
 
 
 } // namespace qt_metadata

@@ -694,7 +694,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("subElementRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this, subElement, option, widget));
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this, subElement, option, widget).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -768,7 +768,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("generatedIconPixmap"));
         if(func)
         {
-            return cpgf::fromVariant<QPixmap >(cpgf::invokeScriptFunction(func.get(), this, iconMode, pixmap, opt));
+            return cpgf::fromVariant<QPixmap >(cpgf::invokeScriptFunction(func.get(), this, iconMode, pixmap, opt).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -782,7 +782,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
         if(func)
         {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0));
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
         }
         return QStyle::qt_metacast(__arg0);
     }
@@ -841,7 +841,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
         }
         return QObject::event(__arg0);
     }
@@ -870,7 +870,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("standardIcon"));
         if(func)
         {
-            return cpgf::fromVariant<QIcon >(cpgf::invokeScriptFunction(func.get(), this, standardIcon, option, widget));
+            return cpgf::fromVariant<QIcon >(cpgf::invokeScriptFunction(func.get(), this, standardIcon, option, widget).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -884,7 +884,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hitTestComplexControl"));
         if(func)
         {
-            return cpgf::fromVariant<QStyle::SubControl >(cpgf::invokeScriptFunction(func.get(), this, cc, opt, pt, widget));
+            return cpgf::fromVariant<QStyle::SubControl >(cpgf::invokeScriptFunction(func.get(), this, cc, opt, pt, widget).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -948,7 +948,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("pixelMetric"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, metric, option, widget));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, metric, option, widget).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -967,7 +967,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("styleHint"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, stylehint, opt, widget, returnData));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, stylehint, opt, widget, returnData).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -1006,7 +1006,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemPixmapRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this, r, flags, pixmap));
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this, r, flags, pixmap).getValue());
         }
         return QStyle::itemPixmapRect(r, flags, pixmap);
     }
@@ -1035,7 +1035,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layoutSpacing"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, control1, control2, orientation, option, widget));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, control1, control2, orientation, option, widget).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -1049,7 +1049,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1).getValue());
         }
         return QObject::eventFilter(__arg0, __arg1);
     }
@@ -1063,7 +1063,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
         if(func)
         {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QStyle::metaObject();
     }
@@ -1077,7 +1077,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("standardPixmap"));
         if(func)
         {
-            return cpgf::fromVariant<QPixmap >(cpgf::invokeScriptFunction(func.get(), this, standardPixmap, opt, widget));
+            return cpgf::fromVariant<QPixmap >(cpgf::invokeScriptFunction(func.get(), this, standardPixmap, opt, widget).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -1091,7 +1091,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemTextRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this, fm, r, flags, enabled, text));
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this, fm, r, flags, enabled, text).getValue());
         }
         return QStyle::itemTextRect(fm, r, flags, enabled, text);
     }
@@ -1120,7 +1120,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1, __arg2));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
         return QStyle::qt_metacall(__arg0, __arg1, __arg2);
     }
@@ -1149,7 +1149,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeFromContents"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this, ct, opt, contentsSize, w));
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this, ct, opt, contentsSize, w).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -1163,7 +1163,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("subControlRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this, cc, opt, sc, widget));
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this, cc, opt, sc, widget).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -1177,7 +1177,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("standardPalette"));
         if(func)
         {
-            return cpgf::fromVariant<QPalette >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPalette >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QStyle::standardPalette();
     }

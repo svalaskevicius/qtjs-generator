@@ -25,11 +25,11 @@ void buildMetaClass_Global_qbytearray(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _method("qstrdup", (QT_BEGIN_NAMESPACE char* (*) (const char *))&qstrdup);
+    _d.CPGF_MD_TEMPLATE _method("qstrdup", (QT_BEGIN_NAMESPACE char * (*) (const char *))&qstrdup);
     _d.CPGF_MD_TEMPLATE _method("qstrlen", (uint (*) (const char *))&qstrlen);
     _d.CPGF_MD_TEMPLATE _method("qstrnlen", (uint (*) (const char *, uint))&qstrnlen);
-    _d.CPGF_MD_TEMPLATE _method("qstrcpy", (char* (*) (char *, const char *))&qstrcpy);
-    _d.CPGF_MD_TEMPLATE _method("qstrncpy", (char* (*) (char *, const char *, uint))&qstrncpy);
+    _d.CPGF_MD_TEMPLATE _method("qstrcpy", (char * (*) (char *, const char *))&qstrcpy);
+    _d.CPGF_MD_TEMPLATE _method("qstrncpy", (char * (*) (char *, const char *, uint))&qstrncpy);
     _d.CPGF_MD_TEMPLATE _method("qstrcmp", (int (*) (const char *, const char *))&qstrcmp);
     _d.CPGF_MD_TEMPLATE _method("qstrcmp", (int (*) (const QByteArray &, const QByteArray &))&qstrcmp, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("qstrcmp", (int (*) (const QByteArray &, const char *))&qstrcmp, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -69,8 +69,8 @@ void buildMetaClass_Global_qbytearray(D _d)
     _d.CPGF_MD_TEMPLATE _operator<const QByteArray (*)(const QByteArray &, char)>(mopHolder + mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _operator<const QByteArray (*)(const char *, const QByteArray &)>(mopHolder + mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _operator<const QByteArray (*)(char, const QByteArray &)>(mopHolder + mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QByteArray &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, QByteArray &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, const QByteArray &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, QByteArray &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
 }
 
 

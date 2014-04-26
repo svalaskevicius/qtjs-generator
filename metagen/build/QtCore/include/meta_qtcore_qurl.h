@@ -39,8 +39,8 @@ void buildMetaClass_Global_qurl(D _d)
     _d.CPGF_MD_TEMPLATE _operator<QUrl::FormattingOptions (*)(QUrl::FormattingOptions, QUrl::ComponentFormattingOptions)>(mopHolder | mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<QUrl::FormattingOptions (*)(QUrl::ComponentFormattingOption, QUrl::FormattingOptions)>(mopHolder | mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<QUrl::FormattingOptions (*)(QUrl::ComponentFormattingOptions, QUrl::FormattingOptions)>(mopHolder | mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QUrl &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, QUrl &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, const QUrl &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, QUrl &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QUrl &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
 }
 

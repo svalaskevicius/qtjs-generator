@@ -19,6 +19,15 @@
 namespace qt_metadata { 
 
 
+template <typename D>
+void buildMetaClass_Global_qsgdepthstencilbuffer_p(D _d)
+{
+    (void)_d;
+    using namespace cpgf;
+    
+}
+
+
 } // namespace qt_metadata
 
 

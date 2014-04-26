@@ -66,7 +66,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metric"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, metric));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, metric).getValue());
         }
         return QPaintDevice::metric(metric);
     }
@@ -80,7 +80,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("redirected"));
         if(func)
         {
-            return cpgf::fromVariant<QPaintDevice * >(cpgf::invokeScriptFunction(func.get(), this, offset));
+            return cpgf::fromVariant<QPaintDevice * >(cpgf::invokeScriptFunction(func.get(), this, offset).getValue());
         }
         return QPaintDevice::redirected(offset);
     }
@@ -109,7 +109,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("devType"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QPaintDevice::devType();
     }
@@ -123,7 +123,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("paintEngine"));
         if(func)
         {
-            return cpgf::fromVariant<QPaintEngine * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPaintEngine * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -137,7 +137,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sharedPainter"));
         if(func)
         {
-            return cpgf::fromVariant<QPainter * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QPainter * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QPaintDevice::sharedPainter();
     }

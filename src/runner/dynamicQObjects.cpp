@@ -2,7 +2,7 @@
 #include "callInfo.h"
 #include "autoCallback.h"
 
-#include "dynamicQObjectManager.h"
+#include "dynamicQObjects.h"
 #include "dynamicQObject.h"
 
 #include "autoCallback.h"
@@ -11,19 +11,19 @@
 namespace qtjs_binder {
 
 
-DynamicQObjectManager::DynamicQObjectManager()
+DynamicQObjects::DynamicQObjects()
 {
     nextId = 0;
     allocated = 10;
     metaObjects = (QMetaObject **) malloc(sizeof(QMetaObject *) * allocated);
 }
 
-DynamicQObjectManager::~DynamicQObjectManager()
+DynamicQObjects::~DynamicQObjects()
 {
     dispose();
 }
 
-void DynamicQObjectManager::dispose()
+void DynamicQObjects::dispose()
 {
     if (metaObjects) {
         for (unsigned int i = 0; i < nextId; i++) {
@@ -46,7 +46,7 @@ void DynamicQObjectManager::dispose()
     allocated = 0;
 }
 
-unsigned int DynamicQObjectManager::finalizeBuild(DynamicMetaObjectBuilder &builder)
+unsigned int DynamicQObjects::addResult(DynamicMetaObjectBuilder &builder)
 {
     if (nextId >= allocated) {
         allocated *= 2;
@@ -55,13 +55,16 @@ unsigned int DynamicQObjectManager::finalizeBuild(DynamicMetaObjectBuilder &buil
     unsigned int currentId = nextId;
     nextId++;
 
-    metaObjects[currentId] = builder.toMetaObject(currentId);
+    metaObjects[currentId] = builder.build(currentId);
+
+    auto dynamicClass = dynamicClassSpecifications.byClassIdx(currentId);
+    assert(dynamicClass);
 
     auto initFnc = builder.getInitCallback();
     if (initFnc) {
         classesInfo[currentId].initCallback =
                 new CallInfo({
-                                 {qMetaTypeId<DynamicQObject>()},
+                                 { dynamicClass->typeId() },
                                  -1,
                                  initFnc
                              });
@@ -76,7 +79,7 @@ unsigned int DynamicQObjectManager::finalizeBuild(DynamicMetaObjectBuilder &buil
 
         classesInfo[currentId].callbacks[it.first] =
                 new CallInfo({
-                                 QVector<int>({qMetaTypeId<DynamicQObject>()}) << metaMethodParamTypeIds( metaObjects[currentId]->method(methodID) ),
+                                 QVector<int>({dynamicClass->typeId()}) << metaMethodParamTypeIds( metaObjects[currentId]->method(methodID) ),
                                  -1,
                                  it.second
                              });
@@ -85,22 +88,22 @@ unsigned int DynamicQObjectManager::finalizeBuild(DynamicMetaObjectBuilder &buil
     return currentId;
 }
 
-QMetaObject *DynamicQObjectManager::getMetaObject(unsigned int id)
+QMetaObject *DynamicQObjects::getMetaObject(unsigned int classIdx)
 {
-    if (id >= nextId) {
+    if (classIdx >= nextId) {
         return nullptr;
     }
-    return metaObjects[id];
+    return metaObjects[classIdx];
 }
 
-DynamicQObject *DynamicQObjectManager::construct(unsigned int id, QObject *parent)
+QObject *DynamicQObjects::createInstance(unsigned int classIdx)
 {
-    DynamicQObject *ret = new DynamicQObject(parent);
-    ret->__setClassIdx(id);
-    return ret;
+    auto dynamicClass = dynamicClassSpecifications.byClassIdx(classIdx);
+    assert(dynamicClass);
+    return dynamicClass->instantiate(classIdx);
 }
 
-void DynamicQObjectManager::callInit(size_t classIdx, DynamicQObject *obj)
+void DynamicQObjects::callInit(size_t classIdx, QObject *obj)
 {
     if (classesInfo[classIdx].initCallback) {
         void **data = new void*[2];
@@ -111,7 +114,7 @@ void DynamicQObjectManager::callInit(size_t classIdx, DynamicQObject *obj)
     }
 }
 
-void DynamicQObjectManager::metacall(size_t classIdx, DynamicQObject *obj, QMetaObject::Call _c, int _id, void **_a)
+void DynamicQObjects::metacall(size_t classIdx, QObject *obj, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         assert(classesInfo[classIdx].callbacks.find(_id) != classesInfo[classIdx].callbacks.end());
@@ -124,11 +127,9 @@ void DynamicQObjectManager::metacall(size_t classIdx, DynamicQObject *obj, QMeta
         for (int i = 0; i < paramCnt; i++) {
             data[i+2] = _a[i+1];
         }
-        AutoCallback paramDeleter(
-            [&](){
-                delete [] data;
-            }
-        );
+        AutoCallback paramDeleter([&]{
+            delete [] data;
+        });
         Q_UNUSED(paramDeleter);
 
         classesInfo[classIdx].callbacks[_id]->invoke(data);
@@ -138,9 +139,9 @@ void DynamicQObjectManager::metacall(size_t classIdx, DynamicQObject *obj, QMeta
 }
 
 
-DynamicQObjectManager &dynamicQObjectManager()
+DynamicQObjects &dynamicQObjects()
 {
-    static DynamicQObjectManager _obj;
+    static DynamicQObjects _obj;
     return _obj;
 }
 

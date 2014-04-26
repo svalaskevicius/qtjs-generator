@@ -19,6 +19,19 @@
 namespace qt_metadata { 
 
 
+template <typename D>
+void buildMetaClass_QHashField(D _d)
+{
+    (void)_d;
+    using namespace cpgf;
+    
+    _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
+    _d.CPGF_MD_TEMPLATE _method("clear", &D::ClassType::clear);
+    _d.CPGF_MD_TEMPLATE _method("test", &D::ClassType::test);
+    _d.CPGF_MD_TEMPLATE _method("testAndSet", &D::ClassType::testAndSet);
+}
+
+
 } // namespace qt_metadata
 
 

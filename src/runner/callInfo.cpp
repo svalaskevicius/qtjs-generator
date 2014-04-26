@@ -43,8 +43,9 @@ namespace {
 void convertQtDataToGVariantData(int type, void *data, cpgf::GVariantData *dest)
 {
 #define CONV_TYPED_VARIANT_DATA(cl) *dest = cpgf::createTypedVariant(static_cast<const cl *>(data)).takeData()
-    if (type == qMetaTypeId<DynamicQObject>()) {
-        *dest = cpgf::createTypedVariant((DynamicQObject *)data).takeData();
+    auto dynClass = dynamicClassSpecifications.byTypeId(type);
+    if (dynClass) {
+        dynClass->convertQtDataToGVariantData(data, dest);
     } else {
         switch ((QMetaType::Type)type) {
         case QVariant::String:
@@ -284,20 +285,18 @@ void CallInfo::invoke(void **data)
 {
     int maxCnt = parameterTypeIds.size();
     cpgf::GVariantData params[REF_MAX_ARITY];
-    cpgf::GVariant result;
+    cpgf::GScriptValueData result;
     for (int i = 0; i < maxCnt; i++) {
         convertQtDataToGVariantData(parameterTypeIds[i], data[i + 1], &params[i]);
     }
-    AutoCallback paramDeleter(
-        [&](){
-            for (int i = 0; i < maxCnt; i++) {
-                releaseVariantData(&params[i]);
-            }
+    AutoCallback paramDeleter([&]{
+        for (int i = 0; i < maxCnt; i++) {
+            releaseVariantData(&params[i]);
         }
-    );
+    });
     Q_UNUSED(paramDeleter);
 
-    callback->invoke(&result.refData(), params, maxCnt);
+    callback->invoke(&result, params, maxCnt);
     cpgf::metaCheckError(callback);
 }
 

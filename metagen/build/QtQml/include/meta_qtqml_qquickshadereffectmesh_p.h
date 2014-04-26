@@ -19,6 +19,16 @@
 namespace qt_metadata { 
 
 
+template <typename D>
+void buildMetaClass_Global_qquickshadereffectmesh_p(D _d)
+{
+    (void)_d;
+    using namespace cpgf;
+    
+    _d.CPGF_MD_TEMPLATE _method("qt_premultiply_color", (QColor (*) (const QColor &))&qt_premultiply_color, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+}
+
+
 } // namespace qt_metadata
 
 

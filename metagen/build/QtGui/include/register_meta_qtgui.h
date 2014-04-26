@@ -132,6 +132,7 @@ GDefineMetaInfo createMetaClass_QIntValidator();
 GDefineMetaInfo createMetaClass_QKeyEvent();
 GDefineMetaInfo createMetaClass_QKeySequence();
 GDefineMetaInfo createMetaClass_QLinearGradient();
+GDefineMetaInfo createMetaClass_QList_TemplateInstance_QList_QGlyphRun();
 GDefineMetaInfo createMetaClass_QMatrix();
 GDefineMetaInfo createMetaClass_QMatrix4x4();
 GDefineMetaInfo createMetaClass_QMouseEvent();
@@ -363,6 +364,7 @@ void registerMain_QtGui(Meta _d)
     _d._class(createMetaClass_QKeyEvent());
     _d._class(createMetaClass_QKeySequence());
     _d._class(createMetaClass_QLinearGradient());
+    _d._class(createMetaClass_QList_TemplateInstance_QList_QGlyphRun());
     _d._class(createMetaClass_QMatrix());
     _d._class(createMetaClass_QMatrix4x4());
     _d._class(createMetaClass_QMouseEvent());

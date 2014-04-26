@@ -19,6 +19,23 @@
 namespace qt_metadata { 
 
 
+template <typename D>
+void buildMetaClass_QJSValueIteratorPrivate(D _d)
+{
+    (void)_d;
+    using namespace cpgf;
+    
+    _d.CPGF_MD_TEMPLATE _field("value", &D::ClassType::value);
+    _d.CPGF_MD_TEMPLATE _field("iterator", &D::ClassType::iterator);
+    _d.CPGF_MD_TEMPLATE _field("currentAttributes", &D::ClassType::currentAttributes);
+    _d.CPGF_MD_TEMPLATE _field("currentName", &D::ClassType::currentName);
+    _d.CPGF_MD_TEMPLATE _field("currentIndex", &D::ClassType::currentIndex);
+    _d.CPGF_MD_TEMPLATE _field("nextAttributes", &D::ClassType::nextAttributes);
+    _d.CPGF_MD_TEMPLATE _field("nextName", &D::ClassType::nextName);
+    _d.CPGF_MD_TEMPLATE _field("nextIndex", &D::ClassType::nextIndex);
+}
+
+
 } // namespace qt_metadata
 
 

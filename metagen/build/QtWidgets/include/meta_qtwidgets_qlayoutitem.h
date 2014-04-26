@@ -99,7 +99,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -113,7 +113,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasHeightForWidth"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QLayoutItem::hasHeightForWidth();
     }
@@ -127,7 +127,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -141,7 +141,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("maximumSize"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -155,7 +155,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumHeightForWidth"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
         }
         return QLayoutItem::minimumHeightForWidth(__arg0);
     }
@@ -169,7 +169,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
         if(func)
         {
-            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QLayoutItem::spacerItem();
     }
@@ -183,7 +183,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumSize"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -197,7 +197,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("expandingDirections"));
         if(func)
         {
-            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -211,7 +211,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -225,7 +225,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("controlTypes"));
         if(func)
         {
-            return cpgf::fromVariant<QSizePolicy::ControlTypes >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSizePolicy::ControlTypes >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QLayoutItem::controlTypes();
     }
@@ -239,7 +239,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
         if(func)
         {
-            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QLayoutItem::layout();
     }
@@ -253,7 +253,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
         if(func)
         {
-            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QLayoutItem::widget();
     }
@@ -267,7 +267,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("heightForWidth"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
         }
         return QLayoutItem::heightForWidth(__arg0);
     }
@@ -381,7 +381,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QSpacerItem::sizeHint();
     }
@@ -395,7 +395,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasHeightForWidth"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QLayoutItem::hasHeightForWidth();
     }
@@ -409,7 +409,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QSpacerItem::geometry();
     }
@@ -423,7 +423,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("maximumSize"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QSpacerItem::maximumSize();
     }
@@ -437,7 +437,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumHeightForWidth"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
         }
         return QLayoutItem::minimumHeightForWidth(__arg0);
     }
@@ -451,7 +451,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
         if(func)
         {
-            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QSpacerItem::spacerItem();
     }
@@ -465,7 +465,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumSize"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QSpacerItem::minimumSize();
     }
@@ -479,7 +479,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("expandingDirections"));
         if(func)
         {
-            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QSpacerItem::expandingDirections();
     }
@@ -493,7 +493,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QSpacerItem::isEmpty();
     }
@@ -507,7 +507,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("controlTypes"));
         if(func)
         {
-            return cpgf::fromVariant<QSizePolicy::ControlTypes >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSizePolicy::ControlTypes >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QLayoutItem::controlTypes();
     }
@@ -521,7 +521,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
         if(func)
         {
-            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QLayoutItem::layout();
     }
@@ -535,7 +535,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
         if(func)
         {
-            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QLayoutItem::widget();
     }
@@ -549,7 +549,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("heightForWidth"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
         }
         return QLayoutItem::heightForWidth(__arg0);
     }
@@ -656,7 +656,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItem::sizeHint();
     }
@@ -670,7 +670,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasHeightForWidth"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItem::hasHeightForWidth();
     }
@@ -684,7 +684,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItem::geometry();
     }
@@ -698,7 +698,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("maximumSize"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItem::maximumSize();
     }
@@ -712,7 +712,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumHeightForWidth"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
         }
         return QLayoutItem::minimumHeightForWidth(__arg0);
     }
@@ -726,7 +726,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
         if(func)
         {
-            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QLayoutItem::spacerItem();
     }
@@ -740,7 +740,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumSize"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItem::minimumSize();
     }
@@ -754,7 +754,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("expandingDirections"));
         if(func)
         {
-            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItem::expandingDirections();
     }
@@ -768,7 +768,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItem::isEmpty();
     }
@@ -782,7 +782,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("controlTypes"));
         if(func)
         {
-            return cpgf::fromVariant<QSizePolicy::ControlTypes >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSizePolicy::ControlTypes >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItem::controlTypes();
     }
@@ -796,7 +796,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
         if(func)
         {
-            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QLayoutItem::layout();
     }
@@ -810,7 +810,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
         if(func)
         {
-            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItem::widget();
     }
@@ -824,7 +824,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("heightForWidth"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
         }
         return QWidgetItem::heightForWidth(__arg0);
     }
@@ -924,7 +924,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItemV2::sizeHint();
     }
@@ -938,7 +938,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasHeightForWidth"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItem::hasHeightForWidth();
     }
@@ -952,7 +952,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItem::geometry();
     }
@@ -966,7 +966,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("maximumSize"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItemV2::maximumSize();
     }
@@ -980,7 +980,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumHeightForWidth"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
         }
         return QLayoutItem::minimumHeightForWidth(__arg0);
     }
@@ -994,7 +994,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
         if(func)
         {
-            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QLayoutItem::spacerItem();
     }
@@ -1008,7 +1008,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumSize"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItemV2::minimumSize();
     }
@@ -1022,7 +1022,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("expandingDirections"));
         if(func)
         {
-            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItem::expandingDirections();
     }
@@ -1036,7 +1036,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItem::isEmpty();
     }
@@ -1050,7 +1050,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("controlTypes"));
         if(func)
         {
-            return cpgf::fromVariant<QSizePolicy::ControlTypes >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QSizePolicy::ControlTypes >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItem::controlTypes();
     }
@@ -1064,7 +1064,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
         if(func)
         {
-            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QLayoutItem::layout();
     }
@@ -1078,7 +1078,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
         if(func)
         {
-            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QWidgetItem::widget();
     }
@@ -1092,7 +1092,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("heightForWidth"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, width));
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, width).getValue());
         }
         return QWidgetItemV2::heightForWidth(width);
     }

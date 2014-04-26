@@ -23,13 +23,15 @@ public:
     void addSignal(const char * signature, QStringList argumentNames);
     void addSlot(const char * signature, cpgf::IScriptFunction *callback);
     void addProperty(const char * name, const char * type);
+    void setParentClass(cpgf::IMetaClass *metaClass);
 
-    QMetaObject *toMetaObject(int classId);
+    QMetaObject *build(int classId);
     cpgf::IScriptFunction *getInitCallback();
     std::map<int, cpgf::IScriptFunction *> getCallbacks();
     QByteArray methodSignature(int id);
 private:
     DynamicMetaObjectBuilderPrivate *_p;
+    cpgf::IMetaClass *parentClass;
 };
 
 

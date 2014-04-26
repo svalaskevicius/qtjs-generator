@@ -36,8 +36,8 @@ void buildMetaClass_Global_qvector4d(D _d)
     _d.CPGF_MD_TEMPLATE _operator<const QVector4D (*)(const QVector4D &)>(-mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<const QVector4D (*)(const QVector4D &, float)>(mopHolder / mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QVector4D &)>(mopHolder << mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QVector4D &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
-    _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, QVector4D &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, const QVector4D &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, QVector4D &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
 }
 
 

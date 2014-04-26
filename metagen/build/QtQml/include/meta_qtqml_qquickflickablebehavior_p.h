@@ -19,6 +19,26 @@
 namespace qt_metadata { 
 
 
+template <typename D>
+void buildMetaClass_Global_qquickflickablebehavior_p(D _d)
+{
+    (void)_d;
+    using namespace cpgf;
+    
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_28")
+        ._element("QML_FLICK_OVERSHOOT", QML_FLICK_OVERSHOOT)
+        ._element("QML_FLICK_SAMPLEBUFFER", QML_FLICK_SAMPLEBUFFER)
+        ._element("QML_FLICK_DISCARDSAMPLES", QML_FLICK_DISCARDSAMPLES)
+        ._element("QML_FLICK_DEFAULTMAXVELOCITY", QML_FLICK_DEFAULTMAXVELOCITY)
+        ._element("QML_FLICK_DEFAULTDECELERATION", QML_FLICK_DEFAULTDECELERATION)
+        ._element("QML_FLICK_OVERSHOOTFRICTION", QML_FLICK_OVERSHOOTFRICTION)
+        ._element("QML_FLICK_MULTIFLICK_THRESHOLD", QML_FLICK_MULTIFLICK_THRESHOLD)
+        ._element("QML_FLICK_MULTIFLICK_RATIO", QML_FLICK_MULTIFLICK_RATIO)
+        ._element("QML_FLICK_MULTIFLICK_MAXBOOST", QML_FLICK_MULTIFLICK_MAXBOOST)
+    ;
+}
+
+
 } // namespace qt_metadata
 
 

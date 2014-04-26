@@ -19,6 +19,16 @@
 namespace qt_metadata { 
 
 
+template <typename D>
+void buildMetaClass_QQuickWindowModule(D _d)
+{
+    (void)_d;
+    using namespace cpgf;
+    
+    _d.CPGF_MD_TEMPLATE _method("defineModule", &D::ClassType::defineModule);
+}
+
+
 } // namespace qt_metadata
 
 

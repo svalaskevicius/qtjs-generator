@@ -29,11 +29,11 @@ void buildMetaClass_Global_qsgnode(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _operator<Q_QUICK_EXPORT QDebug (*)(QDebug, const QSGNode *)>(mopHolder << mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<Q_QUICK_EXPORT QDebug (*)(QDebug, const QSGGeometryNode *)>(mopHolder << mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<Q_QUICK_EXPORT QDebug (*)(QDebug, const QSGTransformNode *)>(mopHolder << mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<Q_QUICK_EXPORT QDebug (*)(QDebug, const QSGOpacityNode *)>(mopHolder << mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<Q_QUICK_EXPORT QDebug (*)(QDebug, const QSGRootNode *)>(mopHolder << mopHolder);
+    _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QSGNode *)>(mopHolder << mopHolder);
+    _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QSGGeometryNode *)>(mopHolder << mopHolder);
+    _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QSGTransformNode *)>(mopHolder << mopHolder);
+    _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QSGOpacityNode *)>(mopHolder << mopHolder);
+    _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QSGRootNode *)>(mopHolder << mopHolder);
 }
 
 
@@ -74,7 +74,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }
@@ -146,7 +146,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }
@@ -223,7 +223,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }
@@ -353,7 +353,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }
@@ -629,7 +629,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QSGOpacityNode::isSubtreeBlocked();
     }
@@ -697,7 +697,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }
@@ -769,7 +769,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this));
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }

@@ -2,12 +2,6 @@
 #include <QApplication>
 #include <QMainWindow>
 
-#include "cpgf/gmetadefine.h"
-#include "cpgf/scriptbind/gscriptbindutil.h"
-#include "cpgf/gscopedinterface.h"
-#include "cpgf/scriptbind/gv8runner.h"
-#include "cpgf/glifecycle.h"
-
 #include <iostream>
 
 #include "v8.h"
@@ -56,33 +50,6 @@ namespace {
 
 int __exitCode = -1;
 
-
-using namespace cpgf;
-
-struct CpgfBinder {
-    GDefineMetaNamespace define;
-    GScopedInterface<IMetaService> service;
-    GScopedPointer<GScriptRunner> runner;
-    GScopedInterface<IScriptObject> scriptObject;
-    GScopedInterface<IMetaClass> metaClass;
-
-    CpgfBinder(v8::Handle<v8::Context> ctx)
-        : define(GDefineMetaNamespace::declare("qt")),
-          service(createDefaultMetaService()),
-          runner(createV8ScriptRunner(service.get(), ctx)),
-          scriptObject(runner->getScripeObject()),
-          metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())))
-    {
-        qtjs_binder::registerQt(define);
-        scriptObject->bindCoreService("cpgf", NULL);
-        scriptSetValue(scriptObject.get(), "qt", GScriptValue::fromClass(metaClass.get()));
-    }
-
-    ~CpgfBinder()
-    {
-        qtjs_binder::unregisterQt();
-    }
-};
 
 
 void Exit(const v8::FunctionCallbackInfo<v8::Value>& args) {
@@ -207,15 +174,24 @@ int main(int argc, char * argv[])
     v8::Locker locker(node::node_isolate);
     v8::Context::Scope context_scope(env->context());
     v8::HandleScope handle_scope(env->isolate());
+    Q_UNUSED(locker);
+    Q_UNUSED(context_scope);
+    Q_UNUSED(handle_scope);
 
     {
-        CpgfBinder cpgfBinder(env->context());
+        qtjs_binder::CpgfBinder cpgfBinder(env->context());
+        Q_UNUSED(cpgfBinder);
 
-        node::Load(env);
-
+        try {
+            node::Load(env);
+        } catch (std::runtime_error &e) {
+            std::cerr << "failed execution: "<<e.what()<<std::endl;
+        }
         if (__exitCode < 0) {
             try {
                 QCoreApplication::exec();
+            } catch (std::runtime_error &e) {
+                std::cerr << "failed execution: "<<e.what()<<std::endl;
             } catch (const char * &e) {
                 std::cerr << "failed execution: "<<e<<std::endl;
             }

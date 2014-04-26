@@ -29,11 +29,12 @@ function prepare_files() {
         $s =~ s/Q_STATIC_ASSERT(?:_X)?(\((?:[^()]+|(?1))*\))//g;
         $s =~ s/Q_DECL_NOEXCEPT_EXPR(\((?:[^()]+|(?1))*\))//g;
         $s =~ s/QT_ASCII_CAST_WARN//g;
-        $s =~ s/Q_WIDGETS_EXPORT//g;
+        $s =~ s/Q_[A-Z]+(_PRIVATE)?_EXPORT//g;
         $s =~ s/Q_SLOTS//g;
         $s =~ s/Q_INVOKABLE//g;
         $s =~ s/Q_NORETURN//g;
         $s =~ s/Q_SIGNALS://g;
+        $s =~ s/Q_[A-Z]+_EXPORT//g;
         $s =~ s/Q_REVISION\s*\(\s*[0-9]+\s*\)//g;
         $s =~ s/Q_DECLARE_FLAGS\s*\(([^,()]+),\s*([^,()]+)\)/typedef QFlags<\2> \1;/g;
         $s =~ s/Q_ATTRIBUTE_FORMAT_PRINTF\(.*?\)//g;

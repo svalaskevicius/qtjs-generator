@@ -25,8 +25,8 @@ void buildMetaClass_Global_qsize(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QSize &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
-    _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, QSize &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, const QSize &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, QSize &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const QSize &, const QSize &)>(mopHolder == mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const QSize &, const QSize &)>(mopHolder != mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<const QSize (*)(const QSize &, const QSize &)>(mopHolder + mopHolder);
@@ -35,8 +35,8 @@ void buildMetaClass_Global_qsize(D _d)
     _d.CPGF_MD_TEMPLATE _operator<const QSize (*)(qreal, const QSize &)>(mopHolder * mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<const QSize (*)(const QSize &, qreal)>(mopHolder / mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QSize &)>(mopHolder << mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, const QSizeF &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
-    _d.CPGF_MD_TEMPLATE _operator<QDataStream& (*)(QDataStream &, QSizeF &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, const QSizeF &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, QSizeF &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const QSizeF &, const QSizeF &)>(mopHolder == mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const QSizeF &, const QSizeF &)>(mopHolder != mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<const QSizeF (*)(const QSizeF &, const QSizeF &)>(mopHolder + mopHolder);
