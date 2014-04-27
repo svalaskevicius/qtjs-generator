@@ -13,6 +13,42 @@ qt.extend = function(classToExtend, methods) {
     return newClass
 }
 
+
+qt.newQmlComponent = function(name, def) {
+    var builder = new qt.DynamicMetaObjectBuilder()
+    builder.setClassName(name)
+    if (def.parent) {
+        builder.setParentClass(def.parent)
+    }
+    if (def.init) {
+        builder.setInit(def.init)
+    }
+    if (def.properties) {
+        for (var property in def.properties) {
+            builder.addProperty(property, def.properties[property])
+        }
+    }
+    if (def.signals) {
+        for (var signalDesc in def.signals) {
+            var paramNames = new qt.QStringList()
+            var paramLen = def.signals[signalDesc].length
+            for (var paramIdx = 0; paramIdx < paramLen; paramIdx++) {
+                paramNames.append(def.signals[signalDesc][paramIdx])
+            }
+            builder.addSignal(signalDesc, paramNames)
+        }
+    }
+    if (def.slots) {
+        for (var slot in def.slots) {
+            builder.addSlot(slot, def.slots[slot])
+        }
+    }
+    qt.finalizeAndRegisterMetaObjectBuilderToQml(builder, "org.qtjs", 1, 0, name)
+};
+
+
+
+
 var MySyntaxHighlighter = qt.extend( qt.QSyntaxHighlighter,
 {
     highlightBlock : function(text) {
@@ -31,65 +67,50 @@ var MySyntaxHighlighter = qt.extend( qt.QSyntaxHighlighter,
 });
 
 (function() {
-
     var highlighter;
-    (function() {
-        var b = new qt.DynamicMetaObjectBuilder()
-        b.setClassName("KeyGenerator")
-        b.setInit(function() {
-            this.setProperty("type",
-                new qt.QVariant("rsa"))
-            var aa = new qt.QStringList()
-            aa._opLeftShift("rsa")
-            aa._opLeftShift("dsa")
-            this.setProperty("types", new qt.QVariant(aa))
-        })
-        var aa = new qt.QStringList()
-        aa._opLeftShift("success")
 
-        b.addSignal("keyGenerated(bool)", aa)
-        b.addProperty("type", "QString")
-        b.addProperty("types", "QStringList")
-        b.addProperty("passphrase", "QString")
-        b.addProperty("filename", "QString")
 
-        b.addSlot('generateKey()', function() {
-            var log = new qt.QMessageLogger()
+    qt.newQmlComponent("KeyGenerator", {
+        init: function() {
+            var generatorTypes = new qt.QStringList()
+            generatorTypes.append("rsa")
+            generatorTypes.append("dsa")
+            this.setProperty("types", new qt.QVariant(generatorTypes))
+            this.setProperty("type", new qt.QVariant("rsa"))
+        },
+        properties: {
+            "type": "QString",
+            "types": "QStringList",
+            "passphrase": "QString",
+            "filename": "QString"
+        },
+        signals: {"keyGenerated(bool)": ["success"]},
+        slots: {
+            'generateKey()': function() {
+                var log = new qt.QMessageLogger()
 
-            log.debug()
-              ._opLeftShift("invoking generate! ")
-              ._opLeftShift(this.property("passphrase").toString())
+                log.debug()
+                  ._opLeftShift("invoking generate! ")
+                  ._opLeftShift(this.property("passphrase").toString())
 
-            qt.emitSignal(this, "keyGenerated(bool)",
-                new qt.QVariant(true))
-        })
+                qt.emitSignal(this, "keyGenerated(bool)", new qt.QVariant(true))
+            }
+        }
+    });
 
-        qt.finalizeAndRegisterMetaObjectBuilderToQml(b,
-            "com.ics.demo", 1,
-            0, "KeyGenerator")
-    })();
-
-    (function() {
-        var b = new qt.DynamicMetaObjectBuilder()
-        b.setClassName("IntIncrementer")
-        b.setInit(function() {
+    qt.newQmlComponent("IntIncrementer", {
+        init: function() {
             this.setProperty("value", new qt.QVariant(0))
-        })
-        var aa = new qt.QStringList()
-        aa._opLeftShift("newValue")
-        b.addSignal("incremented(int)", aa)
-        b.addProperty("value", "int")
-        b.addSlot('increment()', function() {
-            this.setProperty('value',
-                new qt.QVariant(this.property(
-                    "value").toInt() + 1))
-            qt.emitSignal(this, "incremented(int)",
-                new qt.QVariant(this.property(
-                    "value").toInt()))
-        })
-
-        qt.finalizeAndRegisterMetaObjectBuilderToQml(b, "com.ics.demo", 1, 0, "IntIncrementer")
-    })();
+        },
+        properties: {"value": "int"},
+        signals: {"incremented(int)": ["newValue"]},
+        slots: {
+            'increment()': function() {
+                this.setProperty('value', new qt.QVariant(this.property("value").toInt() + 1))
+                qt.emitSignal(this, "incremented(int)", new qt.QVariant(this.property("value").toInt()))
+            }
+        }
+    });
 
     (function() {
 
@@ -134,7 +155,6 @@ var MySyntaxHighlighter = qt.extend( qt.QSyntaxHighlighter,
                   var glyphNode = privateApi.sceneGraphContext().createNativeGlyphNode(privateApi.sceneGraphRenderContext());
 
                   glyphNode.setGlyphs(new qt.QPointF(0, 0), glyphList.front());
-                  console.log(glyphNode)
                   glyphNode.update();
                   node.appendChildNode(glyphNode);
                 }
@@ -145,15 +165,14 @@ var MySyntaxHighlighter = qt.extend( qt.QSyntaxHighlighter,
             }
         });
 
-        var b = new qt.DynamicMetaObjectBuilder()
-        b.setClassName("Wavangle")
-        b.setParentClass(WaveAngleClass)
-        b.setInit(function() {
-            this.setFlag(qt.QQuickItem.Flag.ItemHasContents)
-            var label = new qt.QQuickText(this);
-            label.setText("a text label");
-        })
-        qt.finalizeAndRegisterMetaObjectBuilderToQml(b, "com.ics.demo", 1, 0, "Waveangle")
+        qt.newQmlComponent("Waveangle", {
+            parent : WaveAngleClass,
+            init : function() {
+                this.setFlag(qt.QQuickItem.Flag.ItemHasContents)
+                var label = new qt.QQuickText(this);
+                label.setText("a text label");
+            }
+        });
     })();
 
     try {
