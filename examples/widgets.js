@@ -1,32 +1,41 @@
 cpgf.import("cpgf", "builtin.core");
+require("./qt")
 
 var globalData = [];
 
-function error(text)
-{
+function error(text) {
     var log = new qt.QMessageLogger();
     log.critical()._opLeftShift(text);
 }
 
 var App = (function(App) {
-    App.MovingRectItem = cpgf.cloneClass(qt.QGraphicsRectItemWrapper);
-    App.MovingRectItem.mouseMoveEvent = function( event  ) {
-        this.setRotation(1 + this.rotation());
-    };
-
-    App.MovingRectItem.prototype.getDirection = function() {
-        return Math.round(Math.random()*20-10);
-    };
-
-    App.MovingRectItem.paint = function(painter, option, widget) {
-        var r = this.rect();
-        r.setRight(r.right() + this.getDirection());
-        this.setRect(r);
-        this.super_paint(painter, option, widget);
-    };
+    App.MovingRectItem = qt.extend(qt.QGraphicsRectItem, {
+        mouseMoveEvent: function(event) {
+            this.setRotation(1 + this.rotation());
+        },
+        getDirection: function() {
+            var r = this.rect();
+            if (r.right() > (r.left() + 100)) {
+                this.direction = -this.speed;
+            } else if (r.right() <= r.left()) {
+                this.direction = this.speed;
+            } else if (typeof this.direction === 'undefined') {
+                this.direction = this.speed;
+            }
+            return this.direction;
+        },
+        paint: function(painter, option, widget) {
+            var r = this.rect();
+            r.setRight(r.right() + this.getDirection());
+            this.setRect(r);
+            this.super_paint(painter, option, widget);
+        }
+    });
 
     App.createMovingRectItem = function(rect) {
-        return new App.MovingRectItem(rect);
+        var obj = new App.MovingRectItem(rect);
+        obj.speed = 1;
+        return obj;
     };
 
     return App;
@@ -81,7 +90,7 @@ try {
     var window = createMainWindow();
     window.show();
     process.exit(
-       qt.QCoreApplication.instance().exec()
+        qt.QCoreApplication.instance().exec()
     );
 } catch (e) {
     error(e);
