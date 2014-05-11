@@ -5,9 +5,8 @@ require('./qt')
 var path = require('path')
 
 
-var MySyntaxHighlighter = qt.extend( qt.QSyntaxHighlighter,
-{
-    highlightBlock : function(text) {
+var MySyntaxHighlighter = qt.extend(qt.QSyntaxHighlighter, {
+    highlightBlock: function(text) {
         var myClassFormat = new qt.QTextCharFormat();
         myClassFormat.setFontWeight(qt.QFont.Bold);
         myClassFormat.setForeground(new qt.QBrush(new qt.QColor(qt.darkMagenta)));
@@ -40,14 +39,16 @@ var MySyntaxHighlighter = qt.extend( qt.QSyntaxHighlighter,
             "passphrase": "QString",
             "filename": "QString"
         },
-        signals: {"keyGenerated(bool)": ["success"]},
+        signals: {
+            "keyGenerated(bool)": ["success"]
+        },
         slots: {
             'generateKey()': function() {
                 var log = new qt.QMessageLogger()
 
                 log.debug()
-                  ._opLeftShift("invoking generate! ")
-                  ._opLeftShift(this.property("passphrase").toString())
+                    ._opLeftShift("invoking generate! ")
+                    ._opLeftShift(this.property("passphrase").toString())
 
                 qt.emitSignal(this, "keyGenerated(bool)", new qt.QVariant(true))
             }
@@ -58,8 +59,12 @@ var MySyntaxHighlighter = qt.extend( qt.QSyntaxHighlighter,
         init: function() {
             this.setProperty("value", new qt.QVariant(0))
         },
-        properties: {"value": "int"},
-        signals: {"incremented(int)": ["newValue"]},
+        properties: {
+            "value": "int"
+        },
+        signals: {
+            "incremented(int)": ["newValue"]
+        },
         slots: {
             'increment()': function() {
                 this.setProperty('value', new qt.QVariant(this.property("value").toInt() + 1))
@@ -70,11 +75,31 @@ var MySyntaxHighlighter = qt.extend( qt.QSyntaxHighlighter,
 
     (function() {
 
-        var WaveAngleClass = qt.extend( qt.QQuickItem,
-        {
-            updatePaintNode : function(node, data) {
-                if (!node) {
-                    node = new qt.QSGGeometryNode();
+        var renderText = function(text, parentNode, privateApi) {
+            var textLayout = new qt.QTextLayout(text);
+            textLayout.beginLayout();
+            while (1) {
+                var line = textLayout.createLine();
+                if (!line.isValid()) {
+                    break;
+                }
+            }
+            textLayout.endLayout();
+            var glyphList = textLayout.glyphRuns();
+            if (!glyphList.empty()) {
+                //var glyphNode = privateApi.sceneGraphContext().createGlyphNode(privateApi.sceneGraphRenderContext());
+                var glyphNode = privateApi.sceneGraphContext().createNativeGlyphNode(privateApi.sceneGraphRenderContext());
+
+                glyphNode.setGlyphs(new qt.QPointF(0, 0), glyphList.front());
+                glyphNode.update();
+                parentNode.appendChildNode(glyphNode);
+            }
+        };
+
+        var WaveAngleClass = qt.extend(qt.QQuickItem, {
+            updatePaintNode: function(node, data) {
+                var createNewPaintNode = function(rect, privateApi) {
+                    var node = new qt.QSGGeometryNode();
                     var geometry = new qt.QSGGeometry(qt.QSGGeometry.defaultAttributes_Point2D(), 2);
                     geometry.setLineWidth(2);
                     geometry.setDrawingMode( /* GL_LINE_STRIP */ 3);
@@ -86,44 +111,30 @@ var MySyntaxHighlighter = qt.extend( qt.QSyntaxHighlighter,
                     node.setMaterial(material);
                     cpgf.setAllowGC(material, false);
                     node.setFlag(qt.QSGNode.OwnsMaterial);
+
+                    var vertices = geometry.vertexDataAsPoint2D();
+                    qt.arrayValueForOffset_Point2D(vertices, 0).set(0, 0);
+                    qt.arrayValueForOffset_Point2D(vertices, 1).set(
+                        rect.width(),
+                        rect.height()
+                    );
+
+                    renderText("test text!", node, privateApi);
+
+                    return node;
+                };
+
+                if (!node) {
+                    node = createNewPaintNode(this.boundingRect(), qt.QQuickItemPrivate.get(this));
                 }
-                var rect = this.boundingRect();
-                var vertices = geometry.vertexDataAsPoint2D();
-                qt.arrayValueForOffset_Point2D(vertices, 0).set(0, 0);
-                qt.arrayValueForOffset_Point2D(vertices, 1).set(
-                    this.property("width").toInt(),
-                    this.property("height").toInt()
-                );
-
-                var textLayout = new qt.QTextLayout("test text!");
-                textLayout.beginLayout();
-                while (1) {
-                  var line = textLayout.createLine();
-                  if (!line.isValid())
-                            break;
-
-                }
-                textLayout.endLayout();
-                var glyphList = textLayout.glyphRuns();
-                if (!glyphList.empty()) {
-                  var privateApi = qt.QQuickItemPrivate.get(this);
-                  //var glyphNode = privateApi.sceneGraphContext().createGlyphNode(privateApi.sceneGraphRenderContext());
-                  var glyphNode = privateApi.sceneGraphContext().createNativeGlyphNode(privateApi.sceneGraphRenderContext());
-
-                  glyphNode.setGlyphs(new qt.QPointF(0, 0), glyphList.front());
-                  glyphNode.update();
-                  node.appendChildNode(glyphNode);
-                }
-
-
-
                 return node;
             }
         });
 
         qt.newQmlComponent("Waveangle", {
-            parent : WaveAngleClass,
-            init : function() {
+            parent: WaveAngleClass,
+            init: function() {
+                keepQtObjectUntilItsFreed(this);
                 this.setFlag(qt.QQuickItem.Flag.ItemHasContents)
                 var label = new qt.QQuickText(this);
                 label.setText("a text label");
