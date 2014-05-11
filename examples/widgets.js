@@ -1,25 +1,19 @@
 cpgf.import("cpgf", "builtin.core");
 require("./qt")
 
-var globalData = [];
-
-function error(text) {
-    var log = new qt.QMessageLogger();
-    log.critical()._opLeftShift(text);
-}
-
 var App = (function(App) {
     App.MovingRectItem = qt.extend(qt.QGraphicsRectItem, {
         mouseMoveEvent: function(event) {
             this.setRotation(1 + this.rotation());
         },
         getDirection: function() {
+            if (typeof this.direction === 'undefined') {
+                this.direction = this.speed;
+            }
             var r = this.rect();
             if (r.right() > (r.left() + 100)) {
                 this.direction = -this.speed;
             } else if (r.right() <= r.left()) {
-                this.direction = this.speed;
-            } else if (typeof this.direction === 'undefined') {
                 this.direction = this.speed;
             }
             return this.direction;
@@ -35,6 +29,7 @@ var App = (function(App) {
     App.createMovingRectItem = function(rect) {
         var obj = new App.MovingRectItem(rect);
         obj.speed = 1;
+        keepQtObjectUntilItsFreed(obj);
         return obj;
     };
 
@@ -47,6 +42,7 @@ function createGraphicsView() {
     var myItem = App.createMovingRectItem(new qt.QRectF(20, 30, 40, 50));
 
     var scene = new qt.QGraphicsScene();
+    keepQtObjectUntilItsFreed(scene);
     var view = new qt.QGraphicsView(scene);
     // view.setViewport(new qt.QGLWidget(new qt.QGLFormat(qt.QGL.SampleBuffers)));
 
@@ -56,10 +52,6 @@ function createGraphicsView() {
     myItem.grabMouse();
 
     view.setMouseTracking(true);
-
-    // needed for GC not to free the variables while they're still required
-    globalData.push(myItem);
-    globalData.push(scene);
 
     return view;
 }
@@ -93,6 +85,6 @@ try {
         qt.QCoreApplication.instance().exec()
     );
 } catch (e) {
-    error(e);
+    console.error(e);
     process.exit(1);
 }

@@ -3,6 +3,7 @@
 
 #include "cpgf/metatraits/gmetaobjectlifemanager.h"
 #include "cpgf/gtypeutil.h"
+#include "cpgf/scriptbind/gv8bind.h"
 
 #include <unordered_set>
 
@@ -17,10 +18,8 @@ struct AutoTreeHelper {
 };
 
 extern std::unordered_set<void *> &memorySet();
-
-inline void deleteFromMemorySet(void * c) {
-    memorySet().erase(c);
-}
+extern void deleteFromMemorySet(void * c);
+extern void keepV8HandleUntilObjectIsFreed(const v8::FunctionCallbackInfo<v8::Value>& args);
 
 
 template <typename C>
