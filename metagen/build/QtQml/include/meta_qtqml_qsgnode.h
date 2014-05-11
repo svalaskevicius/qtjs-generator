@@ -59,7 +59,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGNode::preprocess();
@@ -74,7 +74,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }
@@ -131,7 +131,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGNode::preprocess();
@@ -146,7 +146,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }
@@ -208,7 +208,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGNode::preprocess();
@@ -223,7 +223,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }
@@ -338,7 +338,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGNode::preprocess();
@@ -353,7 +353,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }
@@ -402,7 +402,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("leaveTransformNode"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QSGNodeVisitor::leaveTransformNode(__arg0);
@@ -417,7 +417,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("visitNode"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, n);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, n);
             return;
         }
         QSGNodeVisitor::visitNode(n);
@@ -432,7 +432,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("leaveGeometryNode"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QSGNodeVisitor::leaveGeometryNode(__arg0);
@@ -447,7 +447,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("enterGeometryNode"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QSGNodeVisitor::enterGeometryNode(__arg0);
@@ -462,7 +462,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("leaveOpacityNode"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QSGNodeVisitor::leaveOpacityNode(__arg0);
@@ -477,7 +477,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("enterOpacityNode"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QSGNodeVisitor::enterOpacityNode(__arg0);
@@ -492,7 +492,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("visitChildren"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, n);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, n);
             return;
         }
         QSGNodeVisitor::visitChildren(n);
@@ -507,7 +507,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("leaveClipNode"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QSGNodeVisitor::leaveClipNode(__arg0);
@@ -522,7 +522,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("enterClipNode"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QSGNodeVisitor::enterClipNode(__arg0);
@@ -537,7 +537,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("enterTransformNode"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QSGNodeVisitor::enterTransformNode(__arg0);
@@ -614,7 +614,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGNode::preprocess();
@@ -629,7 +629,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGOpacityNode::isSubtreeBlocked();
     }
@@ -682,7 +682,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGNode::preprocess();
@@ -697,7 +697,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }
@@ -754,7 +754,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGNode::preprocess();
@@ -769,7 +769,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }

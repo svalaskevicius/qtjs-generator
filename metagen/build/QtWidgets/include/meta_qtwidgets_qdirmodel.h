@@ -123,7 +123,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setHeaderData"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, section, orientation, value, role).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, section, orientation, value, role).getValue());
         }
         return QAbstractItemModel::setHeaderData(section, orientation, value, role);
     }
@@ -142,7 +142,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("supportedDragActions"));
         if(func)
         {
-            return cpgf::fromVariant<Qt::DropActions >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<Qt::DropActions >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QAbstractItemModel::supportedDragActions();
     }
@@ -161,7 +161,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setItemData"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, index, roles).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, index, roles).getValue());
         }
         return QAbstractItemModel::setItemData(index, roles);
     }
@@ -175,7 +175,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("fetchMore"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, parent);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, parent);
             return;
         }
         QAbstractItemModel::fetchMore(parent);
@@ -195,7 +195,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("mimeTypes"));
         if(func)
         {
-            return cpgf::fromVariant<QStringList >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QStringList >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QDirModel::mimeTypes();
     }
@@ -214,7 +214,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemData"));
         if(func)
         {
-            return cpgf::fromVariant<QMap< int, QVariant > >(cpgf::invokeScriptFunction(func.get(), this, index).getValue());
+            return cpgf::fromVariant<QMap< int, QVariant > >(cpgf::invokeScriptFunctionOnObject(func.get(), this, index).getValue());
         }
         return QAbstractItemModel::itemData(index);
     }
@@ -228,7 +228,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("removeRows"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, row, count, parent).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, row, count, parent).getValue());
         }
         return QAbstractItemModel::removeRows(row, count, parent);
     }
@@ -247,7 +247,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
         if(func)
         {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
         return QDirModel::qt_metacast(__arg0);
     }
@@ -261,7 +261,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("match"));
         if(func)
         {
-            return cpgf::fromVariant<QModelIndexList >(cpgf::invokeScriptFunction(func.get(), this, start, role, value, hits, flags).getValue());
+            return cpgf::fromVariant<QModelIndexList >(cpgf::invokeScriptFunctionOnObject(func.get(), this, start, role, value, hits, flags).getValue());
         }
         return QAbstractItemModel::match(start, role, value, hits, flags);
     }
@@ -280,7 +280,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
         return QObject::event(__arg0);
     }
@@ -294,7 +294,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sort"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, column, order);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, column, order);
             return;
         }
         QDirModel::sort(column, order);
@@ -309,7 +309,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::timerEvent(__arg0);
@@ -324,7 +324,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sibling"));
         if(func)
         {
-            return cpgf::fromVariant<QModelIndex >(cpgf::invokeScriptFunction(func.get(), this, row, column, idx).getValue());
+            return cpgf::fromVariant<QModelIndex >(cpgf::invokeScriptFunctionOnObject(func.get(), this, row, column, idx).getValue());
         }
         return QAbstractItemModel::sibling(row, column, idx);
     }
@@ -338,7 +338,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("roleNames"));
         if(func)
         {
-            return cpgf::fromVariant<QHash< int, QByteArray > >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QHash< int, QByteArray > >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QAbstractItemModel::roleNames();
     }
@@ -362,7 +362,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("columnCount"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, parent).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, parent).getValue());
         }
         return QDirModel::columnCount(parent);
     }
@@ -376,7 +376,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("index"));
         if(func)
         {
-            return cpgf::fromVariant<QModelIndex >(cpgf::invokeScriptFunction(func.get(), this, row, column, parent).getValue());
+            return cpgf::fromVariant<QModelIndex >(cpgf::invokeScriptFunctionOnObject(func.get(), this, row, column, parent).getValue());
         }
         return QDirModel::index(row, column, parent);
     }
@@ -400,7 +400,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setData"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, index, value, role).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, index, value, role).getValue());
         }
         return QDirModel::setData(index, value, role);
     }
@@ -424,7 +424,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("rowCount"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, parent).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, parent).getValue());
         }
         return QDirModel::rowCount(parent);
     }
@@ -438,7 +438,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("span"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this, index).getValue());
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this, index).getValue());
         }
         return QAbstractItemModel::span(index);
     }
@@ -452,7 +452,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("submit"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QAbstractItemModel::submit();
     }
@@ -476,7 +476,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
         }
         return QObject::eventFilter(__arg0, __arg1);
     }
@@ -490,7 +490,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("flags"));
         if(func)
         {
-            return cpgf::fromVariant<Qt::ItemFlags >(cpgf::invokeScriptFunction(func.get(), this, index).getValue());
+            return cpgf::fromVariant<Qt::ItemFlags >(cpgf::invokeScriptFunctionOnObject(func.get(), this, index).getValue());
         }
         return QDirModel::flags(index);
     }
@@ -504,7 +504,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("supportedDropActions"));
         if(func)
         {
-            return cpgf::fromVariant<Qt::DropActions >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<Qt::DropActions >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QDirModel::supportedDropActions();
     }
@@ -518,7 +518,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1, __arg2).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
         return QDirModel::qt_metacall(__arg0, __arg1, __arg2);
     }
@@ -537,7 +537,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
         QObject::disconnectNotify(signal);
@@ -552,7 +552,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("insertColumns"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, column, count, parent).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, column, count, parent).getValue());
         }
         return QAbstractItemModel::insertColumns(column, count, parent);
     }
@@ -566,7 +566,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("canDropMimeData"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, data, action, row, column, parent).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, data, action, row, column, parent).getValue());
         }
         return QAbstractItemModel::canDropMimeData(data, action, row, column, parent);
     }
@@ -595,7 +595,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
         QObject::connectNotify(signal);
@@ -610,7 +610,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::childEvent(__arg0);
@@ -625,7 +625,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasChildren"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, index).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, index).getValue());
         }
         return QDirModel::hasChildren(index);
     }
@@ -639,7 +639,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("parent"));
         if(func)
         {
-            return cpgf::fromVariant<QModelIndex >(cpgf::invokeScriptFunction(func.get(), this, child).getValue());
+            return cpgf::fromVariant<QModelIndex >(cpgf::invokeScriptFunctionOnObject(func.get(), this, child).getValue());
         }
         return QDirModel::parent(child);
     }
@@ -668,7 +668,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("canFetchMore"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, parent).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, parent).getValue());
         }
         return QAbstractItemModel::canFetchMore(parent);
     }
@@ -687,7 +687,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("revert"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QAbstractItemModel::revert();
@@ -702,7 +702,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("data"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, index, role).getValue());
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunctionOnObject(func.get(), this, index, role).getValue());
         }
         return QDirModel::data(index, role);
     }
@@ -726,7 +726,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
         if(func)
         {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QDirModel::metaObject();
     }
@@ -740,7 +740,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("dropMimeData"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, data, action, row, column, parent).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, data, action, row, column, parent).getValue());
         }
         return QDirModel::dropMimeData(data, action, row, column, parent);
     }
@@ -759,7 +759,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("mimeData"));
         if(func)
         {
-            return cpgf::fromVariant<QMimeData * >(cpgf::invokeScriptFunction(func.get(), this, indexes).getValue());
+            return cpgf::fromVariant<QMimeData * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, indexes).getValue());
         }
         return QDirModel::mimeData(indexes);
     }
@@ -773,7 +773,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("moveColumns"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, sourceParent, sourceColumn, count, destinationParent, destinationChild).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, sourceParent, sourceColumn, count, destinationParent, destinationChild).getValue());
         }
         return QAbstractItemModel::moveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
     }
@@ -787,7 +787,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("headerData"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, section, orientation, role).getValue());
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunctionOnObject(func.get(), this, section, orientation, role).getValue());
         }
         return QDirModel::headerData(section, orientation, role);
     }
@@ -806,7 +806,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::customEvent(__arg0);
@@ -821,7 +821,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("moveRows"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, sourceParent, sourceRow, count, destinationParent, destinationChild).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, sourceParent, sourceRow, count, destinationParent, destinationChild).getValue());
         }
         return QAbstractItemModel::moveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
     }
@@ -835,7 +835,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("removeColumns"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, column, count, parent).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, column, count, parent).getValue());
         }
         return QAbstractItemModel::removeColumns(column, count, parent);
     }
@@ -849,7 +849,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("buddy"));
         if(func)
         {
-            return cpgf::fromVariant<QModelIndex >(cpgf::invokeScriptFunction(func.get(), this, index).getValue());
+            return cpgf::fromVariant<QModelIndex >(cpgf::invokeScriptFunctionOnObject(func.get(), this, index).getValue());
         }
         return QAbstractItemModel::buddy(index);
     }
@@ -863,7 +863,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("insertRows"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, row, count, parent).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, row, count, parent).getValue());
         }
         return QAbstractItemModel::insertRows(row, count, parent);
     }

@@ -52,7 +52,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setAligned"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, aligned);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, aligned);
             return;
         }
         QSGDefaultRectangleNode::setAligned(aligned);
@@ -67,7 +67,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setAntialiasing"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, antialiasing);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, antialiasing);
             return;
         }
         QSGDefaultRectangleNode::setAntialiasing(antialiasing);
@@ -82,7 +82,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setColor"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, color);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, color);
             return;
         }
         QSGDefaultRectangleNode::setColor(color);
@@ -97,7 +97,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setRadius"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, radius);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, radius);
             return;
         }
         QSGDefaultRectangleNode::setRadius(radius);
@@ -112,7 +112,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setPenColor"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, color);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, color);
             return;
         }
         QSGDefaultRectangleNode::setPenColor(color);
@@ -127,7 +127,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setRect"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, rect);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
             return;
         }
         QSGDefaultRectangleNode::setRect(rect);
@@ -142,7 +142,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setPenWidth"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, width);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, width);
             return;
         }
         QSGDefaultRectangleNode::setPenWidth(width);
@@ -157,7 +157,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setGradientStops"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, stops);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, stops);
             return;
         }
         QSGDefaultRectangleNode::setGradientStops(stops);
@@ -172,7 +172,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGNode::preprocess();
@@ -187,7 +187,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }
@@ -201,7 +201,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("update"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGDefaultRectangleNode::update();
@@ -265,7 +265,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("compare"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, other).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, other).getValue());
         }
         return QSGSmoothColorMaterial::compare(other);
     }
@@ -279,7 +279,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<QSGMaterialType * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QSGMaterialType * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGSmoothColorMaterial::type();
     }
@@ -293,7 +293,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createShader"));
         if(func)
         {
-            return cpgf::fromVariant<QSGMaterialShader * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QSGMaterialShader * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGSmoothColorMaterial::createShader();
     }

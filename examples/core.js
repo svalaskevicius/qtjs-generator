@@ -16,9 +16,9 @@
     var obj = new qt.QObject();
     qt.connect(obj, 'objectNameChanged(const QString &)', function(name) {
         log.debug()
-            ._opLeftShift(new qt.QString("NAME CHANGED! " + name));
+            ._opLeftShift("NAME CHANGED! " + name.toLatin1().constData());
     });
 
-    obj.setObjectName(new qt.QString("new name"));
+    obj.setObjectName("new name");
 })();
 

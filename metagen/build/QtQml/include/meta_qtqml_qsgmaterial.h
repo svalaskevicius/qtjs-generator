@@ -61,7 +61,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("compare"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, other).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, other).getValue());
         }
         return QSGMaterial::compare(other);
     }
@@ -75,7 +75,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
         if(func)
         {
-            return cpgf::fromVariant<QSGMaterialType * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QSGMaterialType * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -89,7 +89,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createShader"));
         if(func)
         {
-            return cpgf::fromVariant<QSGMaterialShader * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QSGMaterialShader * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -177,7 +177,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("deactivate"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGMaterialShader::deactivate();
@@ -192,7 +192,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("activate"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGMaterialShader::activate();
@@ -207,7 +207,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("fragmentShader"));
         if(func)
         {
-            return cpgf::fromVariant<const char * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<const char * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGMaterialShader::fragmentShader();
     }
@@ -221,7 +221,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("compile"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGMaterialShader::compile();
@@ -236,7 +236,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("vertexShader"));
         if(func)
         {
-            return cpgf::fromVariant<const char * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<const char * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGMaterialShader::vertexShader();
     }
@@ -250,7 +250,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updateState"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, state, newMaterial, oldMaterial);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, state, newMaterial, oldMaterial);
             return;
         }
         QSGMaterialShader::updateState(state, newMaterial, oldMaterial);
@@ -265,7 +265,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("initialize"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGMaterialShader::initialize();
@@ -280,7 +280,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("attributeNames"));
         if(func)
         {
-            return cpgf::fromVariant<char const *const * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<char const *const * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }

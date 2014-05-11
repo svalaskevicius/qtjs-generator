@@ -45,7 +45,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("run"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         throw std::runtime_error("Abstract method");

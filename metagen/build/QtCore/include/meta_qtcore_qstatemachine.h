@@ -108,7 +108,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
         QObject::connectNotify(signal);
@@ -123,7 +123,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("beginMicrostep"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QStateMachine::beginMicrostep(event);
@@ -143,7 +143,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::childEvent(__arg0);
@@ -158,7 +158,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("onExit"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QStateMachine::onExit(event);
@@ -173,7 +173,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("endMicrostep"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QStateMachine::endMicrostep(event);
@@ -193,7 +193,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("beginSelectTransitions"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QStateMachine::beginSelectTransitions(event);
@@ -213,7 +213,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("endSelectTransitions"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QStateMachine::endSelectTransitions(event);
@@ -228,7 +228,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("onEntry"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QStateMachine::onEntry(event);
@@ -243,7 +243,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
         if(func)
         {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
         return QStateMachine::qt_metacast(__arg0);
     }
@@ -257,7 +257,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, watched, event).getValue());
         }
         return QStateMachine::eventFilter(watched, event);
     }
@@ -271,7 +271,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
         if(func)
         {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QStateMachine::metaObject();
     }
@@ -285,7 +285,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::customEvent(__arg0);
@@ -300,7 +300,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, e).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, e).getValue());
         }
         return QStateMachine::event(e);
     }
@@ -314,7 +314,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1, __arg2).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
         return QStateMachine::qt_metacall(__arg0, __arg1, __arg2);
     }
@@ -328,7 +328,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::timerEvent(__arg0);
@@ -343,7 +343,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
         QObject::disconnectNotify(signal);

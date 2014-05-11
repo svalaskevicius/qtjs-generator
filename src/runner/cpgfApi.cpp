@@ -33,6 +33,8 @@
 
 #include <qtCore_cpgf_compat.h>
 
+#include "qttypesconverter.h"
+
 namespace qtjs_binder {
 
 namespace {
@@ -125,6 +127,23 @@ T *arrayValueForOffset(T *array, int offset)
 
 }
 
+template <typename F>
+void registerGlobalV8Function(const char * name, F function)
+{
+    using namespace v8;
+
+    v8::Isolate* isolate = v8::Isolate::GetCurrent();
+    HandleScope handle_scope(isolate);
+    Q_UNUSED(handle_scope);
+
+    Local<Context> ctx = isolate->GetCurrentContext();
+    Local<Object> global( ctx->Global() );
+    v8::Local<v8::FunctionTemplate> t = v8::FunctionTemplate::New(function);
+    v8::Local<v8::Function> fn = t->GetFunction();
+    v8::Local<v8::String> fn_name = v8::String::NewFromUtf8(isolate, name);
+    fn->SetName(fn_name);
+    global->Set(fn_name, fn);
+}
 
 void registerQt(cpgf::GDefineMetaNamespace &define)
 {
@@ -169,6 +188,8 @@ void registerQt(cpgf::GDefineMetaNamespace &define)
             ._default(copyVariantFromCopyable(0))
             ._default(copyVariantFromCopyable(0))
             ;
+
+    registerGlobalV8Function("keepQtObjectUntilItsFreed", cpgf::qtjs::MetaObjectLifeManager::keepV8HandleUntilObjectIsFreed);
 }
 
 void unregisterQt()
@@ -236,8 +257,11 @@ CpgfBinder::CpgfBinder(v8::Handle<v8::Context> ctx)
       service(createDefaultMetaService()),
       runner(createV8ScriptRunner(service.get(), ctx)),
       scriptObject(runner->getScripeObject()),
-      metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass())))
+      metaClass(static_cast<IMetaClass *>(metaItemToInterface(define.getMetaClass()))),
+      userConverter(new QtTypesConverter())
 {
+    scriptObject->getContext()->addScriptUserConverter(userConverter.get());
+
     qtjs_binder::registerQt(define);
     scriptObject->bindCoreService("cpgf", NULL);
     scriptSetValue(scriptObject.get(), "qt", GScriptValue::fromClass(metaClass.get()));

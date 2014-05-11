@@ -49,7 +49,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("intercept"));
         if(func)
         {
-            return cpgf::fromVariant<QUrl >(cpgf::invokeScriptFunction(func.get(), this, path, type).getValue());
+            return cpgf::fromVariant<QUrl >(cpgf::invokeScriptFunctionOnObject(func.get(), this, path, type).getValue());
         }
         throw std::runtime_error("Abstract method");
     }

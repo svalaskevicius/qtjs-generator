@@ -216,7 +216,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
         QObject::connectNotify(signal);
@@ -231,7 +231,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawForeground"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, painter, rect);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, painter, rect);
             return;
         }
         QGraphicsScene::drawForeground(painter, rect);
@@ -251,7 +251,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::childEvent(__arg0);
@@ -266,7 +266,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
         if(func)
         {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
         return QGraphicsScene::qt_metacast(__arg0);
     }
@@ -280,7 +280,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("dragMoveEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QGraphicsScene::dragMoveEvent(event);
@@ -305,7 +305,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("wheelEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QGraphicsScene::wheelEvent(event);
@@ -320,7 +320,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("mouseReleaseEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QGraphicsScene::mouseReleaseEvent(event);
@@ -335,7 +335,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("keyPressEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QGraphicsScene::keyPressEvent(event);
@@ -350,7 +350,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("focusInEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QGraphicsScene::focusInEvent(event);
@@ -365,7 +365,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, event).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, event).getValue());
         }
         return QGraphicsScene::event(event);
     }
@@ -379,7 +379,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("mouseMoveEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QGraphicsScene::mouseMoveEvent(event);
@@ -394,7 +394,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::timerEvent(__arg0);
@@ -414,7 +414,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("inputMethodEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QGraphicsScene::inputMethodEvent(event);
@@ -429,7 +429,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawItems"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, painter, numItems, items, options, widget);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, painter, numItems, items, options, widget);
             return;
         }
         QGraphicsScene::drawItems(painter, numItems, items, options, widget);
@@ -449,7 +449,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawBackground"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, painter, rect);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, painter, rect);
             return;
         }
         QGraphicsScene::drawBackground(painter, rect);
@@ -464,7 +464,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("dragLeaveEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QGraphicsScene::dragLeaveEvent(event);
@@ -479,7 +479,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("inputMethodQuery"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunction(func.get(), this, query).getValue());
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunctionOnObject(func.get(), this, query).getValue());
         }
         return QGraphicsScene::inputMethodQuery(query);
     }
@@ -493,7 +493,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("focusOutEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QGraphicsScene::focusOutEvent(event);
@@ -523,7 +523,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("dropEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QGraphicsScene::dropEvent(event);
@@ -538,7 +538,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("mousePressEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QGraphicsScene::mousePressEvent(event);
@@ -553,7 +553,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, watched, event).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, watched, event).getValue());
         }
         return QGraphicsScene::eventFilter(watched, event);
     }
@@ -567,7 +567,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
         if(func)
         {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QGraphicsScene::metaObject();
     }
@@ -581,7 +581,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("contextMenuEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QGraphicsScene::contextMenuEvent(event);
@@ -596,7 +596,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("keyReleaseEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QGraphicsScene::keyReleaseEvent(event);
@@ -611,7 +611,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("dragEnterEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QGraphicsScene::dragEnterEvent(event);
@@ -626,7 +626,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::customEvent(__arg0);
@@ -641,7 +641,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1, __arg2).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
         return QGraphicsScene::qt_metacall(__arg0, __arg1, __arg2);
     }
@@ -655,7 +655,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("mouseDoubleClickEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QGraphicsScene::mouseDoubleClickEvent(event);
@@ -670,7 +670,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
         QObject::disconnectNotify(signal);
@@ -685,7 +685,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("helpEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, event);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
         QGraphicsScene::helpEvent(event);

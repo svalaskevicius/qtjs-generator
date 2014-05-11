@@ -51,10 +51,21 @@ dep_v8.commands = cd $${ROOT}/lib/node/deps/v8/ && make native -j4 library=share
 dep_v8.depends = $${ROOT}/lib/node/deps/v8/build/gyp/gyp
 
 dep_cpgf.target = $${ROOT}/lib/cpgf-build/build/libcpgf.so
-dep_cpgf.commands = cd $${ROOT}/lib/cpgf-build/ && mkdir -p build && cd build && \
-                    CXX="$${QMAKE_CXX}" CC="$${QMAKE_CC}" cmake .. -DCMAKE_BUILD_TYPE=Release && \
-                    make -j4 lib
-
+CONFIG(debug, debug|release) {
+    linux-clang {
+        dep_cpgf.commands = cd $${ROOT}/lib/cpgf-build/ && mkdir -p build && cd build && \
+                            CXX="$${QMAKE_CXX}" CC="$${QMAKE_CC}" CXXFLAGS="-fsanitize=address" cmake .. -DCMAKE_BUILD_TYPE=Debug && \
+                            make -j4 lib
+    } else {
+        dep_cpgf.commands = cd $${ROOT}/lib/cpgf-build/ && mkdir -p build && cd build && \
+                            CXX="$${QMAKE_CXX}" CC="$${QMAKE_CC}" cmake .. -DCMAKE_BUILD_TYPE=Debug && \
+                            make -j4 lib
+    }
+} else {
+    dep_cpgf.commands = cd $${ROOT}/lib/cpgf-build/ && mkdir -p build && cd build && \
+                        CXX="$${QMAKE_CXX}" CC="$${QMAKE_CC}" cmake .. -DCMAKE_BUILD_TYPE=Release && \
+                        make -j4 lib
+}
 QMAKE_EXTRA_TARGETS += v8_gyp dep_v8 dep_cpgf
 
 PRE_TARGETDEPS +=   $${ROOT}/lib/node/deps/v8/out/native/lib.target/libv8.so $${ROOT}/lib/cpgf-build/build/libcpgf.so

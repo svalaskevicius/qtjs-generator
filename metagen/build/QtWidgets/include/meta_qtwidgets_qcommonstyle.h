@@ -99,7 +99,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("subElementRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this, r, opt, widget).getValue());
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this, r, opt, widget).getValue());
         }
         return QCommonStyle::subElementRect(r, opt, widget);
     }
@@ -113,7 +113,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("polish"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, app);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, app);
             return;
         }
         QCommonStyle::polish(app);
@@ -128,7 +128,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
         QObject::connectNotify(signal);
@@ -143,7 +143,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::childEvent(__arg0);
@@ -158,7 +158,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawPrimitive"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, pe, opt, p, w);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, pe, opt, p, w);
             return;
         }
         QCommonStyle::drawPrimitive(pe, opt, p, w);
@@ -173,7 +173,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("generatedIconPixmap"));
         if(func)
         {
-            return cpgf::fromVariant<QPixmap >(cpgf::invokeScriptFunction(func.get(), this, iconMode, pixmap, opt).getValue());
+            return cpgf::fromVariant<QPixmap >(cpgf::invokeScriptFunctionOnObject(func.get(), this, iconMode, pixmap, opt).getValue());
         }
         return QCommonStyle::generatedIconPixmap(iconMode, pixmap, opt);
     }
@@ -187,7 +187,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
         if(func)
         {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
         return QCommonStyle::qt_metacast(__arg0);
     }
@@ -201,7 +201,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawItemText"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, painter, rect, flags, pal, enabled, text, textRole);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, painter, rect, flags, pal, enabled, text, textRole);
             return;
         }
         QStyle::drawItemText(painter, rect, flags, pal, enabled, text, textRole);
@@ -216,7 +216,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("polish"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, widget);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, widget);
             return;
         }
         QCommonStyle::polish(widget);
@@ -231,7 +231,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawComplexControl"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, cc, opt, p, w);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, cc, opt, p, w);
             return;
         }
         QCommonStyle::drawComplexControl(cc, opt, p, w);
@@ -246,7 +246,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
         return QObject::event(__arg0);
     }
@@ -260,7 +260,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::timerEvent(__arg0);
@@ -275,7 +275,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("standardIcon"));
         if(func)
         {
-            return cpgf::fromVariant<QIcon >(cpgf::invokeScriptFunction(func.get(), this, standardIcon, opt, widget).getValue());
+            return cpgf::fromVariant<QIcon >(cpgf::invokeScriptFunctionOnObject(func.get(), this, standardIcon, opt, widget).getValue());
         }
         return QCommonStyle::standardIcon(standardIcon, opt, widget);
     }
@@ -289,7 +289,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hitTestComplexControl"));
         if(func)
         {
-            return cpgf::fromVariant<QStyle::SubControl >(cpgf::invokeScriptFunction(func.get(), this, cc, opt, pt, w).getValue());
+            return cpgf::fromVariant<QStyle::SubControl >(cpgf::invokeScriptFunctionOnObject(func.get(), this, cc, opt, pt, w).getValue());
         }
         return QCommonStyle::hitTestComplexControl(cc, opt, pt, w);
     }
@@ -308,7 +308,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("unpolish"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, application);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, application);
             return;
         }
         QCommonStyle::unpolish(application);
@@ -323,7 +323,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("polish"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QCommonStyle::polish(__arg0);
@@ -338,7 +338,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("unpolish"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, widget);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, widget);
             return;
         }
         QCommonStyle::unpolish(widget);
@@ -353,7 +353,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("pixelMetric"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, m, opt, widget).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, m, opt, widget).getValue());
         }
         return QCommonStyle::pixelMetric(m, opt, widget);
     }
@@ -372,7 +372,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("styleHint"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, sh, opt, w, shret).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, sh, opt, w, shret).getValue());
         }
         return QCommonStyle::styleHint(sh, opt, w, shret);
     }
@@ -391,7 +391,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawItemPixmap"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, painter, rect, alignment, pixmap);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, painter, rect, alignment, pixmap);
             return;
         }
         QStyle::drawItemPixmap(painter, rect, alignment, pixmap);
@@ -411,7 +411,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemPixmapRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this, r, flags, pixmap).getValue());
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this, r, flags, pixmap).getValue());
         }
         return QStyle::itemPixmapRect(r, flags, pixmap);
     }
@@ -425,7 +425,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawControl"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, element, opt, p, w);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, element, opt, p, w);
             return;
         }
         QCommonStyle::drawControl(element, opt, p, w);
@@ -440,7 +440,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layoutSpacing"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, control1, control2, orientation, option, widget).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, control1, control2, orientation, option, widget).getValue());
         }
         return QCommonStyle::layoutSpacing(control1, control2, orientation, option, widget);
     }
@@ -454,7 +454,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
         }
         return QObject::eventFilter(__arg0, __arg1);
     }
@@ -468,7 +468,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
         if(func)
         {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QCommonStyle::metaObject();
     }
@@ -482,7 +482,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("standardPixmap"));
         if(func)
         {
-            return cpgf::fromVariant<QPixmap >(cpgf::invokeScriptFunction(func.get(), this, sp, opt, widget).getValue());
+            return cpgf::fromVariant<QPixmap >(cpgf::invokeScriptFunctionOnObject(func.get(), this, sp, opt, widget).getValue());
         }
         return QCommonStyle::standardPixmap(sp, opt, widget);
     }
@@ -496,7 +496,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemTextRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this, fm, r, flags, enabled, text).getValue());
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this, fm, r, flags, enabled, text).getValue());
         }
         return QStyle::itemTextRect(fm, r, flags, enabled, text);
     }
@@ -510,7 +510,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::customEvent(__arg0);
@@ -525,7 +525,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1, __arg2).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
         return QCommonStyle::qt_metacall(__arg0, __arg1, __arg2);
     }
@@ -539,7 +539,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
         QObject::disconnectNotify(signal);
@@ -554,7 +554,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeFromContents"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunction(func.get(), this, ct, opt, contentsSize, widget).getValue());
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this, ct, opt, contentsSize, widget).getValue());
         }
         return QCommonStyle::sizeFromContents(ct, opt, contentsSize, widget);
     }
@@ -568,7 +568,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("subControlRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this, cc, opt, sc, w).getValue());
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this, cc, opt, sc, w).getValue());
         }
         return QCommonStyle::subControlRect(cc, opt, sc, w);
     }
@@ -582,7 +582,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("standardPalette"));
         if(func)
         {
-            return cpgf::fromVariant<QPalette >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QPalette >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QStyle::standardPalette();
     }

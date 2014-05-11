@@ -53,7 +53,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("registerTypes"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, uri);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, uri);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -68,7 +68,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("initializeEngine"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, engine, uri);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, engine, uri);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -119,7 +119,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("registerTypes"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, uri);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, uri);
             return;
         }
         throw std::runtime_error("Abstract method");

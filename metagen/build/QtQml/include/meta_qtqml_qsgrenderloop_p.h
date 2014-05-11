@@ -64,7 +64,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
         QObject::connectNotify(signal);
@@ -79,7 +79,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("grab"));
         if(func)
         {
-            return cpgf::fromVariant<QImage >(cpgf::invokeScriptFunction(func.get(), this, window).getValue());
+            return cpgf::fromVariant<QImage >(cpgf::invokeScriptFunctionOnObject(func.get(), this, window).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -93,7 +93,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::childEvent(__arg0);
@@ -108,7 +108,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneGraphContext"));
         if(func)
         {
-            return cpgf::fromVariant<QSGContext * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QSGContext * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -122,7 +122,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
         if(func)
         {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
         return QSGRenderLoop::qt_metacast(__arg0);
     }
@@ -136,7 +136,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hide"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, window);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, window);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -151,7 +151,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
         return QObject::event(__arg0);
     }
@@ -165,7 +165,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::timerEvent(__arg0);
@@ -180,7 +180,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("resize"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QSGRenderLoop::resize(__arg0);
@@ -200,7 +200,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("show"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, window);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, window);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -215,7 +215,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("releaseResources"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, window);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, window);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -230,7 +230,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createRenderContext"));
         if(func)
         {
-            return cpgf::fromVariant<QSGRenderContext * >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<QSGRenderContext * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -254,7 +254,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("interleaveIncubation"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGRenderLoop::interleaveIncubation();
     }
@@ -273,7 +273,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("update"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, window);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, window);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -288,7 +288,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("maybeUpdate"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, window);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, window);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -303,7 +303,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("windowDestroyed"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, window);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, window);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -318,7 +318,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
         }
         return QObject::eventFilter(__arg0, __arg1);
     }
@@ -332,7 +332,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
         if(func)
         {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGRenderLoop::metaObject();
     }
@@ -346,7 +346,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("exposureChanged"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, window);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, window);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -361,7 +361,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         QObject::customEvent(__arg0);
@@ -376,7 +376,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0, __arg1, __arg2).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
         return QSGRenderLoop::qt_metacall(__arg0, __arg1, __arg2);
     }
@@ -390,7 +390,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("animationDriver"));
         if(func)
         {
-            return cpgf::fromVariant<QAnimationDriver * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QAnimationDriver * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -404,7 +404,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
         QObject::disconnectNotify(signal);

@@ -52,7 +52,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("interface_cast"));
         if(func)
         {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
         return QAccessibleInterface::interface_cast(__arg0);
     }
@@ -66,7 +66,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childCount"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QAccessibleApplication::childCount();
     }
@@ -80,7 +80,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("virtual_hook"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, id, data);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, id, data);
             return;
         }
         QAccessibleInterface::virtual_hook(id, data);
@@ -95,7 +95,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("text"));
         if(func)
         {
-            return cpgf::fromVariant<QString >(cpgf::invokeScriptFunction(func.get(), this, t).getValue());
+            return cpgf::fromVariant<QString >(cpgf::invokeScriptFunctionOnObject(func.get(), this, t).getValue());
         }
         return QAccessibleApplication::text(t);
     }
@@ -109,7 +109,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("backgroundColor"));
         if(func)
         {
-            return cpgf::fromVariant<QColor >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QColor >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QAccessibleInterface::backgroundColor();
     }
@@ -123,7 +123,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("window"));
         if(func)
         {
-            return cpgf::fromVariant<QWindow * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QWindow * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QAccessibleApplication::window();
     }
@@ -137,7 +137,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("child"));
         if(func)
         {
-            return cpgf::fromVariant<QAccessibleInterface * >(cpgf::invokeScriptFunction(func.get(), this, index).getValue());
+            return cpgf::fromVariant<QAccessibleInterface * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, index).getValue());
         }
         return QAccessibleApplication::child(index);
     }
@@ -151,7 +151,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setText"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, t, text);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, t, text);
             return;
         }
         QAccessibleObject::setText(t, text);
@@ -166,7 +166,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("focusChild"));
         if(func)
         {
-            return cpgf::fromVariant<QAccessibleInterface * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QAccessibleInterface * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QAccessibleApplication::focusChild();
     }
@@ -180,7 +180,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("object"));
         if(func)
         {
-            return cpgf::fromVariant<QObject * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QAccessibleObject::object();
     }
@@ -194,7 +194,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("relations"));
         if(func)
         {
-            return cpgf::fromVariant<QVector< QPair< QAccessibleInterface *, QAccessible::Relation > > >(cpgf::invokeScriptFunction(func.get(), this, match).getValue());
+            return cpgf::fromVariant<QVector< QPair< QAccessibleInterface *, QAccessible::Relation > > >(cpgf::invokeScriptFunctionOnObject(func.get(), this, match).getValue());
         }
         return QAccessibleInterface::relations(match);
     }
@@ -208,7 +208,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childAt"));
         if(func)
         {
-            return cpgf::fromVariant<QAccessibleInterface * >(cpgf::invokeScriptFunction(func.get(), this, x, y).getValue());
+            return cpgf::fromVariant<QAccessibleInterface * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, x, y).getValue());
         }
         return QAccessibleObject::childAt(x, y);
     }
@@ -222,7 +222,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("indexOfChild"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunction(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
         return QAccessibleApplication::indexOfChild(__arg0);
     }
@@ -236,7 +236,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("role"));
         if(func)
         {
-            return cpgf::fromVariant<QAccessible::Role >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QAccessible::Role >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QAccessibleApplication::role();
     }
@@ -250,7 +250,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("parent"));
         if(func)
         {
-            return cpgf::fromVariant<QAccessibleInterface * >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QAccessibleInterface * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QAccessibleApplication::parent();
     }
@@ -264,7 +264,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("rect"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QAccessibleObject::rect();
     }
@@ -278,7 +278,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("foregroundColor"));
         if(func)
         {
-            return cpgf::fromVariant<QColor >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QColor >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QAccessibleInterface::foregroundColor();
     }
@@ -292,7 +292,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("state"));
         if(func)
         {
-            return cpgf::fromVariant<QAccessible::State >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QAccessible::State >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QAccessibleApplication::state();
     }
@@ -306,7 +306,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isValid"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QAccessibleObject::isValid();
     }

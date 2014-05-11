@@ -40,7 +40,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidateGlyphs"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, glyphs);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, glyphs);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -108,7 +108,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setStyleColor"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, color);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, color);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -123,7 +123,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setColor"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, color);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, color);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -138,7 +138,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("baseLine"));
         if(func)
         {
-            return cpgf::fromVariant<QPointF >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QPointF >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -152,7 +152,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setBoundingRect"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, bounds);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, bounds);
             return;
         }
         QSGGlyphNode::setBoundingRect(bounds);
@@ -167,7 +167,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setPreferredAntialiasingMode"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -182,7 +182,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRect"));
         if(func)
         {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGGlyphNode::boundingRect();
     }
@@ -196,7 +196,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setGlyphs"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, position, glyphs);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, position, glyphs);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -211,7 +211,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGNode::preprocess();
@@ -226,7 +226,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }
@@ -240,7 +240,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("update"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -255,7 +255,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setStyle"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, style);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, style);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -327,7 +327,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setTargetRect"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, rect);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -342,7 +342,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setMirror"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, mirror);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, mirror);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -357,7 +357,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setFiltering"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, filtering);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, filtering);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -372,7 +372,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setInnerTargetRect"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, rect);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -387,7 +387,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setHorizontalWrapMode"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, wrapMode);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, wrapMode);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -402,7 +402,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGNode::preprocess();
@@ -417,7 +417,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setMipmapFiltering"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, filtering);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, filtering);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -432,7 +432,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setTexture"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, texture);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, texture);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -447,7 +447,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setAntialiasing"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, antialiasing);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, antialiasing);
             return;
         }
         QSGImageNode::setAntialiasing(antialiasing);
@@ -462,7 +462,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setInnerSourceRect"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, rect);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -477,7 +477,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setVerticalWrapMode"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, wrapMode);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, wrapMode);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -492,7 +492,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }
@@ -506,7 +506,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("update"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -521,7 +521,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setSubSourceRect"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, rect);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -592,7 +592,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setAligned"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, aligned);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, aligned);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -607,7 +607,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setAntialiasing"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, antialiasing);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, antialiasing);
             return;
         }
         QSGRectangleNode::setAntialiasing(antialiasing);
@@ -622,7 +622,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setColor"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, color);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, color);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -637,7 +637,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setRadius"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, radius);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, radius);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -652,7 +652,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setPenColor"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, color);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, color);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -667,7 +667,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setRect"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, rect);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -682,7 +682,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setPenWidth"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, width);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, width);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -697,7 +697,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setGradientStops"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, stops);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, stops);
             return;
         }
         throw std::runtime_error("Abstract method");
@@ -712,7 +712,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         QSGNode::preprocess();
@@ -727,7 +727,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunction(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         return QSGNode::isSubtreeBlocked();
     }
@@ -741,7 +741,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("update"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
         throw std::runtime_error("Abstract method");

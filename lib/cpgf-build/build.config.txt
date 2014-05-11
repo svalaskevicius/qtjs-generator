@@ -1,7 +1,5 @@
 set(CMAKE_VERBOSE_MAKEFILE true)
 
-set(BUILD_DEBUG	0)
-
 # set 1 to enable Lua binding, 0 to disable
 set(HAS_LUA	0)
 

@@ -3,10 +3,10 @@ import QtQuick 2.2
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.1
-import com.ics.demo 1.0
+import org.qtjs 1.0
 
 ApplicationWindow {
-    title: qsTr("SSH Key Generator")
+    title: qsTr("QML example app")
 
     statusBar: StatusBar {
         RowLayout {

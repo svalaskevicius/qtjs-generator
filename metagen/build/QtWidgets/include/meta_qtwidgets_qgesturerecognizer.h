@@ -61,7 +61,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("recognize"));
         if(func)
         {
-            return cpgf::fromVariant<QGestureRecognizer::Result >(cpgf::invokeScriptFunction(func.get(), this, state, watched, event).getValue());
+            return cpgf::fromVariant<QGestureRecognizer::Result >(cpgf::invokeScriptFunctionOnObject(func.get(), this, state, watched, event).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
@@ -75,7 +75,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("create"));
         if(func)
         {
-            return cpgf::fromVariant<QGesture * >(cpgf::invokeScriptFunction(func.get(), this, target).getValue());
+            return cpgf::fromVariant<QGesture * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, target).getValue());
         }
         return QGestureRecognizer::create(target);
     }
@@ -89,7 +89,7 @@ public:
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("reset"));
         if(func)
         {
-            cpgf::invokeScriptFunction(func.get(), this, state);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, state);
             return;
         }
         QGestureRecognizer::reset(state);
