@@ -53,7 +53,6 @@ SOURCES +=  $${ROOT}/lib/node/src/fs_event_wrap.cc \
             $${ROOT}/lib/node/src/node.cc \
             $${ROOT}/lib/node/src/node_buffer.cc \
             $${ROOT}/lib/node/src/node_constants.cc \
-            $${ROOT}/lib/node/src/node_extensions.cc \
             $${ROOT}/lib/node/src/node_file.cc \
             $${ROOT}/lib/node/src/node_http_parser.cc \
             $${ROOT}/lib/node/src/node_javascript.cc \
@@ -76,7 +75,9 @@ SOURCES +=  $${ROOT}/lib/node/src/fs_event_wrap.cc \
             $${ROOT}/lib/node/src/node_contextify.cc \
             $${ROOT}/lib/node/src/node_watchdog.cc \
             $${ROOT}/lib/node/src/smalloc.cc \
-            $${ROOT}/lib/node/src/uv.cc
+            $${ROOT}/lib/node/src/uv.cc \
+            $${ROOT}/lib/node/src/node_v8.cc \
+            $${ROOT}/lib/node/src/spawn_sync.cc
 
 nodeconfig.target = $${ROOT}/lib/node/out/Makefile
 nodeconfig.commands = cd $${ROOT}/lib/node && ./configure
