@@ -174,15 +174,15 @@ int main(int argc, char * argv[])
     node::Environment* env = CreateNodeEnvironment(v8_isolate, argc, argv, exec_argc, exec_argv);
     cpgf::setV8Isolate(v8_isolate);
     v8::Locker locker(v8_isolate);
-    v8::Context::Scope context_scope(env->context());
-    v8::HandleScope handle_scope(env->isolate());
     Q_UNUSED(locker);
-    Q_UNUSED(context_scope);
-    Q_UNUSED(handle_scope);
 
     {
+        v8::Context::Scope context_scope(env->context());
+        v8::HandleScope handle_scope(env->isolate());
         qtjs_binder::CpgfBinder cpgfBinder(env->context());
         Q_UNUSED(cpgfBinder);
+        Q_UNUSED(context_scope);
+        Q_UNUSED(handle_scope);
 
         try {
             node::Load(env);
