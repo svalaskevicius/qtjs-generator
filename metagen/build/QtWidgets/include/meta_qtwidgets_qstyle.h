@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -596,6 +595,7 @@ void buildMetaClass_QStyle(D _d)
         ._element("SH_ToolTip_FallAsleepDelay", D::ClassType::SH_ToolTip_FallAsleepDelay)
         ._element("SH_Widget_Animate", D::ClassType::SH_Widget_Animate)
         ._element("SH_Splitter_OpaqueResize", D::ClassType::SH_Splitter_OpaqueResize)
+        ._element("SH_ComboBox_UseNativePopup", D::ClassType::SH_ComboBox_UseNativePopup)
         ._element("SH_CustomBase", D::ClassType::SH_CustomBase)
     ;
     _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::StandardPixmap>("StandardPixmap")

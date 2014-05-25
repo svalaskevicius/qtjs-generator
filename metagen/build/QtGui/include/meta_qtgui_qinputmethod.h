@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -32,7 +31,7 @@ void buildMetaClass_QInputMethod(D _d)
     _d.CPGF_MD_TEMPLATE _method("inputItemTransform", &D::ClassType::inputItemTransform);
     _d.CPGF_MD_TEMPLATE _method("setInputItemTransform", &D::ClassType::setInputItemTransform, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("inputItemRectangle", &D::ClassType::inputItemRectangle);
-    _d.CPGF_MD_TEMPLATE _method("setInputItemRectangle", &D::ClassType::setInputItemRectangle);
+    _d.CPGF_MD_TEMPLATE _method("setInputItemRectangle", &D::ClassType::setInputItemRectangle, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("cursorRectangle", &D::ClassType::cursorRectangle);
     _d.CPGF_MD_TEMPLATE _method("keyboardRectangle", &D::ClassType::keyboardRectangle);
     _d.CPGF_MD_TEMPLATE _method("isVisible", &D::ClassType::isVisible);
@@ -56,6 +55,7 @@ void buildMetaClass_QInputMethod(D _d)
         ._default(copyVariantFromCopyable(-1))
         ._default(copyVariantFromCopyable(0))
     ;
+    _d.CPGF_MD_TEMPLATE _method("queryFocusObject", &D::ClassType::queryFocusObject);
     _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::Action>("Action")
         ._element("Click", D::ClassType::Click)
         ._element("ContextMenu", D::ClassType::ContextMenu)

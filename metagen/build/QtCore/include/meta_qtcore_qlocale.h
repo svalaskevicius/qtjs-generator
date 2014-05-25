@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -542,6 +541,9 @@ void buildMetaClass_QLocale(D _d)
         ._element("TaiDam", D::ClassType::TaiDam)
         ._element("TaiNua", D::ClassType::TaiNua)
         ._element("Ugaritic", D::ClassType::Ugaritic)
+        ._element("Akoose", D::ClassType::Akoose)
+        ._element("Lakota", D::ClassType::Lakota)
+        ._element("StandardMoroccanTamazight", D::ClassType::StandardMoroccanTamazight)
         ._element("Norwegian", D::ClassType::Norwegian)
         ._element("Moldavian", D::ClassType::Moldavian)
         ._element("SerboCroatian", D::ClassType::SerboCroatian)

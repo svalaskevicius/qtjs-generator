@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -429,6 +428,7 @@ void buildMetaClass_VariantData(D _d)
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (const int, const void *, const uint)>();
+    _d.CPGF_MD_TEMPLATE _constructor<void * (const VariantData &)>();
     _d.CPGF_MD_TEMPLATE _field("metaTypeId", &D::ClassType::metaTypeId);
     _d.CPGF_MD_TEMPLATE _field("data", &D::ClassType::data);
     _d.CPGF_MD_TEMPLATE _field("flags", &D::ClassType::flags);

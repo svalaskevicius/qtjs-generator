@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -413,7 +412,7 @@ void buildMetaClass_QSGTexture(D _d)
     _d.CPGF_MD_TEMPLATE _method("horizontalWrapMode", &D::ClassType::horizontalWrapMode);
     _d.CPGF_MD_TEMPLATE _method("setVerticalWrapMode", &D::ClassType::setVerticalWrapMode);
     _d.CPGF_MD_TEMPLATE _method("verticalWrapMode", &D::ClassType::verticalWrapMode);
-    _d.CPGF_MD_TEMPLATE _method("convertToNormalizedSourceRect", &D::ClassType::convertToNormalizedSourceRect);
+    _d.CPGF_MD_TEMPLATE _method("convertToNormalizedSourceRect", &D::ClassType::convertToNormalizedSourceRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("tr", &D::ClassType::tr)
         ._default(copyVariantFromCopyable(-1))
         ._default(copyVariantFromCopyable(0))

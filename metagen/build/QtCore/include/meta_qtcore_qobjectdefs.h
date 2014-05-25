@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -27,7 +26,7 @@ void buildMetaClass_Global_qobjectdefs(D _d)
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qFlagLocation", (const char * (*) (const char *))&qFlagLocation);
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_24")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_37")
         ._element("Q_MOC_OUTPUT_REVISION", Q_MOC_OUTPUT_REVISION)
     ;
 }

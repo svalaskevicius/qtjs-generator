@@ -1,5 +1,6 @@
 // Auto generated file, don't modify.
 
+#include <qtCore_cpgf_compat.h>
 #include <QtCore/qglobal.h>
 #include <QtCore/QString>
 #include <QtCore/QDataStream>

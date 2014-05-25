@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -14,9 +13,9 @@
 #include "cpgf/gmetapolicy.h"
 
 
-using namespace QQmlJS;
-using namespace QQmlJS::V4IR;
+using namespace QmlIR;
 using namespace QV4;
+using namespace QV4::IR;
 using namespace QV4::CompiledData;
 
 

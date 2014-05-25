@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -56,6 +55,15 @@ void buildMetaClass_Global_qhash(D _d)
         ._default(copyVariantFromCopyable(0))
     ;
     _d.CPGF_MD_TEMPLATE _method("qHash", (uint (*) (qint64, uint))&qHash)
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("qHash", (uint (*) (float, uint))&qHash)
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("qHash", (uint (*) (double, uint))&qHash)
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("qHash", (uint (*) (long double, uint))&qHash)
         ._default(copyVariantFromCopyable(0))
     ;
     _d.CPGF_MD_TEMPLATE _method("qHash", (uint (*) (QChar, uint))&qHash)

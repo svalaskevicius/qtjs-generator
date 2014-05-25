@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -340,7 +339,7 @@ void buildMetaClass_QSGRenderer(D _d)
     _d.CPGF_MD_TEMPLATE _method("setDevicePixelRatio", &D::ClassType::setDevicePixelRatio);
     _d.CPGF_MD_TEMPLATE _method("devicePixelRatio", &D::ClassType::devicePixelRatio);
     _d.CPGF_MD_TEMPLATE _method("setProjectionMatrixToDeviceRect", &D::ClassType::setProjectionMatrixToDeviceRect);
-    _d.CPGF_MD_TEMPLATE _method("setProjectionMatrixToRect", &D::ClassType::setProjectionMatrixToRect);
+    _d.CPGF_MD_TEMPLATE _method("setProjectionMatrixToRect", &D::ClassType::setProjectionMatrixToRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("setProjectionMatrix", &D::ClassType::setProjectionMatrix, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("projectionMatrix", &D::ClassType::projectionMatrix);
     _d.CPGF_MD_TEMPLATE _method("isMirrored", &D::ClassType::isMirrored);
@@ -354,6 +353,8 @@ void buildMetaClass_QSGRenderer(D _d)
     _d.CPGF_MD_TEMPLATE _method("state", &D::ClassType::state);
     _d.CPGF_MD_TEMPLATE _method("setClearMode", &D::ClassType::setClearMode);
     _d.CPGF_MD_TEMPLATE _method("clearMode", &D::ClassType::clearMode);
+    _d.CPGF_MD_TEMPLATE _method("setCustomRenderMode", &D::ClassType::setCustomRenderMode, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("clearChangedFlag", &D::ClassType::clearChangedFlag);
     _d.CPGF_MD_TEMPLATE _method("sceneGraphChanged", &D::ClassType::sceneGraphChanged);
     _d.CPGF_MD_TEMPLATE _method("tr", &D::ClassType::tr)
         ._default(copyVariantFromCopyable(-1))
@@ -386,26 +387,6 @@ public:
     QSGRendererWrapper(QSGRenderContext * context)
         : QSGRenderer(context) {}
     
-    const QSGBindable * bindable() const
-    {
-        return QSGRenderer::bindable();
-    }
-    
-    void setProjectionMatrixToRect(const QRectF & rect)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setProjectionMatrixToRect"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
-            return;
-        }
-        QSGRenderer::setProjectionMatrixToRect(rect);
-    }
-    void super_setProjectionMatrixToRect(const QRectF & rect)
-    {
-        QSGRenderer::setProjectionMatrixToRect(rect);
-    }
-    
     void render()
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("render"));
@@ -434,11 +415,6 @@ public:
     void super_connectNotify(const QMetaMethod & signal)
     {
         QObject::connectNotify(signal);
-    }
-    
-    bool isSignalConnected(const QMetaMethod & signal) const
-    {
-        return QObject::isSignalConnected(signal);
     }
     
     void childEvent(QChildEvent * __arg0)
@@ -476,16 +452,6 @@ public:
         QSGRenderer::nodeChanged(node, state);
     }
     
-    int receivers(const char * signal) const
-    {
-        return QObject::receivers(signal);
-    }
-    
-    int senderSignalIndex() const
-    {
-        return QObject::senderSignalIndex();
-    }
-    
     void preprocess()
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
@@ -501,6 +467,11 @@ public:
         QSGRenderer::preprocess();
     }
     
+    void markNodeDirtyState(QSGNode * node, QSGNode::DirtyState state)
+    {
+        QSGRenderer::markNodeDirtyState(node, state);
+    }
+    
     void * qt_metacast(const char * __arg0)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
@@ -513,6 +484,95 @@ public:
     void * super_qt_metacast(const char * __arg0)
     {
         return QSGRenderer::qt_metacast(__arg0);
+    }
+    
+    bool event(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QObject::event(__arg0);
+    }
+    bool super_event(QEvent * __arg0)
+    {
+        return QObject::event(__arg0);
+    }
+    
+    void timerEvent(QTimerEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::timerEvent(__arg0);
+    }
+    void super_timerEvent(QTimerEvent * __arg0)
+    {
+        QObject::timerEvent(__arg0);
+    }
+    
+    bool isInitialized(const QOpenGLFunctionsPrivate * d)
+    {
+        return QOpenGLFunctions::isInitialized(d);
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
+    }
+    
+    void setProjectionMatrixToRect(const QRectF & rect)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setProjectionMatrixToRect"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
+            return;
+        }
+        QSGRenderer::setProjectionMatrixToRect(rect);
+    }
+    void super_setProjectionMatrixToRect(const QRectF & rect)
+    {
+        QSGRenderer::setProjectionMatrixToRect(rect);
+    }
+    
+    const QSGBindable * bindable() const
+    {
+        return QSGRenderer::bindable();
+    }
+    
+    void setCustomRenderMode(const QByteArray & __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setCustomRenderMode"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QSGRenderer::setCustomRenderMode(__arg0);
+    }
+    void super_setCustomRenderMode(const QByteArray & __arg0)
+    {
+        QSGRenderer::setCustomRenderMode(__arg0);
+    }
+    
+    bool isSignalConnected(const QMetaMethod & signal) const
+    {
+        return QObject::isSignalConnected(signal);
+    }
+    
+    int receivers(const char * signal) const
+    {
+        return QObject::receivers(signal);
+    }
+    
+    int senderSignalIndex() const
+    {
+        return QObject::senderSignalIndex();
     }
     
     bool eventFilter(QObject * __arg0, QEvent * __arg1)
@@ -563,20 +623,6 @@ public:
         QObject::customEvent(__arg0);
     }
     
-    bool event(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QObject::event(__arg0);
-    }
-    bool super_event(QEvent * __arg0)
-    {
-        return QObject::event(__arg0);
-    }
-    
     int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
@@ -589,26 +635,6 @@ public:
     int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
         return QSGRenderer::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    
-    bool isInitialized(const QOpenGLFunctionsPrivate * d)
-    {
-        return QOpenGLFunctions::isInitialized(d);
-    }
-    
-    void timerEvent(QTimerEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::timerEvent(__arg0);
-    }
-    void super_timerEvent(QTimerEvent * __arg0)
-    {
-        QObject::timerEvent(__arg0);
     }
     
     void disconnectNotify(const QMetaMethod & signal)
@@ -650,46 +676,43 @@ public:
     {
         QSGRenderer::draw(material, g);
     }
-    
-    QObject * sender() const
-    {
-        return QObject::sender();
-    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("bindable", (const QSGBindable * (D::ClassType::*) () const)&D::ClassType::bindable);
         _d.CPGF_MD_TEMPLATE _method("render", (void (D::ClassType::*) ())&D::ClassType::render);
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
         _d.CPGF_MD_TEMPLATE _method("updateStencilClip", (QSGRenderer::ClipType (D::ClassType::*) (const QSGClipNode *))&D::ClassType::updateStencilClip);
+        _d.CPGF_MD_TEMPLATE _method("preprocess", (void (D::ClassType::*) ())&D::ClassType::preprocess);
+        _d.CPGF_MD_TEMPLATE _method("markNodeDirtyState", (void (D::ClassType::*) (QSGNode *, QSGNode::DirtyState))&D::ClassType::markNodeDirtyState);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("isInitialized", (bool (D::ClassType::*) (const QOpenGLFunctionsPrivate *))&D::ClassType::isInitialized);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("bindable", (const QSGBindable * (D::ClassType::*) () const)&D::ClassType::bindable);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
         _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
         _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("preprocess", (void (D::ClassType::*) ())&D::ClassType::preprocess);
         _d.CPGF_MD_TEMPLATE _method("removeNodesToPreprocess", (void (D::ClassType::*) (QSGNode *))&D::ClassType::removeNodesToPreprocess);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-        _d.CPGF_MD_TEMPLATE _method("isInitialized", (bool (D::ClassType::*) (const QOpenGLFunctionsPrivate *))&D::ClassType::isInitialized);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
         _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
         _d.CPGF_MD_TEMPLATE _method("addNodesToPreprocess", (void (D::ClassType::*) (QSGNode *))&D::ClassType::addNodesToPreprocess);
         _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (const QSGMaterialShader *, const QSGGeometry *))&D::ClassType::draw);
-        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-        _d.CPGF_MD_TEMPLATE _method("super_setProjectionMatrixToRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setProjectionMatrixToRect);
         _d.CPGF_MD_TEMPLATE _method("super_render", (void (D::ClassType::*) ())&D::ClassType::super_render);
         _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
         _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
         _d.CPGF_MD_TEMPLATE _method("super_nodeChanged", (void (D::ClassType::*) (QSGNode *, QSGNode::DirtyState))&D::ClassType::super_nodeChanged);
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
         _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_setProjectionMatrixToRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setProjectionMatrixToRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_setCustomRenderMode", (void (D::ClassType::*) (const QByteArray &))&D::ClassType::super_setCustomRenderMode, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
         _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
         _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
         _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
         _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
         _d.CPGF_MD_TEMPLATE _method("super_materialChanged", (void (D::ClassType::*) (QSGGeometryNode *, QSGMaterial *, QSGMaterial *))&D::ClassType::super_materialChanged);
     }

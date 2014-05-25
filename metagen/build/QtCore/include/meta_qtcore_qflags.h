@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -35,7 +34,11 @@ void buildMetaClass_QFlag(D _d)
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * (int)>();
+    _d.CPGF_MD_TEMPLATE _constructor<void * (uint)>();
+    _d.CPGF_MD_TEMPLATE _constructor<void * (short)>();
+    _d.CPGF_MD_TEMPLATE _constructor<void * (ushort)>();
     _d.CPGF_MD_TEMPLATE _operator< int (cpgf::GMetaSelf)>(mopHolder());
+    _d.CPGF_MD_TEMPLATE _operator< uint (cpgf::GMetaSelf)>(mopHolder());
 }
 
 

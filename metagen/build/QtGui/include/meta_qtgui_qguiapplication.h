@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -25,7 +24,7 @@ void buildMetaClass_Global_qguiapplication(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_14")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_20")
         ._element("qApp", qApp)
         ._element("qGuiApp", qGuiApp)
     ;
@@ -68,6 +67,8 @@ void buildMetaClass_QGuiApplication(D _d)
     _d.CPGF_MD_TEMPLATE _method("allWindows", &D::ClassType::allWindows);
     _d.CPGF_MD_TEMPLATE _method("topLevelWindows", &D::ClassType::topLevelWindows);
     _d.CPGF_MD_TEMPLATE _method("topLevelAt", &D::ClassType::topLevelAt);
+    _d.CPGF_MD_TEMPLATE _method("setWindowIcon", &D::ClassType::setWindowIcon, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("windowIcon", &D::ClassType::windowIcon);
     _d.CPGF_MD_TEMPLATE _method("platformName", &D::ClassType::platformName);
     _d.CPGF_MD_TEMPLATE _method("modalWindow", &D::ClassType::modalWindow);
     _d.CPGF_MD_TEMPLATE _method("focusWindow", &D::ClassType::focusWindow);

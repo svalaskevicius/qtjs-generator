@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -46,8 +45,8 @@ void buildMetaClass_QScroller(D _d)
     _d.CPGF_MD_TEMPLATE _method("setScrollerProperties", &D::ClassType::setScrollerProperties);
     _d.CPGF_MD_TEMPLATE _method("scrollTo", (void (D::ClassType::*) (const QPointF &))&D::ClassType::scrollTo, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("scrollTo", (void (D::ClassType::*) (const QPointF &, int))&D::ClassType::scrollTo, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("ensureVisible", (void (D::ClassType::*) (const QRectF &, qreal, qreal))&D::ClassType::ensureVisible);
-    _d.CPGF_MD_TEMPLATE _method("ensureVisible", (void (D::ClassType::*) (const QRectF &, qreal, qreal, int))&D::ClassType::ensureVisible);
+    _d.CPGF_MD_TEMPLATE _method("ensureVisible", (void (D::ClassType::*) (const QRectF &, qreal, qreal))&D::ClassType::ensureVisible, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("ensureVisible", (void (D::ClassType::*) (const QRectF &, qreal, qreal, int))&D::ClassType::ensureVisible, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("resendPrepareEvent", &D::ClassType::resendPrepareEvent);
     _d.CPGF_MD_TEMPLATE _method("stateChanged", &D::ClassType::stateChanged);
     _d.CPGF_MD_TEMPLATE _method("scrollerPropertiesChanged", &D::ClassType::scrollerPropertiesChanged);

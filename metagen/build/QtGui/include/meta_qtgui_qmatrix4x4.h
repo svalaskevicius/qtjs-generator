@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -30,10 +29,10 @@ void buildMetaClass_Global_qmatrix4x4(D _d)
     _d.CPGF_MD_TEMPLATE _operator<QMatrix4x4 (*)(const QMatrix4x4 &, const QMatrix4x4 &)>(mopHolder + mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _operator<QMatrix4x4 (*)(const QMatrix4x4 &, const QMatrix4x4 &)>(mopHolder - mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _operator<QMatrix4x4 (*)(const QMatrix4x4 &, const QMatrix4x4 &)>(mopHolder * mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _operator<QVector3D (*)(const QVector3D &, const QMatrix4x4 &)>(mopHolder * mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _operator<QVector3D (*)(const QMatrix4x4 &, const QVector3D &)>(mopHolder * mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _operator<QVector4D (*)(const QVector4D &, const QMatrix4x4 &)>(mopHolder * mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _operator<QVector4D (*)(const QMatrix4x4 &, const QVector4D &)>(mopHolder * mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _operator<QVector3D (*)(const QVector3D &, const QMatrix4x4 &)>(mopHolder * mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _operator<QVector3D (*)(const QMatrix4x4 &, const QVector3D &)>(mopHolder * mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _operator<QVector4D (*)(const QVector4D &, const QMatrix4x4 &)>(mopHolder * mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _operator<QVector4D (*)(const QMatrix4x4 &, const QVector4D &)>(mopHolder * mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _operator<QPoint (*)(const QPoint &, const QMatrix4x4 &)>(mopHolder * mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _operator<QPointF (*)(const QPointF &, const QMatrix4x4 &)>(mopHolder * mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _operator<QPoint (*)(const QMatrix4x4 &, const QPoint &)>(mopHolder * mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -89,9 +88,9 @@ void buildMetaClass_QMatrix4x4(D _d)
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QTransform &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QMatrix &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("column", &D::ClassType::column);
-    _d.CPGF_MD_TEMPLATE _method("setColumn", &D::ClassType::setColumn);
+    _d.CPGF_MD_TEMPLATE _method("setColumn", &D::ClassType::setColumn, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("row", &D::ClassType::row);
-    _d.CPGF_MD_TEMPLATE _method("setRow", &D::ClassType::setRow);
+    _d.CPGF_MD_TEMPLATE _method("setRow", &D::ClassType::setRow, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("isIdentity", &D::ClassType::isIdentity);
     _d.CPGF_MD_TEMPLATE _method("setToIdentity", &D::ClassType::setToIdentity);
     _d.CPGF_MD_TEMPLATE _method("fill", &D::ClassType::fill);
@@ -101,9 +100,9 @@ void buildMetaClass_QMatrix4x4(D _d)
     ;
     _d.CPGF_MD_TEMPLATE _method("transposed", &D::ClassType::transposed);
     _d.CPGF_MD_TEMPLATE _method("normalMatrix", &D::ClassType::normalMatrix);
-    _d.CPGF_MD_TEMPLATE _method("scale", (void (D::ClassType::*) (const QVector3D &))&D::ClassType::scale);
-    _d.CPGF_MD_TEMPLATE _method("translate", (void (D::ClassType::*) (const QVector3D &))&D::ClassType::translate);
-    _d.CPGF_MD_TEMPLATE _method("rotate", (void (D::ClassType::*) (float, const QVector3D &))&D::ClassType::rotate);
+    _d.CPGF_MD_TEMPLATE _method("scale", (void (D::ClassType::*) (const QVector3D &))&D::ClassType::scale, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("translate", (void (D::ClassType::*) (const QVector3D &))&D::ClassType::translate, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("rotate", (void (D::ClassType::*) (float, const QVector3D &))&D::ClassType::rotate, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("scale", (void (D::ClassType::*) (float, float))&D::ClassType::scale);
     _d.CPGF_MD_TEMPLATE _method("scale", (void (D::ClassType::*) (float, float, float))&D::ClassType::scale);
     _d.CPGF_MD_TEMPLATE _method("scale", (void (D::ClassType::*) (float))&D::ClassType::scale);
@@ -114,11 +113,11 @@ void buildMetaClass_QMatrix4x4(D _d)
     ;
     _d.CPGF_MD_TEMPLATE _method("rotate", (void (D::ClassType::*) (const QQuaternion &))&D::ClassType::rotate, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("ortho", (void (D::ClassType::*) (const QRect &))&D::ClassType::ortho);
-    _d.CPGF_MD_TEMPLATE _method("ortho", (void (D::ClassType::*) (const QRectF &))&D::ClassType::ortho);
+    _d.CPGF_MD_TEMPLATE _method("ortho", (void (D::ClassType::*) (const QRectF &))&D::ClassType::ortho, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("ortho", (void (D::ClassType::*) (float, float, float, float, float, float))&D::ClassType::ortho);
     _d.CPGF_MD_TEMPLATE _method("frustum", &D::ClassType::frustum);
     _d.CPGF_MD_TEMPLATE _method("perspective", &D::ClassType::perspective);
-    _d.CPGF_MD_TEMPLATE _method("lookAt", &D::ClassType::lookAt);
+    _d.CPGF_MD_TEMPLATE _method("lookAt", &D::ClassType::lookAt, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<2> >());
     _d.CPGF_MD_TEMPLATE _method("flipCoordinates", &D::ClassType::flipCoordinates);
     _d.CPGF_MD_TEMPLATE _method("copyDataTo", &D::ClassType::copyDataTo);
     _d.CPGF_MD_TEMPLATE _method("toAffine", &D::ClassType::toAffine);
@@ -126,11 +125,11 @@ void buildMetaClass_QMatrix4x4(D _d)
     _d.CPGF_MD_TEMPLATE _method("toTransform", (QTransform (D::ClassType::*) (float) const)&D::ClassType::toTransform);
     _d.CPGF_MD_TEMPLATE _method("map", (QPoint (D::ClassType::*) (const QPoint &) const)&D::ClassType::map);
     _d.CPGF_MD_TEMPLATE _method("map", (QPointF (D::ClassType::*) (const QPointF &) const)&D::ClassType::map, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("map", (QVector3D (D::ClassType::*) (const QVector3D &) const)&D::ClassType::map);
-    _d.CPGF_MD_TEMPLATE _method("mapVector", &D::ClassType::mapVector);
-    _d.CPGF_MD_TEMPLATE _method("map", (QVector4D (D::ClassType::*) (const QVector4D &) const)&D::ClassType::map);
+    _d.CPGF_MD_TEMPLATE _method("map", (QVector3D (D::ClassType::*) (const QVector3D &) const)&D::ClassType::map, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("mapVector", &D::ClassType::mapVector, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("map", (QVector4D (D::ClassType::*) (const QVector4D &) const)&D::ClassType::map, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("mapRect", (QRect (D::ClassType::*) (const QRect &) const)&D::ClassType::mapRect);
-    _d.CPGF_MD_TEMPLATE _method("mapRect", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapRect);
+    _d.CPGF_MD_TEMPLATE _method("mapRect", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("data", (float * (D::ClassType::*) ())&D::ClassType::data);
     _d.CPGF_MD_TEMPLATE _method("data", (const float * (D::ClassType::*) () const)&D::ClassType::data);
     _d.CPGF_MD_TEMPLATE _method("constData", &D::ClassType::constData);

@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -84,7 +83,8 @@ void buildMetaClass_QTextCharFormat(D _d)
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     _d.CPGF_MD_TEMPLATE _method("isValid", &D::ClassType::isValid);
-    _d.CPGF_MD_TEMPLATE _method("setFont", &D::ClassType::setFont, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("setFont", (void (D::ClassType::*) (const QFont &, QTextCharFormat::FontPropertiesInheritanceBehavior))&D::ClassType::setFont, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("setFont", (void (D::ClassType::*) (const QFont &))&D::ClassType::setFont, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("font", &D::ClassType::font);
     _d.CPGF_MD_TEMPLATE _method("setFontFamily", &D::ClassType::setFontFamily, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("fontFamily", &D::ClassType::fontFamily);
@@ -163,6 +163,10 @@ void buildMetaClass_QTextCharFormat(D _d)
         ._element("WaveUnderline", D::ClassType::WaveUnderline)
         ._element("SpellCheckUnderline", D::ClassType::SpellCheckUnderline)
     ;
+    _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::FontPropertiesInheritanceBehavior>("FontPropertiesInheritanceBehavior")
+        ._element("FontPropertiesSpecifiedOnly", D::ClassType::FontPropertiesSpecifiedOnly)
+        ._element("FontPropertiesAll", D::ClassType::FontPropertiesAll)
+    ;
 }
 
 
@@ -189,6 +193,7 @@ void buildMetaClass_QTextFormat(D _d)
     _d.CPGF_MD_TEMPLATE _method("swap", &D::ClassType::swap);
     _d.CPGF_MD_TEMPLATE _method("merge", &D::ClassType::merge, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("isValid", &D::ClassType::isValid);
+    _d.CPGF_MD_TEMPLATE _method("isEmpty", &D::ClassType::isEmpty);
     _d.CPGF_MD_TEMPLATE _method("type", &D::ClassType::type);
     _d.CPGF_MD_TEMPLATE _method("objectIndex", &D::ClassType::objectIndex);
     _d.CPGF_MD_TEMPLATE _method("setObjectIndex", &D::ClassType::setObjectIndex);
@@ -237,7 +242,6 @@ void buildMetaClass_QTextFormat(D _d)
         ._element("BlockFormat", D::ClassType::BlockFormat)
         ._element("CharFormat", D::ClassType::CharFormat)
         ._element("ListFormat", D::ClassType::ListFormat)
-        ._element("TableFormat", D::ClassType::TableFormat)
         ._element("FrameFormat", D::ClassType::FrameFormat)
         ._element("UserFormat", D::ClassType::UserFormat)
     ;

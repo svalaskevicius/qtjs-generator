@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -85,6 +84,7 @@ void buildMetaClass_QTextBlock(D _d)
     _d.CPGF_MD_TEMPLATE _method("charFormatIndex", &D::ClassType::charFormatIndex);
     _d.CPGF_MD_TEMPLATE _method("textDirection", &D::ClassType::textDirection);
     _d.CPGF_MD_TEMPLATE _method("text", &D::ClassType::text);
+    _d.CPGF_MD_TEMPLATE _method("textFormats", &D::ClassType::textFormats);
     _d.CPGF_MD_TEMPLATE _method("document", &D::ClassType::document);
     _d.CPGF_MD_TEMPLATE _method("textList", &D::ClassType::textList);
     _d.CPGF_MD_TEMPLATE _method("userData", &D::ClassType::userData);

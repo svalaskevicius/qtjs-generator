@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -169,7 +168,6 @@ void buildMetaClass_QMap(D _d)
     _d.CPGF_MD_TEMPLATE _method("isEmpty", &D::ClassType::isEmpty);
     _d.CPGF_MD_TEMPLATE _method("detach", &D::ClassType::detach);
     _d.CPGF_MD_TEMPLATE _method("isDetached", &D::ClassType::isDetached);
-    _d.CPGF_MD_TEMPLATE _method("setSharable", &D::ClassType::setSharable);
     _d.CPGF_MD_TEMPLATE _method("isSharedWith", &D::ClassType::isSharedWith, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("clear", &D::ClassType::clear);
     _d.CPGF_MD_TEMPLATE _method("remove", &D::ClassType::remove);

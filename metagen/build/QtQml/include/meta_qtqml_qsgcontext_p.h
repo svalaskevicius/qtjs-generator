@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -38,10 +37,10 @@ void buildMetaClass_QSGContext(D _d)
     _d.CPGF_MD_TEMPLATE _method("qt_metacall", &D::ClassType::qt_metacall);
     _d.CPGF_MD_TEMPLATE _method("renderContextInitialized", &D::ClassType::renderContextInitialized);
     _d.CPGF_MD_TEMPLATE _method("renderContextInvalidated", &D::ClassType::renderContextInvalidated);
+    _d.CPGF_MD_TEMPLATE _method("createRenderContext", &D::ClassType::createRenderContext);
     _d.CPGF_MD_TEMPLATE _method("createRectangleNode", &D::ClassType::createRectangleNode);
     _d.CPGF_MD_TEMPLATE _method("createImageNode", &D::ClassType::createImageNode);
     _d.CPGF_MD_TEMPLATE _method("createGlyphNode", &D::ClassType::createGlyphNode);
-    _d.CPGF_MD_TEMPLATE _method("createNativeGlyphNode", &D::ClassType::createNativeGlyphNode);
     _d.CPGF_MD_TEMPLATE _method("createAnimationDriver", &D::ClassType::createAnimationDriver);
     _d.CPGF_MD_TEMPLATE _method("minimumFBOSize", &D::ClassType::minimumFBOSize);
     _d.CPGF_MD_TEMPLATE _method("defaultSurfaceFormat", &D::ClassType::defaultSurfaceFormat);
@@ -51,8 +50,6 @@ void buildMetaClass_QSGContext(D _d)
         ._default(copyVariantFromCopyable(-1))
         ._default(copyVariantFromCopyable(0))
     ;
-    _d.CPGF_MD_TEMPLATE _method("setSharedOpenGLContext", &D::ClassType::setSharedOpenGLContext);
-    _d.CPGF_MD_TEMPLATE _method("sharedOpenGLContext", &D::ClassType::sharedOpenGLContext);
     _d.CPGF_MD_TEMPLATE _method("createDefaultContext", &D::ClassType::createDefaultContext);
     _d.CPGF_MD_TEMPLATE _method("createTextureFactoryFromImage", &D::ClassType::createTextureFactoryFromImage);
     _d.CPGF_MD_TEMPLATE _method("createWindowManager", &D::ClassType::createWindowManager);
@@ -114,6 +111,20 @@ public:
         QObject::connectNotify(signal);
     }
     
+    QSGRenderContext * createRenderContext()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createRenderContext"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSGRenderContext * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGContext::createRenderContext();
+    }
+    QSGRenderContext * super_createRenderContext()
+    {
+        return QSGContext::createRenderContext();
+    }
+    
     bool isSignalConnected(const QMetaMethod & signal) const
     {
         return QObject::isSignalConnected(signal);
@@ -144,18 +155,18 @@ public:
         return QObject::senderSignalIndex();
     }
     
-    QSGGlyphNode * createGlyphNode(QSGRenderContext * rc)
+    QSGGlyphNode * createGlyphNode(QSGRenderContext * rc, bool preferNativeGlyphNode)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createGlyphNode"));
         if(func)
         {
-            return cpgf::fromVariant<QSGGlyphNode * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, rc).getValue());
+            return cpgf::fromVariant<QSGGlyphNode * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, rc, preferNativeGlyphNode).getValue());
         }
-        return QSGContext::createGlyphNode(rc);
+        return QSGContext::createGlyphNode(rc, preferNativeGlyphNode);
     }
-    QSGGlyphNode * super_createGlyphNode(QSGRenderContext * rc)
+    QSGGlyphNode * super_createGlyphNode(QSGRenderContext * rc, bool preferNativeGlyphNode)
     {
-        return QSGContext::createGlyphNode(rc);
+        return QSGContext::createGlyphNode(rc, preferNativeGlyphNode);
     }
     
     QAnimationDriver * createAnimationDriver(QObject * parent)
@@ -272,20 +283,6 @@ public:
         QObject::customEvent(__arg0);
     }
     
-    QSGGlyphNode * createNativeGlyphNode(QSGRenderContext * rc)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createNativeGlyphNode"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSGGlyphNode * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, rc).getValue());
-        }
-        return QSGContext::createNativeGlyphNode(rc);
-    }
-    QSGGlyphNode * super_createNativeGlyphNode(QSGRenderContext * rc)
-    {
-        return QSGContext::createNativeGlyphNode(rc);
-    }
-    
     bool event(QEvent * __arg0)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
@@ -379,8 +376,9 @@ public:
         _d.CPGF_MD_TEMPLATE _method("super_createRectangleNode", (QSGRectangleNode * (D::ClassType::*) ())&D::ClassType::super_createRectangleNode);
         _d.CPGF_MD_TEMPLATE _method("super_renderContextInitialized", (void (D::ClassType::*) (QSGRenderContext *))&D::ClassType::super_renderContextInitialized);
         _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_createRenderContext", (QSGRenderContext * (D::ClassType::*) ())&D::ClassType::super_createRenderContext);
         _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_createGlyphNode", (QSGGlyphNode * (D::ClassType::*) (QSGRenderContext *))&D::ClassType::super_createGlyphNode);
+        _d.CPGF_MD_TEMPLATE _method("super_createGlyphNode", (QSGGlyphNode * (D::ClassType::*) (QSGRenderContext *, bool))&D::ClassType::super_createGlyphNode);
         _d.CPGF_MD_TEMPLATE _method("super_createAnimationDriver", (QAnimationDriver * (D::ClassType::*) (QObject *))&D::ClassType::super_createAnimationDriver);
         _d.CPGF_MD_TEMPLATE _method("super_renderContextInvalidated", (void (D::ClassType::*) (QSGRenderContext *))&D::ClassType::super_renderContextInvalidated);
         _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
@@ -389,7 +387,6 @@ public:
         _d.CPGF_MD_TEMPLATE _method("super_createImageNode", (QSGImageNode * (D::ClassType::*) ())&D::ClassType::super_createImageNode);
         _d.CPGF_MD_TEMPLATE _method("super_minimumFBOSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_minimumFBOSize);
         _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_createNativeGlyphNode", (QSGGlyphNode * (D::ClassType::*) (QSGRenderContext *))&D::ClassType::super_createNativeGlyphNode);
         _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
         _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
         _d.CPGF_MD_TEMPLATE _method("super_defaultSurfaceFormat", (QSurfaceFormat (D::ClassType::*) () const)&D::ClassType::super_defaultSurfaceFormat);

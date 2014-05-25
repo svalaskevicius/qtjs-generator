@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -29,7 +28,7 @@ void buildMetaClass_QSGDefaultRectangleNode(D _d)
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
-    _d.CPGF_MD_TEMPLATE _method("setRect", &D::ClassType::setRect);
+    _d.CPGF_MD_TEMPLATE _method("setRect", &D::ClassType::setRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("setColor", &D::ClassType::setColor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("setPenColor", &D::ClassType::setPenColor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("setPenWidth", &D::ClassType::setPenWidth);
@@ -220,7 +219,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("super_setColor", (void (D::ClassType::*) (const QColor &))&D::ClassType::super_setColor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("super_setRadius", (void (D::ClassType::*) (qreal))&D::ClassType::super_setRadius);
         _d.CPGF_MD_TEMPLATE _method("super_setPenColor", (void (D::ClassType::*) (const QColor &))&D::ClassType::super_setPenColor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_setRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setRect);
+        _d.CPGF_MD_TEMPLATE _method("super_setRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("super_setPenWidth", (void (D::ClassType::*) (qreal))&D::ClassType::super_setPenWidth);
         _d.CPGF_MD_TEMPLATE _method("super_setGradientStops", (void (D::ClassType::*) (const QGradientStops &))&D::ClassType::super_setGradientStops);
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);

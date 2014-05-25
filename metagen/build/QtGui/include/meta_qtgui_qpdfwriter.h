@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -36,8 +35,9 @@ void buildMetaClass_QPdfWriter(D _d)
     _d.CPGF_MD_TEMPLATE _method("creator", &D::ClassType::creator);
     _d.CPGF_MD_TEMPLATE _method("setCreator", &D::ClassType::setCreator, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("newPage", &D::ClassType::newPage);
-    _d.CPGF_MD_TEMPLATE _method("setPageSize", &D::ClassType::setPageSize);
-    _d.CPGF_MD_TEMPLATE _method("setPageSizeMM", &D::ClassType::setPageSizeMM);
+    _d.CPGF_MD_TEMPLATE _method("setResolution", &D::ClassType::setResolution);
+    _d.CPGF_MD_TEMPLATE _method("resolution", &D::ClassType::resolution);
+    _d.CPGF_MD_TEMPLATE _method("setPageSizeMM", &D::ClassType::setPageSizeMM, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("setMargins", &D::ClassType::setMargins);
     _d.CPGF_MD_TEMPLATE _method("tr", &D::ClassType::tr)
         ._default(copyVariantFromCopyable(-1))

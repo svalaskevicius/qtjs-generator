@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -86,6 +85,7 @@ void buildMetaClass_QProcess(D _d)
     _d.CPGF_MD_TEMPLATE _method("processEnvironment", &D::ClassType::processEnvironment);
     _d.CPGF_MD_TEMPLATE _method("state", &D::ClassType::state);
     _d.CPGF_MD_TEMPLATE _method("pid", &D::ClassType::pid);
+    _d.CPGF_MD_TEMPLATE _method("processId", &D::ClassType::processId);
     _d.CPGF_MD_TEMPLATE _method("waitForStarted", &D::ClassType::waitForStarted)
         ._default(copyVariantFromCopyable(30000))
     ;

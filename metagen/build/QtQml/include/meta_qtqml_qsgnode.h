@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -115,7 +114,7 @@ void buildMetaClass_QSGClipNode(D _d)
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     _d.CPGF_MD_TEMPLATE _method("setIsRectangular", &D::ClassType::setIsRectangular);
     _d.CPGF_MD_TEMPLATE _method("isRectangular", &D::ClassType::isRectangular);
-    _d.CPGF_MD_TEMPLATE _method("setClipRect", &D::ClassType::setClipRect);
+    _d.CPGF_MD_TEMPLATE _method("setClipRect", &D::ClassType::setClipRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("clipRect", &D::ClassType::clipRect);
 }
 

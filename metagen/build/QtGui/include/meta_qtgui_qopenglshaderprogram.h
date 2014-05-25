@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -303,6 +302,7 @@ void buildMetaClass_QOpenGLShaderProgram(D _d)
     _d.CPGF_MD_TEMPLATE _method("log", &D::ClassType::log);
     _d.CPGF_MD_TEMPLATE _method("bind", &D::ClassType::bind);
     _d.CPGF_MD_TEMPLATE _method("release", &D::ClassType::release);
+    _d.CPGF_MD_TEMPLATE _method("create", &D::ClassType::create);
     _d.CPGF_MD_TEMPLATE _method("programId", &D::ClassType::programId);
     _d.CPGF_MD_TEMPLATE _method("maxGeometryOutputVertices", &D::ClassType::maxGeometryOutputVertices);
     _d.CPGF_MD_TEMPLATE _method("setPatchVertexCount", &D::ClassType::setPatchVertexCount);
@@ -322,8 +322,8 @@ void buildMetaClass_QOpenGLShaderProgram(D _d)
     _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (int, GLfloat, GLfloat, GLfloat))&D::ClassType::setAttributeValue);
     _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (int, GLfloat, GLfloat, GLfloat, GLfloat))&D::ClassType::setAttributeValue);
     _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (int, const QVector2D &))&D::ClassType::setAttributeValue, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (int, const QVector3D &))&D::ClassType::setAttributeValue);
-    _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (int, const QVector4D &))&D::ClassType::setAttributeValue);
+    _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (int, const QVector3D &))&D::ClassType::setAttributeValue, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (int, const QVector4D &))&D::ClassType::setAttributeValue, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (int, const QColor &))&D::ClassType::setAttributeValue, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (int, const GLfloat *, int, int))&D::ClassType::setAttributeValue);
     _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (const char *, GLfloat))&D::ClassType::setAttributeValue);
@@ -331,8 +331,8 @@ void buildMetaClass_QOpenGLShaderProgram(D _d)
     _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (const char *, GLfloat, GLfloat, GLfloat))&D::ClassType::setAttributeValue);
     _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (const char *, GLfloat, GLfloat, GLfloat, GLfloat))&D::ClassType::setAttributeValue);
     _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (const char *, const QVector2D &))&D::ClassType::setAttributeValue, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-    _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (const char *, const QVector3D &))&D::ClassType::setAttributeValue);
-    _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (const char *, const QVector4D &))&D::ClassType::setAttributeValue);
+    _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (const char *, const QVector3D &))&D::ClassType::setAttributeValue, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (const char *, const QVector4D &))&D::ClassType::setAttributeValue, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (const char *, const QColor &))&D::ClassType::setAttributeValue, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("setAttributeValue", (void (D::ClassType::*) (const char *, const GLfloat *, int, int))&D::ClassType::setAttributeValue);
     _d.CPGF_MD_TEMPLATE _method("setAttributeArray", (void (D::ClassType::*) (int, const GLfloat *, int, int))&D::ClassType::setAttributeArray)

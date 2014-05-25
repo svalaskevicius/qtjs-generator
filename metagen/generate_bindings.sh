@@ -33,6 +33,7 @@ function prepare_files() {
         $s =~ s/Q_SLOTS//g;
         $s =~ s/Q_INVOKABLE//g;
         $s =~ s/Q_NORETURN//g;
+        $s =~ s/Q_DECL_CONSTEXPR//g;
         $s =~ s/Q_SIGNALS://g;
         $s =~ s/Q_[A-Z]+_EXPORT//g;
         $s =~ s/Q_REVISION\s*\(\s*[0-9]+\s*\)//g;

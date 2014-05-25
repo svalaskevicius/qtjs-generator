@@ -25,10 +25,10 @@ var config = {
   headerHeaderCode : ""
     +"#include <QtCore/include/meta_qtcore_qflags.h>\n"
     +"#include <QtCore/include/meta_qtcore_qcontainerfwd.h>\n"
-    +"#include <qtGui_cpgf_compat.h>\n"
   ,
   sourceHeaderCode :
-     "#include <QtCore/qglobal.h>\n"
+     "#include <qtGui_cpgf_compat.h>\n"
+    +"#include <QtCore/qglobal.h>\n"
     +"#include <QtCore/QEvent>\n"
     +"#include <QtCore/QDebug>\n"
     +"#include <QtCore/QState>\n"
@@ -95,6 +95,7 @@ function shouldAllowClassWrapper(item) {
     case 'QStandardItem':
     case 'QSurface':
     case 'QWindow':
+    case "QPagedPaintDevice":
       return false;
     default:
       ;
@@ -197,6 +198,9 @@ function processCallback(item, data)
     case "QOpenGLContext::versionFunctions": //does not link due to AbstractOpenGlFunctions symbol not found
     case "QAccessibleEvent::m_child":
     case "QAccessibleEvent::m_uniqueId":
+    case "QPdfWriter::setPageSize":
+    case "QPixmap::fromImage":
+    case "qt_inv_premul_factor":
       data.skipBind = true;
       return;
     case "QColor::alpha":
@@ -279,6 +283,9 @@ function processCallback(item, data)
   if (shouldAllowClassWrapper(item)) {
     data.getWrapperConfig().setWrapClass(true);
     print("setting wrapper: "+item.getLiteralName()+"\n");
+  }
+  if (!data.skipBind) {
+    print("binding: " + item.getQualifiedName() + "\n");
   }
 }
 

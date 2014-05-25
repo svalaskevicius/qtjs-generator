@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -15,6 +14,9 @@
 
 
 using namespace QQmlPrivate;
+using namespace QV4;
+using namespace QV4::CompiledData;
+using namespace QmlIR;
 
 
 namespace qt_metadata { 

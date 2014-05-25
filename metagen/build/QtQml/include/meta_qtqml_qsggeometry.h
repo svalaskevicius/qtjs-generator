@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -48,8 +47,8 @@ void buildMetaClass_QSGGeometry(D _d)
     _d.CPGF_MD_TEMPLATE _method("defaultAttributes_Point2D", &D::ClassType::defaultAttributes_Point2D);
     _d.CPGF_MD_TEMPLATE _method("defaultAttributes_TexturedPoint2D", &D::ClassType::defaultAttributes_TexturedPoint2D);
     _d.CPGF_MD_TEMPLATE _method("defaultAttributes_ColoredPoint2D", &D::ClassType::defaultAttributes_ColoredPoint2D);
-    _d.CPGF_MD_TEMPLATE _method("updateRectGeometry", &D::ClassType::updateRectGeometry);
-    _d.CPGF_MD_TEMPLATE _method("updateTexturedRectGeometry", &D::ClassType::updateTexturedRectGeometry);
+    _d.CPGF_MD_TEMPLATE _method("updateRectGeometry", &D::ClassType::updateRectGeometry, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("updateTexturedRectGeometry", &D::ClassType::updateTexturedRectGeometry, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<2> >());
     _d.CPGF_MD_TEMPLATE _method("setDrawingMode", &D::ClassType::setDrawingMode);
     _d.CPGF_MD_TEMPLATE _method("drawingMode", &D::ClassType::drawingMode);
     _d.CPGF_MD_TEMPLATE _method("allocate", &D::ClassType::allocate)

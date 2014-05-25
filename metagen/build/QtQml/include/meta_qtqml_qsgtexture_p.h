@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -41,7 +40,6 @@ void buildMetaClass_QSGPlainTexture(D _d)
     _d.CPGF_MD_TEMPLATE _method("textureSize", &D::ClassType::textureSize);
     _d.CPGF_MD_TEMPLATE _method("setHasAlphaChannel", &D::ClassType::setHasAlphaChannel);
     _d.CPGF_MD_TEMPLATE _method("hasAlphaChannel", &D::ClassType::hasAlphaChannel);
-    _d.CPGF_MD_TEMPLATE _method("setHasMipmaps", &D::ClassType::setHasMipmaps);
     _d.CPGF_MD_TEMPLATE _method("hasMipmaps", &D::ClassType::hasMipmaps);
     _d.CPGF_MD_TEMPLATE _method("setImage", &D::ClassType::setImage);
     _d.CPGF_MD_TEMPLATE _method("image", &D::ClassType::image);

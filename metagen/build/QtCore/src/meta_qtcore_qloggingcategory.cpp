@@ -1,5 +1,6 @@
 // Auto generated file, don't modify.
 
+#include <qtCore_cpgf_compat.h>
 #include <QtCore/qglobal.h>
 #include <QtCore/QString>
 #include <QtCore/QDataStream>
@@ -48,6 +49,17 @@
 using namespace cpgf;
 
 namespace qt_metadata { 
+
+
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
+#endif
+GDefineMetaInfo createMetaClass_Global_qloggingcategory()
+{
+    GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
+    buildMetaClass_Global_qloggingcategory(_d);
+    return _d.getMetaInfo();
+}
 
 
 #ifdef CPGF_METAGEN_LINKAGE_SPEC

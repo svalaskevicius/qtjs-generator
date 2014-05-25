@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -299,13 +298,13 @@ void buildMetaClass_QVariant(D _d)
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QMap< QString, QVariant > &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QHash< QString, QVariant > &)>();
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QSize &)>();
-    _d.CPGF_MD_TEMPLATE _constructor<void * (const QSizeF &)>();
+    _d.CPGF_MD_TEMPLATE _constructor<void * (const QSizeF &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QPoint &)>();
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QPointF &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QLine &)>();
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QLineF &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QRect &)>();
-    _d.CPGF_MD_TEMPLATE _constructor<void * (const QRectF &)>();
+    _d.CPGF_MD_TEMPLATE _constructor<void * (const QRectF &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QLocale &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QRegExp &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QRegularExpression &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());

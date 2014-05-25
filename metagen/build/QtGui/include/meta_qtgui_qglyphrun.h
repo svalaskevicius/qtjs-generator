@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -60,7 +59,7 @@ void buildMetaClass_QGlyphRun(D _d)
     ;
     _d.CPGF_MD_TEMPLATE _method("setFlags", &D::ClassType::setFlags);
     _d.CPGF_MD_TEMPLATE _method("flags", &D::ClassType::flags);
-    _d.CPGF_MD_TEMPLATE _method("setBoundingRect", &D::ClassType::setBoundingRect);
+    _d.CPGF_MD_TEMPLATE _method("setBoundingRect", &D::ClassType::setBoundingRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("boundingRect", &D::ClassType::boundingRect);
     _d.CPGF_MD_TEMPLATE _method("isEmpty", &D::ClassType::isEmpty);
     _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::GlyphRunFlag>("GlyphRunFlag")

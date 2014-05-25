@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -156,9 +155,6 @@ void buildMetaClass_QPixmap(D _d)
     ;
     _d.CPGF_MD_TEMPLATE _method("trueMatrix", (QMatrix (*) (const QMatrix &, int, int))&D::ClassType::trueMatrix, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("trueMatrix", (QTransform (*) (const QTransform &, int, int))&D::ClassType::trueMatrix, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("fromImage", &D::ClassType::fromImage, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
-        ._default(copyVariantFromCopyable(Qt::AutoColor))
-    ;
     _d.CPGF_MD_TEMPLATE _method("fromImageReader", &D::ClassType::fromImageReader, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
         ._default(copyVariantFromCopyable(Qt::AutoColor))
     ;

@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -26,7 +25,7 @@ void buildMetaClass_Global_qstring(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_28")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_19")
     ;
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(QString::Null, QString::Null)>(mopHolder == mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(QString::Null, const QString &)>(mopHolder == mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
@@ -136,7 +135,7 @@ void buildMetaClass_QCharRef(D _d)
     _d.CPGF_MD_TEMPLATE _method("toTitleCase", &D::ClassType::toTitleCase);
     _d.CPGF_MD_TEMPLATE _method("category", &D::ClassType::category);
     _d.CPGF_MD_TEMPLATE _method("direction", &D::ClassType::direction);
-    _d.CPGF_MD_TEMPLATE _method("joining", &D::ClassType::joining);
+    _d.CPGF_MD_TEMPLATE _method("joiningType", &D::ClassType::joiningType);
     _d.CPGF_MD_TEMPLATE _method("hasMirrored", &D::ClassType::hasMirrored);
     _d.CPGF_MD_TEMPLATE _method("mirroredChar", &D::ClassType::mirroredChar);
     _d.CPGF_MD_TEMPLATE _method("decomposition", &D::ClassType::decomposition);
@@ -550,6 +549,9 @@ void buildMetaClass_QString(D _d)
     _d.CPGF_MD_TEMPLATE _method("contains", (bool (D::ClassType::*) (const QString &, Qt::CaseSensitivity) const)&D::ClassType::contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
         ._default(copyVariantFromCopyable(Qt::CaseSensitive))
     ;
+    _d.CPGF_MD_TEMPLATE _method("contains", (bool (D::ClassType::*) (QLatin1String, Qt::CaseSensitivity) const)&D::ClassType::contains)
+        ._default(copyVariantFromCopyable(Qt::CaseSensitive))
+    ;
     _d.CPGF_MD_TEMPLATE _method("contains", (bool (D::ClassType::*) (const QStringRef &, Qt::CaseSensitivity) const)&D::ClassType::contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
         ._default(copyVariantFromCopyable(Qt::CaseSensitive))
     ;
@@ -842,10 +844,10 @@ void buildMetaClass_QString(D _d)
     _d.CPGF_MD_TEMPLATE _method("fromLatin1", (QString (*) (const QByteArray &))&D::ClassType::fromLatin1, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("fromUtf8", (QString (*) (const QByteArray &))&D::ClassType::fromUtf8, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("fromLocal8Bit", (QString (*) (const QByteArray &))&D::ClassType::fromLocal8Bit, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("fromUtf16", &D::ClassType::fromUtf16)
+    _d.CPGF_MD_TEMPLATE _method("fromUtf16", (QString (*) (const ushort *, int))&D::ClassType::fromUtf16)
         ._default(copyVariantFromCopyable(-1))
     ;
-    _d.CPGF_MD_TEMPLATE _method("fromUcs4", &D::ClassType::fromUcs4)
+    _d.CPGF_MD_TEMPLATE _method("fromUcs4", (QString (*) (const uint *, int))&D::ClassType::fromUcs4)
         ._default(copyVariantFromCopyable(-1))
     ;
     _d.CPGF_MD_TEMPLATE _method("fromRawData", &D::ClassType::fromRawData);

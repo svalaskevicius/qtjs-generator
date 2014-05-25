@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -50,10 +49,10 @@ void buildMetaClass_QGraphicsWidget(D _d)
     _d.CPGF_MD_TEMPLATE _method("setPalette", &D::ClassType::setPalette, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("autoFillBackground", &D::ClassType::autoFillBackground);
     _d.CPGF_MD_TEMPLATE _method("setAutoFillBackground", &D::ClassType::setAutoFillBackground);
-    _d.CPGF_MD_TEMPLATE _method("resize", (void (D::ClassType::*) (const QSizeF &))&D::ClassType::resize);
+    _d.CPGF_MD_TEMPLATE _method("resize", (void (D::ClassType::*) (const QSizeF &))&D::ClassType::resize, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("resize", (void (D::ClassType::*) (qreal, qreal))&D::ClassType::resize);
     _d.CPGF_MD_TEMPLATE _method("size", &D::ClassType::size);
-    _d.CPGF_MD_TEMPLATE _method("setGeometry", (void (D::ClassType::*) (const QRectF &))&D::ClassType::setGeometry);
+    _d.CPGF_MD_TEMPLATE _method("setGeometry", (void (D::ClassType::*) (const QRectF &))&D::ClassType::setGeometry, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("setGeometry", (void (D::ClassType::*) (qreal, qreal, qreal, qreal))&D::ClassType::setGeometry);
     _d.CPGF_MD_TEMPLATE _method("rect", &D::ClassType::rect);
     _d.CPGF_MD_TEMPLATE _method("setContentsMargins", &D::ClassType::setContentsMargins);
@@ -1263,7 +1262,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mousePressEvent);
         _d.CPGF_MD_TEMPLATE _method("setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
         _d.CPGF_MD_TEMPLATE _method("windowFrameEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::windowFrameEvent);
-        _d.CPGF_MD_TEMPLATE _method("sizeHint", (QSizeF (D::ClassType::*) (Qt::SizeHint, const QSizeF &) const)&D::ClassType::sizeHint)
+        _d.CPGF_MD_TEMPLATE _method("sizeHint", (QSizeF (D::ClassType::*) (Qt::SizeHint, const QSizeF &) const)&D::ClassType::sizeHint, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >())
             ._default(copyVariantFromCopyable(QSizeF()))
         ;
         _d.CPGF_MD_TEMPLATE _method("setGraphicsItem", (void (D::ClassType::*) (QGraphicsItem *))&D::ClassType::setGraphicsItem);
@@ -1332,12 +1331,12 @@ public:
         _d.CPGF_MD_TEMPLATE _method("super_mousePressEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::super_mousePressEvent);
         _d.CPGF_MD_TEMPLATE _method("super_setExtension", (void (D::ClassType::*) (QGraphicsItem::Extension, const QVariant &))&D::ClassType::super_setExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
         _d.CPGF_MD_TEMPLATE _method("super_windowFrameEvent", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_windowFrameEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setGeometry);
+        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setGeometry, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
         _d.CPGF_MD_TEMPLATE _method("super_collidesWithItem", (bool (D::ClassType::*) (const QGraphicsItem *, Qt::ItemSelectionMode) const)&D::ClassType::super_collidesWithItem)
             ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
         ;
-        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSizeF (D::ClassType::*) (Qt::SizeHint, const QSizeF &) const)&D::ClassType::super_sizeHint)
+        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSizeF (D::ClassType::*) (Qt::SizeHint, const QSizeF &) const)&D::ClassType::super_sizeHint, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >())
             ._default(copyVariantFromCopyable(QSizeF()))
         ;
         _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionGraphicsItem *, QWidget *))&D::ClassType::super_paint)

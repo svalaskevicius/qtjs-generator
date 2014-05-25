@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -134,7 +133,7 @@ void buildMetaClass_QFontMetricsF(D _d)
     _d.CPGF_MD_TEMPLATE _method("width", (qreal (D::ClassType::*) (QChar) const)&D::ClassType::width);
     _d.CPGF_MD_TEMPLATE _method("boundingRect", (QRectF (D::ClassType::*) (const QString &) const)&D::ClassType::boundingRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("boundingRect", (QRectF (D::ClassType::*) (QChar) const)&D::ClassType::boundingRect);
-    _d.CPGF_MD_TEMPLATE _method("boundingRect", (QRectF (D::ClassType::*) (const QRectF &, int, const QString &, int, int *) const)&D::ClassType::boundingRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >())
+    _d.CPGF_MD_TEMPLATE _method("boundingRect", (QRectF (D::ClassType::*) (const QRectF &, int, const QString &, int, int *) const)&D::ClassType::boundingRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<2> >())
         ._default(copyVariantFromCopyable(0))
         ._default(copyVariantFromCopyable(0))
     ;

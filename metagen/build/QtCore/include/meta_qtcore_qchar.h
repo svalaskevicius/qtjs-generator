@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -54,7 +53,7 @@ void buildMetaClass_QChar(D _d)
     _d.CPGF_MD_TEMPLATE _constructor<void * (uchar)>();
     _d.CPGF_MD_TEMPLATE _method("category", (QChar::Category (D::ClassType::*) () const)&D::ClassType::category);
     _d.CPGF_MD_TEMPLATE _method("direction", (QChar::Direction (D::ClassType::*) () const)&D::ClassType::direction);
-    _d.CPGF_MD_TEMPLATE _method("joining", (QChar::Joining (D::ClassType::*) () const)&D::ClassType::joining);
+    _d.CPGF_MD_TEMPLATE _method("joiningType", (QChar::JoiningType (D::ClassType::*) () const)&D::ClassType::joiningType);
     _d.CPGF_MD_TEMPLATE _method("combiningClass", (unsigned char (D::ClassType::*) () const)&D::ClassType::combiningClass);
     _d.CPGF_MD_TEMPLATE _method("mirroredChar", (QChar (D::ClassType::*) () const)&D::ClassType::mirroredChar);
     _d.CPGF_MD_TEMPLATE _method("hasMirrored", (bool (D::ClassType::*) () const)&D::ClassType::hasMirrored);
@@ -103,7 +102,7 @@ void buildMetaClass_QChar(D _d)
     _d.CPGF_MD_TEMPLATE _method("lowSurrogate", &D::ClassType::lowSurrogate);
     _d.CPGF_MD_TEMPLATE _method("category", (QChar::Category QT_FASTCALL (*) (uint))&D::ClassType::category);
     _d.CPGF_MD_TEMPLATE _method("direction", (QChar::Direction QT_FASTCALL (*) (uint))&D::ClassType::direction);
-    _d.CPGF_MD_TEMPLATE _method("joining", (QChar::Joining QT_FASTCALL (*) (uint))&D::ClassType::joining);
+    _d.CPGF_MD_TEMPLATE _method("joiningType", (QChar::JoiningType QT_FASTCALL (*) (uint))&D::ClassType::joiningType);
     _d.CPGF_MD_TEMPLATE _method("combiningClass", (unsigned char QT_FASTCALL (*) (uint))&D::ClassType::combiningClass);
     _d.CPGF_MD_TEMPLATE _method("mirroredChar", (uint QT_FASTCALL (*) (uint))&D::ClassType::mirroredChar);
     _d.CPGF_MD_TEMPLATE _method("hasMirrored", (bool QT_FASTCALL (*) (uint))&D::ClassType::hasMirrored);
@@ -303,6 +302,10 @@ void buildMetaClass_QChar(D _d)
         ._element("DirPDF", D::ClassType::DirPDF)
         ._element("DirNSM", D::ClassType::DirNSM)
         ._element("DirBN", D::ClassType::DirBN)
+        ._element("DirLRI", D::ClassType::DirLRI)
+        ._element("DirRLI", D::ClassType::DirRLI)
+        ._element("DirFSI", D::ClassType::DirFSI)
+        ._element("DirPDI", D::ClassType::DirPDI)
     ;
     _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::Decomposition>("Decomposition")
         ._element("NoDecomposition", D::ClassType::NoDecomposition)
@@ -324,11 +327,13 @@ void buildMetaClass_QChar(D _d)
         ._element("Compat", D::ClassType::Compat)
         ._element("Fraction", D::ClassType::Fraction)
     ;
-    _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::Joining>("Joining")
-        ._element("OtherJoining", D::ClassType::OtherJoining)
-        ._element("Dual", D::ClassType::Dual)
-        ._element("Right", D::ClassType::Right)
-        ._element("Center", D::ClassType::Center)
+    _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::JoiningType>("JoiningType")
+        ._element("Joining_None", D::ClassType::Joining_None)
+        ._element("Joining_Causing", D::ClassType::Joining_Causing)
+        ._element("Joining_Dual", D::ClassType::Joining_Dual)
+        ._element("Joining_Right", D::ClassType::Joining_Right)
+        ._element("Joining_Left", D::ClassType::Joining_Left)
+        ._element("Joining_Transparent", D::ClassType::Joining_Transparent)
     ;
     _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::CombiningClass>("CombiningClass")
         ._element("Combining_BelowLeftAttached", D::ClassType::Combining_BelowLeftAttached)
@@ -367,6 +372,7 @@ void buildMetaClass_QChar(D _d)
         ._element("Unicode_6_0", D::ClassType::Unicode_6_0)
         ._element("Unicode_6_1", D::ClassType::Unicode_6_1)
         ._element("Unicode_6_2", D::ClassType::Unicode_6_2)
+        ._element("Unicode_6_3", D::ClassType::Unicode_6_3)
     ;
 }
 

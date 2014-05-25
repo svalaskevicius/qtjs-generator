@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -32,12 +31,18 @@ void buildMetaClass_QStyleHints(D _d)
     _d.CPGF_MD_TEMPLATE _method("metaObject", &D::ClassType::metaObject);
     _d.CPGF_MD_TEMPLATE _method("qt_metacast", &D::ClassType::qt_metacast);
     _d.CPGF_MD_TEMPLATE _method("qt_metacall", &D::ClassType::qt_metacall);
+    _d.CPGF_MD_TEMPLATE _method("setMouseDoubleClickInterval", &D::ClassType::setMouseDoubleClickInterval);
     _d.CPGF_MD_TEMPLATE _method("mouseDoubleClickInterval", &D::ClassType::mouseDoubleClickInterval);
+    _d.CPGF_MD_TEMPLATE _method("mousePressAndHoldInterval", &D::ClassType::mousePressAndHoldInterval);
+    _d.CPGF_MD_TEMPLATE _method("setStartDragDistance", &D::ClassType::setStartDragDistance);
     _d.CPGF_MD_TEMPLATE _method("startDragDistance", &D::ClassType::startDragDistance);
+    _d.CPGF_MD_TEMPLATE _method("setStartDragTime", &D::ClassType::setStartDragTime);
     _d.CPGF_MD_TEMPLATE _method("startDragTime", &D::ClassType::startDragTime);
     _d.CPGF_MD_TEMPLATE _method("startDragVelocity", &D::ClassType::startDragVelocity);
+    _d.CPGF_MD_TEMPLATE _method("setKeyboardInputInterval", &D::ClassType::setKeyboardInputInterval);
     _d.CPGF_MD_TEMPLATE _method("keyboardInputInterval", &D::ClassType::keyboardInputInterval);
     _d.CPGF_MD_TEMPLATE _method("keyboardAutoRepeatRate", &D::ClassType::keyboardAutoRepeatRate);
+    _d.CPGF_MD_TEMPLATE _method("setCursorFlashTime", &D::ClassType::setCursorFlashTime);
     _d.CPGF_MD_TEMPLATE _method("cursorFlashTime", &D::ClassType::cursorFlashTime);
     _d.CPGF_MD_TEMPLATE _method("showIsFullScreen", &D::ClassType::showIsFullScreen);
     _d.CPGF_MD_TEMPLATE _method("passwordMaskDelay", &D::ClassType::passwordMaskDelay);

@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -375,6 +374,8 @@ void buildMetaClass_QMouseEvent(D _d)
     _d.CPGF_MD_TEMPLATE _method("screenPos", &D::ClassType::screenPos, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<-1> >());
     _d.CPGF_MD_TEMPLATE _method("button", &D::ClassType::button);
     _d.CPGF_MD_TEMPLATE _method("buttons", &D::ClassType::buttons);
+    _d.CPGF_MD_TEMPLATE _method("source", &D::ClassType::source);
+    _d.CPGF_MD_TEMPLATE _method("flags", &D::ClassType::flags);
 }
 
 
@@ -473,8 +474,8 @@ void buildMetaClass_QScrollPrepareEvent(D _d)
     _d.CPGF_MD_TEMPLATE _method("viewportSize", &D::ClassType::viewportSize);
     _d.CPGF_MD_TEMPLATE _method("contentPosRange", &D::ClassType::contentPosRange);
     _d.CPGF_MD_TEMPLATE _method("contentPos", &D::ClassType::contentPos);
-    _d.CPGF_MD_TEMPLATE _method("setViewportSize", &D::ClassType::setViewportSize);
-    _d.CPGF_MD_TEMPLATE _method("setContentPosRange", &D::ClassType::setContentPosRange);
+    _d.CPGF_MD_TEMPLATE _method("setViewportSize", &D::ClassType::setViewportSize, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("setContentPosRange", &D::ClassType::setContentPosRange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("setContentPos", &D::ClassType::setContentPos, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
 }
 
@@ -639,9 +640,9 @@ void buildMetaClass_QTouchEvent(D _d)
         _nd.CPGF_MD_TEMPLATE _method("setLastScenePos", &QTouchEvent::TouchPoint::setLastScenePos, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _nd.CPGF_MD_TEMPLATE _method("setLastScreenPos", &QTouchEvent::TouchPoint::setLastScreenPos, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _nd.CPGF_MD_TEMPLATE _method("setLastNormalizedPos", &QTouchEvent::TouchPoint::setLastNormalizedPos, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _nd.CPGF_MD_TEMPLATE _method("setRect", &QTouchEvent::TouchPoint::setRect);
-        _nd.CPGF_MD_TEMPLATE _method("setSceneRect", &QTouchEvent::TouchPoint::setSceneRect);
-        _nd.CPGF_MD_TEMPLATE _method("setScreenRect", &QTouchEvent::TouchPoint::setScreenRect);
+        _nd.CPGF_MD_TEMPLATE _method("setRect", &QTouchEvent::TouchPoint::setRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _nd.CPGF_MD_TEMPLATE _method("setSceneRect", &QTouchEvent::TouchPoint::setSceneRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _nd.CPGF_MD_TEMPLATE _method("setScreenRect", &QTouchEvent::TouchPoint::setScreenRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _nd.CPGF_MD_TEMPLATE _method("setPressure", &QTouchEvent::TouchPoint::setPressure);
         _nd.CPGF_MD_TEMPLATE _method("setVelocity", &QTouchEvent::TouchPoint::setVelocity, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _nd.CPGF_MD_TEMPLATE _method("setFlags", &QTouchEvent::TouchPoint::setFlags);

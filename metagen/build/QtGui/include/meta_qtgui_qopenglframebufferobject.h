@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -32,11 +31,11 @@ void buildMetaClass_QOpenGLFramebufferObject(D _d)
         ._default(copyVariantFromCopyable(GL_TEXTURE_2D))
     ;
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QSize &, QOpenGLFramebufferObject::Attachment, GLenum, GLenum)>()
-        ._default(copyVariantFromCopyable(GL_RGBA8))
+        ._default(copyVariantFromCopyable(0))
         ._default(copyVariantFromCopyable(GL_TEXTURE_2D))
     ;
     _d.CPGF_MD_TEMPLATE _constructor<void * (int, int, QOpenGLFramebufferObject::Attachment, GLenum, GLenum)>()
-        ._default(copyVariantFromCopyable(GL_RGBA8))
+        ._default(copyVariantFromCopyable(0))
         ._default(copyVariantFromCopyable(GL_TEXTURE_2D))
     ;
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QSize &, const QOpenGLFramebufferObjectFormat &)>();
@@ -49,6 +48,7 @@ void buildMetaClass_QOpenGLFramebufferObject(D _d)
     _d.CPGF_MD_TEMPLATE _method("width", &D::ClassType::width);
     _d.CPGF_MD_TEMPLATE _method("height", &D::ClassType::height);
     _d.CPGF_MD_TEMPLATE _method("texture", &D::ClassType::texture);
+    _d.CPGF_MD_TEMPLATE _method("takeTexture", &D::ClassType::takeTexture);
     _d.CPGF_MD_TEMPLATE _method("size", &D::ClassType::size);
     _d.CPGF_MD_TEMPLATE _method("toImage", &D::ClassType::toImage, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >());
     _d.CPGF_MD_TEMPLATE _method("attachment", &D::ClassType::attachment);

@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -46,17 +45,17 @@ void buildMetaClass_QPaintEngine(D _d)
     _d.CPGF_MD_TEMPLATE _method("drawRects", (void (D::ClassType::*) (const QRectF *, int))&D::ClassType::drawRects);
     _d.CPGF_MD_TEMPLATE _method("drawLines", (void (D::ClassType::*) (const QLine *, int))&D::ClassType::drawLines);
     _d.CPGF_MD_TEMPLATE _method("drawLines", (void (D::ClassType::*) (const QLineF *, int))&D::ClassType::drawLines);
-    _d.CPGF_MD_TEMPLATE _method("drawEllipse", (void (D::ClassType::*) (const QRectF &))&D::ClassType::drawEllipse);
+    _d.CPGF_MD_TEMPLATE _method("drawEllipse", (void (D::ClassType::*) (const QRectF &))&D::ClassType::drawEllipse, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("drawEllipse", (void (D::ClassType::*) (const QRect &))&D::ClassType::drawEllipse);
     _d.CPGF_MD_TEMPLATE _method("drawPath", &D::ClassType::drawPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("drawPoints", (void (D::ClassType::*) (const QPointF *, int))&D::ClassType::drawPoints);
     _d.CPGF_MD_TEMPLATE _method("drawPoints", (void (D::ClassType::*) (const QPoint *, int))&D::ClassType::drawPoints);
     _d.CPGF_MD_TEMPLATE _method("drawPolygon", (void (D::ClassType::*) (const QPointF *, int, QPaintEngine::PolygonDrawMode))&D::ClassType::drawPolygon);
     _d.CPGF_MD_TEMPLATE _method("drawPolygon", (void (D::ClassType::*) (const QPoint *, int, QPaintEngine::PolygonDrawMode))&D::ClassType::drawPolygon);
-    _d.CPGF_MD_TEMPLATE _method("drawPixmap", &D::ClassType::drawPixmap);
+    _d.CPGF_MD_TEMPLATE _method("drawPixmap", &D::ClassType::drawPixmap, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<2> >());
     _d.CPGF_MD_TEMPLATE _method("drawTextItem", &D::ClassType::drawTextItem, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("drawTiledPixmap", &D::ClassType::drawTiledPixmap, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
-    _d.CPGF_MD_TEMPLATE _method("drawImage", &D::ClassType::drawImage)
+    _d.CPGF_MD_TEMPLATE _method("drawTiledPixmap", &D::ClassType::drawTiledPixmap, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<2> >());
+    _d.CPGF_MD_TEMPLATE _method("drawImage", &D::ClassType::drawImage, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<2> >())
         ._default(copyVariantFromCopyable(Qt::AutoColor))
     ;
     _d.CPGF_MD_TEMPLATE _method("setPaintDevice", &D::ClassType::setPaintDevice);
@@ -137,6 +136,7 @@ void buildMetaClass_QPaintEngine(D _d)
         ._element("OpenGL2", D::ClassType::OpenGL2)
         ._element("PaintBuffer", D::ClassType::PaintBuffer)
         ._element("Blitter", D::ClassType::Blitter)
+        ._element("Direct2D", D::ClassType::Direct2D)
         ._element("User", D::ClassType::User)
         ._element("MaxUser", D::ClassType::MaxUser)
     ;
@@ -460,8 +460,8 @@ public:
         _d.CPGF_MD_TEMPLATE _method("super_drawTextItem", (void (D::ClassType::*) (const QPointF &, const QTextItem &))&D::ClassType::super_drawTextItem, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("super_drawLines", (void (D::ClassType::*) (const QLine *, int))&D::ClassType::super_drawLines);
         _d.CPGF_MD_TEMPLATE _method("super_drawPoints", (void (D::ClassType::*) (const QPoint *, int))&D::ClassType::super_drawPoints);
-        _d.CPGF_MD_TEMPLATE _method("super_drawEllipse", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_drawEllipse);
-        _d.CPGF_MD_TEMPLATE _method("super_drawImage", (void (D::ClassType::*) (const QRectF &, const QImage &, const QRectF &, Qt::ImageConversionFlags))&D::ClassType::super_drawImage)
+        _d.CPGF_MD_TEMPLATE _method("super_drawEllipse", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_drawEllipse, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_drawImage", (void (D::ClassType::*) (const QRectF &, const QImage &, const QRectF &, Qt::ImageConversionFlags))&D::ClassType::super_drawImage, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<2> >())
             ._default(copyVariantFromCopyable(Qt::AutoColor))
         ;
         _d.CPGF_MD_TEMPLATE _method("super_drawEllipse", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_drawEllipse);
@@ -474,9 +474,9 @@ public:
         _d.CPGF_MD_TEMPLATE _method("super_end", (bool (D::ClassType::*) ())&D::ClassType::super_end);
         _d.CPGF_MD_TEMPLATE _method("super_drawPath", (void (D::ClassType::*) (const QPainterPath &))&D::ClassType::super_drawPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("super_updateState", (void (D::ClassType::*) (const QPaintEngineState &))&D::ClassType::super_updateState);
-        _d.CPGF_MD_TEMPLATE _method("super_drawTiledPixmap", (void (D::ClassType::*) (const QRectF &, const QPixmap &, const QPointF &))&D::ClassType::super_drawTiledPixmap, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
+        _d.CPGF_MD_TEMPLATE _method("super_drawTiledPixmap", (void (D::ClassType::*) (const QRectF &, const QPixmap &, const QPointF &))&D::ClassType::super_drawTiledPixmap, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<2> >());
         _d.CPGF_MD_TEMPLATE _method("super_drawPolygon", (void (D::ClassType::*) (const QPointF *, int, QPaintEngine::PolygonDrawMode))&D::ClassType::super_drawPolygon);
-        _d.CPGF_MD_TEMPLATE _method("super_drawPixmap", (void (D::ClassType::*) (const QRectF &, const QPixmap &, const QRectF &))&D::ClassType::super_drawPixmap);
+        _d.CPGF_MD_TEMPLATE _method("super_drawPixmap", (void (D::ClassType::*) (const QRectF &, const QPixmap &, const QRectF &))&D::ClassType::super_drawPixmap, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<2> >());
         _d.CPGF_MD_TEMPLATE _method("super_type", (QPaintEngine::Type (D::ClassType::*) () const)&D::ClassType::super_type);
         _d.CPGF_MD_TEMPLATE _method("super_drawLines", (void (D::ClassType::*) (const QLineF *, int))&D::ClassType::super_drawLines);
     }

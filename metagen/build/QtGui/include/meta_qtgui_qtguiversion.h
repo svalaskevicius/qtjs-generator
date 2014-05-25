@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -25,7 +24,7 @@ void buildMetaClass_Global_qtguiversion(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_19")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_17")
         ._element("QTGUI_VERSION_STR", QTGUI_VERSION_STR)
         ._element("QTGUI_VERSION", QTGUI_VERSION)
     ;

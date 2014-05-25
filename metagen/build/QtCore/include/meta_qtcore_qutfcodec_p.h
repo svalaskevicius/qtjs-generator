@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -14,6 +13,7 @@
 #include "cpgf/gmetapolicy.h"
 
 
+using namespace QUtf8Functions;
 
 
 namespace qt_metadata { 

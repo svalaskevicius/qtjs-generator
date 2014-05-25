@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -14,7 +13,7 @@
 #include "cpgf/gmetapolicy.h"
 
 
-using namespace QtQml;
+using namespace QmlIR;
 
 
 namespace qt_metadata { 

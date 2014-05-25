@@ -1,5 +1,6 @@
 // Auto generated file, don't modify.
 
+#include <qtCore_cpgf_compat.h>
 #include <QtCore/qglobal.h>
 #include <QtCore/QString>
 #include <QtCore/QDataStream>
@@ -68,7 +69,7 @@ GDefineMetaInfo createMetaClass_QAtomicInt()
 {
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
-        GDefineMetaClass<QAtomicInt, QBasicAtomicInt> _nd = GDefineMetaClass<QAtomicInt, QBasicAtomicInt>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QAtomicInt", &buildMetaClass_QAtomicInt);
+        GDefineMetaClass<QAtomicInt, QAtomicInteger< int >> _nd = GDefineMetaClass<QAtomicInt, QAtomicInteger< int >>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent> >::lazyDeclare("QAtomicInt", &buildMetaClass_QAtomicInt);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

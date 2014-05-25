@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -19,7 +18,19 @@
 namespace qt_metadata { 
 
 
+template <typename D>
+void buildMetaClass_Global_qloggingcategory(D _d)
+{
+    (void)_d;
+    using namespace cpgf;
+    
+}
+
+
 inline QLoggingCategory & opErAToRWrapper_QLoggingCategory__opFunction(QLoggingCategory * self) {
+    return (*self)();
+}
+inline const QLoggingCategory & opErAToRWrapper_QLoggingCategory__opFunction(const QLoggingCategory * self) {
     return (*self)();
 }
 
@@ -42,6 +53,8 @@ void buildMetaClass_QLoggingCategory(D _d)
     _d.CPGF_MD_TEMPLATE _method("setFilterRules", &D::ClassType::setFilterRules, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _operator<QLoggingCategory & (*)()>(mopHolder(mopHolder), cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >());
     _d.CPGF_MD_TEMPLATE _method("_opFunction", (QLoggingCategory & (*) (QLoggingCategory *))&opErAToRWrapper_QLoggingCategory__opFunction, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleExplicitThis >());
+    _d.CPGF_MD_TEMPLATE _operator<const QLoggingCategory & (*)()>(mopHolder(mopHolder));
+    _d.CPGF_MD_TEMPLATE _method("_opFunction", (const QLoggingCategory & (*) (const QLoggingCategory *))&opErAToRWrapper_QLoggingCategory__opFunction, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
 }
 
 

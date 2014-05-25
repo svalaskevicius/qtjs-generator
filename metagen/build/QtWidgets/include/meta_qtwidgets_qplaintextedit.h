@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -389,7 +388,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
         _d.CPGF_MD_TEMPLATE _method("documentChanged", (void (D::ClassType::*) (int, int, int))&D::ClassType::documentChanged);
         _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-        _d.CPGF_MD_TEMPLATE _method("drawInlineObject", (void (D::ClassType::*) (QPainter *, const QRectF &, QTextInlineObject, int, const QTextFormat &))&D::ClassType::drawInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<4> >());
+        _d.CPGF_MD_TEMPLATE _method("drawInlineObject", (void (D::ClassType::*) (QPainter *, const QRectF &, QTextInlineObject, int, const QTextFormat &))&D::ClassType::drawInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<4> >());
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
         _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
         _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
@@ -408,7 +407,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *, const QAbstractTextDocumentLayout::PaintContext &))&D::ClassType::super_draw);
         _d.CPGF_MD_TEMPLATE _method("super_documentSize", (QSizeF (D::ClassType::*) () const)&D::ClassType::super_documentSize);
         _d.CPGF_MD_TEMPLATE _method("super_hitTest", (int (D::ClassType::*) (const QPointF &, Qt::HitTestAccuracy) const)&D::ClassType::super_hitTest, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_drawInlineObject", (void (D::ClassType::*) (QPainter *, const QRectF &, QTextInlineObject, int, const QTextFormat &))&D::ClassType::super_drawInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<4> >());
+        _d.CPGF_MD_TEMPLATE _method("super_drawInlineObject", (void (D::ClassType::*) (QPainter *, const QRectF &, QTextInlineObject, int, const QTextFormat &))&D::ClassType::super_drawInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<4> >());
         _d.CPGF_MD_TEMPLATE _method("super_blockBoundingRect", (QRectF (D::ClassType::*) (const QTextBlock &) const)&D::ClassType::super_blockBoundingRect);
         _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
         _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
@@ -450,6 +449,8 @@ void buildMetaClass_QPlainTextEdit(D _d)
     _d.CPGF_MD_TEMPLATE _method("qt_metacall", &D::ClassType::qt_metacall);
     _d.CPGF_MD_TEMPLATE _method("setDocument", &D::ClassType::setDocument);
     _d.CPGF_MD_TEMPLATE _method("document", &D::ClassType::document);
+    _d.CPGF_MD_TEMPLATE _method("setPlaceholderText", &D::ClassType::setPlaceholderText, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("placeholderText", &D::ClassType::placeholderText);
     _d.CPGF_MD_TEMPLATE _method("setTextCursor", &D::ClassType::setTextCursor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("textCursor", &D::ClassType::textCursor);
     _d.CPGF_MD_TEMPLATE _method("isReadOnly", &D::ClassType::isReadOnly);
@@ -475,7 +476,10 @@ void buildMetaClass_QPlainTextEdit(D _d)
     _d.CPGF_MD_TEMPLATE _method("backgroundVisible", &D::ClassType::backgroundVisible);
     _d.CPGF_MD_TEMPLATE _method("setCenterOnScroll", &D::ClassType::setCenterOnScroll);
     _d.CPGF_MD_TEMPLATE _method("centerOnScroll", &D::ClassType::centerOnScroll);
-    _d.CPGF_MD_TEMPLATE _method("find", &D::ClassType::find, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
+    _d.CPGF_MD_TEMPLATE _method("find", (bool (D::ClassType::*) (const QString &, QTextDocument::FindFlags))&D::ClassType::find, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("find", (bool (D::ClassType::*) (const QRegExp &, QTextDocument::FindFlags))&D::ClassType::find, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
         ._default(copyVariantFromCopyable(0))
     ;
     _d.CPGF_MD_TEMPLATE _method("toPlainText", &D::ClassType::toPlainText);
@@ -500,7 +504,8 @@ void buildMetaClass_QPlainTextEdit(D _d)
     _d.CPGF_MD_TEMPLATE _method("canPaste", &D::ClassType::canPaste);
     _d.CPGF_MD_TEMPLATE _method("print", &D::ClassType::print);
     _d.CPGF_MD_TEMPLATE _method("blockCount", &D::ClassType::blockCount);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", &D::ClassType::inputMethodQuery);
+    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
+    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery, QVariant) const)&D::ClassType::inputMethodQuery);
     _d.CPGF_MD_TEMPLATE _method("setPlainText", &D::ClassType::setPlainText, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("cut", &D::ClassType::cut);
     _d.CPGF_MD_TEMPLATE _method("copy", &D::ClassType::copy);

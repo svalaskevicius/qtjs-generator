@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -28,7 +27,7 @@ void buildMetaClass_Global_qstyleplugin(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtWidgets_8")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtWidgets_9")
         ._element("QStyleFactoryInterface_iid", QStyleFactoryInterface_iid)
     ;
 }

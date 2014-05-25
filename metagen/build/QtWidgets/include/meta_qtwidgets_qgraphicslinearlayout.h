@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -54,11 +53,11 @@ void buildMetaClass_QGraphicsLinearLayout(D _d)
     _d.CPGF_MD_TEMPLATE _method("stretchFactor", &D::ClassType::stretchFactor);
     _d.CPGF_MD_TEMPLATE _method("setAlignment", &D::ClassType::setAlignment);
     _d.CPGF_MD_TEMPLATE _method("alignment", &D::ClassType::alignment);
-    _d.CPGF_MD_TEMPLATE _method("setGeometry", &D::ClassType::setGeometry);
+    _d.CPGF_MD_TEMPLATE _method("setGeometry", &D::ClassType::setGeometry, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("count", &D::ClassType::count);
     _d.CPGF_MD_TEMPLATE _method("itemAt", &D::ClassType::itemAt);
     _d.CPGF_MD_TEMPLATE _method("invalidate", &D::ClassType::invalidate);
-    _d.CPGF_MD_TEMPLATE _method("sizeHint", &D::ClassType::sizeHint)
+    _d.CPGF_MD_TEMPLATE _method("sizeHint", &D::ClassType::sizeHint, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >())
         ._default(copyVariantFromCopyable(QSizeF()))
     ;
     _d.CPGF_MD_TEMPLATE _method("dump", &D::ClassType::dump)
@@ -231,7 +230,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("setOwnedByLayout", (void (D::ClassType::*) (bool))&D::ClassType::setOwnedByLayout);
         _d.CPGF_MD_TEMPLATE _method("addChildLayoutItem", (void (D::ClassType::*) (QGraphicsLayoutItem *))&D::ClassType::addChildLayoutItem);
         _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
-        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSizeF (D::ClassType::*) (Qt::SizeHint, const QSizeF &) const)&D::ClassType::super_sizeHint)
+        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSizeF (D::ClassType::*) (Qt::SizeHint, const QSizeF &) const)&D::ClassType::super_sizeHint, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >())
             ._default(copyVariantFromCopyable(QSizeF()))
         ;
         _d.CPGF_MD_TEMPLATE _method("super_count", (int (D::ClassType::*) () const)&D::ClassType::super_count);
@@ -240,7 +239,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("super_itemAt", (QGraphicsLayoutItem * (D::ClassType::*) (int) const)&D::ClassType::super_itemAt);
         _d.CPGF_MD_TEMPLATE _method("super_removeAt", (void (D::ClassType::*) (int))&D::ClassType::super_removeAt);
         _d.CPGF_MD_TEMPLATE _method("super_getContentsMargins", (void (D::ClassType::*) (qreal *, qreal *, qreal *, qreal *) const)&D::ClassType::super_getContentsMargins);
-        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setGeometry);
+        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setGeometry, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
 };
 

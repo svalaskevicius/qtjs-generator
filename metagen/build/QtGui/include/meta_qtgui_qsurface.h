@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -28,6 +27,7 @@ void buildMetaClass_QSurface(D _d)
     _d.CPGF_MD_TEMPLATE _method("surfaceClass", &D::ClassType::surfaceClass);
     _d.CPGF_MD_TEMPLATE _method("format", &D::ClassType::format);
     _d.CPGF_MD_TEMPLATE _method("surfaceType", &D::ClassType::surfaceType);
+    _d.CPGF_MD_TEMPLATE _method("supportsOpenGL", &D::ClassType::supportsOpenGL);
     _d.CPGF_MD_TEMPLATE _method("size", &D::ClassType::size);
     _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::SurfaceClass>("SurfaceClass")
         ._element("Window", D::ClassType::Window)
@@ -36,6 +36,7 @@ void buildMetaClass_QSurface(D _d)
     _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::SurfaceType>("SurfaceType")
         ._element("RasterSurface", D::ClassType::RasterSurface)
         ._element("OpenGLSurface", D::ClassType::OpenGLSurface)
+        ._element("RasterGLSurface", D::ClassType::RasterGLSurface)
     ;
 }
 

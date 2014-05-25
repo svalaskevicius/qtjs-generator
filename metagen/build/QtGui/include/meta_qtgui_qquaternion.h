@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -66,12 +65,12 @@ void buildMetaClass_QQuaternion(D _d)
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     _d.CPGF_MD_TEMPLATE _constructor<void * (float, float, float, float)>();
-    _d.CPGF_MD_TEMPLATE _constructor<void * (float, const QVector3D &)>();
-    _d.CPGF_MD_TEMPLATE _constructor<void * (const QVector4D &)>();
+    _d.CPGF_MD_TEMPLATE _constructor<void * (float, const QVector3D &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _constructor<void * (const QVector4D &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("isNull", &D::ClassType::isNull);
     _d.CPGF_MD_TEMPLATE _method("isIdentity", &D::ClassType::isIdentity);
     _d.CPGF_MD_TEMPLATE _method("vector", &D::ClassType::vector);
-    _d.CPGF_MD_TEMPLATE _method("setVector", (void (D::ClassType::*) (const QVector3D &))&D::ClassType::setVector);
+    _d.CPGF_MD_TEMPLATE _method("setVector", (void (D::ClassType::*) (const QVector3D &))&D::ClassType::setVector, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("setVector", (void (D::ClassType::*) (float, float, float))&D::ClassType::setVector);
     _d.CPGF_MD_TEMPLATE _method("x", &D::ClassType::x);
     _d.CPGF_MD_TEMPLATE _method("y", &D::ClassType::y);
@@ -86,9 +85,9 @@ void buildMetaClass_QQuaternion(D _d)
     _d.CPGF_MD_TEMPLATE _method("normalized", &D::ClassType::normalized);
     _d.CPGF_MD_TEMPLATE _method("normalize", &D::ClassType::normalize);
     _d.CPGF_MD_TEMPLATE _method("conjugate", &D::ClassType::conjugate);
-    _d.CPGF_MD_TEMPLATE _method("rotatedVector", &D::ClassType::rotatedVector);
+    _d.CPGF_MD_TEMPLATE _method("rotatedVector", &D::ClassType::rotatedVector, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("toVector4D", &D::ClassType::toVector4D);
-    _d.CPGF_MD_TEMPLATE _method("fromAxisAndAngle", (QQuaternion (*) (const QVector3D &, float))&D::ClassType::fromAxisAndAngle);
+    _d.CPGF_MD_TEMPLATE _method("fromAxisAndAngle", (QQuaternion (*) (const QVector3D &, float))&D::ClassType::fromAxisAndAngle, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("fromAxisAndAngle", (QQuaternion (*) (float, float, float, float))&D::ClassType::fromAxisAndAngle);
     _d.CPGF_MD_TEMPLATE _method("slerp", &D::ClassType::slerp, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("nlerp", &D::ClassType::nlerp, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());

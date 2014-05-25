@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -32,7 +31,7 @@ void buildMetaClass_DesignerSupport(D _d)
     _d.CPGF_MD_TEMPLATE _method("derefFromEffectItem", &D::ClassType::derefFromEffectItem)
         ._default(copyVariantFromCopyable(true))
     ;
-    _d.CPGF_MD_TEMPLATE _method("renderImageForItem", &D::ClassType::renderImageForItem, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >());
+    _d.CPGF_MD_TEMPLATE _method("renderImageForItem", &D::ClassType::renderImageForItem, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("isDirty", &D::ClassType::isDirty);
     _d.CPGF_MD_TEMPLATE _method("addDirty", &D::ClassType::addDirty);
     _d.CPGF_MD_TEMPLATE _method("resetDirty", &D::ClassType::resetDirty);

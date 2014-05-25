@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -242,6 +241,7 @@ void buildMetaClass_QEvent(D _d)
         ._element("PlatformPanel", D::ClassType::PlatformPanel)
         ._element("StyleAnimationUpdate", D::ClassType::StyleAnimationUpdate)
         ._element("ApplicationStateChange", D::ClassType::ApplicationStateChange)
+        ._element("WindowChangeInternal", D::ClassType::WindowChangeInternal)
         ._element("User", D::ClassType::User)
         ._element("MaxUser", D::ClassType::MaxUser)
     ;

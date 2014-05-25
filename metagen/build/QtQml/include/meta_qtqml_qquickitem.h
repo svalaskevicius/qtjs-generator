@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -75,7 +74,7 @@ void buildMetaClass_QQuickItem(D _d)
     _d.CPGF_MD_TEMPLATE _method("resetHeight", &D::ClassType::resetHeight);
     _d.CPGF_MD_TEMPLATE _method("setImplicitHeight", &D::ClassType::setImplicitHeight);
     _d.CPGF_MD_TEMPLATE _method("implicitHeight", &D::ClassType::implicitHeight);
-    _d.CPGF_MD_TEMPLATE _method("setSize", &D::ClassType::setSize);
+    _d.CPGF_MD_TEMPLATE _method("setSize", &D::ClassType::setSize, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("transformOrigin", &D::ClassType::transformOrigin);
     _d.CPGF_MD_TEMPLATE _method("setTransformOrigin", &D::ClassType::setTransformOrigin);
     _d.CPGF_MD_TEMPLATE _method("transformOriginPoint", &D::ClassType::transformOriginPoint);
@@ -98,6 +97,7 @@ void buildMetaClass_QQuickItem(D _d)
     _d.CPGF_MD_TEMPLATE _method("setActiveFocusOnTab", &D::ClassType::setActiveFocusOnTab);
     _d.CPGF_MD_TEMPLATE _method("antialiasing", &D::ClassType::antialiasing);
     _d.CPGF_MD_TEMPLATE _method("setAntialiasing", &D::ClassType::setAntialiasing);
+    _d.CPGF_MD_TEMPLATE _method("resetAntialiasing", &D::ClassType::resetAntialiasing);
     _d.CPGF_MD_TEMPLATE _method("flags", &D::ClassType::flags);
     _d.CPGF_MD_TEMPLATE _method("setFlag", &D::ClassType::setFlag)
         ._default(copyVariantFromCopyable(true))
@@ -132,11 +132,11 @@ void buildMetaClass_QQuickItem(D _d)
     _d.CPGF_MD_TEMPLATE _method("contains", &D::ClassType::contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("itemTransform", &D::ClassType::itemTransform);
     _d.CPGF_MD_TEMPLATE _method("mapToScene", &D::ClassType::mapToScene, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("mapRectToItem", &D::ClassType::mapRectToItem);
-    _d.CPGF_MD_TEMPLATE _method("mapRectToScene", &D::ClassType::mapRectToScene);
+    _d.CPGF_MD_TEMPLATE _method("mapRectToItem", &D::ClassType::mapRectToItem, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("mapRectToScene", &D::ClassType::mapRectToScene, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("mapFromScene", &D::ClassType::mapFromScene, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("mapRectFromItem", &D::ClassType::mapRectFromItem);
-    _d.CPGF_MD_TEMPLATE _method("mapRectFromScene", &D::ClassType::mapRectFromScene);
+    _d.CPGF_MD_TEMPLATE _method("mapRectFromItem", &D::ClassType::mapRectFromItem, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("mapRectFromScene", &D::ClassType::mapRectFromScene, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("polish", &D::ClassType::polish);
     _d.CPGF_MD_TEMPLATE _method("forceActiveFocus", (void (D::ClassType::*) ())&D::ClassType::forceActiveFocus);
     _d.CPGF_MD_TEMPLATE _method("forceActiveFocus", (void (D::ClassType::*) (Qt::FocusReason))&D::ClassType::forceActiveFocus);
@@ -148,7 +148,7 @@ void buildMetaClass_QQuickItem(D _d)
     _d.CPGF_MD_TEMPLATE _method("isTextureProvider", &D::ClassType::isTextureProvider);
     _d.CPGF_MD_TEMPLATE _method("textureProvider", &D::ClassType::textureProvider);
     _d.CPGF_MD_TEMPLATE _method("update", &D::ClassType::update);
-    _d.CPGF_MD_TEMPLATE _method("childrenRectChanged", &D::ClassType::childrenRectChanged);
+    _d.CPGF_MD_TEMPLATE _method("childrenRectChanged", &D::ClassType::childrenRectChanged, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("baselineOffsetChanged", &D::ClassType::baselineOffsetChanged);
     _d.CPGF_MD_TEMPLATE _method("stateChanged", &D::ClassType::stateChanged, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("focusChanged", &D::ClassType::focusChanged);
@@ -194,6 +194,7 @@ void buildMetaClass_QQuickItem(D _d)
         ._element("ItemOpacityHasChanged", D::ClassType::ItemOpacityHasChanged)
         ._element("ItemActiveFocusHasChanged", D::ClassType::ItemActiveFocusHasChanged)
         ._element("ItemRotationHasChanged", D::ClassType::ItemRotationHasChanged)
+        ._element("ItemAntialiasingHasChanged", D::ClassType::ItemAntialiasingHasChanged)
     ;
     _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::TransformOrigin>("TransformOrigin")
         ._element("TopLeft", D::ClassType::TopLeft)
@@ -989,7 +990,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("heightValid", (bool (D::ClassType::*) () const)&D::ClassType::heightValid);
         _d.CPGF_MD_TEMPLATE _method("hoverMoveEvent", (void (D::ClassType::*) (QHoverEvent *))&D::ClassType::hoverMoveEvent);
         _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("geometryChanged", (void (D::ClassType::*) (const QRectF &, const QRectF &))&D::ClassType::geometryChanged);
+        _d.CPGF_MD_TEMPLATE _method("geometryChanged", (void (D::ClassType::*) (const QRectF &, const QRectF &))&D::ClassType::geometryChanged, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
         _d.CPGF_MD_TEMPLATE _method("itemChange", (void (D::ClassType::*) (QQuickItem::ItemChange, const QQuickItem::ItemChangeData&))&D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
         _d.CPGF_MD_TEMPLATE _method("keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::keyReleaseEvent);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
@@ -1033,7 +1034,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
         _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QDragLeaveEvent *))&D::ClassType::super_dragLeaveEvent);
         _d.CPGF_MD_TEMPLATE _method("super_hoverMoveEvent", (void (D::ClassType::*) (QHoverEvent *))&D::ClassType::super_hoverMoveEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_geometryChanged", (void (D::ClassType::*) (const QRectF &, const QRectF &))&D::ClassType::super_geometryChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_geometryChanged", (void (D::ClassType::*) (const QRectF &, const QRectF &))&D::ClassType::super_geometryChanged, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
         _d.CPGF_MD_TEMPLATE _method("super_itemChange", (void (D::ClassType::*) (QQuickItem::ItemChange, const QQuickItem::ItemChangeData&))&D::ClassType::super_itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
         _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
         _d.CPGF_MD_TEMPLATE _method("super_keyReleaseEvent", (void (D::ClassType::*) (QKeyEvent *))&D::ClassType::super_keyReleaseEvent);

@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -132,7 +131,7 @@ void buildMetaClass_QTransform(D _d)
     _d.CPGF_MD_TEMPLATE _method("map", (QPainterPath (D::ClassType::*) (const QPainterPath &) const)&D::ClassType::map, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("mapToPolygon", &D::ClassType::mapToPolygon);
     _d.CPGF_MD_TEMPLATE _method("mapRect", (QRect (D::ClassType::*) (const QRect &) const)&D::ClassType::mapRect);
-    _d.CPGF_MD_TEMPLATE _method("mapRect", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapRect);
+    _d.CPGF_MD_TEMPLATE _method("mapRect", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("map", (void (D::ClassType::*) (int, int, int *, int *) const)&D::ClassType::map);
     _d.CPGF_MD_TEMPLATE _method("map", (void (D::ClassType::*) (qreal, qreal, qreal *, qreal *) const)&D::ClassType::map);
     _d.CPGF_MD_TEMPLATE _method("toAffine", &D::ClassType::toAffine, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<-1> >());

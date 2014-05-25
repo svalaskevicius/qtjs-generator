@@ -1,5 +1,6 @@
 // Auto generated file, don't modify.
 
+#include <qtGui_cpgf_compat.h>
 #include <QtCore/qglobal.h>
 #include <QtCore/QEvent>
 #include <QtCore/QDebug>

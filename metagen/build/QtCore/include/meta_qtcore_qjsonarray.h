@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -43,6 +42,15 @@ inline bool opErAToRWrapper_QJsonArray__opEqual(const QJsonArray * self, const Q
 }
 inline bool opErAToRWrapper_QJsonArray__opNotEqual(const QJsonArray * self, const QJsonArray & other) {
     return (*self) != other;
+}
+inline QJsonArray opErAToRWrapper_QJsonArray__opAdd(const QJsonArray * self, const QJsonValue & v) {
+    return (*self) + v;
+}
+inline QJsonArray & opErAToRWrapper_QJsonArray__opAddAssign(QJsonArray * self, const QJsonValue & v) {
+    return (*self) += v;
+}
+inline QJsonArray & opErAToRWrapper_QJsonArray__opLeftShift(QJsonArray * self, const QJsonValue & v) {
+    return (*self) << v;
 }
 
 
@@ -219,6 +227,12 @@ void buildMetaClass_QJsonArray(D _d)
     _d.CPGF_MD_TEMPLATE _method("_opEqual", (bool (*) (const QJsonArray *, const QJsonArray &))&opErAToRWrapper_QJsonArray__opEqual, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const cpgf::GMetaSelf &, const QJsonArray &)>(mopHolder != mopHolder);
     _d.CPGF_MD_TEMPLATE _method("_opNotEqual", (bool (*) (const QJsonArray *, const QJsonArray &))&opErAToRWrapper_QJsonArray__opNotEqual, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
+    _d.CPGF_MD_TEMPLATE _operator<QJsonArray (*)(const cpgf::GMetaSelf &, const QJsonValue &)>(mopHolder + mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("_opAdd", (QJsonArray (*) (const QJsonArray *, const QJsonValue &))&opErAToRWrapper_QJsonArray__opAdd, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
+    _d.CPGF_MD_TEMPLATE _operator<QJsonArray & (*)(cpgf::GMetaSelf, const QJsonValue &)>(mopHolder += mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("_opAddAssign", (QJsonArray & (*) (QJsonArray *, const QJsonValue &))&opErAToRWrapper_QJsonArray__opAddAssign, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
+    _d.CPGF_MD_TEMPLATE _operator<QJsonArray & (*)(cpgf::GMetaSelf, const QJsonValue &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("_opLeftShift", (QJsonArray & (*) (QJsonArray *, const QJsonValue &))&opErAToRWrapper_QJsonArray__opLeftShift, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
     {
         GDefineMetaClass<QJsonArray::const_iterator> _nd = GDefineMetaClass<QJsonArray::const_iterator>::declare("const_iterator");
         _nd.CPGF_MD_TEMPLATE _constructor<void * ()>();

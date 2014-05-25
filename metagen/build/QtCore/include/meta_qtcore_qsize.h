@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -35,16 +34,16 @@ void buildMetaClass_Global_qsize(D _d)
     _d.CPGF_MD_TEMPLATE _operator<const QSize (*)(qreal, const QSize &)>(mopHolder * mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<const QSize (*)(const QSize &, qreal)>(mopHolder / mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QSize &)>(mopHolder << mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, const QSizeF &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, const QSizeF &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, QSizeF &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
-    _d.CPGF_MD_TEMPLATE _operator<bool (*)(const QSizeF &, const QSizeF &)>(mopHolder == mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<bool (*)(const QSizeF &, const QSizeF &)>(mopHolder != mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<const QSizeF (*)(const QSizeF &, const QSizeF &)>(mopHolder + mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<const QSizeF (*)(const QSizeF &, const QSizeF &)>(mopHolder - mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<const QSizeF (*)(const QSizeF &, qreal)>(mopHolder * mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<const QSizeF (*)(qreal, const QSizeF &)>(mopHolder * mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<const QSizeF (*)(const QSizeF &, qreal)>(mopHolder / mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QSizeF &)>(mopHolder << mopHolder);
+    _d.CPGF_MD_TEMPLATE _operator<bool (*)(const QSizeF &, const QSizeF &)>(mopHolder == mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _operator<bool (*)(const QSizeF &, const QSizeF &)>(mopHolder != mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _operator<const QSizeF (*)(const QSizeF &, const QSizeF &)>(mopHolder + mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _operator<const QSizeF (*)(const QSizeF &, const QSizeF &)>(mopHolder - mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _operator<const QSizeF (*)(const QSizeF &, qreal)>(mopHolder * mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _operator<const QSizeF (*)(qreal, const QSizeF &)>(mopHolder * mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _operator<const QSizeF (*)(const QSizeF &, qreal)>(mopHolder / mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QSizeF &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
 }
 
 
@@ -131,18 +130,18 @@ void buildMetaClass_QSizeF(D _d)
     _d.CPGF_MD_TEMPLATE _method("transpose", &D::ClassType::transpose);
     _d.CPGF_MD_TEMPLATE _method("transposed", &D::ClassType::transposed);
     _d.CPGF_MD_TEMPLATE _method("scale", (void (D::ClassType::*) (qreal, qreal, Qt::AspectRatioMode))&D::ClassType::scale);
-    _d.CPGF_MD_TEMPLATE _method("scale", (void (D::ClassType::*) (const QSizeF &, Qt::AspectRatioMode))&D::ClassType::scale);
+    _d.CPGF_MD_TEMPLATE _method("scale", (void (D::ClassType::*) (const QSizeF &, Qt::AspectRatioMode))&D::ClassType::scale, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("scaled", (QSizeF (D::ClassType::*) (qreal, qreal, Qt::AspectRatioMode) const)&D::ClassType::scaled);
-    _d.CPGF_MD_TEMPLATE _method("scaled", (QSizeF (D::ClassType::*) (const QSizeF &, Qt::AspectRatioMode) const)&D::ClassType::scaled);
-    _d.CPGF_MD_TEMPLATE _method("expandedTo", &D::ClassType::expandedTo);
-    _d.CPGF_MD_TEMPLATE _method("boundedTo", &D::ClassType::boundedTo);
+    _d.CPGF_MD_TEMPLATE _method("scaled", (QSizeF (D::ClassType::*) (const QSizeF &, Qt::AspectRatioMode) const)&D::ClassType::scaled, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("expandedTo", &D::ClassType::expandedTo, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("boundedTo", &D::ClassType::boundedTo, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("rwidth", &D::ClassType::rwidth);
     _d.CPGF_MD_TEMPLATE _method("rheight", &D::ClassType::rheight);
     _d.CPGF_MD_TEMPLATE _method("toSize", &D::ClassType::toSize);
-    _d.CPGF_MD_TEMPLATE _operator<QSizeF & (*)(cpgf::GMetaSelf, const QSizeF &)>(mopHolder += mopHolder);
-    _d.CPGF_MD_TEMPLATE _method("_opAddAssign", (QSizeF & (*) (QSizeF *, const QSizeF &))&opErAToRWrapper_QSizeF__opAddAssign, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
-    _d.CPGF_MD_TEMPLATE _operator<QSizeF & (*)(cpgf::GMetaSelf, const QSizeF &)>(mopHolder -= mopHolder);
-    _d.CPGF_MD_TEMPLATE _method("_opSubAssign", (QSizeF & (*) (QSizeF *, const QSizeF &))&opErAToRWrapper_QSizeF__opSubAssign, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
+    _d.CPGF_MD_TEMPLATE _operator<QSizeF & (*)(cpgf::GMetaSelf, const QSizeF &)>(mopHolder += mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("_opAddAssign", (QSizeF & (*) (QSizeF *, const QSizeF &))&opErAToRWrapper_QSizeF__opAddAssign, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
+    _d.CPGF_MD_TEMPLATE _operator<QSizeF & (*)(cpgf::GMetaSelf, const QSizeF &)>(mopHolder -= mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("_opSubAssign", (QSizeF & (*) (QSizeF *, const QSizeF &))&opErAToRWrapper_QSizeF__opSubAssign, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
     _d.CPGF_MD_TEMPLATE _operator<QSizeF & (*)(cpgf::GMetaSelf, qreal)>(mopHolder *= mopHolder);
     _d.CPGF_MD_TEMPLATE _method("_opMulAssign", (QSizeF & (*) (QSizeF *, qreal))&opErAToRWrapper_QSizeF__opMulAssign, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
     _d.CPGF_MD_TEMPLATE _operator<QSizeF & (*)(cpgf::GMetaSelf, qreal)>(mopHolder /= mopHolder);

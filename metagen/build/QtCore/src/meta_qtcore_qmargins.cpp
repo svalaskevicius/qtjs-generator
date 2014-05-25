@@ -1,5 +1,6 @@
 // Auto generated file, don't modify.
 
+#include <qtCore_cpgf_compat.h>
 #include <QtCore/qglobal.h>
 #include <QtCore/QString>
 #include <QtCore/QDataStream>
@@ -69,6 +70,20 @@ GDefineMetaInfo createMetaClass_QMargins()
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
         GDefineMetaClass<QMargins> _nd = GDefineMetaClass<QMargins>::lazyDeclare("QMargins", &buildMetaClass_QMargins);
+        _d._class(_nd);
+    }
+    return _d.getMetaInfo();
+}
+
+
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
+#endif
+GDefineMetaInfo createMetaClass_QMarginsF()
+{
+    GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
+    {
+        GDefineMetaClass<QMarginsF> _nd = GDefineMetaClass<QMarginsF>::lazyDeclare("QMarginsF", &buildMetaClass_QMarginsF);
         _d._class(_nd);
     }
     return _d.getMetaInfo();
