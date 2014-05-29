@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -246,7 +245,6 @@ void buildMetaClass_QSet(D _d)
     _d.CPGF_MD_TEMPLATE _method("squeeze", &D::ClassType::squeeze);
     _d.CPGF_MD_TEMPLATE _method("detach", &D::ClassType::detach);
     _d.CPGF_MD_TEMPLATE _method("isDetached", &D::ClassType::isDetached);
-    _d.CPGF_MD_TEMPLATE _method("setSharable", &D::ClassType::setSharable);
     _d.CPGF_MD_TEMPLATE _method("clear", &D::ClassType::clear);
     _d.CPGF_MD_TEMPLATE _method("remove", &D::ClassType::remove);
     _d.CPGF_MD_TEMPLATE _method("contains", (bool (D::ClassType::*) (const T &) const)&D::ClassType::contains);
@@ -442,6 +440,13 @@ void buildMetaClass_QVarLengthArray(D _d)
     _d.CPGF_MD_TEMPLATE _method("squeeze", &D::ClassType::squeeze);
     _d.CPGF_MD_TEMPLATE _method("capacity", &D::ClassType::capacity);
     _d.CPGF_MD_TEMPLATE _method("reserve", &D::ClassType::reserve);
+    _d.CPGF_MD_TEMPLATE _method("indexOf", &D::ClassType::indexOf)
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("lastIndexOf", &D::ClassType::lastIndexOf)
+        ._default(copyVariantFromCopyable(-1))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("contains", &D::ClassType::contains);
     _d.CPGF_MD_TEMPLATE _method("at", &D::ClassType::at);
     _d.CPGF_MD_TEMPLATE _method("value", (T (D::ClassType::*) (int) const)&D::ClassType::value);
     _d.CPGF_MD_TEMPLATE _method("value", (T (D::ClassType::*) (int, const T &) const)&D::ClassType::value);
@@ -554,7 +559,6 @@ void buildMetaClass_QVector(D _d)
     _d.CPGF_MD_TEMPLATE _method("squeeze", &D::ClassType::squeeze);
     _d.CPGF_MD_TEMPLATE _method("detach", &D::ClassType::detach);
     _d.CPGF_MD_TEMPLATE _method("isDetached", &D::ClassType::isDetached);
-    _d.CPGF_MD_TEMPLATE _method("setSharable", &D::ClassType::setSharable);
     _d.CPGF_MD_TEMPLATE _method("isSharedWith", &D::ClassType::isSharedWith, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("data", (T * (D::ClassType::*) ())&D::ClassType::data);
     _d.CPGF_MD_TEMPLATE _method("data", (const T * (D::ClassType::*) () const)&D::ClassType::data);

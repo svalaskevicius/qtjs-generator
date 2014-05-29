@@ -12,12 +12,21 @@
 
 #include "ObjectLifeManagerAutoTree.h"
 
+#define ENABLE_SPECIFIC_TYPE_CONVERSION(FROM, TO) \
+template <> \
+struct IsConvertible <FROM, TO, void> { \
+    G_STATIC_CONSTANT(bool, Result = true); \
+};
 
 #define ENABLE_INT_TYPE_CONVERSION(TYPE) \
     template <typename From> \
-    struct IsConvertible <From, TYPE, typename GEnableIfResult<IsConvertible<From, int> >::Result> { \
-        G_STATIC_CONSTANT(bool, Result = true); \
-    };
+    struct IsConvertible <From, TYPE, void> { \
+        G_STATIC_CONSTANT(bool, Result = false); \
+    }; \
+    ENABLE_SPECIFIC_TYPE_CONVERSION(int, TYPE) \
+    ENABLE_SPECIFIC_TYPE_CONVERSION(unsigned int, TYPE) \
+    ENABLE_SPECIFIC_TYPE_CONVERSION(short, TYPE) \
+    ENABLE_SPECIFIC_TYPE_CONVERSION(unsigned short, TYPE)
 
 
 #define NOT_CONVERTIBLE(TO) \

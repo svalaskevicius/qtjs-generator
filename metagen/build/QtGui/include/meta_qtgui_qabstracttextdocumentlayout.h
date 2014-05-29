@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -47,11 +46,11 @@ void buildMetaClass_QAbstractTextDocumentLayout(D _d)
         ._default(copyVariantFromCopyable(0))
     ;
     _d.CPGF_MD_TEMPLATE _method("handlerForObject", &D::ClassType::handlerForObject);
-    _d.CPGF_MD_TEMPLATE _method("update", &D::ClassType::update)
+    _d.CPGF_MD_TEMPLATE _method("update", &D::ClassType::update, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
         ._default(copyVariantFromCopyable(QRectF(0., 0., 1000000000., 1000000000.)))
     ;
     _d.CPGF_MD_TEMPLATE _method("updateBlock", &D::ClassType::updateBlock);
-    _d.CPGF_MD_TEMPLATE _method("documentSizeChanged", &D::ClassType::documentSizeChanged);
+    _d.CPGF_MD_TEMPLATE _method("documentSizeChanged", &D::ClassType::documentSizeChanged, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("pageCountChanged", &D::ClassType::pageCountChanged);
     _d.CPGF_MD_TEMPLATE _method("tr", &D::ClassType::tr)
         ._default(copyVariantFromCopyable(-1))
@@ -414,7 +413,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
         _d.CPGF_MD_TEMPLATE _method("documentChanged", (void (D::ClassType::*) (int, int, int))&D::ClassType::documentChanged);
         _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-        _d.CPGF_MD_TEMPLATE _method("drawInlineObject", (void (D::ClassType::*) (QPainter *, const QRectF &, QTextInlineObject, int, const QTextFormat &))&D::ClassType::drawInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<4> >());
+        _d.CPGF_MD_TEMPLATE _method("drawInlineObject", (void (D::ClassType::*) (QPainter *, const QRectF &, QTextInlineObject, int, const QTextFormat &))&D::ClassType::drawInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<4> >());
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
         _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
         _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
@@ -433,7 +432,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *, const QAbstractTextDocumentLayout::PaintContext&))&D::ClassType::super_draw);
         _d.CPGF_MD_TEMPLATE _method("super_documentSize", (QSizeF (D::ClassType::*) () const)&D::ClassType::super_documentSize);
         _d.CPGF_MD_TEMPLATE _method("super_hitTest", (int (D::ClassType::*) (const QPointF &, Qt::HitTestAccuracy) const)&D::ClassType::super_hitTest, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_drawInlineObject", (void (D::ClassType::*) (QPainter *, const QRectF &, QTextInlineObject, int, const QTextFormat &))&D::ClassType::super_drawInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<4> >());
+        _d.CPGF_MD_TEMPLATE _method("super_drawInlineObject", (void (D::ClassType::*) (QPainter *, const QRectF &, QTextInlineObject, int, const QTextFormat &))&D::ClassType::super_drawInlineObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<4> >());
         _d.CPGF_MD_TEMPLATE _method("super_blockBoundingRect", (QRectF (D::ClassType::*) (const QTextBlock &) const)&D::ClassType::super_blockBoundingRect);
         _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
         _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
@@ -465,7 +464,7 @@ void buildMetaClass_QTextObjectInterface(D _d)
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("intrinsicSize", &D::ClassType::intrinsicSize, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
-    _d.CPGF_MD_TEMPLATE _method("drawObject", &D::ClassType::drawObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<4> >());
+    _d.CPGF_MD_TEMPLATE _method("drawObject", &D::ClassType::drawObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<4> >());
 }
 
 
@@ -505,7 +504,7 @@ public:
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_drawObject", (void (D::ClassType::*) (QPainter *, const QRectF &, QTextDocument *, int, const QTextFormat &))&D::ClassType::super_drawObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<4> >());
+        _d.CPGF_MD_TEMPLATE _method("super_drawObject", (void (D::ClassType::*) (QPainter *, const QRectF &, QTextDocument *, int, const QTextFormat &))&D::ClassType::super_drawObject, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<4> >());
         _d.CPGF_MD_TEMPLATE _method("super_intrinsicSize", (QSizeF (D::ClassType::*) (QTextDocument *, int, const QTextFormat &))&D::ClassType::super_intrinsicSize, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >());
     }
 };

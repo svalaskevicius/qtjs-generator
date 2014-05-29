@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -191,9 +190,9 @@ void buildMetaClass_QGraphicsSceneResizeEvent(D _d)
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
     _d.CPGF_MD_TEMPLATE _method("oldSize", &D::ClassType::oldSize);
-    _d.CPGF_MD_TEMPLATE _method("setOldSize", &D::ClassType::setOldSize);
+    _d.CPGF_MD_TEMPLATE _method("setOldSize", &D::ClassType::setOldSize, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("newSize", &D::ClassType::newSize);
-    _d.CPGF_MD_TEMPLATE _method("setNewSize", &D::ClassType::setNewSize);
+    _d.CPGF_MD_TEMPLATE _method("setNewSize", &D::ClassType::setNewSize, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
 }
 
 

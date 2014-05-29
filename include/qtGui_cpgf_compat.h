@@ -32,7 +32,7 @@
 #include <QVector3D>
 #include <QVector4D>
 #include <QAccessibleInterface>
-#include <QtGui/5.2.1/QtGui/qpa/qplatformpixmap.h>
+#include <QtGui/5.3.0/QtGui/qpa/qplatformpixmap.h>
 
 
 namespace cpgf {

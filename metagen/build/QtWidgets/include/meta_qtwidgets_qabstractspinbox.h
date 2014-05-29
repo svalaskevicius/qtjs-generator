@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -55,6 +54,8 @@ void buildMetaClass_QAbstractSpinBox(D _d)
     _d.CPGF_MD_TEMPLATE _method("hasFrame", &D::ClassType::hasFrame);
     _d.CPGF_MD_TEMPLATE _method("setAccelerated", &D::ClassType::setAccelerated);
     _d.CPGF_MD_TEMPLATE _method("isAccelerated", &D::ClassType::isAccelerated);
+    _d.CPGF_MD_TEMPLATE _method("setGroupSeparatorShown", &D::ClassType::setGroupSeparatorShown);
+    _d.CPGF_MD_TEMPLATE _method("isGroupSeparatorShown", &D::ClassType::isGroupSeparatorShown);
     _d.CPGF_MD_TEMPLATE _method("sizeHint", &D::ClassType::sizeHint);
     _d.CPGF_MD_TEMPLATE _method("minimumSizeHint", &D::ClassType::minimumSizeHint);
     _d.CPGF_MD_TEMPLATE _method("interpretText", &D::ClassType::interpretText);

@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -45,7 +44,7 @@ void buildMetaClass_Global_qmath(D _d)
     _d.CPGF_MD_TEMPLATE _method("qDegreesToRadians", (double (*) (double))&qDegreesToRadians);
     _d.CPGF_MD_TEMPLATE _method("qRadiansToDegrees", (float (*) (float))&qRadiansToDegrees);
     _d.CPGF_MD_TEMPLATE _method("qRadiansToDegrees", (double (*) (double))&qRadiansToDegrees);
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_20")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_34")
         ._element("QT_SINE_TABLE_SIZE", QT_SINE_TABLE_SIZE)
         ._element("M_E", M_E)
         ._element("M_LOG2E", M_LOG2E)

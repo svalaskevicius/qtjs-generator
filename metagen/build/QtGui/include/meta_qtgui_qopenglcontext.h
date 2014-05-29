@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -66,6 +65,7 @@ void buildMetaClass_QOpenGLContext(D _d)
     _d.CPGF_MD_TEMPLATE _method("surface", &D::ClassType::surface);
     _d.CPGF_MD_TEMPLATE _method("extensions", &D::ClassType::extensions);
     _d.CPGF_MD_TEMPLATE _method("hasExtension", &D::ClassType::hasExtension, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("isOpenGLES", &D::ClassType::isOpenGLES);
     _d.CPGF_MD_TEMPLATE _method("aboutToBeDestroyed", &D::ClassType::aboutToBeDestroyed);
     _d.CPGF_MD_TEMPLATE _method("tr", &D::ClassType::tr)
         ._default(copyVariantFromCopyable(-1))
@@ -73,6 +73,12 @@ void buildMetaClass_QOpenGLContext(D _d)
     ;
     _d.CPGF_MD_TEMPLATE _method("currentContext", &D::ClassType::currentContext);
     _d.CPGF_MD_TEMPLATE _method("areSharing", &D::ClassType::areSharing);
+    _d.CPGF_MD_TEMPLATE _method("openGLModuleHandle", &D::ClassType::openGLModuleHandle);
+    _d.CPGF_MD_TEMPLATE _method("openGLModuleType", &D::ClassType::openGLModuleType);
+    _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::OpenGLModuleType>("OpenGLModuleType")
+        ._element("LibGL", D::ClassType::LibGL)
+        ._element("LibGLES", D::ClassType::LibGLES)
+    ;
 }
 
 

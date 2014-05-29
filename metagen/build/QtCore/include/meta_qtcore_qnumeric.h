@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -34,7 +33,9 @@ void buildMetaClass_Global_qnumeric(D _d)
     _d.CPGF_MD_TEMPLATE _method("qSNaN", (double (*) ())&qSNaN);
     _d.CPGF_MD_TEMPLATE _method("qQNaN", (double (*) ())&qQNaN);
     _d.CPGF_MD_TEMPLATE _method("qInf", (double (*) ())&qInf);
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_35")
+    _d.CPGF_MD_TEMPLATE _method("qFloatDistance", (quint32 (*) (float, float))&qFloatDistance);
+    _d.CPGF_MD_TEMPLATE _method("qFloatDistance", (quint64 (*) (double, double))&qFloatDistance);
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_33")
         ._element("Q_INFINITY", Q_INFINITY)
         ._element("Q_SNAN", Q_SNAN)
         ._element("Q_QNAN", Q_QNAN)

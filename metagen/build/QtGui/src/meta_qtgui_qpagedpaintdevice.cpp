@@ -1,5 +1,6 @@
 // Auto generated file, don't modify.
 
+#include <qtGui_cpgf_compat.h>
 #include <QtCore/qglobal.h>
 #include <QtCore/QEvent>
 #include <QtCore/QDebug>
@@ -23,10 +24,6 @@ GDefineMetaInfo createMetaClass_QPagedPaintDevice()
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
         GDefineMetaClass<QPagedPaintDevice, QPaintDevice> _nd = GDefineMetaClass<QPagedPaintDevice, QPaintDevice>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent, GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPagedPaintDevice", &buildMetaClass_QPagedPaintDevice);
-        _d._class(_nd);
-    }
-    {
-        GDefineMetaClass<QPagedPaintDeviceWrapper, QPagedPaintDevice> _nd = GDefineMetaClass<QPagedPaintDeviceWrapper, QPagedPaintDevice>::Policy<MakePolicy<GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QPagedPaintDeviceWrapper", &buildMetaClass_QPagedPaintDeviceWrapper);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

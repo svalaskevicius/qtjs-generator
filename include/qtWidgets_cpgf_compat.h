@@ -314,7 +314,27 @@ ENABLE_INT_TYPE_CONVERSION(QStyleOptionToolBar::ToolBarFeatures)
 ENABLE_INT_TYPE_CONVERSION(QStyleOptionViewItem::ViewItemFeatures)
 ENABLE_INT_TYPE_CONVERSION(QStyleOptionToolButton::ToolButtonFeatures)
 
-
+NOT_CONVERTIBLE(QStyleOptionButton)
+NOT_CONVERTIBLE(QStyleOptionComboBox)
+NOT_CONVERTIBLE(QStyleOptionDockWidget)
+NOT_CONVERTIBLE(QStyleOptionFocusRect)
+NOT_CONVERTIBLE(QStyleOptionFrame)
+NOT_CONVERTIBLE(QStyleOptionGraphicsItem)
+NOT_CONVERTIBLE(QStyleOptionGroupBox)
+NOT_CONVERTIBLE(QStyleOptionHeader)
+NOT_CONVERTIBLE(QStyleOptionMenuItem)
+NOT_CONVERTIBLE(QStyleOptionProgressBar)
+NOT_CONVERTIBLE(QStyleOptionRubberBand)
+NOT_CONVERTIBLE(QStyleOptionSizeGrip)
+NOT_CONVERTIBLE(QStyleOptionSlider)
+NOT_CONVERTIBLE(QStyleOptionSpinBox)
+NOT_CONVERTIBLE(QStyleOptionTab)
+NOT_CONVERTIBLE(QStyleOptionTabBarBase)
+NOT_CONVERTIBLE(QStyleOptionTabWidgetFrame)
+NOT_CONVERTIBLE(QStyleOptionTitleBar)
+NOT_CONVERTIBLE(QStyleOptionToolBar)
+NOT_CONVERTIBLE(QStyleOptionToolBox)
+NOT_CONVERTIBLE(QStyleOptionToolButton)
 
 
 struct IMetaObjectLifeManager;

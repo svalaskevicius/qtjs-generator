@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -74,8 +73,16 @@ void buildMetaClass_QSurfaceFormat(D _d)
     _d.CPGF_MD_TEMPLATE _method("setVersion", &D::ClassType::setVersion);
     _d.CPGF_MD_TEMPLATE _method("stereo", &D::ClassType::stereo);
     _d.CPGF_MD_TEMPLATE _method("setStereo", &D::ClassType::setStereo);
-    _d.CPGF_MD_TEMPLATE _method("setOption", &D::ClassType::setOption);
-    _d.CPGF_MD_TEMPLATE _method("testOption", &D::ClassType::testOption);
+    _d.CPGF_MD_TEMPLATE _method("setOption", (QT_DEPRECATED void (D::ClassType::*) (QSurfaceFormat::FormatOptions))&D::ClassType::setOption);
+    _d.CPGF_MD_TEMPLATE _method("testOption", (QT_DEPRECATED bool (D::ClassType::*) (QSurfaceFormat::FormatOptions) const)&D::ClassType::testOption);
+    _d.CPGF_MD_TEMPLATE _method("setOptions", &D::ClassType::setOptions);
+    _d.CPGF_MD_TEMPLATE _method("setOption", (void (D::ClassType::*) (QSurfaceFormat::FormatOption, bool))&D::ClassType::setOption)
+        ._default(copyVariantFromCopyable(true))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("testOption", (bool (D::ClassType::*) (QSurfaceFormat::FormatOption) const)&D::ClassType::testOption);
+    _d.CPGF_MD_TEMPLATE _method("options", &D::ClassType::options);
+    _d.CPGF_MD_TEMPLATE _method("swapInterval", &D::ClassType::swapInterval);
+    _d.CPGF_MD_TEMPLATE _method("setSwapInterval", &D::ClassType::setSwapInterval);
     _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::FormatOption>("FormatOption")
         ._element("StereoBuffers", D::ClassType::StereoBuffers)
         ._element("DebugContext", D::ClassType::DebugContext)

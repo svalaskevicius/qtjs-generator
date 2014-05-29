@@ -15,6 +15,8 @@
 #include "../../lib/node/src/node_internals.h"
 
 #include "cpgfApi.h"
+#include "cpgf/scriptbind/gv8bind.h"
+
 
 using namespace std;
 
@@ -45,6 +47,11 @@ v8::Handle<v8::Value> MakeCallback(Environment* env,
                            const v8::Handle<v8::Function> callback,
                            int argc,
                            v8::Handle<v8::Value> argv[]);
+
+void AppendExceptionLine(Environment* env,
+                         v8::Handle<v8::Value> er,
+                         v8::Handle<v8::Message> message);
+
 }
 
 namespace {
@@ -136,7 +143,24 @@ void EmitNodeExit(node::Environment* env) {
 
 } // namespace
 
+void reportCpgfV8Error(node::Environment* env, const cpgf::v8RuntimeException &e)
+{
+    v8::HandleScope scope(env->isolate());
+    Q_UNUSED(scope);
 
+    v8::Local<v8::Value> error = e.getV8Error();
+    v8::Local<v8::Message> message = e.getV8Message();
+    node::AppendExceptionLine(env, error, message);
+    v8::Local<v8::Value> trace_value;
+    if (error->IsUndefined() || error->IsNull())
+        trace_value = Undefined(env->isolate());
+    else
+        trace_value = error->ToObject()->Get(env->stack_string());
+
+    v8::String::Utf8Value trace(trace_value);
+    std::cerr << "failed execution: "<<std::endl
+              << *trace << std::endl;
+}
 
 int main(int argc, char * argv[])
 {
@@ -186,17 +210,15 @@ int main(int argc, char * argv[])
 
         try {
             node::Load(env);
+            if (__exitCode < 0) {
+                QCoreApplication::exec();
+            }
+        } catch (cpgf::v8RuntimeException &e) {
+            reportCpgfV8Error(env, e);
         } catch (std::runtime_error &e) {
             std::cerr << "failed execution: "<<e.what()<<std::endl;
-        }
-        if (__exitCode < 0) {
-            try {
-                QCoreApplication::exec();
-            } catch (std::runtime_error &e) {
-                std::cerr << "failed execution: "<<e.what()<<std::endl;
-            } catch (const char * &e) {
-                std::cerr << "failed execution: "<<e<<std::endl;
-            }
+        } catch (const char * &e) {
+            std::cerr << "failed execution: "<<e<<std::endl;
         }
 
         EmitNodeExit(env);

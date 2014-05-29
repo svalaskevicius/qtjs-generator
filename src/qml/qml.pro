@@ -1,7 +1,7 @@
 
 include (../qtjs-plugin.pri)
 
-QT += core qml quick core-private qml-private quick-private gui-private
+QT += core qml quick core-private qml-private quick-private gui-private quickwidgets quickwidgets-private
 TEMPLATE = lib
 
 TARGET=qtjs_qml

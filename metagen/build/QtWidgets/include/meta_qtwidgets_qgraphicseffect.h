@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -35,7 +34,7 @@ void buildMetaClass_QGraphicsBlurEffect(D _d)
     _d.CPGF_MD_TEMPLATE _method("metaObject", &D::ClassType::metaObject);
     _d.CPGF_MD_TEMPLATE _method("qt_metacast", &D::ClassType::qt_metacast);
     _d.CPGF_MD_TEMPLATE _method("qt_metacall", &D::ClassType::qt_metacall);
-    _d.CPGF_MD_TEMPLATE _method("boundingRectFor", &D::ClassType::boundingRectFor);
+    _d.CPGF_MD_TEMPLATE _method("boundingRectFor", &D::ClassType::boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("blurRadius", &D::ClassType::blurRadius);
     _d.CPGF_MD_TEMPLATE _method("blurHints", &D::ClassType::blurHints);
     _d.CPGF_MD_TEMPLATE _method("setBlurRadius", &D::ClassType::setBlurRadius);
@@ -336,7 +335,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
         _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
         _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
-        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor);
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
 };
 
@@ -658,7 +657,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
         _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
         _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
-        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor);
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
 };
 
@@ -689,7 +688,7 @@ void buildMetaClass_QGraphicsDropShadowEffect(D _d)
     _d.CPGF_MD_TEMPLATE _method("metaObject", &D::ClassType::metaObject);
     _d.CPGF_MD_TEMPLATE _method("qt_metacast", &D::ClassType::qt_metacast);
     _d.CPGF_MD_TEMPLATE _method("qt_metacall", &D::ClassType::qt_metacall);
-    _d.CPGF_MD_TEMPLATE _method("boundingRectFor", &D::ClassType::boundingRectFor);
+    _d.CPGF_MD_TEMPLATE _method("boundingRectFor", &D::ClassType::boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("offset", &D::ClassType::offset);
     _d.CPGF_MD_TEMPLATE _method("xOffset", &D::ClassType::xOffset);
     _d.CPGF_MD_TEMPLATE _method("yOffset", &D::ClassType::yOffset);
@@ -990,7 +989,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
         _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
         _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
-        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor);
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
 };
 
@@ -1018,7 +1017,7 @@ void buildMetaClass_QGraphicsEffect(D _d)
     _d.CPGF_MD_TEMPLATE _method("metaObject", &D::ClassType::metaObject);
     _d.CPGF_MD_TEMPLATE _method("qt_metacast", &D::ClassType::qt_metacast);
     _d.CPGF_MD_TEMPLATE _method("qt_metacall", &D::ClassType::qt_metacall);
-    _d.CPGF_MD_TEMPLATE _method("boundingRectFor", &D::ClassType::boundingRectFor);
+    _d.CPGF_MD_TEMPLATE _method("boundingRectFor", &D::ClassType::boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("boundingRect", &D::ClassType::boundingRect);
     _d.CPGF_MD_TEMPLATE _method("isEnabled", &D::ClassType::isEnabled);
     _d.CPGF_MD_TEMPLATE _method("setEnabled", &D::ClassType::setEnabled);
@@ -1324,7 +1323,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
         _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
         _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
-        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor);
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
 };
 
@@ -1649,7 +1648,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
         _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
         _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
-        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor);
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
 };
 

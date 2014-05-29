@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -36,11 +35,11 @@ void buildMetaClass_QGraphicsRotation(D _d)
     _d.CPGF_MD_TEMPLATE _method("qt_metacast", &D::ClassType::qt_metacast);
     _d.CPGF_MD_TEMPLATE _method("qt_metacall", &D::ClassType::qt_metacall);
     _d.CPGF_MD_TEMPLATE _method("origin", &D::ClassType::origin);
-    _d.CPGF_MD_TEMPLATE _method("setOrigin", &D::ClassType::setOrigin);
+    _d.CPGF_MD_TEMPLATE _method("setOrigin", &D::ClassType::setOrigin, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("angle", &D::ClassType::angle);
     _d.CPGF_MD_TEMPLATE _method("setAngle", &D::ClassType::setAngle);
     _d.CPGF_MD_TEMPLATE _method("axis", &D::ClassType::axis);
-    _d.CPGF_MD_TEMPLATE _method("setAxis", (void (D::ClassType::*) (const QVector3D &))&D::ClassType::setAxis);
+    _d.CPGF_MD_TEMPLATE _method("setAxis", (void (D::ClassType::*) (const QVector3D &))&D::ClassType::setAxis, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("setAxis", (void (D::ClassType::*) (Qt::Axis))&D::ClassType::setAxis);
     _d.CPGF_MD_TEMPLATE _method("applyTo", &D::ClassType::applyTo);
     _d.CPGF_MD_TEMPLATE _method("originChanged", &D::ClassType::originChanged);
@@ -300,7 +299,7 @@ void buildMetaClass_QGraphicsScale(D _d)
     _d.CPGF_MD_TEMPLATE _method("qt_metacast", &D::ClassType::qt_metacast);
     _d.CPGF_MD_TEMPLATE _method("qt_metacall", &D::ClassType::qt_metacall);
     _d.CPGF_MD_TEMPLATE _method("origin", &D::ClassType::origin);
-    _d.CPGF_MD_TEMPLATE _method("setOrigin", &D::ClassType::setOrigin);
+    _d.CPGF_MD_TEMPLATE _method("setOrigin", &D::ClassType::setOrigin, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("xScale", &D::ClassType::xScale);
     _d.CPGF_MD_TEMPLATE _method("setXScale", &D::ClassType::setXScale);
     _d.CPGF_MD_TEMPLATE _method("yScale", &D::ClassType::yScale);

@@ -1,5 +1,6 @@
 // Auto generated file, don't modify.
 
+#include <qtQml_cpgf_compat.h>
 #include <QtCore/qglobal.h>
 #include <QtCore/QEvent>
 #include <QtCore/QDebug>
@@ -26,7 +27,7 @@
 #include <private/qsgrenderer_p.h>
 #include <private/qsgrenderloop_p.h>
 
-#include <QtQml/5.2.1/QtQml/private/qjsengine_p.h>
+#include <QtQml/5.3.0/QtQml/private/qjsengine_p.h>
 
 #include "meta_qtqml_qjsengine_p.h"
 

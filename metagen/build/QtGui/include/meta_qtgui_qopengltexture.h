@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -62,28 +61,52 @@ void buildMetaClass_QOpenGLTexture(D _d)
     _d.CPGF_MD_TEMPLATE _method("isStorageAllocated", &D::ClassType::isStorageAllocated);
     _d.CPGF_MD_TEMPLATE _method("createTextureView", &D::ClassType::createTextureView);
     _d.CPGF_MD_TEMPLATE _method("isTextureView", &D::ClassType::isTextureView);
-    _d.CPGF_MD_TEMPLATE _method("setData", (void (D::ClassType::*) (int, int, QOpenGLTexture::CubeMapFace, QOpenGLTexture::PixelFormat, QOpenGLTexture::PixelType, void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setData)
+    _d.CPGF_MD_TEMPLATE _method("setData", (QT_DEPRECATED void (D::ClassType::*) (int, int, QOpenGLTexture::CubeMapFace, QOpenGLTexture::PixelFormat, QOpenGLTexture::PixelType, void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setData)
         ._default(copyVariantFromCopyable(0))
     ;
-    _d.CPGF_MD_TEMPLATE _method("setData", (void (D::ClassType::*) (int, int, QOpenGLTexture::PixelFormat, QOpenGLTexture::PixelType, void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setData)
+    _d.CPGF_MD_TEMPLATE _method("setData", (QT_DEPRECATED void (D::ClassType::*) (int, int, QOpenGLTexture::PixelFormat, QOpenGLTexture::PixelType, void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setData)
         ._default(copyVariantFromCopyable(0))
     ;
-    _d.CPGF_MD_TEMPLATE _method("setData", (void (D::ClassType::*) (int, QOpenGLTexture::PixelFormat, QOpenGLTexture::PixelType, void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setData)
+    _d.CPGF_MD_TEMPLATE _method("setData", (QT_DEPRECATED void (D::ClassType::*) (int, QOpenGLTexture::PixelFormat, QOpenGLTexture::PixelType, void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setData)
         ._default(copyVariantFromCopyable(0))
     ;
-    _d.CPGF_MD_TEMPLATE _method("setData", (void (D::ClassType::*) (QOpenGLTexture::PixelFormat, QOpenGLTexture::PixelType, void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setData)
+    _d.CPGF_MD_TEMPLATE _method("setData", (QT_DEPRECATED void (D::ClassType::*) (QOpenGLTexture::PixelFormat, QOpenGLTexture::PixelType, void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setData)
         ._default(copyVariantFromCopyable(0))
     ;
-    _d.CPGF_MD_TEMPLATE _method("setCompressedData", (void (D::ClassType::*) (int, int, QOpenGLTexture::CubeMapFace, int, void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setCompressedData)
+    _d.CPGF_MD_TEMPLATE _method("setData", (void (D::ClassType::*) (int, int, QOpenGLTexture::CubeMapFace, QOpenGLTexture::PixelFormat, QOpenGLTexture::PixelType, const void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setData)
         ._default(copyVariantFromCopyable(0))
     ;
-    _d.CPGF_MD_TEMPLATE _method("setCompressedData", (void (D::ClassType::*) (int, int, int, void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setCompressedData)
+    _d.CPGF_MD_TEMPLATE _method("setData", (void (D::ClassType::*) (int, int, QOpenGLTexture::PixelFormat, QOpenGLTexture::PixelType, const void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setData)
         ._default(copyVariantFromCopyable(0))
     ;
-    _d.CPGF_MD_TEMPLATE _method("setCompressedData", (void (D::ClassType::*) (int, int, void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setCompressedData)
+    _d.CPGF_MD_TEMPLATE _method("setData", (void (D::ClassType::*) (int, QOpenGLTexture::PixelFormat, QOpenGLTexture::PixelType, const void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setData)
         ._default(copyVariantFromCopyable(0))
     ;
-    _d.CPGF_MD_TEMPLATE _method("setCompressedData", (void (D::ClassType::*) (int, void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setCompressedData)
+    _d.CPGF_MD_TEMPLATE _method("setData", (void (D::ClassType::*) (QOpenGLTexture::PixelFormat, QOpenGLTexture::PixelType, const void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setData)
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("setCompressedData", (QT_DEPRECATED void (D::ClassType::*) (int, int, QOpenGLTexture::CubeMapFace, int, void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setCompressedData)
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("setCompressedData", (QT_DEPRECATED void (D::ClassType::*) (int, int, int, void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setCompressedData)
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("setCompressedData", (QT_DEPRECATED void (D::ClassType::*) (int, int, void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setCompressedData)
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("setCompressedData", (QT_DEPRECATED void (D::ClassType::*) (int, void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setCompressedData)
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("setCompressedData", (void (D::ClassType::*) (int, int, QOpenGLTexture::CubeMapFace, int, const void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setCompressedData)
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("setCompressedData", (void (D::ClassType::*) (int, int, int, const void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setCompressedData)
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("setCompressedData", (void (D::ClassType::*) (int, int, const void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setCompressedData)
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("setCompressedData", (void (D::ClassType::*) (int, const void *, const QOpenGLPixelTransferOptions *const))&D::ClassType::setCompressedData)
         ._default(copyVariantFromCopyable(0))
     ;
     _d.CPGF_MD_TEMPLATE _method("setData", (void (D::ClassType::*) (const QImage &, QOpenGLTexture::MipMapGeneration))&D::ClassType::setData)
@@ -344,6 +367,7 @@ void buildMetaClass_QOpenGLTexture(D _d)
         ._element("AnisotropicFiltering", D::ClassType::AnisotropicFiltering)
         ._element("NPOTTextures", D::ClassType::NPOTTextures)
         ._element("NPOTTextureRepeat", D::ClassType::NPOTTextureRepeat)
+        ._element("Texture1D", D::ClassType::Texture1D)
         ._element("MaxFeatureFlag", D::ClassType::MaxFeatureFlag)
     ;
     _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::SwizzleComponent>("SwizzleComponent")

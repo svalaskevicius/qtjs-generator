@@ -25,10 +25,10 @@ var config = {
   headerHeaderCode : ""
     +"#include <QtCore/include/meta_qtcore_qflags.h>\n"
     +"#include <QtCore/include/meta_qtcore_qcontainerfwd.h>\n"
-    +"#include <qtQml_cpgf_compat.h>\n"
   ,
   sourceHeaderCode :
-     "#include <QtCore/qglobal.h>\n"
+     "#include <qtQml_cpgf_compat.h>\n"
+    +"#include <QtCore/qglobal.h>\n"
     +"#include <QtCore/QEvent>\n"
     +"#include <QtCore/QDebug>\n"
     +"#include <QtCore/QFileSelector>\n"
@@ -140,6 +140,8 @@ function shouldAllowClassWrapper(item) {
     case "QQuickFlickable":
     case "QQuickItemChangeListener":
     case "QQuickItemViewTransitionChangeListener":
+    case "QContinuingAnimationGroupJob":
+    case "QQuickProfiler":
       return false;
     default:
       ;
@@ -149,6 +151,29 @@ function shouldAllowClassWrapper(item) {
 
 function processCallback(item, data)
 {
+  if (/::itemChange$/.test(""+item.getQualifiedName())) {
+    var params = item.getParameterList();
+    for(var i = 0; i < params.size(); i++) {
+      switch (""+params.get(i).getType().getLiteralType()) {
+        case 'ItemChange':
+          params.get(i).getType().setLiteralType('QQuickItem::ItemChange');
+          break;
+        case 'const ItemChangeData &':
+          params.get(i).getType().setLiteralType('const QQuickItem::ItemChangeData &');
+          break;
+      }
+    }
+  }
+  if (/::metric$/.test(""+item.getQualifiedName())) {
+    var params = item.getParameterList();
+    for(var i = 0; i < params.size(); i++) {
+      switch (""+params.get(i).getType().getLiteralType()) {
+        case 'PaintDeviceMetric':
+          params.get(i).getType().setLiteralType('QPaintDevice::PaintDeviceMetric');
+          break;
+      }
+    }
+  }
   if((item.getLocation().indexOf('/QtQml/') == -1) && (item.getLocation().indexOf('/QtQuick') == -1)) {
     data.skipBind = true;
     return;
@@ -520,6 +545,14 @@ function processCallback(item, data)
     case "QQuickWindowPrivate::incubationController":
     case "QQuickWindowPrivate::contentItem":
     case "QQuickItemChangeListener::anchorPrivate":
+    case "QQuickMatrix4x4":
+    case "QQuickRootItemMarker":
+    case "QQuickWidgetPrivate":
+    case "QQuickWindowPrivate::renderControl":
+    case "QQuickWindowPrivate::init":
+    case "QJSValueIteratorPrivate::currentProperty":
+    case "QJSValueIteratorPrivate::nextProperty":
+    case "QQuickProfilerData::toByteArrays":
       data.skipBind = true;
       return;
     case "QSGMaterialShader":

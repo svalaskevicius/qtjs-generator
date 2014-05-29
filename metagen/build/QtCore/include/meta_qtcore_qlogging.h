@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -48,8 +47,14 @@ void buildMetaClass_QMessageLogger(D _d)
     _d.CPGF_MD_TEMPLATE _constructor<void * (const char *, int, const char *)>();
     _d.CPGF_MD_TEMPLATE _constructor<void * (const char *, int, const char *, const char *)>();
     _d.CPGF_MD_TEMPLATE _method("debug", (QDebug (D::ClassType::*) () const)&D::ClassType::debug);
+    _d.CPGF_MD_TEMPLATE _method("debug", (QDebug (D::ClassType::*) (const QLoggingCategory &) const)&D::ClassType::debug);
+    _d.CPGF_MD_TEMPLATE _method("debug", (QDebug (D::ClassType::*) (QMessageLogger::CategoryFunction) const)&D::ClassType::debug);
     _d.CPGF_MD_TEMPLATE _method("warning", (QDebug (D::ClassType::*) () const)&D::ClassType::warning);
+    _d.CPGF_MD_TEMPLATE _method("warning", (QDebug (D::ClassType::*) (const QLoggingCategory &) const)&D::ClassType::warning);
+    _d.CPGF_MD_TEMPLATE _method("warning", (QDebug (D::ClassType::*) (QMessageLogger::CategoryFunction) const)&D::ClassType::warning);
     _d.CPGF_MD_TEMPLATE _method("critical", (QDebug (D::ClassType::*) () const)&D::ClassType::critical);
+    _d.CPGF_MD_TEMPLATE _method("critical", (QDebug (D::ClassType::*) (const QLoggingCategory &) const)&D::ClassType::critical);
+    _d.CPGF_MD_TEMPLATE _method("critical", (QDebug (D::ClassType::*) (QMessageLogger::CategoryFunction) const)&D::ClassType::critical);
     _d.CPGF_MD_TEMPLATE _method("noDebug", (QNoDebug (D::ClassType::*) () const)&D::ClassType::noDebug);
 }
 

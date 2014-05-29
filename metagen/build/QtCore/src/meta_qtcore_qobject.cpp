@@ -1,5 +1,6 @@
 // Auto generated file, don't modify.
 
+#include <qtCore_cpgf_compat.h>
 #include <QtCore/qglobal.h>
 #include <QtCore/QString>
 #include <QtCore/QDataStream>
@@ -101,6 +102,20 @@ GDefineMetaInfo createMetaClass_QObjectUserData()
     GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
     {
         GDefineMetaClass<QObjectUserData> _nd = GDefineMetaClass<QObjectUserData>::lazyDeclare("QObjectUserData", &buildMetaClass_QObjectUserData);
+        _d._class(_nd);
+    }
+    return _d.getMetaInfo();
+}
+
+
+#ifdef CPGF_METAGEN_LINKAGE_SPEC
+CPGF_METAGEN_LINKAGE_SPEC
+#endif
+GDefineMetaInfo createMetaClass_QSignalBlocker()
+{
+    GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
+    {
+        GDefineMetaClass<QSignalBlocker> _nd = GDefineMetaClass<QSignalBlocker>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QSignalBlocker", &buildMetaClass_QSignalBlocker);
         _d._class(_nd);
     }
     return _d.getMetaInfo();

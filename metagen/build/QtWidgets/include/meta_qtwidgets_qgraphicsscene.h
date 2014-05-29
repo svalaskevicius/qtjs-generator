@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -31,7 +30,7 @@ void buildMetaClass_QGraphicsScene(D _d)
     _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>()
         ._default(copyVariantFromCopyable(0))
     ;
-    _d.CPGF_MD_TEMPLATE _constructor<void * (const QRectF &, QObject *)>()
+    _d.CPGF_MD_TEMPLATE _constructor<void * (const QRectF &, QObject *)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
         ._default(copyVariantFromCopyable(0))
     ;
     _d.CPGF_MD_TEMPLATE _constructor<void * (qreal, qreal, qreal, qreal, QObject *)>()
@@ -44,9 +43,9 @@ void buildMetaClass_QGraphicsScene(D _d)
     _d.CPGF_MD_TEMPLATE _method("sceneRect", &D::ClassType::sceneRect);
     _d.CPGF_MD_TEMPLATE _method("width", &D::ClassType::width);
     _d.CPGF_MD_TEMPLATE _method("height", &D::ClassType::height);
-    _d.CPGF_MD_TEMPLATE _method("setSceneRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::setSceneRect);
+    _d.CPGF_MD_TEMPLATE _method("setSceneRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::setSceneRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("setSceneRect", (void (D::ClassType::*) (qreal, qreal, qreal, qreal))&D::ClassType::setSceneRect);
-    _d.CPGF_MD_TEMPLATE _method("render", &D::ClassType::render)
+    _d.CPGF_MD_TEMPLATE _method("render", &D::ClassType::render, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<2> >())
         ._default(copyVariantFromCopyable(Qt::KeepAspectRatio))
         ._default(copyVariantFromCopyable(QRectF()))
         ._default(copyVariantFromCopyable(QRectF()))
@@ -66,7 +65,7 @@ void buildMetaClass_QGraphicsScene(D _d)
         ._default(copyVariantFromCopyable(Qt::DescendingOrder))
         ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
     ;
-    _d.CPGF_MD_TEMPLATE _method("items", (QList< QGraphicsItem * > (D::ClassType::*) (const QRectF &, Qt::ItemSelectionMode, Qt::SortOrder, const QTransform &) const)&D::ClassType::items, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<3> >())
+    _d.CPGF_MD_TEMPLATE _method("items", (QList< QGraphicsItem * > (D::ClassType::*) (const QRectF &, Qt::ItemSelectionMode, Qt::SortOrder, const QTransform &) const)&D::ClassType::items, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<3> >())
         ._default(copyVariantFromCopyable(QTransform()))
         ._default(copyVariantFromCopyable(Qt::DescendingOrder))
         ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
@@ -99,7 +98,7 @@ void buildMetaClass_QGraphicsScene(D _d)
     _d.CPGF_MD_TEMPLATE _method("createItemGroup", &D::ClassType::createItemGroup);
     _d.CPGF_MD_TEMPLATE _method("destroyItemGroup", &D::ClassType::destroyItemGroup);
     _d.CPGF_MD_TEMPLATE _method("addItem", &D::ClassType::addItem);
-    _d.CPGF_MD_TEMPLATE _method("addEllipse", (QGraphicsEllipseItem * (D::ClassType::*) (const QRectF &, const QPen &, const QBrush &))&D::ClassType::addEllipse, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<2> >())
+    _d.CPGF_MD_TEMPLATE _method("addEllipse", (QGraphicsEllipseItem * (D::ClassType::*) (const QRectF &, const QPen &, const QBrush &))&D::ClassType::addEllipse, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<2> >())
         ._default(copyVariantFromCopyable(QBrush()))
         ._default(copyVariantFromCopyable(QPen()))
     ;
@@ -115,7 +114,7 @@ void buildMetaClass_QGraphicsScene(D _d)
         ._default(copyVariantFromCopyable(QBrush()))
         ._default(copyVariantFromCopyable(QPen()))
     ;
-    _d.CPGF_MD_TEMPLATE _method("addRect", (QGraphicsRectItem * (D::ClassType::*) (const QRectF &, const QPen &, const QBrush &))&D::ClassType::addRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<2> >())
+    _d.CPGF_MD_TEMPLATE _method("addRect", (QGraphicsRectItem * (D::ClassType::*) (const QRectF &, const QPen &, const QBrush &))&D::ClassType::addRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<2> >())
         ._default(copyVariantFromCopyable(QBrush()))
         ._default(copyVariantFromCopyable(QPen()))
     ;
@@ -701,7 +700,7 @@ public:
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("selectionChanged", (void (D::ClassType::*) ())&D::ClassType::selectionChanged);
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("drawForeground", (void (D::ClassType::*) (QPainter *, const QRectF &))&D::ClassType::drawForeground);
+        _d.CPGF_MD_TEMPLATE _method("drawForeground", (void (D::ClassType::*) (QPainter *, const QRectF &))&D::ClassType::drawForeground, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
         _d.CPGF_MD_TEMPLATE _method("focusNextPrevChild", (bool (D::ClassType::*) (bool))&D::ClassType::focusNextPrevChild);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
         _d.CPGF_MD_TEMPLATE _method("dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragMoveEvent);
@@ -714,13 +713,13 @@ public:
         _d.CPGF_MD_TEMPLATE _method("event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::event);
         _d.CPGF_MD_TEMPLATE _method("mouseMoveEvent", (void (D::ClassType::*) (QGraphicsSceneMouseEvent *))&D::ClassType::mouseMoveEvent);
         _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("sceneRectChanged", (void (D::ClassType::*) (const QRectF &))&D::ClassType::sceneRectChanged);
+        _d.CPGF_MD_TEMPLATE _method("sceneRectChanged", (void (D::ClassType::*) (const QRectF &))&D::ClassType::sceneRectChanged, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("inputMethodEvent", (void (D::ClassType::*) (QInputMethodEvent *))&D::ClassType::inputMethodEvent);
         _d.CPGF_MD_TEMPLATE _method("drawItems", (void (D::ClassType::*) (QPainter *, int, QGraphicsItem **, const QStyleOptionGraphicsItem*, QWidget *))&D::ClassType::drawItems)
             ._default(copyVariantFromCopyable(0))
         ;
         _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-        _d.CPGF_MD_TEMPLATE _method("drawBackground", (void (D::ClassType::*) (QPainter *, const QRectF &))&D::ClassType::drawBackground);
+        _d.CPGF_MD_TEMPLATE _method("drawBackground", (void (D::ClassType::*) (QPainter *, const QRectF &))&D::ClassType::drawBackground, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
         _d.CPGF_MD_TEMPLATE _method("dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::dragLeaveEvent);
         _d.CPGF_MD_TEMPLATE _method("focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::focusOutEvent);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
@@ -737,7 +736,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
         _d.CPGF_MD_TEMPLATE _method("helpEvent", (void (D::ClassType::*) (QGraphicsSceneHelpEvent *))&D::ClassType::helpEvent);
         _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_drawForeground", (void (D::ClassType::*) (QPainter *, const QRectF &))&D::ClassType::super_drawForeground);
+        _d.CPGF_MD_TEMPLATE _method("super_drawForeground", (void (D::ClassType::*) (QPainter *, const QRectF &))&D::ClassType::super_drawForeground, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
         _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
         _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
         _d.CPGF_MD_TEMPLATE _method("super_dragMoveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragMoveEvent);
@@ -752,7 +751,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("super_drawItems", (void (D::ClassType::*) (QPainter *, int, QGraphicsItem **, const QStyleOptionGraphicsItem*, QWidget *))&D::ClassType::super_drawItems)
             ._default(copyVariantFromCopyable(0))
         ;
-        _d.CPGF_MD_TEMPLATE _method("super_drawBackground", (void (D::ClassType::*) (QPainter *, const QRectF &))&D::ClassType::super_drawBackground);
+        _d.CPGF_MD_TEMPLATE _method("super_drawBackground", (void (D::ClassType::*) (QPainter *, const QRectF &))&D::ClassType::super_drawBackground, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
         _d.CPGF_MD_TEMPLATE _method("super_dragLeaveEvent", (void (D::ClassType::*) (QGraphicsSceneDragDropEvent *))&D::ClassType::super_dragLeaveEvent);
         _d.CPGF_MD_TEMPLATE _method("super_inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::super_inputMethodQuery);
         _d.CPGF_MD_TEMPLATE _method("super_focusOutEvent", (void (D::ClassType::*) (QFocusEvent *))&D::ClassType::super_focusOutEvent);

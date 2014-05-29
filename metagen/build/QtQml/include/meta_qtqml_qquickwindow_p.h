@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -311,6 +310,7 @@ void buildMetaClass_QQuickWindowPrivate(D _d)
     _d.CPGF_MD_TEMPLATE _field("itemsToPolish", &D::ClassType::itemsToPolish);
     _d.CPGF_MD_TEMPLATE _field("context", &D::ClassType::context);
     _d.CPGF_MD_TEMPLATE _field("renderer", &D::ClassType::renderer);
+    _d.CPGF_MD_TEMPLATE _field("customRenderMode", &D::ClassType::customRenderMode);
     _d.CPGF_MD_TEMPLATE _field("windowManager", &D::ClassType::windowManager);
     _d.CPGF_MD_TEMPLATE _field("clearColor", &D::ClassType::clearColor);
     _d.CPGF_MD_TEMPLATE _property("clearBeforeRendering", &bItFiEldWrapper_QQuickWindowPrivate_clearBeforeRendering_getter, &bItFiEldWrapper_QQuickWindowPrivate_clearBeforeRendering_setter, cpgf::MakePolicy<cpgf::GMetaRuleGetterExplicitThis, cpgf::GMetaRuleSetterExplicitThis>());
@@ -336,9 +336,9 @@ void buildMetaClass_QQuickWindowPrivate(D _d)
     _d.CPGF_MD_TEMPLATE _method("data_count", &D::ClassType::data_count);
     _d.CPGF_MD_TEMPLATE _method("data_at", &D::ClassType::data_at);
     _d.CPGF_MD_TEMPLATE _method("data_clear", &D::ClassType::data_clear);
-    _d.CPGF_MD_TEMPLATE _method("init", &D::ClassType::init);
-    _d.CPGF_MD_TEMPLATE _method("initContentItem", &D::ClassType::initContentItem);
+    _d.CPGF_MD_TEMPLATE _method("contextCreationFailureMessage", &D::ClassType::contextCreationFailureMessage, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("data", &D::ClassType::data);
+    _d.CPGF_MD_TEMPLATE _method("deliverKeyEvent", &D::ClassType::deliverKeyEvent);
     _d.CPGF_MD_TEMPLATE _method("checkIfDoubleClicked", &D::ClassType::checkIfDoubleClicked);
     _d.CPGF_MD_TEMPLATE _method("translateTouchToMouse", &D::ClassType::translateTouchToMouse);
     _d.CPGF_MD_TEMPLATE _method("translateTouchEvent", &D::ClassType::translateTouchEvent);
@@ -373,11 +373,14 @@ void buildMetaClass_QQuickWindowPrivate(D _d)
     _d.CPGF_MD_TEMPLATE _method("syncSceneGraph", &D::ClassType::syncSceneGraph);
     _d.CPGF_MD_TEMPLATE _method("renderSceneGraph", &D::ClassType::renderSceneGraph);
     _d.CPGF_MD_TEMPLATE _method("isRenderable", &D::ClassType::isRenderable);
+    _d.CPGF_MD_TEMPLATE _method("emitError", &D::ClassType::emitError, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("updateDirtyNodes", &D::ClassType::updateDirtyNodes);
     _d.CPGF_MD_TEMPLATE _method("cleanupNodes", &D::ClassType::cleanupNodes);
     _d.CPGF_MD_TEMPLATE _method("cleanupNodesOnShutdown", (void (D::ClassType::*) ())&D::ClassType::cleanupNodesOnShutdown);
     _d.CPGF_MD_TEMPLATE _method("updateDirtyNode", &D::ClassType::updateDirtyNode);
     _d.CPGF_MD_TEMPLATE _method("fireFrameSwapped", &D::ClassType::fireFrameSwapped);
+    _d.CPGF_MD_TEMPLATE _method("fireOpenGLContextCreated", &D::ClassType::fireOpenGLContextCreated);
+    _d.CPGF_MD_TEMPLATE _method("fireAboutToStop", &D::ClassType::fireAboutToStop);
     _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::FocusOption>("FocusOption")
         ._element("DontChangeFocusProperty", D::ClassType::DontChangeFocusProperty)
         ._element("DontChangeSubFocusItem", D::ClassType::DontChangeSubFocusItem)

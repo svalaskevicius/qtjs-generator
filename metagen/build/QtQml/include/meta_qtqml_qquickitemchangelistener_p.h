@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -25,7 +24,7 @@ void buildMetaClass_QQuickItemChangeListener(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _method("itemGeometryChanged", &D::ClassType::itemGeometryChanged);
+    _d.CPGF_MD_TEMPLATE _method("itemGeometryChanged", &D::ClassType::itemGeometryChanged, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<2> >());
     _d.CPGF_MD_TEMPLATE _method("itemSiblingOrderChanged", &D::ClassType::itemSiblingOrderChanged);
     _d.CPGF_MD_TEMPLATE _method("itemVisibilityChanged", &D::ClassType::itemVisibilityChanged);
     _d.CPGF_MD_TEMPLATE _method("itemOpacityChanged", &D::ClassType::itemOpacityChanged);

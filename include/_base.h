@@ -27,3 +27,9 @@
 #endif
 
 #define CPGF_METAGEN_LINKAGE_SPEC DLL_PUBLIC
+
+
+// these are used to disable Q_COMPILER_REF_QUALIFIERS effects
+#define QT_COMPILING_QSTRING_COMPAT_CPP 1
+#define QT_COMPILING_QIMAGE_COMPAT_CPP 1
+

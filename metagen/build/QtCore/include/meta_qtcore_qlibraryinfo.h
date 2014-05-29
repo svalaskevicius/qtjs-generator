@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -28,8 +27,10 @@ void buildMetaClass_QLibraryInfo(D _d)
     _d.CPGF_MD_TEMPLATE _method("licensee", &D::ClassType::licensee);
     _d.CPGF_MD_TEMPLATE _method("licensedProducts", &D::ClassType::licensedProducts);
     _d.CPGF_MD_TEMPLATE _method("buildDate", &D::ClassType::buildDate);
+    _d.CPGF_MD_TEMPLATE _method("build", &D::ClassType::build);
     _d.CPGF_MD_TEMPLATE _method("isDebugBuild", &D::ClassType::isDebugBuild);
     _d.CPGF_MD_TEMPLATE _method("location", &D::ClassType::location);
+    _d.CPGF_MD_TEMPLATE _method("platformPluginArguments", &D::ClassType::platformPluginArguments, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::LibraryLocation>("LibraryLocation")
         ._element("PrefixPath", D::ClassType::PrefixPath)
         ._element("DocumentationPath", D::ClassType::DocumentationPath)

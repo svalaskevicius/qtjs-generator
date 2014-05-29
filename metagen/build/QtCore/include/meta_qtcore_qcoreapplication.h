@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -29,7 +28,7 @@ void buildMetaClass_Global_qcoreapplication(D _d)
     _d.CPGF_MD_TEMPLATE _method("qAddPostRoutine", (void (*) (QtCleanUpFunction))&qAddPostRoutine);
     _d.CPGF_MD_TEMPLATE _method("qRemovePostRoutine", (void (*) (QtCleanUpFunction))&qRemovePostRoutine);
     _d.CPGF_MD_TEMPLATE _method("qAppName", (QString (*) ())&qAppName);
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_37")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_21")
         ._element("qApp", qApp)
     ;
 }
@@ -73,6 +72,8 @@ void buildMetaClass_QCoreApplication(D _d)
     _d.CPGF_MD_TEMPLATE _method("applicationName", &D::ClassType::applicationName);
     _d.CPGF_MD_TEMPLATE _method("setApplicationVersion", &D::ClassType::setApplicationVersion, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("applicationVersion", &D::ClassType::applicationVersion);
+    _d.CPGF_MD_TEMPLATE _method("setSetuidAllowed", &D::ClassType::setSetuidAllowed);
+    _d.CPGF_MD_TEMPLATE _method("isSetuidAllowed", &D::ClassType::isSetuidAllowed);
     _d.CPGF_MD_TEMPLATE _method("instance", &D::ClassType::instance);
     _d.CPGF_MD_TEMPLATE _method("exec", &D::ClassType::exec);
     _d.CPGF_MD_TEMPLATE _method("processEvents", (void (*) (QEventLoop::ProcessEventsFlags))&D::ClassType::processEvents)
@@ -93,7 +94,6 @@ void buildMetaClass_QCoreApplication(D _d)
     _d.CPGF_MD_TEMPLATE _method("removePostedEvents", &D::ClassType::removePostedEvents)
         ._default(copyVariantFromCopyable(0))
     ;
-    _d.CPGF_MD_TEMPLATE _method("hasPendingEvents", &D::ClassType::hasPendingEvents);
     _d.CPGF_MD_TEMPLATE _method("eventDispatcher", &D::ClassType::eventDispatcher);
     _d.CPGF_MD_TEMPLATE _method("setEventDispatcher", &D::ClassType::setEventDispatcher);
     _d.CPGF_MD_TEMPLATE _method("startingUp", &D::ClassType::startingUp);

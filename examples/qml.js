@@ -87,8 +87,7 @@ var MySyntaxHighlighter = qt.extend(qt.QSyntaxHighlighter, {
             textLayout.endLayout();
             var glyphList = textLayout.glyphRuns();
             if (!glyphList.empty()) {
-                //var glyphNode = privateApi.sceneGraphContext().createGlyphNode(privateApi.sceneGraphRenderContext());
-                var glyphNode = privateApi.sceneGraphContext().createNativeGlyphNode(privateApi.sceneGraphRenderContext());
+                var glyphNode = privateApi.sceneGraphContext().createGlyphNode(privateApi.sceneGraphRenderContext(), true);
 
                 glyphNode.setGlyphs(new qt.QPointF(0, 0), glyphList.front());
                 glyphNode.update();

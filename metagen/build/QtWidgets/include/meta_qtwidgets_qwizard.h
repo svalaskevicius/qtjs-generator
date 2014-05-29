@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -133,6 +132,7 @@ void buildMetaClass_QWizard(D _d)
         ._element("HaveCustomButton1", D::ClassType::HaveCustomButton1)
         ._element("HaveCustomButton2", D::ClassType::HaveCustomButton2)
         ._element("HaveCustomButton3", D::ClassType::HaveCustomButton3)
+        ._element("NoCancelButtonOnLastPage", D::ClassType::NoCancelButtonOnLastPage)
     ;
     {
         GDefineMetaClass<QFlags<typename QWizard::WizardOption > > _t_d = GDefineMetaClass<QFlags<typename QWizard::WizardOption > >::lazyDeclare("WizardOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QWizard::WizardOption > >, typename QWizard::WizardOption >);

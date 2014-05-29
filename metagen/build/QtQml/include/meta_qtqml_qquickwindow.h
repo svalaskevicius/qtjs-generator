@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -61,13 +60,18 @@ void buildMetaClass_QQuickWindow(D _d)
     _d.CPGF_MD_TEMPLATE _method("isPersistentSceneGraph", &D::ClassType::isPersistentSceneGraph);
     _d.CPGF_MD_TEMPLATE _method("openglContext", &D::ClassType::openglContext);
     _d.CPGF_MD_TEMPLATE _method("frameSwapped", &D::ClassType::frameSwapped);
+    _d.CPGF_MD_TEMPLATE _method("openglContextCreated", &D::ClassType::openglContextCreated);
     _d.CPGF_MD_TEMPLATE _method("sceneGraphInitialized", &D::ClassType::sceneGraphInitialized);
     _d.CPGF_MD_TEMPLATE _method("sceneGraphInvalidated", &D::ClassType::sceneGraphInvalidated);
     _d.CPGF_MD_TEMPLATE _method("beforeSynchronizing", &D::ClassType::beforeSynchronizing);
+    _d.CPGF_MD_TEMPLATE _method("afterSynchronizing", &D::ClassType::afterSynchronizing);
     _d.CPGF_MD_TEMPLATE _method("beforeRendering", &D::ClassType::beforeRendering);
     _d.CPGF_MD_TEMPLATE _method("afterRendering", &D::ClassType::afterRendering);
+    _d.CPGF_MD_TEMPLATE _method("afterAnimating", &D::ClassType::afterAnimating);
+    _d.CPGF_MD_TEMPLATE _method("sceneGraphAboutToStop", &D::ClassType::sceneGraphAboutToStop);
     _d.CPGF_MD_TEMPLATE _method("colorChanged", &D::ClassType::colorChanged, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("activeFocusItemChanged", &D::ClassType::activeFocusItemChanged);
+    _d.CPGF_MD_TEMPLATE _method("sceneGraphError", &D::ClassType::sceneGraphError, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("update", &D::ClassType::update);
     _d.CPGF_MD_TEMPLATE _method("releaseResources", &D::ClassType::releaseResources);
     _d.CPGF_MD_TEMPLATE _method("tr", &D::ClassType::tr)
@@ -81,6 +85,9 @@ void buildMetaClass_QQuickWindow(D _d)
         ._element("TextureHasMipmaps", D::ClassType::TextureHasMipmaps)
         ._element("TextureOwnsGLTexture", D::ClassType::TextureOwnsGLTexture)
         ._element("TextureCanUseAtlas", D::ClassType::TextureCanUseAtlas)
+    ;
+    _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::SceneGraphError>("SceneGraphError")
+        ._element("ContextNotAvailable", D::ClassType::ContextNotAvailable)
     ;
     {
         GDefineMetaClass<QFlags<typename QQuickWindow::CreateTextureOption > > _t_d = GDefineMetaClass<QFlags<typename QQuickWindow::CreateTextureOption > >::lazyDeclare("CreateTextureOptions", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename QQuickWindow::CreateTextureOption > >, typename QQuickWindow::CreateTextureOption >);

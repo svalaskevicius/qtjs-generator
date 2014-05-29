@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -69,7 +68,7 @@ void buildMetaClass_QScreen(D _d)
     ;
     _d.CPGF_MD_TEMPLATE _method("refreshRate", &D::ClassType::refreshRate);
     _d.CPGF_MD_TEMPLATE _method("geometryChanged", &D::ClassType::geometryChanged);
-    _d.CPGF_MD_TEMPLATE _method("physicalSizeChanged", &D::ClassType::physicalSizeChanged);
+    _d.CPGF_MD_TEMPLATE _method("physicalSizeChanged", &D::ClassType::physicalSizeChanged, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("physicalDotsPerInchChanged", &D::ClassType::physicalDotsPerInchChanged);
     _d.CPGF_MD_TEMPLATE _method("logicalDotsPerInchChanged", &D::ClassType::logicalDotsPerInchChanged);
     _d.CPGF_MD_TEMPLATE _method("virtualGeometryChanged", &D::ClassType::virtualGeometryChanged);

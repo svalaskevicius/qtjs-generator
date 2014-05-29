@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -406,6 +405,19 @@ void buildMetaClass_QObjectUserData(D _d)
     (void)_d;
     using namespace cpgf;
     
+}
+
+
+template <typename D>
+void buildMetaClass_QSignalBlocker(D _d)
+{
+    (void)_d;
+    using namespace cpgf;
+    
+    _d.CPGF_MD_TEMPLATE _constructor<void * (QObject *)>();
+    _d.CPGF_MD_TEMPLATE _constructor<void * (QObject &)>(cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<0> >());
+    _d.CPGF_MD_TEMPLATE _method("reblock", &D::ClassType::reblock);
+    _d.CPGF_MD_TEMPLATE _method("unblock", &D::ClassType::unblock);
 }
 
 

@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -25,6 +24,9 @@ void buildMetaClass_Global_qfont(D _d)
     (void)_d;
     using namespace cpgf;
     
+    _d.CPGF_MD_TEMPLATE _method("qHash", (uint (*) (const QFont &, uint))&qHash, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
+        ._default(copyVariantFromCopyable(0))
+    ;
     _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, const QFont &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, QFont &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QFont &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
@@ -109,8 +111,6 @@ void buildMetaClass_QFont(D _d)
     _d.CPGF_MD_TEMPLATE _method("setRawMode", &D::ClassType::setRawMode);
     _d.CPGF_MD_TEMPLATE _method("exactMatch", &D::ClassType::exactMatch);
     _d.CPGF_MD_TEMPLATE _method("isCopyOf", &D::ClassType::isCopyOf, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("setRawName", &D::ClassType::setRawName, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("rawName", &D::ClassType::rawName);
     _d.CPGF_MD_TEMPLATE _method("key", &D::ClassType::key);
     _d.CPGF_MD_TEMPLATE _method("toString", &D::ClassType::toString);
     _d.CPGF_MD_TEMPLATE _method("fromString", &D::ClassType::fromString, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());

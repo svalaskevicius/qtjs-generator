@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -87,7 +86,7 @@ void buildMetaClass_QTextLayout(D _d)
     ;
     _d.CPGF_MD_TEMPLATE _method("leftCursorPosition", &D::ClassType::leftCursorPosition);
     _d.CPGF_MD_TEMPLATE _method("rightCursorPosition", &D::ClassType::rightCursorPosition);
-    _d.CPGF_MD_TEMPLATE _method("draw", &D::ClassType::draw, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<2> >())
+    _d.CPGF_MD_TEMPLATE _method("draw", &D::ClassType::draw, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<2>, cpgf::GMetaRuleCopyConstReference<3> >())
         ._default(copyVariantFromCopyable(QRectF()))
         ._default(copyVariantFromCopyable(QVector<QTextLayout::FormatRange>()))
     ;

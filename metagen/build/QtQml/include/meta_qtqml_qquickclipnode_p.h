@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -28,8 +27,8 @@ void buildMetaClass_QQuickDefaultClipNode(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _constructor<void * (const QRectF &)>();
-    _d.CPGF_MD_TEMPLATE _method("setRect", &D::ClassType::setRect);
+    _d.CPGF_MD_TEMPLATE _constructor<void * (const QRectF &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("setRect", &D::ClassType::setRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("rect", &D::ClassType::rect);
     _d.CPGF_MD_TEMPLATE _method("setRadius", &D::ClassType::setRadius);
     _d.CPGF_MD_TEMPLATE _method("radius", &D::ClassType::radius);

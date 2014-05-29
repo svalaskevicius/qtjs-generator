@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -168,7 +167,7 @@ void buildMetaClass_QTextDocument(D _d)
     _d.CPGF_MD_TEMPLATE _method("end", &D::ClassType::end);
     _d.CPGF_MD_TEMPLATE _method("firstBlock", &D::ClassType::firstBlock);
     _d.CPGF_MD_TEMPLATE _method("lastBlock", &D::ClassType::lastBlock);
-    _d.CPGF_MD_TEMPLATE _method("setPageSize", &D::ClassType::setPageSize);
+    _d.CPGF_MD_TEMPLATE _method("setPageSize", &D::ClassType::setPageSize, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("pageSize", &D::ClassType::pageSize);
     _d.CPGF_MD_TEMPLATE _method("setDefaultFont", &D::ClassType::setDefaultFont, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("defaultFont", &D::ClassType::defaultFont);
@@ -180,7 +179,7 @@ void buildMetaClass_QTextDocument(D _d)
     _d.CPGF_MD_TEMPLATE _method("markContentsDirty", &D::ClassType::markContentsDirty);
     _d.CPGF_MD_TEMPLATE _method("setUseDesignMetrics", &D::ClassType::setUseDesignMetrics);
     _d.CPGF_MD_TEMPLATE _method("useDesignMetrics", &D::ClassType::useDesignMetrics);
-    _d.CPGF_MD_TEMPLATE _method("drawContents", &D::ClassType::drawContents)
+    _d.CPGF_MD_TEMPLATE _method("drawContents", &D::ClassType::drawContents, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >())
         ._default(copyVariantFromCopyable(QRectF()))
     ;
     _d.CPGF_MD_TEMPLATE _method("setTextWidth", &D::ClassType::setTextWidth);
@@ -206,6 +205,8 @@ void buildMetaClass_QTextDocument(D _d)
     _d.CPGF_MD_TEMPLATE _method("setMaximumBlockCount", &D::ClassType::setMaximumBlockCount);
     _d.CPGF_MD_TEMPLATE _method("defaultTextOption", &D::ClassType::defaultTextOption);
     _d.CPGF_MD_TEMPLATE _method("setDefaultTextOption", &D::ClassType::setDefaultTextOption, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("baseUrl", &D::ClassType::baseUrl);
+    _d.CPGF_MD_TEMPLATE _method("setBaseUrl", &D::ClassType::setBaseUrl, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("defaultCursorMoveStyle", &D::ClassType::defaultCursorMoveStyle);
     _d.CPGF_MD_TEMPLATE _method("setDefaultCursorMoveStyle", &D::ClassType::setDefaultCursorMoveStyle);
     _d.CPGF_MD_TEMPLATE _method("contentsChange", &D::ClassType::contentsChange);
@@ -216,6 +217,7 @@ void buildMetaClass_QTextDocument(D _d)
     _d.CPGF_MD_TEMPLATE _method("modificationChanged", &D::ClassType::modificationChanged);
     _d.CPGF_MD_TEMPLATE _method("cursorPositionChanged", &D::ClassType::cursorPositionChanged, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("blockCountChanged", &D::ClassType::blockCountChanged);
+    _d.CPGF_MD_TEMPLATE _method("baseUrlChanged", &D::ClassType::baseUrlChanged, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("documentLayoutChanged", &D::ClassType::documentLayoutChanged);
     _d.CPGF_MD_TEMPLATE _method("undo", (void (D::ClassType::*) ())&D::ClassType::undo);
     _d.CPGF_MD_TEMPLATE _method("redo", (void (D::ClassType::*) ())&D::ClassType::redo);

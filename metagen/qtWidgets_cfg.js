@@ -25,10 +25,10 @@ var config = {
   headerHeaderCode : ""
     +"#include <QtCore/include/meta_qtcore_qflags.h>\n"
     +"#include <QtCore/include/meta_qtcore_qcontainerfwd.h>\n"
-    +"#include <qtWidgets_cpgf_compat.h>\n"
   ,
   sourceHeaderCode :
-     "#include <QtCore/qglobal.h>\n"
+     "#include <qtWidgets_cpgf_compat.h>\n"
+    +"#include <QtCore/qglobal.h>\n"
     +"#include <QtCore/QEvent>\n"
     +"#include <QtCore/QDebug>\n"
     +"#include <QtCore/QState>\n"
@@ -179,6 +179,7 @@ function processCallback(item, data)
     case "Q_FORWARD_DECLARE_OBJC_CLASS":
     case "QGraphicsEffect::source":
     case "QMenu::platformMenu":
+    case "QMenu::setPlatformMenu":
     case "QMenuBar::platformMenuBar":
     case "QMessageBox::open":
     case "QStackedLayout::widget":

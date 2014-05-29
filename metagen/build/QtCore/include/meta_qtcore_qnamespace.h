@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -361,6 +360,9 @@ void buildMetaClass_Global_qnamespace(D _d)
         ._element("AA_SynthesizeTouchForUnhandledMouseEvents", Qt::AA_SynthesizeTouchForUnhandledMouseEvents)
         ._element("AA_SynthesizeMouseForUnhandledTouchEvents", Qt::AA_SynthesizeMouseForUnhandledTouchEvents)
         ._element("AA_UseHighDpiPixmaps", Qt::AA_UseHighDpiPixmaps)
+        ._element("AA_ForceRasterWidgets", Qt::AA_ForceRasterWidgets)
+        ._element("AA_UseDesktopOpenGL", Qt::AA_UseDesktopOpenGL)
+        ._element("AA_UseOpenGLES", Qt::AA_UseOpenGLES)
         ._element("AA_AttributeCount", Qt::AA_AttributeCount)
     ;
     _d.CPGF_MD_TEMPLATE _enum<ImageConversionFlag>("ImageConversionFlag")
@@ -794,6 +796,9 @@ void buildMetaClass_Global_qnamespace(D _d)
         ._element("Key_Blue", Qt::Key_Blue)
         ._element("Key_ChannelUp", Qt::Key_ChannelUp)
         ._element("Key_ChannelDown", Qt::Key_ChannelDown)
+        ._element("Key_Guide", Qt::Key_Guide)
+        ._element("Key_Info", Qt::Key_Info)
+        ._element("Key_Settings", Qt::Key_Settings)
         ._element("Key_MediaLast", Qt::Key_MediaLast)
         ._element("Key_Select", Qt::Key_Select)
         ._element("Key_Yes", Qt::Key_Yes)
@@ -804,6 +809,7 @@ void buildMetaClass_Global_qnamespace(D _d)
         ._element("Key_Sleep", Qt::Key_Sleep)
         ._element("Key_Play", Qt::Key_Play)
         ._element("Key_Zoom", Qt::Key_Zoom)
+        ._element("Key_Exit", Qt::Key_Exit)
         ._element("Key_Context1", Qt::Key_Context1)
         ._element("Key_Context2", Qt::Key_Context2)
         ._element("Key_Context3", Qt::Key_Context3)
@@ -1062,6 +1068,9 @@ void buildMetaClass_Global_qnamespace(D _d)
         ._element("ImAnchorPosition", Qt::ImAnchorPosition)
         ._element("ImHints", Qt::ImHints)
         ._element("ImPreferredLanguage", Qt::ImPreferredLanguage)
+        ._element("ImAbsolutePosition", Qt::ImAbsolutePosition)
+        ._element("ImTextBeforeCursor", Qt::ImTextBeforeCursor)
+        ._element("ImTextAfterCursor", Qt::ImTextAfterCursor)
         ._element("ImPlatformData", Qt::ImPlatformData)
         ._element("ImQueryInput", Qt::ImQueryInput)
         ._element("ImQueryAll", Qt::ImQueryAll)
@@ -1277,6 +1286,15 @@ void buildMetaClass_Global_qnamespace(D _d)
         ._element("ScrollUpdate", Qt::ScrollUpdate)
         ._element("ScrollEnd", Qt::ScrollEnd)
     ;
+    _d.CPGF_MD_TEMPLATE _enum<MouseEventSource>("MouseEventSource")
+        ._element("MouseEventNotSynthesized", Qt::MouseEventNotSynthesized)
+        ._element("MouseEventSynthesizedBySystem", Qt::MouseEventSynthesizedBySystem)
+        ._element("MouseEventSynthesizedByQt", Qt::MouseEventSynthesizedByQt)
+    ;
+    _d.CPGF_MD_TEMPLATE _enum<MouseEventFlag>("MouseEventFlag")
+        ._element("MouseEventCreatedDoubleClick", Qt::MouseEventCreatedDoubleClick)
+        ._element("MouseEventFlagMask", Qt::MouseEventFlagMask)
+    ;
     {
         GDefineMetaClass<QFlags<typename Qt::KeyboardModifier > > _t_d = GDefineMetaClass<QFlags<typename Qt::KeyboardModifier > >::lazyDeclare("KeyboardModifiers", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::KeyboardModifier > >, typename Qt::KeyboardModifier >);
         _d._class(_t_d);
@@ -1322,6 +1340,10 @@ void buildMetaClass_Global_qnamespace(D _d)
         _d._class(_t_d);
     }
     {
+        GDefineMetaClass<QFlags<typename Qt::Edge > > _t_d = GDefineMetaClass<QFlags<typename Qt::Edge > >::lazyDeclare("Edges", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::Edge > >, typename Qt::Edge >);
+        _d._class(_t_d);
+    }
+    {
         GDefineMetaClass<QFlags<typename Qt::InputMethodQuery > > _t_d = GDefineMetaClass<QFlags<typename Qt::InputMethodQuery > >::lazyDeclare("InputMethodQueries", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::InputMethodQuery > >, typename Qt::InputMethodQuery >);
         _d._class(_t_d);
     }
@@ -1355,6 +1377,10 @@ void buildMetaClass_Global_qnamespace(D _d)
     }
     {
         GDefineMetaClass<QFlags<typename Qt::GestureFlag > > _t_d = GDefineMetaClass<QFlags<typename Qt::GestureFlag > >::lazyDeclare("GestureFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::GestureFlag > >, typename Qt::GestureFlag >);
+        _d._class(_t_d);
+    }
+    {
+        GDefineMetaClass<QFlags<typename Qt::MouseEventFlag > > _t_d = GDefineMetaClass<QFlags<typename Qt::MouseEventFlag > >::lazyDeclare("MouseEventFlags", &buildMetaClass_QFlags<GDefineMetaClass<QFlags<typename Qt::MouseEventFlag > >, typename Qt::MouseEventFlag >);
         _d._class(_t_d);
     }
 }

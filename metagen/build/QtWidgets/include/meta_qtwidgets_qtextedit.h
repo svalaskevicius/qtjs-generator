@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -74,7 +73,10 @@ void buildMetaClass_QTextEdit(D _d)
     _d.CPGF_MD_TEMPLATE _method("setLineWrapColumnOrWidth", &D::ClassType::setLineWrapColumnOrWidth);
     _d.CPGF_MD_TEMPLATE _method("wordWrapMode", &D::ClassType::wordWrapMode);
     _d.CPGF_MD_TEMPLATE _method("setWordWrapMode", &D::ClassType::setWordWrapMode);
-    _d.CPGF_MD_TEMPLATE _method("find", &D::ClassType::find, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
+    _d.CPGF_MD_TEMPLATE _method("find", (bool (D::ClassType::*) (const QString &, QTextDocument::FindFlags))&D::ClassType::find, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
+        ._default(copyVariantFromCopyable(0))
+    ;
+    _d.CPGF_MD_TEMPLATE _method("find", (bool (D::ClassType::*) (const QRegExp &, QTextDocument::FindFlags))&D::ClassType::find, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
         ._default(copyVariantFromCopyable(0))
     ;
     _d.CPGF_MD_TEMPLATE _method("toPlainText", &D::ClassType::toPlainText);
@@ -102,7 +104,8 @@ void buildMetaClass_QTextEdit(D _d)
     ;
     _d.CPGF_MD_TEMPLATE _method("canPaste", &D::ClassType::canPaste);
     _d.CPGF_MD_TEMPLATE _method("print", &D::ClassType::print);
-    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", &D::ClassType::inputMethodQuery);
+    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery) const)&D::ClassType::inputMethodQuery);
+    _d.CPGF_MD_TEMPLATE _method("inputMethodQuery", (QVariant (D::ClassType::*) (Qt::InputMethodQuery, QVariant) const)&D::ClassType::inputMethodQuery);
     _d.CPGF_MD_TEMPLATE _method("setFontPointSize", &D::ClassType::setFontPointSize);
     _d.CPGF_MD_TEMPLATE _method("setFontFamily", &D::ClassType::setFontFamily, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("setFontWeight", &D::ClassType::setFontWeight);

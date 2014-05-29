@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -56,6 +55,7 @@ void buildMetaClass_QJsonValue(D _d)
     _d.CPGF_MD_TEMPLATE _constructor<void * (qint64)>();
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QString &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _constructor<void * (QLatin1String)>();
+    _d.CPGF_MD_TEMPLATE _constructor<void * (const char *)>();
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QJsonArray &)>();
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QJsonObject &)>();
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QJsonValue &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());

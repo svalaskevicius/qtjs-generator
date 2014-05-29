@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -89,18 +88,18 @@ void buildMetaClass_QPainterPath(D _d)
     _d.CPGF_MD_TEMPLATE _method("moveTo", (void (D::ClassType::*) (qreal, qreal))&D::ClassType::moveTo);
     _d.CPGF_MD_TEMPLATE _method("lineTo", (void (D::ClassType::*) (const QPointF &))&D::ClassType::lineTo, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("lineTo", (void (D::ClassType::*) (qreal, qreal))&D::ClassType::lineTo);
-    _d.CPGF_MD_TEMPLATE _method("arcMoveTo", (void (D::ClassType::*) (const QRectF &, qreal))&D::ClassType::arcMoveTo);
+    _d.CPGF_MD_TEMPLATE _method("arcMoveTo", (void (D::ClassType::*) (const QRectF &, qreal))&D::ClassType::arcMoveTo, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("arcMoveTo", (void (D::ClassType::*) (qreal, qreal, qreal, qreal, qreal))&D::ClassType::arcMoveTo);
-    _d.CPGF_MD_TEMPLATE _method("arcTo", (void (D::ClassType::*) (const QRectF &, qreal, qreal))&D::ClassType::arcTo);
+    _d.CPGF_MD_TEMPLATE _method("arcTo", (void (D::ClassType::*) (const QRectF &, qreal, qreal))&D::ClassType::arcTo, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("arcTo", (void (D::ClassType::*) (qreal, qreal, qreal, qreal, qreal, qreal))&D::ClassType::arcTo);
     _d.CPGF_MD_TEMPLATE _method("cubicTo", (void (D::ClassType::*) (const QPointF &, const QPointF &, const QPointF &))&D::ClassType::cubicTo, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleCopyConstReference<2> >());
     _d.CPGF_MD_TEMPLATE _method("cubicTo", (void (D::ClassType::*) (qreal, qreal, qreal, qreal, qreal, qreal))&D::ClassType::cubicTo);
     _d.CPGF_MD_TEMPLATE _method("quadTo", (void (D::ClassType::*) (const QPointF &, const QPointF &))&D::ClassType::quadTo, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("quadTo", (void (D::ClassType::*) (qreal, qreal, qreal, qreal))&D::ClassType::quadTo);
     _d.CPGF_MD_TEMPLATE _method("currentPosition", &D::ClassType::currentPosition);
-    _d.CPGF_MD_TEMPLATE _method("addRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::addRect);
+    _d.CPGF_MD_TEMPLATE _method("addRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::addRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("addRect", (void (D::ClassType::*) (qreal, qreal, qreal, qreal))&D::ClassType::addRect);
-    _d.CPGF_MD_TEMPLATE _method("addEllipse", (void (D::ClassType::*) (const QRectF &))&D::ClassType::addEllipse);
+    _d.CPGF_MD_TEMPLATE _method("addEllipse", (void (D::ClassType::*) (const QRectF &))&D::ClassType::addEllipse, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("addEllipse", (void (D::ClassType::*) (qreal, qreal, qreal, qreal))&D::ClassType::addEllipse);
     _d.CPGF_MD_TEMPLATE _method("addEllipse", (void (D::ClassType::*) (const QPointF &, qreal, qreal))&D::ClassType::addEllipse, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("addPolygon", &D::ClassType::addPolygon, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -108,20 +107,20 @@ void buildMetaClass_QPainterPath(D _d)
     _d.CPGF_MD_TEMPLATE _method("addText", (void (D::ClassType::*) (qreal, qreal, const QFont &, const QString &))&D::ClassType::addText, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2>, cpgf::GMetaRuleCopyConstReference<3> >());
     _d.CPGF_MD_TEMPLATE _method("addPath", &D::ClassType::addPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("addRegion", &D::ClassType::addRegion, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("addRoundedRect", (void (D::ClassType::*) (const QRectF &, qreal, qreal, Qt::SizeMode))&D::ClassType::addRoundedRect)
+    _d.CPGF_MD_TEMPLATE _method("addRoundedRect", (void (D::ClassType::*) (const QRectF &, qreal, qreal, Qt::SizeMode))&D::ClassType::addRoundedRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
         ._default(copyVariantFromCopyable(Qt::AbsoluteSize))
     ;
     _d.CPGF_MD_TEMPLATE _method("addRoundedRect", (void (D::ClassType::*) (qreal, qreal, qreal, qreal, qreal, qreal, Qt::SizeMode))&D::ClassType::addRoundedRect)
         ._default(copyVariantFromCopyable(Qt::AbsoluteSize))
     ;
-    _d.CPGF_MD_TEMPLATE _method("addRoundRect", (void (D::ClassType::*) (const QRectF &, int, int))&D::ClassType::addRoundRect);
+    _d.CPGF_MD_TEMPLATE _method("addRoundRect", (void (D::ClassType::*) (const QRectF &, int, int))&D::ClassType::addRoundRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("addRoundRect", (void (D::ClassType::*) (qreal, qreal, qreal, qreal, int, int))&D::ClassType::addRoundRect);
-    _d.CPGF_MD_TEMPLATE _method("addRoundRect", (void (D::ClassType::*) (const QRectF &, int))&D::ClassType::addRoundRect);
+    _d.CPGF_MD_TEMPLATE _method("addRoundRect", (void (D::ClassType::*) (const QRectF &, int))&D::ClassType::addRoundRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("addRoundRect", (void (D::ClassType::*) (qreal, qreal, qreal, qreal, int))&D::ClassType::addRoundRect);
     _d.CPGF_MD_TEMPLATE _method("connectPath", &D::ClassType::connectPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("contains", (bool (D::ClassType::*) (const QRectF &) const)&D::ClassType::contains);
-    _d.CPGF_MD_TEMPLATE _method("intersects", (bool (D::ClassType::*) (const QRectF &) const)&D::ClassType::intersects);
+    _d.CPGF_MD_TEMPLATE _method("contains", (bool (D::ClassType::*) (const QRectF &) const)&D::ClassType::contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("intersects", (bool (D::ClassType::*) (const QRectF &) const)&D::ClassType::intersects, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("translate", (void (D::ClassType::*) (qreal, qreal))&D::ClassType::translate);
     _d.CPGF_MD_TEMPLATE _method("translate", (void (D::ClassType::*) (const QPointF &))&D::ClassType::translate, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("translated", (QPainterPath (D::ClassType::*) (qreal, qreal) const)&D::ClassType::translated);
@@ -212,6 +211,7 @@ void buildMetaClass_QPainterPathStroker(D _d)
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
+    _d.CPGF_MD_TEMPLATE _constructor<void * (const QPen &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("setWidth", &D::ClassType::setWidth);
     _d.CPGF_MD_TEMPLATE _method("width", &D::ClassType::width);
     _d.CPGF_MD_TEMPLATE _method("setCapStyle", &D::ClassType::setCapStyle);

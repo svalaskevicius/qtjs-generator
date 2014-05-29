@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -25,7 +24,7 @@ void buildMetaClass_Global_qtquickversion(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_37")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_55")
         ._element("QTQUICK_VERSION_STR", QTQUICK_VERSION_STR)
         ._element("QTQUICK_VERSION", QTQUICK_VERSION)
     ;

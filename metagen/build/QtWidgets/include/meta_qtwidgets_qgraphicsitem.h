@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtWidgets_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -688,14 +687,14 @@ void buildMetaClass_QGraphicsEllipseItem(D _d)
     _d.CPGF_MD_TEMPLATE _constructor<void * (QGraphicsItem *)>()
         ._default(copyVariantFromCopyable(0))
     ;
-    _d.CPGF_MD_TEMPLATE _constructor<void * (const QRectF &, QGraphicsItem *)>()
+    _d.CPGF_MD_TEMPLATE _constructor<void * (const QRectF &, QGraphicsItem *)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
         ._default(copyVariantFromCopyable(0))
     ;
     _d.CPGF_MD_TEMPLATE _constructor<void * (qreal, qreal, qreal, qreal, QGraphicsItem *)>()
         ._default(copyVariantFromCopyable(0))
     ;
     _d.CPGF_MD_TEMPLATE _method("rect", &D::ClassType::rect);
-    _d.CPGF_MD_TEMPLATE _method("setRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::setRect);
+    _d.CPGF_MD_TEMPLATE _method("setRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::setRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("setRect", (void (D::ClassType::*) (qreal, qreal, qreal, qreal))&D::ClassType::setRect);
     _d.CPGF_MD_TEMPLATE _method("startAngle", &D::ClassType::startAngle);
     _d.CPGF_MD_TEMPLATE _method("setStartAngle", &D::ClassType::setStartAngle);
@@ -1443,7 +1442,7 @@ void buildMetaClass_QGraphicsItem(D _d)
     _d.CPGF_MD_TEMPLATE _method("setPos", (void (D::ClassType::*) (const QPointF &))&D::ClassType::setPos, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("setPos", (void (D::ClassType::*) (qreal, qreal))&D::ClassType::setPos);
     _d.CPGF_MD_TEMPLATE _method("moveBy", &D::ClassType::moveBy);
-    _d.CPGF_MD_TEMPLATE _method("ensureVisible", (void (D::ClassType::*) (const QRectF &, int, int))&D::ClassType::ensureVisible)
+    _d.CPGF_MD_TEMPLATE _method("ensureVisible", (void (D::ClassType::*) (const QRectF &, int, int))&D::ClassType::ensureVisible, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
         ._default(copyVariantFromCopyable(50))
         ._default(copyVariantFromCopyable(50))
         ._default(copyVariantFromCopyable(QRectF()))
@@ -1497,7 +1496,7 @@ void buildMetaClass_QGraphicsItem(D _d)
     _d.CPGF_MD_TEMPLATE _method("collidingItems", &D::ClassType::collidingItems)
         ._default(copyVariantFromCopyable(Qt::IntersectsItemShape))
     ;
-    _d.CPGF_MD_TEMPLATE _method("isObscured", (bool (D::ClassType::*) (const QRectF &) const)&D::ClassType::isObscured)
+    _d.CPGF_MD_TEMPLATE _method("isObscured", (bool (D::ClassType::*) (const QRectF &) const)&D::ClassType::isObscured, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
         ._default(copyVariantFromCopyable(QRectF()))
     ;
     _d.CPGF_MD_TEMPLATE _method("isObscured", (bool (D::ClassType::*) (qreal, qreal, qreal, qreal) const)&D::ClassType::isObscured);
@@ -1509,22 +1508,22 @@ void buildMetaClass_QGraphicsItem(D _d)
     _d.CPGF_MD_TEMPLATE _method("paint", &D::ClassType::paint)
         ._default(copyVariantFromCopyable(0))
     ;
-    _d.CPGF_MD_TEMPLATE _method("update", (void (D::ClassType::*) (const QRectF &))&D::ClassType::update)
+    _d.CPGF_MD_TEMPLATE _method("update", (void (D::ClassType::*) (const QRectF &))&D::ClassType::update, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
         ._default(copyVariantFromCopyable(QRectF()))
     ;
     _d.CPGF_MD_TEMPLATE _method("update", (void (D::ClassType::*) (qreal, qreal, qreal, qreal))&D::ClassType::update);
-    _d.CPGF_MD_TEMPLATE _method("scroll", &D::ClassType::scroll)
+    _d.CPGF_MD_TEMPLATE _method("scroll", &D::ClassType::scroll, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<2> >())
         ._default(copyVariantFromCopyable(QRectF()))
     ;
     _d.CPGF_MD_TEMPLATE _method("mapToItem", (QPointF (D::ClassType::*) (const QGraphicsItem *, const QPointF &) const)&D::ClassType::mapToItem, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("mapToParent", (QPointF (D::ClassType::*) (const QPointF &) const)&D::ClassType::mapToParent, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("mapToScene", (QPointF (D::ClassType::*) (const QPointF &) const)&D::ClassType::mapToScene, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("mapToItem", (QPolygonF (D::ClassType::*) (const QGraphicsItem *, const QRectF &) const)&D::ClassType::mapToItem);
-    _d.CPGF_MD_TEMPLATE _method("mapToParent", (QPolygonF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapToParent);
-    _d.CPGF_MD_TEMPLATE _method("mapToScene", (QPolygonF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapToScene);
-    _d.CPGF_MD_TEMPLATE _method("mapRectToItem", (QRectF (D::ClassType::*) (const QGraphicsItem *, const QRectF &) const)&D::ClassType::mapRectToItem);
-    _d.CPGF_MD_TEMPLATE _method("mapRectToParent", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapRectToParent);
-    _d.CPGF_MD_TEMPLATE _method("mapRectToScene", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapRectToScene);
+    _d.CPGF_MD_TEMPLATE _method("mapToItem", (QPolygonF (D::ClassType::*) (const QGraphicsItem *, const QRectF &) const)&D::ClassType::mapToItem, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("mapToParent", (QPolygonF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapToParent, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("mapToScene", (QPolygonF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapToScene, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("mapRectToItem", (QRectF (D::ClassType::*) (const QGraphicsItem *, const QRectF &) const)&D::ClassType::mapRectToItem, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("mapRectToParent", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapRectToParent, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("mapRectToScene", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapRectToScene, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("mapToItem", (QPolygonF (D::ClassType::*) (const QGraphicsItem *, const QPolygonF &) const)&D::ClassType::mapToItem, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("mapToParent", (QPolygonF (D::ClassType::*) (const QPolygonF &) const)&D::ClassType::mapToParent, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("mapToScene", (QPolygonF (D::ClassType::*) (const QPolygonF &) const)&D::ClassType::mapToScene, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -1534,12 +1533,12 @@ void buildMetaClass_QGraphicsItem(D _d)
     _d.CPGF_MD_TEMPLATE _method("mapFromItem", (QPointF (D::ClassType::*) (const QGraphicsItem *, const QPointF &) const)&D::ClassType::mapFromItem, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("mapFromParent", (QPointF (D::ClassType::*) (const QPointF &) const)&D::ClassType::mapFromParent, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("mapFromScene", (QPointF (D::ClassType::*) (const QPointF &) const)&D::ClassType::mapFromScene, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _method("mapFromItem", (QPolygonF (D::ClassType::*) (const QGraphicsItem *, const QRectF &) const)&D::ClassType::mapFromItem);
-    _d.CPGF_MD_TEMPLATE _method("mapFromParent", (QPolygonF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapFromParent);
-    _d.CPGF_MD_TEMPLATE _method("mapFromScene", (QPolygonF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapFromScene);
-    _d.CPGF_MD_TEMPLATE _method("mapRectFromItem", (QRectF (D::ClassType::*) (const QGraphicsItem *, const QRectF &) const)&D::ClassType::mapRectFromItem);
-    _d.CPGF_MD_TEMPLATE _method("mapRectFromParent", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapRectFromParent);
-    _d.CPGF_MD_TEMPLATE _method("mapRectFromScene", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapRectFromScene);
+    _d.CPGF_MD_TEMPLATE _method("mapFromItem", (QPolygonF (D::ClassType::*) (const QGraphicsItem *, const QRectF &) const)&D::ClassType::mapFromItem, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("mapFromParent", (QPolygonF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapFromParent, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("mapFromScene", (QPolygonF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapFromScene, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("mapRectFromItem", (QRectF (D::ClassType::*) (const QGraphicsItem *, const QRectF &) const)&D::ClassType::mapRectFromItem, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("mapRectFromParent", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapRectFromParent, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("mapRectFromScene", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::mapRectFromScene, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("mapFromItem", (QPolygonF (D::ClassType::*) (const QGraphicsItem *, const QPolygonF &) const)&D::ClassType::mapFromItem, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("mapFromParent", (QPolygonF (D::ClassType::*) (const QPolygonF &) const)&D::ClassType::mapFromParent, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("mapFromScene", (QPolygonF (D::ClassType::*) (const QPolygonF &) const)&D::ClassType::mapFromScene, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
@@ -6510,14 +6509,14 @@ void buildMetaClass_QGraphicsRectItem(D _d)
     _d.CPGF_MD_TEMPLATE _constructor<void * (QGraphicsItem *)>()
         ._default(copyVariantFromCopyable(0))
     ;
-    _d.CPGF_MD_TEMPLATE _constructor<void * (const QRectF &, QGraphicsItem *)>()
+    _d.CPGF_MD_TEMPLATE _constructor<void * (const QRectF &, QGraphicsItem *)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >())
         ._default(copyVariantFromCopyable(0))
     ;
     _d.CPGF_MD_TEMPLATE _constructor<void * (qreal, qreal, qreal, qreal, QGraphicsItem *)>()
         ._default(copyVariantFromCopyable(0))
     ;
     _d.CPGF_MD_TEMPLATE _method("rect", &D::ClassType::rect);
-    _d.CPGF_MD_TEMPLATE _method("setRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::setRect);
+    _d.CPGF_MD_TEMPLATE _method("setRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::setRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("setRect", (void (D::ClassType::*) (qreal, qreal, qreal, qreal))&D::ClassType::setRect);
     _d.CPGF_MD_TEMPLATE _method("boundingRect", &D::ClassType::boundingRect);
     _d.CPGF_MD_TEMPLATE _method("shape", &D::ClassType::shape);

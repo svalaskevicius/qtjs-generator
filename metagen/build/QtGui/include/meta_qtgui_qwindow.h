@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -138,6 +137,7 @@ void buildMetaClass_QWindow(D _d)
     _d.CPGF_MD_TEMPLATE _method("screenChanged", &D::ClassType::screenChanged);
     _d.CPGF_MD_TEMPLATE _method("modalityChanged", &D::ClassType::modalityChanged);
     _d.CPGF_MD_TEMPLATE _method("windowStateChanged", &D::ClassType::windowStateChanged);
+    _d.CPGF_MD_TEMPLATE _method("windowTitleChanged", &D::ClassType::windowTitleChanged, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("xChanged", &D::ClassType::xChanged);
     _d.CPGF_MD_TEMPLATE _method("yChanged", &D::ClassType::yChanged);
     _d.CPGF_MD_TEMPLATE _method("widthChanged", &D::ClassType::widthChanged);

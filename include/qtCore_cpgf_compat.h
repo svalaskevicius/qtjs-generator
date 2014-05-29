@@ -2,7 +2,6 @@
 
 #include "./qt_cpgf_compat.h"
 
-
 #include <QString>
 #include <QEventLoop>
 #include <QTextStream>
@@ -20,6 +19,7 @@
 #include <QUrlQuery>
 #include <QUrl>
 #include <QStandardPaths>
+#include <QLoggingCategory>
 
 class QGraphicsObject;
 class QGraphicsScene;
@@ -265,6 +265,43 @@ struct IsConvertible <const QPostEventList &, const cpgf::IObject &> {
     G_STATIC_CONSTANT(bool, Result = false);
 };
 
+template <>
+struct IsConvertible <long, QFlag, void> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+template <>
+struct IsConvertible <unsigned long, QFlag, void> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+template <>
+struct IsConvertible <long long, QFlag, void> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+template <>
+struct IsConvertible <unsigned long long, QFlag, void> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+template <>
+struct IsConvertible <float, QFlag, void> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+template <>
+struct IsConvertible <double, QFlag, void> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+template <>
+struct IsConvertible <long double, QFlag, void> {
+    G_STATIC_CONSTANT(bool, Result = false);
+};
+
+
+
+
+
+
+
+
+
 ENABLE_INT_TYPE_CONVERSION(QString::SectionFlags)
 ENABLE_INT_TYPE_CONVERSION(QEventLoop::ProcessEventsFlags)
 ENABLE_INT_TYPE_CONVERSION(QTextStream::NumberFlags)
@@ -304,6 +341,7 @@ ENABLE_INT_TYPE_CONVERSION(QLocale::NumberOptions)
 ENABLE_INT_TYPE_CONVERSION(QUrl::ComponentFormattingOptions)
 ENABLE_INT_TYPE_CONVERSION(QUrl::FormattingOptions)
 ENABLE_INT_TYPE_CONVERSION(QStandardPaths::LocateOptions)
+ENABLE_INT_TYPE_CONVERSION(QByteArray::Base64Options)
 
 
 

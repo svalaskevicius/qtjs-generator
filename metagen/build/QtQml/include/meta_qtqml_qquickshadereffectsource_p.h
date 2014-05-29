@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -28,7 +27,7 @@ void buildMetaClass_Global_qquickshadereffectsource_p(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_36")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_33")
     ;
 }
 
@@ -51,7 +50,7 @@ void buildMetaClass_QQuickShaderEffectSource(D _d)
     _d.CPGF_MD_TEMPLATE _method("sourceItem", &D::ClassType::sourceItem);
     _d.CPGF_MD_TEMPLATE _method("setSourceItem", &D::ClassType::setSourceItem);
     _d.CPGF_MD_TEMPLATE _method("sourceRect", &D::ClassType::sourceRect);
-    _d.CPGF_MD_TEMPLATE _method("setSourceRect", &D::ClassType::setSourceRect);
+    _d.CPGF_MD_TEMPLATE _method("setSourceRect", &D::ClassType::setSourceRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("textureSize", &D::ClassType::textureSize);
     _d.CPGF_MD_TEMPLATE _method("setTextureSize", &D::ClassType::setTextureSize);
     _d.CPGF_MD_TEMPLATE _method("format", &D::ClassType::format);
@@ -110,7 +109,7 @@ void buildMetaClass_QQuickShaderEffectTexture(D _d)
     _d.CPGF_MD_TEMPLATE _method("item", &D::ClassType::item);
     _d.CPGF_MD_TEMPLATE _method("setItem", &D::ClassType::setItem);
     _d.CPGF_MD_TEMPLATE _method("rect", &D::ClassType::rect);
-    _d.CPGF_MD_TEMPLATE _method("setRect", &D::ClassType::setRect);
+    _d.CPGF_MD_TEMPLATE _method("setRect", &D::ClassType::setRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("size", &D::ClassType::size);
     _d.CPGF_MD_TEMPLATE _method("setSize", &D::ClassType::setSize);
     _d.CPGF_MD_TEMPLATE _method("setHasMipmaps", &D::ClassType::setHasMipmaps);

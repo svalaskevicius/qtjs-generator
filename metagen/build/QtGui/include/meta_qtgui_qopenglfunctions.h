@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -25,7 +24,7 @@ void buildMetaClass_Global_qopenglfunctions(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_13")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_22")
     ;
 }
 
@@ -41,6 +40,51 @@ void buildMetaClass_QOpenGLFunctions(D _d)
     _d.CPGF_MD_TEMPLATE _method("openGLFeatures", &D::ClassType::openGLFeatures);
     _d.CPGF_MD_TEMPLATE _method("hasOpenGLFeature", &D::ClassType::hasOpenGLFeature);
     _d.CPGF_MD_TEMPLATE _method("initializeOpenGLFunctions", &D::ClassType::initializeOpenGLFunctions);
+    _d.CPGF_MD_TEMPLATE _method("glBindTexture", &D::ClassType::glBindTexture);
+    _d.CPGF_MD_TEMPLATE _method("glBlendFunc", &D::ClassType::glBlendFunc);
+    _d.CPGF_MD_TEMPLATE _method("glClear", &D::ClassType::glClear);
+    _d.CPGF_MD_TEMPLATE _method("glClearColor", &D::ClassType::glClearColor);
+    _d.CPGF_MD_TEMPLATE _method("glClearStencil", &D::ClassType::glClearStencil);
+    _d.CPGF_MD_TEMPLATE _method("glColorMask", &D::ClassType::glColorMask);
+    _d.CPGF_MD_TEMPLATE _method("glCopyTexImage2D", &D::ClassType::glCopyTexImage2D);
+    _d.CPGF_MD_TEMPLATE _method("glCopyTexSubImage2D", &D::ClassType::glCopyTexSubImage2D);
+    _d.CPGF_MD_TEMPLATE _method("glCullFace", &D::ClassType::glCullFace);
+    _d.CPGF_MD_TEMPLATE _method("glDeleteTextures", &D::ClassType::glDeleteTextures);
+    _d.CPGF_MD_TEMPLATE _method("glDepthFunc", &D::ClassType::glDepthFunc);
+    _d.CPGF_MD_TEMPLATE _method("glDepthMask", &D::ClassType::glDepthMask);
+    _d.CPGF_MD_TEMPLATE _method("glDisable", &D::ClassType::glDisable);
+    _d.CPGF_MD_TEMPLATE _method("glDrawArrays", &D::ClassType::glDrawArrays);
+    _d.CPGF_MD_TEMPLATE _method("glDrawElements", &D::ClassType::glDrawElements);
+    _d.CPGF_MD_TEMPLATE _method("glEnable", &D::ClassType::glEnable);
+    _d.CPGF_MD_TEMPLATE _method("glFinish", &D::ClassType::glFinish);
+    _d.CPGF_MD_TEMPLATE _method("glFlush", &D::ClassType::glFlush);
+    _d.CPGF_MD_TEMPLATE _method("glFrontFace", &D::ClassType::glFrontFace);
+    _d.CPGF_MD_TEMPLATE _method("glGenTextures", &D::ClassType::glGenTextures);
+    _d.CPGF_MD_TEMPLATE _method("glGetBooleanv", &D::ClassType::glGetBooleanv);
+    _d.CPGF_MD_TEMPLATE _method("glGetError", &D::ClassType::glGetError);
+    _d.CPGF_MD_TEMPLATE _method("glGetFloatv", &D::ClassType::glGetFloatv);
+    _d.CPGF_MD_TEMPLATE _method("glGetIntegerv", &D::ClassType::glGetIntegerv);
+    _d.CPGF_MD_TEMPLATE _method("glGetString", &D::ClassType::glGetString);
+    _d.CPGF_MD_TEMPLATE _method("glGetTexParameterfv", &D::ClassType::glGetTexParameterfv);
+    _d.CPGF_MD_TEMPLATE _method("glGetTexParameteriv", &D::ClassType::glGetTexParameteriv);
+    _d.CPGF_MD_TEMPLATE _method("glHint", &D::ClassType::glHint);
+    _d.CPGF_MD_TEMPLATE _method("glIsEnabled", &D::ClassType::glIsEnabled);
+    _d.CPGF_MD_TEMPLATE _method("glIsTexture", &D::ClassType::glIsTexture);
+    _d.CPGF_MD_TEMPLATE _method("glLineWidth", &D::ClassType::glLineWidth);
+    _d.CPGF_MD_TEMPLATE _method("glPixelStorei", &D::ClassType::glPixelStorei);
+    _d.CPGF_MD_TEMPLATE _method("glPolygonOffset", &D::ClassType::glPolygonOffset);
+    _d.CPGF_MD_TEMPLATE _method("glReadPixels", &D::ClassType::glReadPixels);
+    _d.CPGF_MD_TEMPLATE _method("glScissor", &D::ClassType::glScissor);
+    _d.CPGF_MD_TEMPLATE _method("glStencilFunc", &D::ClassType::glStencilFunc);
+    _d.CPGF_MD_TEMPLATE _method("glStencilMask", &D::ClassType::glStencilMask);
+    _d.CPGF_MD_TEMPLATE _method("glStencilOp", &D::ClassType::glStencilOp);
+    _d.CPGF_MD_TEMPLATE _method("glTexImage2D", &D::ClassType::glTexImage2D);
+    _d.CPGF_MD_TEMPLATE _method("glTexParameterf", &D::ClassType::glTexParameterf);
+    _d.CPGF_MD_TEMPLATE _method("glTexParameterfv", &D::ClassType::glTexParameterfv);
+    _d.CPGF_MD_TEMPLATE _method("glTexParameteri", &D::ClassType::glTexParameteri);
+    _d.CPGF_MD_TEMPLATE _method("glTexParameteriv", &D::ClassType::glTexParameteriv);
+    _d.CPGF_MD_TEMPLATE _method("glTexSubImage2D", &D::ClassType::glTexSubImage2D);
+    _d.CPGF_MD_TEMPLATE _method("glViewport", &D::ClassType::glViewport);
     _d.CPGF_MD_TEMPLATE _method("glActiveTexture", &D::ClassType::glActiveTexture);
     _d.CPGF_MD_TEMPLATE _method("glAttachShader", &D::ClassType::glAttachShader);
     _d.CPGF_MD_TEMPLATE _method("glBindAttribLocation", &D::ClassType::glBindAttribLocation);

@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtGui_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -77,8 +76,8 @@ void buildMetaClass_QVector2D(D _d)
     _d.CPGF_MD_TEMPLATE _constructor<void * (float, float)>();
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QPoint &)>();
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QPointF &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _constructor<void * (const QVector3D &)>();
-    _d.CPGF_MD_TEMPLATE _constructor<void * (const QVector4D &)>();
+    _d.CPGF_MD_TEMPLATE _constructor<void * (const QVector3D &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _constructor<void * (const QVector4D &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("isNull", &D::ClassType::isNull);
     _d.CPGF_MD_TEMPLATE _method("x", &D::ClassType::x);
     _d.CPGF_MD_TEMPLATE _method("y", &D::ClassType::y);

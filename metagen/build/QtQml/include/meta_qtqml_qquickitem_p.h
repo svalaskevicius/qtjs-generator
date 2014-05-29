@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -222,6 +221,20 @@ inline bool bItFiEldWrapper_QQuickItemPrivate_activeFocusOnTab_getter(QQuickItem
 inline void bItFiEldWrapper_QQuickItemPrivate_activeFocusOnTab_setter(QQuickItemPrivate * self, bool value) {
     self->activeFocusOnTab = value;
 }
+inline bool bItFiEldWrapper_QQuickItemPrivate_implicitAntialiasing_getter(QQuickItemPrivate * self) {
+    return self->implicitAntialiasing;
+}
+
+inline void bItFiEldWrapper_QQuickItemPrivate_implicitAntialiasing_setter(QQuickItemPrivate * self, bool value) {
+    self->implicitAntialiasing = value;
+}
+inline bool bItFiEldWrapper_QQuickItemPrivate_antialiasingValid_getter(QQuickItemPrivate * self) {
+    return self->antialiasingValid;
+}
+
+inline void bItFiEldWrapper_QQuickItemPrivate_antialiasingValid_setter(QQuickItemPrivate * self, bool value) {
+    self->antialiasingValid = value;
+}
 
 
 inline QQuickItem::TransformOrigin bItFiEldWrapper_QQuickItemPrivate_ExtraData_origin_getter(QQuickItemPrivate::ExtraData * self) {
@@ -276,6 +289,8 @@ void buildMetaClass_QQuickItemPrivate(D _d)
     _d.CPGF_MD_TEMPLATE _property("culled", &bItFiEldWrapper_QQuickItemPrivate_culled_getter, &bItFiEldWrapper_QQuickItemPrivate_culled_setter, cpgf::MakePolicy<cpgf::GMetaRuleGetterExplicitThis, cpgf::GMetaRuleSetterExplicitThis>());
     _d.CPGF_MD_TEMPLATE _property("hasCursor", &bItFiEldWrapper_QQuickItemPrivate_hasCursor_getter, &bItFiEldWrapper_QQuickItemPrivate_hasCursor_setter, cpgf::MakePolicy<cpgf::GMetaRuleGetterExplicitThis, cpgf::GMetaRuleSetterExplicitThis>());
     _d.CPGF_MD_TEMPLATE _property("activeFocusOnTab", &bItFiEldWrapper_QQuickItemPrivate_activeFocusOnTab_getter, &bItFiEldWrapper_QQuickItemPrivate_activeFocusOnTab_setter, cpgf::MakePolicy<cpgf::GMetaRuleGetterExplicitThis, cpgf::GMetaRuleSetterExplicitThis>());
+    _d.CPGF_MD_TEMPLATE _property("implicitAntialiasing", &bItFiEldWrapper_QQuickItemPrivate_implicitAntialiasing_getter, &bItFiEldWrapper_QQuickItemPrivate_implicitAntialiasing_setter, cpgf::MakePolicy<cpgf::GMetaRuleGetterExplicitThis, cpgf::GMetaRuleSetterExplicitThis>());
+    _d.CPGF_MD_TEMPLATE _property("antialiasingValid", &bItFiEldWrapper_QQuickItemPrivate_antialiasingValid_getter, &bItFiEldWrapper_QQuickItemPrivate_antialiasingValid_setter, cpgf::MakePolicy<cpgf::GMetaRuleGetterExplicitThis, cpgf::GMetaRuleSetterExplicitThis>());
     _d.CPGF_MD_TEMPLATE _field("dirtyAttributes", &D::ClassType::dirtyAttributes);
     _d.CPGF_MD_TEMPLATE _field("nextDirtyItem", &D::ClassType::nextDirtyItem);
     _d.CPGF_MD_TEMPLATE _field("prevDirtyItem", &D::ClassType::prevDirtyItem);
@@ -368,21 +383,16 @@ void buildMetaClass_QQuickItemPrivate(D _d)
     _d.CPGF_MD_TEMPLATE _method("getImplicitHeight", &D::ClassType::getImplicitHeight);
     _d.CPGF_MD_TEMPLATE _method("implicitWidthChanged", &D::ClassType::implicitWidthChanged);
     _d.CPGF_MD_TEMPLATE _method("implicitHeightChanged", &D::ClassType::implicitHeightChanged);
+    _d.CPGF_MD_TEMPLATE _method("setImplicitAntialiasing", &D::ClassType::setImplicitAntialiasing);
     _d.CPGF_MD_TEMPLATE _method("resolveLayoutMirror", &D::ClassType::resolveLayoutMirror);
     _d.CPGF_MD_TEMPLATE _method("setImplicitLayoutMirror", &D::ClassType::setImplicitLayoutMirror);
     _d.CPGF_MD_TEMPLATE _method("setLayoutMirror", &D::ClassType::setLayoutMirror);
     _d.CPGF_MD_TEMPLATE _method("isMirrored", &D::ClassType::isMirrored);
-    _d.CPGF_MD_TEMPLATE _method("emitChildrenRectChanged", &D::ClassType::emitChildrenRectChanged);
+    _d.CPGF_MD_TEMPLATE _method("emitChildrenRectChanged", &D::ClassType::emitChildrenRectChanged, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("computeTransformOrigin", &D::ClassType::computeTransformOrigin);
     _d.CPGF_MD_TEMPLATE _method("transformChanged", &D::ClassType::transformChanged);
     _d.CPGF_MD_TEMPLATE _method("deliverKeyEvent", &D::ClassType::deliverKeyEvent);
     _d.CPGF_MD_TEMPLATE _method("deliverInputMethodEvent", &D::ClassType::deliverInputMethodEvent);
-    _d.CPGF_MD_TEMPLATE _method("deliverFocusEvent", &D::ClassType::deliverFocusEvent);
-    _d.CPGF_MD_TEMPLATE _method("deliverMouseEvent", &D::ClassType::deliverMouseEvent);
-    _d.CPGF_MD_TEMPLATE _method("deliverWheelEvent", &D::ClassType::deliverWheelEvent);
-    _d.CPGF_MD_TEMPLATE _method("deliverTouchEvent", &D::ClassType::deliverTouchEvent);
-    _d.CPGF_MD_TEMPLATE _method("deliverHoverEvent", &D::ClassType::deliverHoverEvent);
-    _d.CPGF_MD_TEMPLATE _method("deliverDragEvent", &D::ClassType::deliverDragEvent);
     _d.CPGF_MD_TEMPLATE _method("calcEffectiveVisible", &D::ClassType::calcEffectiveVisible);
     _d.CPGF_MD_TEMPLATE _method("setEffectiveVisibleRecur", &D::ClassType::setEffectiveVisibleRecur);
     _d.CPGF_MD_TEMPLATE _method("calcEffectiveEnable", &D::ClassType::calcEffectiveEnable);
@@ -398,6 +408,7 @@ void buildMetaClass_QQuickItemPrivate(D _d)
     _d.CPGF_MD_TEMPLATE _method("itemChange", &D::ClassType::itemChange, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _method("mirrorChange", &D::ClassType::mirrorChange);
     _d.CPGF_MD_TEMPLATE _method("incrementCursorCount", &D::ClassType::incrementCursorCount);
+    _d.CPGF_MD_TEMPLATE _method("markObjects", &D::ClassType::markObjects);
     _d.CPGF_MD_TEMPLATE _enum<typename D::ClassType::ChangeType>("ChangeType")
         ._element("Geometry", D::ClassType::Geometry)
         ._element("SiblingOrder", D::ClassType::SiblingOrder)

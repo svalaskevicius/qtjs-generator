@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -246,7 +245,6 @@ void buildMetaClass_QList(D _d)
     _d.CPGF_MD_TEMPLATE _method("detach", &D::ClassType::detach);
     _d.CPGF_MD_TEMPLATE _method("detachShared", &D::ClassType::detachShared);
     _d.CPGF_MD_TEMPLATE _method("isDetached", &D::ClassType::isDetached);
-    _d.CPGF_MD_TEMPLATE _method("setSharable", &D::ClassType::setSharable);
     _d.CPGF_MD_TEMPLATE _method("isSharedWith", &D::ClassType::isSharedWith);
     _d.CPGF_MD_TEMPLATE _method("isEmpty", &D::ClassType::isEmpty);
     _d.CPGF_MD_TEMPLATE _method("clear", &D::ClassType::clear);

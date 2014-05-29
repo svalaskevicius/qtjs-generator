@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -25,9 +24,10 @@ void buildMetaClass_Global_qprocessordetection(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_29")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_27")
         ._element("Q_BIG_ENDIAN", Q_BIG_ENDIAN)
         ._element("Q_LITTLE_ENDIAN", Q_LITTLE_ENDIAN)
+        ._element("Q_PROCESSOR_WORDSIZE", Q_PROCESSOR_WORDSIZE)
     ;
 }
 

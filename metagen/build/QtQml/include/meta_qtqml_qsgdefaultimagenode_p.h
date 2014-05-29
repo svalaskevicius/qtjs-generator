@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -29,10 +28,10 @@ void buildMetaClass_QSGDefaultImageNode(D _d)
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
-    _d.CPGF_MD_TEMPLATE _method("setTargetRect", &D::ClassType::setTargetRect);
-    _d.CPGF_MD_TEMPLATE _method("setInnerTargetRect", &D::ClassType::setInnerTargetRect);
-    _d.CPGF_MD_TEMPLATE _method("setInnerSourceRect", &D::ClassType::setInnerSourceRect);
-    _d.CPGF_MD_TEMPLATE _method("setSubSourceRect", &D::ClassType::setSubSourceRect);
+    _d.CPGF_MD_TEMPLATE _method("setTargetRect", &D::ClassType::setTargetRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("setInnerTargetRect", &D::ClassType::setInnerTargetRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("setInnerSourceRect", &D::ClassType::setInnerSourceRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("setSubSourceRect", &D::ClassType::setSubSourceRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("setTexture", &D::ClassType::setTexture);
     _d.CPGF_MD_TEMPLATE _method("setAntialiasing", &D::ClassType::setAntialiasing);
     _d.CPGF_MD_TEMPLATE _method("setMirror", &D::ClassType::setMirror);
@@ -264,20 +263,20 @@ public:
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_setTargetRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setTargetRect);
+        _d.CPGF_MD_TEMPLATE _method("super_setTargetRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setTargetRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("super_setMirror", (void (D::ClassType::*) (bool))&D::ClassType::super_setMirror);
         _d.CPGF_MD_TEMPLATE _method("super_setFiltering", (void (D::ClassType::*) (QSGTexture::Filtering))&D::ClassType::super_setFiltering);
-        _d.CPGF_MD_TEMPLATE _method("super_setInnerTargetRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setInnerTargetRect);
+        _d.CPGF_MD_TEMPLATE _method("super_setInnerTargetRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setInnerTargetRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("super_setHorizontalWrapMode", (void (D::ClassType::*) (QSGTexture::WrapMode))&D::ClassType::super_setHorizontalWrapMode);
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
         _d.CPGF_MD_TEMPLATE _method("super_setMipmapFiltering", (void (D::ClassType::*) (QSGTexture::Filtering))&D::ClassType::super_setMipmapFiltering);
         _d.CPGF_MD_TEMPLATE _method("super_setTexture", (void (D::ClassType::*) (QSGTexture *))&D::ClassType::super_setTexture);
         _d.CPGF_MD_TEMPLATE _method("super_setAntialiasing", (void (D::ClassType::*) (bool))&D::ClassType::super_setAntialiasing);
-        _d.CPGF_MD_TEMPLATE _method("super_setInnerSourceRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setInnerSourceRect);
+        _d.CPGF_MD_TEMPLATE _method("super_setInnerSourceRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setInnerSourceRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("super_setVerticalWrapMode", (void (D::ClassType::*) (QSGTexture::WrapMode))&D::ClassType::super_setVerticalWrapMode);
         _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
         _d.CPGF_MD_TEMPLATE _method("super_update", (void (D::ClassType::*) ())&D::ClassType::super_update);
-        _d.CPGF_MD_TEMPLATE _method("super_setSubSourceRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setSubSourceRect);
+        _d.CPGF_MD_TEMPLATE _method("super_setSubSourceRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setSubSourceRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
 };
 

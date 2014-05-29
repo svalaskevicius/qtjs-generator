@@ -25,10 +25,10 @@ var config = {
   headerHeaderCode : ""
     +"#include <QtCore/include/meta_qtcore_qflags.h>\n"
     +"#include <QtCore/include/meta_qtcore_qcontainerfwd.h>\n"
-    +"#include <qtCore_cpgf_compat.h>\n"
   ,
   sourceHeaderCode :
-     "#include <QtCore/qglobal.h>\n"
+     "#include <qtCore_cpgf_compat.h>\n"
+    +"#include <QtCore/qglobal.h>\n"
     +"#include <QtCore/QString>\n"
     +"#include <QtCore/QDataStream>\n"
     +"#include <QtCore/QDateTime>\n"
@@ -197,179 +197,203 @@ function processCallback(item, data)
   for (var i in skipByLocationPart) {
     if(item.getLocation().indexOf(skipByLocationPart[i]) >= 0) {
       data.skipBind = true;
-    print("skip by location: " + item.getQualifiedName() + " " + skipByLocationPart[i] + "\n");
+      print("skip by location: " + item.getQualifiedName() + " " + skipByLocationPart[i] + "\n");
       return;
     }
   }
   for (var i in skipByNamePart) {
     if(item.getPrimaryName().indexOf(skipByNamePart[i]) >= 0) {
       data.skipBind = true;
-    print("skip by name part: " + item.getQualifiedName() + " " + skipByLocationPart[i] + "\n");
+      print("skip by name part: " + item.getQualifiedName() + " " + skipByLocationPart[i] + "\n");
       return;
     }
   }
 
   if ((""+item.getQualifiedName()).indexOf('QtPrivate::') >= 0) {
-      data.skipBind = true;
+    data.skipBind = true;
     print("skip: " + item.getQualifiedName() + "\n");
-      return;
+    return;
   }
 
   if ((""+item.getQualifiedName()).indexOf('QtMetaTypePrivate::') >= 0) {
-      data.skipBind = true;
+    data.skipBind = true;
     print("skip: " + item.getQualifiedName() + "\n");
-      return;
+    return;
   }
 
   switch (""+item.getQualifiedName()) {
     case "signals":
-    case "define":
-    case "QT_TR_FUNCTIONS":
-    case "Q_OBJECT_CHECK":
-    case "Q_DECL_HIDDEN_STATIC_METACALL":
-    case "Q_OBJECT":
-    case "Q_OBJECT_FAKE":
-    case "Q_GADGET":
-    case "QLOCATION":
-    case "QMETHOD_CODE":
-    case "QSLOT_CODE":
-    case "QSIGNAL_CODE":
-    case "QMetaObject::superdata":
-    case "QMetaObject::stringdata":
-    case "QMetaObject::data":
-    case "QMetaObject::static_metacall":
-    case "QMetaObject::relatedMetaObjects":
-    case "QMetaObject::extradata":
-    case "QMetaObject::d":
-    case "QMetaObject::Connection":
-    case "QArgument< T & >":
-    case "qErrnoWarning":
-    case "qDebug":
-    case "qWarning":
-    case "qCritical":
-    case "qFatal":
-    case "AbstractConverterFunction":
-    case "AbstractComparatorFunction":
-    case "AbstractDebugStreamFunction":
-    case "AssociativeContainerAccessor":
-    case "AssociativeContainerConverterHelper":
-    case "AssociativeValueTypeIsMetaType":
-    case "IsMetaTypePair":
-    case "KeyAndValueTypeIsMetaType":
-    case "SequentialContainerConverterHelper":
-    case "SharedPointerMetaTypeIdHelper":
-    case "StlStyleAssociativeContainerAccessor":
-    case "ValueTypeIsMetaType":
-    case "QT_NO_QDEBUG_MACRO":
-    case "QT_NO_QWARNING_MACRO":
-    case "Q_DECLARE_SEQUENTIAL_CONTAINER_METATYPE":
-    case "QMessageLogContext":
-    case "QString::vsprintf":
-    case "QString::fromStdString":
-    case "QString::fromStdWString":
-    case "qvsnprintf":
-    case "QArrayData::ref":
-    case "QHashData::ref":
-    case "QHash": // hash templates are disabled, qHash function should be used
-    case "QHashData":
-    case "QHashNode":
-    case "QMultiHash":
-    case "QJsonValue::ui":
-    case "QJsonValue::b":
-    case "QJsonValue::dbl":
-    case "QJsonValue::stringData":
-    case "QJsonValue::base":
-    case "QJsonValueRef::a":
-    case "QJsonValueRef::o":
-    case "QJsonDocument::BinaryFormatTag":
-    case "QStringMatcher::q_data":
-    case "QStringMatcher::p":
-    case "QProcess::error":
-    case "QObjectData::dynamicMetaObject":
-    case "QObjectData::metaObject":
-    case "TreatAsQObjectBeforeMetaType":
-    case "QMetaType":
-    case "QMetaTypeId2":
-    case "QMetaTypeId2< const T & >":
-    case "QMetaTypeIdQObject":
-    case "QMetaTypeIdQObject< T *, true >":
-    case "QObjectCleanupHandler":
-    case "MetaObjectForType":
-    case "qt_metatype_id":
-    case "QFlags::Int":
-    case "QList::p":
-    case "QList::d":
-    case "QUrlTwoFlags":
-    case "QUrl::data_ptr":
-    case "QUrlQuery::data_ptr":
-    case "qt_sine_table":
-    case "QTimeZone::OffsetDataList":
-    case "QMapDataBase":
-    case "QMapNodeBase":
-    case "QMultiMap":
-    case "QMapNode":
-    case "QMapData":
+      case "define":
+      case "QT_TR_FUNCTIONS":
+      case "Q_OBJECT_CHECK":
+      case "Q_DECL_HIDDEN_STATIC_METACALL":
+      case "Q_OBJECT":
+      case "Q_OBJECT_FAKE":
+      case "Q_GADGET":
+      case "QLOCATION":
+      case "QMETHOD_CODE":
+      case "QSLOT_CODE":
+      case "QSIGNAL_CODE":
+      case "QMetaObject::superdata":
+      case "QMetaObject::stringdata":
+      case "QMetaObject::data":
+      case "QMetaObject::static_metacall":
+      case "QMetaObject::relatedMetaObjects":
+      case "QMetaObject::extradata":
+      case "QMetaObject::d":
+      case "QMetaObject::Connection":
+      case "QArgument< T & >":
+      case "qErrnoWarning":
+      case "qDebug":
+      case "qWarning":
+      case "qCritical":
+      case "qFatal":
+      case "qCDebug":
+      case "qCWarning":
+      case "qCCritical":
+      case "qCFatal":
+      case "AbstractConverterFunction":
+      case "AbstractComparatorFunction":
+      case "AbstractDebugStreamFunction":
+      case "AssociativeContainerAccessor":
+      case "AssociativeContainerConverterHelper":
+      case "AssociativeValueTypeIsMetaType":
+      case "IsMetaTypePair":
+      case "KeyAndValueTypeIsMetaType":
+      case "SequentialContainerConverterHelper":
+      case "SharedPointerMetaTypeIdHelper":
+      case "StlStyleAssociativeContainerAccessor":
+      case "ValueTypeIsMetaType":
+      case "QT_NO_QDEBUG_MACRO":
+      case "QT_NO_QWARNING_MACRO":
+      case "Q_DECLARE_SEQUENTIAL_CONTAINER_METATYPE":
+      case "QMessageLogContext":
+      case "QString::vsprintf":
+      case "QString::fromStdString":
+      case "QString::fromStdWString":
+      case "qvsnprintf":
+      case "QArrayData::ref":
+      case "QHashData::ref":
+      case "QHash": // hash templates are disabled, qHash function should be used
+      case "QHashData":
+      case "QHashNode":
+      case "QMultiHash":
+      case "QJsonValue::ui":
+      case "QJsonValue::b":
+      case "QJsonValue::dbl":
+      case "QJsonValue::stringData":
+      case "QJsonValue::base":
+      case "QJsonValueRef::a":
+      case "QJsonValueRef::o":
+      case "QJsonDocument::BinaryFormatTag":
+      case "QStringMatcher::q_data":
+      case "QStringMatcher::p":
+      case "QProcess::error":
+      case "QObjectData::dynamicMetaObject":
+      case "QObjectData::metaObject":
+      case "TreatAsQObjectBeforeMetaType":
+      case "QMetaType":
+      case "QMetaTypeId2":
+      case "QMetaTypeId2< const T & >":
+      case "QMetaTypeIdQObject":
+      case "QMetaTypeIdQObject< T *, true >":
+      case "QObjectCleanupHandler":
+      case "MetaObjectForType":
+      case "qt_metatype_id":
+      case "QFlags::Int":
+      case "QList::p":
+      case "QList::d":
+      case "QUrlTwoFlags":
+      case "QUrl::data_ptr":
+      case "QUrlQuery::data_ptr":
+      case "qt_sine_table":
+      case "QTimeZone::OffsetDataList":
+      case "QMapDataBase":
+      case "QMapNodeBase":
+      case "QMultiMap":
+      case "QMapNode":
+      case "QMapData":
+      case "QAtomicInteger":
       data.skipBind = true;
     print("skip directly: " + item.getQualifiedName()+ "\n");
-      break;
-
+    break;
+    case "QString::fromUtf16":
+      case "QString::fromUcs4":
+      item.setUseFullPrototype(true);
+    break;
     case "QArrayData":
-    case "QHashData":
-    case "QBasicMutex":
-    case "QBasicAtomicPointer":
+      case "QHashData":
+      case "QBasicMutex":
+      case "QBasicAtomicPointer":
       item.getTraits().setDefaultConstructorHidden(true);
-      item.getTraits().setCopyConstructorHidden(true);
-      break;
+    item.getTraits().setCopyConstructorHidden(true);
+    break;
 
     case "QTypedArrayData::begin":
-    case "QTypedArrayData::end":
-    case "QTypedArrayData::constBegin":
-    case "QTypedArrayData::constEnd":
-    case "QTypedArrayData::allocate":
-    case "QTypedArrayData::fromRawData":
+      case "QTypedArrayData::end":
+      case "QTypedArrayData::constBegin":
+      case "QTypedArrayData::constEnd":
+      case "QTypedArrayData::allocate":
+      case "QTypedArrayData::fromRawData":
       if (item.getParameterList().size() > 0) {
-        item.getParameterList().get(item.getParameterList().size()-1).setDefaultValue("QTypedArrayData<T>::"+item.getParameterList().get(0).getDefaultValue());
+      item.getParameterList().get(item.getParameterList().size()-1).setDefaultValue("QTypedArrayData<T>::"+item.getParameterList().get(0).getDefaultValue());
     }
     break;
 
     case "QFile::open":
       if (item.getParameterList().size() > 0) {
-        var currentValue = item.getParameterList().get(item.getParameterList().size()-1).getDefaultValue();
-        if ("DontCloseHandle" == currentValue) {
-          item.getParameterList().get(item.getParameterList().size()-1).setDefaultValue("QFileDevice::DontCloseHandle");
-        }
+      var currentValue = item.getParameterList().get(item.getParameterList().size()-1).getDefaultValue();
+      if ("DontCloseHandle" == currentValue) {
+        item.getParameterList().get(item.getParameterList().size()-1).setDefaultValue("QFileDevice::DontCloseHandle");
       }
-      break;
+    }
+    break;
 
     case "QExplicitlySharedDataPointer::=":
       item.getResultType().setLiteralType("QExplicitlySharedDataPointer<T> &");
-      break;
+    break;
 
     case "QSharedDataPointer::=":
       item.getResultType().setLiteralType("QSharedDataPointer<T> &");
-      break;
+    break;
 
     case "QFile::permissions":
       item.getResultType().setLiteralType("QFileDevice::Permissions");
-      break;
+    break;
 
     case "QMargins::+=":
-    case "QMargins::-=":
+      case "QMargins::-=":
       var params = item.getParameterList();
-      if (params.size() == 1 && params.get(0).getType().getLiteralType() == 'int') {
-        data.skipBind = true;
-      }
-      break;
+    if (params.size() == 1 && params.get(0).getType().getLiteralType() == 'int') {
+      data.skipBind = true;
+    }
+    break;
   }
 
   if (typeof item.getResultType !== 'undefined' && item.getResultType()) {
     switch (""+item.getResultType().getLiteralType()) {
       case 'QFlags':
         item.getResultType().setLiteralType("QFlags<Enum >");
-        break;
+      break;
       case 'QFlags &':
         item.getResultType().setLiteralType("QFlags<Enum > &");
-        break;
+      break;
+    }
+  }
+  if (item.isConstructor()) {
+    if ("QFlag::" == item.getQualifiedName()) {
+      var params = item.getParameterList();
+      if ( params.size() == 1 ) {
+
+        var typename = params.get(0).getType().getLiteralType()+"";
+        switch (typename) {
+          case "long":
+          case "ulong":
+            data.skipBind = true;
+          break;
+          default:
+        }
+      }
     }
   }
   if (item.isMethod() || item.isConstructor() || item.isOperator()) {
@@ -377,74 +401,74 @@ function processCallback(item, data)
     for(var i = 0; i < params.size(); i++) {
       switch (""+params.get(i).getType().getLiteralType()) {
         case '...':
-        case 'const QMimeTypePrivate &':
-        case 'QFileInfoPrivate *':
-        case 'typename QList<T >::Node*':
-        case 'const QSequentialIterableImpl &':
-        case 'const QAssociativeIterableImpl &':
-        case 'typename QFlags<Enum >::Zero':
-        case 'typename Hash::const_iterator':
-        case 'typename Hash::iterator':
-        data.skipBind = true;
+          case 'const QMimeTypePrivate &':
+          case 'QFileInfoPrivate *':
+          case 'typename QList<T >::Node*':
+          case 'const QSequentialIterableImpl &':
+          case 'const QAssociativeIterableImpl &':
+          case 'typename QFlags<Enum >::Zero':
+          case 'typename Hash::const_iterator':
+          case 'typename Hash::iterator':
+          data.skipBind = true;
         break;
         case 'Type':
           params.get(i).getType().setLiteralType('QEvent::Type');
-          break;
+        break;
         case 'OpenMode':
           params.get(i).getType().setLiteralType('QIODevice::OpenMode');
-          break;
+        break;
         case 'Permissions':
           params.get(i).getType().setLiteralType('QFileDevice::Permissions');
-          break;
+        break;
         case 'FileHandleFlags':
           params.get(i).getType().setLiteralType('QFileDevice::FileHandleFlags');
-          break;
+        break;
         case 'State':
           params.get(i).getType().setLiteralType('QFutureInterfaceBase::State');
-          break;
+        break;
         case 'QFlags':
           params.get(i).getType().setLiteralType('QFlags<Enum >');
-          break;
+        break;
         case 'QFlags &':
           params.get(i).getType().setLiteralType('QFlags<Enum > &');
-          break;
+        break;
         case 'FormattingOptions':
           params.get(i).getType().setLiteralType('QUrl::FormattingOptions');
-          break;
+        break;
         case 'ComponentFormattingOptions':
           params.get(i).getType().setLiteralType('QUrl::ComponentFormattingOptions');
-          break;
+        break;
         default:
-  if ((""+params.get(i).getType().getLiteralType()).indexOf('QtPrivate::') >= 0) {
-      data.skipBind = true;
-    print("skip: " + item.getQualifiedName() + "\n");
-      return;
-  }
+          if ((""+params.get(i).getType().getLiteralType()).indexOf('QtPrivate::') >= 0) {
+          data.skipBind = true;
+          print("skip: " + item.getQualifiedName() + "\n");
+          return;
+        }
 
-  if ((""+params.get(i).getType().getLiteralType()).indexOf('QtMetaTypePrivate::') >= 0) {
-      data.skipBind = true;
-    print("skip: " + item.getQualifiedName() + "\n");
-      return;
-  }
+        if ((""+params.get(i).getType().getLiteralType()).indexOf('QtMetaTypePrivate::') >= 0) {
+          data.skipBind = true;
+          print("skip: " + item.getQualifiedName() + "\n");
+          return;
+        }
 
-          print("TYPE: "+params.get(i).getType().getLiteralType()+"\n");
+        print("TYPE: "+params.get(i).getType().getLiteralType()+"\n");
       }
       switch (""+params.get(i).getDefaultValue()) {
         case "ReadWrite":
           params.get(i).setDefaultValue("QIODevice::ReadWrite");
-          break;
+        break;
         case "Truncate":
           params.get(i).setDefaultValue("QIODevice::Truncate");
-          break;
+        break;
         case "SortFlags(Name|IgnoreCase)":
           params.get(i).setDefaultValue("QDir::SortFlags(QDir::Name|QDir::IgnoreCase)");
-          break;
+        break;
         case "NoState":
           params.get(i).setDefaultValue("QFutureInterfaceBase::NoState");
-          break;
+        break;
         case "FormattingOptions(PrettyDecoded)":
           params.get(i).setDefaultValue("QUrl::FormattingOptions(QUrl::PrettyDecoded)");
-          break;
+        break;
       }
 
     }
@@ -454,10 +478,10 @@ function processCallback(item, data)
       case "QFlags": break;
       default:
         data.skipBind = true;
-        print("skipping typedef name: " + item.getLiteralName()+"\n");
-        print("skipping typedef type: " + item.getType().getLiteralType()+"\n");
-        print("skipping typedef basetype: " + item.getType().getQualifiedBaseType()+"\n");
-        return;
+      print("skipping typedef name: " + item.getLiteralName()+"\n");
+      print("skipping typedef type: " + item.getType().getLiteralType()+"\n");
+      print("skipping typedef basetype: " + item.getType().getQualifiedBaseType()+"\n");
+      return;
     }
   }
   if (shouldAllowClassWrapper(item)) {

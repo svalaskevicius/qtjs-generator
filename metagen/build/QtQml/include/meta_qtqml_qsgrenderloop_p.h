@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtQml_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -44,6 +43,9 @@ void buildMetaClass_QSGRenderLoop(D _d)
     _d.CPGF_MD_TEMPLATE _method("sceneGraphContext", &D::ClassType::sceneGraphContext);
     _d.CPGF_MD_TEMPLATE _method("createRenderContext", &D::ClassType::createRenderContext);
     _d.CPGF_MD_TEMPLATE _method("releaseResources", &D::ClassType::releaseResources);
+    _d.CPGF_MD_TEMPLATE _method("addWindow", &D::ClassType::addWindow);
+    _d.CPGF_MD_TEMPLATE _method("removeWindow", &D::ClassType::removeWindow);
+    _d.CPGF_MD_TEMPLATE _method("windows", &D::ClassType::windows);
     _d.CPGF_MD_TEMPLATE _method("interleaveIncubation", &D::ClassType::interleaveIncubation);
     _d.CPGF_MD_TEMPLATE _method("timeToIncubate", &D::ClassType::timeToIncubate);
     _d.CPGF_MD_TEMPLATE _method("tr", &D::ClassType::tr)
@@ -53,6 +55,7 @@ void buildMetaClass_QSGRenderLoop(D _d)
     _d.CPGF_MD_TEMPLATE _method("instance", &D::ClassType::instance);
     _d.CPGF_MD_TEMPLATE _method("setInstance", &D::ClassType::setInstance);
     _d.CPGF_MD_TEMPLATE _method("useConsistentTiming", &D::ClassType::useConsistentTiming);
+    _d.CPGF_MD_TEMPLATE _method("cleanup", &D::ClassType::cleanup);
 }
 
 
@@ -208,6 +211,11 @@ public:
     void super_show(QQuickWindow * window)
     {
         throw std::runtime_error("Abstract method");
+    }
+    
+    void handleContextCreationFailure(QQuickWindow * window, bool isEs)
+    {
+        QSGRenderLoop::handleContextCreationFailure(window, isEs);
     }
     
     void releaseResources(QQuickWindow * window)
@@ -422,6 +430,7 @@ public:
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
         _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
         _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("handleContextCreationFailure", (void (D::ClassType::*) (QQuickWindow *, bool))&D::ClassType::handleContextCreationFailure);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
         _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
         _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);

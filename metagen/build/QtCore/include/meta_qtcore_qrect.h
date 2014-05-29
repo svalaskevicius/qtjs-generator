@@ -6,7 +6,6 @@
 
 #include <QtCore/include/meta_qtcore_qflags.h>
 #include <QtCore/include/meta_qtcore_qcontainerfwd.h>
-#include <qtCore_cpgf_compat.h>
 
 #include "cpgf/gmetadefine.h"
 #include "cpgf/metadata/gmetadataconfig.h"
@@ -29,12 +28,18 @@ void buildMetaClass_Global_qrect(D _d)
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const QRect &, const QRect &)>(mopHolder != mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, const QRect &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
     _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, QRect &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
+    _d.CPGF_MD_TEMPLATE _operator<QRect (*)(const QRect &, const QMargins &)>(mopHolder + mopHolder);
+    _d.CPGF_MD_TEMPLATE _operator<QRect (*)(const QMargins &, const QRect &)>(mopHolder + mopHolder);
+    _d.CPGF_MD_TEMPLATE _operator<QRect (*)(const QRect &, const QMargins &)>(mopHolder - mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QRect &)>(mopHolder << mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<bool (*)(const QRectF &, const QRectF &)>(mopHolder == mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<bool (*)(const QRectF &, const QRectF &)>(mopHolder != mopHolder);
-    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, const QRectF &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
+    _d.CPGF_MD_TEMPLATE _operator<bool (*)(const QRectF &, const QRectF &)>(mopHolder == mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _operator<bool (*)(const QRectF &, const QRectF &)>(mopHolder != mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, const QRectF &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0>, cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _operator<QDataStream & (*)(QDataStream &, QRectF &)>(mopHolder >> mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1>, cpgf::GMetaRuleParamNoncopyable<0> >());
-    _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QRectF &)>(mopHolder << mopHolder);
+    _d.CPGF_MD_TEMPLATE _operator<QRectF (*)(const QRectF &, const QMarginsF &)>(mopHolder + mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _operator<QRectF (*)(const QMarginsF &, const QRectF &)>(mopHolder + mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _operator<QRectF (*)(const QRectF &, const QMarginsF &)>(mopHolder - mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _operator<QDebug (*)(QDebug, const QRectF &)>(mopHolder << mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
 }
 
 
@@ -160,6 +165,12 @@ inline QRectF & opErAToRWrapper_QRectF__opBitOrAssign(QRectF * self, const QRect
 inline QRectF & opErAToRWrapper_QRectF__opBitAndAssign(QRectF * self, const QRectF & r) {
     return (*self) &= r;
 }
+inline QRectF & opErAToRWrapper_QRectF__opAddAssign(QRectF * self, const QMarginsF & margins) {
+    return (*self) += margins;
+}
+inline QRectF & opErAToRWrapper_QRectF__opSubAssign(QRectF * self, const QMarginsF & margins) {
+    return (*self) -= margins;
+}
 
 
 template <typename D>
@@ -169,7 +180,7 @@ void buildMetaClass_QRectF(D _d)
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _constructor<void * ()>();
-    _d.CPGF_MD_TEMPLATE _constructor<void * (const QPointF &, const QSizeF &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _constructor<void * (const QPointF &, const QSizeF &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QPointF &, const QPointF &)>(cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
     _d.CPGF_MD_TEMPLATE _constructor<void * (qreal, qreal, qreal, qreal)>();
     _d.CPGF_MD_TEMPLATE _constructor<void * (const QRect &)>();
@@ -224,23 +235,29 @@ void buildMetaClass_QRectF(D _d)
     _d.CPGF_MD_TEMPLATE _method("height", &D::ClassType::height);
     _d.CPGF_MD_TEMPLATE _method("setWidth", &D::ClassType::setWidth);
     _d.CPGF_MD_TEMPLATE _method("setHeight", &D::ClassType::setHeight);
-    _d.CPGF_MD_TEMPLATE _method("setSize", &D::ClassType::setSize);
-    _d.CPGF_MD_TEMPLATE _method("contains", (bool (D::ClassType::*) (const QRectF &) const)&D::ClassType::contains);
+    _d.CPGF_MD_TEMPLATE _method("setSize", &D::ClassType::setSize, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("contains", (bool (D::ClassType::*) (const QRectF &) const)&D::ClassType::contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("contains", (bool (D::ClassType::*) (const QPointF &) const)&D::ClassType::contains, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("contains", (bool (D::ClassType::*) (qreal, qreal) const)&D::ClassType::contains);
-    _d.CPGF_MD_TEMPLATE _method("united", &D::ClassType::united);
-    _d.CPGF_MD_TEMPLATE _method("intersected", &D::ClassType::intersected);
-    _d.CPGF_MD_TEMPLATE _method("intersects", &D::ClassType::intersects);
+    _d.CPGF_MD_TEMPLATE _method("united", &D::ClassType::united, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("intersected", &D::ClassType::intersected, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("intersects", &D::ClassType::intersects, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("marginsAdded", &D::ClassType::marginsAdded, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+    _d.CPGF_MD_TEMPLATE _method("marginsRemoved", &D::ClassType::marginsRemoved, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("toRect", &D::ClassType::toRect);
     _d.CPGF_MD_TEMPLATE _method("toAlignedRect", &D::ClassType::toAlignedRect);
-    _d.CPGF_MD_TEMPLATE _operator<QRectF (*)(const cpgf::GMetaSelf &, const QRectF &)>(mopHolder | mopHolder);
-    _d.CPGF_MD_TEMPLATE _method("_opBitOr", (QRectF (*) (const QRectF *, const QRectF &))&opErAToRWrapper_QRectF__opBitOr, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
-    _d.CPGF_MD_TEMPLATE _operator<QRectF (*)(const cpgf::GMetaSelf &, const QRectF &)>(mopHolder & mopHolder);
-    _d.CPGF_MD_TEMPLATE _method("_opBitAnd", (QRectF (*) (const QRectF *, const QRectF &))&opErAToRWrapper_QRectF__opBitAnd, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
-    _d.CPGF_MD_TEMPLATE _operator<QRectF & (*)(cpgf::GMetaSelf, const QRectF &)>(mopHolder |= mopHolder);
-    _d.CPGF_MD_TEMPLATE _method("_opBitOrAssign", (QRectF & (*) (QRectF *, const QRectF &))&opErAToRWrapper_QRectF__opBitOrAssign, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
-    _d.CPGF_MD_TEMPLATE _operator<QRectF & (*)(cpgf::GMetaSelf, const QRectF &)>(mopHolder &= mopHolder);
-    _d.CPGF_MD_TEMPLATE _method("_opBitAndAssign", (QRectF & (*) (QRectF *, const QRectF &))&opErAToRWrapper_QRectF__opBitAndAssign, cpgf::MakePolicy<cpgf::GMetaRuleExplicitThis >());
+    _d.CPGF_MD_TEMPLATE _operator<QRectF (*)(const cpgf::GMetaSelf &, const QRectF &)>(mopHolder | mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("_opBitOr", (QRectF (*) (const QRectF *, const QRectF &))&opErAToRWrapper_QRectF__opBitOr, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
+    _d.CPGF_MD_TEMPLATE _operator<QRectF (*)(const cpgf::GMetaSelf &, const QRectF &)>(mopHolder & mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("_opBitAnd", (QRectF (*) (const QRectF *, const QRectF &))&opErAToRWrapper_QRectF__opBitAnd, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
+    _d.CPGF_MD_TEMPLATE _operator<QRectF & (*)(cpgf::GMetaSelf, const QRectF &)>(mopHolder |= mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("_opBitOrAssign", (QRectF & (*) (QRectF *, const QRectF &))&opErAToRWrapper_QRectF__opBitOrAssign, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
+    _d.CPGF_MD_TEMPLATE _operator<QRectF & (*)(cpgf::GMetaSelf, const QRectF &)>(mopHolder &= mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("_opBitAndAssign", (QRectF & (*) (QRectF *, const QRectF &))&opErAToRWrapper_QRectF__opBitAndAssign, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
+    _d.CPGF_MD_TEMPLATE _operator<QRectF & (*)(cpgf::GMetaSelf, const QMarginsF &)>(mopHolder += mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("_opAddAssign", (QRectF & (*) (QRectF *, const QMarginsF &))&opErAToRWrapper_QRectF__opAddAssign, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
+    _d.CPGF_MD_TEMPLATE _operator<QRectF & (*)(cpgf::GMetaSelf, const QMarginsF &)>(mopHolder -= mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+    _d.CPGF_MD_TEMPLATE _method("_opSubAssign", (QRectF & (*) (QRectF *, const QMarginsF &))&opErAToRWrapper_QRectF__opSubAssign, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1>, cpgf::GMetaRuleExplicitThis >());
 }
 
 
