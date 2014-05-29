@@ -138,7 +138,7 @@ void registerGlobalV8Function(const char * name, F function)
 
     Local<Context> ctx = isolate->GetCurrentContext();
     Local<Object> global( ctx->Global() );
-    v8::Local<v8::FunctionTemplate> t = v8::FunctionTemplate::New(function);
+    v8::Local<v8::FunctionTemplate> t = v8::FunctionTemplate::New(isolate, function);
     v8::Local<v8::Function> fn = t->GetFunction();
     v8::Local<v8::String> fn_name = v8::String::NewFromUtf8(isolate, name);
     fn->SetName(fn_name);

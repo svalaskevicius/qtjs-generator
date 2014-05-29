@@ -19,9 +19,10 @@
 using namespace std;
 
 
+static v8::Isolate* v8_isolate;
+
 namespace node {
 
-extern v8::Isolate* node_isolate;
 bool v8_is_profiling;
 
 char** Init(int* argc,
@@ -53,7 +54,7 @@ int __exitCode = -1;
 
 
 void Exit(const v8::FunctionCallbackInfo<v8::Value>& args) {
-  v8::HandleScope scope(node::node_isolate);
+  v8::HandleScope scope(v8_isolate);
   __exitCode = args[0]->IntegerValue();
   qApp->exit(__exitCode);
 }
@@ -95,7 +96,7 @@ node::Environment* CreateNodeEnvironment(v8::Isolate* isolate,
     StartProfilerIdleNotifier(env);
   }
 
-  Local<FunctionTemplate> process_template = FunctionTemplate::New();
+  Local<FunctionTemplate> process_template = FunctionTemplate::New(isolate);
   process_template->SetClassName(FIXED_ONE_BYTE_STRING(isolate, "process"));
 
   Local<Object> process_object = process_template->GetFunction()->NewInstance();
@@ -114,15 +115,15 @@ void EmitNodeExit(node::Environment* env) {
   Context::Scope context_scope(env->context());
   HandleScope handle_scope(env->isolate());
   Local<Object> process_object = env->process_object();
-  process_object->Set(FIXED_ONE_BYTE_STRING(node_isolate, "_exiting"),
-                      True(node_isolate));
+  process_object->Set(FIXED_ONE_BYTE_STRING(v8_isolate, "_exiting"),
+                      True(v8_isolate));
 
-  Handle<String> exitCode = FIXED_ONE_BYTE_STRING(node_isolate, "exitCode");
+  Handle<String> exitCode = FIXED_ONE_BYTE_STRING(v8_isolate, "exitCode");
   int code = process_object->Get(exitCode)->IntegerValue();
 
   Local<Value> args[] = {
-    FIXED_ONE_BYTE_STRING(node_isolate, "exit"),
-    Integer::New(code, node_isolate)
+    FIXED_ONE_BYTE_STRING(v8_isolate, "exit"),
+    Integer::New(v8_isolate, code)
   };
 
   MakeCallback(env, process_object, "emit", ARRAY_SIZE(args), args);
@@ -160,6 +161,7 @@ int main(int argc, char * argv[])
   int exec_argc;
   const char** exec_argv;
   node::Init(&argc, const_cast<const char**>(argv), &exec_argc, &exec_argv);
+  v8_isolate = v8::Isolate::GetCurrent();
 
 //#if HAVE_OPENSSL
 //  // V8 on Windows doesn't have a good source of entropy. Seed it from
@@ -169,18 +171,18 @@ int main(int argc, char * argv[])
 
   v8::V8::Initialize();
   {
-    node::Environment* env = CreateNodeEnvironment(node::node_isolate, argc, argv, exec_argc, exec_argv);
-    cpgf::setV8Isolate(node::node_isolate);
-    v8::Locker locker(node::node_isolate);
-    v8::Context::Scope context_scope(env->context());
-    v8::HandleScope handle_scope(env->isolate());
+    node::Environment* env = CreateNodeEnvironment(v8_isolate, argc, argv, exec_argc, exec_argv);
+    cpgf::setV8Isolate(v8_isolate);
+    v8::Locker locker(v8_isolate);
     Q_UNUSED(locker);
-    Q_UNUSED(context_scope);
-    Q_UNUSED(handle_scope);
 
     {
+        v8::Context::Scope context_scope(env->context());
+        v8::HandleScope handle_scope(env->isolate());
         qtjs_binder::CpgfBinder cpgfBinder(env->context());
         Q_UNUSED(cpgfBinder);
+        Q_UNUSED(context_scope);
+        Q_UNUSED(handle_scope);
 
         try {
             node::Load(env);
