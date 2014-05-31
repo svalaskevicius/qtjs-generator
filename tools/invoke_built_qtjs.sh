@@ -50,7 +50,7 @@ case "$MYNAME" in
         ;;
 esac
 
-export ASAN_OPTIONS="abort_on_error=1"
+export ASAN_OPTIONS="abort_on_error=1 alloc_dealloc_mismatch=0"
 
 $PRECMD "$CMD" ${ARGS[@]}
 
