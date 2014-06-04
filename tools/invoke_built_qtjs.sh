@@ -8,6 +8,7 @@ export LD_LIBRARY_PATH="$TOPDIR/lib/cpgf-build/build:$TOPDIR/build/src/core:$TOP
 
 PRECMD=''
 ARGS=()
+NODE_ARGS=()
 while test "$#" -gt 0 ; do
     case "$1" in
         '--gdb')
@@ -40,7 +41,7 @@ while test "$#" -gt 0 ; do
     shift
 done
 
-CMD="$TOPDIR/build/src/runner/qtjs"
+CMD=""
 case "$MYNAME" in
     "spec")
         CMD="$TOPDIR/build/tests/spec/spec"
@@ -48,11 +49,15 @@ case "$MYNAME" in
     "features")
         CMD="$TOPDIR/build/tests/features/features"
         ;;
+    *) 
+        CMD="$TOPDIR/build/src/runner/qtjs"
+        NODE_ARGS+=("--harmony")
+        ;;
 esac
 
 export ASAN_OPTIONS="abort_on_error=1 alloc_dealloc_mismatch=0"
 
-$PRECMD "$CMD" ${ARGS[@]}
+$PRECMD "$CMD" ${NODE_ARGS[@]} ${ARGS[@]}
 
 exit $?
 
