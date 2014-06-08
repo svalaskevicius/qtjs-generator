@@ -116,7 +116,7 @@ Q_DECLARE_METATYPE(qtjs_binder::DynamicQObject<qt_metadata::QQuickItemWrapper>)
 namespace qtjs_binder {
 
 template <typename C>
-void initialiseCreatedObject(QQmlPrivate::QQmlElement<DynamicQObject<C> > *, int);
+void initialiseCreatedObject(C *, int);
 
 typedef void (*CreateIntoFuncPtr)(void *);
 
@@ -241,7 +241,7 @@ struct DynamicClassSpecificationImpl : public DynamicClassSpecification {
     }
     virtual QObject* instantiate(int classIdx) override {
         auto ret = new DynamicQObjectImpl();
-        ret->__setClassIdx(classIdx);
+        initialiseCreatedObject(ret, classIdx);
         return ret;
     }
     virtual std::string getName() override { return name; }
@@ -310,7 +310,7 @@ extern DynamicClassSpecifications dynamicClassSpecifications;
 extern cpgf::IScriptObject * unsafeCpgfScriptObject;
 
 template <typename C>
-void initialiseCreatedObject(QQmlPrivate::QQmlElement<DynamicQObject<C> > *target, int index)
+void initialiseCreatedObject(C *target, int index)
 {
     target->__setClassIdx(index);
     auto parentClass = dynamicClassSpecifications.getParentClass(index);
@@ -321,7 +321,5 @@ void initialiseCreatedObject(QQmlPrivate::QQmlElement<DynamicQObject<C> > *targe
         );
     }
 }
-
-
 
 }
