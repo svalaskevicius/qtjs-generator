@@ -32,7 +32,6 @@ public:
     void __setClassIdx(int classIdx)
     {
         this->classIdx = classIdx;
-        dynamicQObjects().callInit(classIdx, this);
     }
 
     DynamicQObject() : ParentClass(), classIdx(-1) { }
@@ -116,7 +115,10 @@ Q_DECLARE_METATYPE(qtjs_binder::DynamicQObject<qt_metadata::QQuickItemWrapper>)
 namespace qtjs_binder {
 
 template <typename C>
-void initialiseCreatedObject(C *, int);
+void initialiseCreatedObject(DynamicQObject<C> *, int);
+
+template <typename C>
+void initialiseCreatedQmlObject(QQmlPrivate::QQmlElement<DynamicQObject<C> > *, int);
 
 typedef void (*CreateIntoFuncPtr)(void *);
 
@@ -127,7 +129,7 @@ void create_into(ffi_cif *cif, void *ret, void* args[], void* classIdx)
     void *target = *(void **)args[0];
     size_t index = (size_t)classIdx;
     QQmlPrivate::createInto<C>(target);
-    initialiseCreatedObject((QQmlPrivate::QQmlElement<C>*)target, index);
+    initialiseCreatedQmlObject((QQmlPrivate::QQmlElement<C>*)target, index);
 }
 
 template <typename C>
@@ -230,7 +232,7 @@ struct DynamicClassSpecificationImpl : public DynamicClassSpecification {
     DynamicClassSpecificationImpl(std::string name) : name(name) {}
     int typeId() override { return qMetaTypeId<DynamicQObjectImpl>(); }
     void convertQtDataToGVariantData(void *data, cpgf::GVariantData *dest) override {
-        *dest = cpgf::createTypedVariant((DynamicQObjectImpl *)data).takeData();
+        *dest = cpgf::createTypedVariant((Target *)((DynamicQObjectImpl *)data)).takeData();
     }
     virtual QQmlPrivate::RegisterType createQmlRegisterType(int classIdx, const char *uri, int versionMajor, int versionMinor, const char *qmlName) override {
         return createQmlRegisterTypeImpl<DynamicQObjectImpl >(classIdx, uri, versionMajor, versionMinor, qmlName);
@@ -310,7 +312,13 @@ extern DynamicClassSpecifications dynamicClassSpecifications;
 extern cpgf::IScriptObject * unsafeCpgfScriptObject;
 
 template <typename C>
-void initialiseCreatedObject(C *target, int index)
+void initialiseCreatedQmlObject(QQmlPrivate::QQmlElement<DynamicQObject<C> > *target, int index)
+{
+    initialiseCreatedObject((DynamicQObject<C> *)target, index);
+}
+
+template <typename C>
+void initialiseCreatedObject(DynamicQObject<C> *target, int index)
 {
     target->__setClassIdx(index);
     auto parentClass = dynamicClassSpecifications.getParentClass(index);
@@ -320,6 +328,7 @@ void initialiseCreatedObject(C *target, int index)
             parentClass
         );
     }
+    dynamicQObjects().callInit(index, target);
 }
 
 }
