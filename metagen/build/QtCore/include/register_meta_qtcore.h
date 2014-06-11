@@ -222,6 +222,7 @@ GDefineMetaInfo createMetaClass_QUuid();
 GDefineMetaInfo createMetaClass_QVariant();
 GDefineMetaInfo createMetaClass_QVariantAnimation();
 GDefineMetaInfo createMetaClass_QVariantComparisonHelper();
+GDefineMetaInfo createMetaClass_QVector_TemplateInstance_QVector_quint32();
 GDefineMetaInfo createMetaClass_QWaitCondition();
 GDefineMetaInfo createMetaClass_QWriteLocker();
 GDefineMetaInfo createMetaClass_ResultItem();
@@ -443,6 +444,7 @@ void registerMain_QtCore(Meta _d)
     _d._class(createMetaClass_QVariant());
     _d._class(createMetaClass_QVariantAnimation());
     _d._class(createMetaClass_QVariantComparisonHelper());
+    _d._class(createMetaClass_QVector_TemplateInstance_QVector_quint32());
     _d._class(createMetaClass_QWaitCondition());
     _d._class(createMetaClass_QWriteLocker());
     _d._class(createMetaClass_ResultItem());
