@@ -1,5 +1,11 @@
-Qt API bindings generator for V8 JS engine
-==========================================
+Qt API bindings generator for Node.js
+=====================================
+
+Summary
+-------
+
+ * Qt API exposed in js
+ * Node.js integrated and runs in a single event loop
 
 How to build
 ------------
