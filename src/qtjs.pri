@@ -23,7 +23,9 @@ linux-clang {
     QMAKE_CXXFLAGS_DEBUG += -fsanitize=address
     QMAKE_LFLAGS_DEBUG += -fsanitize=address
 }
-QMAKE_CXXFLAGS_RELEASE += -Wno-unused-parameter
+
+# V8 has lots of them (unused params)..
+QMAKE_CXXFLAGS += -Wno-unused-parameter
 
 INCLUDEPATH += $${ROOT}/metagen/build/
 
