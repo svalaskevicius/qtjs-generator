@@ -57,3 +57,13 @@ inline uint qHash(QGlyphRun, uint = 0) {
     return 0;
 }
 
+inline bool operator==(QTextLayout::FormatRange, const QTextLayout::FormatRange &) {
+    throw std::logic_error("FormatRange cannot be compared equals");
+    return false;
+}
+inline uint qHash(const QTextLayout::FormatRange &)
+{
+    throw std::logic_error("FormatRange cannot be hashed");
+    return 0;
+}
+

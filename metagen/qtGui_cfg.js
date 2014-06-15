@@ -45,6 +45,7 @@ var config = {
 
   predefinedTemplateInstances: [
     'QList<QGlyphRun>', '',
+    'QList<QTextLayout::FormatRange>', 'QList_QTextLayout_FormatRange',
   ]
 };
 
