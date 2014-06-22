@@ -43,6 +43,9 @@ namespace {
 QObject *objectFromVariant(QVariant *v) {
     return v->value<QObject *>();
 }
+QFont fontFromVariant(QVariant *v) {
+    return v->value<QFont>();
+}
 
 void invokeV8Gc()
 {
@@ -161,6 +164,7 @@ void registerQt(cpgf::GDefineMetaNamespace &define)
     define._method("connect", &qtjs_binder::SignalConnectorBinder::connect);
     define._method("invokeV8Gc", &invokeV8Gc);
     define._method("objectFromVariant", &objectFromVariant);
+    define._method("fontFromVariant", &fontFromVariant);
 
     define._method("arrayValueForOffset_Point2D", &arrayValueForOffset<QSGGeometry::Point2D>);
     define._method("arrayValueForOffset_ColoredPoint2D", &arrayValueForOffset<QSGGeometry::ColoredPoint2D>);
