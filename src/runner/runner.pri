@@ -14,9 +14,12 @@ SOURCES += \
     $$PWD/dynamicQObjects.cpp \
     ../../src/runner/qttypesconverter.cpp
 
+mac:INCLUDEPATH += /usr/local/Cellar/libffi/3.0.13/lib/libffi-3.0.13/include/
+mac:LIBPATH += /usr/local/Cellar/libffi/3.0.13/lib/
+
 LIBPATH += $$BUILD/src/core $$BUILD/src/widgets $$BUILD/src/qml $$BUILD/src/gui $${ROOT}/lib/node/out/Release/
 LIBS += -lqtjs_widgets -lqtjs_qml -lqtjs_gui -lqtjs_core -lffi -luv -lcares -lhttp_parser -lopenssl -lchrome_zlib
-unix:LIBS += -ldl -lrt
+linux:LIBS += -ldl -lrt
 
 HEADERS += \
     $$PWD/cpgfApi.h \
