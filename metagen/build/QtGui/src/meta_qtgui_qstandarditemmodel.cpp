@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qstandarditemmodel.h>
+#include "QtGui/qstandarditemmodel.h"
 
 #include "meta_qtgui_qstandarditemmodel.h"
 

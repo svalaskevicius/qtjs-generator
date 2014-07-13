@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qpainterpath.h>
+#include "QtGui/qpainterpath.h"
 
 #include "meta_qtgui_qpainterpath.h"
 

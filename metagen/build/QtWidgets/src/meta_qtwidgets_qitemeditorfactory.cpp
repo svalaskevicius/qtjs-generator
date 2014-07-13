@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qitemeditorfactory.h>
+#include "QtWidgets/qitemeditorfactory.h"
 
 #include "meta_qtwidgets_qitemeditorfactory.h"
 

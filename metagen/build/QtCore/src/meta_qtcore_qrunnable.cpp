@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qrunnable.h>
+#include "QtCore/qrunnable.h"
 
 #include "meta_qtcore_qrunnable.h"
 

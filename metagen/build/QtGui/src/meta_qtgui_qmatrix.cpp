@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qmatrix.h>
+#include "QtGui/qmatrix.h"
 
 #include "meta_qtgui_qmatrix.h"
 

@@ -27,7 +27,7 @@
 #include <private/qsgrenderer_p.h>
 #include <private/qsgrenderloop_p.h>
 
-#include <QtQml/qqmlincubator.h>
+#include "QtQml/qqmlincubator.h"
 
 #include "meta_qtqml_qqmlincubator.h"
 

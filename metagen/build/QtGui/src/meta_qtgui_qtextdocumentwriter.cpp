@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qtextdocumentwriter.h>
+#include "QtGui/qtextdocumentwriter.h"
 
 #include "meta_qtgui_qtextdocumentwriter.h"
 

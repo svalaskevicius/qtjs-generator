@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qstringmatcher.h>
+#include "QtCore/qstringmatcher.h"
 
 #include "meta_qtcore_qstringmatcher.h"
 

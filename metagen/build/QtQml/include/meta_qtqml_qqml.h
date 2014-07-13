@@ -39,13 +39,13 @@ void buildMetaClass_Global_qqml(D _d)
     _d.CPGF_MD_TEMPLATE _method("qmlRegisterSingletonType", (int (*) (const char *, int, int, const char *, QJSValue(*)(QQmlEngine *, QJSEngine *)))&qmlRegisterSingletonType);
     _d.CPGF_MD_TEMPLATE _method("qmlRegisterSingletonType", (int (*) (const QUrl &, const char *, int, int, const char *))&qmlRegisterSingletonType, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     _d.CPGF_MD_TEMPLATE _method("qmlRegisterType", (int (*) (const QUrl &, const char *, int, int, const char *))&qmlRegisterType, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtQml_40")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtQml_38")
         ._element("QML_HAS_ATTACHED_PROPERTIES", QML_HAS_ATTACHED_PROPERTIES)
     ;
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtQml_41")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtQml_39")
         ._element("QmlCurrentSingletonTypeRegistrationVersion", QmlCurrentSingletonTypeRegistrationVersion)
     ;
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_42")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_40")
         ._element("QML_VERSION", QML_VERSION)
         ._element("QML_VERSION_STR", QML_VERSION_STR)
     ;

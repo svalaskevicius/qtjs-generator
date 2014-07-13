@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qdebug.h>
+#include "QtCore/qdebug.h"
 
 #include "meta_qtcore_qdebug.h"
 

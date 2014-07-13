@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qaccessiblewidget.h>
+#include "QtWidgets/qaccessiblewidget.h"
 
 #include "meta_qtwidgets_qaccessiblewidget.h"
 

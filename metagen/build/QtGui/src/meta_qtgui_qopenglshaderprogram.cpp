@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qopenglshaderprogram.h>
+#include "QtGui/qopenglshaderprogram.h"
 
 #include "meta_qtgui_qopenglshaderprogram.h"
 

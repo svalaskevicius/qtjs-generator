@@ -24,7 +24,7 @@ void buildMetaClass_Global_qrecyclepool_p(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_31")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_48")
         ._element("QRECYCLEPOOLCOOKIE", QRECYCLEPOOLCOOKIE)
     ;
 }

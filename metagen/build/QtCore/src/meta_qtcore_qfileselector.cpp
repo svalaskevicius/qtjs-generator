@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qfileselector.h>
+#include "QtCore/qfileselector.h"
 
 #include "meta_qtcore_qfileselector.h"
 

@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qbrush.h>
+#include "QtGui/qbrush.h"
 
 #include "meta_qtgui_qbrush.h"
 

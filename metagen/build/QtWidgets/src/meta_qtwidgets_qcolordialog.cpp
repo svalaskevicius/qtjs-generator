@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qcolordialog.h>
+#include "QtWidgets/qcolordialog.h"
 
 #include "meta_qtwidgets_qcolordialog.h"
 

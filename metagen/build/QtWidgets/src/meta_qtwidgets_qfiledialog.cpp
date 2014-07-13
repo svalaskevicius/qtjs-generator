@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qfiledialog.h>
+#include "QtWidgets/qfiledialog.h"
 
 #include "meta_qtwidgets_qfiledialog.h"
 

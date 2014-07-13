@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qdialogbuttonbox.h>
+#include "QtWidgets/qdialogbuttonbox.h"
 
 #include "meta_qtwidgets_qdialogbuttonbox.h"
 

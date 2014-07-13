@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qtextbrowser.h>
+#include "QtWidgets/qtextbrowser.h"
 
 #include "meta_qtwidgets_qtextbrowser.h"
 

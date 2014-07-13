@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qquaternion.h>
+#include "QtGui/qquaternion.h"
 
 #include "meta_qtgui_qquaternion.h"
 

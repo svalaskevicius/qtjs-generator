@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qtableview.h>
+#include "QtWidgets/qtableview.h"
 
 #include "meta_qtwidgets_qtableview.h"
 

@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qsystemtrayicon.h>
+#include "QtWidgets/qsystemtrayicon.h"
 
 #include "meta_qtwidgets_qsystemtrayicon.h"
 

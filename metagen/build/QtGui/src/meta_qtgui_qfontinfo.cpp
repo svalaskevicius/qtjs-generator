@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qfontinfo.h>
+#include "QtGui/qfontinfo.h"
 
 #include "meta_qtgui_qfontinfo.h"
 

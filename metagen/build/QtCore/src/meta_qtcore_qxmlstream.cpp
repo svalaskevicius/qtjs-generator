@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qxmlstream.h>
+#include "QtCore/qxmlstream.h"
 
 #include "meta_qtcore_qxmlstream.h"
 

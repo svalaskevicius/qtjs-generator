@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qabstractitemview.h>
+#include "QtWidgets/qabstractitemview.h"
 
 #include "meta_qtwidgets_qabstractitemview.h"
 

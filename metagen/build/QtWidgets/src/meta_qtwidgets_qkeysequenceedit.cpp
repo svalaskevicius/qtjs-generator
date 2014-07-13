@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qkeysequenceedit.h>
+#include "QtWidgets/qkeysequenceedit.h"
 
 #include "meta_qtwidgets_qkeysequenceedit.h"
 

@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qsurfaceformat.h>
+#include "QtGui/qsurfaceformat.h"
 
 #include "meta_qtgui_qsurfaceformat.h"
 

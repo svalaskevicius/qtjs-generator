@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qfactoryinterface.h>
+#include "QtCore/qfactoryinterface.h"
 
 #include "meta_qtcore_qfactoryinterface.h"
 

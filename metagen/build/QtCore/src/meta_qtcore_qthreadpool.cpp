@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qthreadpool.h>
+#include "QtCore/qthreadpool.h"
 
 #include "meta_qtcore_qthreadpool.h"
 

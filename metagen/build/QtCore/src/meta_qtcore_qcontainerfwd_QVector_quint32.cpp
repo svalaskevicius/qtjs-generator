@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qcontainerfwd.h>
+#include "QtCore/qcontainerfwd.h"
 
 #include "meta_qtcore_qcontainerfwd.h"
 

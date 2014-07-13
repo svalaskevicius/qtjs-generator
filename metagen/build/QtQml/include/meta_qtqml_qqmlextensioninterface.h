@@ -27,7 +27,7 @@ void buildMetaClass_Global_qqmlextensioninterface(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_43")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_37")
         ._element("QQmlTypesExtensionInterface_iid", QQmlTypesExtensionInterface_iid)
         ._element("QQmlExtensionInterface_iid", QQmlExtensionInterface_iid)
     ;
@@ -47,21 +47,6 @@ void buildMetaClass_QQmlExtensionInterface(D _d)
 class QQmlExtensionInterfaceWrapper : public QQmlExtensionInterface, public cpgf::GScriptWrapper {
 public:
     
-    void registerTypes(const char * uri)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("registerTypes"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, uri);
-            return;
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    void super_registerTypes(const char * uri)
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
     void initializeEngine(QQmlEngine * engine, const char * uri)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("initializeEngine"));
@@ -76,13 +61,28 @@ public:
     {
         throw std::runtime_error("Abstract method");
     }
+    
+    void registerTypes(const char * uri)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("registerTypes"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, uri);
+            return;
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    void super_registerTypes(const char * uri)
+    {
+        throw std::runtime_error("Abstract method");
+    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_registerTypes", (void (D::ClassType::*) (const char *))&D::ClassType::super_registerTypes);
         _d.CPGF_MD_TEMPLATE _method("super_initializeEngine", (void (D::ClassType::*) (QQmlEngine *, const char *))&D::ClassType::super_initializeEngine);
+        _d.CPGF_MD_TEMPLATE _method("super_registerTypes", (void (D::ClassType::*) (const char *))&D::ClassType::super_registerTypes);
     }
 };
 

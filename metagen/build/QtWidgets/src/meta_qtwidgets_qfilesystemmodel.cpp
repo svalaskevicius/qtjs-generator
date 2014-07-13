@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qfilesystemmodel.h>
+#include "QtWidgets/qfilesystemmodel.h"
 
 #include "meta_qtwidgets_qfilesystemmodel.h"
 

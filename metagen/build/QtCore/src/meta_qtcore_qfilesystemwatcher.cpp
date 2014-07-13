@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qfilesystemwatcher.h>
+#include "QtCore/qfilesystemwatcher.h"
 
 #include "meta_qtcore_qfilesystemwatcher.h"
 

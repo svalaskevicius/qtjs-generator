@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qfontdialog.h>
+#include "QtWidgets/qfontdialog.h"
 
 #include "meta_qtwidgets_qfontdialog.h"
 

@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qgroupbox.h>
+#include "QtWidgets/qgroupbox.h"
 
 #include "meta_qtwidgets_qgroupbox.h"
 

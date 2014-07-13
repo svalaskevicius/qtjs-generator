@@ -27,7 +27,7 @@
 #include <private/qsgrenderer_p.h>
 #include <private/qsgrenderloop_p.h>
 
-#include <QtQuick/qsgflatcolormaterial.h>
+#include "QtQuick/qsgflatcolormaterial.h"
 
 #include "meta_qtqml_qsgflatcolormaterial.h"
 

@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qendian.h>
+#include "QtCore/qendian.h"
 
 #include "meta_qtcore_qendian.h"
 

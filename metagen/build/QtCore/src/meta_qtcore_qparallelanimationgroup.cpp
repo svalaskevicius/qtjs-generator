@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qparallelanimationgroup.h>
+#include "QtCore/qparallelanimationgroup.h"
 
 #include "meta_qtcore_qparallelanimationgroup.h"
 

@@ -75,33 +75,19 @@ public:
     QGraphicsLinearLayoutWrapper(Qt::Orientation orientation, QGraphicsLayoutItem * parent = 0)
         : QGraphicsLinearLayout(orientation, parent) {}
     
-    void invalidate()
+    void getContentsMargins(qreal * left, qreal * top, qreal * right, qreal * bottom) const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidate"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("getContentsMargins"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, left, top, right, bottom);
             return;
         }
-        QGraphicsLinearLayout::invalidate();
+        QGraphicsLayout::getContentsMargins(left, top, right, bottom);
     }
-    void super_invalidate()
+    void super_getContentsMargins(qreal * left, qreal * top, qreal * right, qreal * bottom) const
     {
-        QGraphicsLinearLayout::invalidate();
-    }
-    
-    QSizeF sizeHint(Qt::SizeHint which, const QSizeF & constraint = QSizeF()) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSizeF >(cpgf::invokeScriptFunctionOnObject(func.get(), this, which, constraint).getValue());
-        }
-        return QGraphicsLinearLayout::sizeHint(which, constraint);
-    }
-    QSizeF super_sizeHint(Qt::SizeHint which, const QSizeF & constraint = QSizeF()) const
-    {
-        return QGraphicsLinearLayout::sizeHint(which, constraint);
+        QGraphicsLayout::getContentsMargins(left, top, right, bottom);
     }
     
     void setGraphicsItem(QGraphicsItem * item)
@@ -109,9 +95,54 @@ public:
         QGraphicsLayoutItem::setGraphicsItem(item);
     }
     
-    void setOwnedByLayout(bool ownedByLayout)
+    void addChildLayoutItem(QGraphicsLayoutItem * layoutItem)
     {
-        QGraphicsLayoutItem::setOwnedByLayout(ownedByLayout);
+        QGraphicsLayout::addChildLayoutItem(layoutItem);
+    }
+    
+    void setGeometry(const QRectF & rect)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setGeometry"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
+            return;
+        }
+        QGraphicsLinearLayout::setGeometry(rect);
+    }
+    void super_setGeometry(const QRectF & rect)
+    {
+        QGraphicsLinearLayout::setGeometry(rect);
+    }
+    
+    void removeAt(int index)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("removeAt"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, index);
+            return;
+        }
+        QGraphicsLinearLayout::removeAt(index);
+    }
+    void super_removeAt(int index)
+    {
+        QGraphicsLinearLayout::removeAt(index);
+    }
+    
+    void widgetEvent(QEvent * e)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widgetEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, e);
+            return;
+        }
+        QGraphicsLayout::widgetEvent(e);
+    }
+    void super_widgetEvent(QEvent * e)
+    {
+        QGraphicsLayout::widgetEvent(e);
     }
     
     int count() const
@@ -143,19 +174,33 @@ public:
         QGraphicsLayout::updateGeometry();
     }
     
-    void widgetEvent(QEvent * e)
+    QSizeF sizeHint(Qt::SizeHint which, const QSizeF & constraint = QSizeF()) const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widgetEvent"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, e);
+            return cpgf::fromVariant<QSizeF >(cpgf::invokeScriptFunctionOnObject(func.get(), this, which, constraint).getValue());
+        }
+        return QGraphicsLinearLayout::sizeHint(which, constraint);
+    }
+    QSizeF super_sizeHint(Qt::SizeHint which, const QSizeF & constraint = QSizeF()) const
+    {
+        return QGraphicsLinearLayout::sizeHint(which, constraint);
+    }
+    
+    void invalidate()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidate"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
-        QGraphicsLayout::widgetEvent(e);
+        QGraphicsLinearLayout::invalidate();
     }
-    void super_widgetEvent(QEvent * e)
+    void super_invalidate()
     {
-        QGraphicsLayout::widgetEvent(e);
+        QGraphicsLinearLayout::invalidate();
     }
     
     QGraphicsLayoutItem * itemAt(int index) const
@@ -172,54 +217,9 @@ public:
         return QGraphicsLinearLayout::itemAt(index);
     }
     
-    void removeAt(int index)
+    void setOwnedByLayout(bool ownedByLayout)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("removeAt"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, index);
-            return;
-        }
-        QGraphicsLinearLayout::removeAt(index);
-    }
-    void super_removeAt(int index)
-    {
-        QGraphicsLinearLayout::removeAt(index);
-    }
-    
-    void addChildLayoutItem(QGraphicsLayoutItem * layoutItem)
-    {
-        QGraphicsLayout::addChildLayoutItem(layoutItem);
-    }
-    
-    void getContentsMargins(qreal * left, qreal * top, qreal * right, qreal * bottom) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("getContentsMargins"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, left, top, right, bottom);
-            return;
-        }
-        QGraphicsLayout::getContentsMargins(left, top, right, bottom);
-    }
-    void super_getContentsMargins(qreal * left, qreal * top, qreal * right, qreal * bottom) const
-    {
-        QGraphicsLayout::getContentsMargins(left, top, right, bottom);
-    }
-    
-    void setGeometry(const QRectF & rect)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setGeometry"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
-            return;
-        }
-        QGraphicsLinearLayout::setGeometry(rect);
-    }
-    void super_setGeometry(const QRectF & rect)
-    {
-        QGraphicsLinearLayout::setGeometry(rect);
+        QGraphicsLayoutItem::setOwnedByLayout(ownedByLayout);
     }
     template <typename D>
     static void cpgf__register(D _d)
@@ -227,19 +227,19 @@ public:
         (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("setGraphicsItem", (void (D::ClassType::*) (QGraphicsItem *))&D::ClassType::setGraphicsItem);
-        _d.CPGF_MD_TEMPLATE _method("setOwnedByLayout", (void (D::ClassType::*) (bool))&D::ClassType::setOwnedByLayout);
         _d.CPGF_MD_TEMPLATE _method("addChildLayoutItem", (void (D::ClassType::*) (QGraphicsLayoutItem *))&D::ClassType::addChildLayoutItem);
-        _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
+        _d.CPGF_MD_TEMPLATE _method("setOwnedByLayout", (void (D::ClassType::*) (bool))&D::ClassType::setOwnedByLayout);
+        _d.CPGF_MD_TEMPLATE _method("super_getContentsMargins", (void (D::ClassType::*) (qreal *, qreal *, qreal *, qreal *) const)&D::ClassType::super_getContentsMargins);
+        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setGeometry, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_removeAt", (void (D::ClassType::*) (int))&D::ClassType::super_removeAt);
+        _d.CPGF_MD_TEMPLATE _method("super_widgetEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_widgetEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_count", (int (D::ClassType::*) () const)&D::ClassType::super_count);
+        _d.CPGF_MD_TEMPLATE _method("super_updateGeometry", (void (D::ClassType::*) ())&D::ClassType::super_updateGeometry);
         _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSizeF (D::ClassType::*) (Qt::SizeHint, const QSizeF &) const)&D::ClassType::super_sizeHint, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >())
             ._default(copyVariantFromCopyable(QSizeF()))
         ;
-        _d.CPGF_MD_TEMPLATE _method("super_count", (int (D::ClassType::*) () const)&D::ClassType::super_count);
-        _d.CPGF_MD_TEMPLATE _method("super_updateGeometry", (void (D::ClassType::*) ())&D::ClassType::super_updateGeometry);
-        _d.CPGF_MD_TEMPLATE _method("super_widgetEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_widgetEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
         _d.CPGF_MD_TEMPLATE _method("super_itemAt", (QGraphicsLayoutItem * (D::ClassType::*) (int) const)&D::ClassType::super_itemAt);
-        _d.CPGF_MD_TEMPLATE _method("super_removeAt", (void (D::ClassType::*) (int))&D::ClassType::super_removeAt);
-        _d.CPGF_MD_TEMPLATE _method("super_getContentsMargins", (void (D::ClassType::*) (qreal *, qreal *, qreal *, qreal *) const)&D::ClassType::super_getContentsMargins);
-        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setGeometry, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
 };
 

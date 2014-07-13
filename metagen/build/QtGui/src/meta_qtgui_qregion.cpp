@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qregion.h>
+#include "QtGui/qregion.h"
 
 #include "meta_qtgui_qregion.h"
 

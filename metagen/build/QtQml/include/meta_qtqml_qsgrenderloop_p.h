@@ -62,160 +62,9 @@ void buildMetaClass_QSGRenderLoop(D _d)
 class QSGRenderLoopWrapper : public QSGRenderLoop, public cpgf::GScriptWrapper {
 public:
     
-    void connectNotify(const QMetaMethod & signal)
+    int senderSignalIndex() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
-            return;
-        }
-        QObject::connectNotify(signal);
-    }
-    void super_connectNotify(const QMetaMethod & signal)
-    {
-        QObject::connectNotify(signal);
-    }
-    
-    QImage grab(QQuickWindow * window)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("grab"));
-        if(func)
-        {
-            return cpgf::fromVariant<QImage >(cpgf::invokeScriptFunctionOnObject(func.get(), this, window).getValue());
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    QImage super_grab(QQuickWindow * window)
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
-    void childEvent(QChildEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::childEvent(__arg0);
-    }
-    void super_childEvent(QChildEvent * __arg0)
-    {
-        QObject::childEvent(__arg0);
-    }
-    
-    QSGContext * sceneGraphContext() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneGraphContext"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSGContext * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    QSGContext * super_sceneGraphContext() const
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
-    void * qt_metacast(const char * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
-        if(func)
-        {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QSGRenderLoop::qt_metacast(__arg0);
-    }
-    void * super_qt_metacast(const char * __arg0)
-    {
-        return QSGRenderLoop::qt_metacast(__arg0);
-    }
-    
-    void hide(QQuickWindow * window)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hide"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, window);
-            return;
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    void super_hide(QQuickWindow * window)
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
-    bool event(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QObject::event(__arg0);
-    }
-    bool super_event(QEvent * __arg0)
-    {
-        return QObject::event(__arg0);
-    }
-    
-    void timerEvent(QTimerEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::timerEvent(__arg0);
-    }
-    void super_timerEvent(QTimerEvent * __arg0)
-    {
-        QObject::timerEvent(__arg0);
-    }
-    
-    void resize(QQuickWindow * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("resize"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QSGRenderLoop::resize(__arg0);
-    }
-    void super_resize(QQuickWindow * __arg0)
-    {
-        QSGRenderLoop::resize(__arg0);
-    }
-    
-    QObject * sender() const
-    {
-        return QObject::sender();
-    }
-    
-    void show(QQuickWindow * window)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("show"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, window);
-            return;
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    void super_show(QQuickWindow * window)
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
-    void handleContextCreationFailure(QQuickWindow * window, bool isEs)
-    {
-        QSGRenderLoop::handleContextCreationFailure(window, isEs);
+        return QObject::senderSignalIndex();
     }
     
     void releaseResources(QQuickWindow * window)
@@ -233,28 +82,68 @@ public:
         throw std::runtime_error("Abstract method");
     }
     
-    QSGRenderContext * createRenderContext(QSGContext * __arg0) const
+    QObject * sender() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createRenderContext"));
+        return QObject::sender();
+    }
+    
+    void update(QQuickWindow * window)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("update"));
         if(func)
         {
-            return cpgf::fromVariant<QSGRenderContext * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, window);
+            return;
         }
         throw std::runtime_error("Abstract method");
     }
-    QSGRenderContext * super_createRenderContext(QSGContext * __arg0) const
+    void super_update(QQuickWindow * window)
     {
         throw std::runtime_error("Abstract method");
     }
     
-    bool isSignalConnected(const QMetaMethod & signal) const
+    void handleContextCreationFailure(QQuickWindow * window, bool isEs)
     {
-        return QObject::isSignalConnected(signal);
+        QSGRenderLoop::handleContextCreationFailure(window, isEs);
+    }
+    
+    void disconnectNotify(const QMetaMethod & signal)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            return;
+        }
+        QObject::disconnectNotify(signal);
+    }
+    void super_disconnectNotify(const QMetaMethod & signal)
+    {
+        QObject::disconnectNotify(signal);
+    }
+    
+    QImage grab(QQuickWindow * window)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("grab"));
+        if(func)
+        {
+            return cpgf::fromVariant<QImage >(cpgf::invokeScriptFunctionOnObject(func.get(), this, window).getValue());
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    QImage super_grab(QQuickWindow * window)
+    {
+        throw std::runtime_error("Abstract method");
     }
     
     int receivers(const char * signal) const
     {
         return QObject::receivers(signal);
+    }
+    
+    bool isSignalConnected(const QMetaMethod & signal) const
+    {
+        return QObject::isSignalConnected(signal);
     }
     
     bool interleaveIncubation() const
@@ -271,24 +160,33 @@ public:
         return QSGRenderLoop::interleaveIncubation();
     }
     
-    int senderSignalIndex() const
+    bool eventFilter(QObject * __arg0, QEvent * __arg1)
     {
-        return QObject::senderSignalIndex();
-    }
-    
-    void update(QQuickWindow * window)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("update"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, window);
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
+        }
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    
+    void timerEvent(QTimerEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
-        throw std::runtime_error("Abstract method");
+        QObject::timerEvent(__arg0);
     }
-    void super_update(QQuickWindow * window)
+    void super_timerEvent(QTimerEvent * __arg0)
     {
-        throw std::runtime_error("Abstract method");
+        QObject::timerEvent(__arg0);
     }
     
     void maybeUpdate(QQuickWindow * window)
@@ -321,45 +219,45 @@ public:
         throw std::runtime_error("Abstract method");
     }
     
-    bool eventFilter(QObject * __arg0, QEvent * __arg1)
+    QSGContext * sceneGraphContext() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sceneGraphContext"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
-        }
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    
-    const QMetaObject * metaObject() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
-        if(func)
-        {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSGRenderLoop::metaObject();
-    }
-    const QMetaObject * super_metaObject() const
-    {
-        return QSGRenderLoop::metaObject();
-    }
-    
-    void exposureChanged(QQuickWindow * window)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("exposureChanged"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, window);
-            return;
+            return cpgf::fromVariant<QSGContext * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
-    void super_exposureChanged(QQuickWindow * window)
+    QSGContext * super_sceneGraphContext() const
+    {
+        throw std::runtime_error("Abstract method");
+    }
+    
+    void childEvent(QChildEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::childEvent(__arg0);
+    }
+    void super_childEvent(QChildEvent * __arg0)
+    {
+        QObject::childEvent(__arg0);
+    }
+    
+    QSGRenderContext * createRenderContext(QSGContext * __arg0) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createRenderContext"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSGRenderContext * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    QSGRenderContext * super_createRenderContext(QSGContext * __arg0) const
     {
         throw std::runtime_error("Abstract method");
     }
@@ -379,18 +277,48 @@ public:
         QObject::customEvent(__arg0);
     }
     
-    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    void connectNotify(const QMetaMethod & signal)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            return;
         }
-        return QSGRenderLoop::qt_metacall(__arg0, __arg1, __arg2);
+        QObject::connectNotify(signal);
     }
-    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    void super_connectNotify(const QMetaMethod & signal)
     {
-        return QSGRenderLoop::qt_metacall(__arg0, __arg1, __arg2);
+        QObject::connectNotify(signal);
+    }
+    
+    void resize(QQuickWindow * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("resize"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QSGRenderLoop::resize(__arg0);
+    }
+    void super_resize(QQuickWindow * __arg0)
+    {
+        QSGRenderLoop::resize(__arg0);
+    }
+    
+    void * qt_metacast(const char * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
+        if(func)
+        {
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QSGRenderLoop::qt_metacast(__arg0);
+    }
+    void * super_qt_metacast(const char * __arg0)
+    {
+        return QSGRenderLoop::qt_metacast(__arg0);
     }
     
     QAnimationDriver * animationDriver() const
@@ -407,58 +335,130 @@ public:
         throw std::runtime_error("Abstract method");
     }
     
-    void disconnectNotify(const QMetaMethod & signal)
+    bool event(QEvent * __arg0)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QObject::event(__arg0);
+    }
+    bool super_event(QEvent * __arg0)
+    {
+        return QObject::event(__arg0);
+    }
+    
+    void exposureChanged(QQuickWindow * window)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("exposureChanged"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, window);
             return;
         }
-        QObject::disconnectNotify(signal);
+        throw std::runtime_error("Abstract method");
     }
-    void super_disconnectNotify(const QMetaMethod & signal)
+    void super_exposureChanged(QQuickWindow * window)
     {
-        QObject::disconnectNotify(signal);
+        throw std::runtime_error("Abstract method");
+    }
+    
+    void hide(QQuickWindow * window)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hide"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, window);
+            return;
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    void super_hide(QQuickWindow * window)
+    {
+        throw std::runtime_error("Abstract method");
+    }
+    
+    void show(QQuickWindow * window)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("show"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, window);
+            return;
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    void super_show(QQuickWindow * window)
+    {
+        throw std::runtime_error("Abstract method");
+    }
+    
+    const QMetaObject * metaObject() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
+        if(func)
+        {
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGRenderLoop::metaObject();
+    }
+    const QMetaObject * super_metaObject() const
+    {
+        return QSGRenderLoop::metaObject();
+    }
+    
+    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
+        }
+        return QSGRenderLoop::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    {
+        return QSGRenderLoop::qt_metacall(__arg0, __arg1, __arg2);
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
         _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
         _d.CPGF_MD_TEMPLATE _method("handleContextCreationFailure", (void (D::ClassType::*) (QQuickWindow *, bool))&D::ClassType::handleContextCreationFailure);
-        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
         _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_grab", (QImage (D::ClassType::*) (QQuickWindow *))&D::ClassType::super_grab, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >());
-        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_sceneGraphContext", (QSGContext * (D::ClassType::*) () const)&D::ClassType::super_sceneGraphContext);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-        _d.CPGF_MD_TEMPLATE _method("super_hide", (void (D::ClassType::*) (QQuickWindow *))&D::ClassType::super_hide);
-        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_resize", (void (D::ClassType::*) (QQuickWindow *))&D::ClassType::super_resize);
-        _d.CPGF_MD_TEMPLATE _method("super_show", (void (D::ClassType::*) (QQuickWindow *))&D::ClassType::super_show);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("super_releaseResources", (void (D::ClassType::*) (QQuickWindow *))&D::ClassType::super_releaseResources);
-        _d.CPGF_MD_TEMPLATE _method("super_createRenderContext", (QSGRenderContext * (D::ClassType::*) (QSGContext *) const)&D::ClassType::super_createRenderContext);
-        _d.CPGF_MD_TEMPLATE _method("super_interleaveIncubation", (bool (D::ClassType::*) () const)&D::ClassType::super_interleaveIncubation);
         _d.CPGF_MD_TEMPLATE _method("super_update", (void (D::ClassType::*) (QQuickWindow *))&D::ClassType::super_update);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_grab", (QImage (D::ClassType::*) (QQuickWindow *))&D::ClassType::super_grab, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_interleaveIncubation", (bool (D::ClassType::*) () const)&D::ClassType::super_interleaveIncubation);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
         _d.CPGF_MD_TEMPLATE _method("super_maybeUpdate", (void (D::ClassType::*) (QQuickWindow *))&D::ClassType::super_maybeUpdate);
         _d.CPGF_MD_TEMPLATE _method("super_windowDestroyed", (void (D::ClassType::*) (QQuickWindow *))&D::ClassType::super_windowDestroyed);
-        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-        _d.CPGF_MD_TEMPLATE _method("super_exposureChanged", (void (D::ClassType::*) (QQuickWindow *))&D::ClassType::super_exposureChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_sceneGraphContext", (QSGContext * (D::ClassType::*) () const)&D::ClassType::super_sceneGraphContext);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_createRenderContext", (QSGRenderContext * (D::ClassType::*) (QSGContext *) const)&D::ClassType::super_createRenderContext);
         _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_resize", (void (D::ClassType::*) (QQuickWindow *))&D::ClassType::super_resize);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
         _d.CPGF_MD_TEMPLATE _method("super_animationDriver", (QAnimationDriver * (D::ClassType::*) () const)&D::ClassType::super_animationDriver);
-        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_exposureChanged", (void (D::ClassType::*) (QQuickWindow *))&D::ClassType::super_exposureChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_hide", (void (D::ClassType::*) (QQuickWindow *))&D::ClassType::super_hide);
+        _d.CPGF_MD_TEMPLATE _method("super_show", (void (D::ClassType::*) (QQuickWindow *))&D::ClassType::super_show);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
     }
 };
 

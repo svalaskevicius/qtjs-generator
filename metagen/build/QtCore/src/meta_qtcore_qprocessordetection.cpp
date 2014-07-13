@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qprocessordetection.h>
+#include "QtCore/qprocessordetection.h"
 
 #include "meta_qtcore_qprocessordetection.h"
 

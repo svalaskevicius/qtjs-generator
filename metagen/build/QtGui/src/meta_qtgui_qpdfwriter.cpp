@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qpdfwriter.h>
+#include "QtGui/qpdfwriter.h"
 
 #include "meta_qtgui_qpdfwriter.h"
 

@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qdrag.h>
+#include "QtGui/qdrag.h"
 
 #include "meta_qtgui_qdrag.h"
 

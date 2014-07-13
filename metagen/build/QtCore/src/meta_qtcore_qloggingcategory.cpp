@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qloggingcategory.h>
+#include "QtCore/qloggingcategory.h"
 
 #include "meta_qtcore_qloggingcategory.h"
 

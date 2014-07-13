@@ -24,7 +24,7 @@ void buildMetaClass_Global_qsgcontextplugin_p(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_36")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_50")
         ._element("QSGContextFactoryInterface_iid", QSGContextFactoryInterface_iid)
     ;
 }

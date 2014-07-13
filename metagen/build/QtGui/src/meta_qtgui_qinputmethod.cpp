@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qinputmethod.h>
+#include "QtGui/qinputmethod.h"
 
 #include "meta_qtgui_qinputmethod.h"
 

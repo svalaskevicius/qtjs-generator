@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qgesture.h>
+#include "QtWidgets/qgesture.h"
 
 #include "meta_qtwidgets_qgesture.h"
 

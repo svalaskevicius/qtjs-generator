@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qalgorithms.h>
+#include "QtCore/qalgorithms.h"
 
 #include "meta_qtcore_qalgorithms.h"
 

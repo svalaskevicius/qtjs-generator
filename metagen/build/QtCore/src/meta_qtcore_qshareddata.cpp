@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qshareddata.h>
+#include "QtCore/qshareddata.h"
 
 #include "meta_qtcore_qshareddata.h"
 

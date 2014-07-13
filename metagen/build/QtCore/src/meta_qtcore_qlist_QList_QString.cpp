@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qlist.h>
+#include "QtCore/qlist.h"
 
 #include "meta_qtcore_qlist.h"
 

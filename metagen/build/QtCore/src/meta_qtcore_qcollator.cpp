@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qcollator.h>
+#include "QtCore/qcollator.h"
 
 #include "meta_qtcore_qcollator.h"
 

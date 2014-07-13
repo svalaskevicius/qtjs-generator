@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qbasictimer.h>
+#include "QtCore/qbasictimer.h"
 
 #include "meta_qtcore_qbasictimer.h"
 

@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qvalidator.h>
+#include "QtGui/qvalidator.h"
 
 #include "meta_qtgui_qvalidator.h"
 

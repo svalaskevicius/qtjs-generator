@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qlockfile.h>
+#include "QtCore/qlockfile.h"
 
 #include "meta_qtcore_qlockfile.h"
 

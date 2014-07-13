@@ -27,7 +27,7 @@
 #include <private/qsgrenderer_p.h>
 #include <private/qsgrenderloop_p.h>
 
-#include <QtQuick/qquickimageprovider.h>
+#include "QtQuick/qquickimageprovider.h"
 
 #include "meta_qtqml_qquickimageprovider.h"
 

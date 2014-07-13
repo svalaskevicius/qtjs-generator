@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qsystemsemaphore.h>
+#include "QtCore/qsystemsemaphore.h"
 
 #include "meta_qtcore_qsystemsemaphore.h"
 

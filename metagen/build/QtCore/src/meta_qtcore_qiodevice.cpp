@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qiodevice.h>
+#include "QtCore/qiodevice.h"
 
 #include "meta_qtcore_qiodevice.h"
 

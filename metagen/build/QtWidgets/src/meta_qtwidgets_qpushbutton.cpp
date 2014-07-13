@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qpushbutton.h>
+#include "QtWidgets/qpushbutton.h"
 
 #include "meta_qtwidgets_qpushbutton.h"
 

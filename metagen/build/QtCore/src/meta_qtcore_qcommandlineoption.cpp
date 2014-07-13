@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qcommandlineoption.h>
+#include "QtCore/qcommandlineoption.h"
 
 #include "meta_qtcore_qcommandlineoption.h"
 

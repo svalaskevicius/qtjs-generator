@@ -24,7 +24,7 @@ void buildMetaClass_Global_qtqmlversion(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_51")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_35")
         ._element("QTQML_VERSION_STR", QTQML_VERSION_STR)
         ._element("QTQML_VERSION", QTQML_VERSION)
     ;

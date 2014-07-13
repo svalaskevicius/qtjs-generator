@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qspinbox.h>
+#include "QtWidgets/qspinbox.h"
 
 #include "meta_qtwidgets_qspinbox.h"
 

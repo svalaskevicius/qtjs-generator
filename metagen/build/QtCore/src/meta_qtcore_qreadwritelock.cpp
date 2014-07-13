@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qreadwritelock.h>
+#include "QtCore/qreadwritelock.h"
 
 #include "meta_qtcore_qreadwritelock.h"
 

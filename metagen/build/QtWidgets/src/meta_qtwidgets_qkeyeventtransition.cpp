@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qkeyeventtransition.h>
+#include "QtWidgets/qkeyeventtransition.h"
 
 #include "meta_qtwidgets_qkeyeventtransition.h"
 

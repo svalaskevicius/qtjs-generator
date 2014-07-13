@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qmargins.h>
+#include "QtCore/qmargins.h"
 
 #include "meta_qtcore_qmargins.h"
 

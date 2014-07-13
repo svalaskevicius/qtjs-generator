@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qclipboard.h>
+#include "QtGui/qclipboard.h"
 
 #include "meta_qtgui_qclipboard.h"
 

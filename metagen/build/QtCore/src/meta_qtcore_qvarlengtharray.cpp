@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qvarlengtharray.h>
+#include "QtCore/qvarlengtharray.h"
 
 #include "meta_qtcore_qvarlengtharray.h"
 

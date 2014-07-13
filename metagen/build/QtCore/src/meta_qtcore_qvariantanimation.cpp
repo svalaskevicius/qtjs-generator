@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qvariantanimation.h>
+#include "QtCore/qvariantanimation.h"
 
 #include "meta_qtcore_qvariantanimation.h"
 

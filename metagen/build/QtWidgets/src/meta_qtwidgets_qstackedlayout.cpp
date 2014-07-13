@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qstackedlayout.h>
+#include "QtWidgets/qstackedlayout.h"
 
 #include "meta_qtwidgets_qstackedlayout.h"
 

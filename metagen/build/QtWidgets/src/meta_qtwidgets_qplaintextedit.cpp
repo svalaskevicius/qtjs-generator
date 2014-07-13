@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qplaintextedit.h>
+#include "QtWidgets/qplaintextedit.h"
 
 #include "meta_qtwidgets_qplaintextedit.h"
 

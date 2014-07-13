@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qsyntaxhighlighter.h>
+#include "QtGui/qsyntaxhighlighter.h"
 
 #include "meta_qtgui_qsyntaxhighlighter.h"
 

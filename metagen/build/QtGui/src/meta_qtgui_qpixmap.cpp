@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qpixmap.h>
+#include "QtGui/qpixmap.h"
 
 #include "meta_qtgui_qpixmap.h"
 

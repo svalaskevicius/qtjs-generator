@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qopenglpaintdevice.h>
+#include "QtGui/qopenglpaintdevice.h"
 
 #include "meta_qtgui_qopenglpaintdevice.h"
 

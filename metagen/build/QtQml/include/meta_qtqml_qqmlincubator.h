@@ -120,21 +120,6 @@ public:
     QQmlIncubatorWrapper(QQmlIncubator::IncubationMode __arg0 = QQmlIncubator::Asynchronous)
         : QQmlIncubator(__arg0) {}
     
-    void statusChanged(QQmlIncubator::Status __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("statusChanged"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QQmlIncubator::statusChanged(__arg0);
-    }
-    void super_statusChanged(QQmlIncubator::Status __arg0)
-    {
-        QQmlIncubator::statusChanged(__arg0);
-    }
-    
     void setInitialState(QObject * __arg0)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setInitialState"));
@@ -149,15 +134,30 @@ public:
     {
         QQmlIncubator::setInitialState(__arg0);
     }
+    
+    void statusChanged(QQmlIncubator::Status __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("statusChanged"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QQmlIncubator::statusChanged(__arg0);
+    }
+    void super_statusChanged(QQmlIncubator::Status __arg0)
+    {
+        QQmlIncubator::statusChanged(__arg0);
+    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("statusChanged", (void (D::ClassType::*) (QQmlIncubator::Status))&D::ClassType::statusChanged);
         _d.CPGF_MD_TEMPLATE _method("setInitialState", (void (D::ClassType::*) (QObject *))&D::ClassType::setInitialState);
-        _d.CPGF_MD_TEMPLATE _method("super_statusChanged", (void (D::ClassType::*) (QQmlIncubator::Status))&D::ClassType::super_statusChanged);
+        _d.CPGF_MD_TEMPLATE _method("statusChanged", (void (D::ClassType::*) (QQmlIncubator::Status))&D::ClassType::statusChanged);
         _d.CPGF_MD_TEMPLATE _method("super_setInitialState", (void (D::ClassType::*) (QObject *))&D::ClassType::super_setInitialState);
+        _d.CPGF_MD_TEMPLATE _method("super_statusChanged", (void (D::ClassType::*) (QQmlIncubator::Status))&D::ClassType::super_statusChanged);
     }
 };
 

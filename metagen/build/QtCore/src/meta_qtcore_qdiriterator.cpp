@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qdiriterator.h>
+#include "QtCore/qdiriterator.h"
 
 #include "meta_qtcore_qdiriterator.h"
 

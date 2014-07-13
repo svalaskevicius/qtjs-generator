@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qoffscreensurface.h>
+#include "QtGui/qoffscreensurface.h"
 
 #include "meta_qtgui_qoffscreensurface.h"
 

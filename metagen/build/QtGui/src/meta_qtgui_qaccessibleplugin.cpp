@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qaccessibleplugin.h>
+#include "QtGui/qaccessibleplugin.h"
 
 #include "meta_qtgui_qaccessibleplugin.h"
 

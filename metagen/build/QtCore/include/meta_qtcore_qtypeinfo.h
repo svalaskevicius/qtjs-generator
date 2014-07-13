@@ -24,7 +24,7 @@ void buildMetaClass_Global_qtypeinfo(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtCore_29")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalEnum_QtCore_19")
         ._element("Q_COMPLEX_TYPE", Q_COMPLEX_TYPE)
         ._element("Q_PRIMITIVE_TYPE", Q_PRIMITIVE_TYPE)
         ._element("Q_STATIC_TYPE", Q_STATIC_TYPE)

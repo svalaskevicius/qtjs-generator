@@ -24,7 +24,7 @@ void buildMetaClass_Global_qquickflickablebehavior_p(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_28")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_33")
         ._element("QML_FLICK_OVERSHOOT", QML_FLICK_OVERSHOOT)
         ._element("QML_FLICK_SAMPLEBUFFER", QML_FLICK_SAMPLEBUFFER)
         ._element("QML_FLICK_DISCARDSAMPLES", QML_FLICK_DISCARDSAMPLES)

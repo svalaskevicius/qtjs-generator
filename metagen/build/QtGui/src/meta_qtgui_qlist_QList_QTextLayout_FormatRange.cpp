@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtCore/qlist.h>
+#include "QtCore/qlist.h"
 
 #include "meta_qtgui_qlist.h"
 

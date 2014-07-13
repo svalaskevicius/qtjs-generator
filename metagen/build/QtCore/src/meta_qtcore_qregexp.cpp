@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qregexp.h>
+#include "QtCore/qregexp.h"
 
 #include "meta_qtcore_qregexp.h"
 

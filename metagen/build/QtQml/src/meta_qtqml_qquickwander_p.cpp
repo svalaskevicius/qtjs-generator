@@ -27,7 +27,7 @@
 #include <private/qsgrenderer_p.h>
 #include <private/qsgrenderloop_p.h>
 
-#include <QtQuickParticles/5.3.0/QtQuickParticles/private/qquickwander_p.h>
+#include "QtQuickParticles/5.3.1/QtQuickParticles/private/qquickwander_p.h"
 
 #include "meta_qtqml_qquickwander_p.h"
 

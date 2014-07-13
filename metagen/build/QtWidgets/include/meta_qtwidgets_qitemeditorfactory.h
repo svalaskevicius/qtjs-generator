@@ -47,20 +47,6 @@ void buildMetaClass_QItemEditorCreatorBase(D _d)
 class QItemEditorCreatorBaseWrapper : public QItemEditorCreatorBase, public cpgf::GScriptWrapper {
 public:
     
-    QWidget * createWidget(QWidget * parent) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createWidget"));
-        if(func)
-        {
-            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, parent).getValue());
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    QWidget * super_createWidget(QWidget * parent) const
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
     QByteArray valuePropertyName() const
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("valuePropertyName"));
@@ -74,13 +60,27 @@ public:
     {
         throw std::runtime_error("Abstract method");
     }
+    
+    QWidget * createWidget(QWidget * parent) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createWidget"));
+        if(func)
+        {
+            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, parent).getValue());
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    QWidget * super_createWidget(QWidget * parent) const
+    {
+        throw std::runtime_error("Abstract method");
+    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_createWidget", (QWidget * (D::ClassType::*) (QWidget *) const)&D::ClassType::super_createWidget);
         _d.CPGF_MD_TEMPLATE _method("super_valuePropertyName", (QByteArray (D::ClassType::*) () const)&D::ClassType::super_valuePropertyName);
+        _d.CPGF_MD_TEMPLATE _method("super_createWidget", (QWidget * (D::ClassType::*) (QWidget *) const)&D::ClassType::super_createWidget);
     }
 };
 

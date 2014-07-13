@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qtreewidgetitemiterator.h>
+#include "QtWidgets/qtreewidgetitemiterator.h"
 
 #include "meta_qtwidgets_qtreewidgetitemiterator.h"
 

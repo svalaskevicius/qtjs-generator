@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qmutex.h>
+#include "QtCore/qmutex.h"
 
 #include "meta_qtcore_qmutex.h"
 

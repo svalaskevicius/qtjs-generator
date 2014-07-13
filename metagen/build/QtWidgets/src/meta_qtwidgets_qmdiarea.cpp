@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qmdiarea.h>
+#include "QtWidgets/qmdiarea.h"
 
 #include "meta_qtwidgets_qmdiarea.h"
 

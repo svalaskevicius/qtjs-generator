@@ -27,7 +27,7 @@
 #include <private/qsgrenderer_p.h>
 #include <private/qsgrenderloop_p.h>
 
-#include <QtQml/qqmlfile.h>
+#include "QtQml/qqmlfile.h"
 
 #include "meta_qtqml_qqmlfile.h"
 

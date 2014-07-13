@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qbackingstore.h>
+#include "QtGui/qbackingstore.h"
 
 #include "meta_qtgui_qbackingstore.h"
 

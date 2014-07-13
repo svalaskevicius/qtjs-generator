@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qlcdnumber.h>
+#include "QtWidgets/qlcdnumber.h"
 
 #include "meta_qtwidgets_qlcdnumber.h"
 

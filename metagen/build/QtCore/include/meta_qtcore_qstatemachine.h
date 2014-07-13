@@ -102,89 +102,19 @@ public:
     QStateMachineWrapper(QState::ChildMode childMode, QObject * parent = 0)
         : QStateMachine(childMode, parent) {}
     
-    void connectNotify(const QMetaMethod & signal)
+    void endSelectTransitions(QEvent * event)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
-            return;
-        }
-        QObject::connectNotify(signal);
-    }
-    void super_connectNotify(const QMetaMethod & signal)
-    {
-        QObject::connectNotify(signal);
-    }
-    
-    void beginMicrostep(QEvent * event)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("beginMicrostep"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("endSelectTransitions"));
         if(func)
         {
             cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
-        QStateMachine::beginMicrostep(event);
+        QStateMachine::endSelectTransitions(event);
     }
-    void super_beginMicrostep(QEvent * event)
+    void super_endSelectTransitions(QEvent * event)
     {
-        QStateMachine::beginMicrostep(event);
-    }
-    
-    bool isSignalConnected(const QMetaMethod & signal) const
-    {
-        return QObject::isSignalConnected(signal);
-    }
-    
-    void childEvent(QChildEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::childEvent(__arg0);
-    }
-    void super_childEvent(QChildEvent * __arg0)
-    {
-        QObject::childEvent(__arg0);
-    }
-    
-    void onExit(QEvent * event)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("onExit"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
-            return;
-        }
-        QStateMachine::onExit(event);
-    }
-    void super_onExit(QEvent * event)
-    {
-        QStateMachine::onExit(event);
-    }
-    
-    void endMicrostep(QEvent * event)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("endMicrostep"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
-            return;
-        }
-        QStateMachine::endMicrostep(event);
-    }
-    void super_endMicrostep(QEvent * event)
-    {
-        QStateMachine::endMicrostep(event);
-    }
-    
-    int receivers(const char * signal) const
-    {
-        return QObject::receivers(signal);
+        QStateMachine::endSelectTransitions(event);
     }
     
     void beginSelectTransitions(QEvent * event)
@@ -202,83 +132,6 @@ public:
         QStateMachine::beginSelectTransitions(event);
     }
     
-    int senderSignalIndex() const
-    {
-        return QObject::senderSignalIndex();
-    }
-    
-    void endSelectTransitions(QEvent * event)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("endSelectTransitions"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
-            return;
-        }
-        QStateMachine::endSelectTransitions(event);
-    }
-    void super_endSelectTransitions(QEvent * event)
-    {
-        QStateMachine::endSelectTransitions(event);
-    }
-    
-    void onEntry(QEvent * event)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("onEntry"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
-            return;
-        }
-        QStateMachine::onEntry(event);
-    }
-    void super_onEntry(QEvent * event)
-    {
-        QStateMachine::onEntry(event);
-    }
-    
-    void * qt_metacast(const char * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
-        if(func)
-        {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QStateMachine::qt_metacast(__arg0);
-    }
-    void * super_qt_metacast(const char * __arg0)
-    {
-        return QStateMachine::qt_metacast(__arg0);
-    }
-    
-    bool eventFilter(QObject * watched, QEvent * event)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, watched, event).getValue());
-        }
-        return QStateMachine::eventFilter(watched, event);
-    }
-    bool super_eventFilter(QObject * watched, QEvent * event)
-    {
-        return QStateMachine::eventFilter(watched, event);
-    }
-    
-    const QMetaObject * metaObject() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
-        if(func)
-        {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QStateMachine::metaObject();
-    }
-    const QMetaObject * super_metaObject() const
-    {
-        return QStateMachine::metaObject();
-    }
-    
     void customEvent(QEvent * __arg0)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
@@ -294,47 +147,44 @@ public:
         QObject::customEvent(__arg0);
     }
     
-    bool event(QEvent * e)
+    int senderSignalIndex() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, e).getValue());
-        }
-        return QStateMachine::event(e);
-    }
-    bool super_event(QEvent * e)
-    {
-        return QStateMachine::event(e);
+        return QObject::senderSignalIndex();
     }
     
-    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    void endMicrostep(QEvent * event)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("endMicrostep"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
-        }
-        return QStateMachine::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        return QStateMachine::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    
-    void timerEvent(QTimerEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
             return;
         }
-        QObject::timerEvent(__arg0);
+        QStateMachine::endMicrostep(event);
     }
-    void super_timerEvent(QTimerEvent * __arg0)
+    void super_endMicrostep(QEvent * event)
     {
-        QObject::timerEvent(__arg0);
+        QStateMachine::endMicrostep(event);
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
+    }
+    
+    void connectNotify(const QMetaMethod & signal)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            return;
+        }
+        QObject::connectNotify(signal);
+    }
+    void super_connectNotify(const QMetaMethod & signal)
+    {
+        QObject::connectNotify(signal);
     }
     
     void disconnectNotify(const QMetaMethod & signal)
@@ -352,47 +202,197 @@ public:
         QObject::disconnectNotify(signal);
     }
     
-    QObject * sender() const
+    void * qt_metacast(const char * __arg0)
     {
-        return QObject::sender();
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
+        if(func)
+        {
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QStateMachine::qt_metacast(__arg0);
+    }
+    void * super_qt_metacast(const char * __arg0)
+    {
+        return QStateMachine::qt_metacast(__arg0);
+    }
+    
+    bool event(QEvent * e)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, e).getValue());
+        }
+        return QStateMachine::event(e);
+    }
+    bool super_event(QEvent * e)
+    {
+        return QStateMachine::event(e);
+    }
+    
+    int receivers(const char * signal) const
+    {
+        return QObject::receivers(signal);
+    }
+    
+    bool isSignalConnected(const QMetaMethod & signal) const
+    {
+        return QObject::isSignalConnected(signal);
+    }
+    
+    void onExit(QEvent * event)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("onExit"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
+            return;
+        }
+        QStateMachine::onExit(event);
+    }
+    void super_onExit(QEvent * event)
+    {
+        QStateMachine::onExit(event);
+    }
+    
+    bool eventFilter(QObject * watched, QEvent * event)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, watched, event).getValue());
+        }
+        return QStateMachine::eventFilter(watched, event);
+    }
+    bool super_eventFilter(QObject * watched, QEvent * event)
+    {
+        return QStateMachine::eventFilter(watched, event);
+    }
+    
+    void timerEvent(QTimerEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::timerEvent(__arg0);
+    }
+    void super_timerEvent(QTimerEvent * __arg0)
+    {
+        QObject::timerEvent(__arg0);
+    }
+    
+    void beginMicrostep(QEvent * event)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("beginMicrostep"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
+            return;
+        }
+        QStateMachine::beginMicrostep(event);
+    }
+    void super_beginMicrostep(QEvent * event)
+    {
+        QStateMachine::beginMicrostep(event);
+    }
+    
+    const QMetaObject * metaObject() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
+        if(func)
+        {
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QStateMachine::metaObject();
+    }
+    const QMetaObject * super_metaObject() const
+    {
+        return QStateMachine::metaObject();
+    }
+    
+    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
+        }
+        return QStateMachine::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    {
+        return QStateMachine::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    
+    void childEvent(QChildEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::childEvent(__arg0);
+    }
+    void super_childEvent(QChildEvent * __arg0)
+    {
+        QObject::childEvent(__arg0);
+    }
+    
+    void onEntry(QEvent * event)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("onEntry"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, event);
+            return;
+        }
+        QStateMachine::onEntry(event);
+    }
+    void super_onEntry(QEvent * event)
+    {
+        QStateMachine::onEntry(event);
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("beginMicrostep", (void (D::ClassType::*) (QEvent *))&D::ClassType::beginMicrostep);
-        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-        _d.CPGF_MD_TEMPLATE _method("onExit", (void (D::ClassType::*) (QEvent *))&D::ClassType::onExit);
-        _d.CPGF_MD_TEMPLATE _method("endMicrostep", (void (D::ClassType::*) (QEvent *))&D::ClassType::endMicrostep);
-        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-        _d.CPGF_MD_TEMPLATE _method("beginSelectTransitions", (void (D::ClassType::*) (QEvent *))&D::ClassType::beginSelectTransitions);
-        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
         _d.CPGF_MD_TEMPLATE _method("endSelectTransitions", (void (D::ClassType::*) (QEvent *))&D::ClassType::endSelectTransitions);
-        _d.CPGF_MD_TEMPLATE _method("onEntry", (void (D::ClassType::*) (QEvent *))&D::ClassType::onEntry);
+        _d.CPGF_MD_TEMPLATE _method("beginSelectTransitions", (void (D::ClassType::*) (QEvent *))&D::ClassType::beginSelectTransitions);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-        _d.CPGF_MD_TEMPLATE _method("event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::event);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("endMicrostep", (void (D::ClassType::*) (QEvent *))&D::ClassType::endMicrostep);
         _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_beginMicrostep", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_beginMicrostep);
-        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_onExit", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_onExit);
-        _d.CPGF_MD_TEMPLATE _method("super_endMicrostep", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_endMicrostep);
-        _d.CPGF_MD_TEMPLATE _method("super_beginSelectTransitions", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_beginSelectTransitions);
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::event);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("onExit", (void (D::ClassType::*) (QEvent *))&D::ClassType::onExit);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("beginMicrostep", (void (D::ClassType::*) (QEvent *))&D::ClassType::beginMicrostep);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("onEntry", (void (D::ClassType::*) (QEvent *))&D::ClassType::onEntry);
         _d.CPGF_MD_TEMPLATE _method("super_endSelectTransitions", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_endSelectTransitions);
-        _d.CPGF_MD_TEMPLATE _method("super_onEntry", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_onEntry);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_beginSelectTransitions", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_beginSelectTransitions);
         _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_endMicrostep", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_endMicrostep);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
         _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_onExit", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_onExit);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_beginMicrostep", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_beginMicrostep);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_onEntry", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_onEntry);
     }
 };
 

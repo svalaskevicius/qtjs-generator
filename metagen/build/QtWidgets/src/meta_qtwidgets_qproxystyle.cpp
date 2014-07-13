@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qproxystyle.h>
+#include "QtWidgets/qproxystyle.h"
 
 #include "meta_qtwidgets_qproxystyle.h"
 

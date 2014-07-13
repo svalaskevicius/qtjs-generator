@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qstandardpaths.h>
+#include "QtCore/qstandardpaths.h"
 
 #include "meta_qtcore_qstandardpaths.h"
 

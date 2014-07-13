@@ -60,18 +60,32 @@ void buildMetaClass_QPaintDevice(D _d)
 class QPaintDeviceWrapper : public QPaintDevice, public cpgf::GScriptWrapper {
 public:
     
-    int metric(QPaintDevice::PaintDeviceMetric metric) const
+    QPaintEngine * paintEngine() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metric"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("paintEngine"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, metric).getValue());
+            return cpgf::fromVariant<QPaintEngine * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QPaintDevice::metric(metric);
+        throw std::runtime_error("Abstract method");
     }
-    int super_metric(QPaintDevice::PaintDeviceMetric metric) const
+    QPaintEngine * super_paintEngine() const
     {
-        return QPaintDevice::metric(metric);
+        throw std::runtime_error("Abstract method");
+    }
+    
+    int devType() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("devType"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QPaintDevice::devType();
+    }
+    int super_devType() const
+    {
+        return QPaintDevice::devType();
     }
     
     QPaintDevice * redirected(QPoint * offset) const
@@ -103,32 +117,18 @@ public:
         QPaintDevice::initPainter(painter);
     }
     
-    int devType() const
+    int metric(QPaintDevice::PaintDeviceMetric metric) const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("devType"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metric"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, metric).getValue());
         }
-        return QPaintDevice::devType();
+        return QPaintDevice::metric(metric);
     }
-    int super_devType() const
+    int super_metric(QPaintDevice::PaintDeviceMetric metric) const
     {
-        return QPaintDevice::devType();
-    }
-    
-    QPaintEngine * paintEngine() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("paintEngine"));
-        if(func)
-        {
-            return cpgf::fromVariant<QPaintEngine * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    QPaintEngine * super_paintEngine() const
-    {
-        throw std::runtime_error("Abstract method");
+        return QPaintDevice::metric(metric);
     }
     
     QPainter * sharedPainter() const
@@ -149,15 +149,15 @@ public:
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("metric", (int (D::ClassType::*) (QPaintDevice::PaintDeviceMetric) const)&D::ClassType::metric);
         _d.CPGF_MD_TEMPLATE _method("redirected", (QPaintDevice * (D::ClassType::*) (QPoint *) const)&D::ClassType::redirected);
         _d.CPGF_MD_TEMPLATE _method("initPainter", (void (D::ClassType::*) (QPainter *) const)&D::ClassType::initPainter);
+        _d.CPGF_MD_TEMPLATE _method("metric", (int (D::ClassType::*) (QPaintDevice::PaintDeviceMetric) const)&D::ClassType::metric);
         _d.CPGF_MD_TEMPLATE _method("sharedPainter", (QPainter * (D::ClassType::*) () const)&D::ClassType::sharedPainter);
-        _d.CPGF_MD_TEMPLATE _method("super_metric", (int (D::ClassType::*) (QPaintDevice::PaintDeviceMetric) const)&D::ClassType::super_metric);
+        _d.CPGF_MD_TEMPLATE _method("super_paintEngine", (QPaintEngine * (D::ClassType::*) () const)&D::ClassType::super_paintEngine);
+        _d.CPGF_MD_TEMPLATE _method("super_devType", (int (D::ClassType::*) () const)&D::ClassType::super_devType);
         _d.CPGF_MD_TEMPLATE _method("super_redirected", (QPaintDevice * (D::ClassType::*) (QPoint *) const)&D::ClassType::super_redirected);
         _d.CPGF_MD_TEMPLATE _method("super_initPainter", (void (D::ClassType::*) (QPainter *) const)&D::ClassType::super_initPainter);
-        _d.CPGF_MD_TEMPLATE _method("super_devType", (int (D::ClassType::*) () const)&D::ClassType::super_devType);
-        _d.CPGF_MD_TEMPLATE _method("super_paintEngine", (QPaintEngine * (D::ClassType::*) () const)&D::ClassType::super_paintEngine);
+        _d.CPGF_MD_TEMPLATE _method("super_metric", (int (D::ClassType::*) (QPaintDevice::PaintDeviceMetric) const)&D::ClassType::super_metric);
         _d.CPGF_MD_TEMPLATE _method("super_sharedPainter", (QPainter * (D::ClassType::*) () const)&D::ClassType::super_sharedPainter);
     }
 };

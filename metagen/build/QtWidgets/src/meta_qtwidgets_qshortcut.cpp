@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qshortcut.h>
+#include "QtWidgets/qshortcut.h"
 
 #include "meta_qtwidgets_qshortcut.h"
 

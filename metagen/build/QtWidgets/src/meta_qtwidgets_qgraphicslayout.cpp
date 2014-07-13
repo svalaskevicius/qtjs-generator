@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qgraphicslayout.h>
+#include "QtWidgets/qgraphicslayout.h"
 
 #include "meta_qtwidgets_qgraphicslayout.h"
 

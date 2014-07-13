@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qtransform.h>
+#include "QtGui/qtransform.h"
 
 #include "meta_qtgui_qtransform.h"
 

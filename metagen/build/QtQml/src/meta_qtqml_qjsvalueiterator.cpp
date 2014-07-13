@@ -27,7 +27,7 @@
 #include <private/qsgrenderer_p.h>
 #include <private/qsgrenderloop_p.h>
 
-#include <QtQml/qjsvalueiterator.h>
+#include "QtQml/qjsvalueiterator.h"
 
 #include "meta_qtqml_qjsvalueiterator.h"
 
