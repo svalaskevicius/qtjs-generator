@@ -25,7 +25,9 @@ linux-clang {
 }
 
 # V8 has lots of them (unused params)..
+QMAKE_CFLAGS += -Wno-unused-parameter
 QMAKE_CXXFLAGS += -Wno-unused-parameter
+QMAKE_CXXFLAGS_WARN_ON = -Wall -Wno-unused-parameter
 
 INCLUDEPATH += $${ROOT}/metagen/build/
 
