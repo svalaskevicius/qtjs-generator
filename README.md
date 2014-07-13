@@ -17,7 +17,7 @@ How to build
 * C++11 supporting compiler, tested with gcc 4.7.2, 4.7.3, clang 3.4
 * cmake (for building cpgf library)
 * make (some automation in qmake build files invokes it)
-* Qt5.2
+* Qt5.3.1
 * OpenGL development files
 * libffi development files
 * Boost (required for tests) - tested with 1.52
