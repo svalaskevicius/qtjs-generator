@@ -1,7 +1,7 @@
 
 include (../qtjs-plugin.pri)
 
-QT += core gui
+QT += core widgets gui gui-private
 TEMPLATE = lib
 
 TARGET=qtjs_gui

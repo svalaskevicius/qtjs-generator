@@ -1,7 +1,7 @@
 
 include (../qtjs.pri)
 
-QT += core widgets qml quick gui core-private
+QT += core widgets qml quick gui core-private gui-private
 
 SOURCES += \
     $$PWD/cpgfApi.cpp \
