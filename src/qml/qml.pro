@@ -13,6 +13,9 @@ CONFIG(debug, debug|release) {
     CONFIG += declarative_debug qml_debug
 }
 
+LIBPATH += $${BUILD}/src/core/
+LIBS += -lqtjs_core
+
 QMAKE_CXXFLAGS += -DBUILDING_DLL 
 
 SOURCES += $$files(../../metagen/build/QtQml/src/*.cpp) 
