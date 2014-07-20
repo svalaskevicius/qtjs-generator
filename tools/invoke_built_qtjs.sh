@@ -74,7 +74,7 @@ case "$MYNAME" in
 esac
 
 export ASAN_OPTIONS="abort_on_error=1 alloc_dealloc_mismatch=0"
-
+export QML_BAD_GUI_RENDER_LOOP=1
 $PRECMD "$CMD" ${NODE_ARGS[@]} ${ARGS[@]}
 
 exit $?
