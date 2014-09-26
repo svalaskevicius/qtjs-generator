@@ -47,6 +47,9 @@ Updating Qt bindings
 * doxygen
 * JDK (for building the metadata generator)
 * bash & perl (for preprocessing etc)
+* Qt package with header for Linux
+
+As Qt has different headers directory structure for different target platforms, you'll need to use the packages that are available to download for the Linux platform. The structure in those packages is the simplest and thus enabled to create the header scanner easily - if this causes many problems, we can change this to support the source packages instead.
 
 ### Steps
 
