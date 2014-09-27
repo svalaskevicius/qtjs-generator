@@ -58,6 +58,20 @@ public:
     QFileIconProviderWrapper()
         : QFileIconProvider() {}
     
+    QString type(const QFileInfo & info) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
+        if(func)
+        {
+            return cpgf::fromVariant<QString >(cpgf::invokeScriptFunctionOnObject(func.get(), this, info).getValue());
+        }
+        return QFileIconProvider::type(info);
+    }
+    QString super_type(const QFileInfo & info) const
+    {
+        return QFileIconProvider::type(info);
+    }
+    
     QIcon icon(const QFileInfo & info) const
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("icon"));
@@ -85,28 +99,14 @@ public:
     {
         return QFileIconProvider::icon(type);
     }
-    
-    QString type(const QFileInfo & info) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
-        if(func)
-        {
-            return cpgf::fromVariant<QString >(cpgf::invokeScriptFunctionOnObject(func.get(), this, info).getValue());
-        }
-        return QFileIconProvider::type(info);
-    }
-    QString super_type(const QFileInfo & info) const
-    {
-        return QFileIconProvider::type(info);
-    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("super_type", (QString (D::ClassType::*) (const QFileInfo &) const)&D::ClassType::super_type, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("super_icon", (QIcon (D::ClassType::*) (const QFileInfo &) const)&D::ClassType::super_icon, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("super_icon", (QIcon (D::ClassType::*) (QFileIconProvider::IconType) const)&D::ClassType::super_icon);
-        _d.CPGF_MD_TEMPLATE _method("super_type", (QString (D::ClassType::*) (const QFileInfo &) const)&D::ClassType::super_type, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
 };
 

@@ -42,19 +42,19 @@ public:
     QQuickDefaultClipNodeWrapper(const QRectF & __arg0)
         : QQuickDefaultClipNode(__arg0) {}
     
-    void preprocess()
+    void update()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("update"));
         if(func)
         {
             cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
-        QSGNode::preprocess();
+        QQuickDefaultClipNode::update();
     }
-    void super_preprocess()
+    void super_update()
     {
-        QSGNode::preprocess();
+        QQuickDefaultClipNode::update();
     }
     
     bool isSubtreeBlocked() const
@@ -71,28 +71,28 @@ public:
         return QSGNode::isSubtreeBlocked();
     }
     
-    void update()
+    void preprocess()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("update"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
         if(func)
         {
             cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
-        QQuickDefaultClipNode::update();
+        QSGNode::preprocess();
     }
-    void super_update()
+    void super_preprocess()
     {
-        QQuickDefaultClipNode::update();
+        QSGNode::preprocess();
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
-        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
         _d.CPGF_MD_TEMPLATE _method("super_update", (void (D::ClassType::*) ())&D::ClassType::super_update);
+        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
+        _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
     }
 };
 

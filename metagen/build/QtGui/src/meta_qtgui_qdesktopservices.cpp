@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qdesktopservices.h>
+#include "QtGui/qdesktopservices.h"
 
 #include "meta_qtgui_qdesktopservices.h"
 

@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qcommandlineparser.h>
+#include "QtCore/qcommandlineparser.h"
 
 #include "meta_qtcore_qcommandlineparser.h"
 

@@ -103,7 +103,7 @@ QObject *DynamicQObjects::createInstance(unsigned int classIdx)
     return dynamicClass->instantiate(classIdx);
 }
 
-void DynamicQObjects::callInit(size_t classIdx, QObject *obj)
+void DynamicQObjects::callInit(size_t classIdx, void *obj)
 {
     if (classesInfo[classIdx].initCallback) {
         void **data = new void*[2];

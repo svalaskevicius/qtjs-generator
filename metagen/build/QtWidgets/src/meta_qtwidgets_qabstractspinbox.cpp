@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qabstractspinbox.h>
+#include "QtWidgets/qabstractspinbox.h"
 
 #include "meta_qtwidgets_qabstractspinbox.h"
 

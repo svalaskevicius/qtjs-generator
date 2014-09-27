@@ -25,7 +25,7 @@ void buildMetaClass_Global_qstring(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_19")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_20")
     ;
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(QString::Null, QString::Null)>(mopHolder == mopHolder);
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(QString::Null, const QString &)>(mopHolder == mopHolder, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());

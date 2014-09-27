@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qtypetraits.h>
+#include "QtCore/qtypetraits.h"
 
 #include "meta_qtcore_qtypetraits.h"
 

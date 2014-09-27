@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qabstractbutton.h>
+#include "QtWidgets/qabstractbutton.h"
 
 #include "meta_qtwidgets_qabstractbutton.h"
 

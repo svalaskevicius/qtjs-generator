@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qcompleter.h>
+#include "QtWidgets/qcompleter.h"
 
 #include "meta_qtwidgets_qcompleter.h"
 

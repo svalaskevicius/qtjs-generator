@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qcombobox.h>
+#include "QtWidgets/qcombobox.h"
 
 #include "meta_qtwidgets_qcombobox.h"
 

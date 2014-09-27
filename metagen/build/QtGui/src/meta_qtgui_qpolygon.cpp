@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qpolygon.h>
+#include "QtGui/qpolygon.h"
 
 #include "meta_qtgui_qpolygon.h"
 

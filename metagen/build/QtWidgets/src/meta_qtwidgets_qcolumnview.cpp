@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qcolumnview.h>
+#include "QtWidgets/qcolumnview.h"
 
 #include "meta_qtwidgets_qcolumnview.h"
 

@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qimagewriter.h>
+#include "QtGui/qimagewriter.h"
 
 #include "meta_qtgui_qimagewriter.h"
 

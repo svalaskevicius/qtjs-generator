@@ -146,7 +146,7 @@ function shouldAllowClassWrapper(item) {
 
 function processCallback(item, data)
 {
-  if(item.getLocation().indexOf('/QtWidgets/') == -1) {
+  if(item.getLocation().indexOf('QtWidgets/') !== 0) {
     data.skipBind = true;
     return;
   }

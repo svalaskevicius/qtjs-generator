@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qsessionmanager.h>
+#include "QtGui/qsessionmanager.h"
 
 #include "meta_qtgui_qsessionmanager.h"
 

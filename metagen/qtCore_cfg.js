@@ -130,7 +130,7 @@ function shouldAllowClassWrapper(item) {
 
 function processCallback(item, data)
 {
-  if(item.getLocation().indexOf('/QtCore/') == -1) {
+  if(item.getLocation().indexOf('QtCore/') !== 0) {
     data.skipBind = true;
     return;
   }
@@ -338,6 +338,15 @@ function processCallback(item, data)
       case "QTypedArrayData::fromRawData":
       if (item.getParameterList().size() > 0) {
       item.getParameterList().get(item.getParameterList().size()-1).setDefaultValue("QTypedArrayData<T>::"+item.getParameterList().get(0).getDefaultValue());
+    }
+    break;
+
+    case "qHash":
+      if (item.getParameterList().size() > 0) {
+      var paramType = item.getParameterList().get(0).getType().getLiteralType()+"";
+      if ("long double" == paramType) {
+      	data.skipBind = true;
+      }
     }
     break;
 

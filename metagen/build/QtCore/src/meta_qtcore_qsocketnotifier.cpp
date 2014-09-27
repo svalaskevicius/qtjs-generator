@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qsocketnotifier.h>
+#include "QtCore/qsocketnotifier.h"
 
 #include "meta_qtcore_qsocketnotifier.h"
 

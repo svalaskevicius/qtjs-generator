@@ -27,7 +27,7 @@
 #include <private/qsgrenderer_p.h>
 #include <private/qsgrenderloop_p.h>
 
-#include <QtQuickTest/qtquicktestversion.h>
+#include "QtQuickTest/qtquicktestversion.h"
 
 #include "meta_qtqml_qtquicktestversion.h"
 

@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qcheckbox.h>
+#include "QtWidgets/qcheckbox.h"
 
 #include "meta_qtwidgets_qcheckbox.h"
 

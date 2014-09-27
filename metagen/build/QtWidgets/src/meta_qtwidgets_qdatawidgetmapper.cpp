@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qdatawidgetmapper.h>
+#include "QtWidgets/qdatawidgetmapper.h"
 
 #include "meta_qtwidgets_qdatawidgetmapper.h"
 

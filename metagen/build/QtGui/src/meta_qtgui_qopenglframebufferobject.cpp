@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qopenglframebufferobject.h>
+#include "QtGui/qopenglframebufferobject.h"
 
 #include "meta_qtgui_qopenglframebufferobject.h"
 

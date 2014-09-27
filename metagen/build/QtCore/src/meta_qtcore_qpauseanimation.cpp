@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qpauseanimation.h>
+#include "QtCore/qpauseanimation.h"
 
 #include "meta_qtcore_qpauseanimation.h"
 

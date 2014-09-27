@@ -63,48 +63,60 @@ public:
     QLayoutItemWrapper(Qt::Alignment alignment = 0)
         : QLayoutItem(alignment) {}
     
-    void setGeometry(const QRect & __arg0)
+    QRect geometry() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setGeometry"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
-    void super_setGeometry(const QRect & __arg0)
+    QRect super_geometry() const
     {
         throw std::runtime_error("Abstract method");
     }
     
-    void invalidate()
+    QLayout * layout()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidate"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this);
-            return;
+            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        QLayoutItem::invalidate();
+        return QLayoutItem::layout();
     }
-    void super_invalidate()
+    QLayout * super_layout()
     {
-        QLayoutItem::invalidate();
+        return QLayoutItem::layout();
     }
     
-    QSize sizeHint() const
+    bool isEmpty() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
-    QSize super_sizeHint() const
+    bool super_isEmpty() const
     {
         throw std::runtime_error("Abstract method");
+    }
+    
+    QSpacerItem * spacerItem()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayoutItem::spacerItem();
+    }
+    QSpacerItem * super_spacerItem()
+    {
+        return QLayoutItem::spacerItem();
     }
     
     bool hasHeightForWidth() const
@@ -121,16 +133,17 @@ public:
         return QLayoutItem::hasHeightForWidth();
     }
     
-    QRect geometry() const
+    void setGeometry(const QRect & __arg0)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setGeometry"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
         }
         throw std::runtime_error("Abstract method");
     }
-    QRect super_geometry() const
+    void super_setGeometry(const QRect & __arg0)
     {
         throw std::runtime_error("Abstract method");
     }
@@ -163,34 +176,6 @@ public:
         return QLayoutItem::minimumHeightForWidth(__arg0);
     }
     
-    QSpacerItem * spacerItem()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayoutItem::spacerItem();
-    }
-    QSpacerItem * super_spacerItem()
-    {
-        return QLayoutItem::spacerItem();
-    }
-    
-    QSize minimumSize() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumSize"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    QSize super_minimumSize() const
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
     Qt::Orientations expandingDirections() const
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("expandingDirections"));
@@ -205,16 +190,44 @@ public:
         throw std::runtime_error("Abstract method");
     }
     
-    bool isEmpty() const
+    QWidget * widget()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayoutItem::widget();
+    }
+    QWidget * super_widget()
+    {
+        return QLayoutItem::widget();
+    }
+    
+    QSize sizeHint() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
-    bool super_isEmpty() const
+    QSize super_sizeHint() const
+    {
+        throw std::runtime_error("Abstract method");
+    }
+    
+    QSize minimumSize() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumSize"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    QSize super_minimumSize() const
     {
         throw std::runtime_error("Abstract method");
     }
@@ -233,32 +246,19 @@ public:
         return QLayoutItem::controlTypes();
     }
     
-    QLayout * layout()
+    void invalidate()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidate"));
         if(func)
         {
-            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
+            return;
         }
-        return QLayoutItem::layout();
+        QLayoutItem::invalidate();
     }
-    QLayout * super_layout()
+    void super_invalidate()
     {
-        return QLayoutItem::layout();
-    }
-    
-    QWidget * widget()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
-        if(func)
-        {
-            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayoutItem::widget();
-    }
-    QWidget * super_widget()
-    {
-        return QLayoutItem::widget();
+        QLayoutItem::invalidate();
     }
     
     int heightForWidth(int __arg0) const
@@ -279,20 +279,20 @@ public:
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
-        _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
-        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) () const)&D::ClassType::super_sizeHint);
-        _d.CPGF_MD_TEMPLATE _method("super_hasHeightForWidth", (bool (D::ClassType::*) () const)&D::ClassType::super_hasHeightForWidth);
         _d.CPGF_MD_TEMPLATE _method("super_geometry", (QRect (D::ClassType::*) () const)&D::ClassType::super_geometry);
+        _d.CPGF_MD_TEMPLATE _method("super_layout", (QLayout * (D::ClassType::*) ())&D::ClassType::super_layout);
+        _d.CPGF_MD_TEMPLATE _method("super_isEmpty", (bool (D::ClassType::*) () const)&D::ClassType::super_isEmpty);
+        _d.CPGF_MD_TEMPLATE _method("super_spacerItem", (QSpacerItem * (D::ClassType::*) ())&D::ClassType::super_spacerItem);
+        _d.CPGF_MD_TEMPLATE _method("super_hasHeightForWidth", (bool (D::ClassType::*) () const)&D::ClassType::super_hasHeightForWidth);
+        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
         _d.CPGF_MD_TEMPLATE _method("super_maximumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_maximumSize);
         _d.CPGF_MD_TEMPLATE _method("super_minimumHeightForWidth", (int (D::ClassType::*) (int) const)&D::ClassType::super_minimumHeightForWidth);
-        _d.CPGF_MD_TEMPLATE _method("super_spacerItem", (QSpacerItem * (D::ClassType::*) ())&D::ClassType::super_spacerItem);
-        _d.CPGF_MD_TEMPLATE _method("super_minimumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_minimumSize);
         _d.CPGF_MD_TEMPLATE _method("super_expandingDirections", (Qt::Orientations (D::ClassType::*) () const)&D::ClassType::super_expandingDirections);
-        _d.CPGF_MD_TEMPLATE _method("super_isEmpty", (bool (D::ClassType::*) () const)&D::ClassType::super_isEmpty);
-        _d.CPGF_MD_TEMPLATE _method("super_controlTypes", (QSizePolicy::ControlTypes (D::ClassType::*) () const)&D::ClassType::super_controlTypes);
-        _d.CPGF_MD_TEMPLATE _method("super_layout", (QLayout * (D::ClassType::*) ())&D::ClassType::super_layout);
         _d.CPGF_MD_TEMPLATE _method("super_widget", (QWidget * (D::ClassType::*) ())&D::ClassType::super_widget);
+        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) () const)&D::ClassType::super_sizeHint);
+        _d.CPGF_MD_TEMPLATE _method("super_minimumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_minimumSize);
+        _d.CPGF_MD_TEMPLATE _method("super_controlTypes", (QSizePolicy::ControlTypes (D::ClassType::*) () const)&D::ClassType::super_controlTypes);
+        _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
         _d.CPGF_MD_TEMPLATE _method("super_heightForWidth", (int (D::ClassType::*) (int) const)&D::ClassType::super_heightForWidth);
     }
 };
@@ -345,48 +345,60 @@ public:
     QSpacerItemWrapper(int w, int h, QSizePolicy::Policy hData = QSizePolicy::Minimum, QSizePolicy::Policy vData = QSizePolicy::Minimum)
         : QSpacerItem(w, h, hData, vData) {}
     
-    void setGeometry(const QRect & __arg0)
+    QRect geometry() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setGeometry"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        QSpacerItem::setGeometry(__arg0);
+        return QSpacerItem::geometry();
     }
-    void super_setGeometry(const QRect & __arg0)
+    QRect super_geometry() const
     {
-        QSpacerItem::setGeometry(__arg0);
+        return QSpacerItem::geometry();
     }
     
-    void invalidate()
+    QLayout * layout()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidate"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this);
-            return;
+            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        QLayoutItem::invalidate();
+        return QLayoutItem::layout();
     }
-    void super_invalidate()
+    QLayout * super_layout()
     {
-        QLayoutItem::invalidate();
+        return QLayoutItem::layout();
     }
     
-    QSize sizeHint() const
+    bool isEmpty() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QSpacerItem::sizeHint();
+        return QSpacerItem::isEmpty();
     }
-    QSize super_sizeHint() const
+    bool super_isEmpty() const
     {
-        return QSpacerItem::sizeHint();
+        return QSpacerItem::isEmpty();
+    }
+    
+    QSpacerItem * spacerItem()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSpacerItem::spacerItem();
+    }
+    QSpacerItem * super_spacerItem()
+    {
+        return QSpacerItem::spacerItem();
     }
     
     bool hasHeightForWidth() const
@@ -403,18 +415,19 @@ public:
         return QLayoutItem::hasHeightForWidth();
     }
     
-    QRect geometry() const
+    void setGeometry(const QRect & __arg0)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setGeometry"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
         }
-        return QSpacerItem::geometry();
+        QSpacerItem::setGeometry(__arg0);
     }
-    QRect super_geometry() const
+    void super_setGeometry(const QRect & __arg0)
     {
-        return QSpacerItem::geometry();
+        QSpacerItem::setGeometry(__arg0);
     }
     
     QSize maximumSize() const
@@ -445,18 +458,46 @@ public:
         return QLayoutItem::minimumHeightForWidth(__arg0);
     }
     
-    QSpacerItem * spacerItem()
+    Qt::Orientations expandingDirections() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("expandingDirections"));
         if(func)
         {
-            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QSpacerItem::spacerItem();
+        return QSpacerItem::expandingDirections();
     }
-    QSpacerItem * super_spacerItem()
+    Qt::Orientations super_expandingDirections() const
     {
-        return QSpacerItem::spacerItem();
+        return QSpacerItem::expandingDirections();
+    }
+    
+    QWidget * widget()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
+        if(func)
+        {
+            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayoutItem::widget();
+    }
+    QWidget * super_widget()
+    {
+        return QLayoutItem::widget();
+    }
+    
+    QSize sizeHint() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSpacerItem::sizeHint();
+    }
+    QSize super_sizeHint() const
+    {
+        return QSpacerItem::sizeHint();
     }
     
     QSize minimumSize() const
@@ -473,34 +514,6 @@ public:
         return QSpacerItem::minimumSize();
     }
     
-    Qt::Orientations expandingDirections() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("expandingDirections"));
-        if(func)
-        {
-            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSpacerItem::expandingDirections();
-    }
-    Qt::Orientations super_expandingDirections() const
-    {
-        return QSpacerItem::expandingDirections();
-    }
-    
-    bool isEmpty() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSpacerItem::isEmpty();
-    }
-    bool super_isEmpty() const
-    {
-        return QSpacerItem::isEmpty();
-    }
-    
     QSizePolicy::ControlTypes controlTypes() const
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("controlTypes"));
@@ -515,32 +528,19 @@ public:
         return QLayoutItem::controlTypes();
     }
     
-    QLayout * layout()
+    void invalidate()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidate"));
         if(func)
         {
-            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
+            return;
         }
-        return QLayoutItem::layout();
+        QLayoutItem::invalidate();
     }
-    QLayout * super_layout()
+    void super_invalidate()
     {
-        return QLayoutItem::layout();
-    }
-    
-    QWidget * widget()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
-        if(func)
-        {
-            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayoutItem::widget();
-    }
-    QWidget * super_widget()
-    {
-        return QLayoutItem::widget();
+        QLayoutItem::invalidate();
     }
     
     int heightForWidth(int __arg0) const
@@ -561,20 +561,20 @@ public:
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
-        _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
-        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) () const)&D::ClassType::super_sizeHint);
-        _d.CPGF_MD_TEMPLATE _method("super_hasHeightForWidth", (bool (D::ClassType::*) () const)&D::ClassType::super_hasHeightForWidth);
         _d.CPGF_MD_TEMPLATE _method("super_geometry", (QRect (D::ClassType::*) () const)&D::ClassType::super_geometry);
+        _d.CPGF_MD_TEMPLATE _method("super_layout", (QLayout * (D::ClassType::*) ())&D::ClassType::super_layout);
+        _d.CPGF_MD_TEMPLATE _method("super_isEmpty", (bool (D::ClassType::*) () const)&D::ClassType::super_isEmpty);
+        _d.CPGF_MD_TEMPLATE _method("super_spacerItem", (QSpacerItem * (D::ClassType::*) ())&D::ClassType::super_spacerItem);
+        _d.CPGF_MD_TEMPLATE _method("super_hasHeightForWidth", (bool (D::ClassType::*) () const)&D::ClassType::super_hasHeightForWidth);
+        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
         _d.CPGF_MD_TEMPLATE _method("super_maximumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_maximumSize);
         _d.CPGF_MD_TEMPLATE _method("super_minimumHeightForWidth", (int (D::ClassType::*) (int) const)&D::ClassType::super_minimumHeightForWidth);
-        _d.CPGF_MD_TEMPLATE _method("super_spacerItem", (QSpacerItem * (D::ClassType::*) ())&D::ClassType::super_spacerItem);
-        _d.CPGF_MD_TEMPLATE _method("super_minimumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_minimumSize);
         _d.CPGF_MD_TEMPLATE _method("super_expandingDirections", (Qt::Orientations (D::ClassType::*) () const)&D::ClassType::super_expandingDirections);
-        _d.CPGF_MD_TEMPLATE _method("super_isEmpty", (bool (D::ClassType::*) () const)&D::ClassType::super_isEmpty);
-        _d.CPGF_MD_TEMPLATE _method("super_controlTypes", (QSizePolicy::ControlTypes (D::ClassType::*) () const)&D::ClassType::super_controlTypes);
-        _d.CPGF_MD_TEMPLATE _method("super_layout", (QLayout * (D::ClassType::*) ())&D::ClassType::super_layout);
         _d.CPGF_MD_TEMPLATE _method("super_widget", (QWidget * (D::ClassType::*) ())&D::ClassType::super_widget);
+        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) () const)&D::ClassType::super_sizeHint);
+        _d.CPGF_MD_TEMPLATE _method("super_minimumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_minimumSize);
+        _d.CPGF_MD_TEMPLATE _method("super_controlTypes", (QSizePolicy::ControlTypes (D::ClassType::*) () const)&D::ClassType::super_controlTypes);
+        _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
         _d.CPGF_MD_TEMPLATE _method("super_heightForWidth", (int (D::ClassType::*) (int) const)&D::ClassType::super_heightForWidth);
     }
 };
@@ -620,48 +620,60 @@ public:
     QWidgetItemWrapper(QWidget * w)
         : QWidgetItem(w) {}
     
-    void setGeometry(const QRect & __arg0)
+    QRect geometry() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setGeometry"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        QWidgetItem::setGeometry(__arg0);
+        return QWidgetItem::geometry();
     }
-    void super_setGeometry(const QRect & __arg0)
+    QRect super_geometry() const
     {
-        QWidgetItem::setGeometry(__arg0);
+        return QWidgetItem::geometry();
     }
     
-    void invalidate()
+    QLayout * layout()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidate"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this);
-            return;
+            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        QLayoutItem::invalidate();
+        return QLayoutItem::layout();
     }
-    void super_invalidate()
+    QLayout * super_layout()
     {
-        QLayoutItem::invalidate();
+        return QLayoutItem::layout();
     }
     
-    QSize sizeHint() const
+    bool isEmpty() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QWidgetItem::sizeHint();
+        return QWidgetItem::isEmpty();
     }
-    QSize super_sizeHint() const
+    bool super_isEmpty() const
     {
-        return QWidgetItem::sizeHint();
+        return QWidgetItem::isEmpty();
+    }
+    
+    QSpacerItem * spacerItem()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayoutItem::spacerItem();
+    }
+    QSpacerItem * super_spacerItem()
+    {
+        return QLayoutItem::spacerItem();
     }
     
     bool hasHeightForWidth() const
@@ -678,18 +690,19 @@ public:
         return QWidgetItem::hasHeightForWidth();
     }
     
-    QRect geometry() const
+    void setGeometry(const QRect & __arg0)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setGeometry"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
         }
-        return QWidgetItem::geometry();
+        QWidgetItem::setGeometry(__arg0);
     }
-    QRect super_geometry() const
+    void super_setGeometry(const QRect & __arg0)
     {
-        return QWidgetItem::geometry();
+        QWidgetItem::setGeometry(__arg0);
     }
     
     QSize maximumSize() const
@@ -720,18 +733,46 @@ public:
         return QLayoutItem::minimumHeightForWidth(__arg0);
     }
     
-    QSpacerItem * spacerItem()
+    Qt::Orientations expandingDirections() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("expandingDirections"));
         if(func)
         {
-            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QLayoutItem::spacerItem();
+        return QWidgetItem::expandingDirections();
     }
-    QSpacerItem * super_spacerItem()
+    Qt::Orientations super_expandingDirections() const
     {
-        return QLayoutItem::spacerItem();
+        return QWidgetItem::expandingDirections();
+    }
+    
+    QWidget * widget()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
+        if(func)
+        {
+            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QWidgetItem::widget();
+    }
+    QWidget * super_widget()
+    {
+        return QWidgetItem::widget();
+    }
+    
+    QSize sizeHint() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QWidgetItem::sizeHint();
+    }
+    QSize super_sizeHint() const
+    {
+        return QWidgetItem::sizeHint();
     }
     
     QSize minimumSize() const
@@ -748,34 +789,6 @@ public:
         return QWidgetItem::minimumSize();
     }
     
-    Qt::Orientations expandingDirections() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("expandingDirections"));
-        if(func)
-        {
-            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QWidgetItem::expandingDirections();
-    }
-    Qt::Orientations super_expandingDirections() const
-    {
-        return QWidgetItem::expandingDirections();
-    }
-    
-    bool isEmpty() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QWidgetItem::isEmpty();
-    }
-    bool super_isEmpty() const
-    {
-        return QWidgetItem::isEmpty();
-    }
-    
     QSizePolicy::ControlTypes controlTypes() const
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("controlTypes"));
@@ -790,32 +803,19 @@ public:
         return QWidgetItem::controlTypes();
     }
     
-    QLayout * layout()
+    void invalidate()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidate"));
         if(func)
         {
-            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
+            return;
         }
-        return QLayoutItem::layout();
+        QLayoutItem::invalidate();
     }
-    QLayout * super_layout()
+    void super_invalidate()
     {
-        return QLayoutItem::layout();
-    }
-    
-    QWidget * widget()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
-        if(func)
-        {
-            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QWidgetItem::widget();
-    }
-    QWidget * super_widget()
-    {
-        return QWidgetItem::widget();
+        QLayoutItem::invalidate();
     }
     
     int heightForWidth(int __arg0) const
@@ -836,20 +836,20 @@ public:
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
-        _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
-        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) () const)&D::ClassType::super_sizeHint);
-        _d.CPGF_MD_TEMPLATE _method("super_hasHeightForWidth", (bool (D::ClassType::*) () const)&D::ClassType::super_hasHeightForWidth);
         _d.CPGF_MD_TEMPLATE _method("super_geometry", (QRect (D::ClassType::*) () const)&D::ClassType::super_geometry);
+        _d.CPGF_MD_TEMPLATE _method("super_layout", (QLayout * (D::ClassType::*) ())&D::ClassType::super_layout);
+        _d.CPGF_MD_TEMPLATE _method("super_isEmpty", (bool (D::ClassType::*) () const)&D::ClassType::super_isEmpty);
+        _d.CPGF_MD_TEMPLATE _method("super_spacerItem", (QSpacerItem * (D::ClassType::*) ())&D::ClassType::super_spacerItem);
+        _d.CPGF_MD_TEMPLATE _method("super_hasHeightForWidth", (bool (D::ClassType::*) () const)&D::ClassType::super_hasHeightForWidth);
+        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
         _d.CPGF_MD_TEMPLATE _method("super_maximumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_maximumSize);
         _d.CPGF_MD_TEMPLATE _method("super_minimumHeightForWidth", (int (D::ClassType::*) (int) const)&D::ClassType::super_minimumHeightForWidth);
-        _d.CPGF_MD_TEMPLATE _method("super_spacerItem", (QSpacerItem * (D::ClassType::*) ())&D::ClassType::super_spacerItem);
-        _d.CPGF_MD_TEMPLATE _method("super_minimumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_minimumSize);
         _d.CPGF_MD_TEMPLATE _method("super_expandingDirections", (Qt::Orientations (D::ClassType::*) () const)&D::ClassType::super_expandingDirections);
-        _d.CPGF_MD_TEMPLATE _method("super_isEmpty", (bool (D::ClassType::*) () const)&D::ClassType::super_isEmpty);
-        _d.CPGF_MD_TEMPLATE _method("super_controlTypes", (QSizePolicy::ControlTypes (D::ClassType::*) () const)&D::ClassType::super_controlTypes);
-        _d.CPGF_MD_TEMPLATE _method("super_layout", (QLayout * (D::ClassType::*) ())&D::ClassType::super_layout);
         _d.CPGF_MD_TEMPLATE _method("super_widget", (QWidget * (D::ClassType::*) ())&D::ClassType::super_widget);
+        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) () const)&D::ClassType::super_sizeHint);
+        _d.CPGF_MD_TEMPLATE _method("super_minimumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_minimumSize);
+        _d.CPGF_MD_TEMPLATE _method("super_controlTypes", (QSizePolicy::ControlTypes (D::ClassType::*) () const)&D::ClassType::super_controlTypes);
+        _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
         _d.CPGF_MD_TEMPLATE _method("super_heightForWidth", (int (D::ClassType::*) (int) const)&D::ClassType::super_heightForWidth);
     }
 };
@@ -888,48 +888,60 @@ public:
     QWidgetItemV2Wrapper(QWidget * widget)
         : QWidgetItemV2(widget) {}
     
-    void setGeometry(const QRect & __arg0)
+    QRect geometry() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setGeometry"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        QWidgetItem::setGeometry(__arg0);
+        return QWidgetItem::geometry();
     }
-    void super_setGeometry(const QRect & __arg0)
+    QRect super_geometry() const
     {
-        QWidgetItem::setGeometry(__arg0);
+        return QWidgetItem::geometry();
     }
     
-    void invalidate()
+    QLayout * layout()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidate"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this);
-            return;
+            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        QLayoutItem::invalidate();
+        return QLayoutItem::layout();
     }
-    void super_invalidate()
+    QLayout * super_layout()
     {
-        QLayoutItem::invalidate();
+        return QLayoutItem::layout();
     }
     
-    QSize sizeHint() const
+    bool isEmpty() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QWidgetItemV2::sizeHint();
+        return QWidgetItem::isEmpty();
     }
-    QSize super_sizeHint() const
+    bool super_isEmpty() const
     {
-        return QWidgetItemV2::sizeHint();
+        return QWidgetItem::isEmpty();
+    }
+    
+    QSpacerItem * spacerItem()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayoutItem::spacerItem();
+    }
+    QSpacerItem * super_spacerItem()
+    {
+        return QLayoutItem::spacerItem();
     }
     
     bool hasHeightForWidth() const
@@ -946,18 +958,19 @@ public:
         return QWidgetItem::hasHeightForWidth();
     }
     
-    QRect geometry() const
+    void setGeometry(const QRect & __arg0)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setGeometry"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
         }
-        return QWidgetItem::geometry();
+        QWidgetItem::setGeometry(__arg0);
     }
-    QRect super_geometry() const
+    void super_setGeometry(const QRect & __arg0)
     {
-        return QWidgetItem::geometry();
+        QWidgetItem::setGeometry(__arg0);
     }
     
     QSize maximumSize() const
@@ -988,18 +1001,46 @@ public:
         return QLayoutItem::minimumHeightForWidth(__arg0);
     }
     
-    QSpacerItem * spacerItem()
+    Qt::Orientations expandingDirections() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("expandingDirections"));
         if(func)
         {
-            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QLayoutItem::spacerItem();
+        return QWidgetItem::expandingDirections();
     }
-    QSpacerItem * super_spacerItem()
+    Qt::Orientations super_expandingDirections() const
     {
-        return QLayoutItem::spacerItem();
+        return QWidgetItem::expandingDirections();
+    }
+    
+    QWidget * widget()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
+        if(func)
+        {
+            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QWidgetItem::widget();
+    }
+    QWidget * super_widget()
+    {
+        return QWidgetItem::widget();
+    }
+    
+    QSize sizeHint() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QWidgetItemV2::sizeHint();
+    }
+    QSize super_sizeHint() const
+    {
+        return QWidgetItemV2::sizeHint();
     }
     
     QSize minimumSize() const
@@ -1016,34 +1057,6 @@ public:
         return QWidgetItemV2::minimumSize();
     }
     
-    Qt::Orientations expandingDirections() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("expandingDirections"));
-        if(func)
-        {
-            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QWidgetItem::expandingDirections();
-    }
-    Qt::Orientations super_expandingDirections() const
-    {
-        return QWidgetItem::expandingDirections();
-    }
-    
-    bool isEmpty() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QWidgetItem::isEmpty();
-    }
-    bool super_isEmpty() const
-    {
-        return QWidgetItem::isEmpty();
-    }
-    
     QSizePolicy::ControlTypes controlTypes() const
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("controlTypes"));
@@ -1058,32 +1071,19 @@ public:
         return QWidgetItem::controlTypes();
     }
     
-    QLayout * layout()
+    void invalidate()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidate"));
         if(func)
         {
-            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
+            return;
         }
-        return QLayoutItem::layout();
+        QLayoutItem::invalidate();
     }
-    QLayout * super_layout()
+    void super_invalidate()
     {
-        return QLayoutItem::layout();
-    }
-    
-    QWidget * widget()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
-        if(func)
-        {
-            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QWidgetItem::widget();
-    }
-    QWidget * super_widget()
-    {
-        return QWidgetItem::widget();
+        QLayoutItem::invalidate();
     }
     
     int heightForWidth(int width) const
@@ -1104,20 +1104,20 @@ public:
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
-        _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
-        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) () const)&D::ClassType::super_sizeHint);
-        _d.CPGF_MD_TEMPLATE _method("super_hasHeightForWidth", (bool (D::ClassType::*) () const)&D::ClassType::super_hasHeightForWidth);
         _d.CPGF_MD_TEMPLATE _method("super_geometry", (QRect (D::ClassType::*) () const)&D::ClassType::super_geometry);
+        _d.CPGF_MD_TEMPLATE _method("super_layout", (QLayout * (D::ClassType::*) ())&D::ClassType::super_layout);
+        _d.CPGF_MD_TEMPLATE _method("super_isEmpty", (bool (D::ClassType::*) () const)&D::ClassType::super_isEmpty);
+        _d.CPGF_MD_TEMPLATE _method("super_spacerItem", (QSpacerItem * (D::ClassType::*) ())&D::ClassType::super_spacerItem);
+        _d.CPGF_MD_TEMPLATE _method("super_hasHeightForWidth", (bool (D::ClassType::*) () const)&D::ClassType::super_hasHeightForWidth);
+        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
         _d.CPGF_MD_TEMPLATE _method("super_maximumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_maximumSize);
         _d.CPGF_MD_TEMPLATE _method("super_minimumHeightForWidth", (int (D::ClassType::*) (int) const)&D::ClassType::super_minimumHeightForWidth);
-        _d.CPGF_MD_TEMPLATE _method("super_spacerItem", (QSpacerItem * (D::ClassType::*) ())&D::ClassType::super_spacerItem);
-        _d.CPGF_MD_TEMPLATE _method("super_minimumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_minimumSize);
         _d.CPGF_MD_TEMPLATE _method("super_expandingDirections", (Qt::Orientations (D::ClassType::*) () const)&D::ClassType::super_expandingDirections);
-        _d.CPGF_MD_TEMPLATE _method("super_isEmpty", (bool (D::ClassType::*) () const)&D::ClassType::super_isEmpty);
-        _d.CPGF_MD_TEMPLATE _method("super_controlTypes", (QSizePolicy::ControlTypes (D::ClassType::*) () const)&D::ClassType::super_controlTypes);
-        _d.CPGF_MD_TEMPLATE _method("super_layout", (QLayout * (D::ClassType::*) ())&D::ClassType::super_layout);
         _d.CPGF_MD_TEMPLATE _method("super_widget", (QWidget * (D::ClassType::*) ())&D::ClassType::super_widget);
+        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) () const)&D::ClassType::super_sizeHint);
+        _d.CPGF_MD_TEMPLATE _method("super_minimumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_minimumSize);
+        _d.CPGF_MD_TEMPLATE _method("super_controlTypes", (QSizePolicy::ControlTypes (D::ClassType::*) () const)&D::ClassType::super_controlTypes);
+        _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
         _d.CPGF_MD_TEMPLATE _method("super_heightForWidth", (int (D::ClassType::*) (int) const)&D::ClassType::super_heightForWidth);
     }
 };

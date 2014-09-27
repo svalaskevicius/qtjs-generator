@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qglyphrun.h>
+#include "QtGui/qglyphrun.h"
 
 #include "meta_qtgui_qglyphrun.h"
 

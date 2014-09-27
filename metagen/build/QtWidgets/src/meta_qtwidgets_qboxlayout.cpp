@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qboxlayout.h>
+#include "QtWidgets/qboxlayout.h"
 
 #include "meta_qtwidgets_qboxlayout.h"
 

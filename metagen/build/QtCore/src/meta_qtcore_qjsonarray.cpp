@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qjsonarray.h>
+#include "QtCore/qjsonarray.h"
 
 #include "meta_qtcore_qjsonarray.h"
 

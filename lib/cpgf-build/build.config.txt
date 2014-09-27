@@ -95,7 +95,11 @@ get_filename_component(V8_DIR "../node/deps/v8/include/" REALPATH)
 
 set(V8_INC ${V8_DIR})
 
-get_filename_component(V8_LIB "../node/deps/v8/out/native/lib.target/libv8.so" REALPATH)
+if(APPLE)
+	get_filename_component(V8_LIB "../node/deps/v8/out/native/libv8.dylib" REALPATH)
+elseif(UNIX)
+	get_filename_component(V8_LIB "../node/deps/v8/out/native/lib.target/libv8.so" REALPATH)
+endif()
 
 
 ### Python config

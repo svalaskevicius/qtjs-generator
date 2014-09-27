@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qeasingcurve.h>
+#include "QtCore/qeasingcurve.h"
 
 #include "meta_qtcore_qeasingcurve.h"
 

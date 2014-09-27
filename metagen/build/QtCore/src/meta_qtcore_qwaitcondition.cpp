@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qwaitcondition.h>
+#include "QtCore/qwaitcondition.h"
 
 #include "meta_qtcore_qwaitcondition.h"
 

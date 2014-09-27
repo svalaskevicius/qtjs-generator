@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qinputdialog.h>
+#include "QtWidgets/qinputdialog.h"
 
 #include "meta_qtwidgets_qinputdialog.h"
 

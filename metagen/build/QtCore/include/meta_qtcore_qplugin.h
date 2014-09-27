@@ -25,7 +25,7 @@ void buildMetaClass_Global_qplugin(D _d)
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qRegisterStaticPluginFunction", (void (*) (QStaticPlugin))&qRegisterStaticPluginFunction);
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_25")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_36")
     ;
 }
 

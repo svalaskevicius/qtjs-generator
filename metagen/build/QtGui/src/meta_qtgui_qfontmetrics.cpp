@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qfontmetrics.h>
+#include "QtGui/qfontmetrics.h"
 
 #include "meta_qtgui_qfontmetrics.h"
 

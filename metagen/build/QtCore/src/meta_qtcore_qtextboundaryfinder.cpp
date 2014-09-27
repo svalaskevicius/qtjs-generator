@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qtextboundaryfinder.h>
+#include "QtCore/qtextboundaryfinder.h"
 
 #include "meta_qtcore_qtextboundaryfinder.h"
 

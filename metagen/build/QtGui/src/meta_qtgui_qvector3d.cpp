@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qvector3d.h>
+#include "QtGui/qvector3d.h"
 
 #include "meta_qtgui_qvector3d.h"
 

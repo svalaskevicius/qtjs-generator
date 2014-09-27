@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qpagesize.h>
+#include "QtGui/qpagesize.h"
 
 #include "meta_qtgui_qpagesize.h"
 

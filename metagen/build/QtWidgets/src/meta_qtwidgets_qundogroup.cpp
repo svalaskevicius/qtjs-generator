@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qundogroup.h>
+#include "QtWidgets/qundogroup.h"
 
 #include "meta_qtwidgets_qundogroup.h"
 

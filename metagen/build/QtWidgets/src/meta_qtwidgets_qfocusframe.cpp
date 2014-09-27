@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qfocusframe.h>
+#include "QtWidgets/qfocusframe.h"
 
 #include "meta_qtwidgets_qfocusframe.h"
 

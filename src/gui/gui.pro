@@ -1,7 +1,7 @@
 
 include (../qtjs-plugin.pri)
 
-QT += core gui
+QT += core widgets gui gui-private
 TEMPLATE = lib
 
 TARGET=qtjs_gui
@@ -9,6 +9,8 @@ TARGET=qtjs_gui
 #PRECOMPILED_HEADER = precompiledIncludes.h
 #CONFIG += precompile_header
 
+LIBPATH += $${BUILD}/src/core/
+LIBS += -lqtjs_core
 
 QMAKE_CXXFLAGS += -DBUILDING_DLL 
 

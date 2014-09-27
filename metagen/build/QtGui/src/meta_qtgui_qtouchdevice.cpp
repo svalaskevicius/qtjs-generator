@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qtouchdevice.h>
+#include "QtGui/qtouchdevice.h"
 
 #include "meta_qtgui_qtouchdevice.h"
 

@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qhash.h>
+#include "QtCore/qhash.h"
 
 #include "meta_qtcore_qhash.h"
 

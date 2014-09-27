@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qkeysequence.h>
+#include "QtGui/qkeysequence.h"
 
 #include "meta_qtgui_qkeysequence.h"
 

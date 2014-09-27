@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qevent.h>
+#include "QtGui/qevent.h"
 
 #include "meta_qtgui_qevent.h"
 

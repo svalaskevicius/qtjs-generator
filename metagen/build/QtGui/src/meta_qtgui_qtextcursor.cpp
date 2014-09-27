@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qtextcursor.h>
+#include "QtGui/qtextcursor.h"
 
 #include "meta_qtgui_qtextcursor.h"
 

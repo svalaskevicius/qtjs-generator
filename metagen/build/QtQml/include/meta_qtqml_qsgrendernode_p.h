@@ -80,6 +80,20 @@ public:
         throw std::runtime_error("Abstract method");
     }
     
+    bool isSubtreeBlocked() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGNode::isSubtreeBlocked();
+    }
+    bool super_isSubtreeBlocked() const
+    {
+        return QSGNode::isSubtreeBlocked();
+    }
+    
     QSGRenderNode::StateFlags changedStates()
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("changedStates"));
@@ -108,29 +122,15 @@ public:
     {
         QSGNode::preprocess();
     }
-    
-    bool isSubtreeBlocked() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSGNode::isSubtreeBlocked();
-    }
-    bool super_isSubtreeBlocked() const
-    {
-        return QSGNode::isSubtreeBlocked();
-    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_render", (void (D::ClassType::*) (const QSGRenderNode::RenderState&))&D::ClassType::super_render);
+        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
         _d.CPGF_MD_TEMPLATE _method("super_changedStates", (QSGRenderNode::StateFlags (D::ClassType::*) ())&D::ClassType::super_changedStates);
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
-        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
     }
 };
 

@@ -42,18 +42,18 @@ public:
     QSGFlatColorMaterialWrapper()
         : QSGFlatColorMaterial() {}
     
-    int compare(const QSGMaterial * other) const
+    QSGMaterialShader * createShader() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("compare"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createShader"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, other).getValue());
+            return cpgf::fromVariant<QSGMaterialShader * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QSGFlatColorMaterial::compare(other);
+        return QSGFlatColorMaterial::createShader();
     }
-    int super_compare(const QSGMaterial * other) const
+    QSGMaterialShader * super_createShader() const
     {
-        return QSGFlatColorMaterial::compare(other);
+        return QSGFlatColorMaterial::createShader();
     }
     
     QSGMaterialType * type() const
@@ -70,27 +70,27 @@ public:
         return QSGFlatColorMaterial::type();
     }
     
-    QSGMaterialShader * createShader() const
+    int compare(const QSGMaterial * other) const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createShader"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("compare"));
         if(func)
         {
-            return cpgf::fromVariant<QSGMaterialShader * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, other).getValue());
         }
-        return QSGFlatColorMaterial::createShader();
+        return QSGFlatColorMaterial::compare(other);
     }
-    QSGMaterialShader * super_createShader() const
+    int super_compare(const QSGMaterial * other) const
     {
-        return QSGFlatColorMaterial::createShader();
+        return QSGFlatColorMaterial::compare(other);
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_compare", (int (D::ClassType::*) (const QSGMaterial *) const)&D::ClassType::super_compare);
-        _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
         _d.CPGF_MD_TEMPLATE _method("super_createShader", (QSGMaterialShader * (D::ClassType::*) () const)&D::ClassType::super_createShader);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_compare", (int (D::ClassType::*) (const QSGMaterial *) const)&D::ClassType::super_compare);
     }
 };
 

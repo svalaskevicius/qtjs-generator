@@ -50,64 +50,19 @@ public:
     QSGDefaultImageNodeWrapper()
         : QSGDefaultImageNode() {}
     
-    void setTargetRect(const QRectF & rect)
+    void update()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setTargetRect"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("update"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
-        QSGDefaultImageNode::setTargetRect(rect);
+        QSGDefaultImageNode::update();
     }
-    void super_setTargetRect(const QRectF & rect)
+    void super_update()
     {
-        QSGDefaultImageNode::setTargetRect(rect);
-    }
-    
-    void setMirror(bool mirror)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setMirror"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, mirror);
-            return;
-        }
-        QSGDefaultImageNode::setMirror(mirror);
-    }
-    void super_setMirror(bool mirror)
-    {
-        QSGDefaultImageNode::setMirror(mirror);
-    }
-    
-    void setFiltering(QSGTexture::Filtering filtering)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setFiltering"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, filtering);
-            return;
-        }
-        QSGDefaultImageNode::setFiltering(filtering);
-    }
-    void super_setFiltering(QSGTexture::Filtering filtering)
-    {
-        QSGDefaultImageNode::setFiltering(filtering);
-    }
-    
-    void setInnerTargetRect(const QRectF & rect)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setInnerTargetRect"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
-            return;
-        }
-        QSGDefaultImageNode::setInnerTargetRect(rect);
-    }
-    void super_setInnerTargetRect(const QRectF & rect)
-    {
-        QSGDefaultImageNode::setInnerTargetRect(rect);
+        QSGDefaultImageNode::update();
     }
     
     void setHorizontalWrapMode(QSGTexture::WrapMode wrapMode)
@@ -125,64 +80,19 @@ public:
         QSGDefaultImageNode::setHorizontalWrapMode(wrapMode);
     }
     
-    void preprocess()
+    void setVerticalWrapMode(QSGTexture::WrapMode wrapMode)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setVerticalWrapMode"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, wrapMode);
             return;
         }
-        QSGDefaultImageNode::preprocess();
+        QSGDefaultImageNode::setVerticalWrapMode(wrapMode);
     }
-    void super_preprocess()
+    void super_setVerticalWrapMode(QSGTexture::WrapMode wrapMode)
     {
-        QSGDefaultImageNode::preprocess();
-    }
-    
-    void setMipmapFiltering(QSGTexture::Filtering filtering)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setMipmapFiltering"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, filtering);
-            return;
-        }
-        QSGDefaultImageNode::setMipmapFiltering(filtering);
-    }
-    void super_setMipmapFiltering(QSGTexture::Filtering filtering)
-    {
-        QSGDefaultImageNode::setMipmapFiltering(filtering);
-    }
-    
-    void setTexture(QSGTexture * t)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setTexture"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, t);
-            return;
-        }
-        QSGDefaultImageNode::setTexture(t);
-    }
-    void super_setTexture(QSGTexture * t)
-    {
-        QSGDefaultImageNode::setTexture(t);
-    }
-    
-    void setAntialiasing(bool antialiasing)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setAntialiasing"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, antialiasing);
-            return;
-        }
-        QSGDefaultImageNode::setAntialiasing(antialiasing);
-    }
-    void super_setAntialiasing(bool antialiasing)
-    {
-        QSGDefaultImageNode::setAntialiasing(antialiasing);
+        QSGDefaultImageNode::setVerticalWrapMode(wrapMode);
     }
     
     void setInnerSourceRect(const QRectF & rect)
@@ -200,48 +110,19 @@ public:
         QSGDefaultImageNode::setInnerSourceRect(rect);
     }
     
-    void setVerticalWrapMode(QSGTexture::WrapMode wrapMode)
+    void setMirror(bool mirror)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setVerticalWrapMode"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setMirror"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, wrapMode);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, mirror);
             return;
         }
-        QSGDefaultImageNode::setVerticalWrapMode(wrapMode);
+        QSGDefaultImageNode::setMirror(mirror);
     }
-    void super_setVerticalWrapMode(QSGTexture::WrapMode wrapMode)
+    void super_setMirror(bool mirror)
     {
-        QSGDefaultImageNode::setVerticalWrapMode(wrapMode);
-    }
-    
-    bool isSubtreeBlocked() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSGNode::isSubtreeBlocked();
-    }
-    bool super_isSubtreeBlocked() const
-    {
-        return QSGNode::isSubtreeBlocked();
-    }
-    
-    void update()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("update"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this);
-            return;
-        }
-        QSGDefaultImageNode::update();
-    }
-    void super_update()
-    {
-        QSGDefaultImageNode::update();
+        QSGDefaultImageNode::setMirror(mirror);
     }
     
     void setSubSourceRect(const QRectF & rect)
@@ -258,25 +139,144 @@ public:
     {
         QSGDefaultImageNode::setSubSourceRect(rect);
     }
+    
+    void setInnerTargetRect(const QRectF & rect)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setInnerTargetRect"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
+            return;
+        }
+        QSGDefaultImageNode::setInnerTargetRect(rect);
+    }
+    void super_setInnerTargetRect(const QRectF & rect)
+    {
+        QSGDefaultImageNode::setInnerTargetRect(rect);
+    }
+    
+    void preprocess()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
+            return;
+        }
+        QSGDefaultImageNode::preprocess();
+    }
+    void super_preprocess()
+    {
+        QSGDefaultImageNode::preprocess();
+    }
+    
+    void setFiltering(QSGTexture::Filtering filtering)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setFiltering"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, filtering);
+            return;
+        }
+        QSGDefaultImageNode::setFiltering(filtering);
+    }
+    void super_setFiltering(QSGTexture::Filtering filtering)
+    {
+        QSGDefaultImageNode::setFiltering(filtering);
+    }
+    
+    void setAntialiasing(bool antialiasing)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setAntialiasing"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, antialiasing);
+            return;
+        }
+        QSGDefaultImageNode::setAntialiasing(antialiasing);
+    }
+    void super_setAntialiasing(bool antialiasing)
+    {
+        QSGDefaultImageNode::setAntialiasing(antialiasing);
+    }
+    
+    bool isSubtreeBlocked() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGNode::isSubtreeBlocked();
+    }
+    bool super_isSubtreeBlocked() const
+    {
+        return QSGNode::isSubtreeBlocked();
+    }
+    
+    void setTargetRect(const QRectF & rect)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setTargetRect"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rect);
+            return;
+        }
+        QSGDefaultImageNode::setTargetRect(rect);
+    }
+    void super_setTargetRect(const QRectF & rect)
+    {
+        QSGDefaultImageNode::setTargetRect(rect);
+    }
+    
+    void setTexture(QSGTexture * t)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setTexture"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, t);
+            return;
+        }
+        QSGDefaultImageNode::setTexture(t);
+    }
+    void super_setTexture(QSGTexture * t)
+    {
+        QSGDefaultImageNode::setTexture(t);
+    }
+    
+    void setMipmapFiltering(QSGTexture::Filtering filtering)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setMipmapFiltering"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, filtering);
+            return;
+        }
+        QSGDefaultImageNode::setMipmapFiltering(filtering);
+    }
+    void super_setMipmapFiltering(QSGTexture::Filtering filtering)
+    {
+        QSGDefaultImageNode::setMipmapFiltering(filtering);
+    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_setTargetRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setTargetRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_setMirror", (void (D::ClassType::*) (bool))&D::ClassType::super_setMirror);
-        _d.CPGF_MD_TEMPLATE _method("super_setFiltering", (void (D::ClassType::*) (QSGTexture::Filtering))&D::ClassType::super_setFiltering);
-        _d.CPGF_MD_TEMPLATE _method("super_setInnerTargetRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setInnerTargetRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_setHorizontalWrapMode", (void (D::ClassType::*) (QSGTexture::WrapMode))&D::ClassType::super_setHorizontalWrapMode);
-        _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
-        _d.CPGF_MD_TEMPLATE _method("super_setMipmapFiltering", (void (D::ClassType::*) (QSGTexture::Filtering))&D::ClassType::super_setMipmapFiltering);
-        _d.CPGF_MD_TEMPLATE _method("super_setTexture", (void (D::ClassType::*) (QSGTexture *))&D::ClassType::super_setTexture);
-        _d.CPGF_MD_TEMPLATE _method("super_setAntialiasing", (void (D::ClassType::*) (bool))&D::ClassType::super_setAntialiasing);
-        _d.CPGF_MD_TEMPLATE _method("super_setInnerSourceRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setInnerSourceRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_setVerticalWrapMode", (void (D::ClassType::*) (QSGTexture::WrapMode))&D::ClassType::super_setVerticalWrapMode);
-        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
         _d.CPGF_MD_TEMPLATE _method("super_update", (void (D::ClassType::*) ())&D::ClassType::super_update);
+        _d.CPGF_MD_TEMPLATE _method("super_setHorizontalWrapMode", (void (D::ClassType::*) (QSGTexture::WrapMode))&D::ClassType::super_setHorizontalWrapMode);
+        _d.CPGF_MD_TEMPLATE _method("super_setVerticalWrapMode", (void (D::ClassType::*) (QSGTexture::WrapMode))&D::ClassType::super_setVerticalWrapMode);
+        _d.CPGF_MD_TEMPLATE _method("super_setInnerSourceRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setInnerSourceRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_setMirror", (void (D::ClassType::*) (bool))&D::ClassType::super_setMirror);
         _d.CPGF_MD_TEMPLATE _method("super_setSubSourceRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setSubSourceRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_setInnerTargetRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setInnerTargetRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
+        _d.CPGF_MD_TEMPLATE _method("super_setFiltering", (void (D::ClassType::*) (QSGTexture::Filtering))&D::ClassType::super_setFiltering);
+        _d.CPGF_MD_TEMPLATE _method("super_setAntialiasing", (void (D::ClassType::*) (bool))&D::ClassType::super_setAntialiasing);
+        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
+        _d.CPGF_MD_TEMPLATE _method("super_setTargetRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setTargetRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_setTexture", (void (D::ClassType::*) (QSGTexture *))&D::ClassType::super_setTexture);
+        _d.CPGF_MD_TEMPLATE _method("super_setMipmapFiltering", (void (D::ClassType::*) (QSGTexture::Filtering))&D::ClassType::super_setMipmapFiltering);
     }
 };
 
@@ -311,18 +311,18 @@ public:
     QSGSmoothTextureMaterialWrapper()
         : QSGSmoothTextureMaterial() {}
     
-    int compare(const QSGMaterial * other) const
+    QSGMaterialShader * createShader() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("compare"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createShader"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, other).getValue());
+            return cpgf::fromVariant<QSGMaterialShader * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QSGOpaqueTextureMaterial::compare(other);
+        return QSGSmoothTextureMaterial::createShader();
     }
-    int super_compare(const QSGMaterial * other) const
+    QSGMaterialShader * super_createShader() const
     {
-        return QSGOpaqueTextureMaterial::compare(other);
+        return QSGSmoothTextureMaterial::createShader();
     }
     
     QSGMaterialType * type() const
@@ -339,29 +339,29 @@ public:
         return QSGSmoothTextureMaterial::type();
     }
     
-    QSGMaterialShader * createShader() const
+    int compare(const QSGMaterial * other) const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createShader"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("compare"));
         if(func)
         {
-            return cpgf::fromVariant<QSGMaterialShader * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, other).getValue());
         }
-        return QSGSmoothTextureMaterial::createShader();
+        return QSGOpaqueTextureMaterial::compare(other);
     }
-    QSGMaterialShader * super_createShader() const
+    int super_compare(const QSGMaterial * other) const
     {
-        return QSGSmoothTextureMaterial::createShader();
+        return QSGOpaqueTextureMaterial::compare(other);
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::type);
         _d.CPGF_MD_TEMPLATE _method("createShader", (QSGMaterialShader * (D::ClassType::*) () const)&D::ClassType::createShader);
-        _d.CPGF_MD_TEMPLATE _method("super_compare", (int (D::ClassType::*) (const QSGMaterial *) const)&D::ClassType::super_compare);
-        _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::type);
         _d.CPGF_MD_TEMPLATE _method("super_createShader", (QSGMaterialShader * (D::ClassType::*) () const)&D::ClassType::super_createShader);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_compare", (int (D::ClassType::*) (const QSGMaterial *) const)&D::ClassType::super_compare);
     }
 };
 

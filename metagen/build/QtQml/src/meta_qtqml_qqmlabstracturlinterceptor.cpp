@@ -27,7 +27,7 @@
 #include <private/qsgrenderer_p.h>
 #include <private/qsgrenderloop_p.h>
 
-#include <QtQml/qqmlabstracturlinterceptor.h>
+#include "QtQml/qqmlabstracturlinterceptor.h"
 
 #include "meta_qtqml_qqmlabstracturlinterceptor.h"
 

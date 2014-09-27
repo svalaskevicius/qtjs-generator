@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qsequentialanimationgroup.h>
+#include "QtCore/qsequentialanimationgroup.h"
 
 #include "meta_qtcore_qsequentialanimationgroup.h"
 

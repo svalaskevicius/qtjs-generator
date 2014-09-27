@@ -27,7 +27,7 @@
 #include <private/qsgrenderer_p.h>
 #include <private/qsgrenderloop_p.h>
 
-#include <QtQuick/designersupport.h>
+#include "QtQuick/designersupport.h"
 
 #include "meta_qtqml_designersupport.h"
 

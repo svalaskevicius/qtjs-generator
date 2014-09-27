@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qmacnativewidget_mac.h>
+#include "QtWidgets/qmacnativewidget_mac.h"
 
 #include "meta_qtwidgets_qmacnativewidget_mac.h"
 

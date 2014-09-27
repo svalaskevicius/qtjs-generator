@@ -27,7 +27,7 @@
 #include <private/qsgrenderer_p.h>
 #include <private/qsgrenderloop_p.h>
 
-#include <QtQuick/qsgsimpletexturenode.h>
+#include "QtQuick/qsgsimpletexturenode.h"
 
 #include "meta_qtqml_qsgsimpletexturenode.h"
 

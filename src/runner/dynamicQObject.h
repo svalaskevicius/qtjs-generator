@@ -232,7 +232,7 @@ struct DynamicClassSpecificationImpl : public DynamicClassSpecification {
     DynamicClassSpecificationImpl(std::string name) : name(name) {}
     int typeId() override { return qMetaTypeId<DynamicQObjectImpl>(); }
     void convertQtDataToGVariantData(void *data, cpgf::GVariantData *dest) override {
-        *dest = cpgf::createTypedVariant((Target *)((DynamicQObjectImpl *)data)).takeData();
+        *dest = cpgf::createTypedVariant((Target *)data).takeData();
     }
     virtual QQmlPrivate::RegisterType createQmlRegisterType(int classIdx, const char *uri, int versionMajor, int versionMinor, const char *qmlName) override {
         return createQmlRegisterTypeImpl<DynamicQObjectImpl >(classIdx, uri, versionMajor, versionMinor, qmlName);
@@ -328,7 +328,7 @@ void initialiseCreatedObject(DynamicQObject<C> *target, int index)
             parentClass
         );
     }
-    dynamicQObjects().callInit(index, target);
+    dynamicQObjects().callInit(index, dynamicClassSpecifications.byClassIdx(index)->castToTargetAddress((C *)target));
 }
 
 }

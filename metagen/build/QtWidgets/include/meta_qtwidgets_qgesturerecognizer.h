@@ -69,20 +69,6 @@ public:
         throw std::runtime_error("Abstract method");
     }
     
-    QGesture * create(QObject * target)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("create"));
-        if(func)
-        {
-            return cpgf::fromVariant<QGesture * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, target).getValue());
-        }
-        return QGestureRecognizer::create(target);
-    }
-    QGesture * super_create(QObject * target)
-    {
-        return QGestureRecognizer::create(target);
-    }
-    
     void reset(QGesture * state)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("reset"));
@@ -97,14 +83,28 @@ public:
     {
         QGestureRecognizer::reset(state);
     }
+    
+    QGesture * create(QObject * target)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("create"));
+        if(func)
+        {
+            return cpgf::fromVariant<QGesture * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, target).getValue());
+        }
+        return QGestureRecognizer::create(target);
+    }
+    QGesture * super_create(QObject * target)
+    {
+        return QGestureRecognizer::create(target);
+    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_recognize", (QGestureRecognizer::Result (D::ClassType::*) (QGesture *, QObject *, QEvent *))&D::ClassType::super_recognize);
-        _d.CPGF_MD_TEMPLATE _method("super_create", (QGesture * (D::ClassType::*) (QObject *))&D::ClassType::super_create);
         _d.CPGF_MD_TEMPLATE _method("super_reset", (void (D::ClassType::*) (QGesture *))&D::ClassType::super_reset);
+        _d.CPGF_MD_TEMPLATE _method("super_create", (QGesture * (D::ClassType::*) (QObject *))&D::ClassType::super_create);
     }
 };
 

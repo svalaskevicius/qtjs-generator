@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qitemselectionmodel.h>
+#include "QtCore/qitemselectionmodel.h"
 
 #include "meta_qtcore_qitemselectionmodel.h"
 

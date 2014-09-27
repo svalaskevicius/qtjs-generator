@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qscrollarea.h>
+#include "QtWidgets/qscrollarea.h"
 
 #include "meta_qtwidgets_qscrollarea.h"
 

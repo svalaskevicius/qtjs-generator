@@ -1,7 +1,14 @@
 #!/bin/bash
 
+function get_realpath() {
+	[[ ! -e "$1" ]] && return 1 # failure : file does not exist.
+	[[ -n "$no_symlinks" ]] && local pwdp='pwd -P' || local pwdp='pwd' # do symlinks.
+	echo "$( cd "$( echo "${1%/*}" )" 2>/dev/null; $pwdp )"/"${1##*/}" # echo result.
+	return 0 # success
+}
+
 MYDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-QTINC="$( readlink -f "$1" )"
+QTINC="$( get_realpath "$1" )"
 
 if ! test -d "$QTINC" ; then
     echo "qt dir not specified." >&2
@@ -113,13 +120,20 @@ function prepare_files() {
 }
 
 rm -Rf qtheaders xml 
+mkdir qtheaders
 
-cp -R "$QTINC" qtheaders
+cp -R "$QTINC/"* qtheaders/
+for path in $(ls -1d "$QTINC/../lib/"*".framework" 2>/dev/null) ; do
+	F=$(echo $(basename "$path") | sed -e 's/.framework$//')
+	echo "copying $F"
+	mkdir -p "qtheaders/$F"
+	cp -R "$QTINC/../lib/$F.framework/Headers/"* "qtheaders/$F/"
+done
 
 pushd qtheaders
-rm -Rf QtCLucene QtConcurrent QtDBus QtDeclarative QtDesigner QtDesignerComponents \
+rm -vRf QtCLucene QtConcurrent QtDBus QtDeclarative QtDesigner QtDesignerComponents \
       QtHelp QtMultimedia QtMultimediaQuick_p QtMultimediaWidgets QtNetwork QtOpenGL \
-      QtPlatformSupport QtPrintSupport \
+      QtPlatformSupport QtPrintSupport QtMacExtras \
       QtScript QtScriptTools QtSql QtSvg QtTest QtUiTools QtWebKit \
       QtWebKitWidgets QtXml QtXmlPatterns QtZlib
 popd
@@ -128,7 +142,7 @@ find qtheaders -type f | prepare_files
 
 doxygen qt.doxyfile
 
-find xml -type f -name '*.xml' -exec perl -p -i -e "s#$MYDIR/qtheaders#$QTINC#g" '{}' \;
+find xml -type f -name '*.xml' -exec perl -p -i -e "s#($MYDIR/)?qtheaders/?##g" '{}' \;
 
-./metagen.sh "$QTINC"
+./metagen.sh 
 

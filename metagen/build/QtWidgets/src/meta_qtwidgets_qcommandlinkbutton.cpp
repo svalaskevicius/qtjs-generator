@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qcommandlinkbutton.h>
+#include "QtWidgets/qcommandlinkbutton.h"
 
 #include "meta_qtwidgets_qcommandlinkbutton.h"
 

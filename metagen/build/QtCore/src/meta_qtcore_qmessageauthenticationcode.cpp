@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qmessageauthenticationcode.h>
+#include "QtCore/qmessageauthenticationcode.h"
 
 #include "meta_qtcore_qmessageauthenticationcode.h"
 

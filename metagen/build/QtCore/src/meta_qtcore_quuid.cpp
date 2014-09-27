@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/quuid.h>
+#include "QtCore/quuid.h"
 
 #include "meta_qtcore_quuid.h"
 

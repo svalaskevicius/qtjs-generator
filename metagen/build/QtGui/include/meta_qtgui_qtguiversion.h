@@ -24,7 +24,7 @@ void buildMetaClass_Global_qtguiversion(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_17")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_20")
         ._element("QTGUI_VERSION_STR", QTGUI_VERSION_STR)
         ._element("QTGUI_VERSION", QTGUI_VERSION)
     ;

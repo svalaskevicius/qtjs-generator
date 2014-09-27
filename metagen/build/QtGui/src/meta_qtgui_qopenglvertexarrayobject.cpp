@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qopenglvertexarrayobject.h>
+#include "QtGui/qopenglvertexarrayobject.h"
 
 #include "meta_qtgui_qopenglvertexarrayobject.h"
 

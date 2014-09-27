@@ -27,7 +27,7 @@
 #include <private/qsgrenderer_p.h>
 #include <private/qsgrenderloop_p.h>
 
-#include <QtQuickWidgets/qtquickwidgetsversion.h>
+#include "QtQuickWidgets/qtquickwidgetsversion.h"
 
 #include "meta_qtqml_qtquickwidgetsversion.h"
 

@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qrubberband.h>
+#include "QtWidgets/qrubberband.h"
 
 #include "meta_qtwidgets_qrubberband.h"
 

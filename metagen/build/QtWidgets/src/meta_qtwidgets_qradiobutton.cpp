@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qradiobutton.h>
+#include "QtWidgets/qradiobutton.h"
 
 #include "meta_qtwidgets_qradiobutton.h"
 

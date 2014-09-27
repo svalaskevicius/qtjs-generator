@@ -55,18 +55,18 @@ public:
     QSGMaterialWrapper()
         : QSGMaterial() {}
     
-    int compare(const QSGMaterial * other) const
+    QSGMaterialShader * createShader() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("compare"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createShader"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, other).getValue());
+            return cpgf::fromVariant<QSGMaterialShader * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QSGMaterial::compare(other);
+        throw std::runtime_error("Abstract method");
     }
-    int super_compare(const QSGMaterial * other) const
+    QSGMaterialShader * super_createShader() const
     {
-        return QSGMaterial::compare(other);
+        throw std::runtime_error("Abstract method");
     }
     
     QSGMaterialType * type() const
@@ -83,27 +83,27 @@ public:
         throw std::runtime_error("Abstract method");
     }
     
-    QSGMaterialShader * createShader() const
+    int compare(const QSGMaterial * other) const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createShader"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("compare"));
         if(func)
         {
-            return cpgf::fromVariant<QSGMaterialShader * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, other).getValue());
         }
-        throw std::runtime_error("Abstract method");
+        return QSGMaterial::compare(other);
     }
-    QSGMaterialShader * super_createShader() const
+    int super_compare(const QSGMaterial * other) const
     {
-        throw std::runtime_error("Abstract method");
+        return QSGMaterial::compare(other);
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_compare", (int (D::ClassType::*) (const QSGMaterial *) const)&D::ClassType::super_compare);
-        _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
         _d.CPGF_MD_TEMPLATE _method("super_createShader", (QSGMaterialShader * (D::ClassType::*) () const)&D::ClassType::super_createShader);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_compare", (int (D::ClassType::*) (const QSGMaterial *) const)&D::ClassType::super_compare);
     }
 };
 
@@ -171,34 +171,19 @@ public:
         QSGMaterialShader::setShaderSourceFiles(type, sourceFiles);
     }
     
-    void deactivate()
+    void compile()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("deactivate"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("compile"));
         if(func)
         {
             cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
-        QSGMaterialShader::deactivate();
+        QSGMaterialShader::compile();
     }
-    void super_deactivate()
+    void super_compile()
     {
-        QSGMaterialShader::deactivate();
-    }
-    
-    void activate()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("activate"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this);
-            return;
-        }
-        QSGMaterialShader::activate();
-    }
-    void super_activate()
-    {
-        QSGMaterialShader::activate();
+        QSGMaterialShader::compile();
     }
     
     const char * fragmentShader() const
@@ -215,21 +200,6 @@ public:
         return QSGMaterialShader::fragmentShader();
     }
     
-    void compile()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("compile"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this);
-            return;
-        }
-        QSGMaterialShader::compile();
-    }
-    void super_compile()
-    {
-        QSGMaterialShader::compile();
-    }
-    
     const char * vertexShader() const
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("vertexShader"));
@@ -244,19 +214,24 @@ public:
         return QSGMaterialShader::vertexShader();
     }
     
-    void updateState(const QSGMaterialShader::RenderState& state, QSGMaterial * newMaterial, QSGMaterial * oldMaterial)
+    void deactivate()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updateState"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("deactivate"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, state, newMaterial, oldMaterial);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
-        QSGMaterialShader::updateState(state, newMaterial, oldMaterial);
+        QSGMaterialShader::deactivate();
     }
-    void super_updateState(const QSGMaterialShader::RenderState& state, QSGMaterial * newMaterial, QSGMaterial * oldMaterial)
+    void super_deactivate()
     {
-        QSGMaterialShader::updateState(state, newMaterial, oldMaterial);
+        QSGMaterialShader::deactivate();
+    }
+    
+    void setShaderSourceFile(QOpenGLShader::ShaderType type, const QString & sourceFile)
+    {
+        QSGMaterialShader::setShaderSourceFile(type, sourceFile);
     }
     
     void initialize()
@@ -288,9 +263,34 @@ public:
         throw std::runtime_error("Abstract method");
     }
     
-    void setShaderSourceFile(QOpenGLShader::ShaderType type, const QString & sourceFile)
+    void updateState(const QSGMaterialShader::RenderState& state, QSGMaterial * newMaterial, QSGMaterial * oldMaterial)
     {
-        QSGMaterialShader::setShaderSourceFile(type, sourceFile);
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updateState"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, state, newMaterial, oldMaterial);
+            return;
+        }
+        QSGMaterialShader::updateState(state, newMaterial, oldMaterial);
+    }
+    void super_updateState(const QSGMaterialShader::RenderState& state, QSGMaterial * newMaterial, QSGMaterial * oldMaterial)
+    {
+        QSGMaterialShader::updateState(state, newMaterial, oldMaterial);
+    }
+    
+    void activate()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("activate"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
+            return;
+        }
+        QSGMaterialShader::activate();
+    }
+    void super_activate()
+    {
+        QSGMaterialShader::activate();
     }
     template <typename D>
     static void cpgf__register(D _d)
@@ -298,19 +298,19 @@ public:
         (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("setShaderSourceFiles", (void (D::ClassType::*) (QOpenGLShader::ShaderType, const QStringList &))&D::ClassType::setShaderSourceFiles, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-        _d.CPGF_MD_TEMPLATE _method("fragmentShader", (const char * (D::ClassType::*) () const)&D::ClassType::fragmentShader);
         _d.CPGF_MD_TEMPLATE _method("compile", (void (D::ClassType::*) ())&D::ClassType::compile);
+        _d.CPGF_MD_TEMPLATE _method("fragmentShader", (const char * (D::ClassType::*) () const)&D::ClassType::fragmentShader);
         _d.CPGF_MD_TEMPLATE _method("vertexShader", (const char * (D::ClassType::*) () const)&D::ClassType::vertexShader);
-        _d.CPGF_MD_TEMPLATE _method("initialize", (void (D::ClassType::*) ())&D::ClassType::initialize);
         _d.CPGF_MD_TEMPLATE _method("setShaderSourceFile", (void (D::ClassType::*) (QOpenGLShader::ShaderType, const QString &))&D::ClassType::setShaderSourceFile, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-        _d.CPGF_MD_TEMPLATE _method("super_deactivate", (void (D::ClassType::*) ())&D::ClassType::super_deactivate);
-        _d.CPGF_MD_TEMPLATE _method("super_activate", (void (D::ClassType::*) ())&D::ClassType::super_activate);
-        _d.CPGF_MD_TEMPLATE _method("super_fragmentShader", (const char * (D::ClassType::*) () const)&D::ClassType::super_fragmentShader);
+        _d.CPGF_MD_TEMPLATE _method("initialize", (void (D::ClassType::*) ())&D::ClassType::initialize);
         _d.CPGF_MD_TEMPLATE _method("super_compile", (void (D::ClassType::*) ())&D::ClassType::super_compile);
+        _d.CPGF_MD_TEMPLATE _method("super_fragmentShader", (const char * (D::ClassType::*) () const)&D::ClassType::super_fragmentShader);
         _d.CPGF_MD_TEMPLATE _method("super_vertexShader", (const char * (D::ClassType::*) () const)&D::ClassType::super_vertexShader);
-        _d.CPGF_MD_TEMPLATE _method("super_updateState", (void (D::ClassType::*) (const QSGMaterialShader::RenderState&, QSGMaterial *, QSGMaterial *))&D::ClassType::super_updateState);
+        _d.CPGF_MD_TEMPLATE _method("super_deactivate", (void (D::ClassType::*) ())&D::ClassType::super_deactivate);
         _d.CPGF_MD_TEMPLATE _method("super_initialize", (void (D::ClassType::*) ())&D::ClassType::super_initialize);
         _d.CPGF_MD_TEMPLATE _method("super_attributeNames", (char const *const * (D::ClassType::*) () const)&D::ClassType::super_attributeNames);
+        _d.CPGF_MD_TEMPLATE _method("super_updateState", (void (D::ClassType::*) (const QSGMaterialShader::RenderState&, QSGMaterial *, QSGMaterial *))&D::ClassType::super_updateState);
+        _d.CPGF_MD_TEMPLATE _method("super_activate", (void (D::ClassType::*) ())&D::ClassType::super_activate);
     }
 };
 

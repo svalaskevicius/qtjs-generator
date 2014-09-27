@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qopengltimerquery.h>
+#include "QtGui/qopengltimerquery.h"
 
 #include "meta_qtgui_qopengltimerquery.h"
 

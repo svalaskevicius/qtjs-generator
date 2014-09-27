@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qcolormap.h>
+#include "QtWidgets/qcolormap.h"
 
 #include "meta_qtwidgets_qcolormap.h"
 

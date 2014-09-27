@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qabstractslider.h>
+#include "QtWidgets/qabstractslider.h"
 
 #include "meta_qtwidgets_qabstractslider.h"
 

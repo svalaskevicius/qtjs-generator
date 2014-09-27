@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qtextdocumentfragment.h>
+#include "QtGui/qtextdocumentfragment.h"
 
 #include "meta_qtgui_qtextdocumentfragment.h"
 

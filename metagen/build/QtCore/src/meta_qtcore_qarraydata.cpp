@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qarraydata.h>
+#include "QtCore/qarraydata.h"
 
 #include "meta_qtcore_qarraydata.h"
 

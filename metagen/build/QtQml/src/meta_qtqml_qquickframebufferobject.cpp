@@ -27,7 +27,7 @@
 #include <private/qsgrenderer_p.h>
 #include <private/qsgrenderloop_p.h>
 
-#include <QtQuick/qquickframebufferobject.h>
+#include "QtQuick/qquickframebufferobject.h"
 
 #include "meta_qtqml_qquickframebufferobject.h"
 

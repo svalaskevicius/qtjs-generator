@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qscrollerproperties.h>
+#include "QtWidgets/qscrollerproperties.h"
 
 #include "meta_qtwidgets_qscrollerproperties.h"
 

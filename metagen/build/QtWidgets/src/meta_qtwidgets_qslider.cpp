@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qslider.h>
+#include "QtWidgets/qslider.h"
 
 #include "meta_qtwidgets_qslider.h"
 

@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qfileiconprovider.h>
+#include "QtWidgets/qfileiconprovider.h"
 
 #include "meta_qtwidgets_qfileiconprovider.h"
 

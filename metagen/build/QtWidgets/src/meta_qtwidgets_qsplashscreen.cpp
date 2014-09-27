@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qsplashscreen.h>
+#include "QtWidgets/qsplashscreen.h"
 
 #include "meta_qtwidgets_qsplashscreen.h"
 

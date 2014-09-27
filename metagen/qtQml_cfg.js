@@ -174,7 +174,7 @@ function processCallback(item, data)
       }
     }
   }
-  if((item.getLocation().indexOf('/QtQml/') == -1) && (item.getLocation().indexOf('/QtQuick') == -1)) {
+  if((item.getLocation().indexOf('QtQml/') !== 0) && (item.getLocation().indexOf('QtQuick') !== 0)) {
     data.skipBind = true;
     return;
   }

@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qtextoption.h>
+#include "QtGui/qtextoption.h"
 
 #include "meta_qtgui_qtextoption.h"
 

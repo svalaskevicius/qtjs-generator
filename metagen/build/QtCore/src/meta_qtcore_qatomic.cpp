@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qatomic.h>
+#include "QtCore/qatomic.h"
 
 #include "meta_qtcore_qatomic.h"
 

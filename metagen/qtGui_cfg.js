@@ -106,7 +106,7 @@ function shouldAllowClassWrapper(item) {
 
 function processCallback(item, data)
 {
-  if(item.getLocation().indexOf('/QtGui/') == -1) {
+  if(item.getLocation().indexOf('QtGui/') !== 0) {
     data.skipBind = true;
     return;
   }

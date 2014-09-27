@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qpropertyanimation.h>
+#include "QtCore/qpropertyanimation.h"
 
 #include "meta_qtcore_qpropertyanimation.h"
 

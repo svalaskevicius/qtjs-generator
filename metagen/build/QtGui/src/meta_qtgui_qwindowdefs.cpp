@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qwindowdefs.h>
+#include "QtGui/qwindowdefs.h"
 
 #include "meta_qtgui_qwindowdefs.h"
 

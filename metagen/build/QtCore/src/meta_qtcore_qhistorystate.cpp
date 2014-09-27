@@ -42,7 +42,7 @@
 #include <QtCore/QState>
 #include <QtCore/QTimeZone>
 
-#include <QtCore/qhistorystate.h>
+#include "QtCore/qhistorystate.h"
 
 #include "meta_qtcore_qhistorystate.h"
 

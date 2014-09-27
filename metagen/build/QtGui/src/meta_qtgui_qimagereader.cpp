@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qimagereader.h>
+#include "QtGui/qimagereader.h"
 
 #include "meta_qtgui_qimagereader.h"
 

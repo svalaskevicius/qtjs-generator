@@ -63,9 +63,6 @@ void buildMetaClass_Global_qhash(D _d)
     _d.CPGF_MD_TEMPLATE _method("qHash", (uint (*) (double, uint))&qHash)
         ._default(copyVariantFromCopyable(0))
     ;
-    _d.CPGF_MD_TEMPLATE _method("qHash", (uint (*) (long double, uint))&qHash)
-        ._default(copyVariantFromCopyable(0))
-    ;
     _d.CPGF_MD_TEMPLATE _method("qHash", (uint (*) (QChar, uint))&qHash)
         ._default(copyVariantFromCopyable(0))
     ;

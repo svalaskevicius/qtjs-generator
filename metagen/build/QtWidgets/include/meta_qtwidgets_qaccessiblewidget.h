@@ -60,125 +60,6 @@ public:
     QAccessibleWidgetWrapper(QWidget * o, QAccessible::Role r = QAccessible::Client, const QString & name = QString())
         : QAccessibleWidget(o, r, name) {}
     
-    QString localizedActionDescription(const QString & name) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("localizedActionDescription"));
-        if(func)
-        {
-            return cpgf::fromVariant<QString >(cpgf::invokeScriptFunctionOnObject(func.get(), this, name).getValue());
-        }
-        return QAccessibleActionInterface::localizedActionDescription(name);
-    }
-    QString super_localizedActionDescription(const QString & name) const
-    {
-        return QAccessibleActionInterface::localizedActionDescription(name);
-    }
-    
-    void doAction(const QString & actionName)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("doAction"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, actionName);
-            return;
-        }
-        QAccessibleWidget::doAction(actionName);
-    }
-    void super_doAction(const QString & actionName)
-    {
-        QAccessibleWidget::doAction(actionName);
-    }
-    
-    int childCount() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childCount"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QAccessibleWidget::childCount();
-    }
-    int super_childCount() const
-    {
-        return QAccessibleWidget::childCount();
-    }
-    
-    void virtual_hook(int id, void * data)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("virtual_hook"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, id, data);
-            return;
-        }
-        QAccessibleInterface::virtual_hook(id, data);
-    }
-    void super_virtual_hook(int id, void * data)
-    {
-        QAccessibleInterface::virtual_hook(id, data);
-    }
-    
-    void addControllingSignal(const QString & signal)
-    {
-        QAccessibleWidget::addControllingSignal(signal);
-    }
-    
-    QWindow * window() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("window"));
-        if(func)
-        {
-            return cpgf::fromVariant<QWindow * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QAccessibleWidget::window();
-    }
-    QWindow * super_window() const
-    {
-        return QAccessibleWidget::window();
-    }
-    
-    QColor backgroundColor() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("backgroundColor"));
-        if(func)
-        {
-            return cpgf::fromVariant<QColor >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QAccessibleWidget::backgroundColor();
-    }
-    QColor super_backgroundColor() const
-    {
-        return QAccessibleWidget::backgroundColor();
-    }
-    
-    QStringList keyBindingsForAction(const QString & actionName) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("keyBindingsForAction"));
-        if(func)
-        {
-            return cpgf::fromVariant<QStringList >(cpgf::invokeScriptFunctionOnObject(func.get(), this, actionName).getValue());
-        }
-        return QAccessibleWidget::keyBindingsForAction(actionName);
-    }
-    QStringList super_keyBindingsForAction(const QString & actionName) const
-    {
-        return QAccessibleWidget::keyBindingsForAction(actionName);
-    }
-    
-    QAccessibleInterface * child(int index) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("child"));
-        if(func)
-        {
-            return cpgf::fromVariant<QAccessibleInterface * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, index).getValue());
-        }
-        return QAccessibleWidget::child(index);
-    }
-    QAccessibleInterface * super_child(int index) const
-    {
-        return QAccessibleWidget::child(index);
-    }
-    
     QString localizedActionName(const QString & name) const
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("localizedActionName"));
@@ -191,6 +72,20 @@ public:
     QString super_localizedActionName(const QString & name) const
     {
         return QAccessibleActionInterface::localizedActionName(name);
+    }
+    
+    QString text(QAccessible::Text t) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("text"));
+        if(func)
+        {
+            return cpgf::fromVariant<QString >(cpgf::invokeScriptFunctionOnObject(func.get(), this, t).getValue());
+        }
+        return QAccessibleWidget::text(t);
+    }
+    QString super_text(QAccessible::Text t) const
+    {
+        return QAccessibleWidget::text(t);
     }
     
     void setText(QAccessible::Text t, const QString & text)
@@ -208,32 +103,34 @@ public:
         QAccessibleObject::setText(t, text);
     }
     
-    QAccessibleInterface * focusChild() const
+    void doAction(const QString & actionName)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("focusChild"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("doAction"));
         if(func)
         {
-            return cpgf::fromVariant<QAccessibleInterface * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, actionName);
+            return;
         }
-        return QAccessibleWidget::focusChild();
+        QAccessibleWidget::doAction(actionName);
     }
-    QAccessibleInterface * super_focusChild() const
+    void super_doAction(const QString & actionName)
     {
-        return QAccessibleWidget::focusChild();
+        QAccessibleWidget::doAction(actionName);
     }
     
-    QAccessibleInterface * childAt(int x, int y) const
+    void virtual_hook(int id, void * data)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childAt"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("virtual_hook"));
         if(func)
         {
-            return cpgf::fromVariant<QAccessibleInterface * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, x, y).getValue());
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, id, data);
+            return;
         }
-        return QAccessibleObject::childAt(x, y);
+        QAccessibleInterface::virtual_hook(id, data);
     }
-    QAccessibleInterface * super_childAt(int x, int y) const
+    void super_virtual_hook(int id, void * data)
     {
-        return QAccessibleObject::childAt(x, y);
+        QAccessibleInterface::virtual_hook(id, data);
     }
     
     int indexOfChild(const QAccessibleInterface * child) const
@@ -250,79 +147,18 @@ public:
         return QAccessibleWidget::indexOfChild(child);
     }
     
-    QStringList actionNames() const
+    QWindow * window() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("actionNames"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("window"));
         if(func)
         {
-            return cpgf::fromVariant<QStringList >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<QWindow * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QAccessibleWidget::actionNames();
+        return QAccessibleWidget::window();
     }
-    QStringList super_actionNames() const
+    QWindow * super_window() const
     {
-        return QAccessibleWidget::actionNames();
-    }
-    
-    void * interface_cast(QAccessible::InterfaceType t)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("interface_cast"));
-        if(func)
-        {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, t).getValue());
-        }
-        return QAccessibleWidget::interface_cast(t);
-    }
-    void * super_interface_cast(QAccessible::InterfaceType t)
-    {
-        return QAccessibleWidget::interface_cast(t);
-    }
-    
-    QWidget * widget() const
-    {
-        return QAccessibleWidget::widget();
-    }
-    
-    QString text(QAccessible::Text t) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("text"));
-        if(func)
-        {
-            return cpgf::fromVariant<QString >(cpgf::invokeScriptFunctionOnObject(func.get(), this, t).getValue());
-        }
-        return QAccessibleWidget::text(t);
-    }
-    QString super_text(QAccessible::Text t) const
-    {
-        return QAccessibleWidget::text(t);
-    }
-    
-    QObject * object() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("object"));
-        if(func)
-        {
-            return cpgf::fromVariant<QObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QAccessibleObject::object();
-    }
-    QObject * super_object() const
-    {
-        return QAccessibleObject::object();
-    }
-    
-    QVector< QPair< QAccessibleInterface *, QAccessible::Relation > > relations(QAccessible::Relation match = QAccessible::AllRelations) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("relations"));
-        if(func)
-        {
-            return cpgf::fromVariant<QVector< QPair< QAccessibleInterface *, QAccessible::Relation > > >(cpgf::invokeScriptFunctionOnObject(func.get(), this, match).getValue());
-        }
-        return QAccessibleWidget::relations(match);
-    }
-    QVector< QPair< QAccessibleInterface *, QAccessible::Relation > > super_relations(QAccessible::Relation match = QAccessible::AllRelations) const
-    {
-        return QAccessibleWidget::relations(match);
+        return QAccessibleWidget::window();
     }
     
     QAccessibleInterface * parent() const
@@ -339,34 +175,6 @@ public:
         return QAccessibleWidget::parent();
     }
     
-    QAccessible::Role role() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("role"));
-        if(func)
-        {
-            return cpgf::fromVariant<QAccessible::Role >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QAccessibleWidget::role();
-    }
-    QAccessible::Role super_role() const
-    {
-        return QAccessibleWidget::role();
-    }
-    
-    QRect rect() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("rect"));
-        if(func)
-        {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QAccessibleWidget::rect();
-    }
-    QRect super_rect() const
-    {
-        return QAccessibleWidget::rect();
-    }
-    
     QColor foregroundColor() const
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("foregroundColor"));
@@ -379,6 +187,81 @@ public:
     QColor super_foregroundColor() const
     {
         return QAccessibleWidget::foregroundColor();
+    }
+    
+    void * interface_cast(QAccessible::InterfaceType t)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("interface_cast"));
+        if(func)
+        {
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, t).getValue());
+        }
+        return QAccessibleWidget::interface_cast(t);
+    }
+    void * super_interface_cast(QAccessible::InterfaceType t)
+    {
+        return QAccessibleWidget::interface_cast(t);
+    }
+    
+    QStringList keyBindingsForAction(const QString & actionName) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("keyBindingsForAction"));
+        if(func)
+        {
+            return cpgf::fromVariant<QStringList >(cpgf::invokeScriptFunctionOnObject(func.get(), this, actionName).getValue());
+        }
+        return QAccessibleWidget::keyBindingsForAction(actionName);
+    }
+    QStringList super_keyBindingsForAction(const QString & actionName) const
+    {
+        return QAccessibleWidget::keyBindingsForAction(actionName);
+    }
+    
+    QAccessibleInterface * focusChild() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("focusChild"));
+        if(func)
+        {
+            return cpgf::fromVariant<QAccessibleInterface * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QAccessibleWidget::focusChild();
+    }
+    QAccessibleInterface * super_focusChild() const
+    {
+        return QAccessibleWidget::focusChild();
+    }
+    
+    int childCount() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childCount"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QAccessibleWidget::childCount();
+    }
+    int super_childCount() const
+    {
+        return QAccessibleWidget::childCount();
+    }
+    
+    QObject * parentObject() const
+    {
+        return QAccessibleWidget::parentObject();
+    }
+    
+    QAccessibleInterface * childAt(int x, int y) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childAt"));
+        if(func)
+        {
+            return cpgf::fromVariant<QAccessibleInterface * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, x, y).getValue());
+        }
+        return QAccessibleObject::childAt(x, y);
+    }
+    QAccessibleInterface * super_childAt(int x, int y) const
+    {
+        return QAccessibleObject::childAt(x, y);
     }
     
     bool isValid() const
@@ -395,6 +278,128 @@ public:
         return QAccessibleWidget::isValid();
     }
     
+    QRect rect() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("rect"));
+        if(func)
+        {
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QAccessibleWidget::rect();
+    }
+    QRect super_rect() const
+    {
+        return QAccessibleWidget::rect();
+    }
+    
+    QAccessibleInterface * child(int index) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("child"));
+        if(func)
+        {
+            return cpgf::fromVariant<QAccessibleInterface * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, index).getValue());
+        }
+        return QAccessibleWidget::child(index);
+    }
+    QAccessibleInterface * super_child(int index) const
+    {
+        return QAccessibleWidget::child(index);
+    }
+    
+    QColor backgroundColor() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("backgroundColor"));
+        if(func)
+        {
+            return cpgf::fromVariant<QColor >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QAccessibleWidget::backgroundColor();
+    }
+    QColor super_backgroundColor() const
+    {
+        return QAccessibleWidget::backgroundColor();
+    }
+    
+    QObject * object() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("object"));
+        if(func)
+        {
+            return cpgf::fromVariant<QObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QAccessibleObject::object();
+    }
+    QObject * super_object() const
+    {
+        return QAccessibleObject::object();
+    }
+    
+    void addControllingSignal(const QString & signal)
+    {
+        QAccessibleWidget::addControllingSignal(signal);
+    }
+    
+    QAccessible::Role role() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("role"));
+        if(func)
+        {
+            return cpgf::fromVariant<QAccessible::Role >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QAccessibleWidget::role();
+    }
+    QAccessible::Role super_role() const
+    {
+        return QAccessibleWidget::role();
+    }
+    
+    QVector< QPair< QAccessibleInterface *, QAccessible::Relation > > relations(QAccessible::Relation match = QAccessible::AllRelations) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("relations"));
+        if(func)
+        {
+            return cpgf::fromVariant<QVector< QPair< QAccessibleInterface *, QAccessible::Relation > > >(cpgf::invokeScriptFunctionOnObject(func.get(), this, match).getValue());
+        }
+        return QAccessibleWidget::relations(match);
+    }
+    QVector< QPair< QAccessibleInterface *, QAccessible::Relation > > super_relations(QAccessible::Relation match = QAccessible::AllRelations) const
+    {
+        return QAccessibleWidget::relations(match);
+    }
+    
+    QStringList actionNames() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("actionNames"));
+        if(func)
+        {
+            return cpgf::fromVariant<QStringList >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QAccessibleWidget::actionNames();
+    }
+    QStringList super_actionNames() const
+    {
+        return QAccessibleWidget::actionNames();
+    }
+    
+    QWidget * widget() const
+    {
+        return QAccessibleWidget::widget();
+    }
+    
+    QString localizedActionDescription(const QString & name) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("localizedActionDescription"));
+        if(func)
+        {
+            return cpgf::fromVariant<QString >(cpgf::invokeScriptFunctionOnObject(func.get(), this, name).getValue());
+        }
+        return QAccessibleActionInterface::localizedActionDescription(name);
+    }
+    QString super_localizedActionDescription(const QString & name) const
+    {
+        return QAccessibleActionInterface::localizedActionDescription(name);
+    }
+    
     QAccessible::State state() const
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("state"));
@@ -408,44 +413,39 @@ public:
     {
         return QAccessibleWidget::state();
     }
-    
-    QObject * parentObject() const
-    {
-        return QAccessibleWidget::parentObject();
-    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("parentObject", (QObject * (D::ClassType::*) () const)&D::ClassType::parentObject);
         _d.CPGF_MD_TEMPLATE _method("addControllingSignal", (void (D::ClassType::*) (const QString &))&D::ClassType::addControllingSignal, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("widget", (QWidget * (D::ClassType::*) () const)&D::ClassType::widget);
-        _d.CPGF_MD_TEMPLATE _method("parentObject", (QObject * (D::ClassType::*) () const)&D::ClassType::parentObject);
-        _d.CPGF_MD_TEMPLATE _method("super_localizedActionDescription", (QString (D::ClassType::*) (const QString &) const)&D::ClassType::super_localizedActionDescription, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_doAction", (void (D::ClassType::*) (const QString &))&D::ClassType::super_doAction, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_childCount", (int (D::ClassType::*) () const)&D::ClassType::super_childCount);
-        _d.CPGF_MD_TEMPLATE _method("super_virtual_hook", (void (D::ClassType::*) (int, void *))&D::ClassType::super_virtual_hook);
-        _d.CPGF_MD_TEMPLATE _method("super_window", (QWindow * (D::ClassType::*) () const)&D::ClassType::super_window);
-        _d.CPGF_MD_TEMPLATE _method("super_backgroundColor", (QColor (D::ClassType::*) () const)&D::ClassType::super_backgroundColor);
-        _d.CPGF_MD_TEMPLATE _method("super_keyBindingsForAction", (QStringList (D::ClassType::*) (const QString &) const)&D::ClassType::super_keyBindingsForAction, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_child", (QAccessibleInterface * (D::ClassType::*) (int) const)&D::ClassType::super_child);
         _d.CPGF_MD_TEMPLATE _method("super_localizedActionName", (QString (D::ClassType::*) (const QString &) const)&D::ClassType::super_localizedActionName, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_setText", (void (D::ClassType::*) (QAccessible::Text, const QString &))&D::ClassType::super_setText, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
-        _d.CPGF_MD_TEMPLATE _method("super_focusChild", (QAccessibleInterface * (D::ClassType::*) () const)&D::ClassType::super_focusChild);
-        _d.CPGF_MD_TEMPLATE _method("super_childAt", (QAccessibleInterface * (D::ClassType::*) (int, int) const)&D::ClassType::super_childAt);
-        _d.CPGF_MD_TEMPLATE _method("super_indexOfChild", (int (D::ClassType::*) (const QAccessibleInterface *) const)&D::ClassType::super_indexOfChild);
-        _d.CPGF_MD_TEMPLATE _method("super_actionNames", (QStringList (D::ClassType::*) () const)&D::ClassType::super_actionNames);
-        _d.CPGF_MD_TEMPLATE _method("super_interface_cast", (void * (D::ClassType::*) (QAccessible::InterfaceType))&D::ClassType::super_interface_cast);
         _d.CPGF_MD_TEMPLATE _method("super_text", (QString (D::ClassType::*) (QAccessible::Text) const)&D::ClassType::super_text);
+        _d.CPGF_MD_TEMPLATE _method("super_setText", (void (D::ClassType::*) (QAccessible::Text, const QString &))&D::ClassType::super_setText, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_doAction", (void (D::ClassType::*) (const QString &))&D::ClassType::super_doAction, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_virtual_hook", (void (D::ClassType::*) (int, void *))&D::ClassType::super_virtual_hook);
+        _d.CPGF_MD_TEMPLATE _method("super_indexOfChild", (int (D::ClassType::*) (const QAccessibleInterface *) const)&D::ClassType::super_indexOfChild);
+        _d.CPGF_MD_TEMPLATE _method("super_window", (QWindow * (D::ClassType::*) () const)&D::ClassType::super_window);
+        _d.CPGF_MD_TEMPLATE _method("super_parent", (QAccessibleInterface * (D::ClassType::*) () const)&D::ClassType::super_parent);
+        _d.CPGF_MD_TEMPLATE _method("super_foregroundColor", (QColor (D::ClassType::*) () const)&D::ClassType::super_foregroundColor);
+        _d.CPGF_MD_TEMPLATE _method("super_interface_cast", (void * (D::ClassType::*) (QAccessible::InterfaceType))&D::ClassType::super_interface_cast);
+        _d.CPGF_MD_TEMPLATE _method("super_keyBindingsForAction", (QStringList (D::ClassType::*) (const QString &) const)&D::ClassType::super_keyBindingsForAction, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_focusChild", (QAccessibleInterface * (D::ClassType::*) () const)&D::ClassType::super_focusChild);
+        _d.CPGF_MD_TEMPLATE _method("super_childCount", (int (D::ClassType::*) () const)&D::ClassType::super_childCount);
+        _d.CPGF_MD_TEMPLATE _method("super_childAt", (QAccessibleInterface * (D::ClassType::*) (int, int) const)&D::ClassType::super_childAt);
+        _d.CPGF_MD_TEMPLATE _method("super_isValid", (bool (D::ClassType::*) () const)&D::ClassType::super_isValid);
+        _d.CPGF_MD_TEMPLATE _method("super_rect", (QRect (D::ClassType::*) () const)&D::ClassType::super_rect);
+        _d.CPGF_MD_TEMPLATE _method("super_child", (QAccessibleInterface * (D::ClassType::*) (int) const)&D::ClassType::super_child);
+        _d.CPGF_MD_TEMPLATE _method("super_backgroundColor", (QColor (D::ClassType::*) () const)&D::ClassType::super_backgroundColor);
         _d.CPGF_MD_TEMPLATE _method("super_object", (QObject * (D::ClassType::*) () const)&D::ClassType::super_object);
+        _d.CPGF_MD_TEMPLATE _method("super_role", (QAccessible::Role (D::ClassType::*) () const)&D::ClassType::super_role);
         _d.CPGF_MD_TEMPLATE _method("super_relations", (QVector< QPair< QAccessibleInterface *, QAccessible::Relation > > (D::ClassType::*) (QAccessible::Relation) const)&D::ClassType::super_relations)
             ._default(copyVariantFromCopyable(QAccessible::AllRelations))
         ;
-        _d.CPGF_MD_TEMPLATE _method("super_parent", (QAccessibleInterface * (D::ClassType::*) () const)&D::ClassType::super_parent);
-        _d.CPGF_MD_TEMPLATE _method("super_role", (QAccessible::Role (D::ClassType::*) () const)&D::ClassType::super_role);
-        _d.CPGF_MD_TEMPLATE _method("super_rect", (QRect (D::ClassType::*) () const)&D::ClassType::super_rect);
-        _d.CPGF_MD_TEMPLATE _method("super_foregroundColor", (QColor (D::ClassType::*) () const)&D::ClassType::super_foregroundColor);
-        _d.CPGF_MD_TEMPLATE _method("super_isValid", (bool (D::ClassType::*) () const)&D::ClassType::super_isValid);
+        _d.CPGF_MD_TEMPLATE _method("super_actionNames", (QStringList (D::ClassType::*) () const)&D::ClassType::super_actionNames);
+        _d.CPGF_MD_TEMPLATE _method("super_localizedActionDescription", (QString (D::ClassType::*) (const QString &) const)&D::ClassType::super_localizedActionDescription, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("super_state", (QAccessible::State (D::ClassType::*) () const)&D::ClassType::super_state);
     }
 };

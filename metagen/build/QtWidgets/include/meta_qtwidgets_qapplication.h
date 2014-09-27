@@ -24,7 +24,7 @@ void buildMetaClass_Global_qapplication(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtWidgets_7")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtWidgets_6")
         ._element("qApp", qApp)
     ;
 }

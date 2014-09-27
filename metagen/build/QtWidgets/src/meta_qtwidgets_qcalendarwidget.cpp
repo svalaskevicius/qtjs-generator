@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qcalendarwidget.h>
+#include "QtWidgets/qcalendarwidget.h"
 
 #include "meta_qtwidgets_qcalendarwidget.h"
 

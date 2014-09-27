@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qitemdelegate.h>
+#include "QtWidgets/qitemdelegate.h"
 
 #include "meta_qtwidgets_qitemdelegate.h"
 

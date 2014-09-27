@@ -28,7 +28,7 @@ public:
     QMetaObject *getMetaObject(unsigned int classIdx);
     QObject *createInstance(unsigned int classIdx);
 
-    void callInit(size_t classIdx, QObject *obj);
+    void callInit(size_t classIdx, void *obj);
     void metacall(size_t classIdx, QObject *obj, QMetaObject::Call _c, int _id, void **_a);
 };
 

@@ -7,7 +7,7 @@
 #include <QtCore/QState>
 #include <QtGui/QOpenGLPixelTransferOptions>
 
-#include <QtGui/qiconengine.h>
+#include "QtGui/qiconengine.h"
 
 #include "meta_qtgui_qiconengine.h"
 

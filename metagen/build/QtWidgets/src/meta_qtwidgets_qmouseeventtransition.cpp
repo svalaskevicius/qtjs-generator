@@ -62,7 +62,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 
-#include <QtWidgets/qmouseeventtransition.h>
+#include "QtWidgets/qmouseeventtransition.h"
 
 #include "meta_qtwidgets_qmouseeventtransition.h"
 
