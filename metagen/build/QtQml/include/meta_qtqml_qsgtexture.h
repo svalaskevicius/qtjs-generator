@@ -42,16 +42,145 @@ void buildMetaClass_QSGDynamicTexture(D _d)
 class QSGDynamicTextureWrapper : public QSGDynamicTexture, public cpgf::GScriptWrapper {
 public:
     
-    int textureId() const
+    bool isAtlasTexture() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("textureId"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isAtlasTexture"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGTexture::isAtlasTexture();
+    }
+    bool super_isAtlasTexture() const
+    {
+        return QSGTexture::isAtlasTexture();
+    }
+    
+    void connectNotify(const QMetaMethod & signal)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            return;
+        }
+        QObject::connectNotify(signal);
+    }
+    void super_connectNotify(const QMetaMethod & signal)
+    {
+        QObject::connectNotify(signal);
+    }
+    
+    bool isSignalConnected(const QMetaMethod & signal) const
+    {
+        return QObject::isSignalConnected(signal);
+    }
+    
+    void childEvent(QChildEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::childEvent(__arg0);
+    }
+    void super_childEvent(QChildEvent * __arg0)
+    {
+        QObject::childEvent(__arg0);
+    }
+    
+    int receivers(const char * signal) const
+    {
+        return QObject::receivers(signal);
+    }
+    
+    QSize textureSize() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("textureSize"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
-    int super_textureId() const
+    QSize super_textureSize() const
+    {
+        throw std::runtime_error("Abstract method");
+    }
+    
+    int senderSignalIndex() const
+    {
+        return QObject::senderSignalIndex();
+    }
+    
+    QSGTexture * removedFromAtlas() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("removedFromAtlas"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSGTexture * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGTexture::removedFromAtlas();
+    }
+    QSGTexture * super_removedFromAtlas() const
+    {
+        return QSGTexture::removedFromAtlas();
+    }
+    
+    void * qt_metacast(const char * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
+        if(func)
+        {
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QSGDynamicTexture::qt_metacast(__arg0);
+    }
+    void * super_qt_metacast(const char * __arg0)
+    {
+        return QSGDynamicTexture::qt_metacast(__arg0);
+    }
+    
+    bool eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
+        }
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    
+    const QMetaObject * metaObject() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
+        if(func)
+        {
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGDynamicTexture::metaObject();
+    }
+    const QMetaObject * super_metaObject() const
+    {
+        return QSGDynamicTexture::metaObject();
+    }
+    
+    bool updateTexture()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updateTexture"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    bool super_updateTexture()
     {
         throw std::runtime_error("Abstract method");
     }
@@ -71,25 +200,6 @@ public:
         QObject::customEvent(__arg0);
     }
     
-    int senderSignalIndex() const
-    {
-        return QObject::senderSignalIndex();
-    }
-    
-    bool isAtlasTexture() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isAtlasTexture"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSGTexture::isAtlasTexture();
-    }
-    bool super_isAtlasTexture() const
-    {
-        return QSGTexture::isAtlasTexture();
-    }
-    
     QRectF normalizedTextureSubRect() const
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("normalizedTextureSubRect"));
@@ -102,126 +212,6 @@ public:
     QRectF super_normalizedTextureSubRect() const
     {
         return QSGTexture::normalizedTextureSubRect();
-    }
-    
-    bool updateTexture()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updateTexture"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    bool super_updateTexture()
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
-    QObject * sender() const
-    {
-        return QObject::sender();
-    }
-    
-    bool hasMipmaps() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasMipmaps"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    bool super_hasMipmaps() const
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
-    void connectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
-            return;
-        }
-        QObject::connectNotify(signal);
-    }
-    void super_connectNotify(const QMetaMethod & signal)
-    {
-        QObject::connectNotify(signal);
-    }
-    
-    void disconnectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
-            return;
-        }
-        QObject::disconnectNotify(signal);
-    }
-    void super_disconnectNotify(const QMetaMethod & signal)
-    {
-        QObject::disconnectNotify(signal);
-    }
-    
-    bool hasAlphaChannel() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasAlphaChannel"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    bool super_hasAlphaChannel() const
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
-    void * qt_metacast(const char * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
-        if(func)
-        {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QSGDynamicTexture::qt_metacast(__arg0);
-    }
-    void * super_qt_metacast(const char * __arg0)
-    {
-        return QSGDynamicTexture::qt_metacast(__arg0);
-    }
-    
-    QSize textureSize() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("textureSize"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    QSize super_textureSize() const
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
-    void bind()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("bind"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this);
-            return;
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    void super_bind()
-    {
-        throw std::runtime_error("Abstract method");
     }
     
     bool event(QEvent * __arg0)
@@ -238,28 +228,18 @@ public:
         return QObject::event(__arg0);
     }
     
-    int receivers(const char * signal) const
+    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
-        return QObject::receivers(signal);
-    }
-    
-    bool isSignalConnected(const QMetaMethod & signal) const
-    {
-        return QObject::isSignalConnected(signal);
-    }
-    
-    bool eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
-        return QObject::eventFilter(__arg0, __arg1);
+        return QSGDynamicTexture::qt_metacall(__arg0, __arg1, __arg2);
     }
-    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
+    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
-        return QObject::eventFilter(__arg0, __arg1);
+        return QSGDynamicTexture::qt_metacall(__arg0, __arg1, __arg2);
     }
     
     void timerEvent(QTimerEvent * __arg0)
@@ -277,95 +257,115 @@ public:
         QObject::timerEvent(__arg0);
     }
     
-    QSGTexture * removedFromAtlas() const
+    bool hasAlphaChannel() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("removedFromAtlas"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasAlphaChannel"));
         if(func)
         {
-            return cpgf::fromVariant<QSGTexture * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QSGTexture::removedFromAtlas();
+        throw std::runtime_error("Abstract method");
     }
-    QSGTexture * super_removedFromAtlas() const
+    bool super_hasAlphaChannel() const
     {
-        return QSGTexture::removedFromAtlas();
+        throw std::runtime_error("Abstract method");
     }
     
-    const QMetaObject * metaObject() const
+    void disconnectNotify(const QMetaMethod & signal)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
         if(func)
         {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSGDynamicTexture::metaObject();
-    }
-    const QMetaObject * super_metaObject() const
-    {
-        return QSGDynamicTexture::metaObject();
-    }
-    
-    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
-        }
-        return QSGDynamicTexture::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        return QSGDynamicTexture::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    
-    void childEvent(QChildEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
-        QObject::childEvent(__arg0);
+        QObject::disconnectNotify(signal);
     }
-    void super_childEvent(QChildEvent * __arg0)
+    void super_disconnectNotify(const QMetaMethod & signal)
     {
-        QObject::childEvent(__arg0);
+        QObject::disconnectNotify(signal);
+    }
+    
+    void bind()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("bind"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
+            return;
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    void super_bind()
+    {
+        throw std::runtime_error("Abstract method");
+    }
+    
+    bool hasMipmaps() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasMipmaps"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    bool super_hasMipmaps() const
+    {
+        throw std::runtime_error("Abstract method");
+    }
+    
+    int textureId() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("textureId"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    int super_textureId() const
+    {
+        throw std::runtime_error("Abstract method");
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_textureId", (int (D::ClassType::*) () const)&D::ClassType::super_textureId);
-        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
         _d.CPGF_MD_TEMPLATE _method("super_isAtlasTexture", (bool (D::ClassType::*) () const)&D::ClassType::super_isAtlasTexture);
-        _d.CPGF_MD_TEMPLATE _method("super_normalizedTextureSubRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_normalizedTextureSubRect);
-        _d.CPGF_MD_TEMPLATE _method("super_updateTexture", (bool (D::ClassType::*) ())&D::ClassType::super_updateTexture);
-        _d.CPGF_MD_TEMPLATE _method("super_hasMipmaps", (bool (D::ClassType::*) () const)&D::ClassType::super_hasMipmaps);
         _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_hasAlphaChannel", (bool (D::ClassType::*) () const)&D::ClassType::super_hasAlphaChannel);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-        _d.CPGF_MD_TEMPLATE _method("super_textureSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_textureSize);
-        _d.CPGF_MD_TEMPLATE _method("super_bind", (void (D::ClassType::*) ())&D::ClassType::super_bind);
-        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_removedFromAtlas", (QSGTexture * (D::ClassType::*) () const)&D::ClassType::super_removedFromAtlas);
-        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
         _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_textureSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_textureSize);
+        _d.CPGF_MD_TEMPLATE _method("super_removedFromAtlas", (QSGTexture * (D::ClassType::*) () const)&D::ClassType::super_removedFromAtlas);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_updateTexture", (bool (D::ClassType::*) ())&D::ClassType::super_updateTexture);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_normalizedTextureSubRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_normalizedTextureSubRect);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hasAlphaChannel", (bool (D::ClassType::*) () const)&D::ClassType::super_hasAlphaChannel);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_bind", (void (D::ClassType::*) ())&D::ClassType::super_bind);
+        _d.CPGF_MD_TEMPLATE _method("super_hasMipmaps", (bool (D::ClassType::*) () const)&D::ClassType::super_hasMipmaps);
+        _d.CPGF_MD_TEMPLATE _method("super_textureId", (int (D::ClassType::*) () const)&D::ClassType::super_textureId);
     }
 };
 
@@ -435,40 +435,6 @@ public:
     QSGTextureWrapper()
         : QSGTexture() {}
     
-    int textureId() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("textureId"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    int super_textureId() const
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
-    void customEvent(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::customEvent(__arg0);
-    }
-    void super_customEvent(QEvent * __arg0)
-    {
-        QObject::customEvent(__arg0);
-    }
-    
-    int senderSignalIndex() const
-    {
-        return QObject::senderSignalIndex();
-    }
-    
     bool isAtlasTexture() const
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isAtlasTexture"));
@@ -481,39 +447,6 @@ public:
     bool super_isAtlasTexture() const
     {
         return QSGTexture::isAtlasTexture();
-    }
-    
-    QRectF normalizedTextureSubRect() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("normalizedTextureSubRect"));
-        if(func)
-        {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSGTexture::normalizedTextureSubRect();
-    }
-    QRectF super_normalizedTextureSubRect() const
-    {
-        return QSGTexture::normalizedTextureSubRect();
-    }
-    
-    QObject * sender() const
-    {
-        return QObject::sender();
-    }
-    
-    bool hasMipmaps() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasMipmaps"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    bool super_hasMipmaps() const
-    {
-        throw std::runtime_error("Abstract method");
     }
     
     void connectNotify(const QMetaMethod & signal)
@@ -531,47 +464,29 @@ public:
         QObject::connectNotify(signal);
     }
     
-    void disconnectNotify(const QMetaMethod & signal)
+    bool isSignalConnected(const QMetaMethod & signal) const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        return QObject::isSignalConnected(signal);
+    }
+    
+    void childEvent(QChildEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
-        QObject::disconnectNotify(signal);
+        QObject::childEvent(__arg0);
     }
-    void super_disconnectNotify(const QMetaMethod & signal)
+    void super_childEvent(QChildEvent * __arg0)
     {
-        QObject::disconnectNotify(signal);
-    }
-    
-    bool hasAlphaChannel() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasAlphaChannel"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    bool super_hasAlphaChannel() const
-    {
-        throw std::runtime_error("Abstract method");
+        QObject::childEvent(__arg0);
     }
     
-    void * qt_metacast(const char * __arg0)
+    int receivers(const char * signal) const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
-        if(func)
-        {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QSGTexture::qt_metacast(__arg0);
-    }
-    void * super_qt_metacast(const char * __arg0)
-    {
-        return QSGTexture::qt_metacast(__arg0);
+        return QObject::receivers(signal);
     }
     
     QSize textureSize() const
@@ -588,19 +503,94 @@ public:
         throw std::runtime_error("Abstract method");
     }
     
-    void bind()
+    int senderSignalIndex() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("bind"));
+        return QObject::senderSignalIndex();
+    }
+    
+    QSGTexture * removedFromAtlas() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("removedFromAtlas"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this);
+            return cpgf::fromVariant<QSGTexture * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGTexture::removedFromAtlas();
+    }
+    QSGTexture * super_removedFromAtlas() const
+    {
+        return QSGTexture::removedFromAtlas();
+    }
+    
+    void * qt_metacast(const char * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
+        if(func)
+        {
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QSGTexture::qt_metacast(__arg0);
+    }
+    void * super_qt_metacast(const char * __arg0)
+    {
+        return QSGTexture::qt_metacast(__arg0);
+    }
+    
+    bool eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
+        }
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    
+    const QMetaObject * metaObject() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
+        if(func)
+        {
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGTexture::metaObject();
+    }
+    const QMetaObject * super_metaObject() const
+    {
+        return QSGTexture::metaObject();
+    }
+    
+    void customEvent(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
-        throw std::runtime_error("Abstract method");
+        QObject::customEvent(__arg0);
     }
-    void super_bind()
+    void super_customEvent(QEvent * __arg0)
     {
-        throw std::runtime_error("Abstract method");
+        QObject::customEvent(__arg0);
+    }
+    
+    QRectF normalizedTextureSubRect() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("normalizedTextureSubRect"));
+        if(func)
+        {
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGTexture::normalizedTextureSubRect();
+    }
+    QRectF super_normalizedTextureSubRect() const
+    {
+        return QSGTexture::normalizedTextureSubRect();
     }
     
     bool event(QEvent * __arg0)
@@ -617,28 +607,18 @@ public:
         return QObject::event(__arg0);
     }
     
-    int receivers(const char * signal) const
+    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
-        return QObject::receivers(signal);
-    }
-    
-    bool isSignalConnected(const QMetaMethod & signal) const
-    {
-        return QObject::isSignalConnected(signal);
-    }
-    
-    bool eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
-        return QObject::eventFilter(__arg0, __arg1);
+        return QSGTexture::qt_metacall(__arg0, __arg1, __arg2);
     }
-    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
+    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
-        return QObject::eventFilter(__arg0, __arg1);
+        return QSGTexture::qt_metacall(__arg0, __arg1, __arg2);
     }
     
     void timerEvent(QTimerEvent * __arg0)
@@ -656,94 +636,114 @@ public:
         QObject::timerEvent(__arg0);
     }
     
-    QSGTexture * removedFromAtlas() const
+    bool hasAlphaChannel() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("removedFromAtlas"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasAlphaChannel"));
         if(func)
         {
-            return cpgf::fromVariant<QSGTexture * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QSGTexture::removedFromAtlas();
+        throw std::runtime_error("Abstract method");
     }
-    QSGTexture * super_removedFromAtlas() const
+    bool super_hasAlphaChannel() const
     {
-        return QSGTexture::removedFromAtlas();
+        throw std::runtime_error("Abstract method");
     }
     
-    const QMetaObject * metaObject() const
+    void disconnectNotify(const QMetaMethod & signal)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
         if(func)
         {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSGTexture::metaObject();
-    }
-    const QMetaObject * super_metaObject() const
-    {
-        return QSGTexture::metaObject();
-    }
-    
-    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
-        }
-        return QSGTexture::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        return QSGTexture::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    
-    void childEvent(QChildEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
-        QObject::childEvent(__arg0);
+        QObject::disconnectNotify(signal);
     }
-    void super_childEvent(QChildEvent * __arg0)
+    void super_disconnectNotify(const QMetaMethod & signal)
     {
-        QObject::childEvent(__arg0);
+        QObject::disconnectNotify(signal);
+    }
+    
+    void bind()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("bind"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
+            return;
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    void super_bind()
+    {
+        throw std::runtime_error("Abstract method");
+    }
+    
+    bool hasMipmaps() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasMipmaps"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    bool super_hasMipmaps() const
+    {
+        throw std::runtime_error("Abstract method");
+    }
+    
+    int textureId() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("textureId"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    int super_textureId() const
+    {
+        throw std::runtime_error("Abstract method");
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_textureId", (int (D::ClassType::*) () const)&D::ClassType::super_textureId);
-        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
         _d.CPGF_MD_TEMPLATE _method("super_isAtlasTexture", (bool (D::ClassType::*) () const)&D::ClassType::super_isAtlasTexture);
-        _d.CPGF_MD_TEMPLATE _method("super_normalizedTextureSubRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_normalizedTextureSubRect);
-        _d.CPGF_MD_TEMPLATE _method("super_hasMipmaps", (bool (D::ClassType::*) () const)&D::ClassType::super_hasMipmaps);
         _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_hasAlphaChannel", (bool (D::ClassType::*) () const)&D::ClassType::super_hasAlphaChannel);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-        _d.CPGF_MD_TEMPLATE _method("super_textureSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_textureSize);
-        _d.CPGF_MD_TEMPLATE _method("super_bind", (void (D::ClassType::*) ())&D::ClassType::super_bind);
-        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_removedFromAtlas", (QSGTexture * (D::ClassType::*) () const)&D::ClassType::super_removedFromAtlas);
-        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
         _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_textureSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_textureSize);
+        _d.CPGF_MD_TEMPLATE _method("super_removedFromAtlas", (QSGTexture * (D::ClassType::*) () const)&D::ClassType::super_removedFromAtlas);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_normalizedTextureSubRect", (QRectF (D::ClassType::*) () const)&D::ClassType::super_normalizedTextureSubRect);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_hasAlphaChannel", (bool (D::ClassType::*) () const)&D::ClassType::super_hasAlphaChannel);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_bind", (void (D::ClassType::*) ())&D::ClassType::super_bind);
+        _d.CPGF_MD_TEMPLATE _method("super_hasMipmaps", (bool (D::ClassType::*) () const)&D::ClassType::super_hasMipmaps);
+        _d.CPGF_MD_TEMPLATE _method("super_textureId", (int (D::ClassType::*) () const)&D::ClassType::super_textureId);
     }
 };
 

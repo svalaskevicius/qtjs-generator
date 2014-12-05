@@ -24,7 +24,7 @@ void buildMetaClass_Global_qtcoreversion(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_33")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_27")
         ._element("QTCORE_VERSION_STR", QTCORE_VERSION_STR)
         ._element("QTCORE_VERSION", QTCORE_VERSION)
     ;

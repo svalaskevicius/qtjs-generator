@@ -148,7 +148,6 @@ GDefineMetaInfo createMetaClass_QList_TemplateInstance_QList_QObject_ptr();
 GDefineMetaInfo createMetaClass_QList_TemplateInstance_QList_QString();
 GDefineMetaInfo createMetaClass_QLocale();
 GDefineMetaInfo createMetaClass_QLockFile();
-GDefineMetaInfo createMetaClass_QLoggingCategory();
 GDefineMetaInfo createMetaClass_QMargins();
 GDefineMetaInfo createMetaClass_QMarginsF();
 GDefineMetaInfo createMetaClass_QMessageAuthenticationCode();
@@ -370,7 +369,6 @@ void registerMain_QtCore(Meta _d)
     _d._class(createMetaClass_QList_TemplateInstance_QList_QString());
     _d._class(createMetaClass_QLocale());
     _d._class(createMetaClass_QLockFile());
-    _d._class(createMetaClass_QLoggingCategory());
     _d._class(createMetaClass_QMargins());
     _d._class(createMetaClass_QMarginsF());
     _d._class(createMetaClass_QMessageAuthenticationCode());

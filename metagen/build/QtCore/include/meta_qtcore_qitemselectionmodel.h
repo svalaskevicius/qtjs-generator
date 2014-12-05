@@ -120,6 +120,51 @@ public:
     QItemSelectionModelWrapper(QAbstractItemModel * model, QObject * parent)
         : QItemSelectionModel(model, parent) {}
     
+    void connectNotify(const QMetaMethod & signal)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            return;
+        }
+        QObject::connectNotify(signal);
+    }
+    void super_connectNotify(const QMetaMethod & signal)
+    {
+        QObject::connectNotify(signal);
+    }
+    
+    bool isSignalConnected(const QMetaMethod & signal) const
+    {
+        return QObject::isSignalConnected(signal);
+    }
+    
+    void childEvent(QChildEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::childEvent(__arg0);
+    }
+    void super_childEvent(QChildEvent * __arg0)
+    {
+        QObject::childEvent(__arg0);
+    }
+    
+    int receivers(const char * signal) const
+    {
+        return QObject::receivers(signal);
+    }
+    
+    int senderSignalIndex() const
+    {
+        return QObject::senderSignalIndex();
+    }
+    
     void clear()
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("clear"));
@@ -135,9 +180,32 @@ public:
         QItemSelectionModel::clear();
     }
     
-    void emitSelectionChanged(const QItemSelection & newSelection, const QItemSelection & oldSelection)
+    void * qt_metacast(const char * __arg0)
     {
-        QItemSelectionModel::emitSelectionChanged(newSelection, oldSelection);
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
+        if(func)
+        {
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QItemSelectionModel::qt_metacast(__arg0);
+    }
+    void * super_qt_metacast(const char * __arg0)
+    {
+        return QItemSelectionModel::qt_metacast(__arg0);
+    }
+    
+    bool eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
+        }
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        return QObject::eventFilter(__arg0, __arg1);
     }
     
     void clearCurrentIndex()
@@ -155,73 +223,18 @@ public:
         QItemSelectionModel::clearCurrentIndex();
     }
     
-    void customEvent(QEvent * __arg0)
+    const QMetaObject * metaObject() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        QObject::customEvent(__arg0);
+        return QItemSelectionModel::metaObject();
     }
-    void super_customEvent(QEvent * __arg0)
+    const QMetaObject * super_metaObject() const
     {
-        QObject::customEvent(__arg0);
-    }
-    
-    int senderSignalIndex() const
-    {
-        return QObject::senderSignalIndex();
-    }
-    
-    QObject * sender() const
-    {
-        return QObject::sender();
-    }
-    
-    void connectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
-            return;
-        }
-        QObject::connectNotify(signal);
-    }
-    void super_connectNotify(const QMetaMethod & signal)
-    {
-        QObject::connectNotify(signal);
-    }
-    
-    void disconnectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
-            return;
-        }
-        QObject::disconnectNotify(signal);
-    }
-    void super_disconnectNotify(const QMetaMethod & signal)
-    {
-        QObject::disconnectNotify(signal);
-    }
-    
-    void * qt_metacast(const char * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
-        if(func)
-        {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QItemSelectionModel::qt_metacast(__arg0);
-    }
-    void * super_qt_metacast(const char * __arg0)
-    {
-        return QItemSelectionModel::qt_metacast(__arg0);
+        return QItemSelectionModel::metaObject();
     }
     
     void reset()
@@ -239,19 +252,19 @@ public:
         QItemSelectionModel::reset();
     }
     
-    void setCurrentIndex(const QModelIndex & index, QItemSelectionModel::SelectionFlags command)
+    void customEvent(QEvent * __arg0)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setCurrentIndex"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, index, command);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
-        QItemSelectionModel::setCurrentIndex(index, command);
+        QObject::customEvent(__arg0);
     }
-    void super_setCurrentIndex(const QModelIndex & index, QItemSelectionModel::SelectionFlags command)
+    void super_customEvent(QEvent * __arg0)
     {
-        QItemSelectionModel::setCurrentIndex(index, command);
+        QObject::customEvent(__arg0);
     }
     
     bool event(QEvent * __arg0)
@@ -268,43 +281,23 @@ public:
         return QObject::event(__arg0);
     }
     
-    int receivers(const char * signal) const
+    void emitSelectionChanged(const QItemSelection & newSelection, const QItemSelection & oldSelection)
     {
-        return QObject::receivers(signal);
+        QItemSelectionModel::emitSelectionChanged(newSelection, oldSelection);
     }
     
-    bool isSignalConnected(const QMetaMethod & signal) const
+    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
-        return QObject::isSignalConnected(signal);
-    }
-    
-    void select(const QItemSelection & selection, QItemSelectionModel::SelectionFlags command)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("select"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, selection, command);
-            return;
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
-        QItemSelectionModel::select(selection, command);
+        return QItemSelectionModel::qt_metacall(__arg0, __arg1, __arg2);
     }
-    void super_select(const QItemSelection & selection, QItemSelectionModel::SelectionFlags command)
+    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
-        QItemSelectionModel::select(selection, command);
-    }
-    
-    bool eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
-        }
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        return QObject::eventFilter(__arg0, __arg1);
+        return QItemSelectionModel::qt_metacall(__arg0, __arg1, __arg2);
     }
     
     void timerEvent(QTimerEvent * __arg0)
@@ -322,6 +315,21 @@ public:
         QObject::timerEvent(__arg0);
     }
     
+    void disconnectNotify(const QMetaMethod & signal)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            return;
+        }
+        QObject::disconnectNotify(signal);
+    }
+    void super_disconnectNotify(const QMetaMethod & signal)
+    {
+        QObject::disconnectNotify(signal);
+    }
+    
     void select(const QModelIndex & index, QItemSelectionModel::SelectionFlags command)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("select"));
@@ -337,79 +345,71 @@ public:
         QItemSelectionModel::select(index, command);
     }
     
-    const QMetaObject * metaObject() const
+    void select(const QItemSelection & selection, QItemSelectionModel::SelectionFlags command)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("select"));
         if(func)
         {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QItemSelectionModel::metaObject();
-    }
-    const QMetaObject * super_metaObject() const
-    {
-        return QItemSelectionModel::metaObject();
-    }
-    
-    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
-        }
-        return QItemSelectionModel::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        return QItemSelectionModel::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    
-    void childEvent(QChildEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, selection, command);
             return;
         }
-        QObject::childEvent(__arg0);
+        QItemSelectionModel::select(selection, command);
     }
-    void super_childEvent(QChildEvent * __arg0)
+    void super_select(const QItemSelection & selection, QItemSelectionModel::SelectionFlags command)
     {
-        QObject::childEvent(__arg0);
+        QItemSelectionModel::select(selection, command);
+    }
+    
+    void setCurrentIndex(const QModelIndex & index, QItemSelectionModel::SelectionFlags command)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setCurrentIndex"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, index, command);
+            return;
+        }
+        QItemSelectionModel::setCurrentIndex(index, command);
+    }
+    void super_setCurrentIndex(const QModelIndex & index, QItemSelectionModel::SelectionFlags command)
+    {
+        QItemSelectionModel::setCurrentIndex(index, command);
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("emitSelectionChanged", (void (D::ClassType::*) (const QItemSelection &, const QItemSelection &))&D::ClassType::emitSelectionChanged);
-        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_clear", (void (D::ClassType::*) ())&D::ClassType::super_clear);
-        _d.CPGF_MD_TEMPLATE _method("super_clearCurrentIndex", (void (D::ClassType::*) ())&D::ClassType::super_clearCurrentIndex);
-        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("emitSelectionChanged", (void (D::ClassType::*) (const QItemSelection &, const QItemSelection &))&D::ClassType::emitSelectionChanged);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
         _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-        _d.CPGF_MD_TEMPLATE _method("super_reset", (void (D::ClassType::*) ())&D::ClassType::super_reset);
-        _d.CPGF_MD_TEMPLATE _method("super_setCurrentIndex", (void (D::ClassType::*) (const QModelIndex &, QItemSelectionModel::SelectionFlags))&D::ClassType::super_setCurrentIndex);
-        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-        _d.CPGF_MD_TEMPLATE _method("super_select", (void (D::ClassType::*) (const QItemSelection &, QItemSelectionModel::SelectionFlags))&D::ClassType::super_select);
-        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_select", (void (D::ClassType::*) (const QModelIndex &, QItemSelectionModel::SelectionFlags))&D::ClassType::super_select);
-        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
         _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_clear", (void (D::ClassType::*) ())&D::ClassType::super_clear);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_clearCurrentIndex", (void (D::ClassType::*) ())&D::ClassType::super_clearCurrentIndex);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_reset", (void (D::ClassType::*) ())&D::ClassType::super_reset);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_select", (void (D::ClassType::*) (const QModelIndex &, QItemSelectionModel::SelectionFlags))&D::ClassType::super_select);
+        _d.CPGF_MD_TEMPLATE _method("super_select", (void (D::ClassType::*) (const QItemSelection &, QItemSelectionModel::SelectionFlags))&D::ClassType::super_select);
+        _d.CPGF_MD_TEMPLATE _method("super_setCurrentIndex", (void (D::ClassType::*) (const QModelIndex &, QItemSelectionModel::SelectionFlags))&D::ClassType::super_setCurrentIndex);
     }
 };
 

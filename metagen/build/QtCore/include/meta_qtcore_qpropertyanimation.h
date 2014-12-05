@@ -57,46 +57,6 @@ public:
     QPropertyAnimationWrapper(QObject * target, const QByteArray & propertyName, QObject * parent = 0)
         : QPropertyAnimation(target, propertyName, parent) {}
     
-    void updateCurrentTime(int __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updateCurrentTime"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QVariantAnimation::updateCurrentTime(__arg0);
-    }
-    void super_updateCurrentTime(int __arg0)
-    {
-        QVariantAnimation::updateCurrentTime(__arg0);
-    }
-    
-    void customEvent(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::customEvent(__arg0);
-    }
-    void super_customEvent(QEvent * __arg0)
-    {
-        QObject::customEvent(__arg0);
-    }
-    
-    int senderSignalIndex() const
-    {
-        return QObject::senderSignalIndex();
-    }
-    
-    QObject * sender() const
-    {
-        return QObject::sender();
-    }
-    
     void connectNotify(const QMetaMethod & signal)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
@@ -112,63 +72,34 @@ public:
         QObject::connectNotify(signal);
     }
     
-    void updateDirection(QAbstractAnimation::Direction direction)
+    bool isSignalConnected(const QMetaMethod & signal) const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updateDirection"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, direction);
-            return;
-        }
-        QAbstractAnimation::updateDirection(direction);
-    }
-    void super_updateDirection(QAbstractAnimation::Direction direction)
-    {
-        QAbstractAnimation::updateDirection(direction);
+        return QObject::isSignalConnected(signal);
     }
     
-    void disconnectNotify(const QMetaMethod & signal)
+    void childEvent(QChildEvent * __arg0)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
-        QObject::disconnectNotify(signal);
+        QObject::childEvent(__arg0);
     }
-    void super_disconnectNotify(const QMetaMethod & signal)
+    void super_childEvent(QChildEvent * __arg0)
     {
-        QObject::disconnectNotify(signal);
-    }
-    
-    void updateState(QAbstractAnimation::State newState, QAbstractAnimation::State oldState)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updateState"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, newState, oldState);
-            return;
-        }
-        QPropertyAnimation::updateState(newState, oldState);
-    }
-    void super_updateState(QAbstractAnimation::State newState, QAbstractAnimation::State oldState)
-    {
-        QPropertyAnimation::updateState(newState, oldState);
+        QObject::childEvent(__arg0);
     }
     
-    void * qt_metacast(const char * __arg0)
+    int receivers(const char * signal) const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
-        if(func)
-        {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QPropertyAnimation::qt_metacast(__arg0);
+        return QObject::receivers(signal);
     }
-    void * super_qt_metacast(const char * __arg0)
+    
+    int senderSignalIndex() const
     {
-        return QPropertyAnimation::qt_metacast(__arg0);
+        return QObject::senderSignalIndex();
     }
     
     void updateCurrentValue(const QVariant & value)
@@ -186,6 +117,64 @@ public:
         QPropertyAnimation::updateCurrentValue(value);
     }
     
+    void updateState(QAbstractAnimation::State newState, QAbstractAnimation::State oldState)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updateState"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, newState, oldState);
+            return;
+        }
+        QPropertyAnimation::updateState(newState, oldState);
+    }
+    void super_updateState(QAbstractAnimation::State newState, QAbstractAnimation::State oldState)
+    {
+        QPropertyAnimation::updateState(newState, oldState);
+    }
+    
+    void updateCurrentTime(int __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updateCurrentTime"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QVariantAnimation::updateCurrentTime(__arg0);
+    }
+    void super_updateCurrentTime(int __arg0)
+    {
+        QVariantAnimation::updateCurrentTime(__arg0);
+    }
+    
+    void * qt_metacast(const char * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
+        if(func)
+        {
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QPropertyAnimation::qt_metacast(__arg0);
+    }
+    void * super_qt_metacast(const char * __arg0)
+    {
+        return QPropertyAnimation::qt_metacast(__arg0);
+    }
+    
+    bool eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
+        }
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    
     int duration() const
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("duration"));
@@ -198,6 +187,64 @@ public:
     int super_duration() const
     {
         return QVariantAnimation::duration();
+    }
+    
+    const QMetaObject * metaObject() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
+        if(func)
+        {
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QPropertyAnimation::metaObject();
+    }
+    const QMetaObject * super_metaObject() const
+    {
+        return QPropertyAnimation::metaObject();
+    }
+    
+    QVariant interpolated(const QVariant & from, const QVariant & to, qreal progress) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("interpolated"));
+        if(func)
+        {
+            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunctionOnObject(func.get(), this, from, to, progress).getValue());
+        }
+        return QVariantAnimation::interpolated(from, to, progress);
+    }
+    QVariant super_interpolated(const QVariant & from, const QVariant & to, qreal progress) const
+    {
+        return QVariantAnimation::interpolated(from, to, progress);
+    }
+    
+    void updateDirection(QAbstractAnimation::Direction direction)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updateDirection"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, direction);
+            return;
+        }
+        QAbstractAnimation::updateDirection(direction);
+    }
+    void super_updateDirection(QAbstractAnimation::Direction direction)
+    {
+        QAbstractAnimation::updateDirection(direction);
+    }
+    
+    void customEvent(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::customEvent(__arg0);
+    }
+    void super_customEvent(QEvent * __arg0)
+    {
+        QObject::customEvent(__arg0);
     }
     
     bool event(QEvent * event)
@@ -214,28 +261,18 @@ public:
         return QPropertyAnimation::event(event);
     }
     
-    int receivers(const char * signal) const
+    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
-        return QObject::receivers(signal);
-    }
-    
-    bool isSignalConnected(const QMetaMethod & signal) const
-    {
-        return QObject::isSignalConnected(signal);
-    }
-    
-    bool eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
-        return QObject::eventFilter(__arg0, __arg1);
+        return QPropertyAnimation::qt_metacall(__arg0, __arg1, __arg2);
     }
-    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
+    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
-        return QObject::eventFilter(__arg0, __arg1);
+        return QPropertyAnimation::qt_metacall(__arg0, __arg1, __arg2);
     }
     
     void timerEvent(QTimerEvent * __arg0)
@@ -253,98 +290,61 @@ public:
         QObject::timerEvent(__arg0);
     }
     
-    QVariant interpolated(const QVariant & from, const QVariant & to, qreal progress) const
+    void disconnectNotify(const QMetaMethod & signal)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("interpolated"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
         if(func)
         {
-            return cpgf::fromVariant<QVariant >(cpgf::invokeScriptFunctionOnObject(func.get(), this, from, to, progress).getValue());
-        }
-        return QVariantAnimation::interpolated(from, to, progress);
-    }
-    QVariant super_interpolated(const QVariant & from, const QVariant & to, qreal progress) const
-    {
-        return QVariantAnimation::interpolated(from, to, progress);
-    }
-    
-    const QMetaObject * metaObject() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
-        if(func)
-        {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QPropertyAnimation::metaObject();
-    }
-    const QMetaObject * super_metaObject() const
-    {
-        return QPropertyAnimation::metaObject();
-    }
-    
-    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
-        }
-        return QPropertyAnimation::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        return QPropertyAnimation::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    
-    void childEvent(QChildEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
-        QObject::childEvent(__arg0);
+        QObject::disconnectNotify(signal);
     }
-    void super_childEvent(QChildEvent * __arg0)
+    void super_disconnectNotify(const QMetaMethod & signal)
     {
-        QObject::childEvent(__arg0);
+        QObject::disconnectNotify(signal);
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("updateCurrentTime", (void (D::ClassType::*) (int))&D::ClassType::updateCurrentTime);
-        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("updateDirection", (void (D::ClassType::*) (QAbstractAnimation::Direction))&D::ClassType::updateDirection);
-        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("updateState", (void (D::ClassType::*) (QAbstractAnimation::State, QAbstractAnimation::State))&D::ClassType::updateState);
-        _d.CPGF_MD_TEMPLATE _method("updateCurrentValue", (void (D::ClassType::*) (const QVariant &))&D::ClassType::updateCurrentValue, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::event);
-        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("interpolated", (QVariant (D::ClassType::*) (const QVariant &, const QVariant &, qreal) const)&D::ClassType::interpolated, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_updateCurrentTime", (void (D::ClassType::*) (int))&D::ClassType::super_updateCurrentTime);
-        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("updateCurrentValue", (void (D::ClassType::*) (const QVariant &))&D::ClassType::updateCurrentValue, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("updateState", (void (D::ClassType::*) (QAbstractAnimation::State, QAbstractAnimation::State))&D::ClassType::updateState);
+        _d.CPGF_MD_TEMPLATE _method("updateCurrentTime", (void (D::ClassType::*) (int))&D::ClassType::updateCurrentTime);
+        _d.CPGF_MD_TEMPLATE _method("interpolated", (QVariant (D::ClassType::*) (const QVariant &, const QVariant &, qreal) const)&D::ClassType::interpolated, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("updateDirection", (void (D::ClassType::*) (QAbstractAnimation::Direction))&D::ClassType::updateDirection);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::event);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
         _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_updateDirection", (void (D::ClassType::*) (QAbstractAnimation::Direction))&D::ClassType::super_updateDirection);
-        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_updateState", (void (D::ClassType::*) (QAbstractAnimation::State, QAbstractAnimation::State))&D::ClassType::super_updateState);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-        _d.CPGF_MD_TEMPLATE _method("super_updateCurrentValue", (void (D::ClassType::*) (const QVariant &))&D::ClassType::super_updateCurrentValue, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_duration", (int (D::ClassType::*) () const)&D::ClassType::super_duration);
-        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_interpolated", (QVariant (D::ClassType::*) (const QVariant &, const QVariant &, qreal) const)&D::ClassType::super_interpolated, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
-        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
         _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_updateCurrentValue", (void (D::ClassType::*) (const QVariant &))&D::ClassType::super_updateCurrentValue, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_updateState", (void (D::ClassType::*) (QAbstractAnimation::State, QAbstractAnimation::State))&D::ClassType::super_updateState);
+        _d.CPGF_MD_TEMPLATE _method("super_updateCurrentTime", (void (D::ClassType::*) (int))&D::ClassType::super_updateCurrentTime);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_duration", (int (D::ClassType::*) () const)&D::ClassType::super_duration);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_interpolated", (QVariant (D::ClassType::*) (const QVariant &, const QVariant &, qreal) const)&D::ClassType::super_interpolated, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_updateDirection", (void (D::ClassType::*) (QAbstractAnimation::Direction))&D::ClassType::super_updateDirection);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
     }
 };
 

@@ -110,42 +110,18 @@ public:
     QIODeviceWrapper(QObject * parent)
         : QIODevice(parent) {}
     
-    bool open(QIODevice::OpenMode mode)
+    bool waitForReadyRead(int msecs)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("open"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("waitForReadyRead"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, mode).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, msecs).getValue());
         }
-        return QIODevice::open(mode);
+        return QIODevice::waitForReadyRead(msecs);
     }
-    bool super_open(QIODevice::OpenMode mode)
+    bool super_waitForReadyRead(int msecs)
     {
-        return QIODevice::open(mode);
-    }
-    
-    bool seek(qint64 pos)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("seek"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, pos).getValue());
-        }
-        return QIODevice::seek(pos);
-    }
-    bool super_seek(qint64 pos)
-    {
-        return QIODevice::seek(pos);
-    }
-    
-    void setErrorString(const QString & errorString)
-    {
-        QIODevice::setErrorString(errorString);
-    }
-    
-    int senderSignalIndex() const
-    {
-        return QObject::senderSignalIndex();
+        return QIODevice::waitForReadyRead(msecs);
     }
     
     void close()
@@ -163,124 +139,33 @@ public:
         QIODevice::close();
     }
     
-    QObject * sender() const
+    void connectNotify(const QMetaMethod & signal)
     {
-        return QObject::sender();
-    }
-    
-    qint64 pos() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("pos"));
-        if(func)
-        {
-            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QIODevice::pos();
-    }
-    qint64 super_pos() const
-    {
-        return QIODevice::pos();
-    }
-    
-    void disconnectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
         if(func)
         {
             cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
-        QObject::disconnectNotify(signal);
+        QObject::connectNotify(signal);
     }
-    void super_disconnectNotify(const QMetaMethod & signal)
+    void super_connectNotify(const QMetaMethod & signal)
     {
-        QObject::disconnectNotify(signal);
-    }
-    
-    bool waitForReadyRead(int msecs)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("waitForReadyRead"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, msecs).getValue());
-        }
-        return QIODevice::waitForReadyRead(msecs);
-    }
-    bool super_waitForReadyRead(int msecs)
-    {
-        return QIODevice::waitForReadyRead(msecs);
+        QObject::connectNotify(signal);
     }
     
-    int receivers(const char * signal) const
+    bool canReadLine() const
     {
-        return QObject::receivers(signal);
-    }
-    
-    bool reset()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("reset"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("canReadLine"));
         if(func)
         {
             return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QIODevice::reset();
+        return QIODevice::canReadLine();
     }
-    bool super_reset()
+    bool super_canReadLine() const
     {
-        return QIODevice::reset();
-    }
-    
-    bool isSignalConnected(const QMetaMethod & signal) const
-    {
-        return QObject::isSignalConnected(signal);
-    }
-    
-    void setOpenMode(QIODevice::OpenMode openMode)
-    {
-        QIODevice::setOpenMode(openMode);
-    }
-    
-    bool eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
-        }
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    
-    void timerEvent(QTimerEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::timerEvent(__arg0);
-    }
-    void super_timerEvent(QTimerEvent * __arg0)
-    {
-        QObject::timerEvent(__arg0);
-    }
-    
-    qint64 bytesAvailable() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("bytesAvailable"));
-        if(func)
-        {
-            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QIODevice::bytesAvailable();
-    }
-    qint64 super_bytesAvailable() const
-    {
-        return QIODevice::bytesAvailable();
+        return QIODevice::canReadLine();
     }
     
     void childEvent(QChildEvent * __arg0)
@@ -298,32 +183,18 @@ public:
         QObject::childEvent(__arg0);
     }
     
-    bool atEnd() const
+    void * qt_metacast(const char * __arg0)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("atEnd"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
-        return QIODevice::atEnd();
+        return QIODevice::qt_metacast(__arg0);
     }
-    bool super_atEnd() const
+    void * super_qt_metacast(const char * __arg0)
     {
-        return QIODevice::atEnd();
-    }
-    
-    bool canReadLine() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("canReadLine"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QIODevice::canReadLine();
-    }
-    bool super_canReadLine() const
-    {
-        return QIODevice::canReadLine();
+        return QIODevice::qt_metacast(__arg0);
     }
     
     qint64 readData(char * data, qint64 maxlen)
@@ -338,6 +209,195 @@ public:
     qint64 super_readData(char * data, qint64 maxlen)
     {
         throw std::runtime_error("Abstract method");
+    }
+    
+    bool waitForBytesWritten(int msecs)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("waitForBytesWritten"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, msecs).getValue());
+        }
+        return QIODevice::waitForBytesWritten(msecs);
+    }
+    bool super_waitForBytesWritten(int msecs)
+    {
+        return QIODevice::waitForBytesWritten(msecs);
+    }
+    
+    bool seek(qint64 pos)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("seek"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, pos).getValue());
+        }
+        return QIODevice::seek(pos);
+    }
+    bool super_seek(qint64 pos)
+    {
+        return QIODevice::seek(pos);
+    }
+    
+    bool event(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QObject::event(__arg0);
+    }
+    bool super_event(QEvent * __arg0)
+    {
+        return QObject::event(__arg0);
+    }
+    
+    void timerEvent(QTimerEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::timerEvent(__arg0);
+    }
+    void super_timerEvent(QTimerEvent * __arg0)
+    {
+        QObject::timerEvent(__arg0);
+    }
+    
+    qint64 size() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("size"));
+        if(func)
+        {
+            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QIODevice::size();
+    }
+    qint64 super_size() const
+    {
+        return QIODevice::size();
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
+    }
+    
+    qint64 readLineData(char * data, qint64 maxlen)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("readLineData"));
+        if(func)
+        {
+            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunctionOnObject(func.get(), this, data, maxlen).getValue());
+        }
+        return QIODevice::readLineData(data, maxlen);
+    }
+    qint64 super_readLineData(char * data, qint64 maxlen)
+    {
+        return QIODevice::readLineData(data, maxlen);
+    }
+    
+    bool isSignalConnected(const QMetaMethod & signal) const
+    {
+        return QObject::isSignalConnected(signal);
+    }
+    
+    int receivers(const char * signal) const
+    {
+        return QObject::receivers(signal);
+    }
+    
+    int senderSignalIndex() const
+    {
+        return QObject::senderSignalIndex();
+    }
+    
+    bool isSequential() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSequential"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QIODevice::isSequential();
+    }
+    bool super_isSequential() const
+    {
+        return QIODevice::isSequential();
+    }
+    
+    bool open(QIODevice::OpenMode mode)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("open"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, mode).getValue());
+        }
+        return QIODevice::open(mode);
+    }
+    bool super_open(QIODevice::OpenMode mode)
+    {
+        return QIODevice::open(mode);
+    }
+    
+    bool eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
+        }
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    
+    const QMetaObject * metaObject() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
+        if(func)
+        {
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QIODevice::metaObject();
+    }
+    const QMetaObject * super_metaObject() const
+    {
+        return QIODevice::metaObject();
+    }
+    
+    bool atEnd() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("atEnd"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QIODevice::atEnd();
+    }
+    bool super_atEnd() const
+    {
+        return QIODevice::atEnd();
+    }
+    
+    qint64 bytesAvailable() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("bytesAvailable"));
+        if(func)
+        {
+            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QIODevice::bytesAvailable();
+    }
+    qint64 super_bytesAvailable() const
+    {
+        return QIODevice::bytesAvailable();
     }
     
     void customEvent(QEvent * __arg0)
@@ -355,19 +415,18 @@ public:
         QObject::customEvent(__arg0);
     }
     
-    void connectNotify(const QMetaMethod & signal)
+    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
-            return;
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
-        QObject::connectNotify(signal);
+        return QIODevice::qt_metacall(__arg0, __arg1, __arg2);
     }
-    void super_connectNotify(const QMetaMethod & signal)
+    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
-        QObject::connectNotify(signal);
+        return QIODevice::qt_metacall(__arg0, __arg1, __arg2);
     }
     
     qint64 bytesToWrite() const
@@ -384,60 +443,57 @@ public:
         return QIODevice::bytesToWrite();
     }
     
-    bool waitForBytesWritten(int msecs)
+    void setErrorString(const QString & errorString)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("waitForBytesWritten"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, msecs).getValue());
-        }
-        return QIODevice::waitForBytesWritten(msecs);
-    }
-    bool super_waitForBytesWritten(int msecs)
-    {
-        return QIODevice::waitForBytesWritten(msecs);
+        QIODevice::setErrorString(errorString);
     }
     
-    qint64 size() const
+    void disconnectNotify(const QMetaMethod & signal)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("size"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
         if(func)
         {
-            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            return;
         }
-        return QIODevice::size();
+        QObject::disconnectNotify(signal);
     }
-    qint64 super_size() const
+    void super_disconnectNotify(const QMetaMethod & signal)
     {
-        return QIODevice::size();
+        QObject::disconnectNotify(signal);
     }
     
-    void * qt_metacast(const char * __arg0)
+    bool reset()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
-        if(func)
-        {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QIODevice::qt_metacast(__arg0);
-    }
-    void * super_qt_metacast(const char * __arg0)
-    {
-        return QIODevice::qt_metacast(__arg0);
-    }
-    
-    bool isSequential() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSequential"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("reset"));
         if(func)
         {
             return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QIODevice::isSequential();
+        return QIODevice::reset();
     }
-    bool super_isSequential() const
+    bool super_reset()
     {
-        return QIODevice::isSequential();
+        return QIODevice::reset();
+    }
+    
+    qint64 pos() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("pos"));
+        if(func)
+        {
+            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QIODevice::pos();
+    }
+    qint64 super_pos() const
+    {
+        return QIODevice::pos();
+    }
+    
+    void setOpenMode(QIODevice::OpenMode openMode)
+    {
+        QIODevice::setOpenMode(openMode);
     }
     
     qint64 writeData(const char * data, qint64 len)
@@ -453,107 +509,51 @@ public:
     {
         throw std::runtime_error("Abstract method");
     }
-    
-    bool event(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QObject::event(__arg0);
-    }
-    bool super_event(QEvent * __arg0)
-    {
-        return QObject::event(__arg0);
-    }
-    
-    qint64 readLineData(char * data, qint64 maxlen)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("readLineData"));
-        if(func)
-        {
-            return cpgf::fromVariant<qint64 >(cpgf::invokeScriptFunctionOnObject(func.get(), this, data, maxlen).getValue());
-        }
-        return QIODevice::readLineData(data, maxlen);
-    }
-    qint64 super_readLineData(char * data, qint64 maxlen)
-    {
-        return QIODevice::readLineData(data, maxlen);
-    }
-    
-    const QMetaObject * metaObject() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
-        if(func)
-        {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QIODevice::metaObject();
-    }
-    const QMetaObject * super_metaObject() const
-    {
-        return QIODevice::metaObject();
-    }
-    
-    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
-        }
-        return QIODevice::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        return QIODevice::qt_metacall(__arg0, __arg1, __arg2);
-    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("setErrorString", (void (D::ClassType::*) (const QString &))&D::ClassType::setErrorString, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-        _d.CPGF_MD_TEMPLATE _method("setOpenMode", (void (D::ClassType::*) (QIODevice::OpenMode))&D::ClassType::setOpenMode);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
         _d.CPGF_MD_TEMPLATE _method("readData", (qint64 (D::ClassType::*) (char *, qint64))&D::ClassType::readData);
-        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("writeData", (qint64 (D::ClassType::*) (const char *, qint64))&D::ClassType::writeData);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
         _d.CPGF_MD_TEMPLATE _method("readLineData", (qint64 (D::ClassType::*) (char *, qint64))&D::ClassType::readLineData);
-        _d.CPGF_MD_TEMPLATE _method("super_open", (bool (D::ClassType::*) (QIODevice::OpenMode))&D::ClassType::super_open);
-        _d.CPGF_MD_TEMPLATE _method("super_seek", (bool (D::ClassType::*) (qint64))&D::ClassType::super_seek);
-        _d.CPGF_MD_TEMPLATE _method("super_close", (void (D::ClassType::*) ())&D::ClassType::super_close);
-        _d.CPGF_MD_TEMPLATE _method("super_pos", (qint64 (D::ClassType::*) () const)&D::ClassType::super_pos);
-        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("setErrorString", (void (D::ClassType::*) (const QString &))&D::ClassType::setErrorString, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("setOpenMode", (void (D::ClassType::*) (QIODevice::OpenMode))&D::ClassType::setOpenMode);
+        _d.CPGF_MD_TEMPLATE _method("writeData", (qint64 (D::ClassType::*) (const char *, qint64))&D::ClassType::writeData);
         _d.CPGF_MD_TEMPLATE _method("super_waitForReadyRead", (bool (D::ClassType::*) (int))&D::ClassType::super_waitForReadyRead);
-        _d.CPGF_MD_TEMPLATE _method("super_reset", (bool (D::ClassType::*) ())&D::ClassType::super_reset);
-        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_bytesAvailable", (qint64 (D::ClassType::*) () const)&D::ClassType::super_bytesAvailable);
-        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_atEnd", (bool (D::ClassType::*) () const)&D::ClassType::super_atEnd);
-        _d.CPGF_MD_TEMPLATE _method("super_canReadLine", (bool (D::ClassType::*) () const)&D::ClassType::super_canReadLine);
-        _d.CPGF_MD_TEMPLATE _method("super_readData", (qint64 (D::ClassType::*) (char *, qint64))&D::ClassType::super_readData);
-        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_close", (void (D::ClassType::*) ())&D::ClassType::super_close);
         _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_bytesToWrite", (qint64 (D::ClassType::*) () const)&D::ClassType::super_bytesToWrite);
-        _d.CPGF_MD_TEMPLATE _method("super_waitForBytesWritten", (bool (D::ClassType::*) (int))&D::ClassType::super_waitForBytesWritten);
-        _d.CPGF_MD_TEMPLATE _method("super_size", (qint64 (D::ClassType::*) () const)&D::ClassType::super_size);
+        _d.CPGF_MD_TEMPLATE _method("super_canReadLine", (bool (D::ClassType::*) () const)&D::ClassType::super_canReadLine);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
         _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-        _d.CPGF_MD_TEMPLATE _method("super_isSequential", (bool (D::ClassType::*) () const)&D::ClassType::super_isSequential);
-        _d.CPGF_MD_TEMPLATE _method("super_writeData", (qint64 (D::ClassType::*) (const char *, qint64))&D::ClassType::super_writeData);
+        _d.CPGF_MD_TEMPLATE _method("super_readData", (qint64 (D::ClassType::*) (char *, qint64))&D::ClassType::super_readData);
+        _d.CPGF_MD_TEMPLATE _method("super_waitForBytesWritten", (bool (D::ClassType::*) (int))&D::ClassType::super_waitForBytesWritten);
+        _d.CPGF_MD_TEMPLATE _method("super_seek", (bool (D::ClassType::*) (qint64))&D::ClassType::super_seek);
         _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_size", (qint64 (D::ClassType::*) () const)&D::ClassType::super_size);
         _d.CPGF_MD_TEMPLATE _method("super_readLineData", (qint64 (D::ClassType::*) (char *, qint64))&D::ClassType::super_readLineData);
+        _d.CPGF_MD_TEMPLATE _method("super_isSequential", (bool (D::ClassType::*) () const)&D::ClassType::super_isSequential);
+        _d.CPGF_MD_TEMPLATE _method("super_open", (bool (D::ClassType::*) (QIODevice::OpenMode))&D::ClassType::super_open);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
         _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_atEnd", (bool (D::ClassType::*) () const)&D::ClassType::super_atEnd);
+        _d.CPGF_MD_TEMPLATE _method("super_bytesAvailable", (qint64 (D::ClassType::*) () const)&D::ClassType::super_bytesAvailable);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
         _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_bytesToWrite", (qint64 (D::ClassType::*) () const)&D::ClassType::super_bytesToWrite);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_reset", (bool (D::ClassType::*) ())&D::ClassType::super_reset);
+        _d.CPGF_MD_TEMPLATE _method("super_pos", (qint64 (D::ClassType::*) () const)&D::ClassType::super_pos);
+        _d.CPGF_MD_TEMPLATE _method("super_writeData", (qint64 (D::ClassType::*) (const char *, qint64))&D::ClassType::super_writeData);
     }
 };
 

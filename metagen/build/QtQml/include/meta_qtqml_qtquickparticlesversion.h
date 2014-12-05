@@ -24,7 +24,7 @@ void buildMetaClass_Global_qtquickparticlesversion(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_49")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_55")
         ._element("QTQUICKPARTICLES_VERSION_STR", QTQUICKPARTICLES_VERSION_STR)
         ._element("QTQUICKPARTICLES_VERSION", QTQUICKPARTICLES_VERSION)
     ;

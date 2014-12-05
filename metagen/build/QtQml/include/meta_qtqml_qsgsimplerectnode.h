@@ -46,20 +46,6 @@ public:
     QSGSimpleRectNodeWrapper()
         : QSGSimpleRectNode() {}
     
-    bool isSubtreeBlocked() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSGNode::isSubtreeBlocked();
-    }
-    bool super_isSubtreeBlocked() const
-    {
-        return QSGNode::isSubtreeBlocked();
-    }
-    
     void preprocess()
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
@@ -74,13 +60,27 @@ public:
     {
         QSGNode::preprocess();
     }
+    
+    bool isSubtreeBlocked() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGNode::isSubtreeBlocked();
+    }
+    bool super_isSubtreeBlocked() const
+    {
+        return QSGNode::isSubtreeBlocked();
+    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
+        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
     }
 };
 

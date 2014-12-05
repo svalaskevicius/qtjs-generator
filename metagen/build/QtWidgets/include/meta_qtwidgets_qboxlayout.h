@@ -102,195 +102,19 @@ public:
     QBoxLayoutWrapper(QBoxLayout::Direction __arg0, QWidget * parent = 0)
         : QBoxLayout(__arg0, parent) {}
     
-    QRect geometry() const
+    void connectNotify(const QMetaMethod & signal)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
-        if(func)
-        {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayout::geometry();
-    }
-    QRect super_geometry() const
-    {
-        return QLayout::geometry();
-    }
-    
-    QLayout * layout()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
-        if(func)
-        {
-            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayout::layout();
-    }
-    QLayout * super_layout()
-    {
-        return QLayout::layout();
-    }
-    
-    void addChildWidget(QWidget * w)
-    {
-        QLayout::addChildWidget(w);
-    }
-    
-    int senderSignalIndex() const
-    {
-        return QObject::senderSignalIndex();
-    }
-    
-    bool isEmpty() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayout::isEmpty();
-    }
-    bool super_isEmpty() const
-    {
-        return QLayout::isEmpty();
-    }
-    
-    QSpacerItem * spacerItem()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayoutItem::spacerItem();
-    }
-    QSpacerItem * super_spacerItem()
-    {
-        return QLayoutItem::spacerItem();
-    }
-    
-    QObject * sender() const
-    {
-        return QObject::sender();
-    }
-    
-    QRect alignmentRect(const QRect & __arg0) const
-    {
-        return QLayout::alignmentRect(__arg0);
-    }
-    
-    void disconnectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
         if(func)
         {
             cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
-        QObject::disconnectNotify(signal);
+        QObject::connectNotify(signal);
     }
-    void super_disconnectNotify(const QMetaMethod & signal)
+    void super_connectNotify(const QMetaMethod & signal)
     {
-        QObject::disconnectNotify(signal);
-    }
-    
-    QLayoutItem * takeAt(int __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("takeAt"));
-        if(func)
-        {
-            return cpgf::fromVariant<QLayoutItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QBoxLayout::takeAt(__arg0);
-    }
-    QLayoutItem * super_takeAt(int __arg0)
-    {
-        return QBoxLayout::takeAt(__arg0);
-    }
-    
-    int receivers(const char * signal) const
-    {
-        return QObject::receivers(signal);
-    }
-    
-    bool isSignalConnected(const QMetaMethod & signal) const
-    {
-        return QObject::isSignalConnected(signal);
-    }
-    
-    int indexOf(QWidget * __arg0) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("indexOf"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QLayout::indexOf(__arg0);
-    }
-    int super_indexOf(QWidget * __arg0) const
-    {
-        return QLayout::indexOf(__arg0);
-    }
-    
-    Qt::Orientations expandingDirections() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("expandingDirections"));
-        if(func)
-        {
-            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QBoxLayout::expandingDirections();
-    }
-    Qt::Orientations super_expandingDirections() const
-    {
-        return QBoxLayout::expandingDirections();
-    }
-    
-    bool adoptLayout(QLayout * layout)
-    {
-        return QLayout::adoptLayout(layout);
-    }
-    
-    bool eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
-        }
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    
-    void timerEvent(QTimerEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::timerEvent(__arg0);
-    }
-    void super_timerEvent(QTimerEvent * __arg0)
-    {
-        QObject::timerEvent(__arg0);
-    }
-    
-    int count() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("count"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QBoxLayout::count();
-    }
-    int super_count() const
-    {
-        return QBoxLayout::count();
+        QObject::connectNotify(signal);
     }
     
     void childEvent(QChildEvent * e)
@@ -308,53 +132,18 @@ public:
         QLayout::childEvent(e);
     }
     
-    void invalidate()
+    QSize sizeHint() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidate"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this);
-            return;
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        QBoxLayout::invalidate();
+        return QBoxLayout::sizeHint();
     }
-    void super_invalidate()
+    QSize super_sizeHint() const
     {
-        QBoxLayout::invalidate();
-    }
-    
-    QLayoutItem * itemAt(int __arg0) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemAt"));
-        if(func)
-        {
-            return cpgf::fromVariant<QLayoutItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QBoxLayout::itemAt(__arg0);
-    }
-    QLayoutItem * super_itemAt(int __arg0) const
-    {
-        return QBoxLayout::itemAt(__arg0);
-    }
-    
-    void customEvent(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::customEvent(__arg0);
-    }
-    void super_customEvent(QEvent * __arg0)
-    {
-        QObject::customEvent(__arg0);
-    }
-    
-    void addChildLayout(QLayout * l)
-    {
-        QLayout::addChildLayout(l);
+        return QBoxLayout::sizeHint();
     }
     
     void widgetEvent(QEvent * __arg0)
@@ -362,33 +151,155 @@ public:
         QLayout::widgetEvent(__arg0);
     }
     
-    bool hasHeightForWidth() const
+    QRect geometry() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasHeightForWidth"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
+        if(func)
+        {
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayout::geometry();
+    }
+    QRect super_geometry() const
+    {
+        return QLayout::geometry();
+    }
+    
+    QSize maximumSize() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("maximumSize"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QBoxLayout::maximumSize();
+    }
+    QSize super_maximumSize() const
+    {
+        return QBoxLayout::maximumSize();
+    }
+    
+    QRect alignmentRect(const QRect & __arg0) const
+    {
+        return QLayout::alignmentRect(__arg0);
+    }
+    
+    void * qt_metacast(const char * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
+        if(func)
+        {
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QBoxLayout::qt_metacast(__arg0);
+    }
+    void * super_qt_metacast(const char * __arg0)
+    {
+        return QBoxLayout::qt_metacast(__arg0);
+    }
+    
+    int minimumHeightForWidth(int __arg0) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumHeightForWidth"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QBoxLayout::minimumHeightForWidth(__arg0);
+    }
+    int super_minimumHeightForWidth(int __arg0) const
+    {
+        return QBoxLayout::minimumHeightForWidth(__arg0);
+    }
+    
+    QSpacerItem * spacerItem()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayoutItem::spacerItem();
+    }
+    QSpacerItem * super_spacerItem()
+    {
+        return QLayoutItem::spacerItem();
+    }
+    
+    bool isEmpty() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
         if(func)
         {
             return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QBoxLayout::hasHeightForWidth();
+        return QLayout::isEmpty();
     }
-    bool super_hasHeightForWidth() const
+    bool super_isEmpty() const
     {
-        return QBoxLayout::hasHeightForWidth();
+        return QLayout::isEmpty();
     }
     
-    void addItem(QLayoutItem * __arg0)
+    int count() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("addItem"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("count"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QBoxLayout::count();
+    }
+    int super_count() const
+    {
+        return QBoxLayout::count();
+    }
+    
+    bool event(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QObject::event(__arg0);
+    }
+    bool super_event(QEvent * __arg0)
+    {
+        return QObject::event(__arg0);
+    }
+    
+    void timerEvent(QTimerEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
         if(func)
         {
             cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
-        QBoxLayout::addItem(__arg0);
+        QObject::timerEvent(__arg0);
     }
-    void super_addItem(QLayoutItem * __arg0)
+    void super_timerEvent(QTimerEvent * __arg0)
     {
-        QBoxLayout::addItem(__arg0);
+        QObject::timerEvent(__arg0);
+    }
+    
+    QWidget * widget()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
+        if(func)
+        {
+            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayoutItem::widget();
+    }
+    QWidget * super_widget()
+    {
+        return QLayoutItem::widget();
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
     }
     
     void setGeometry(const QRect & __arg0)
@@ -406,131 +317,100 @@ public:
         QBoxLayout::setGeometry(__arg0);
     }
     
-    QSize maximumSize() const
+    void invalidate()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("maximumSize"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidate"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QBoxLayout::maximumSize();
-    }
-    QSize super_maximumSize() const
-    {
-        return QBoxLayout::maximumSize();
-    }
-    
-    void connectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
-        QObject::connectNotify(signal);
+        QBoxLayout::invalidate();
     }
-    void super_connectNotify(const QMetaMethod & signal)
+    void super_invalidate()
     {
-        QObject::connectNotify(signal);
+        QBoxLayout::invalidate();
     }
     
-    int minimumHeightForWidth(int __arg0) const
+    bool adoptLayout(QLayout * layout)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumHeightForWidth"));
+        return QLayout::adoptLayout(layout);
+    }
+    
+    bool isSignalConnected(const QMetaMethod & signal) const
+    {
+        return QObject::isSignalConnected(signal);
+    }
+    
+    int receivers(const char * signal) const
+    {
+        return QObject::receivers(signal);
+    }
+    
+    int senderSignalIndex() const
+    {
+        return QObject::senderSignalIndex();
+    }
+    
+    bool hasHeightForWidth() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasHeightForWidth"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QBoxLayout::hasHeightForWidth();
+    }
+    bool super_hasHeightForWidth() const
+    {
+        return QBoxLayout::hasHeightForWidth();
+    }
+    
+    void addChildWidget(QWidget * w)
+    {
+        QLayout::addChildWidget(w);
+    }
+    
+    QLayoutItem * takeAt(int __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("takeAt"));
+        if(func)
+        {
+            return cpgf::fromVariant<QLayoutItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QBoxLayout::takeAt(__arg0);
+    }
+    QLayoutItem * super_takeAt(int __arg0)
+    {
+        return QBoxLayout::takeAt(__arg0);
+    }
+    
+    int indexOf(QWidget * __arg0) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("indexOf"));
         if(func)
         {
             return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
-        return QBoxLayout::minimumHeightForWidth(__arg0);
+        return QLayout::indexOf(__arg0);
     }
-    int super_minimumHeightForWidth(int __arg0) const
+    int super_indexOf(QWidget * __arg0) const
     {
-        return QBoxLayout::minimumHeightForWidth(__arg0);
-    }
-    
-    void * qt_metacast(const char * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
-        if(func)
-        {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QBoxLayout::qt_metacast(__arg0);
-    }
-    void * super_qt_metacast(const char * __arg0)
-    {
-        return QBoxLayout::qt_metacast(__arg0);
+        return QLayout::indexOf(__arg0);
     }
     
-    bool event(QEvent * __arg0)
+    bool eventFilter(QObject * __arg0, QEvent * __arg1)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
         }
-        return QObject::event(__arg0);
+        return QObject::eventFilter(__arg0, __arg1);
     }
-    bool super_event(QEvent * __arg0)
+    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
     {
-        return QObject::event(__arg0);
-    }
-    
-    QWidget * widget()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
-        if(func)
-        {
-            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayoutItem::widget();
-    }
-    QWidget * super_widget()
-    {
-        return QLayoutItem::widget();
-    }
-    
-    QSize sizeHint() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QBoxLayout::sizeHint();
-    }
-    QSize super_sizeHint() const
-    {
-        return QBoxLayout::sizeHint();
-    }
-    
-    QSize minimumSize() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumSize"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QBoxLayout::minimumSize();
-    }
-    QSize super_minimumSize() const
-    {
-        return QBoxLayout::minimumSize();
-    }
-    
-    QSizePolicy::ControlTypes controlTypes() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("controlTypes"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSizePolicy::ControlTypes >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayout::controlTypes();
-    }
-    QSizePolicy::ControlTypes super_controlTypes() const
-    {
-        return QLayout::controlTypes();
+        return QObject::eventFilter(__arg0, __arg1);
     }
     
     const QMetaObject * metaObject() const
@@ -547,6 +427,78 @@ public:
         return QBoxLayout::metaObject();
     }
     
+    QSize minimumSize() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumSize"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QBoxLayout::minimumSize();
+    }
+    QSize super_minimumSize() const
+    {
+        return QBoxLayout::minimumSize();
+    }
+    
+    Qt::Orientations expandingDirections() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("expandingDirections"));
+        if(func)
+        {
+            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QBoxLayout::expandingDirections();
+    }
+    Qt::Orientations super_expandingDirections() const
+    {
+        return QBoxLayout::expandingDirections();
+    }
+    
+    QSizePolicy::ControlTypes controlTypes() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("controlTypes"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSizePolicy::ControlTypes >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayout::controlTypes();
+    }
+    QSizePolicy::ControlTypes super_controlTypes() const
+    {
+        return QLayout::controlTypes();
+    }
+    
+    void customEvent(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::customEvent(__arg0);
+    }
+    void super_customEvent(QEvent * __arg0)
+    {
+        QObject::customEvent(__arg0);
+    }
+    
+    void addItem(QLayoutItem * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("addItem"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QBoxLayout::addItem(__arg0);
+    }
+    void super_addItem(QLayoutItem * __arg0)
+    {
+        QBoxLayout::addItem(__arg0);
+    }
+    
     int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
@@ -559,6 +511,54 @@ public:
     int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
         return QBoxLayout::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    
+    QLayout * layout()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
+        if(func)
+        {
+            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayout::layout();
+    }
+    QLayout * super_layout()
+    {
+        return QLayout::layout();
+    }
+    
+    void addChildLayout(QLayout * l)
+    {
+        QLayout::addChildLayout(l);
+    }
+    
+    QLayoutItem * itemAt(int __arg0) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemAt"));
+        if(func)
+        {
+            return cpgf::fromVariant<QLayoutItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QBoxLayout::itemAt(__arg0);
+    }
+    QLayoutItem * super_itemAt(int __arg0) const
+    {
+        return QBoxLayout::itemAt(__arg0);
+    }
+    
+    void disconnectNotify(const QMetaMethod & signal)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            return;
+        }
+        QObject::disconnectNotify(signal);
+    }
+    void super_disconnectNotify(const QMetaMethod & signal)
+    {
+        QObject::disconnectNotify(signal);
     }
     
     int heightForWidth(int __arg0) const
@@ -579,49 +579,49 @@ public:
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("addChildWidget", (void (D::ClassType::*) (QWidget *))&D::ClassType::addChildWidget);
-        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-        _d.CPGF_MD_TEMPLATE _method("alignmentRect", (QRect (D::ClassType::*) (const QRect &) const)&D::ClassType::alignmentRect);
-        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-        _d.CPGF_MD_TEMPLATE _method("adoptLayout", (bool (D::ClassType::*) (QLayout *))&D::ClassType::adoptLayout);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("widgetEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::widgetEvent);
+        _d.CPGF_MD_TEMPLATE _method("alignmentRect", (QRect (D::ClassType::*) (const QRect &) const)&D::ClassType::alignmentRect);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("adoptLayout", (bool (D::ClassType::*) (QLayout *))&D::ClassType::adoptLayout);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("addChildWidget", (void (D::ClassType::*) (QWidget *))&D::ClassType::addChildWidget);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
         _d.CPGF_MD_TEMPLATE _method("addChildLayout", (void (D::ClassType::*) (QLayout *))&D::ClassType::addChildLayout);
-        _d.CPGF_MD_TEMPLATE _method("widgetEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::widgetEvent);
-        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) () const)&D::ClassType::super_sizeHint);
         _d.CPGF_MD_TEMPLATE _method("super_geometry", (QRect (D::ClassType::*) () const)&D::ClassType::super_geometry);
-        _d.CPGF_MD_TEMPLATE _method("super_layout", (QLayout * (D::ClassType::*) ())&D::ClassType::super_layout);
-        _d.CPGF_MD_TEMPLATE _method("super_isEmpty", (bool (D::ClassType::*) () const)&D::ClassType::super_isEmpty);
+        _d.CPGF_MD_TEMPLATE _method("super_maximumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_maximumSize);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_minimumHeightForWidth", (int (D::ClassType::*) (int) const)&D::ClassType::super_minimumHeightForWidth);
         _d.CPGF_MD_TEMPLATE _method("super_spacerItem", (QSpacerItem * (D::ClassType::*) ())&D::ClassType::super_spacerItem);
-        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_isEmpty", (bool (D::ClassType::*) () const)&D::ClassType::super_isEmpty);
+        _d.CPGF_MD_TEMPLATE _method("super_count", (int (D::ClassType::*) () const)&D::ClassType::super_count);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_widget", (QWidget * (D::ClassType::*) ())&D::ClassType::super_widget);
+        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
+        _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
+        _d.CPGF_MD_TEMPLATE _method("super_hasHeightForWidth", (bool (D::ClassType::*) () const)&D::ClassType::super_hasHeightForWidth);
         _d.CPGF_MD_TEMPLATE _method("super_takeAt", (QLayoutItem * (D::ClassType::*) (int))&D::ClassType::super_takeAt);
         _d.CPGF_MD_TEMPLATE _method("super_indexOf", (int (D::ClassType::*) (QWidget *) const)&D::ClassType::super_indexOf);
-        _d.CPGF_MD_TEMPLATE _method("super_expandingDirections", (Qt::Orientations (D::ClassType::*) () const)&D::ClassType::super_expandingDirections);
         _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_count", (int (D::ClassType::*) () const)&D::ClassType::super_count);
-        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
-        _d.CPGF_MD_TEMPLATE _method("super_itemAt", (QLayoutItem * (D::ClassType::*) (int) const)&D::ClassType::super_itemAt);
-        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_hasHeightForWidth", (bool (D::ClassType::*) () const)&D::ClassType::super_hasHeightForWidth);
-        _d.CPGF_MD_TEMPLATE _method("super_addItem", (void (D::ClassType::*) (QLayoutItem *))&D::ClassType::super_addItem);
-        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
-        _d.CPGF_MD_TEMPLATE _method("super_maximumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_maximumSize);
-        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_minimumHeightForWidth", (int (D::ClassType::*) (int) const)&D::ClassType::super_minimumHeightForWidth);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-        _d.CPGF_MD_TEMPLATE _method("super_widget", (QWidget * (D::ClassType::*) ())&D::ClassType::super_widget);
-        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) () const)&D::ClassType::super_sizeHint);
-        _d.CPGF_MD_TEMPLATE _method("super_minimumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_minimumSize);
-        _d.CPGF_MD_TEMPLATE _method("super_controlTypes", (QSizePolicy::ControlTypes (D::ClassType::*) () const)&D::ClassType::super_controlTypes);
         _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_minimumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_minimumSize);
+        _d.CPGF_MD_TEMPLATE _method("super_expandingDirections", (Qt::Orientations (D::ClassType::*) () const)&D::ClassType::super_expandingDirections);
+        _d.CPGF_MD_TEMPLATE _method("super_controlTypes", (QSizePolicy::ControlTypes (D::ClassType::*) () const)&D::ClassType::super_controlTypes);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_addItem", (void (D::ClassType::*) (QLayoutItem *))&D::ClassType::super_addItem);
         _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_layout", (QLayout * (D::ClassType::*) ())&D::ClassType::super_layout);
+        _d.CPGF_MD_TEMPLATE _method("super_itemAt", (QLayoutItem * (D::ClassType::*) (int) const)&D::ClassType::super_itemAt);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
         _d.CPGF_MD_TEMPLATE _method("super_heightForWidth", (int (D::ClassType::*) (int) const)&D::ClassType::super_heightForWidth);
     }
 };
@@ -668,195 +668,19 @@ public:
     QHBoxLayoutWrapper(QWidget * parent)
         : QHBoxLayout(parent) {}
     
-    QRect geometry() const
+    void connectNotify(const QMetaMethod & signal)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
-        if(func)
-        {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayout::geometry();
-    }
-    QRect super_geometry() const
-    {
-        return QLayout::geometry();
-    }
-    
-    QLayout * layout()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
-        if(func)
-        {
-            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayout::layout();
-    }
-    QLayout * super_layout()
-    {
-        return QLayout::layout();
-    }
-    
-    void addChildWidget(QWidget * w)
-    {
-        QLayout::addChildWidget(w);
-    }
-    
-    int senderSignalIndex() const
-    {
-        return QObject::senderSignalIndex();
-    }
-    
-    bool isEmpty() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayout::isEmpty();
-    }
-    bool super_isEmpty() const
-    {
-        return QLayout::isEmpty();
-    }
-    
-    QSpacerItem * spacerItem()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayoutItem::spacerItem();
-    }
-    QSpacerItem * super_spacerItem()
-    {
-        return QLayoutItem::spacerItem();
-    }
-    
-    QObject * sender() const
-    {
-        return QObject::sender();
-    }
-    
-    QRect alignmentRect(const QRect & __arg0) const
-    {
-        return QLayout::alignmentRect(__arg0);
-    }
-    
-    void disconnectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
         if(func)
         {
             cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
-        QObject::disconnectNotify(signal);
+        QObject::connectNotify(signal);
     }
-    void super_disconnectNotify(const QMetaMethod & signal)
+    void super_connectNotify(const QMetaMethod & signal)
     {
-        QObject::disconnectNotify(signal);
-    }
-    
-    QLayoutItem * takeAt(int __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("takeAt"));
-        if(func)
-        {
-            return cpgf::fromVariant<QLayoutItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QBoxLayout::takeAt(__arg0);
-    }
-    QLayoutItem * super_takeAt(int __arg0)
-    {
-        return QBoxLayout::takeAt(__arg0);
-    }
-    
-    int receivers(const char * signal) const
-    {
-        return QObject::receivers(signal);
-    }
-    
-    bool isSignalConnected(const QMetaMethod & signal) const
-    {
-        return QObject::isSignalConnected(signal);
-    }
-    
-    int indexOf(QWidget * __arg0) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("indexOf"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QLayout::indexOf(__arg0);
-    }
-    int super_indexOf(QWidget * __arg0) const
-    {
-        return QLayout::indexOf(__arg0);
-    }
-    
-    Qt::Orientations expandingDirections() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("expandingDirections"));
-        if(func)
-        {
-            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QBoxLayout::expandingDirections();
-    }
-    Qt::Orientations super_expandingDirections() const
-    {
-        return QBoxLayout::expandingDirections();
-    }
-    
-    bool adoptLayout(QLayout * layout)
-    {
-        return QLayout::adoptLayout(layout);
-    }
-    
-    bool eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
-        }
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    
-    void timerEvent(QTimerEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::timerEvent(__arg0);
-    }
-    void super_timerEvent(QTimerEvent * __arg0)
-    {
-        QObject::timerEvent(__arg0);
-    }
-    
-    int count() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("count"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QBoxLayout::count();
-    }
-    int super_count() const
-    {
-        return QBoxLayout::count();
+        QObject::connectNotify(signal);
     }
     
     void childEvent(QChildEvent * e)
@@ -874,53 +698,18 @@ public:
         QLayout::childEvent(e);
     }
     
-    void invalidate()
+    QSize sizeHint() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidate"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this);
-            return;
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        QBoxLayout::invalidate();
+        return QBoxLayout::sizeHint();
     }
-    void super_invalidate()
+    QSize super_sizeHint() const
     {
-        QBoxLayout::invalidate();
-    }
-    
-    QLayoutItem * itemAt(int __arg0) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemAt"));
-        if(func)
-        {
-            return cpgf::fromVariant<QLayoutItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QBoxLayout::itemAt(__arg0);
-    }
-    QLayoutItem * super_itemAt(int __arg0) const
-    {
-        return QBoxLayout::itemAt(__arg0);
-    }
-    
-    void customEvent(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::customEvent(__arg0);
-    }
-    void super_customEvent(QEvent * __arg0)
-    {
-        QObject::customEvent(__arg0);
-    }
-    
-    void addChildLayout(QLayout * l)
-    {
-        QLayout::addChildLayout(l);
+        return QBoxLayout::sizeHint();
     }
     
     void widgetEvent(QEvent * __arg0)
@@ -928,33 +717,155 @@ public:
         QLayout::widgetEvent(__arg0);
     }
     
-    bool hasHeightForWidth() const
+    QRect geometry() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasHeightForWidth"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
+        if(func)
+        {
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayout::geometry();
+    }
+    QRect super_geometry() const
+    {
+        return QLayout::geometry();
+    }
+    
+    QSize maximumSize() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("maximumSize"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QBoxLayout::maximumSize();
+    }
+    QSize super_maximumSize() const
+    {
+        return QBoxLayout::maximumSize();
+    }
+    
+    QRect alignmentRect(const QRect & __arg0) const
+    {
+        return QLayout::alignmentRect(__arg0);
+    }
+    
+    void * qt_metacast(const char * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
+        if(func)
+        {
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QHBoxLayout::qt_metacast(__arg0);
+    }
+    void * super_qt_metacast(const char * __arg0)
+    {
+        return QHBoxLayout::qt_metacast(__arg0);
+    }
+    
+    int minimumHeightForWidth(int __arg0) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumHeightForWidth"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QBoxLayout::minimumHeightForWidth(__arg0);
+    }
+    int super_minimumHeightForWidth(int __arg0) const
+    {
+        return QBoxLayout::minimumHeightForWidth(__arg0);
+    }
+    
+    QSpacerItem * spacerItem()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayoutItem::spacerItem();
+    }
+    QSpacerItem * super_spacerItem()
+    {
+        return QLayoutItem::spacerItem();
+    }
+    
+    bool isEmpty() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
         if(func)
         {
             return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QBoxLayout::hasHeightForWidth();
+        return QLayout::isEmpty();
     }
-    bool super_hasHeightForWidth() const
+    bool super_isEmpty() const
     {
-        return QBoxLayout::hasHeightForWidth();
+        return QLayout::isEmpty();
     }
     
-    void addItem(QLayoutItem * __arg0)
+    int count() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("addItem"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("count"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QBoxLayout::count();
+    }
+    int super_count() const
+    {
+        return QBoxLayout::count();
+    }
+    
+    bool event(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QObject::event(__arg0);
+    }
+    bool super_event(QEvent * __arg0)
+    {
+        return QObject::event(__arg0);
+    }
+    
+    void timerEvent(QTimerEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
         if(func)
         {
             cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
-        QBoxLayout::addItem(__arg0);
+        QObject::timerEvent(__arg0);
     }
-    void super_addItem(QLayoutItem * __arg0)
+    void super_timerEvent(QTimerEvent * __arg0)
     {
-        QBoxLayout::addItem(__arg0);
+        QObject::timerEvent(__arg0);
+    }
+    
+    QWidget * widget()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
+        if(func)
+        {
+            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayoutItem::widget();
+    }
+    QWidget * super_widget()
+    {
+        return QLayoutItem::widget();
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
     }
     
     void setGeometry(const QRect & __arg0)
@@ -972,131 +883,100 @@ public:
         QBoxLayout::setGeometry(__arg0);
     }
     
-    QSize maximumSize() const
+    void invalidate()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("maximumSize"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidate"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QBoxLayout::maximumSize();
-    }
-    QSize super_maximumSize() const
-    {
-        return QBoxLayout::maximumSize();
-    }
-    
-    void connectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
-        QObject::connectNotify(signal);
+        QBoxLayout::invalidate();
     }
-    void super_connectNotify(const QMetaMethod & signal)
+    void super_invalidate()
     {
-        QObject::connectNotify(signal);
+        QBoxLayout::invalidate();
     }
     
-    int minimumHeightForWidth(int __arg0) const
+    bool adoptLayout(QLayout * layout)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumHeightForWidth"));
+        return QLayout::adoptLayout(layout);
+    }
+    
+    bool isSignalConnected(const QMetaMethod & signal) const
+    {
+        return QObject::isSignalConnected(signal);
+    }
+    
+    int receivers(const char * signal) const
+    {
+        return QObject::receivers(signal);
+    }
+    
+    int senderSignalIndex() const
+    {
+        return QObject::senderSignalIndex();
+    }
+    
+    bool hasHeightForWidth() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasHeightForWidth"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QBoxLayout::hasHeightForWidth();
+    }
+    bool super_hasHeightForWidth() const
+    {
+        return QBoxLayout::hasHeightForWidth();
+    }
+    
+    void addChildWidget(QWidget * w)
+    {
+        QLayout::addChildWidget(w);
+    }
+    
+    QLayoutItem * takeAt(int __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("takeAt"));
+        if(func)
+        {
+            return cpgf::fromVariant<QLayoutItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QBoxLayout::takeAt(__arg0);
+    }
+    QLayoutItem * super_takeAt(int __arg0)
+    {
+        return QBoxLayout::takeAt(__arg0);
+    }
+    
+    int indexOf(QWidget * __arg0) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("indexOf"));
         if(func)
         {
             return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
-        return QBoxLayout::minimumHeightForWidth(__arg0);
+        return QLayout::indexOf(__arg0);
     }
-    int super_minimumHeightForWidth(int __arg0) const
+    int super_indexOf(QWidget * __arg0) const
     {
-        return QBoxLayout::minimumHeightForWidth(__arg0);
-    }
-    
-    void * qt_metacast(const char * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
-        if(func)
-        {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QHBoxLayout::qt_metacast(__arg0);
-    }
-    void * super_qt_metacast(const char * __arg0)
-    {
-        return QHBoxLayout::qt_metacast(__arg0);
+        return QLayout::indexOf(__arg0);
     }
     
-    bool event(QEvent * __arg0)
+    bool eventFilter(QObject * __arg0, QEvent * __arg1)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
         }
-        return QObject::event(__arg0);
+        return QObject::eventFilter(__arg0, __arg1);
     }
-    bool super_event(QEvent * __arg0)
+    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
     {
-        return QObject::event(__arg0);
-    }
-    
-    QWidget * widget()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
-        if(func)
-        {
-            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayoutItem::widget();
-    }
-    QWidget * super_widget()
-    {
-        return QLayoutItem::widget();
-    }
-    
-    QSize sizeHint() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QBoxLayout::sizeHint();
-    }
-    QSize super_sizeHint() const
-    {
-        return QBoxLayout::sizeHint();
-    }
-    
-    QSize minimumSize() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumSize"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QBoxLayout::minimumSize();
-    }
-    QSize super_minimumSize() const
-    {
-        return QBoxLayout::minimumSize();
-    }
-    
-    QSizePolicy::ControlTypes controlTypes() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("controlTypes"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSizePolicy::ControlTypes >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayout::controlTypes();
-    }
-    QSizePolicy::ControlTypes super_controlTypes() const
-    {
-        return QLayout::controlTypes();
+        return QObject::eventFilter(__arg0, __arg1);
     }
     
     const QMetaObject * metaObject() const
@@ -1113,6 +993,78 @@ public:
         return QHBoxLayout::metaObject();
     }
     
+    QSize minimumSize() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumSize"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QBoxLayout::minimumSize();
+    }
+    QSize super_minimumSize() const
+    {
+        return QBoxLayout::minimumSize();
+    }
+    
+    Qt::Orientations expandingDirections() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("expandingDirections"));
+        if(func)
+        {
+            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QBoxLayout::expandingDirections();
+    }
+    Qt::Orientations super_expandingDirections() const
+    {
+        return QBoxLayout::expandingDirections();
+    }
+    
+    QSizePolicy::ControlTypes controlTypes() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("controlTypes"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSizePolicy::ControlTypes >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayout::controlTypes();
+    }
+    QSizePolicy::ControlTypes super_controlTypes() const
+    {
+        return QLayout::controlTypes();
+    }
+    
+    void customEvent(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::customEvent(__arg0);
+    }
+    void super_customEvent(QEvent * __arg0)
+    {
+        QObject::customEvent(__arg0);
+    }
+    
+    void addItem(QLayoutItem * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("addItem"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QBoxLayout::addItem(__arg0);
+    }
+    void super_addItem(QLayoutItem * __arg0)
+    {
+        QBoxLayout::addItem(__arg0);
+    }
+    
     int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
@@ -1125,6 +1077,54 @@ public:
     int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
         return QHBoxLayout::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    
+    QLayout * layout()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
+        if(func)
+        {
+            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayout::layout();
+    }
+    QLayout * super_layout()
+    {
+        return QLayout::layout();
+    }
+    
+    void addChildLayout(QLayout * l)
+    {
+        QLayout::addChildLayout(l);
+    }
+    
+    QLayoutItem * itemAt(int __arg0) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemAt"));
+        if(func)
+        {
+            return cpgf::fromVariant<QLayoutItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QBoxLayout::itemAt(__arg0);
+    }
+    QLayoutItem * super_itemAt(int __arg0) const
+    {
+        return QBoxLayout::itemAt(__arg0);
+    }
+    
+    void disconnectNotify(const QMetaMethod & signal)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            return;
+        }
+        QObject::disconnectNotify(signal);
+    }
+    void super_disconnectNotify(const QMetaMethod & signal)
+    {
+        QObject::disconnectNotify(signal);
     }
     
     int heightForWidth(int __arg0) const
@@ -1145,49 +1145,49 @@ public:
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("addChildWidget", (void (D::ClassType::*) (QWidget *))&D::ClassType::addChildWidget);
-        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-        _d.CPGF_MD_TEMPLATE _method("alignmentRect", (QRect (D::ClassType::*) (const QRect &) const)&D::ClassType::alignmentRect);
-        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-        _d.CPGF_MD_TEMPLATE _method("adoptLayout", (bool (D::ClassType::*) (QLayout *))&D::ClassType::adoptLayout);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("widgetEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::widgetEvent);
+        _d.CPGF_MD_TEMPLATE _method("alignmentRect", (QRect (D::ClassType::*) (const QRect &) const)&D::ClassType::alignmentRect);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("adoptLayout", (bool (D::ClassType::*) (QLayout *))&D::ClassType::adoptLayout);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("addChildWidget", (void (D::ClassType::*) (QWidget *))&D::ClassType::addChildWidget);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
         _d.CPGF_MD_TEMPLATE _method("addChildLayout", (void (D::ClassType::*) (QLayout *))&D::ClassType::addChildLayout);
-        _d.CPGF_MD_TEMPLATE _method("widgetEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::widgetEvent);
-        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) () const)&D::ClassType::super_sizeHint);
         _d.CPGF_MD_TEMPLATE _method("super_geometry", (QRect (D::ClassType::*) () const)&D::ClassType::super_geometry);
-        _d.CPGF_MD_TEMPLATE _method("super_layout", (QLayout * (D::ClassType::*) ())&D::ClassType::super_layout);
-        _d.CPGF_MD_TEMPLATE _method("super_isEmpty", (bool (D::ClassType::*) () const)&D::ClassType::super_isEmpty);
+        _d.CPGF_MD_TEMPLATE _method("super_maximumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_maximumSize);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_minimumHeightForWidth", (int (D::ClassType::*) (int) const)&D::ClassType::super_minimumHeightForWidth);
         _d.CPGF_MD_TEMPLATE _method("super_spacerItem", (QSpacerItem * (D::ClassType::*) ())&D::ClassType::super_spacerItem);
-        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_isEmpty", (bool (D::ClassType::*) () const)&D::ClassType::super_isEmpty);
+        _d.CPGF_MD_TEMPLATE _method("super_count", (int (D::ClassType::*) () const)&D::ClassType::super_count);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_widget", (QWidget * (D::ClassType::*) ())&D::ClassType::super_widget);
+        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
+        _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
+        _d.CPGF_MD_TEMPLATE _method("super_hasHeightForWidth", (bool (D::ClassType::*) () const)&D::ClassType::super_hasHeightForWidth);
         _d.CPGF_MD_TEMPLATE _method("super_takeAt", (QLayoutItem * (D::ClassType::*) (int))&D::ClassType::super_takeAt);
         _d.CPGF_MD_TEMPLATE _method("super_indexOf", (int (D::ClassType::*) (QWidget *) const)&D::ClassType::super_indexOf);
-        _d.CPGF_MD_TEMPLATE _method("super_expandingDirections", (Qt::Orientations (D::ClassType::*) () const)&D::ClassType::super_expandingDirections);
         _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_count", (int (D::ClassType::*) () const)&D::ClassType::super_count);
-        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
-        _d.CPGF_MD_TEMPLATE _method("super_itemAt", (QLayoutItem * (D::ClassType::*) (int) const)&D::ClassType::super_itemAt);
-        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_hasHeightForWidth", (bool (D::ClassType::*) () const)&D::ClassType::super_hasHeightForWidth);
-        _d.CPGF_MD_TEMPLATE _method("super_addItem", (void (D::ClassType::*) (QLayoutItem *))&D::ClassType::super_addItem);
-        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
-        _d.CPGF_MD_TEMPLATE _method("super_maximumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_maximumSize);
-        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_minimumHeightForWidth", (int (D::ClassType::*) (int) const)&D::ClassType::super_minimumHeightForWidth);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-        _d.CPGF_MD_TEMPLATE _method("super_widget", (QWidget * (D::ClassType::*) ())&D::ClassType::super_widget);
-        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) () const)&D::ClassType::super_sizeHint);
-        _d.CPGF_MD_TEMPLATE _method("super_minimumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_minimumSize);
-        _d.CPGF_MD_TEMPLATE _method("super_controlTypes", (QSizePolicy::ControlTypes (D::ClassType::*) () const)&D::ClassType::super_controlTypes);
         _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_minimumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_minimumSize);
+        _d.CPGF_MD_TEMPLATE _method("super_expandingDirections", (Qt::Orientations (D::ClassType::*) () const)&D::ClassType::super_expandingDirections);
+        _d.CPGF_MD_TEMPLATE _method("super_controlTypes", (QSizePolicy::ControlTypes (D::ClassType::*) () const)&D::ClassType::super_controlTypes);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_addItem", (void (D::ClassType::*) (QLayoutItem *))&D::ClassType::super_addItem);
         _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_layout", (QLayout * (D::ClassType::*) ())&D::ClassType::super_layout);
+        _d.CPGF_MD_TEMPLATE _method("super_itemAt", (QLayoutItem * (D::ClassType::*) (int) const)&D::ClassType::super_itemAt);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
         _d.CPGF_MD_TEMPLATE _method("super_heightForWidth", (int (D::ClassType::*) (int) const)&D::ClassType::super_heightForWidth);
     }
 };
@@ -1234,195 +1234,19 @@ public:
     QVBoxLayoutWrapper(QWidget * parent)
         : QVBoxLayout(parent) {}
     
-    QRect geometry() const
+    void connectNotify(const QMetaMethod & signal)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
-        if(func)
-        {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayout::geometry();
-    }
-    QRect super_geometry() const
-    {
-        return QLayout::geometry();
-    }
-    
-    QLayout * layout()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
-        if(func)
-        {
-            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayout::layout();
-    }
-    QLayout * super_layout()
-    {
-        return QLayout::layout();
-    }
-    
-    void addChildWidget(QWidget * w)
-    {
-        QLayout::addChildWidget(w);
-    }
-    
-    int senderSignalIndex() const
-    {
-        return QObject::senderSignalIndex();
-    }
-    
-    bool isEmpty() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayout::isEmpty();
-    }
-    bool super_isEmpty() const
-    {
-        return QLayout::isEmpty();
-    }
-    
-    QSpacerItem * spacerItem()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayoutItem::spacerItem();
-    }
-    QSpacerItem * super_spacerItem()
-    {
-        return QLayoutItem::spacerItem();
-    }
-    
-    QObject * sender() const
-    {
-        return QObject::sender();
-    }
-    
-    QRect alignmentRect(const QRect & __arg0) const
-    {
-        return QLayout::alignmentRect(__arg0);
-    }
-    
-    void disconnectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
         if(func)
         {
             cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
-        QObject::disconnectNotify(signal);
+        QObject::connectNotify(signal);
     }
-    void super_disconnectNotify(const QMetaMethod & signal)
+    void super_connectNotify(const QMetaMethod & signal)
     {
-        QObject::disconnectNotify(signal);
-    }
-    
-    QLayoutItem * takeAt(int __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("takeAt"));
-        if(func)
-        {
-            return cpgf::fromVariant<QLayoutItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QBoxLayout::takeAt(__arg0);
-    }
-    QLayoutItem * super_takeAt(int __arg0)
-    {
-        return QBoxLayout::takeAt(__arg0);
-    }
-    
-    int receivers(const char * signal) const
-    {
-        return QObject::receivers(signal);
-    }
-    
-    bool isSignalConnected(const QMetaMethod & signal) const
-    {
-        return QObject::isSignalConnected(signal);
-    }
-    
-    int indexOf(QWidget * __arg0) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("indexOf"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QLayout::indexOf(__arg0);
-    }
-    int super_indexOf(QWidget * __arg0) const
-    {
-        return QLayout::indexOf(__arg0);
-    }
-    
-    Qt::Orientations expandingDirections() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("expandingDirections"));
-        if(func)
-        {
-            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QBoxLayout::expandingDirections();
-    }
-    Qt::Orientations super_expandingDirections() const
-    {
-        return QBoxLayout::expandingDirections();
-    }
-    
-    bool adoptLayout(QLayout * layout)
-    {
-        return QLayout::adoptLayout(layout);
-    }
-    
-    bool eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
-        }
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    
-    void timerEvent(QTimerEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::timerEvent(__arg0);
-    }
-    void super_timerEvent(QTimerEvent * __arg0)
-    {
-        QObject::timerEvent(__arg0);
-    }
-    
-    int count() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("count"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QBoxLayout::count();
-    }
-    int super_count() const
-    {
-        return QBoxLayout::count();
+        QObject::connectNotify(signal);
     }
     
     void childEvent(QChildEvent * e)
@@ -1440,53 +1264,18 @@ public:
         QLayout::childEvent(e);
     }
     
-    void invalidate()
+    QSize sizeHint() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidate"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this);
-            return;
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        QBoxLayout::invalidate();
+        return QBoxLayout::sizeHint();
     }
-    void super_invalidate()
+    QSize super_sizeHint() const
     {
-        QBoxLayout::invalidate();
-    }
-    
-    QLayoutItem * itemAt(int __arg0) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemAt"));
-        if(func)
-        {
-            return cpgf::fromVariant<QLayoutItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QBoxLayout::itemAt(__arg0);
-    }
-    QLayoutItem * super_itemAt(int __arg0) const
-    {
-        return QBoxLayout::itemAt(__arg0);
-    }
-    
-    void customEvent(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::customEvent(__arg0);
-    }
-    void super_customEvent(QEvent * __arg0)
-    {
-        QObject::customEvent(__arg0);
-    }
-    
-    void addChildLayout(QLayout * l)
-    {
-        QLayout::addChildLayout(l);
+        return QBoxLayout::sizeHint();
     }
     
     void widgetEvent(QEvent * __arg0)
@@ -1494,33 +1283,155 @@ public:
         QLayout::widgetEvent(__arg0);
     }
     
-    bool hasHeightForWidth() const
+    QRect geometry() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasHeightForWidth"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("geometry"));
+        if(func)
+        {
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayout::geometry();
+    }
+    QRect super_geometry() const
+    {
+        return QLayout::geometry();
+    }
+    
+    QSize maximumSize() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("maximumSize"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QBoxLayout::maximumSize();
+    }
+    QSize super_maximumSize() const
+    {
+        return QBoxLayout::maximumSize();
+    }
+    
+    QRect alignmentRect(const QRect & __arg0) const
+    {
+        return QLayout::alignmentRect(__arg0);
+    }
+    
+    void * qt_metacast(const char * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
+        if(func)
+        {
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QVBoxLayout::qt_metacast(__arg0);
+    }
+    void * super_qt_metacast(const char * __arg0)
+    {
+        return QVBoxLayout::qt_metacast(__arg0);
+    }
+    
+    int minimumHeightForWidth(int __arg0) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumHeightForWidth"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QBoxLayout::minimumHeightForWidth(__arg0);
+    }
+    int super_minimumHeightForWidth(int __arg0) const
+    {
+        return QBoxLayout::minimumHeightForWidth(__arg0);
+    }
+    
+    QSpacerItem * spacerItem()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("spacerItem"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSpacerItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayoutItem::spacerItem();
+    }
+    QSpacerItem * super_spacerItem()
+    {
+        return QLayoutItem::spacerItem();
+    }
+    
+    bool isEmpty() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isEmpty"));
         if(func)
         {
             return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QBoxLayout::hasHeightForWidth();
+        return QLayout::isEmpty();
     }
-    bool super_hasHeightForWidth() const
+    bool super_isEmpty() const
     {
-        return QBoxLayout::hasHeightForWidth();
+        return QLayout::isEmpty();
     }
     
-    void addItem(QLayoutItem * __arg0)
+    int count() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("addItem"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("count"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QBoxLayout::count();
+    }
+    int super_count() const
+    {
+        return QBoxLayout::count();
+    }
+    
+    bool event(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QObject::event(__arg0);
+    }
+    bool super_event(QEvent * __arg0)
+    {
+        return QObject::event(__arg0);
+    }
+    
+    void timerEvent(QTimerEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
         if(func)
         {
             cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
-        QBoxLayout::addItem(__arg0);
+        QObject::timerEvent(__arg0);
     }
-    void super_addItem(QLayoutItem * __arg0)
+    void super_timerEvent(QTimerEvent * __arg0)
     {
-        QBoxLayout::addItem(__arg0);
+        QObject::timerEvent(__arg0);
+    }
+    
+    QWidget * widget()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
+        if(func)
+        {
+            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayoutItem::widget();
+    }
+    QWidget * super_widget()
+    {
+        return QLayoutItem::widget();
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
     }
     
     void setGeometry(const QRect & __arg0)
@@ -1538,131 +1449,100 @@ public:
         QBoxLayout::setGeometry(__arg0);
     }
     
-    QSize maximumSize() const
+    void invalidate()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("maximumSize"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("invalidate"));
         if(func)
         {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QBoxLayout::maximumSize();
-    }
-    QSize super_maximumSize() const
-    {
-        return QBoxLayout::maximumSize();
-    }
-    
-    void connectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
             return;
         }
-        QObject::connectNotify(signal);
+        QBoxLayout::invalidate();
     }
-    void super_connectNotify(const QMetaMethod & signal)
+    void super_invalidate()
     {
-        QObject::connectNotify(signal);
+        QBoxLayout::invalidate();
     }
     
-    int minimumHeightForWidth(int __arg0) const
+    bool adoptLayout(QLayout * layout)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumHeightForWidth"));
+        return QLayout::adoptLayout(layout);
+    }
+    
+    bool isSignalConnected(const QMetaMethod & signal) const
+    {
+        return QObject::isSignalConnected(signal);
+    }
+    
+    int receivers(const char * signal) const
+    {
+        return QObject::receivers(signal);
+    }
+    
+    int senderSignalIndex() const
+    {
+        return QObject::senderSignalIndex();
+    }
+    
+    bool hasHeightForWidth() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("hasHeightForWidth"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QBoxLayout::hasHeightForWidth();
+    }
+    bool super_hasHeightForWidth() const
+    {
+        return QBoxLayout::hasHeightForWidth();
+    }
+    
+    void addChildWidget(QWidget * w)
+    {
+        QLayout::addChildWidget(w);
+    }
+    
+    QLayoutItem * takeAt(int __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("takeAt"));
+        if(func)
+        {
+            return cpgf::fromVariant<QLayoutItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QBoxLayout::takeAt(__arg0);
+    }
+    QLayoutItem * super_takeAt(int __arg0)
+    {
+        return QBoxLayout::takeAt(__arg0);
+    }
+    
+    int indexOf(QWidget * __arg0) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("indexOf"));
         if(func)
         {
             return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
         }
-        return QBoxLayout::minimumHeightForWidth(__arg0);
+        return QLayout::indexOf(__arg0);
     }
-    int super_minimumHeightForWidth(int __arg0) const
+    int super_indexOf(QWidget * __arg0) const
     {
-        return QBoxLayout::minimumHeightForWidth(__arg0);
-    }
-    
-    void * qt_metacast(const char * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
-        if(func)
-        {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QVBoxLayout::qt_metacast(__arg0);
-    }
-    void * super_qt_metacast(const char * __arg0)
-    {
-        return QVBoxLayout::qt_metacast(__arg0);
+        return QLayout::indexOf(__arg0);
     }
     
-    bool event(QEvent * __arg0)
+    bool eventFilter(QObject * __arg0, QEvent * __arg1)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
         }
-        return QObject::event(__arg0);
+        return QObject::eventFilter(__arg0, __arg1);
     }
-    bool super_event(QEvent * __arg0)
+    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
     {
-        return QObject::event(__arg0);
-    }
-    
-    QWidget * widget()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("widget"));
-        if(func)
-        {
-            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayoutItem::widget();
-    }
-    QWidget * super_widget()
-    {
-        return QLayoutItem::widget();
-    }
-    
-    QSize sizeHint() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QBoxLayout::sizeHint();
-    }
-    QSize super_sizeHint() const
-    {
-        return QBoxLayout::sizeHint();
-    }
-    
-    QSize minimumSize() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumSize"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QBoxLayout::minimumSize();
-    }
-    QSize super_minimumSize() const
-    {
-        return QBoxLayout::minimumSize();
-    }
-    
-    QSizePolicy::ControlTypes controlTypes() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("controlTypes"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSizePolicy::ControlTypes >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QLayout::controlTypes();
-    }
-    QSizePolicy::ControlTypes super_controlTypes() const
-    {
-        return QLayout::controlTypes();
+        return QObject::eventFilter(__arg0, __arg1);
     }
     
     const QMetaObject * metaObject() const
@@ -1679,6 +1559,78 @@ public:
         return QVBoxLayout::metaObject();
     }
     
+    QSize minimumSize() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("minimumSize"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QBoxLayout::minimumSize();
+    }
+    QSize super_minimumSize() const
+    {
+        return QBoxLayout::minimumSize();
+    }
+    
+    Qt::Orientations expandingDirections() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("expandingDirections"));
+        if(func)
+        {
+            return cpgf::fromVariant<Qt::Orientations >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QBoxLayout::expandingDirections();
+    }
+    Qt::Orientations super_expandingDirections() const
+    {
+        return QBoxLayout::expandingDirections();
+    }
+    
+    QSizePolicy::ControlTypes controlTypes() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("controlTypes"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSizePolicy::ControlTypes >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayout::controlTypes();
+    }
+    QSizePolicy::ControlTypes super_controlTypes() const
+    {
+        return QLayout::controlTypes();
+    }
+    
+    void customEvent(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::customEvent(__arg0);
+    }
+    void super_customEvent(QEvent * __arg0)
+    {
+        QObject::customEvent(__arg0);
+    }
+    
+    void addItem(QLayoutItem * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("addItem"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QBoxLayout::addItem(__arg0);
+    }
+    void super_addItem(QLayoutItem * __arg0)
+    {
+        QBoxLayout::addItem(__arg0);
+    }
+    
     int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
@@ -1691,6 +1643,54 @@ public:
     int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
         return QVBoxLayout::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    
+    QLayout * layout()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("layout"));
+        if(func)
+        {
+            return cpgf::fromVariant<QLayout * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QLayout::layout();
+    }
+    QLayout * super_layout()
+    {
+        return QLayout::layout();
+    }
+    
+    void addChildLayout(QLayout * l)
+    {
+        QLayout::addChildLayout(l);
+    }
+    
+    QLayoutItem * itemAt(int __arg0) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("itemAt"));
+        if(func)
+        {
+            return cpgf::fromVariant<QLayoutItem * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QBoxLayout::itemAt(__arg0);
+    }
+    QLayoutItem * super_itemAt(int __arg0) const
+    {
+        return QBoxLayout::itemAt(__arg0);
+    }
+    
+    void disconnectNotify(const QMetaMethod & signal)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            return;
+        }
+        QObject::disconnectNotify(signal);
+    }
+    void super_disconnectNotify(const QMetaMethod & signal)
+    {
+        QObject::disconnectNotify(signal);
     }
     
     int heightForWidth(int __arg0) const
@@ -1711,49 +1711,49 @@ public:
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("addChildWidget", (void (D::ClassType::*) (QWidget *))&D::ClassType::addChildWidget);
-        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-        _d.CPGF_MD_TEMPLATE _method("alignmentRect", (QRect (D::ClassType::*) (const QRect &) const)&D::ClassType::alignmentRect);
-        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-        _d.CPGF_MD_TEMPLATE _method("adoptLayout", (bool (D::ClassType::*) (QLayout *))&D::ClassType::adoptLayout);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("widgetEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::widgetEvent);
+        _d.CPGF_MD_TEMPLATE _method("alignmentRect", (QRect (D::ClassType::*) (const QRect &) const)&D::ClassType::alignmentRect);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("adoptLayout", (bool (D::ClassType::*) (QLayout *))&D::ClassType::adoptLayout);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("addChildWidget", (void (D::ClassType::*) (QWidget *))&D::ClassType::addChildWidget);
         _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
         _d.CPGF_MD_TEMPLATE _method("addChildLayout", (void (D::ClassType::*) (QLayout *))&D::ClassType::addChildLayout);
-        _d.CPGF_MD_TEMPLATE _method("widgetEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::widgetEvent);
-        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) () const)&D::ClassType::super_sizeHint);
         _d.CPGF_MD_TEMPLATE _method("super_geometry", (QRect (D::ClassType::*) () const)&D::ClassType::super_geometry);
-        _d.CPGF_MD_TEMPLATE _method("super_layout", (QLayout * (D::ClassType::*) ())&D::ClassType::super_layout);
-        _d.CPGF_MD_TEMPLATE _method("super_isEmpty", (bool (D::ClassType::*) () const)&D::ClassType::super_isEmpty);
+        _d.CPGF_MD_TEMPLATE _method("super_maximumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_maximumSize);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_minimumHeightForWidth", (int (D::ClassType::*) (int) const)&D::ClassType::super_minimumHeightForWidth);
         _d.CPGF_MD_TEMPLATE _method("super_spacerItem", (QSpacerItem * (D::ClassType::*) ())&D::ClassType::super_spacerItem);
-        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_isEmpty", (bool (D::ClassType::*) () const)&D::ClassType::super_isEmpty);
+        _d.CPGF_MD_TEMPLATE _method("super_count", (int (D::ClassType::*) () const)&D::ClassType::super_count);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_widget", (QWidget * (D::ClassType::*) ())&D::ClassType::super_widget);
+        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
+        _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
+        _d.CPGF_MD_TEMPLATE _method("super_hasHeightForWidth", (bool (D::ClassType::*) () const)&D::ClassType::super_hasHeightForWidth);
         _d.CPGF_MD_TEMPLATE _method("super_takeAt", (QLayoutItem * (D::ClassType::*) (int))&D::ClassType::super_takeAt);
         _d.CPGF_MD_TEMPLATE _method("super_indexOf", (int (D::ClassType::*) (QWidget *) const)&D::ClassType::super_indexOf);
-        _d.CPGF_MD_TEMPLATE _method("super_expandingDirections", (Qt::Orientations (D::ClassType::*) () const)&D::ClassType::super_expandingDirections);
         _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_count", (int (D::ClassType::*) () const)&D::ClassType::super_count);
-        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_invalidate", (void (D::ClassType::*) ())&D::ClassType::super_invalidate);
-        _d.CPGF_MD_TEMPLATE _method("super_itemAt", (QLayoutItem * (D::ClassType::*) (int) const)&D::ClassType::super_itemAt);
-        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_hasHeightForWidth", (bool (D::ClassType::*) () const)&D::ClassType::super_hasHeightForWidth);
-        _d.CPGF_MD_TEMPLATE _method("super_addItem", (void (D::ClassType::*) (QLayoutItem *))&D::ClassType::super_addItem);
-        _d.CPGF_MD_TEMPLATE _method("super_setGeometry", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_setGeometry);
-        _d.CPGF_MD_TEMPLATE _method("super_maximumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_maximumSize);
-        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_minimumHeightForWidth", (int (D::ClassType::*) (int) const)&D::ClassType::super_minimumHeightForWidth);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-        _d.CPGF_MD_TEMPLATE _method("super_widget", (QWidget * (D::ClassType::*) ())&D::ClassType::super_widget);
-        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) () const)&D::ClassType::super_sizeHint);
-        _d.CPGF_MD_TEMPLATE _method("super_minimumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_minimumSize);
-        _d.CPGF_MD_TEMPLATE _method("super_controlTypes", (QSizePolicy::ControlTypes (D::ClassType::*) () const)&D::ClassType::super_controlTypes);
         _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_minimumSize", (QSize (D::ClassType::*) () const)&D::ClassType::super_minimumSize);
+        _d.CPGF_MD_TEMPLATE _method("super_expandingDirections", (Qt::Orientations (D::ClassType::*) () const)&D::ClassType::super_expandingDirections);
+        _d.CPGF_MD_TEMPLATE _method("super_controlTypes", (QSizePolicy::ControlTypes (D::ClassType::*) () const)&D::ClassType::super_controlTypes);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_addItem", (void (D::ClassType::*) (QLayoutItem *))&D::ClassType::super_addItem);
         _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_layout", (QLayout * (D::ClassType::*) ())&D::ClassType::super_layout);
+        _d.CPGF_MD_TEMPLATE _method("super_itemAt", (QLayoutItem * (D::ClassType::*) (int) const)&D::ClassType::super_itemAt);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
         _d.CPGF_MD_TEMPLATE _method("super_heightForWidth", (int (D::ClassType::*) (int) const)&D::ClassType::super_heightForWidth);
     }
 };

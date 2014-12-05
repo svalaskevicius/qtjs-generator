@@ -172,66 +172,7 @@ public:
         QPaintEngine::drawTextItem(p, textItem);
     }
     
-    void drawTiledPixmap(const QRectF & r, const QPixmap & pixmap, const QPointF & s)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawTiledPixmap"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, r, pixmap, s);
-            return;
-        }
-        QPaintEngine::drawTiledPixmap(r, pixmap, s);
-    }
-    void super_drawTiledPixmap(const QRectF & r, const QPixmap & pixmap, const QPointF & s)
-    {
-        QPaintEngine::drawTiledPixmap(r, pixmap, s);
-    }
-    
-    bool end()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("end"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    bool super_end()
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
-    void drawPolygon(const QPointF * points, int pointCount, QPaintEngine::PolygonDrawMode mode)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawPolygon"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, points, pointCount, mode);
-            return;
-        }
-        QPaintEngine::drawPolygon(points, pointCount, mode);
-    }
-    void super_drawPolygon(const QPointF * points, int pointCount, QPaintEngine::PolygonDrawMode mode)
-    {
-        QPaintEngine::drawPolygon(points, pointCount, mode);
-    }
-    
-    void drawPath(const QPainterPath & path)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawPath"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, path);
-            return;
-        }
-        QPaintEngine::drawPath(path);
-    }
-    void super_drawPath(const QPainterPath & path)
-    {
-        QPaintEngine::drawPath(path);
-    }
-    
-    void drawLines(const QLineF * lines, int lineCount)
+    void drawLines(const QLine * lines, int lineCount)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawLines"));
         if(func)
@@ -241,9 +182,24 @@ public:
         }
         QPaintEngine::drawLines(lines, lineCount);
     }
-    void super_drawLines(const QLineF * lines, int lineCount)
+    void super_drawLines(const QLine * lines, int lineCount)
     {
         QPaintEngine::drawLines(lines, lineCount);
+    }
+    
+    void drawPoints(const QPoint * points, int pointCount)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawPoints"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, points, pointCount);
+            return;
+        }
+        QPaintEngine::drawPoints(points, pointCount);
+    }
+    void super_drawPoints(const QPoint * points, int pointCount)
+    {
+        QPaintEngine::drawPoints(points, pointCount);
     }
     
     void drawEllipse(const QRectF & r)
@@ -276,18 +232,19 @@ public:
         QPaintEngine::drawImage(r, pm, sr, flags);
     }
     
-    bool begin(QPaintDevice * pdev)
+    void drawEllipse(const QRect & r)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("begin"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawEllipse"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, pdev).getValue());
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, r);
+            return;
         }
-        throw std::runtime_error("Abstract method");
+        QPaintEngine::drawEllipse(r);
     }
-    bool super_begin(QPaintDevice * pdev)
+    void super_drawEllipse(const QRect & r)
     {
-        throw std::runtime_error("Abstract method");
+        QPaintEngine::drawEllipse(r);
     }
     
     void drawPolygon(const QPoint * points, int pointCount, QPaintEngine::PolygonDrawMode mode)
@@ -305,6 +262,21 @@ public:
         QPaintEngine::drawPolygon(points, pointCount, mode);
     }
     
+    void drawRects(const QRectF * rects, int rectCount)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawRects"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, rects, rectCount);
+            return;
+        }
+        QPaintEngine::drawRects(rects, rectCount);
+    }
+    void super_drawRects(const QRectF * rects, int rectCount)
+    {
+        QPaintEngine::drawRects(rects, rectCount);
+    }
+    
     void drawPoints(const QPointF * points, int pointCount)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawPoints"));
@@ -320,22 +292,7 @@ public:
         QPaintEngine::drawPoints(points, pointCount);
     }
     
-    void updateState(const QPaintEngineState & state)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updateState"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, state);
-            return;
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    void super_updateState(const QPaintEngineState & state)
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
-    void drawRects(const QRectF * rects, int rectCount)
+    void drawRects(const QRect * rects, int rectCount)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawRects"));
         if(func)
@@ -345,7 +302,7 @@ public:
         }
         QPaintEngine::drawRects(rects, rectCount);
     }
-    void super_drawRects(const QRectF * rects, int rectCount)
+    void super_drawRects(const QRect * rects, int rectCount)
     {
         QPaintEngine::drawRects(rects, rectCount);
     }
@@ -364,78 +321,92 @@ public:
         return QPaintEngine::coordinateOffset();
     }
     
-    QPaintEngine::Type type() const
+    bool begin(QPaintDevice * pdev)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("begin"));
         if(func)
         {
-            return cpgf::fromVariant<QPaintEngine::Type >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, pdev).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
-    QPaintEngine::Type super_type() const
+    bool super_begin(QPaintDevice * pdev)
     {
         throw std::runtime_error("Abstract method");
     }
     
-    void drawEllipse(const QRect & r)
+    bool end()
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawEllipse"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("end"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, r);
-            return;
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        QPaintEngine::drawEllipse(r);
+        throw std::runtime_error("Abstract method");
     }
-    void super_drawEllipse(const QRect & r)
+    bool super_end()
     {
-        QPaintEngine::drawEllipse(r);
+        throw std::runtime_error("Abstract method");
     }
     
-    void drawPoints(const QPoint * points, int pointCount)
+    void drawPath(const QPainterPath & path)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawPoints"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawPath"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, points, pointCount);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, path);
             return;
         }
-        QPaintEngine::drawPoints(points, pointCount);
+        QPaintEngine::drawPath(path);
     }
-    void super_drawPoints(const QPoint * points, int pointCount)
+    void super_drawPath(const QPainterPath & path)
     {
-        QPaintEngine::drawPoints(points, pointCount);
+        QPaintEngine::drawPath(path);
     }
     
-    void drawLines(const QLine * lines, int lineCount)
+    void updateState(const QPaintEngineState & state)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawLines"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updateState"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, lines, lineCount);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, state);
             return;
         }
-        QPaintEngine::drawLines(lines, lineCount);
+        throw std::runtime_error("Abstract method");
     }
-    void super_drawLines(const QLine * lines, int lineCount)
+    void super_updateState(const QPaintEngineState & state)
     {
-        QPaintEngine::drawLines(lines, lineCount);
+        throw std::runtime_error("Abstract method");
     }
     
-    void drawRects(const QRect * rects, int rectCount)
+    void drawTiledPixmap(const QRectF & r, const QPixmap & pixmap, const QPointF & s)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawRects"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawTiledPixmap"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, rects, rectCount);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, r, pixmap, s);
             return;
         }
-        QPaintEngine::drawRects(rects, rectCount);
+        QPaintEngine::drawTiledPixmap(r, pixmap, s);
     }
-    void super_drawRects(const QRect * rects, int rectCount)
+    void super_drawTiledPixmap(const QRectF & r, const QPixmap & pixmap, const QPointF & s)
     {
-        QPaintEngine::drawRects(rects, rectCount);
+        QPaintEngine::drawTiledPixmap(r, pixmap, s);
+    }
+    
+    void drawPolygon(const QPointF * points, int pointCount, QPaintEngine::PolygonDrawMode mode)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawPolygon"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, points, pointCount, mode);
+            return;
+        }
+        QPaintEngine::drawPolygon(points, pointCount, mode);
+    }
+    void super_drawPolygon(const QPointF * points, int pointCount, QPaintEngine::PolygonDrawMode mode)
+    {
+        QPaintEngine::drawPolygon(points, pointCount, mode);
     }
     
     void drawPixmap(const QRectF & r, const QPixmap & pm, const QRectF & sr)
@@ -452,33 +423,62 @@ public:
     {
         throw std::runtime_error("Abstract method");
     }
+    
+    QPaintEngine::Type type() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("type"));
+        if(func)
+        {
+            return cpgf::fromVariant<QPaintEngine::Type >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    QPaintEngine::Type super_type() const
+    {
+        throw std::runtime_error("Abstract method");
+    }
+    
+    void drawLines(const QLineF * lines, int lineCount)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("drawLines"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, lines, lineCount);
+            return;
+        }
+        QPaintEngine::drawLines(lines, lineCount);
+    }
+    void super_drawLines(const QLineF * lines, int lineCount)
+    {
+        QPaintEngine::drawLines(lines, lineCount);
+    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
         _d.CPGF_MD_TEMPLATE _method("super_drawTextItem", (void (D::ClassType::*) (const QPointF &, const QTextItem &))&D::ClassType::super_drawTextItem, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_drawTiledPixmap", (void (D::ClassType::*) (const QRectF &, const QPixmap &, const QPointF &))&D::ClassType::super_drawTiledPixmap, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<2> >());
-        _d.CPGF_MD_TEMPLATE _method("super_end", (bool (D::ClassType::*) ())&D::ClassType::super_end);
-        _d.CPGF_MD_TEMPLATE _method("super_drawPolygon", (void (D::ClassType::*) (const QPointF *, int, QPaintEngine::PolygonDrawMode))&D::ClassType::super_drawPolygon);
-        _d.CPGF_MD_TEMPLATE _method("super_drawPath", (void (D::ClassType::*) (const QPainterPath &))&D::ClassType::super_drawPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_drawLines", (void (D::ClassType::*) (const QLineF *, int))&D::ClassType::super_drawLines);
+        _d.CPGF_MD_TEMPLATE _method("super_drawLines", (void (D::ClassType::*) (const QLine *, int))&D::ClassType::super_drawLines);
+        _d.CPGF_MD_TEMPLATE _method("super_drawPoints", (void (D::ClassType::*) (const QPoint *, int))&D::ClassType::super_drawPoints);
         _d.CPGF_MD_TEMPLATE _method("super_drawEllipse", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_drawEllipse, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
         _d.CPGF_MD_TEMPLATE _method("super_drawImage", (void (D::ClassType::*) (const QRectF &, const QImage &, const QRectF &, Qt::ImageConversionFlags))&D::ClassType::super_drawImage, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<2> >())
             ._default(copyVariantFromCopyable(Qt::AutoColor))
         ;
-        _d.CPGF_MD_TEMPLATE _method("super_begin", (bool (D::ClassType::*) (QPaintDevice *))&D::ClassType::super_begin);
-        _d.CPGF_MD_TEMPLATE _method("super_drawPolygon", (void (D::ClassType::*) (const QPoint *, int, QPaintEngine::PolygonDrawMode))&D::ClassType::super_drawPolygon);
-        _d.CPGF_MD_TEMPLATE _method("super_drawPoints", (void (D::ClassType::*) (const QPointF *, int))&D::ClassType::super_drawPoints);
-        _d.CPGF_MD_TEMPLATE _method("super_updateState", (void (D::ClassType::*) (const QPaintEngineState &))&D::ClassType::super_updateState);
-        _d.CPGF_MD_TEMPLATE _method("super_drawRects", (void (D::ClassType::*) (const QRectF *, int))&D::ClassType::super_drawRects);
-        _d.CPGF_MD_TEMPLATE _method("super_coordinateOffset", (QPoint (D::ClassType::*) () const)&D::ClassType::super_coordinateOffset);
-        _d.CPGF_MD_TEMPLATE _method("super_type", (QPaintEngine::Type (D::ClassType::*) () const)&D::ClassType::super_type);
         _d.CPGF_MD_TEMPLATE _method("super_drawEllipse", (void (D::ClassType::*) (const QRect &))&D::ClassType::super_drawEllipse);
-        _d.CPGF_MD_TEMPLATE _method("super_drawPoints", (void (D::ClassType::*) (const QPoint *, int))&D::ClassType::super_drawPoints);
-        _d.CPGF_MD_TEMPLATE _method("super_drawLines", (void (D::ClassType::*) (const QLine *, int))&D::ClassType::super_drawLines);
+        _d.CPGF_MD_TEMPLATE _method("super_drawPolygon", (void (D::ClassType::*) (const QPoint *, int, QPaintEngine::PolygonDrawMode))&D::ClassType::super_drawPolygon);
+        _d.CPGF_MD_TEMPLATE _method("super_drawRects", (void (D::ClassType::*) (const QRectF *, int))&D::ClassType::super_drawRects);
+        _d.CPGF_MD_TEMPLATE _method("super_drawPoints", (void (D::ClassType::*) (const QPointF *, int))&D::ClassType::super_drawPoints);
         _d.CPGF_MD_TEMPLATE _method("super_drawRects", (void (D::ClassType::*) (const QRect *, int))&D::ClassType::super_drawRects);
+        _d.CPGF_MD_TEMPLATE _method("super_coordinateOffset", (QPoint (D::ClassType::*) () const)&D::ClassType::super_coordinateOffset);
+        _d.CPGF_MD_TEMPLATE _method("super_begin", (bool (D::ClassType::*) (QPaintDevice *))&D::ClassType::super_begin);
+        _d.CPGF_MD_TEMPLATE _method("super_end", (bool (D::ClassType::*) ())&D::ClassType::super_end);
+        _d.CPGF_MD_TEMPLATE _method("super_drawPath", (void (D::ClassType::*) (const QPainterPath &))&D::ClassType::super_drawPath, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_updateState", (void (D::ClassType::*) (const QPaintEngineState &))&D::ClassType::super_updateState);
+        _d.CPGF_MD_TEMPLATE _method("super_drawTiledPixmap", (void (D::ClassType::*) (const QRectF &, const QPixmap &, const QPointF &))&D::ClassType::super_drawTiledPixmap, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<2> >());
+        _d.CPGF_MD_TEMPLATE _method("super_drawPolygon", (void (D::ClassType::*) (const QPointF *, int, QPaintEngine::PolygonDrawMode))&D::ClassType::super_drawPolygon);
         _d.CPGF_MD_TEMPLATE _method("super_drawPixmap", (void (D::ClassType::*) (const QRectF &, const QPixmap &, const QRectF &))&D::ClassType::super_drawPixmap, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<2> >());
+        _d.CPGF_MD_TEMPLATE _method("super_type", (QPaintEngine::Type (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_drawLines", (void (D::ClassType::*) (const QLineF *, int))&D::ClassType::super_drawLines);
     }
 };
 

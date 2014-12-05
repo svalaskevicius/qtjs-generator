@@ -24,7 +24,7 @@ void buildMetaClass_Global_qtquicktestversion(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_46")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_31")
         ._element("QTQUICKTEST_VERSION_STR", QTQUICKTEST_VERSION_STR)
         ._element("QTQUICKTEST_VERSION", QTQUICKTEST_VERSION)
     ;

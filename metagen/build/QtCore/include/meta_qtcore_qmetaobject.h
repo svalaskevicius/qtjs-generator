@@ -24,7 +24,7 @@ void buildMetaClass_Global_qmetaobject(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_34")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_32")
         ._element("Q_METAMETHOD_INVOKE_MAX_ARGS", Q_METAMETHOD_INVOKE_MAX_ARGS)
     ;
     _d.CPGF_MD_TEMPLATE _operator<bool (*)(const QMetaMethod &, const QMetaMethod &)>(mopHolder == mopHolder);

@@ -27,7 +27,7 @@ void buildMetaClass_Global_qimageiohandler(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_12")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_22")
         ._element("QImageIOHandlerFactoryInterface_iid", QImageIOHandlerFactoryInterface_iid)
     ;
 }
@@ -84,20 +84,6 @@ public:
     QImageIOHandlerWrapper()
         : QImageIOHandler() {}
     
-    bool write(const QImage & image)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("write"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, image).getValue());
-        }
-        return QImageIOHandler::write(image);
-    }
-    bool super_write(const QImage & image)
-    {
-        return QImageIOHandler::write(image);
-    }
-    
     bool supportsOption(QImageIOHandler::ImageOption option) const
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("supportsOption"));
@@ -112,16 +98,30 @@ public:
         return QImageIOHandler::supportsOption(option);
     }
     
-    bool canRead() const
+    bool jumpToImage(int imageNumber)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("canRead"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("jumpToImage"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, imageNumber).getValue());
+        }
+        return QImageIOHandler::jumpToImage(imageNumber);
+    }
+    bool super_jumpToImage(int imageNumber)
+    {
+        return QImageIOHandler::jumpToImage(imageNumber);
+    }
+    
+    bool read(QImage * image)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("read"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, image).getValue());
         }
         throw std::runtime_error("Abstract method");
     }
-    bool super_canRead() const
+    bool super_read(QImage * image)
     {
         throw std::runtime_error("Abstract method");
     }
@@ -140,46 +140,18 @@ public:
         return QImageIOHandler::jumpToNextImage();
     }
     
-    QRect currentImageRect() const
+    int nextImageDelay() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("currentImageRect"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("nextImageDelay"));
         if(func)
         {
-            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QImageIOHandler::currentImageRect();
+        return QImageIOHandler::nextImageDelay();
     }
-    QRect super_currentImageRect() const
+    int super_nextImageDelay() const
     {
-        return QImageIOHandler::currentImageRect();
-    }
-    
-    bool read(QImage * image)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("read"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, image).getValue());
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    bool super_read(QImage * image)
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
-    bool jumpToImage(int imageNumber)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("jumpToImage"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, imageNumber).getValue());
-        }
-        return QImageIOHandler::jumpToImage(imageNumber);
-    }
-    bool super_jumpToImage(int imageNumber)
-    {
-        return QImageIOHandler::jumpToImage(imageNumber);
+        return QImageIOHandler::nextImageDelay();
     }
     
     int currentImageNumber() const
@@ -196,6 +168,34 @@ public:
         return QImageIOHandler::currentImageNumber();
     }
     
+    QRect currentImageRect() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("currentImageRect"));
+        if(func)
+        {
+            return cpgf::fromVariant<QRect >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QImageIOHandler::currentImageRect();
+    }
+    QRect super_currentImageRect() const
+    {
+        return QImageIOHandler::currentImageRect();
+    }
+    
+    bool canRead() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("canRead"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    bool super_canRead() const
+    {
+        throw std::runtime_error("Abstract method");
+    }
+    
     int loopCount() const
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("loopCount"));
@@ -208,48 +208,6 @@ public:
     int super_loopCount() const
     {
         return QImageIOHandler::loopCount();
-    }
-    
-    int nextImageDelay() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("nextImageDelay"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QImageIOHandler::nextImageDelay();
-    }
-    int super_nextImageDelay() const
-    {
-        return QImageIOHandler::nextImageDelay();
-    }
-    
-    int imageCount() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("imageCount"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QImageIOHandler::imageCount();
-    }
-    int super_imageCount() const
-    {
-        return QImageIOHandler::imageCount();
-    }
-    
-    QByteArray name() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("name"));
-        if(func)
-        {
-            return cpgf::fromVariant<QByteArray >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QImageIOHandler::name();
-    }
-    QByteArray super_name() const
-    {
-        return QImageIOHandler::name();
     }
     
     void setOption(QImageIOHandler::ImageOption option, const QVariant & value)
@@ -267,6 +225,34 @@ public:
         QImageIOHandler::setOption(option, value);
     }
     
+    bool write(const QImage & image)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("write"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, image).getValue());
+        }
+        return QImageIOHandler::write(image);
+    }
+    bool super_write(const QImage & image)
+    {
+        return QImageIOHandler::write(image);
+    }
+    
+    QByteArray name() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("name"));
+        if(func)
+        {
+            return cpgf::fromVariant<QByteArray >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QImageIOHandler::name();
+    }
+    QByteArray super_name() const
+    {
+        return QImageIOHandler::name();
+    }
+    
     QVariant option(QImageIOHandler::ImageOption option) const
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("option"));
@@ -280,25 +266,39 @@ public:
     {
         return QImageIOHandler::option(option);
     }
+    
+    int imageCount() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("imageCount"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QImageIOHandler::imageCount();
+    }
+    int super_imageCount() const
+    {
+        return QImageIOHandler::imageCount();
+    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_write", (bool (D::ClassType::*) (const QImage &))&D::ClassType::super_write);
         _d.CPGF_MD_TEMPLATE _method("super_supportsOption", (bool (D::ClassType::*) (QImageIOHandler::ImageOption) const)&D::ClassType::super_supportsOption);
-        _d.CPGF_MD_TEMPLATE _method("super_canRead", (bool (D::ClassType::*) () const)&D::ClassType::super_canRead);
-        _d.CPGF_MD_TEMPLATE _method("super_jumpToNextImage", (bool (D::ClassType::*) ())&D::ClassType::super_jumpToNextImage);
-        _d.CPGF_MD_TEMPLATE _method("super_currentImageRect", (QRect (D::ClassType::*) () const)&D::ClassType::super_currentImageRect);
-        _d.CPGF_MD_TEMPLATE _method("super_read", (bool (D::ClassType::*) (QImage *))&D::ClassType::super_read);
         _d.CPGF_MD_TEMPLATE _method("super_jumpToImage", (bool (D::ClassType::*) (int))&D::ClassType::super_jumpToImage);
-        _d.CPGF_MD_TEMPLATE _method("super_currentImageNumber", (int (D::ClassType::*) () const)&D::ClassType::super_currentImageNumber);
-        _d.CPGF_MD_TEMPLATE _method("super_loopCount", (int (D::ClassType::*) () const)&D::ClassType::super_loopCount);
+        _d.CPGF_MD_TEMPLATE _method("super_read", (bool (D::ClassType::*) (QImage *))&D::ClassType::super_read);
+        _d.CPGF_MD_TEMPLATE _method("super_jumpToNextImage", (bool (D::ClassType::*) ())&D::ClassType::super_jumpToNextImage);
         _d.CPGF_MD_TEMPLATE _method("super_nextImageDelay", (int (D::ClassType::*) () const)&D::ClassType::super_nextImageDelay);
-        _d.CPGF_MD_TEMPLATE _method("super_imageCount", (int (D::ClassType::*) () const)&D::ClassType::super_imageCount);
-        _d.CPGF_MD_TEMPLATE _method("super_name", (QByteArray (D::ClassType::*) () const)&D::ClassType::super_name);
+        _d.CPGF_MD_TEMPLATE _method("super_currentImageNumber", (int (D::ClassType::*) () const)&D::ClassType::super_currentImageNumber);
+        _d.CPGF_MD_TEMPLATE _method("super_currentImageRect", (QRect (D::ClassType::*) () const)&D::ClassType::super_currentImageRect);
+        _d.CPGF_MD_TEMPLATE _method("super_canRead", (bool (D::ClassType::*) () const)&D::ClassType::super_canRead);
+        _d.CPGF_MD_TEMPLATE _method("super_loopCount", (int (D::ClassType::*) () const)&D::ClassType::super_loopCount);
         _d.CPGF_MD_TEMPLATE _method("super_setOption", (void (D::ClassType::*) (QImageIOHandler::ImageOption, const QVariant &))&D::ClassType::super_setOption, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_write", (bool (D::ClassType::*) (const QImage &))&D::ClassType::super_write);
+        _d.CPGF_MD_TEMPLATE _method("super_name", (QByteArray (D::ClassType::*) () const)&D::ClassType::super_name);
         _d.CPGF_MD_TEMPLATE _method("super_option", (QVariant (D::ClassType::*) (QImageIOHandler::ImageOption) const)&D::ClassType::super_option);
+        _d.CPGF_MD_TEMPLATE _method("super_imageCount", (int (D::ClassType::*) () const)&D::ClassType::super_imageCount);
     }
 };
 
@@ -353,59 +353,6 @@ public:
     QImageIOPluginWrapper(QObject * parent = 0)
         : QImageIOPlugin(parent) {}
     
-    void customEvent(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::customEvent(__arg0);
-    }
-    void super_customEvent(QEvent * __arg0)
-    {
-        QObject::customEvent(__arg0);
-    }
-    
-    QImageIOPlugin::Capabilities capabilities(QIODevice * device, const QByteArray & format) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("capabilities"));
-        if(func)
-        {
-            return cpgf::fromVariant<QImageIOPlugin::Capabilities >(cpgf::invokeScriptFunctionOnObject(func.get(), this, device, format).getValue());
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    QImageIOPlugin::Capabilities super_capabilities(QIODevice * device, const QByteArray & format) const
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
-    QImageIOHandler * create(QIODevice * device, const QByteArray & format = QByteArray()) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("create"));
-        if(func)
-        {
-            return cpgf::fromVariant<QImageIOHandler * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, device, format).getValue());
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    QImageIOHandler * super_create(QIODevice * device, const QByteArray & format = QByteArray()) const
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
-    int senderSignalIndex() const
-    {
-        return QObject::senderSignalIndex();
-    }
-    
-    QObject * sender() const
-    {
-        return QObject::sender();
-    }
-    
     void connectNotify(const QMetaMethod & signal)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
@@ -421,19 +368,34 @@ public:
         QObject::connectNotify(signal);
     }
     
-    void disconnectNotify(const QMetaMethod & signal)
+    bool isSignalConnected(const QMetaMethod & signal) const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        return QObject::isSignalConnected(signal);
+    }
+    
+    void childEvent(QChildEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
-        QObject::disconnectNotify(signal);
+        QObject::childEvent(__arg0);
     }
-    void super_disconnectNotify(const QMetaMethod & signal)
+    void super_childEvent(QChildEvent * __arg0)
     {
-        QObject::disconnectNotify(signal);
+        QObject::childEvent(__arg0);
+    }
+    
+    int receivers(const char * signal) const
+    {
+        return QObject::receivers(signal);
+    }
+    
+    int senderSignalIndex() const
+    {
+        return QObject::senderSignalIndex();
     }
     
     void * qt_metacast(const char * __arg0)
@@ -450,6 +412,77 @@ public:
         return QImageIOPlugin::qt_metacast(__arg0);
     }
     
+    bool eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
+        }
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    
+    QImageIOPlugin::Capabilities capabilities(QIODevice * device, const QByteArray & format) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("capabilities"));
+        if(func)
+        {
+            return cpgf::fromVariant<QImageIOPlugin::Capabilities >(cpgf::invokeScriptFunctionOnObject(func.get(), this, device, format).getValue());
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    QImageIOPlugin::Capabilities super_capabilities(QIODevice * device, const QByteArray & format) const
+    {
+        throw std::runtime_error("Abstract method");
+    }
+    
+    const QMetaObject * metaObject() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
+        if(func)
+        {
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QImageIOPlugin::metaObject();
+    }
+    const QMetaObject * super_metaObject() const
+    {
+        return QImageIOPlugin::metaObject();
+    }
+    
+    QImageIOHandler * create(QIODevice * device, const QByteArray & format = QByteArray()) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("create"));
+        if(func)
+        {
+            return cpgf::fromVariant<QImageIOHandler * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, device, format).getValue());
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    QImageIOHandler * super_create(QIODevice * device, const QByteArray & format = QByteArray()) const
+    {
+        throw std::runtime_error("Abstract method");
+    }
+    
+    void customEvent(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::customEvent(__arg0);
+    }
+    void super_customEvent(QEvent * __arg0)
+    {
+        QObject::customEvent(__arg0);
+    }
+    
     bool event(QEvent * __arg0)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
@@ -464,28 +497,18 @@ public:
         return QObject::event(__arg0);
     }
     
-    int receivers(const char * signal) const
+    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
-        return QObject::receivers(signal);
-    }
-    
-    bool isSignalConnected(const QMetaMethod & signal) const
-    {
-        return QObject::isSignalConnected(signal);
-    }
-    
-    bool eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
         if(func)
         {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
         }
-        return QObject::eventFilter(__arg0, __arg1);
+        return QImageIOPlugin::qt_metacall(__arg0, __arg1, __arg2);
     }
-    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
+    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
-        return QObject::eventFilter(__arg0, __arg1);
+        return QImageIOPlugin::qt_metacall(__arg0, __arg1, __arg2);
     }
     
     void timerEvent(QTimerEvent * __arg0)
@@ -503,76 +526,53 @@ public:
         QObject::timerEvent(__arg0);
     }
     
-    const QMetaObject * metaObject() const
+    void disconnectNotify(const QMetaMethod & signal)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
         if(func)
         {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QImageIOPlugin::metaObject();
-    }
-    const QMetaObject * super_metaObject() const
-    {
-        return QImageIOPlugin::metaObject();
-    }
-    
-    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
-        }
-        return QImageIOPlugin::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        return QImageIOPlugin::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    
-    void childEvent(QChildEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("childEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
-        QObject::childEvent(__arg0);
+        QObject::disconnectNotify(signal);
     }
-    void super_childEvent(QChildEvent * __arg0)
+    void super_disconnectNotify(const QMetaMethod & signal)
     {
-        QObject::childEvent(__arg0);
+        QObject::disconnectNotify(signal);
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
         _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
         _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
         _d.CPGF_MD_TEMPLATE _method("super_capabilities", (QImageIOPlugin::Capabilities (D::ClassType::*) (QIODevice *, const QByteArray &) const)&D::ClassType::super_capabilities, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
         _d.CPGF_MD_TEMPLATE _method("super_create", (QImageIOHandler * (D::ClassType::*) (QIODevice *, const QByteArray &) const)&D::ClassType::super_create, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<1> >())
             ._default(copyVariantFromCopyable(QByteArray()))
         ;
-        _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
         _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
         _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
-        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
     }
 };
 

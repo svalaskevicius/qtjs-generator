@@ -24,7 +24,7 @@ void buildMetaClass_Global_qtquickwidgetsversion(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_45")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtQml_35")
         ._element("QTQUICKWIDGETS_VERSION_STR", QTQUICKWIDGETS_VERSION_STR)
         ._element("QTQUICKWIDGETS_VERSION", QTQUICKWIDGETS_VERSION)
     ;

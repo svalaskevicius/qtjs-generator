@@ -62,20 +62,6 @@ GDefineMetaInfo createMetaClass_Global_qloggingcategory()
 }
 
 
-#ifdef CPGF_METAGEN_LINKAGE_SPEC
-CPGF_METAGEN_LINKAGE_SPEC
-#endif
-GDefineMetaInfo createMetaClass_QLoggingCategory()
-{
-    GDefineMetaGlobalDangle _d = GDefineMetaGlobalDangle::dangle();
-    {
-        GDefineMetaClass<QLoggingCategory> _nd = GDefineMetaClass<QLoggingCategory>::Policy<MakePolicy<GMetaRuleDefaultConstructorAbsent, GMetaRuleCopyConstructorAbsent> >::lazyDeclare("QLoggingCategory", &buildMetaClass_QLoggingCategory);
-        _d._class(_nd);
-    }
-    return _d.getMetaInfo();
-}
-
-
 } // namespace qt_metadata
 
 

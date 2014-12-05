@@ -56,140 +56,19 @@ public:
     QStyledItemDelegateWrapper(QObject * parent = 0)
         : QStyledItemDelegate(parent) {}
     
-    QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const
+    void connectNotify(const QMetaMethod & signal)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
-        if(func)
-        {
-            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this, option, index).getValue());
-        }
-        return QStyledItemDelegate::sizeHint(option, index);
-    }
-    QSize super_sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const
-    {
-        return QStyledItemDelegate::sizeHint(option, index);
-    }
-    
-    int senderSignalIndex() const
-    {
-        return QObject::senderSignalIndex();
-    }
-    
-    QObject * sender() const
-    {
-        return QObject::sender();
-    }
-    
-    void disconnectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
         if(func)
         {
             cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
             return;
         }
-        QObject::disconnectNotify(signal);
+        QObject::connectNotify(signal);
     }
-    void super_disconnectNotify(const QMetaMethod & signal)
+    void super_connectNotify(const QMetaMethod & signal)
     {
-        QObject::disconnectNotify(signal);
-    }
-    
-    QWidget * createEditor(QWidget * parent, const QStyleOptionViewItem & option, const QModelIndex & index) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createEditor"));
-        if(func)
-        {
-            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, parent, option, index).getValue());
-        }
-        return QStyledItemDelegate::createEditor(parent, option, index);
-    }
-    QWidget * super_createEditor(QWidget * parent, const QStyleOptionViewItem & option, const QModelIndex & index) const
-    {
-        return QStyledItemDelegate::createEditor(parent, option, index);
-    }
-    
-    bool editorEvent(QEvent * event, QAbstractItemModel * model, const QStyleOptionViewItem & option, const QModelIndex & index)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("editorEvent"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, event, model, option, index).getValue());
-        }
-        return QStyledItemDelegate::editorEvent(event, model, option, index);
-    }
-    bool super_editorEvent(QEvent * event, QAbstractItemModel * model, const QStyleOptionViewItem & option, const QModelIndex & index)
-    {
-        return QStyledItemDelegate::editorEvent(event, model, option, index);
-    }
-    
-    void paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("paint"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, painter, option, index);
-            return;
-        }
-        QStyledItemDelegate::paint(painter, option, index);
-    }
-    void super_paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const
-    {
-        QStyledItemDelegate::paint(painter, option, index);
-    }
-    
-    int receivers(const char * signal) const
-    {
-        return QObject::receivers(signal);
-    }
-    
-    bool isSignalConnected(const QMetaMethod & signal) const
-    {
-        return QObject::isSignalConnected(signal);
-    }
-    
-    void destroyEditor(QWidget * editor, const QModelIndex & index) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("destroyEditor"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, editor, index);
-            return;
-        }
-        QAbstractItemDelegate::destroyEditor(editor, index);
-    }
-    void super_destroyEditor(QWidget * editor, const QModelIndex & index) const
-    {
-        QAbstractItemDelegate::destroyEditor(editor, index);
-    }
-    
-    bool eventFilter(QObject * object, QEvent * event)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, object, event).getValue());
-        }
-        return QStyledItemDelegate::eventFilter(object, event);
-    }
-    bool super_eventFilter(QObject * object, QEvent * event)
-    {
-        return QStyledItemDelegate::eventFilter(object, event);
-    }
-    
-    void timerEvent(QTimerEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::timerEvent(__arg0);
-    }
-    void super_timerEvent(QTimerEvent * __arg0)
-    {
-        QObject::timerEvent(__arg0);
+        QObject::connectNotify(signal);
     }
     
     void childEvent(QChildEvent * __arg0)
@@ -207,33 +86,61 @@ public:
         QObject::childEvent(__arg0);
     }
     
-    QVector< int > paintingRoles() const
+    bool editorEvent(QEvent * event, QAbstractItemModel * model, const QStyleOptionViewItem & option, const QModelIndex & index)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("paintingRoles"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("editorEvent"));
         if(func)
         {
-            return cpgf::fromVariant<QVector< int > >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, event, model, option, index).getValue());
         }
-        return QAbstractItemDelegate::paintingRoles();
+        return QStyledItemDelegate::editorEvent(event, model, option, index);
     }
-    QVector< int > super_paintingRoles() const
+    bool super_editorEvent(QEvent * event, QAbstractItemModel * model, const QStyleOptionViewItem & option, const QModelIndex & index)
     {
-        return QAbstractItemDelegate::paintingRoles();
+        return QStyledItemDelegate::editorEvent(event, model, option, index);
     }
     
-    void initStyleOption(QStyleOptionViewItem * option, const QModelIndex & index) const
+    void * qt_metacast(const char * __arg0)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("initStyleOption"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, option, index);
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QStyledItemDelegate::qt_metacast(__arg0);
+    }
+    void * super_qt_metacast(const char * __arg0)
+    {
+        return QStyledItemDelegate::qt_metacast(__arg0);
+    }
+    
+    void destroyEditor(QWidget * editor, const QModelIndex & index) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("destroyEditor"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, editor, index);
             return;
         }
-        QStyledItemDelegate::initStyleOption(option, index);
+        QAbstractItemDelegate::destroyEditor(editor, index);
     }
-    void super_initStyleOption(QStyleOptionViewItem * option, const QModelIndex & index) const
+    void super_destroyEditor(QWidget * editor, const QModelIndex & index) const
     {
-        QStyledItemDelegate::initStyleOption(option, index);
+        QAbstractItemDelegate::destroyEditor(editor, index);
+    }
+    
+    bool event(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QObject::event(__arg0);
+    }
+    bool super_event(QEvent * __arg0)
+    {
+        return QObject::event(__arg0);
     }
     
     void setEditorData(QWidget * editor, const QModelIndex & index) const
@@ -251,19 +158,39 @@ public:
         QStyledItemDelegate::setEditorData(editor, index);
     }
     
-    void customEvent(QEvent * __arg0)
+    void timerEvent(QTimerEvent * __arg0)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
         if(func)
         {
             cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
-        QObject::customEvent(__arg0);
+        QObject::timerEvent(__arg0);
     }
-    void super_customEvent(QEvent * __arg0)
+    void super_timerEvent(QTimerEvent * __arg0)
     {
-        QObject::customEvent(__arg0);
+        QObject::timerEvent(__arg0);
+    }
+    
+    void initStyleOption(QStyleOptionViewItem * option, const QModelIndex & index) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("initStyleOption"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, option, index);
+            return;
+        }
+        QStyledItemDelegate::initStyleOption(option, index);
+    }
+    void super_initStyleOption(QStyleOptionViewItem * option, const QModelIndex & index) const
+    {
+        QStyledItemDelegate::initStyleOption(option, index);
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
     }
     
     bool helpEvent(QHelpEvent * event, QAbstractItemView * view, const QStyleOptionViewItem & option, const QModelIndex & index)
@@ -278,6 +205,78 @@ public:
     bool super_helpEvent(QHelpEvent * event, QAbstractItemView * view, const QStyleOptionViewItem & option, const QModelIndex & index)
     {
         return QAbstractItemDelegate::helpEvent(event, view, option, index);
+    }
+    
+    QString displayText(const QVariant & value, const QLocale & locale) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("displayText"));
+        if(func)
+        {
+            return cpgf::fromVariant<QString >(cpgf::invokeScriptFunctionOnObject(func.get(), this, value, locale).getValue());
+        }
+        return QStyledItemDelegate::displayText(value, locale);
+    }
+    QString super_displayText(const QVariant & value, const QLocale & locale) const
+    {
+        return QStyledItemDelegate::displayText(value, locale);
+    }
+    
+    bool isSignalConnected(const QMetaMethod & signal) const
+    {
+        return QObject::isSignalConnected(signal);
+    }
+    
+    int receivers(const char * signal) const
+    {
+        return QObject::receivers(signal);
+    }
+    
+    int senderSignalIndex() const
+    {
+        return QObject::senderSignalIndex();
+    }
+    
+    QVector< int > paintingRoles() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("paintingRoles"));
+        if(func)
+        {
+            return cpgf::fromVariant<QVector< int > >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QAbstractItemDelegate::paintingRoles();
+    }
+    QVector< int > super_paintingRoles() const
+    {
+        return QAbstractItemDelegate::paintingRoles();
+    }
+    
+    void paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("paint"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, painter, option, index);
+            return;
+        }
+        QStyledItemDelegate::paint(painter, option, index);
+    }
+    void super_paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const
+    {
+        QStyledItemDelegate::paint(painter, option, index);
+    }
+    
+    QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sizeHint"));
+        if(func)
+        {
+            return cpgf::fromVariant<QSize >(cpgf::invokeScriptFunctionOnObject(func.get(), this, option, index).getValue());
+        }
+        return QStyledItemDelegate::sizeHint(option, index);
+    }
+    QSize super_sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const
+    {
+        return QStyledItemDelegate::sizeHint(option, index);
     }
     
     void setModelData(QWidget * editor, QAbstractItemModel * model, const QModelIndex & index) const
@@ -295,76 +294,18 @@ public:
         QStyledItemDelegate::setModelData(editor, model, index);
     }
     
-    void updateEditorGeometry(QWidget * editor, const QStyleOptionViewItem & option, const QModelIndex & index) const
+    bool eventFilter(QObject * object, QEvent * event)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updateEditorGeometry"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, editor, option, index);
-            return;
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, object, event).getValue());
         }
-        QStyledItemDelegate::updateEditorGeometry(editor, option, index);
+        return QStyledItemDelegate::eventFilter(object, event);
     }
-    void super_updateEditorGeometry(QWidget * editor, const QStyleOptionViewItem & option, const QModelIndex & index) const
+    bool super_eventFilter(QObject * object, QEvent * event)
     {
-        QStyledItemDelegate::updateEditorGeometry(editor, option, index);
-    }
-    
-    void connectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
-            return;
-        }
-        QObject::connectNotify(signal);
-    }
-    void super_connectNotify(const QMetaMethod & signal)
-    {
-        QObject::connectNotify(signal);
-    }
-    
-    void * qt_metacast(const char * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
-        if(func)
-        {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QStyledItemDelegate::qt_metacast(__arg0);
-    }
-    void * super_qt_metacast(const char * __arg0)
-    {
-        return QStyledItemDelegate::qt_metacast(__arg0);
-    }
-    
-    QString displayText(const QVariant & value, const QLocale & locale) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("displayText"));
-        if(func)
-        {
-            return cpgf::fromVariant<QString >(cpgf::invokeScriptFunctionOnObject(func.get(), this, value, locale).getValue());
-        }
-        return QStyledItemDelegate::displayText(value, locale);
-    }
-    QString super_displayText(const QVariant & value, const QLocale & locale) const
-    {
-        return QStyledItemDelegate::displayText(value, locale);
-    }
-    
-    bool event(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QObject::event(__arg0);
-    }
-    bool super_event(QEvent * __arg0)
-    {
-        return QObject::event(__arg0);
+        return QStyledItemDelegate::eventFilter(object, event);
     }
     
     const QMetaObject * metaObject() const
@@ -381,6 +322,35 @@ public:
         return QStyledItemDelegate::metaObject();
     }
     
+    QWidget * createEditor(QWidget * parent, const QStyleOptionViewItem & option, const QModelIndex & index) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createEditor"));
+        if(func)
+        {
+            return cpgf::fromVariant<QWidget * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, parent, option, index).getValue());
+        }
+        return QStyledItemDelegate::createEditor(parent, option, index);
+    }
+    QWidget * super_createEditor(QWidget * parent, const QStyleOptionViewItem & option, const QModelIndex & index) const
+    {
+        return QStyledItemDelegate::createEditor(parent, option, index);
+    }
+    
+    void customEvent(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::customEvent(__arg0);
+    }
+    void super_customEvent(QEvent * __arg0)
+    {
+        QObject::customEvent(__arg0);
+    }
+    
     int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
@@ -394,45 +364,75 @@ public:
     {
         return QStyledItemDelegate::qt_metacall(__arg0, __arg1, __arg2);
     }
+    
+    void disconnectNotify(const QMetaMethod & signal)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            return;
+        }
+        QObject::disconnectNotify(signal);
+    }
+    void super_disconnectNotify(const QMetaMethod & signal)
+    {
+        QObject::disconnectNotify(signal);
+    }
+    
+    void updateEditorGeometry(QWidget * editor, const QStyleOptionViewItem & option, const QModelIndex & index) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("updateEditorGeometry"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, editor, option, index);
+            return;
+        }
+        QStyledItemDelegate::updateEditorGeometry(editor, option, index);
+    }
+    void super_updateEditorGeometry(QWidget * editor, const QStyleOptionViewItem & option, const QModelIndex & index) const
+    {
+        QStyledItemDelegate::updateEditorGeometry(editor, option, index);
+    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("editorEvent", (bool (D::ClassType::*) (QEvent *, QAbstractItemModel *, const QStyleOptionViewItem &, const QModelIndex &))&D::ClassType::editorEvent);
-        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-        _d.CPGF_MD_TEMPLATE _method("eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
-        _d.CPGF_MD_TEMPLATE _method("initStyleOption", (void (D::ClassType::*) (QStyleOptionViewItem *, const QModelIndex &) const)&D::ClassType::initStyleOption);
-        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
         _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) (const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::super_sizeHint);
-        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_createEditor", (QWidget * (D::ClassType::*) (QWidget *, const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::super_createEditor);
-        _d.CPGF_MD_TEMPLATE _method("super_editorEvent", (bool (D::ClassType::*) (QEvent *, QAbstractItemModel *, const QStyleOptionViewItem &, const QModelIndex &))&D::ClassType::super_editorEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::super_paint);
-        _d.CPGF_MD_TEMPLATE _method("super_destroyEditor", (void (D::ClassType::*) (QWidget *, const QModelIndex &) const)&D::ClassType::super_destroyEditor);
-        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_paintingRoles", (QVector< int > (D::ClassType::*) () const)&D::ClassType::super_paintingRoles);
-        _d.CPGF_MD_TEMPLATE _method("super_initStyleOption", (void (D::ClassType::*) (QStyleOptionViewItem *, const QModelIndex &) const)&D::ClassType::super_initStyleOption);
-        _d.CPGF_MD_TEMPLATE _method("super_setEditorData", (void (D::ClassType::*) (QWidget *, const QModelIndex &) const)&D::ClassType::super_setEditorData);
-        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_helpEvent", (bool (D::ClassType::*) (QHelpEvent *, QAbstractItemView *, const QStyleOptionViewItem &, const QModelIndex &))&D::ClassType::super_helpEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_setModelData", (void (D::ClassType::*) (QWidget *, QAbstractItemModel *, const QModelIndex &) const)&D::ClassType::super_setModelData);
-        _d.CPGF_MD_TEMPLATE _method("super_updateEditorGeometry", (void (D::ClassType::*) (QWidget *, const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::super_updateEditorGeometry);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("editorEvent", (bool (D::ClassType::*) (QEvent *, QAbstractItemModel *, const QStyleOptionViewItem &, const QModelIndex &))&D::ClassType::editorEvent);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("initStyleOption", (void (D::ClassType::*) (QStyleOptionViewItem *, const QModelIndex &) const)&D::ClassType::initStyleOption);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
         _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_editorEvent", (bool (D::ClassType::*) (QEvent *, QAbstractItemModel *, const QStyleOptionViewItem &, const QModelIndex &))&D::ClassType::super_editorEvent);
         _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-        _d.CPGF_MD_TEMPLATE _method("super_displayText", (QString (D::ClassType::*) (const QVariant &, const QLocale &) const)&D::ClassType::super_displayText, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_destroyEditor", (void (D::ClassType::*) (QWidget *, const QModelIndex &) const)&D::ClassType::super_destroyEditor);
         _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_setEditorData", (void (D::ClassType::*) (QWidget *, const QModelIndex &) const)&D::ClassType::super_setEditorData);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_initStyleOption", (void (D::ClassType::*) (QStyleOptionViewItem *, const QModelIndex &) const)&D::ClassType::super_initStyleOption);
+        _d.CPGF_MD_TEMPLATE _method("super_helpEvent", (bool (D::ClassType::*) (QHelpEvent *, QAbstractItemView *, const QStyleOptionViewItem &, const QModelIndex &))&D::ClassType::super_helpEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_displayText", (QString (D::ClassType::*) (const QVariant &, const QLocale &) const)&D::ClassType::super_displayText, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0>, cpgf::GMetaRuleCopyConstReference<1> >());
+        _d.CPGF_MD_TEMPLATE _method("super_paintingRoles", (QVector< int > (D::ClassType::*) () const)&D::ClassType::super_paintingRoles);
+        _d.CPGF_MD_TEMPLATE _method("super_paint", (void (D::ClassType::*) (QPainter *, const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::super_paint);
+        _d.CPGF_MD_TEMPLATE _method("super_sizeHint", (QSize (D::ClassType::*) (const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::super_sizeHint);
+        _d.CPGF_MD_TEMPLATE _method("super_setModelData", (void (D::ClassType::*) (QWidget *, QAbstractItemModel *, const QModelIndex &) const)&D::ClassType::super_setModelData);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
         _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_createEditor", (QWidget * (D::ClassType::*) (QWidget *, const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::super_createEditor);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
         _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_updateEditorGeometry", (void (D::ClassType::*) (QWidget *, const QStyleOptionViewItem &, const QModelIndex &) const)&D::ClassType::super_updateEditorGeometry);
     }
 };
 

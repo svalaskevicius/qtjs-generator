@@ -192,7 +192,8 @@ function processCallback(item, data)
     'QXmlStream',
     'QStringListModel',
     'QNoDebug',
-    'QByteArrayMatcher'
+    'QByteArrayMatcher',
+    'QLoggingCategory'
   ];
 
   for (var i in skipByLocationPart) {

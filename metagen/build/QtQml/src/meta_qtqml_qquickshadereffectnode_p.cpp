@@ -27,7 +27,7 @@
 #include <private/qsgrenderer_p.h>
 #include <private/qsgrenderloop_p.h>
 
-#include "QtQuick/5.3.1/QtQuick/private/qquickshadereffectnode_p.h"
+#include "QtQuick/5.3.2/QtQuick/private/qquickshadereffectnode_p.h"
 
 #include "meta_qtqml_qquickshadereffectnode_p.h"
 

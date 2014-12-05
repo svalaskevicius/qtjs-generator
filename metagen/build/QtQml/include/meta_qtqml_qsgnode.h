@@ -53,20 +53,6 @@ void buildMetaClass_QSGBasicGeometryNode(D _d)
 class QSGBasicGeometryNodeWrapper : public QSGBasicGeometryNode, public cpgf::GScriptWrapper {
 public:
     
-    bool isSubtreeBlocked() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSGNode::isSubtreeBlocked();
-    }
-    bool super_isSubtreeBlocked() const
-    {
-        return QSGNode::isSubtreeBlocked();
-    }
-    
     void preprocess()
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
@@ -81,13 +67,27 @@ public:
     {
         QSGNode::preprocess();
     }
+    
+    bool isSubtreeBlocked() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGNode::isSubtreeBlocked();
+    }
+    bool super_isSubtreeBlocked() const
+    {
+        return QSGNode::isSubtreeBlocked();
+    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
+        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
     }
 };
 
@@ -125,20 +125,6 @@ public:
     QSGClipNodeWrapper()
         : QSGClipNode() {}
     
-    bool isSubtreeBlocked() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSGNode::isSubtreeBlocked();
-    }
-    bool super_isSubtreeBlocked() const
-    {
-        return QSGNode::isSubtreeBlocked();
-    }
-    
     void preprocess()
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
@@ -153,13 +139,27 @@ public:
     {
         QSGNode::preprocess();
     }
+    
+    bool isSubtreeBlocked() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGNode::isSubtreeBlocked();
+    }
+    bool super_isSubtreeBlocked() const
+    {
+        return QSGNode::isSubtreeBlocked();
+    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
+        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
     }
 };
 
@@ -202,20 +202,6 @@ public:
     QSGGeometryNodeWrapper()
         : QSGGeometryNode() {}
     
-    bool isSubtreeBlocked() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSGNode::isSubtreeBlocked();
-    }
-    bool super_isSubtreeBlocked() const
-    {
-        return QSGNode::isSubtreeBlocked();
-    }
-    
     void preprocess()
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
@@ -230,13 +216,27 @@ public:
     {
         QSGNode::preprocess();
     }
+    
+    bool isSubtreeBlocked() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGNode::isSubtreeBlocked();
+    }
+    bool super_isSubtreeBlocked() const
+    {
+        return QSGNode::isSubtreeBlocked();
+    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
+        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
     }
 };
 
@@ -332,20 +332,6 @@ public:
     QSGNodeWrapper()
         : QSGNode() {}
     
-    bool isSubtreeBlocked() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSGNode::isSubtreeBlocked();
-    }
-    bool super_isSubtreeBlocked() const
-    {
-        return QSGNode::isSubtreeBlocked();
-    }
-    
     void preprocess()
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
@@ -360,13 +346,27 @@ public:
     {
         QSGNode::preprocess();
     }
+    
+    bool isSubtreeBlocked() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGNode::isSubtreeBlocked();
+    }
+    bool super_isSubtreeBlocked() const
+    {
+        return QSGNode::isSubtreeBlocked();
+    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
+        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
     }
 };
 
@@ -396,36 +396,6 @@ void buildMetaClass_QSGNodeVisitor(D _d)
 class QSGNodeVisitorWrapper : public QSGNodeVisitor, public cpgf::GScriptWrapper {
 public:
     
-    void leaveOpacityNode(QSGOpacityNode * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("leaveOpacityNode"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QSGNodeVisitor::leaveOpacityNode(__arg0);
-    }
-    void super_leaveOpacityNode(QSGOpacityNode * __arg0)
-    {
-        QSGNodeVisitor::leaveOpacityNode(__arg0);
-    }
-    
-    void enterClipNode(QSGClipNode * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("enterClipNode"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QSGNodeVisitor::enterClipNode(__arg0);
-    }
-    void super_enterClipNode(QSGClipNode * __arg0)
-    {
-        QSGNodeVisitor::enterClipNode(__arg0);
-    }
-    
     void leaveTransformNode(QSGTransformNode * __arg0)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("leaveTransformNode"));
@@ -441,19 +411,19 @@ public:
         QSGNodeVisitor::leaveTransformNode(__arg0);
     }
     
-    void enterTransformNode(QSGTransformNode * __arg0)
+    void visitNode(QSGNode * n)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("enterTransformNode"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("visitNode"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, n);
             return;
         }
-        QSGNodeVisitor::enterTransformNode(__arg0);
+        QSGNodeVisitor::visitNode(n);
     }
-    void super_enterTransformNode(QSGTransformNode * __arg0)
+    void super_visitNode(QSGNode * n)
     {
-        QSGNodeVisitor::enterTransformNode(__arg0);
+        QSGNodeVisitor::visitNode(n);
     }
     
     void leaveGeometryNode(QSGGeometryNode * __arg0)
@@ -469,6 +439,51 @@ public:
     void super_leaveGeometryNode(QSGGeometryNode * __arg0)
     {
         QSGNodeVisitor::leaveGeometryNode(__arg0);
+    }
+    
+    void enterGeometryNode(QSGGeometryNode * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("enterGeometryNode"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QSGNodeVisitor::enterGeometryNode(__arg0);
+    }
+    void super_enterGeometryNode(QSGGeometryNode * __arg0)
+    {
+        QSGNodeVisitor::enterGeometryNode(__arg0);
+    }
+    
+    void leaveOpacityNode(QSGOpacityNode * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("leaveOpacityNode"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QSGNodeVisitor::leaveOpacityNode(__arg0);
+    }
+    void super_leaveOpacityNode(QSGOpacityNode * __arg0)
+    {
+        QSGNodeVisitor::leaveOpacityNode(__arg0);
+    }
+    
+    void enterOpacityNode(QSGOpacityNode * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("enterOpacityNode"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QSGNodeVisitor::enterOpacityNode(__arg0);
+    }
+    void super_enterOpacityNode(QSGOpacityNode * __arg0)
+    {
+        QSGNodeVisitor::enterOpacityNode(__arg0);
     }
     
     void visitChildren(QSGNode * n)
@@ -501,75 +516,60 @@ public:
         QSGNodeVisitor::leaveClipNode(__arg0);
     }
     
-    void enterOpacityNode(QSGOpacityNode * __arg0)
+    void enterClipNode(QSGClipNode * __arg0)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("enterOpacityNode"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("enterClipNode"));
         if(func)
         {
             cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
-        QSGNodeVisitor::enterOpacityNode(__arg0);
+        QSGNodeVisitor::enterClipNode(__arg0);
     }
-    void super_enterOpacityNode(QSGOpacityNode * __arg0)
+    void super_enterClipNode(QSGClipNode * __arg0)
     {
-        QSGNodeVisitor::enterOpacityNode(__arg0);
+        QSGNodeVisitor::enterClipNode(__arg0);
     }
     
-    void enterGeometryNode(QSGGeometryNode * __arg0)
+    void enterTransformNode(QSGTransformNode * __arg0)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("enterGeometryNode"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("enterTransformNode"));
         if(func)
         {
             cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
             return;
         }
-        QSGNodeVisitor::enterGeometryNode(__arg0);
+        QSGNodeVisitor::enterTransformNode(__arg0);
     }
-    void super_enterGeometryNode(QSGGeometryNode * __arg0)
+    void super_enterTransformNode(QSGTransformNode * __arg0)
     {
-        QSGNodeVisitor::enterGeometryNode(__arg0);
-    }
-    
-    void visitNode(QSGNode * n)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("visitNode"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, n);
-            return;
-        }
-        QSGNodeVisitor::visitNode(n);
-    }
-    void super_visitNode(QSGNode * n)
-    {
-        QSGNodeVisitor::visitNode(n);
+        QSGNodeVisitor::enterTransformNode(__arg0);
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("leaveOpacityNode", (void (D::ClassType::*) (QSGOpacityNode *))&D::ClassType::leaveOpacityNode);
-        _d.CPGF_MD_TEMPLATE _method("enterClipNode", (void (D::ClassType::*) (QSGClipNode *))&D::ClassType::enterClipNode);
         _d.CPGF_MD_TEMPLATE _method("leaveTransformNode", (void (D::ClassType::*) (QSGTransformNode *))&D::ClassType::leaveTransformNode);
-        _d.CPGF_MD_TEMPLATE _method("enterTransformNode", (void (D::ClassType::*) (QSGTransformNode *))&D::ClassType::enterTransformNode);
+        _d.CPGF_MD_TEMPLATE _method("visitNode", (void (D::ClassType::*) (QSGNode *))&D::ClassType::visitNode);
         _d.CPGF_MD_TEMPLATE _method("leaveGeometryNode", (void (D::ClassType::*) (QSGGeometryNode *))&D::ClassType::leaveGeometryNode);
+        _d.CPGF_MD_TEMPLATE _method("enterGeometryNode", (void (D::ClassType::*) (QSGGeometryNode *))&D::ClassType::enterGeometryNode);
+        _d.CPGF_MD_TEMPLATE _method("leaveOpacityNode", (void (D::ClassType::*) (QSGOpacityNode *))&D::ClassType::leaveOpacityNode);
+        _d.CPGF_MD_TEMPLATE _method("enterOpacityNode", (void (D::ClassType::*) (QSGOpacityNode *))&D::ClassType::enterOpacityNode);
         _d.CPGF_MD_TEMPLATE _method("visitChildren", (void (D::ClassType::*) (QSGNode *))&D::ClassType::visitChildren);
         _d.CPGF_MD_TEMPLATE _method("leaveClipNode", (void (D::ClassType::*) (QSGClipNode *))&D::ClassType::leaveClipNode);
-        _d.CPGF_MD_TEMPLATE _method("enterOpacityNode", (void (D::ClassType::*) (QSGOpacityNode *))&D::ClassType::enterOpacityNode);
-        _d.CPGF_MD_TEMPLATE _method("enterGeometryNode", (void (D::ClassType::*) (QSGGeometryNode *))&D::ClassType::enterGeometryNode);
-        _d.CPGF_MD_TEMPLATE _method("visitNode", (void (D::ClassType::*) (QSGNode *))&D::ClassType::visitNode);
-        _d.CPGF_MD_TEMPLATE _method("super_leaveOpacityNode", (void (D::ClassType::*) (QSGOpacityNode *))&D::ClassType::super_leaveOpacityNode);
-        _d.CPGF_MD_TEMPLATE _method("super_enterClipNode", (void (D::ClassType::*) (QSGClipNode *))&D::ClassType::super_enterClipNode);
+        _d.CPGF_MD_TEMPLATE _method("enterClipNode", (void (D::ClassType::*) (QSGClipNode *))&D::ClassType::enterClipNode);
+        _d.CPGF_MD_TEMPLATE _method("enterTransformNode", (void (D::ClassType::*) (QSGTransformNode *))&D::ClassType::enterTransformNode);
         _d.CPGF_MD_TEMPLATE _method("super_leaveTransformNode", (void (D::ClassType::*) (QSGTransformNode *))&D::ClassType::super_leaveTransformNode);
-        _d.CPGF_MD_TEMPLATE _method("super_enterTransformNode", (void (D::ClassType::*) (QSGTransformNode *))&D::ClassType::super_enterTransformNode);
+        _d.CPGF_MD_TEMPLATE _method("super_visitNode", (void (D::ClassType::*) (QSGNode *))&D::ClassType::super_visitNode);
         _d.CPGF_MD_TEMPLATE _method("super_leaveGeometryNode", (void (D::ClassType::*) (QSGGeometryNode *))&D::ClassType::super_leaveGeometryNode);
+        _d.CPGF_MD_TEMPLATE _method("super_enterGeometryNode", (void (D::ClassType::*) (QSGGeometryNode *))&D::ClassType::super_enterGeometryNode);
+        _d.CPGF_MD_TEMPLATE _method("super_leaveOpacityNode", (void (D::ClassType::*) (QSGOpacityNode *))&D::ClassType::super_leaveOpacityNode);
+        _d.CPGF_MD_TEMPLATE _method("super_enterOpacityNode", (void (D::ClassType::*) (QSGOpacityNode *))&D::ClassType::super_enterOpacityNode);
         _d.CPGF_MD_TEMPLATE _method("super_visitChildren", (void (D::ClassType::*) (QSGNode *))&D::ClassType::super_visitChildren);
         _d.CPGF_MD_TEMPLATE _method("super_leaveClipNode", (void (D::ClassType::*) (QSGClipNode *))&D::ClassType::super_leaveClipNode);
-        _d.CPGF_MD_TEMPLATE _method("super_enterOpacityNode", (void (D::ClassType::*) (QSGOpacityNode *))&D::ClassType::super_enterOpacityNode);
-        _d.CPGF_MD_TEMPLATE _method("super_enterGeometryNode", (void (D::ClassType::*) (QSGGeometryNode *))&D::ClassType::super_enterGeometryNode);
-        _d.CPGF_MD_TEMPLATE _method("super_visitNode", (void (D::ClassType::*) (QSGNode *))&D::ClassType::super_visitNode);
+        _d.CPGF_MD_TEMPLATE _method("super_enterClipNode", (void (D::ClassType::*) (QSGClipNode *))&D::ClassType::super_enterClipNode);
+        _d.CPGF_MD_TEMPLATE _method("super_enterTransformNode", (void (D::ClassType::*) (QSGTransformNode *))&D::ClassType::super_enterTransformNode);
     }
 };
 
@@ -608,20 +608,6 @@ public:
     QSGOpacityNodeWrapper()
         : QSGOpacityNode() {}
     
-    bool isSubtreeBlocked() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSGOpacityNode::isSubtreeBlocked();
-    }
-    bool super_isSubtreeBlocked() const
-    {
-        return QSGOpacityNode::isSubtreeBlocked();
-    }
-    
     void preprocess()
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
@@ -636,13 +622,27 @@ public:
     {
         QSGNode::preprocess();
     }
+    
+    bool isSubtreeBlocked() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGOpacityNode::isSubtreeBlocked();
+    }
+    bool super_isSubtreeBlocked() const
+    {
+        return QSGOpacityNode::isSubtreeBlocked();
+    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
+        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
     }
 };
 
@@ -676,20 +676,6 @@ public:
     QSGRootNodeWrapper()
         : QSGRootNode() {}
     
-    bool isSubtreeBlocked() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSGNode::isSubtreeBlocked();
-    }
-    bool super_isSubtreeBlocked() const
-    {
-        return QSGNode::isSubtreeBlocked();
-    }
-    
     void preprocess()
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
@@ -704,13 +690,27 @@ public:
     {
         QSGNode::preprocess();
     }
+    
+    bool isSubtreeBlocked() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGNode::isSubtreeBlocked();
+    }
+    bool super_isSubtreeBlocked() const
+    {
+        return QSGNode::isSubtreeBlocked();
+    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
+        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
     }
 };
 
@@ -748,20 +748,6 @@ public:
     QSGTransformNodeWrapper()
         : QSGTransformNode() {}
     
-    bool isSubtreeBlocked() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSGNode::isSubtreeBlocked();
-    }
-    bool super_isSubtreeBlocked() const
-    {
-        return QSGNode::isSubtreeBlocked();
-    }
-    
     void preprocess()
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("preprocess"));
@@ -776,13 +762,27 @@ public:
     {
         QSGNode::preprocess();
     }
+    
+    bool isSubtreeBlocked() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGNode::isSubtreeBlocked();
+    }
+    bool super_isSubtreeBlocked() const
+    {
+        return QSGNode::isSubtreeBlocked();
+    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
+        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
     }
 };
 

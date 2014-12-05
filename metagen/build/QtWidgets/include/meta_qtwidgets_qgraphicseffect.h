@@ -63,51 +63,6 @@ public:
     QGraphicsBlurEffectWrapper(QObject * parent = 0)
         : QGraphicsBlurEffect(parent) {}
     
-    QPixmap sourcePixmap(Qt::CoordinateSystem system = Qt::LogicalCoordinates, QPoint * offset = 0, QGraphicsEffect::PixmapPadMode mode = QGraphicsEffect::PadToEffectiveBoundingRect) const
-    {
-        return QGraphicsEffect::sourcePixmap(system, offset, mode);
-    }
-    
-    void sourceChanged(QGraphicsEffect::ChangeFlags flags)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sourceChanged"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, flags);
-            return;
-        }
-        QGraphicsEffect::sourceChanged(flags);
-    }
-    void super_sourceChanged(QGraphicsEffect::ChangeFlags flags)
-    {
-        QGraphicsEffect::sourceChanged(flags);
-    }
-    
-    void customEvent(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::customEvent(__arg0);
-    }
-    void super_customEvent(QEvent * __arg0)
-    {
-        QObject::customEvent(__arg0);
-    }
-    
-    int senderSignalIndex() const
-    {
-        return QObject::senderSignalIndex();
-    }
-    
-    QObject * sender() const
-    {
-        return QObject::sender();
-    }
-    
     void connectNotify(const QMetaMethod & signal)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
@@ -123,158 +78,9 @@ public:
         QObject::connectNotify(signal);
     }
     
-    void disconnectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
-            return;
-        }
-        QObject::disconnectNotify(signal);
-    }
-    void super_disconnectNotify(const QMetaMethod & signal)
-    {
-        QObject::disconnectNotify(signal);
-    }
-    
-    void draw(QPainter * painter)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("draw"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, painter);
-            return;
-        }
-        QGraphicsBlurEffect::draw(painter);
-    }
-    void super_draw(QPainter * painter)
-    {
-        QGraphicsBlurEffect::draw(painter);
-    }
-    
-    void * qt_metacast(const char * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
-        if(func)
-        {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QGraphicsBlurEffect::qt_metacast(__arg0);
-    }
-    void * super_qt_metacast(const char * __arg0)
-    {
-        return QGraphicsBlurEffect::qt_metacast(__arg0);
-    }
-    
-    bool event(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QObject::event(__arg0);
-    }
-    bool super_event(QEvent * __arg0)
-    {
-        return QObject::event(__arg0);
-    }
-    
-    int receivers(const char * signal) const
-    {
-        return QObject::receivers(signal);
-    }
-    
     bool isSignalConnected(const QMetaMethod & signal) const
     {
         return QObject::isSignalConnected(signal);
-    }
-    
-    void drawSource(QPainter * painter)
-    {
-        QGraphicsEffect::drawSource(painter);
-    }
-    
-    bool eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
-        }
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    
-    QRectF boundingRectFor(const QRectF & rect) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRectFor"));
-        if(func)
-        {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunctionOnObject(func.get(), this, rect).getValue());
-        }
-        return QGraphicsBlurEffect::boundingRectFor(rect);
-    }
-    QRectF super_boundingRectFor(const QRectF & rect) const
-    {
-        return QGraphicsBlurEffect::boundingRectFor(rect);
-    }
-    
-    bool sourceIsPixmap() const
-    {
-        return QGraphicsEffect::sourceIsPixmap();
-    }
-    
-    void timerEvent(QTimerEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::timerEvent(__arg0);
-    }
-    void super_timerEvent(QTimerEvent * __arg0)
-    {
-        QObject::timerEvent(__arg0);
-    }
-    
-    void updateBoundingRect()
-    {
-        QGraphicsEffect::updateBoundingRect();
-    }
-    
-    const QMetaObject * metaObject() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
-        if(func)
-        {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QGraphicsBlurEffect::metaObject();
-    }
-    const QMetaObject * super_metaObject() const
-    {
-        return QGraphicsBlurEffect::metaObject();
-    }
-    
-    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
-        }
-        return QGraphicsBlurEffect::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        return QGraphicsBlurEffect::qt_metacall(__arg0, __arg1, __arg2);
     }
     
     void childEvent(QChildEvent * __arg0)
@@ -292,50 +98,244 @@ public:
         QObject::childEvent(__arg0);
     }
     
+    int receivers(const char * signal) const
+    {
+        return QObject::receivers(signal);
+    }
+    
+    int senderSignalIndex() const
+    {
+        return QObject::senderSignalIndex();
+    }
+    
+    void drawSource(QPainter * painter)
+    {
+        QGraphicsEffect::drawSource(painter);
+    }
+    
+    bool sourceIsPixmap() const
+    {
+        return QGraphicsEffect::sourceIsPixmap();
+    }
+    
+    void * qt_metacast(const char * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
+        if(func)
+        {
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QGraphicsBlurEffect::qt_metacast(__arg0);
+    }
+    void * super_qt_metacast(const char * __arg0)
+    {
+        return QGraphicsBlurEffect::qt_metacast(__arg0);
+    }
+    
+    bool eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
+        }
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    
+    QPixmap sourcePixmap(Qt::CoordinateSystem system = Qt::LogicalCoordinates, QPoint * offset = 0, QGraphicsEffect::PixmapPadMode mode = QGraphicsEffect::PadToEffectiveBoundingRect) const
+    {
+        return QGraphicsEffect::sourcePixmap(system, offset, mode);
+    }
+    
+    const QMetaObject * metaObject() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
+        if(func)
+        {
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QGraphicsBlurEffect::metaObject();
+    }
+    const QMetaObject * super_metaObject() const
+    {
+        return QGraphicsBlurEffect::metaObject();
+    }
+    
     QRectF sourceBoundingRect(Qt::CoordinateSystem system = Qt::LogicalCoordinates) const
     {
         return QGraphicsEffect::sourceBoundingRect(system);
+    }
+    
+    void customEvent(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::customEvent(__arg0);
+    }
+    void super_customEvent(QEvent * __arg0)
+    {
+        QObject::customEvent(__arg0);
+    }
+    
+    void updateBoundingRect()
+    {
+        QGraphicsEffect::updateBoundingRect();
+    }
+    
+    bool event(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QObject::event(__arg0);
+    }
+    bool super_event(QEvent * __arg0)
+    {
+        return QObject::event(__arg0);
+    }
+    
+    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
+        }
+        return QGraphicsBlurEffect::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    {
+        return QGraphicsBlurEffect::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    
+    void timerEvent(QTimerEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::timerEvent(__arg0);
+    }
+    void super_timerEvent(QTimerEvent * __arg0)
+    {
+        QObject::timerEvent(__arg0);
+    }
+    
+    void disconnectNotify(const QMetaMethod & signal)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            return;
+        }
+        QObject::disconnectNotify(signal);
+    }
+    void super_disconnectNotify(const QMetaMethod & signal)
+    {
+        QObject::disconnectNotify(signal);
+    }
+    
+    void sourceChanged(QGraphicsEffect::ChangeFlags flags)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sourceChanged"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, flags);
+            return;
+        }
+        QGraphicsEffect::sourceChanged(flags);
+    }
+    void super_sourceChanged(QGraphicsEffect::ChangeFlags flags)
+    {
+        QGraphicsEffect::sourceChanged(flags);
+    }
+    
+    void draw(QPainter * painter)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("draw"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, painter);
+            return;
+        }
+        QGraphicsBlurEffect::draw(painter);
+    }
+    void super_draw(QPainter * painter)
+    {
+        QGraphicsBlurEffect::draw(painter);
+    }
+    
+    QRectF boundingRectFor(const QRectF & rect) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRectFor"));
+        if(func)
+        {
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunctionOnObject(func.get(), this, rect).getValue());
+        }
+        return QGraphicsBlurEffect::boundingRectFor(rect);
+    }
+    QRectF super_boundingRectFor(const QRectF & rect) const
+    {
+        return QGraphicsBlurEffect::boundingRectFor(rect);
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
+        _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
         _d.CPGF_MD_TEMPLATE _method("sourcePixmap", (QPixmap (D::ClassType::*) (Qt::CoordinateSystem, QPoint *, QGraphicsEffect::PixmapPadMode) const)&D::ClassType::sourcePixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
             ._default(copyVariantFromCopyable(QGraphicsEffect::PadToEffectiveBoundingRect))
             ._default(copyVariantFromCopyable(0))
             ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
         ;
-        _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
-        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
-        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-        _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
-        _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
-        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
         _d.CPGF_MD_TEMPLATE _method("sourceBoundingRect", (QRectF (D::ClassType::*) (Qt::CoordinateSystem) const)&D::ClassType::sourceBoundingRect)
             ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
         ;
-        _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
-        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
         _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
         _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
 };
 
@@ -385,51 +385,6 @@ public:
     QGraphicsColorizeEffectWrapper(QObject * parent = 0)
         : QGraphicsColorizeEffect(parent) {}
     
-    QPixmap sourcePixmap(Qt::CoordinateSystem system = Qt::LogicalCoordinates, QPoint * offset = 0, QGraphicsEffect::PixmapPadMode mode = QGraphicsEffect::PadToEffectiveBoundingRect) const
-    {
-        return QGraphicsEffect::sourcePixmap(system, offset, mode);
-    }
-    
-    void sourceChanged(QGraphicsEffect::ChangeFlags flags)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sourceChanged"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, flags);
-            return;
-        }
-        QGraphicsEffect::sourceChanged(flags);
-    }
-    void super_sourceChanged(QGraphicsEffect::ChangeFlags flags)
-    {
-        QGraphicsEffect::sourceChanged(flags);
-    }
-    
-    void customEvent(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::customEvent(__arg0);
-    }
-    void super_customEvent(QEvent * __arg0)
-    {
-        QObject::customEvent(__arg0);
-    }
-    
-    int senderSignalIndex() const
-    {
-        return QObject::senderSignalIndex();
-    }
-    
-    QObject * sender() const
-    {
-        return QObject::sender();
-    }
-    
     void connectNotify(const QMetaMethod & signal)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
@@ -445,158 +400,9 @@ public:
         QObject::connectNotify(signal);
     }
     
-    void disconnectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
-            return;
-        }
-        QObject::disconnectNotify(signal);
-    }
-    void super_disconnectNotify(const QMetaMethod & signal)
-    {
-        QObject::disconnectNotify(signal);
-    }
-    
-    void draw(QPainter * painter)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("draw"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, painter);
-            return;
-        }
-        QGraphicsColorizeEffect::draw(painter);
-    }
-    void super_draw(QPainter * painter)
-    {
-        QGraphicsColorizeEffect::draw(painter);
-    }
-    
-    void * qt_metacast(const char * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
-        if(func)
-        {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QGraphicsColorizeEffect::qt_metacast(__arg0);
-    }
-    void * super_qt_metacast(const char * __arg0)
-    {
-        return QGraphicsColorizeEffect::qt_metacast(__arg0);
-    }
-    
-    bool event(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QObject::event(__arg0);
-    }
-    bool super_event(QEvent * __arg0)
-    {
-        return QObject::event(__arg0);
-    }
-    
-    int receivers(const char * signal) const
-    {
-        return QObject::receivers(signal);
-    }
-    
     bool isSignalConnected(const QMetaMethod & signal) const
     {
         return QObject::isSignalConnected(signal);
-    }
-    
-    void drawSource(QPainter * painter)
-    {
-        QGraphicsEffect::drawSource(painter);
-    }
-    
-    bool eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
-        }
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    
-    QRectF boundingRectFor(const QRectF & sourceRect) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRectFor"));
-        if(func)
-        {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunctionOnObject(func.get(), this, sourceRect).getValue());
-        }
-        return QGraphicsEffect::boundingRectFor(sourceRect);
-    }
-    QRectF super_boundingRectFor(const QRectF & sourceRect) const
-    {
-        return QGraphicsEffect::boundingRectFor(sourceRect);
-    }
-    
-    bool sourceIsPixmap() const
-    {
-        return QGraphicsEffect::sourceIsPixmap();
-    }
-    
-    void timerEvent(QTimerEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::timerEvent(__arg0);
-    }
-    void super_timerEvent(QTimerEvent * __arg0)
-    {
-        QObject::timerEvent(__arg0);
-    }
-    
-    void updateBoundingRect()
-    {
-        QGraphicsEffect::updateBoundingRect();
-    }
-    
-    const QMetaObject * metaObject() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
-        if(func)
-        {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QGraphicsColorizeEffect::metaObject();
-    }
-    const QMetaObject * super_metaObject() const
-    {
-        return QGraphicsColorizeEffect::metaObject();
-    }
-    
-    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
-        }
-        return QGraphicsColorizeEffect::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        return QGraphicsColorizeEffect::qt_metacall(__arg0, __arg1, __arg2);
     }
     
     void childEvent(QChildEvent * __arg0)
@@ -614,50 +420,244 @@ public:
         QObject::childEvent(__arg0);
     }
     
+    int receivers(const char * signal) const
+    {
+        return QObject::receivers(signal);
+    }
+    
+    int senderSignalIndex() const
+    {
+        return QObject::senderSignalIndex();
+    }
+    
+    void drawSource(QPainter * painter)
+    {
+        QGraphicsEffect::drawSource(painter);
+    }
+    
+    bool sourceIsPixmap() const
+    {
+        return QGraphicsEffect::sourceIsPixmap();
+    }
+    
+    void * qt_metacast(const char * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
+        if(func)
+        {
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QGraphicsColorizeEffect::qt_metacast(__arg0);
+    }
+    void * super_qt_metacast(const char * __arg0)
+    {
+        return QGraphicsColorizeEffect::qt_metacast(__arg0);
+    }
+    
+    bool eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
+        }
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    
+    QPixmap sourcePixmap(Qt::CoordinateSystem system = Qt::LogicalCoordinates, QPoint * offset = 0, QGraphicsEffect::PixmapPadMode mode = QGraphicsEffect::PadToEffectiveBoundingRect) const
+    {
+        return QGraphicsEffect::sourcePixmap(system, offset, mode);
+    }
+    
+    const QMetaObject * metaObject() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
+        if(func)
+        {
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QGraphicsColorizeEffect::metaObject();
+    }
+    const QMetaObject * super_metaObject() const
+    {
+        return QGraphicsColorizeEffect::metaObject();
+    }
+    
     QRectF sourceBoundingRect(Qt::CoordinateSystem system = Qt::LogicalCoordinates) const
     {
         return QGraphicsEffect::sourceBoundingRect(system);
+    }
+    
+    void customEvent(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::customEvent(__arg0);
+    }
+    void super_customEvent(QEvent * __arg0)
+    {
+        QObject::customEvent(__arg0);
+    }
+    
+    void updateBoundingRect()
+    {
+        QGraphicsEffect::updateBoundingRect();
+    }
+    
+    bool event(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QObject::event(__arg0);
+    }
+    bool super_event(QEvent * __arg0)
+    {
+        return QObject::event(__arg0);
+    }
+    
+    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
+        }
+        return QGraphicsColorizeEffect::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    {
+        return QGraphicsColorizeEffect::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    
+    void timerEvent(QTimerEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::timerEvent(__arg0);
+    }
+    void super_timerEvent(QTimerEvent * __arg0)
+    {
+        QObject::timerEvent(__arg0);
+    }
+    
+    void disconnectNotify(const QMetaMethod & signal)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            return;
+        }
+        QObject::disconnectNotify(signal);
+    }
+    void super_disconnectNotify(const QMetaMethod & signal)
+    {
+        QObject::disconnectNotify(signal);
+    }
+    
+    void sourceChanged(QGraphicsEffect::ChangeFlags flags)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sourceChanged"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, flags);
+            return;
+        }
+        QGraphicsEffect::sourceChanged(flags);
+    }
+    void super_sourceChanged(QGraphicsEffect::ChangeFlags flags)
+    {
+        QGraphicsEffect::sourceChanged(flags);
+    }
+    
+    void draw(QPainter * painter)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("draw"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, painter);
+            return;
+        }
+        QGraphicsColorizeEffect::draw(painter);
+    }
+    void super_draw(QPainter * painter)
+    {
+        QGraphicsColorizeEffect::draw(painter);
+    }
+    
+    QRectF boundingRectFor(const QRectF & sourceRect) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRectFor"));
+        if(func)
+        {
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunctionOnObject(func.get(), this, sourceRect).getValue());
+        }
+        return QGraphicsEffect::boundingRectFor(sourceRect);
+    }
+    QRectF super_boundingRectFor(const QRectF & sourceRect) const
+    {
+        return QGraphicsEffect::boundingRectFor(sourceRect);
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
+        _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
         _d.CPGF_MD_TEMPLATE _method("sourcePixmap", (QPixmap (D::ClassType::*) (Qt::CoordinateSystem, QPoint *, QGraphicsEffect::PixmapPadMode) const)&D::ClassType::sourcePixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
             ._default(copyVariantFromCopyable(QGraphicsEffect::PadToEffectiveBoundingRect))
             ._default(copyVariantFromCopyable(0))
             ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
         ;
-        _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
-        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
-        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-        _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
-        _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
-        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
         _d.CPGF_MD_TEMPLATE _method("sourceBoundingRect", (QRectF (D::ClassType::*) (Qt::CoordinateSystem) const)&D::ClassType::sourceBoundingRect)
             ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
         ;
-        _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
-        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
         _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
         _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
 };
 
@@ -717,51 +717,6 @@ public:
     QGraphicsDropShadowEffectWrapper(QObject * parent = 0)
         : QGraphicsDropShadowEffect(parent) {}
     
-    QPixmap sourcePixmap(Qt::CoordinateSystem system = Qt::LogicalCoordinates, QPoint * offset = 0, QGraphicsEffect::PixmapPadMode mode = QGraphicsEffect::PadToEffectiveBoundingRect) const
-    {
-        return QGraphicsEffect::sourcePixmap(system, offset, mode);
-    }
-    
-    void sourceChanged(QGraphicsEffect::ChangeFlags flags)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sourceChanged"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, flags);
-            return;
-        }
-        QGraphicsEffect::sourceChanged(flags);
-    }
-    void super_sourceChanged(QGraphicsEffect::ChangeFlags flags)
-    {
-        QGraphicsEffect::sourceChanged(flags);
-    }
-    
-    void customEvent(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::customEvent(__arg0);
-    }
-    void super_customEvent(QEvent * __arg0)
-    {
-        QObject::customEvent(__arg0);
-    }
-    
-    int senderSignalIndex() const
-    {
-        return QObject::senderSignalIndex();
-    }
-    
-    QObject * sender() const
-    {
-        return QObject::sender();
-    }
-    
     void connectNotify(const QMetaMethod & signal)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
@@ -777,158 +732,9 @@ public:
         QObject::connectNotify(signal);
     }
     
-    void disconnectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
-            return;
-        }
-        QObject::disconnectNotify(signal);
-    }
-    void super_disconnectNotify(const QMetaMethod & signal)
-    {
-        QObject::disconnectNotify(signal);
-    }
-    
-    void draw(QPainter * painter)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("draw"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, painter);
-            return;
-        }
-        QGraphicsDropShadowEffect::draw(painter);
-    }
-    void super_draw(QPainter * painter)
-    {
-        QGraphicsDropShadowEffect::draw(painter);
-    }
-    
-    void * qt_metacast(const char * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
-        if(func)
-        {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QGraphicsDropShadowEffect::qt_metacast(__arg0);
-    }
-    void * super_qt_metacast(const char * __arg0)
-    {
-        return QGraphicsDropShadowEffect::qt_metacast(__arg0);
-    }
-    
-    bool event(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QObject::event(__arg0);
-    }
-    bool super_event(QEvent * __arg0)
-    {
-        return QObject::event(__arg0);
-    }
-    
-    int receivers(const char * signal) const
-    {
-        return QObject::receivers(signal);
-    }
-    
     bool isSignalConnected(const QMetaMethod & signal) const
     {
         return QObject::isSignalConnected(signal);
-    }
-    
-    void drawSource(QPainter * painter)
-    {
-        QGraphicsEffect::drawSource(painter);
-    }
-    
-    bool eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
-        }
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    
-    QRectF boundingRectFor(const QRectF & rect) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRectFor"));
-        if(func)
-        {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunctionOnObject(func.get(), this, rect).getValue());
-        }
-        return QGraphicsDropShadowEffect::boundingRectFor(rect);
-    }
-    QRectF super_boundingRectFor(const QRectF & rect) const
-    {
-        return QGraphicsDropShadowEffect::boundingRectFor(rect);
-    }
-    
-    bool sourceIsPixmap() const
-    {
-        return QGraphicsEffect::sourceIsPixmap();
-    }
-    
-    void timerEvent(QTimerEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::timerEvent(__arg0);
-    }
-    void super_timerEvent(QTimerEvent * __arg0)
-    {
-        QObject::timerEvent(__arg0);
-    }
-    
-    void updateBoundingRect()
-    {
-        QGraphicsEffect::updateBoundingRect();
-    }
-    
-    const QMetaObject * metaObject() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
-        if(func)
-        {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QGraphicsDropShadowEffect::metaObject();
-    }
-    const QMetaObject * super_metaObject() const
-    {
-        return QGraphicsDropShadowEffect::metaObject();
-    }
-    
-    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
-        }
-        return QGraphicsDropShadowEffect::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        return QGraphicsDropShadowEffect::qt_metacall(__arg0, __arg1, __arg2);
     }
     
     void childEvent(QChildEvent * __arg0)
@@ -946,50 +752,244 @@ public:
         QObject::childEvent(__arg0);
     }
     
+    int receivers(const char * signal) const
+    {
+        return QObject::receivers(signal);
+    }
+    
+    int senderSignalIndex() const
+    {
+        return QObject::senderSignalIndex();
+    }
+    
+    void drawSource(QPainter * painter)
+    {
+        QGraphicsEffect::drawSource(painter);
+    }
+    
+    bool sourceIsPixmap() const
+    {
+        return QGraphicsEffect::sourceIsPixmap();
+    }
+    
+    void * qt_metacast(const char * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
+        if(func)
+        {
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QGraphicsDropShadowEffect::qt_metacast(__arg0);
+    }
+    void * super_qt_metacast(const char * __arg0)
+    {
+        return QGraphicsDropShadowEffect::qt_metacast(__arg0);
+    }
+    
+    bool eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
+        }
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    
+    QPixmap sourcePixmap(Qt::CoordinateSystem system = Qt::LogicalCoordinates, QPoint * offset = 0, QGraphicsEffect::PixmapPadMode mode = QGraphicsEffect::PadToEffectiveBoundingRect) const
+    {
+        return QGraphicsEffect::sourcePixmap(system, offset, mode);
+    }
+    
+    const QMetaObject * metaObject() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
+        if(func)
+        {
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QGraphicsDropShadowEffect::metaObject();
+    }
+    const QMetaObject * super_metaObject() const
+    {
+        return QGraphicsDropShadowEffect::metaObject();
+    }
+    
     QRectF sourceBoundingRect(Qt::CoordinateSystem system = Qt::LogicalCoordinates) const
     {
         return QGraphicsEffect::sourceBoundingRect(system);
+    }
+    
+    void customEvent(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::customEvent(__arg0);
+    }
+    void super_customEvent(QEvent * __arg0)
+    {
+        QObject::customEvent(__arg0);
+    }
+    
+    void updateBoundingRect()
+    {
+        QGraphicsEffect::updateBoundingRect();
+    }
+    
+    bool event(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QObject::event(__arg0);
+    }
+    bool super_event(QEvent * __arg0)
+    {
+        return QObject::event(__arg0);
+    }
+    
+    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
+        }
+        return QGraphicsDropShadowEffect::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    {
+        return QGraphicsDropShadowEffect::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    
+    void timerEvent(QTimerEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::timerEvent(__arg0);
+    }
+    void super_timerEvent(QTimerEvent * __arg0)
+    {
+        QObject::timerEvent(__arg0);
+    }
+    
+    void disconnectNotify(const QMetaMethod & signal)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            return;
+        }
+        QObject::disconnectNotify(signal);
+    }
+    void super_disconnectNotify(const QMetaMethod & signal)
+    {
+        QObject::disconnectNotify(signal);
+    }
+    
+    void sourceChanged(QGraphicsEffect::ChangeFlags flags)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sourceChanged"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, flags);
+            return;
+        }
+        QGraphicsEffect::sourceChanged(flags);
+    }
+    void super_sourceChanged(QGraphicsEffect::ChangeFlags flags)
+    {
+        QGraphicsEffect::sourceChanged(flags);
+    }
+    
+    void draw(QPainter * painter)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("draw"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, painter);
+            return;
+        }
+        QGraphicsDropShadowEffect::draw(painter);
+    }
+    void super_draw(QPainter * painter)
+    {
+        QGraphicsDropShadowEffect::draw(painter);
+    }
+    
+    QRectF boundingRectFor(const QRectF & rect) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRectFor"));
+        if(func)
+        {
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunctionOnObject(func.get(), this, rect).getValue());
+        }
+        return QGraphicsDropShadowEffect::boundingRectFor(rect);
+    }
+    QRectF super_boundingRectFor(const QRectF & rect) const
+    {
+        return QGraphicsDropShadowEffect::boundingRectFor(rect);
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
+        _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
         _d.CPGF_MD_TEMPLATE _method("sourcePixmap", (QPixmap (D::ClassType::*) (Qt::CoordinateSystem, QPoint *, QGraphicsEffect::PixmapPadMode) const)&D::ClassType::sourcePixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
             ._default(copyVariantFromCopyable(QGraphicsEffect::PadToEffectiveBoundingRect))
             ._default(copyVariantFromCopyable(0))
             ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
         ;
-        _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
-        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
-        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-        _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
-        _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
-        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
         _d.CPGF_MD_TEMPLATE _method("sourceBoundingRect", (QRectF (D::ClassType::*) (Qt::CoordinateSystem) const)&D::ClassType::sourceBoundingRect)
             ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
         ;
-        _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
-        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
         _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
         _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
 };
 
@@ -1051,51 +1051,6 @@ public:
     QGraphicsEffectWrapper(QObject * parent = 0)
         : QGraphicsEffect(parent) {}
     
-    QPixmap sourcePixmap(Qt::CoordinateSystem system = Qt::LogicalCoordinates, QPoint * offset = 0, QGraphicsEffect::PixmapPadMode mode = QGraphicsEffect::PadToEffectiveBoundingRect) const
-    {
-        return QGraphicsEffect::sourcePixmap(system, offset, mode);
-    }
-    
-    void sourceChanged(QGraphicsEffect::ChangeFlags flags)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sourceChanged"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, flags);
-            return;
-        }
-        QGraphicsEffect::sourceChanged(flags);
-    }
-    void super_sourceChanged(QGraphicsEffect::ChangeFlags flags)
-    {
-        QGraphicsEffect::sourceChanged(flags);
-    }
-    
-    void customEvent(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::customEvent(__arg0);
-    }
-    void super_customEvent(QEvent * __arg0)
-    {
-        QObject::customEvent(__arg0);
-    }
-    
-    int senderSignalIndex() const
-    {
-        return QObject::senderSignalIndex();
-    }
-    
-    QObject * sender() const
-    {
-        return QObject::sender();
-    }
-    
     void connectNotify(const QMetaMethod & signal)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
@@ -1111,158 +1066,9 @@ public:
         QObject::connectNotify(signal);
     }
     
-    void disconnectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
-            return;
-        }
-        QObject::disconnectNotify(signal);
-    }
-    void super_disconnectNotify(const QMetaMethod & signal)
-    {
-        QObject::disconnectNotify(signal);
-    }
-    
-    void draw(QPainter * painter)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("draw"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, painter);
-            return;
-        }
-        throw std::runtime_error("Abstract method");
-    }
-    void super_draw(QPainter * painter)
-    {
-        throw std::runtime_error("Abstract method");
-    }
-    
-    void * qt_metacast(const char * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
-        if(func)
-        {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QGraphicsEffect::qt_metacast(__arg0);
-    }
-    void * super_qt_metacast(const char * __arg0)
-    {
-        return QGraphicsEffect::qt_metacast(__arg0);
-    }
-    
-    bool event(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QObject::event(__arg0);
-    }
-    bool super_event(QEvent * __arg0)
-    {
-        return QObject::event(__arg0);
-    }
-    
-    int receivers(const char * signal) const
-    {
-        return QObject::receivers(signal);
-    }
-    
     bool isSignalConnected(const QMetaMethod & signal) const
     {
         return QObject::isSignalConnected(signal);
-    }
-    
-    void drawSource(QPainter * painter)
-    {
-        QGraphicsEffect::drawSource(painter);
-    }
-    
-    bool eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
-        }
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    
-    QRectF boundingRectFor(const QRectF & sourceRect) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRectFor"));
-        if(func)
-        {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunctionOnObject(func.get(), this, sourceRect).getValue());
-        }
-        return QGraphicsEffect::boundingRectFor(sourceRect);
-    }
-    QRectF super_boundingRectFor(const QRectF & sourceRect) const
-    {
-        return QGraphicsEffect::boundingRectFor(sourceRect);
-    }
-    
-    bool sourceIsPixmap() const
-    {
-        return QGraphicsEffect::sourceIsPixmap();
-    }
-    
-    void timerEvent(QTimerEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::timerEvent(__arg0);
-    }
-    void super_timerEvent(QTimerEvent * __arg0)
-    {
-        QObject::timerEvent(__arg0);
-    }
-    
-    void updateBoundingRect()
-    {
-        QGraphicsEffect::updateBoundingRect();
-    }
-    
-    const QMetaObject * metaObject() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
-        if(func)
-        {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QGraphicsEffect::metaObject();
-    }
-    const QMetaObject * super_metaObject() const
-    {
-        return QGraphicsEffect::metaObject();
-    }
-    
-    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
-        }
-        return QGraphicsEffect::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        return QGraphicsEffect::qt_metacall(__arg0, __arg1, __arg2);
     }
     
     void childEvent(QChildEvent * __arg0)
@@ -1280,50 +1086,244 @@ public:
         QObject::childEvent(__arg0);
     }
     
+    int receivers(const char * signal) const
+    {
+        return QObject::receivers(signal);
+    }
+    
+    int senderSignalIndex() const
+    {
+        return QObject::senderSignalIndex();
+    }
+    
+    void drawSource(QPainter * painter)
+    {
+        QGraphicsEffect::drawSource(painter);
+    }
+    
+    bool sourceIsPixmap() const
+    {
+        return QGraphicsEffect::sourceIsPixmap();
+    }
+    
+    void * qt_metacast(const char * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
+        if(func)
+        {
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QGraphicsEffect::qt_metacast(__arg0);
+    }
+    void * super_qt_metacast(const char * __arg0)
+    {
+        return QGraphicsEffect::qt_metacast(__arg0);
+    }
+    
+    bool eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
+        }
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    
+    QPixmap sourcePixmap(Qt::CoordinateSystem system = Qt::LogicalCoordinates, QPoint * offset = 0, QGraphicsEffect::PixmapPadMode mode = QGraphicsEffect::PadToEffectiveBoundingRect) const
+    {
+        return QGraphicsEffect::sourcePixmap(system, offset, mode);
+    }
+    
+    const QMetaObject * metaObject() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
+        if(func)
+        {
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QGraphicsEffect::metaObject();
+    }
+    const QMetaObject * super_metaObject() const
+    {
+        return QGraphicsEffect::metaObject();
+    }
+    
     QRectF sourceBoundingRect(Qt::CoordinateSystem system = Qt::LogicalCoordinates) const
     {
         return QGraphicsEffect::sourceBoundingRect(system);
+    }
+    
+    void customEvent(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::customEvent(__arg0);
+    }
+    void super_customEvent(QEvent * __arg0)
+    {
+        QObject::customEvent(__arg0);
+    }
+    
+    void updateBoundingRect()
+    {
+        QGraphicsEffect::updateBoundingRect();
+    }
+    
+    bool event(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QObject::event(__arg0);
+    }
+    bool super_event(QEvent * __arg0)
+    {
+        return QObject::event(__arg0);
+    }
+    
+    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
+        }
+        return QGraphicsEffect::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    {
+        return QGraphicsEffect::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    
+    void timerEvent(QTimerEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::timerEvent(__arg0);
+    }
+    void super_timerEvent(QTimerEvent * __arg0)
+    {
+        QObject::timerEvent(__arg0);
+    }
+    
+    void disconnectNotify(const QMetaMethod & signal)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            return;
+        }
+        QObject::disconnectNotify(signal);
+    }
+    void super_disconnectNotify(const QMetaMethod & signal)
+    {
+        QObject::disconnectNotify(signal);
+    }
+    
+    void sourceChanged(QGraphicsEffect::ChangeFlags flags)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sourceChanged"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, flags);
+            return;
+        }
+        QGraphicsEffect::sourceChanged(flags);
+    }
+    void super_sourceChanged(QGraphicsEffect::ChangeFlags flags)
+    {
+        QGraphicsEffect::sourceChanged(flags);
+    }
+    
+    void draw(QPainter * painter)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("draw"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, painter);
+            return;
+        }
+        throw std::runtime_error("Abstract method");
+    }
+    void super_draw(QPainter * painter)
+    {
+        throw std::runtime_error("Abstract method");
+    }
+    
+    QRectF boundingRectFor(const QRectF & sourceRect) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRectFor"));
+        if(func)
+        {
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunctionOnObject(func.get(), this, sourceRect).getValue());
+        }
+        return QGraphicsEffect::boundingRectFor(sourceRect);
+    }
+    QRectF super_boundingRectFor(const QRectF & sourceRect) const
+    {
+        return QGraphicsEffect::boundingRectFor(sourceRect);
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
+        _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
         _d.CPGF_MD_TEMPLATE _method("sourcePixmap", (QPixmap (D::ClassType::*) (Qt::CoordinateSystem, QPoint *, QGraphicsEffect::PixmapPadMode) const)&D::ClassType::sourcePixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
             ._default(copyVariantFromCopyable(QGraphicsEffect::PadToEffectiveBoundingRect))
             ._default(copyVariantFromCopyable(0))
             ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
         ;
-        _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
-        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
-        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-        _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
-        _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
-        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
         _d.CPGF_MD_TEMPLATE _method("sourceBoundingRect", (QRectF (D::ClassType::*) (Qt::CoordinateSystem) const)&D::ClassType::sourceBoundingRect)
             ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
         ;
-        _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
-        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
         _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
         _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
 };
 
@@ -1376,51 +1376,6 @@ public:
     QGraphicsOpacityEffectWrapper(QObject * parent = 0)
         : QGraphicsOpacityEffect(parent) {}
     
-    QPixmap sourcePixmap(Qt::CoordinateSystem system = Qt::LogicalCoordinates, QPoint * offset = 0, QGraphicsEffect::PixmapPadMode mode = QGraphicsEffect::PadToEffectiveBoundingRect) const
-    {
-        return QGraphicsEffect::sourcePixmap(system, offset, mode);
-    }
-    
-    void sourceChanged(QGraphicsEffect::ChangeFlags flags)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sourceChanged"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, flags);
-            return;
-        }
-        QGraphicsEffect::sourceChanged(flags);
-    }
-    void super_sourceChanged(QGraphicsEffect::ChangeFlags flags)
-    {
-        QGraphicsEffect::sourceChanged(flags);
-    }
-    
-    void customEvent(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::customEvent(__arg0);
-    }
-    void super_customEvent(QEvent * __arg0)
-    {
-        QObject::customEvent(__arg0);
-    }
-    
-    int senderSignalIndex() const
-    {
-        return QObject::senderSignalIndex();
-    }
-    
-    QObject * sender() const
-    {
-        return QObject::sender();
-    }
-    
     void connectNotify(const QMetaMethod & signal)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("connectNotify"));
@@ -1436,158 +1391,9 @@ public:
         QObject::connectNotify(signal);
     }
     
-    void disconnectNotify(const QMetaMethod & signal)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
-            return;
-        }
-        QObject::disconnectNotify(signal);
-    }
-    void super_disconnectNotify(const QMetaMethod & signal)
-    {
-        QObject::disconnectNotify(signal);
-    }
-    
-    void draw(QPainter * painter)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("draw"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, painter);
-            return;
-        }
-        QGraphicsOpacityEffect::draw(painter);
-    }
-    void super_draw(QPainter * painter)
-    {
-        QGraphicsOpacityEffect::draw(painter);
-    }
-    
-    void * qt_metacast(const char * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
-        if(func)
-        {
-            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QGraphicsOpacityEffect::qt_metacast(__arg0);
-    }
-    void * super_qt_metacast(const char * __arg0)
-    {
-        return QGraphicsOpacityEffect::qt_metacast(__arg0);
-    }
-    
-    bool event(QEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
-        }
-        return QObject::event(__arg0);
-    }
-    bool super_event(QEvent * __arg0)
-    {
-        return QObject::event(__arg0);
-    }
-    
-    int receivers(const char * signal) const
-    {
-        return QObject::receivers(signal);
-    }
-    
     bool isSignalConnected(const QMetaMethod & signal) const
     {
         return QObject::isSignalConnected(signal);
-    }
-    
-    void drawSource(QPainter * painter)
-    {
-        QGraphicsEffect::drawSource(painter);
-    }
-    
-    bool eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
-        }
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
-    {
-        return QObject::eventFilter(__arg0, __arg1);
-    }
-    
-    QRectF boundingRectFor(const QRectF & sourceRect) const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRectFor"));
-        if(func)
-        {
-            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunctionOnObject(func.get(), this, sourceRect).getValue());
-        }
-        return QGraphicsEffect::boundingRectFor(sourceRect);
-    }
-    QRectF super_boundingRectFor(const QRectF & sourceRect) const
-    {
-        return QGraphicsEffect::boundingRectFor(sourceRect);
-    }
-    
-    bool sourceIsPixmap() const
-    {
-        return QGraphicsEffect::sourceIsPixmap();
-    }
-    
-    void timerEvent(QTimerEvent * __arg0)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
-            return;
-        }
-        QObject::timerEvent(__arg0);
-    }
-    void super_timerEvent(QTimerEvent * __arg0)
-    {
-        QObject::timerEvent(__arg0);
-    }
-    
-    void updateBoundingRect()
-    {
-        QGraphicsEffect::updateBoundingRect();
-    }
-    
-    const QMetaObject * metaObject() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
-        if(func)
-        {
-            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QGraphicsOpacityEffect::metaObject();
-    }
-    const QMetaObject * super_metaObject() const
-    {
-        return QGraphicsOpacityEffect::metaObject();
-    }
-    
-    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
-        if(func)
-        {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
-        }
-        return QGraphicsOpacityEffect::qt_metacall(__arg0, __arg1, __arg2);
-    }
-    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
-    {
-        return QGraphicsOpacityEffect::qt_metacall(__arg0, __arg1, __arg2);
     }
     
     void childEvent(QChildEvent * __arg0)
@@ -1605,50 +1411,244 @@ public:
         QObject::childEvent(__arg0);
     }
     
+    int receivers(const char * signal) const
+    {
+        return QObject::receivers(signal);
+    }
+    
+    int senderSignalIndex() const
+    {
+        return QObject::senderSignalIndex();
+    }
+    
+    void drawSource(QPainter * painter)
+    {
+        QGraphicsEffect::drawSource(painter);
+    }
+    
+    bool sourceIsPixmap() const
+    {
+        return QGraphicsEffect::sourceIsPixmap();
+    }
+    
+    void * qt_metacast(const char * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacast"));
+        if(func)
+        {
+            return cpgf::fromVariant<void * >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QGraphicsOpacityEffect::qt_metacast(__arg0);
+    }
+    void * super_qt_metacast(const char * __arg0)
+    {
+        return QGraphicsOpacityEffect::qt_metacast(__arg0);
+    }
+    
+    bool eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("eventFilter"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1).getValue());
+        }
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    bool super_eventFilter(QObject * __arg0, QEvent * __arg1)
+    {
+        return QObject::eventFilter(__arg0, __arg1);
+    }
+    
+    QPixmap sourcePixmap(Qt::CoordinateSystem system = Qt::LogicalCoordinates, QPoint * offset = 0, QGraphicsEffect::PixmapPadMode mode = QGraphicsEffect::PadToEffectiveBoundingRect) const
+    {
+        return QGraphicsEffect::sourcePixmap(system, offset, mode);
+    }
+    
+    const QMetaObject * metaObject() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("metaObject"));
+        if(func)
+        {
+            return cpgf::fromVariant<const QMetaObject * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QGraphicsOpacityEffect::metaObject();
+    }
+    const QMetaObject * super_metaObject() const
+    {
+        return QGraphicsOpacityEffect::metaObject();
+    }
+    
     QRectF sourceBoundingRect(Qt::CoordinateSystem system = Qt::LogicalCoordinates) const
     {
         return QGraphicsEffect::sourceBoundingRect(system);
+    }
+    
+    void customEvent(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("customEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::customEvent(__arg0);
+    }
+    void super_customEvent(QEvent * __arg0)
+    {
+        QObject::customEvent(__arg0);
+    }
+    
+    void updateBoundingRect()
+    {
+        QGraphicsEffect::updateBoundingRect();
+    }
+    
+    bool event(QEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("event"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0).getValue());
+        }
+        return QObject::event(__arg0);
+    }
+    bool super_event(QEvent * __arg0)
+    {
+        return QObject::event(__arg0);
+    }
+    
+    int qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("qt_metacall"));
+        if(func)
+        {
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0, __arg1, __arg2).getValue());
+        }
+        return QGraphicsOpacityEffect::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    int super_qt_metacall(QMetaObject::Call __arg0, int __arg1, void ** __arg2)
+    {
+        return QGraphicsOpacityEffect::qt_metacall(__arg0, __arg1, __arg2);
+    }
+    
+    void timerEvent(QTimerEvent * __arg0)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("timerEvent"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, __arg0);
+            return;
+        }
+        QObject::timerEvent(__arg0);
+    }
+    void super_timerEvent(QTimerEvent * __arg0)
+    {
+        QObject::timerEvent(__arg0);
+    }
+    
+    void disconnectNotify(const QMetaMethod & signal)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("disconnectNotify"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, signal);
+            return;
+        }
+        QObject::disconnectNotify(signal);
+    }
+    void super_disconnectNotify(const QMetaMethod & signal)
+    {
+        QObject::disconnectNotify(signal);
+    }
+    
+    void sourceChanged(QGraphicsEffect::ChangeFlags flags)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("sourceChanged"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, flags);
+            return;
+        }
+        QGraphicsEffect::sourceChanged(flags);
+    }
+    void super_sourceChanged(QGraphicsEffect::ChangeFlags flags)
+    {
+        QGraphicsEffect::sourceChanged(flags);
+    }
+    
+    void draw(QPainter * painter)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("draw"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, painter);
+            return;
+        }
+        QGraphicsOpacityEffect::draw(painter);
+    }
+    void super_draw(QPainter * painter)
+    {
+        QGraphicsOpacityEffect::draw(painter);
+    }
+    
+    QRectF boundingRectFor(const QRectF & sourceRect) const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("boundingRectFor"));
+        if(func)
+        {
+            return cpgf::fromVariant<QRectF >(cpgf::invokeScriptFunctionOnObject(func.get(), this, sourceRect).getValue());
+        }
+        return QGraphicsEffect::boundingRectFor(sourceRect);
+    }
+    QRectF super_boundingRectFor(const QRectF & sourceRect) const
+    {
+        return QGraphicsEffect::boundingRectFor(sourceRect);
+    }
+    
+    QObject * sender() const
+    {
+        return QObject::sender();
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
+        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
+        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
+        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
+        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
+        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
+        _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
+        _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
         _d.CPGF_MD_TEMPLATE _method("sourcePixmap", (QPixmap (D::ClassType::*) (Qt::CoordinateSystem, QPoint *, QGraphicsEffect::PixmapPadMode) const)&D::ClassType::sourcePixmap, cpgf::MakePolicy<cpgf::GMetaRuleParamNoncopyable<-1> >())
             ._default(copyVariantFromCopyable(QGraphicsEffect::PadToEffectiveBoundingRect))
             ._default(copyVariantFromCopyable(0))
             ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
         ;
-        _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
-        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
-        _d.CPGF_MD_TEMPLATE _method("senderSignalIndex", (int (D::ClassType::*) () const)&D::ClassType::senderSignalIndex);
-        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
-        _d.CPGF_MD_TEMPLATE _method("connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
-        _d.CPGF_MD_TEMPLATE _method("receivers", (int (D::ClassType::*) (const char *) const)&D::ClassType::receivers);
-        _d.CPGF_MD_TEMPLATE _method("isSignalConnected", (bool (D::ClassType::*) (const QMetaMethod &) const)&D::ClassType::isSignalConnected);
-        _d.CPGF_MD_TEMPLATE _method("drawSource", (void (D::ClassType::*) (QPainter *))&D::ClassType::drawSource);
-        _d.CPGF_MD_TEMPLATE _method("sourceIsPixmap", (bool (D::ClassType::*) () const)&D::ClassType::sourceIsPixmap);
-        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
-        _d.CPGF_MD_TEMPLATE _method("childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::childEvent);
         _d.CPGF_MD_TEMPLATE _method("sourceBoundingRect", (QRectF (D::ClassType::*) (Qt::CoordinateSystem) const)&D::ClassType::sourceBoundingRect)
             ._default(copyVariantFromCopyable(Qt::LogicalCoordinates))
         ;
-        _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
-        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::customEvent);
+        _d.CPGF_MD_TEMPLATE _method("updateBoundingRect", (void (D::ClassType::*) ())&D::ClassType::updateBoundingRect);
+        _d.CPGF_MD_TEMPLATE _method("timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::draw);
+        _d.CPGF_MD_TEMPLATE _method("sender", (QObject * (D::ClassType::*) () const)&D::ClassType::sender);
         _d.CPGF_MD_TEMPLATE _method("super_connectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_connectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
-        _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
-        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
-        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
-        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
-        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
-        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
-        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
         _d.CPGF_MD_TEMPLATE _method("super_childEvent", (void (D::ClassType::*) (QChildEvent *))&D::ClassType::super_childEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacast", (void * (D::ClassType::*) (const char *))&D::ClassType::super_qt_metacast);
+        _d.CPGF_MD_TEMPLATE _method("super_eventFilter", (bool (D::ClassType::*) (QObject *, QEvent *))&D::ClassType::super_eventFilter);
+        _d.CPGF_MD_TEMPLATE _method("super_metaObject", (const QMetaObject * (D::ClassType::*) () const)&D::ClassType::super_metaObject);
+        _d.CPGF_MD_TEMPLATE _method("super_customEvent", (void (D::ClassType::*) (QEvent *))&D::ClassType::super_customEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_event", (bool (D::ClassType::*) (QEvent *))&D::ClassType::super_event);
+        _d.CPGF_MD_TEMPLATE _method("super_qt_metacall", (int (D::ClassType::*) (QMetaObject::Call, int, void **))&D::ClassType::super_qt_metacall);
+        _d.CPGF_MD_TEMPLATE _method("super_timerEvent", (void (D::ClassType::*) (QTimerEvent *))&D::ClassType::super_timerEvent);
+        _d.CPGF_MD_TEMPLATE _method("super_disconnectNotify", (void (D::ClassType::*) (const QMetaMethod &))&D::ClassType::super_disconnectNotify);
+        _d.CPGF_MD_TEMPLATE _method("super_sourceChanged", (void (D::ClassType::*) (QGraphicsEffect::ChangeFlags))&D::ClassType::super_sourceChanged);
+        _d.CPGF_MD_TEMPLATE _method("super_draw", (void (D::ClassType::*) (QPainter *))&D::ClassType::super_draw);
+        _d.CPGF_MD_TEMPLATE _method("super_boundingRectFor", (QRectF (D::ClassType::*) (const QRectF &) const)&D::ClassType::super_boundingRectFor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
     }
 };
 

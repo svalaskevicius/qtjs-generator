@@ -24,7 +24,7 @@ void buildMetaClass_Global_qtwidgets(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtWidgets_8")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtWidgets_6")
     ;
 }
 

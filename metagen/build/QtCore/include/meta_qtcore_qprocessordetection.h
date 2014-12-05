@@ -24,7 +24,7 @@ void buildMetaClass_Global_qprocessordetection(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_27")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_21")
         ._element("Q_BIG_ENDIAN", Q_BIG_ENDIAN)
         ._element("Q_LITTLE_ENDIAN", Q_LITTLE_ENDIAN)
         ._element("Q_PROCESSOR_WORDSIZE", Q_PROCESSOR_WORDSIZE)

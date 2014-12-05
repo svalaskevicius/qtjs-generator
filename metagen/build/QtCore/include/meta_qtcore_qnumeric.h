@@ -35,7 +35,7 @@ void buildMetaClass_Global_qnumeric(D _d)
     _d.CPGF_MD_TEMPLATE _method("qInf", (double (*) ())&qInf);
     _d.CPGF_MD_TEMPLATE _method("qFloatDistance", (quint32 (*) (float, float))&qFloatDistance);
     _d.CPGF_MD_TEMPLATE _method("qFloatDistance", (quint64 (*) (double, double))&qFloatDistance);
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_30")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_23")
         ._element("Q_INFINITY", Q_INFINITY)
         ._element("Q_SNAN", Q_SNAN)
         ._element("Q_QNAN", Q_QNAN)

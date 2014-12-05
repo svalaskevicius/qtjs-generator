@@ -46,34 +46,19 @@ public:
     QSGDefaultRectangleNodeWrapper()
         : QSGDefaultRectangleNode() {}
     
-    void setGradientStops(const QGradientStops & stops)
+    void setAligned(bool aligned)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setGradientStops"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setAligned"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, stops);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, aligned);
             return;
         }
-        QSGDefaultRectangleNode::setGradientStops(stops);
+        QSGDefaultRectangleNode::setAligned(aligned);
     }
-    void super_setGradientStops(const QGradientStops & stops)
+    void super_setAligned(bool aligned)
     {
-        QSGDefaultRectangleNode::setGradientStops(stops);
-    }
-    
-    void setPenWidth(qreal width)
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setPenWidth"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, width);
-            return;
-        }
-        QSGDefaultRectangleNode::setPenWidth(width);
-    }
-    void super_setPenWidth(qreal width)
-    {
-        QSGDefaultRectangleNode::setPenWidth(width);
+        QSGDefaultRectangleNode::setAligned(aligned);
     }
     
     void setAntialiasing(bool antialiasing)
@@ -91,48 +76,19 @@ public:
         QSGDefaultRectangleNode::setAntialiasing(antialiasing);
     }
     
-    void setAligned(bool aligned)
+    void setColor(const QColor & color)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setAligned"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setColor"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, aligned);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, color);
             return;
         }
-        QSGDefaultRectangleNode::setAligned(aligned);
+        QSGDefaultRectangleNode::setColor(color);
     }
-    void super_setAligned(bool aligned)
+    void super_setColor(const QColor & color)
     {
-        QSGDefaultRectangleNode::setAligned(aligned);
-    }
-    
-    void update()
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("update"));
-        if(func)
-        {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this);
-            return;
-        }
-        QSGDefaultRectangleNode::update();
-    }
-    void super_update()
-    {
-        QSGDefaultRectangleNode::update();
-    }
-    
-    bool isSubtreeBlocked() const
-    {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
-        if(func)
-        {
-            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
-        }
-        return QSGNode::isSubtreeBlocked();
-    }
-    bool super_isSubtreeBlocked() const
-    {
-        return QSGNode::isSubtreeBlocked();
+        QSGDefaultRectangleNode::setColor(color);
     }
     
     void setRadius(qreal radius)
@@ -150,6 +106,21 @@ public:
         QSGDefaultRectangleNode::setRadius(radius);
     }
     
+    void setPenColor(const QColor & color)
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setPenColor"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, color);
+            return;
+        }
+        QSGDefaultRectangleNode::setPenColor(color);
+    }
+    void super_setPenColor(const QColor & color)
+    {
+        QSGDefaultRectangleNode::setPenColor(color);
+    }
+    
     void setRect(const QRectF & rect)
     {
         cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setRect"));
@@ -165,34 +136,34 @@ public:
         QSGDefaultRectangleNode::setRect(rect);
     }
     
-    void setColor(const QColor & color)
+    void setPenWidth(qreal width)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setColor"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setPenWidth"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, color);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, width);
             return;
         }
-        QSGDefaultRectangleNode::setColor(color);
+        QSGDefaultRectangleNode::setPenWidth(width);
     }
-    void super_setColor(const QColor & color)
+    void super_setPenWidth(qreal width)
     {
-        QSGDefaultRectangleNode::setColor(color);
+        QSGDefaultRectangleNode::setPenWidth(width);
     }
     
-    void setPenColor(const QColor & color)
+    void setGradientStops(const QGradientStops & stops)
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setPenColor"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("setGradientStops"));
         if(func)
         {
-            cpgf::invokeScriptFunctionOnObject(func.get(), this, color);
+            cpgf::invokeScriptFunctionOnObject(func.get(), this, stops);
             return;
         }
-        QSGDefaultRectangleNode::setPenColor(color);
+        QSGDefaultRectangleNode::setGradientStops(stops);
     }
-    void super_setPenColor(const QColor & color)
+    void super_setGradientStops(const QGradientStops & stops)
     {
-        QSGDefaultRectangleNode::setPenColor(color);
+        QSGDefaultRectangleNode::setGradientStops(stops);
     }
     
     void preprocess()
@@ -209,22 +180,51 @@ public:
     {
         QSGNode::preprocess();
     }
+    
+    bool isSubtreeBlocked() const
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("isSubtreeBlocked"));
+        if(func)
+        {
+            return cpgf::fromVariant<bool >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+        }
+        return QSGNode::isSubtreeBlocked();
+    }
+    bool super_isSubtreeBlocked() const
+    {
+        return QSGNode::isSubtreeBlocked();
+    }
+    
+    void update()
+    {
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("update"));
+        if(func)
+        {
+            cpgf::invokeScriptFunctionOnObject(func.get(), this);
+            return;
+        }
+        QSGDefaultRectangleNode::update();
+    }
+    void super_update()
+    {
+        QSGDefaultRectangleNode::update();
+    }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("super_setGradientStops", (void (D::ClassType::*) (const QGradientStops &))&D::ClassType::super_setGradientStops);
-        _d.CPGF_MD_TEMPLATE _method("super_setPenWidth", (void (D::ClassType::*) (qreal))&D::ClassType::super_setPenWidth);
-        _d.CPGF_MD_TEMPLATE _method("super_setAntialiasing", (void (D::ClassType::*) (bool))&D::ClassType::super_setAntialiasing);
         _d.CPGF_MD_TEMPLATE _method("super_setAligned", (void (D::ClassType::*) (bool))&D::ClassType::super_setAligned);
-        _d.CPGF_MD_TEMPLATE _method("super_update", (void (D::ClassType::*) ())&D::ClassType::super_update);
-        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
-        _d.CPGF_MD_TEMPLATE _method("super_setRadius", (void (D::ClassType::*) (qreal))&D::ClassType::super_setRadius);
-        _d.CPGF_MD_TEMPLATE _method("super_setRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_setAntialiasing", (void (D::ClassType::*) (bool))&D::ClassType::super_setAntialiasing);
         _d.CPGF_MD_TEMPLATE _method("super_setColor", (void (D::ClassType::*) (const QColor &))&D::ClassType::super_setColor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_setRadius", (void (D::ClassType::*) (qreal))&D::ClassType::super_setRadius);
         _d.CPGF_MD_TEMPLATE _method("super_setPenColor", (void (D::ClassType::*) (const QColor &))&D::ClassType::super_setPenColor, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_setRect", (void (D::ClassType::*) (const QRectF &))&D::ClassType::super_setRect, cpgf::MakePolicy<cpgf::GMetaRuleCopyConstReference<0> >());
+        _d.CPGF_MD_TEMPLATE _method("super_setPenWidth", (void (D::ClassType::*) (qreal))&D::ClassType::super_setPenWidth);
+        _d.CPGF_MD_TEMPLATE _method("super_setGradientStops", (void (D::ClassType::*) (const QGradientStops &))&D::ClassType::super_setGradientStops);
         _d.CPGF_MD_TEMPLATE _method("super_preprocess", (void (D::ClassType::*) ())&D::ClassType::super_preprocess);
+        _d.CPGF_MD_TEMPLATE _method("super_isSubtreeBlocked", (bool (D::ClassType::*) () const)&D::ClassType::super_isSubtreeBlocked);
+        _d.CPGF_MD_TEMPLATE _method("super_update", (void (D::ClassType::*) ())&D::ClassType::super_update);
     }
 };
 
@@ -259,18 +259,18 @@ public:
     QSGSmoothColorMaterialWrapper()
         : QSGSmoothColorMaterial() {}
     
-    QSGMaterialShader * createShader() const
+    int compare(const QSGMaterial * other) const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createShader"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("compare"));
         if(func)
         {
-            return cpgf::fromVariant<QSGMaterialShader * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
+            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, other).getValue());
         }
-        return QSGSmoothColorMaterial::createShader();
+        return QSGSmoothColorMaterial::compare(other);
     }
-    QSGMaterialShader * super_createShader() const
+    int super_compare(const QSGMaterial * other) const
     {
-        return QSGSmoothColorMaterial::createShader();
+        return QSGSmoothColorMaterial::compare(other);
     }
     
     QSGMaterialType * type() const
@@ -287,29 +287,29 @@ public:
         return QSGSmoothColorMaterial::type();
     }
     
-    int compare(const QSGMaterial * other) const
+    QSGMaterialShader * createShader() const
     {
-        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("compare"));
+        cpgf::GScopedInterface<cpgf::IScriptFunction> func(this->getScriptFunction("createShader"));
         if(func)
         {
-            return cpgf::fromVariant<int >(cpgf::invokeScriptFunctionOnObject(func.get(), this, other).getValue());
+            return cpgf::fromVariant<QSGMaterialShader * >(cpgf::invokeScriptFunctionOnObject(func.get(), this).getValue());
         }
-        return QSGSmoothColorMaterial::compare(other);
+        return QSGSmoothColorMaterial::createShader();
     }
-    int super_compare(const QSGMaterial * other) const
+    QSGMaterialShader * super_createShader() const
     {
-        return QSGSmoothColorMaterial::compare(other);
+        return QSGSmoothColorMaterial::createShader();
     }
     template <typename D>
     static void cpgf__register(D _d)
     {
         (void)_d;
         using namespace cpgf;
-        _d.CPGF_MD_TEMPLATE _method("createShader", (QSGMaterialShader * (D::ClassType::*) () const)&D::ClassType::createShader);
         _d.CPGF_MD_TEMPLATE _method("type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::type);
-        _d.CPGF_MD_TEMPLATE _method("super_createShader", (QSGMaterialShader * (D::ClassType::*) () const)&D::ClassType::super_createShader);
-        _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("createShader", (QSGMaterialShader * (D::ClassType::*) () const)&D::ClassType::createShader);
         _d.CPGF_MD_TEMPLATE _method("super_compare", (int (D::ClassType::*) (const QSGMaterial *) const)&D::ClassType::super_compare);
+        _d.CPGF_MD_TEMPLATE _method("super_type", (QSGMaterialType * (D::ClassType::*) () const)&D::ClassType::super_type);
+        _d.CPGF_MD_TEMPLATE _method("super_createShader", (QSGMaterialShader * (D::ClassType::*) () const)&D::ClassType::super_createShader);
     }
 };
 

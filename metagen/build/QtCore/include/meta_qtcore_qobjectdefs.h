@@ -26,7 +26,7 @@ void buildMetaClass_Global_qobjectdefs(D _d)
     using namespace cpgf;
     
     _d.CPGF_MD_TEMPLATE _method("qFlagLocation", (const char * (*) (const char *))&qFlagLocation);
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_22")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtCore_25")
         ._element("Q_MOC_OUTPUT_REVISION", Q_MOC_OUTPUT_REVISION)
     ;
 }

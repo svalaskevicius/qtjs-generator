@@ -24,7 +24,7 @@ void buildMetaClass_Global_qguiapplication(D _d)
     (void)_d;
     using namespace cpgf;
     
-    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_15")
+    _d.CPGF_MD_TEMPLATE _enum<long long>("GlobalDefine_QtGui_18")
         ._element("qApp", qApp)
         ._element("qGuiApp", qGuiApp)
     ;
